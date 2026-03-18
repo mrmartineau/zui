@@ -1,0 +1,31 @@
+@layer zui.base {
+  :root {
+    --size-0: 0;
+    --size-px: 1px;
+
+    --size-quarter: 25%;
+    --size-third: 33.333333%;
+    --size-half: 50%;
+    --size-twothirds: 66.666667%;
+    --size-threequarters: 75%;
+
+    --size-fifth: 20%;
+    --size-twofifths: 40%;
+    --size-threefifths: 60%;
+    --size-fourfifths: 80%;
+
+    --size-full: 100%;
+    --size-auto: auto;
+
+    --size-svw: 100svw;
+    --size-lvw: 100lvw;
+    --size-dvw: 100dvw;
+    --size-svh: 100svh;
+    --size-lvh: 100lvh;
+    --size-dvh: 100dvh;
+
+    --size-min: min-content;
+    --size-max: max-content;
+    --size-fit: fit-content;
+  }
+}

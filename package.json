@@ -1,0 +1,57 @@
+{
+  "name": "@mrmartineau/zui",
+  "version": "0.0.1",
+  "description": "ZUI — a CSS UI library with React and Astro components",
+  "type": "module",
+  "exports": {
+    "./css": {
+      "style": "./dist/css/zui.css",
+      "default": "./dist/css/zui.css"
+    },
+    "./css/min": {
+      "style": "./dist/css/zui.min.css",
+      "default": "./dist/css/zui.min.css"
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react/index.d.mts",
+        "default": "./dist/react/index.mjs"
+      }
+    },
+    "./astro": {
+      "import": "./src/astro/index.ts"
+    },
+    "./astro/*": {
+      "import": "./src/astro/*"
+    }
+  },
+  "files": [
+    "dist",
+    "src/css",
+    "src/astro"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "generate:colors": "node scripts/generate-colors.js"
+  },
+  "devDependencies": {
+    "@tsdown/css": "^0.21.4",
+    "@types/react": "^19.0.0",
+    "lightningcss": "^1.32.0",
+    "tsdown": "^0.21.4",
+    "typescript": "^5.8.0"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "astro": {
+      "optional": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@layer zui.utilities {
+  .flow {
+    & > * + * {
+      margin-block-start: var(--flow-space, 1em);
+    }
+
+    :is(h1, h2, h3, blockquote) {
+      --flow-space: 2rem;
+    }
+
+    :is(h1, h2, h3) + * {
+      --flow-space: 1rem;
+    }
+  }
+}

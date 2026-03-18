@@ -1,0 +1,31 @@
+@layer zui.base {
+  :root {
+    --space--2: -8px;
+    --space--1: -4px;
+    --space-0: 0;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 40px;
+    --space-8: 48px;
+    --space-9: 64px;
+
+    --space-3xs: calc(var(--space-1) / 2);
+    --space-2xs: var(--space-1);
+    --space-xs: var(--space-2);
+    --space-sm: var(--space-3);
+    --space-md: var(--space-4);
+    --space-lg: var(--space-5);
+    --space-xl: var(--space-6);
+    --space-2xl: var(--space-7);
+    --space-3xl: var(--space-8);
+    --space-4xl: var(--space-9);
+
+    --space-px: 1px;
+
+    --flow-space: 1.4rem;
+  }
+}

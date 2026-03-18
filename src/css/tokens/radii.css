@@ -1,0 +1,12 @@
+@layer zui.base {
+  :root {
+    --radius-s: 3px;
+    --radius-m: 5px;
+    --radius-l: 6px;
+    --radius-xl: 8px;
+    --radius-2xl: 12px;
+    --radius-3xl: 16px;
+    --radius-full: 9999px;
+    --radius-round: 50%;
+  }
+}

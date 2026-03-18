@@ -1,0 +1,288 @@
+@layer zui.utilities {
+  /* All paddings */
+  .p-0 {
+    padding: var(--space-0);
+  }
+
+  .p-2xs {
+    padding: var(--space-2xs);
+  }
+
+  .p-xs {
+    padding: var(--space-xs);
+  }
+
+  .p-s {
+    padding: var(--space-s);
+  }
+
+  .p-m {
+    padding: var(--space-m);
+  }
+
+  .p-l {
+    padding: var(--space-l);
+  }
+
+  .p-xl {
+    padding: var(--space-xl);
+  }
+
+  .p-2xl {
+    padding: var(--space-2xl);
+  }
+
+  .p-3xl {
+    padding: var(--space-3xl);
+  }
+
+  .p-4xl {
+    padding: var(--space-4xl);
+  }
+
+  /* Horizontal paddings */
+  .px-0 {
+    padding-inline: var(--space-0);
+  }
+
+  .px-2xs {
+    padding-inline: var(--space-2xs);
+  }
+
+  .px-xs {
+    padding-inline: var(--space-xs);
+  }
+
+  .px-s {
+    padding-inline: var(--space-s);
+  }
+
+  .px-m {
+    padding-inline: var(--space-m);
+  }
+
+  .px-l {
+    padding-inline: var(--space-l);
+  }
+
+  .px-xl {
+    padding-inline: var(--space-xl);
+  }
+
+  .px-2xl {
+    padding-inline: var(--space-2xl);
+  }
+
+  .px-3xl {
+    padding-inline: var(--space-3xl);
+  }
+
+  .px-4xl {
+    padding-inline: var(--space-4xl);
+  }
+
+  /* Left paddings */
+  .pl-0 {
+    padding-inline-start: var(--space-0);
+  }
+
+  .pl-2xs {
+    padding-inline-start: var(--space-2xs);
+  }
+
+  .pl-xs {
+    padding-inline-start: var(--space-xs);
+  }
+
+  .pl-s {
+    padding-inline-start: var(--space-s);
+  }
+
+  .pl-m {
+    padding-inline-start: var(--space-m);
+  }
+
+  .pl-l {
+    padding-inline-start: var(--space-l);
+  }
+
+  .pl-xl {
+    padding-inline-start: var(--space-xl);
+  }
+
+  .pl-2xl {
+    padding-inline-start: var(--space-2xl);
+  }
+
+  .pl-3xl {
+    padding-inline-start: var(--space-3xl);
+  }
+
+  .pl-4xl {
+    padding-inline-start: var(--space-4xl);
+  }
+
+  /* Right paddings */
+  .pr-0 {
+    padding-inline-end: var(--space-0);
+  }
+
+  .pr-2xs {
+    padding-inline-end: var(--space-2xs);
+  }
+
+  .pr-xs {
+    padding-inline-end: var(--space-xs);
+  }
+
+  .pr-s {
+    padding-inline-end: var(--space-s);
+  }
+
+  .pr-m {
+    padding-inline-end: var(--space-m);
+  }
+
+  .pr-l {
+    padding-inline-end: var(--space-l);
+  }
+
+  .pr-xl {
+    padding-inline-end: var(--space-xl);
+  }
+
+  .pr-2xl {
+    padding-inline-end: var(--space-2xl);
+  }
+
+  .pr-3xl {
+    padding-inline-end: var(--space-3xl);
+  }
+
+  .pr-4xl {
+    padding-inline-end: var(--space-4xl);
+  }
+
+  /* Vertical paddings */
+  .py-0 {
+    padding-block: var(--space-0);
+  }
+
+  .py-2xs {
+    padding-block: var(--space-2xs);
+  }
+
+  .py-xs {
+    padding-block: var(--space-xs);
+  }
+
+  .py-s {
+    padding-block: var(--space-s);
+  }
+
+  .py-m {
+    padding-block: var(--space-m);
+  }
+
+  .py-l {
+    padding-block: var(--space-l);
+  }
+
+  .py-xl {
+    padding-block: var(--space-xl);
+  }
+
+  .py-2xl {
+    padding-block: var(--space-2xl);
+  }
+
+  .py-3xl {
+    padding-block: var(--space-3xl);
+  }
+
+  .py-4xl {
+    padding-block: var(--space-4xl);
+  }
+
+  /* Top paddings */
+  .pt-0 {
+    padding-block-start: var(--space-0);
+  }
+
+  .pt-2xs {
+    padding-block-start: var(--space-2xs);
+  }
+
+  .pt-xs {
+    padding-block-start: var(--space-xs);
+  }
+
+  .pt-s {
+    padding-block-start: var(--space-s);
+  }
+
+  .pt-m {
+    padding-block-start: var(--space-m);
+  }
+
+  .pt-l {
+    padding-block-start: var(--space-l);
+  }
+
+  .pt-xl {
+    padding-block-start: var(--space-xl);
+  }
+
+  .pt-2xl {
+    padding-block-start: var(--space-2xl);
+  }
+
+  .pt-3xl {
+    padding-block-start: var(--space-3xl);
+  }
+
+  .pt-4xl {
+    padding-block-start: var(--space-4xl);
+  }
+
+  /* Bottom paddings */
+  .pb-0 {
+    padding-block-end: var(--space-0);
+  }
+
+  .pb-2xs {
+    padding-block-end: var(--space-2xs);
+  }
+
+  .pb-xs {
+    padding-block-end: var(--space-xs);
+  }
+
+  .pb-s {
+    padding-block-end: var(--space-s);
+  }
+
+  .pb-m {
+    padding-block-end: var(--space-m);
+  }
+
+  .pb-l {
+    padding-block-end: var(--space-l);
+  }
+
+  .pb-xl {
+    padding-block-end: var(--space-xl);
+  }
+
+  .pb-2xl {
+    padding-block-end: var(--space-2xl);
+  }
+
+  .pb-3xl {
+    padding-block-end: var(--space-3xl);
+  }
+
+  .pb-4xl {
+    padding-block-end: var(--space-4xl);
+  }
+}

@@ -1,0 +1,29 @@
+@layer zui.base {
+  :root {
+    --ease: cubic-bezier(0.25, 0, 0.5, 1);
+    --ease-in: cubic-bezier(0.25, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.75, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-elastic-out: cubic-bezier(0.5, 0.75, 0.75, 1.25);
+    --ease-elastic-in: cubic-bezier(0.5, -0.25, 0.75, 1);
+    --ease-elastic-in-out: cubic-bezier(0.5, -0.1, 0.1, 1.5);
+    --ease-elastic: var(--ease-elastic-out);
+    --ease-squish: var(--ease-elastic-in-out);
+    --ease-spring: linear(
+      0,
+      0.006,
+      0.025 2.8%,
+      0.101 6.1%,
+      0.539 18.9%,
+      0.721 25.3%,
+      0.849 31.5%,
+      0.937 38.1%,
+      0.968 41.8%,
+      0.991 45.7%,
+      1.006 50.1%,
+      1.015 55%,
+      1.017 63.9%,
+      1.001
+    );
+  }
+}

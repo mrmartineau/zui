@@ -1,0 +1,11 @@
+@layer zui.base {
+  :root {
+    /* TODO: improve this */
+    --letter-spacing-2xs: -0.05em;
+    --letter-spacing-xs: 0.025em;
+    --letter-spacing-sm: 0.05em;
+    --letter-spacing-md: 0.075em;
+    --letter-spacing-lg: 0.15em;
+    --letter-spacing-xl: 0.3em;
+  }
+}

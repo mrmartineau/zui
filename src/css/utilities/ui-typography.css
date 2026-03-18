@@ -1,0 +1,111 @@
+@layer zui.utilities {
+  .zui-text--4,
+  .zui-text--3,
+  .zui-text--2,
+  .zui-text--1,
+  .zui-text-base,
+  .zui-text-1,
+  .zui-text-2,
+  .zui-text-3,
+  .zui-text-4,
+  .zui-text-5,
+  .zui-text-6 {
+    line-height: var(--line-height-tight);
+    margin: 0;
+    font-weight: var(--font-weight-regular);
+  }
+
+  .zui-text--4 {
+    font-size: var(--step--4);
+  }
+  .zui-text--3 {
+    font-size: var(--step--3);
+  }
+
+  .zui-text--2 {
+    font-size: var(--step--2);
+  }
+
+  .zui-text--1 {
+    font-size: var(--step--1);
+  }
+
+  .zui-text-base {
+    font-size: var(--step-0);
+  }
+
+  .zui-text-1 {
+    font-size: var(--step-1);
+  }
+
+  .zui-text-2 {
+    font-size: var(--step-2);
+  }
+
+  .zui-text-3 {
+    font-size: var(--step-3);
+  }
+
+  .zui-text-4 {
+    font-size: var(--step-4);
+  }
+
+  .zui-text-5 {
+    font-size: var(--step-5);
+  }
+
+  .zui-text-6 {
+    font-size: var(--step-6);
+  }
+
+  .zui-link {
+    --link-color: var(--accent-11);
+    --link-color-decoration: var(--accent-7);
+    --link-color-decoration-hover: var(--accent-8);
+    color: var(--link-color);
+    text-decoration-color: var(--link-color-decoration);
+    text-decoration-thickness: 0.2ex;
+    text-underline-offset: 0.3ex;
+    text-decoration-line: underline;
+    transition:
+      color 0.2s var(--ease-in-out),
+      background-color 0.2s var(--ease-in-out);
+    padding: 0 var(--space-2xs);
+    border-radius: var(--radius-m);
+
+    &:hover {
+      color: var(--link-color);
+      text-decoration-color: var(--link-color-decoration-hover);
+      background-color: var(--black-a2);
+    }
+  }
+
+  .zui-pre,
+  .zui-code {
+    --prose-code-color: var(--violet-11);
+    --prose-code-bg-color: var(--violet-3);
+    font-family: var(--font-family-mono);
+    background-color: var(--prose-code-bg-color);
+    color: var(--prose-code-color);
+  }
+
+  .zui-pre {
+    padding: var(--space-s) var(--space-m);
+    border-radius: var(--radius-xl);
+    max-width: 100%;
+    box-shadow: var(--shadow-s);
+    position: relative;
+
+    code {
+      all: unset;
+    }
+  }
+
+  .zui-code {
+    padding: var(--space-3xs) var(--space-2xs);
+    font-size: var(--step--1);
+    display: inline-block;
+    border-radius: var(--radius-m);
+    line-height: var(--line-height-snug);
+  }
+}

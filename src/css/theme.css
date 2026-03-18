@@ -1,0 +1,22 @@
+@layer zui.base {
+  :root {
+    /* Semantic colours */
+    --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+    --color-secondary: light-dark(var(--color-slate-700), var(--color-slate-300));
+    --color-tertiary: light-dark(var(--color-slate-700), var(--color-slate-300));
+    --color-background: light-dark(var(--color-slate-50), var(--color-slate-950));
+    --color-surface: light-dark(var(--color-slate-100), var(--color-slate-100));
+    --color-border: light-dark(var(--color-slate-900), var(--color-slate-100));
+    --color-text: light-dark(var(--color-slate-900), var(--color-slate-100));
+    --color-success: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+    --color-error: light-dark(var(--color-rose-600), var(--color-rose-400));
+    --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
+
+    --font-sans: var(--font-stack-sans);
+    --font-serif: var(--font-stack-serif);
+    --font-monospace: var(--font-stack-mono);
+    --font-headings: var(--font-serif);
+    --font-body: var(--font-sans);
+    --line-height: var(--line-height-normal);
+  }
+}

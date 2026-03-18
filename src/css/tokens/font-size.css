@@ -1,0 +1,16 @@
+@layer zui.base {
+  :root {
+    /* TODO: replace with utopia */
+    --step--4: 8px;
+    --step--3: 10px;
+    --step--2: 12px;
+    --step--1: 14px;
+    --step-0: 16px;
+    --step-1: 18px;
+    --step-2: 24px;
+    --step-3: 28px;
+    --step-4: 32px;
+    --step-5: 36px;
+    --step-6: 42px;
+  }
+}

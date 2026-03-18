@@ -1,0 +1,187 @@
+@layer zui.utilities {
+  .prose {
+    --prose-color: var(--text-color);
+    --prose-accent-color: var(--accent-9);
+    --prose-link-color: var(--accent-11);
+    --prose-link-color-decoration: var(--accent-7);
+    --prose-link-color-decoration-hover: var(--accent-8);
+    --prose-code-color: var(--violet-11);
+    --prose-code-bg-color: var(--violet-3);
+
+    color: var(--prose-color);
+
+    * {
+      margin: 0;
+      font-size: var(--step-0);
+    }
+
+    /* flow styles for spacing */
+    & > * + * {
+      margin-block-start: var(--flow-space, 1em);
+    }
+
+    :is(h1, h2, h3, blockquote) {
+      --flow-space: 2rem;
+    }
+
+    :is(h1, h2, h3) + * {
+      --flow-space: 1rem;
+    }
+
+    ul,
+    ol {
+      padding-inline-start: 0;
+      list-style-position: inside;
+
+      ul,
+      ol {
+        padding-inline-start: 1rem;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+
+      ul {
+        list-style-type: circle;
+
+        ul {
+          list-style-type: square;
+        }
+      }
+    }
+
+    ol {
+      list-style-type: decimal;
+
+      ol {
+        list-style-type: lower-roman;
+
+        ol {
+          list-style-type: lower-alpha;
+        }
+      }
+    }
+
+    blockquote {
+      padding-inline-start: 1em;
+      border-inline-start: 0.3em solid;
+      font-style: italic;
+    }
+
+    h1 {
+      font-size: var(--step-3);
+      color: var(--prose-color);
+    }
+
+    h2 {
+      font-size: var(--step-2);
+      color: var(--prose-accent-color);
+    }
+
+    h3 {
+      font-size: var(--step-1);
+    }
+
+    h4 {
+      font-size: var(--step-0);
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.1;
+      text-wrap: balance;
+      font-family: var(--font-headings);
+      scroll-margin-top: 1em;
+      font-weight: var(--font-weight-7);
+    }
+
+    h4 {
+      line-height: 1.1;
+      text-wrap: balance;
+      font-family: var(--font-headings);
+      scroll-margin-top: 1em;
+    }
+
+    a {
+      color: var(--prose-link-color);
+      text-decoration-color: var(--prose-link-color-decoration);
+      text-decoration-thickness: 0.2ex;
+      text-underline-offset: 0.3ex;
+      text-decoration-line: underline;
+      transition:
+        color 0.2s var(--ease-in-out),
+        background-color 0.2s var(--ease-in-out);
+      padding: 0 var(--space-2xs);
+      border-radius: var(--radius-m);
+
+      &:hover {
+        color: var(--prose-link-color);
+        text-decoration-color: var(--prose-link-color-decoration-hover);
+        background-color: var(--black-a2);
+      }
+    }
+
+    pre,
+    code {
+      font-family: var(--font-family-mono);
+      background-color: var(--prose-code-bg-color);
+      color: var(--prose-code-color);
+      font-feature-settings: "ss09" 1;
+    }
+
+    code {
+      padding: var(--space-3xs) var(--space-2xs);
+      font-size: var(--step--1);
+      display: inline-block;
+      border-radius: var(--radius-m);
+      line-height: var(--line-height-snug);
+      font-feature-settings: "ss09" 1;
+    }
+
+    pre {
+      padding: var(--space-s) var(--space-m);
+      border-radius: var(--radius-xl);
+      max-width: 100%;
+      box-shadow: var(--shadow-s);
+      position: relative;
+
+      code {
+        all: unset;
+      }
+    }
+
+    img,
+    iframe,
+    video {
+      border-radius: var(--radius-xl);
+      border: 3px solid var(--black-a3);
+
+      &.no-border {
+        border: none;
+      }
+    }
+
+    hr {
+      margin: calc(var(--flow-space) * 2);
+      height: 1px;
+      border: 0;
+      background-color: var(--border-color);
+    }
+  }
+
+  .prose.inverted {
+    --prose-color: var(--text-color-inverted);
+    --prose-accent-color: var(--accent-6);
+    --prose-link-color: var(--accent-7);
+    --prose-link-color-decoration: var(--accent-7);
+    --prose-link-color-decoration-hover: var(--accent-6);
+    --prose-code-color: var(--violet-6);
+    --prose-code-bg-color: var(--violet-12);
+  }
+
+  .prose.max-width-p > p {
+    max-width: 65ch; /* Optional max line-width */
+  }
+}

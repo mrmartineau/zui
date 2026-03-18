@@ -1,0 +1,124 @@
+@layer zui.utilities {
+  /* All gap */
+  .gap-0 {
+    gap: var(--space-0);
+  }
+
+  .gap-2xs {
+    gap: var(--space-2xs);
+  }
+
+  .gap-xs {
+    gap: var(--space-xs);
+  }
+
+  .gap-s {
+    gap: var(--space-s);
+  }
+
+  .gap-m {
+    gap: var(--space-m);
+  }
+
+  .gap-l {
+    gap: var(--space-l);
+  }
+
+  .gap-xl {
+    gap: var(--space-xl);
+  }
+
+  .gap-2xl {
+    gap: var(--space-2xl);
+  }
+
+  .gap-3xl {
+    gap: var(--space-3xl);
+  }
+
+  .gap-4xl {
+    gap: var(--space-4xl);
+  }
+
+  /* Horizontal gaps */
+  .gapx-0 {
+    column-gap: var(--space-0);
+  }
+
+  .gapx-2xs {
+    column-gap: var(--space-2xs);
+  }
+
+  .gapx-xs {
+    column-gap: var(--space-xs);
+  }
+
+  .gapx-s {
+    column-gap: var(--space-s);
+  }
+
+  .gapx-m {
+    column-gap: var(--space-m);
+  }
+
+  .gapx-l {
+    column-gap: var(--space-l);
+  }
+
+  .gapx-xl {
+    column-gap: var(--space-xl);
+  }
+
+  .gapx-2xl {
+    column-gap: var(--space-2xl);
+  }
+
+  .gapx-3xl {
+    column-gap: var(--space-3xl);
+  }
+
+  .gapx-4xl {
+    column-gap: var(--space-4xl);
+  }
+
+  /* Vertical paddings */
+  .gapy-0 {
+    row-gap: var(--space-0);
+  }
+
+  .gapy-2xs {
+    row-gap: var(--space-2xs);
+  }
+
+  .gapy-xs {
+    row-gap: var(--space-xs);
+  }
+
+  .gapy-s {
+    row-gap: var(--space-s);
+  }
+
+  .gapy-m {
+    row-gap: var(--space-m);
+  }
+
+  .gapy-l {
+    row-gap: var(--space-l);
+  }
+
+  .gapy-xl {
+    row-gap: var(--space-xl);
+  }
+
+  .gapy-2xl {
+    row-gap: var(--space-2xl);
+  }
+
+  .gapy-3xl {
+    row-gap: var(--space-3xl);
+  }
+
+  .gapy-4xl {
+    row-gap: var(--space-4xl);
+  }
+}

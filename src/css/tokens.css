@@ -1,0 +1,14 @@
+@import "./tokens/animation.css";
+@import "./tokens/aspect.css";
+@import "./tokens/color-tailwind.css";
+@import "./tokens/easing.css";
+@import "./tokens/font-size.css";
+@import "./tokens/font-stacks.css";
+@import "./tokens/font-weight.css";
+@import "./tokens/letter-spacing.css";
+@import "./tokens/line-height.css";
+@import "./tokens/radii.css";
+@import "./tokens/shadow.css";
+@import "./tokens/size.css";
+@import "./tokens/space.css";
+@import "./tokens/zindex.css";

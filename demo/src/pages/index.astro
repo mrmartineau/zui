@@ -1,0 +1,190 @@
+---
+import '@mrmartineau/zui/css'
+import Demo from '../components/Demo.astro'
+import ButtonRow from '../components/ButtonRow.astro'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ZUI Docs</title>
+    <style>
+      body {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      /* h1 { margin-bottom: 2rem; }
+      h2 {
+        font-size: 1.125rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e4e4e7;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>ZUI Button</h1>
+
+    <!-- ================================================================= -->
+    <h2>Basic Usage</h2>
+
+    <Demo code={`<button class="zui-button">Default button</button>
+
+<a href="/action" class="zui-button">Link as button</a>`}>
+      <button class="zui-button">Default button</button>
+      <a href="#" class="zui-button">Link as button</a>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Variants</h2>
+
+    <Demo code={`<button class="zui-button">Fill (default)</button>
+<button class="zui-button zui-button-variant-subtle">Subtle</button>
+<button class="zui-button zui-button-variant-outline">Outline</button>
+<button class="zui-button zui-button-variant-ghost">Ghost</button>
+<button class="zui-button zui-button-variant-link">Link</button>`}>
+      <button class="zui-button">Fill (default)</button>
+      <button class="zui-button zui-button-variant-subtle">Subtle</button>
+      <button class="zui-button zui-button-variant-outline">Outline</button>
+      <button class="zui-button zui-button-variant-ghost">Ghost</button>
+      <button class="zui-button zui-button-variant-link">Link</button>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Accents</h2>
+
+    <Demo code={`<button class="zui-button">Primary (default)</button>
+<button class="zui-button zui-button-accent-secondary">Secondary</button>
+<button class="zui-button zui-button-accent-tertiary">Tertiary</button>
+<button class="zui-button zui-button-accent-destructive">Destructive</button>`}>
+      <button class="zui-button">Primary (default)</button>
+      <button class="zui-button zui-button-accent-secondary">Secondary</button>
+      <button class="zui-button zui-button-accent-tertiary">Tertiary</button>
+      <button class="zui-button zui-button-accent-destructive">Destructive</button>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Combining Variant + Accent</h2>
+
+    <Demo code={`<button class="zui-button zui-button-variant-outline zui-button-accent-secondary">
+  Outline Secondary
+</button>
+
+<button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">
+  Ghost Destructive
+</button>
+
+<button class="zui-button zui-button-variant-subtle zui-button-accent-tertiary">
+  Subtle Tertiary
+</button>`}>
+      <button class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline Secondary</button>
+      <button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">Ghost Destructive</button>
+      <button class="zui-button zui-button-variant-subtle zui-button-accent-tertiary">Subtle Tertiary</button>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Sizes</h2>
+
+    <Demo code={`<button class="zui-button zui-button-size-xs">Extra small</button>
+<button class="zui-button zui-button-size-sm">Small</button>
+<button class="zui-button">Medium (default)</button>
+<button class="zui-button zui-button-size-lg">Large</button>
+<button class="zui-button zui-button-size-xl">Extra large</button>`}>
+      <button class="zui-button zui-button-size-xs">Extra small</button>
+      <button class="zui-button zui-button-size-sm">Small</button>
+      <button class="zui-button">Medium (default)</button>
+      <button class="zui-button zui-button-size-lg">Large</button>
+      <button class="zui-button zui-button-size-xl">Extra large</button>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Shapes</h2>
+
+    <Demo code={`<button class="zui-button">Default (rounded)</button>
+<button class="zui-button zui-button-shape-hard">Hard (square)</button>
+<button class="zui-button zui-button-shape-soft">Soft (pill)</button>`}>
+      <button class="zui-button">Default (rounded)</button>
+      <button class="zui-button zui-button-shape-hard">Hard (square)</button>
+      <button class="zui-button zui-button-shape-soft">Soft (pill)</button>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Kitchen Sink</h2>
+
+    <Demo code={`<button class="zui-button zui-button-variant-outline zui-button-accent-destructive zui-button-size-lg zui-button-shape-soft">
+  Large Pill Outline Destructive
+</button>`}>
+      <button class="zui-button zui-button-variant-outline zui-button-accent-destructive zui-button-size-lg zui-button-shape-soft">Large Pill Outline Destructive</button>
+    </Demo>
+
+    <!-- ================================================================= -->
+    <h2>Variants × Accents</h2>
+
+    {['fill', 'subtle', 'outline', 'ghost', 'link'].map((variant) => (
+      <ButtonRow label={variant}>
+        {['primary', 'secondary', 'tertiary', 'destructive'].map((accent) => (
+          <button class={`zui-button zui-button-variant-${variant} zui-button-accent-${accent}`}>
+            {accent}
+          </button>
+        ))}
+      </ButtonRow>
+    ))}
+
+    <!-- ================================================================= -->
+    <h2>Sizes × Shapes (secondary)</h2>
+    {['default', 'hard', 'soft'].map((shape) => (
+      <ButtonRow label={shape}>
+        {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => {
+          const classes = [
+            'zui-button',
+            'zui-button-accent-secondary',
+            size !== 'md' ? `zui-button-size-${size}` : '',
+            shape !== 'default' ? `zui-button-shape-${shape}` : '',
+          ].filter(Boolean).join(' ')
+          return <button class={classes}>{size}</button>
+        })}
+      </ButtonRow>
+    ))}
+
+    <!-- ================================================================= -->
+    {['primary', 'secondary', 'tertiary', 'destructive'].map((accent) => (
+      <>
+        <h2>All Variants × Shapes ({accent})</h2>
+        {['fill', 'subtle', 'outline', 'ghost'].map((variant) => (
+          <ButtonRow label={variant}>
+            {['default', 'hard', 'soft'].map((shape) => {
+              const classes = [
+                'zui-button',
+                `zui-button-accent-${accent}`,
+                `zui-button-variant-${variant}`,
+                shape !== 'default' ? `zui-button-shape-${shape}` : '',
+              ].filter(Boolean).join(' ')
+              return <button class={classes}>{shape}</button>
+            })}
+          </ButtonRow>
+        ))}
+      </>
+    ))}
+
+    <!-- ================================================================= -->
+    <h2>Disabled States</h2>
+    <ButtonRow>
+      <button class="zui-button" disabled>Fill</button>
+      <button class="zui-button zui-button-variant-subtle" disabled>Subtle</button>
+      <button class="zui-button zui-button-variant-outline" disabled>Outline</button>
+      <button class="zui-button zui-button-variant-ghost" disabled>Ghost</button>
+      <button class="zui-button zui-button-accent-destructive" disabled>Destructive</button>
+    </ButtonRow>
+
+    <!-- ================================================================= -->
+    <h2>As Links</h2>
+    <ButtonRow>
+      <a href="#" class="zui-button">Default link</a>
+      <a href="#" class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline link</a>
+      <a href="#" class="zui-button zui-button-variant-link">Text link</a>
+    </ButtonRow>
+  </body>
+</html>
