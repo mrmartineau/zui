@@ -1,31 +1,10 @@
 ---
-import '@mrmartineau/zui/css'
+import Layout from '../layouts/Layout.astro'
 import Demo from '../components/Demo.astro'
 import ButtonRow from '../components/ButtonRow.astro'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ZUI Docs</title>
-    <style>
-      body {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-      /* h1 { margin-bottom: 2rem; }
-      h2 {
-        font-size: 1.125rem;
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid #e4e4e7;
-      } */
-    </style>
-  </head>
-  <body>
+<Layout title="Button">
     <h1>ZUI Button</h1>
 
     <!-- ================================================================= -->
@@ -33,8 +12,16 @@ import ButtonRow from '../components/ButtonRow.astro'
 
     <Demo code={`<button class="zui-button">Default button</button>
 
+<button class="zui-button"><i class="ph ph-plus"></i> With icon</button>
+
+<button class="zui-button zui-button-icon" aria-label="Add">
+  <i class="ph ph-plus"></i>
+</button>
+
 <a href="/action" class="zui-button">Link as button</a>`}>
       <button class="zui-button">Default button</button>
+      <button class="zui-button"><i class="ph ph-plus"></i> With icon</button>
+      <button class="zui-button zui-button-icon" aria-label="Add"><i class="ph ph-plus"></i></button>
       <a href="#" class="zui-button">Link as button</a>
     </Demo>
 
@@ -58,11 +45,9 @@ import ButtonRow from '../components/ButtonRow.astro'
 
     <Demo code={`<button class="zui-button">Primary (default)</button>
 <button class="zui-button zui-button-accent-secondary">Secondary</button>
-<button class="zui-button zui-button-accent-tertiary">Tertiary</button>
 <button class="zui-button zui-button-accent-destructive">Destructive</button>`}>
       <button class="zui-button">Primary (default)</button>
       <button class="zui-button zui-button-accent-secondary">Secondary</button>
-      <button class="zui-button zui-button-accent-tertiary">Tertiary</button>
       <button class="zui-button zui-button-accent-destructive">Destructive</button>
     </Demo>
 
@@ -77,12 +62,12 @@ import ButtonRow from '../components/ButtonRow.astro'
   Ghost Destructive
 </button>
 
-<button class="zui-button zui-button-variant-subtle zui-button-accent-tertiary">
-  Subtle Tertiary
+<button class="zui-button zui-button-variant-subtle zui-button-accent-primary">
+  Subtle Primary
 </button>`}>
       <button class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline Secondary</button>
       <button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">Ghost Destructive</button>
-      <button class="zui-button zui-button-variant-subtle zui-button-accent-tertiary">Subtle Tertiary</button>
+      <button class="zui-button zui-button-variant-subtle zui-button-accent-primary">Subtle Primary</button>
     </Demo>
 
     <!-- ================================================================= -->
@@ -105,10 +90,12 @@ import ButtonRow from '../components/ButtonRow.astro'
 
     <Demo code={`<button class="zui-button">Default (rounded)</button>
 <button class="zui-button zui-button-shape-hard">Hard (square)</button>
-<button class="zui-button zui-button-shape-soft">Soft (pill)</button>`}>
+<button class="zui-button zui-button-shape-soft">Soft (pill)</button>
+<button class="zui-button zui-button-shape-squircle">Squircle</button>`}>
       <button class="zui-button">Default (rounded)</button>
       <button class="zui-button zui-button-shape-hard">Hard (square)</button>
       <button class="zui-button zui-button-shape-soft">Soft (pill)</button>
+      <button class="zui-button zui-button-shape-squircle">Squircle</button>
     </Demo>
 
     <!-- ================================================================= -->
@@ -125,7 +112,7 @@ import ButtonRow from '../components/ButtonRow.astro'
 
     {['fill', 'subtle', 'outline', 'ghost', 'link'].map((variant) => (
       <ButtonRow label={variant}>
-        {['primary', 'secondary', 'tertiary', 'destructive'].map((accent) => (
+        {['primary', 'secondary', 'destructive'].map((accent) => (
           <button class={`zui-button zui-button-variant-${variant} zui-button-accent-${accent}`}>
             {accent}
           </button>
@@ -135,7 +122,7 @@ import ButtonRow from '../components/ButtonRow.astro'
 
     <!-- ================================================================= -->
     <h2>Sizes × Shapes (secondary)</h2>
-    {['default', 'hard', 'soft'].map((shape) => (
+    {['default', 'hard', 'soft', 'squircle'].map((shape) => (
       <ButtonRow label={shape}>
         {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => {
           const classes = [
@@ -150,12 +137,12 @@ import ButtonRow from '../components/ButtonRow.astro'
     ))}
 
     <!-- ================================================================= -->
-    {['primary', 'secondary', 'tertiary', 'destructive'].map((accent) => (
+    {['primary', 'secondary', 'destructive'].map((accent) => (
       <>
         <h2>All Variants × Shapes ({accent})</h2>
         {['fill', 'subtle', 'outline', 'ghost'].map((variant) => (
           <ButtonRow label={variant}>
-            {['default', 'hard', 'soft'].map((shape) => {
+            {['default', 'hard', 'soft', 'squircle'].map((shape) => {
               const classes = [
                 'zui-button',
                 `zui-button-accent-${accent}`,
@@ -168,6 +155,47 @@ import ButtonRow from '../components/ButtonRow.astro'
         ))}
       </>
     ))}
+
+    <!-- ================================================================= -->
+    <h2>Icon Buttons</h2>
+
+    <Demo code={`<button class="zui-button zui-button-icon" aria-label="Settings">
+  <i class="ph-duotone ph-gear"></i>
+</button>
+
+<button class="zui-button zui-button-icon zui-button-variant-outline" aria-label="Edit">
+  <i class="ph-duotone ph-pencil-simple"></i>
+</button>
+
+<button class="zui-button zui-button-icon zui-button-variant-ghost" aria-label="Close">
+  <i class="ph-duotone ph-x"></i>
+</button>
+
+<button class="zui-button zui-button-icon zui-button-accent-destructive" aria-label="Delete">
+  <i class="ph-duotone ph-trash"></i>
+</button>`}>
+      <button class="zui-button zui-button-icon" aria-label="Settings"><i class="ph-duotone ph-gear"></i></button>
+      <button class="zui-button zui-button-icon zui-button-variant-outline" aria-label="Edit"><i class="ph-duotone ph-pencil-simple"></i></button>
+      <button class="zui-button zui-button-icon zui-button-variant-ghost" aria-label="Close"><i class="ph-duotone ph-x"></i></button>
+      <button class="zui-button zui-button-icon zui-button-accent-destructive" aria-label="Delete"><i class="ph-duotone ph-trash"></i></button>
+    </Demo>
+
+    <h3>Icon Button Sizes</h3>
+    <ButtonRow>
+      <button class="zui-button zui-button-icon zui-button-size-xs" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
+      <button class="zui-button zui-button-icon zui-button-size-sm" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
+      <button class="zui-button zui-button-icon" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
+      <button class="zui-button zui-button-icon zui-button-size-lg" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
+      <button class="zui-button zui-button-icon zui-button-size-xl" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
+    </ButtonRow>
+
+    <h3>Icon Button Shapes</h3>
+    <ButtonRow>
+      <button class="zui-button zui-button-icon" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
+      <button class="zui-button zui-button-icon zui-button-shape-hard" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
+      <button class="zui-button zui-button-icon zui-button-shape-soft" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
+      <button class="zui-button zui-button-icon zui-button-shape-squircle" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
+    </ButtonRow>
 
     <!-- ================================================================= -->
     <h2>Disabled States</h2>
@@ -186,5 +214,4 @@ import ButtonRow from '../components/ButtonRow.astro'
       <a href="#" class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline link</a>
       <a href="#" class="zui-button zui-button-variant-link">Text link</a>
     </ButtonRow>
-  </body>
-</html>
+</Layout>

@@ -13,15 +13,15 @@
   }
 
   .gap-s {
-    gap: var(--space-s);
+    gap: var(--space-sm);
   }
 
   .gap-m {
-    gap: var(--space-m);
+    gap: var(--space-md);
   }
 
   .gap-l {
-    gap: var(--space-l);
+    gap: var(--space-lg);
   }
 
   .gap-xl {
@@ -54,15 +54,15 @@
   }
 
   .gapx-s {
-    column-gap: var(--space-s);
+    column-gap: var(--space-sm);
   }
 
   .gapx-m {
-    column-gap: var(--space-m);
+    column-gap: var(--space-md);
   }
 
   .gapx-l {
-    column-gap: var(--space-l);
+    column-gap: var(--space-lg);
   }
 
   .gapx-xl {
@@ -95,15 +95,15 @@
   }
 
   .gapy-s {
-    row-gap: var(--space-s);
+    row-gap: var(--space-sm);
   }
 
   .gapy-m {
-    row-gap: var(--space-m);
+    row-gap: var(--space-md);
   }
 
   .gapy-l {
-    row-gap: var(--space-l);
+    row-gap: var(--space-lg);
   }
 
   .gapy-xl {

@@ -1,12 +1,13 @@
 @layer zui.base {
   :root {
-    --radius-s: 3px;
-    --radius-m: 5px;
-    --radius-l: 6px;
-    --radius-xl: 8px;
-    --radius-2xl: 12px;
-    --radius-3xl: 16px;
-    --radius-full: 9999px;
-    --radius-round: 50%;
+    /* Base values — edit these to change the scale's "default" */
+    --radius-sm: calc(3px * var(--radius-scale));
+    --radius-md: calc(5px * var(--radius-scale));
+    --radius-lg: calc(6px * var(--radius-scale));
+    --radius-xl: calc(8px * var(--radius-scale));
+    --radius-2xl: calc(12px * var(--radius-scale));
+    --radius-3xl: calc(16px * var(--radius-scale));
+    --radius-full: calc(9999px * var(--radius-scale));
+    --radius-round: 50%; /* % can't be multiplied meaningfully, keep fixed */
   }
 }

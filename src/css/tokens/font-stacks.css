@@ -1,12 +1,10 @@
 @layer zui.base {
   :root {
-    --font-stack-system: -apple-system, BlinkMacSystemFont, "Segoe UI (Custom)",
-      Roboto, "Helvetica Neue", "Open Sans (Custom)", system-ui, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji";
-    --font-stack-serif: Georgia, serif;
-    --font-stack-sans: var(--font-stack-system);
-    --font-stack-mono: "Geist Mono", Menlo, "Consolas (Custom)",
-      "Bitstream Vera Sans Mono", monospace, "Apple Color Emoji",
-      "Segoe UI Emoji";
+    --font-stack-sans: system-ui, sans-serif;
+    --font-stack-serif:
+      Charter, 'Bitstream Charter', 'Sitka Text', Georgia, Cambria, serif;
+    --font-stack-mono:
+      ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo,
+      Consolas, 'DejaVu Sans Mono', monospace;
   }
 }

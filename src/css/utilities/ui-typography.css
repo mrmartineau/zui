@@ -1,15 +1,5 @@
 @layer zui.utilities {
-  .zui-text--4,
-  .zui-text--3,
-  .zui-text--2,
-  .zui-text--1,
-  .zui-text-base,
-  .zui-text-1,
-  .zui-text-2,
-  .zui-text-3,
-  .zui-text-4,
-  .zui-text-5,
-  .zui-text-6 {
+  [class*="zui-text-"] {
     line-height: var(--line-height-tight);
     margin: 0;
     font-weight: var(--font-weight-regular);
@@ -56,6 +46,20 @@
 
   .zui-text-6 {
     font-size: var(--step-6);
+  }
+
+  /* TODO check and use these */
+  /* Muted text utilities */
+  .zui-color-muted {
+    color: var(--fg-5);
+  }
+  .zui-color-faint {
+    color: var(--fg-3);
+  }
+
+  /* Surface - subtle background for section alternation */
+  .surface {
+    background: var(--surface-bg, var(--fg-05));
   }
 
   .zui-link {

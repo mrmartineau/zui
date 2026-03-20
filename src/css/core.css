@@ -12,9 +12,27 @@
     accent-color: var(--color-primary);
   }
 
-  /* TODO: improve this */
+  body {
+    line-height: var(--line-height);
+  }
+
   ::selection {
-    background: light-dark(var(--color-primary), var(--color-secondary));
-    color: light-dark(var(--color-secondary), var(--color-primary));
+    background-color: light-dark(
+      oklch(from var(--color-primary) calc(l - 0.1) c h),
+      oklch(from var(--color-primary) calc(l + 0.1) c h / 30%)
+    );
+    color: oklch(from var(--color-primary) calc(l + 0.7) c h);
+  }
+
+  /* Reduced Motion - Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

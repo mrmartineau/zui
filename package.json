@@ -33,11 +33,13 @@
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
-    "generate:colors": "node scripts/generate-colors.js"
+    "generate:colors": "node scripts/generate-colors.js",
+    "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
   },
   "devDependencies": {
     "@tsdown/css": "^0.21.4",
     "@types/react": "^19.0.0",
+    "chokidar-cli": "^3.0.0",
     "lightningcss": "^1.32.0",
     "tsdown": "^0.21.4",
     "typescript": "^5.8.0"

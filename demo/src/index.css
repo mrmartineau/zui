@@ -1,0 +1,12 @@
+.astro-code,
+.astro-code span {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}

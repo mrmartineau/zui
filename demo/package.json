@@ -12,7 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.0.5",
-    "@mrmartineau/zui": "file:.."
+    "@mrmartineau/zui": "file:..",
+    "astro": "^6.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0"
   }
 }

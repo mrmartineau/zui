@@ -1,4 +1,4 @@
-@layer zui.base {
+@layer zui.reset {
   *,
   *::before,
   *::after {
@@ -10,7 +10,6 @@
   }
 
   body {
-    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 

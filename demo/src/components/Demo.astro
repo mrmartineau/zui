@@ -12,7 +12,10 @@ const { code } = Astro.props
   <div class="demo-preview">
     <slot />
   </div>
-  <Code code={code.trim()} lang="html" theme="github-light" />
+  <Code code={code.trim()} lang="html" themes={{
+    light: 'rose-pine-dawn',
+    dark: 'rose-pine'
+  }} />
 </div>
 
 <style>
@@ -23,15 +26,15 @@ const { code } = Astro.props
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--space-xs);
     padding: 1.25rem;
-    border: 1px solid #e4e4e7;
+    border: 1px solid var(--color-border);
     border-radius: 0.5rem 0.5rem 0 0;
   }
   .demo :global(pre) {
     margin: 0;
     border-radius: 0 0 0.5rem 0.5rem;
-    border: 1px solid #e4e4e7;
+    border: 1px solid var(--color-border);
     border-top: none;
     font-size: 0.8125rem;
     padding: 1rem;
