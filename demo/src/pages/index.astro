@@ -1,217 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Demo from '../components/Demo.astro'
-import ButtonRow from '../components/ButtonRow.astro'
+import { Code } from 'astro:components'
 ---
 
-<Layout title="Button">
-    <h1>ZUI Button</h1>
+<Layout title="Home">
+    <h1>ZUI</h1>
+    <p class="subtitle">A CSS UI library with optional React and Astro components.</p>
 
-    <!-- ================================================================= -->
-    <h2>Basic Usage</h2>
+    <div class="grid">
+        <div class="card">
+            <h2>CSS-first</h2>
+            <p>Built on standard CSS with <code>@layer</code> for clean cascade control and custom properties for full configurability. No build step required&mdash;just import and go.</p>
+        </div>
 
-    <Demo code={`<button class="zui-button">Default button</button>
+        <div class="card">
+            <h2>Framework components</h2>
+            <p>Use the plain CSS classes anywhere, or reach for ready-made React and Astro component wrappers that map props to the underlying class API.</p>
+        </div>
 
-<button class="zui-button"><i class="ph ph-plus"></i> With icon</button>
+        <div class="card">
+            <h2>Themeable</h2>
+            <p>Override semantic colours, fonts, and radii through <code>theme.css</code> custom properties. Supports <code>light-dark()</code> colour schemes out of the box.</p>
+        </div>
 
-<button class="zui-button zui-button-icon" aria-label="Add">
-  <i class="ph ph-plus"></i>
-</button>
+        <div class="card">
+            <h2>Design tokens</h2>
+            <p>A comprehensive token system covering colours, spacing, typography, shadows, radii, easing, and z-index&mdash;all exposed as CSS custom properties.</p>
+        </div>
+    </div>
 
-<a href="/action" class="zui-button">Link as button</a>`}>
-      <button class="zui-button">Default button</button>
-      <button class="zui-button"><i class="ph ph-plus"></i> With icon</button>
-      <button class="zui-button zui-button-icon" aria-label="Add"><i class="ph ph-plus"></i></button>
-      <a href="#" class="zui-button">Link as button</a>
-    </Demo>
+    <section class="flow">
+        <h2>Quick start</h2>
 
-    <!-- ================================================================= -->
-    <h2>Variants</h2>
+        <p>Install the package:</p>
+        <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
 
-    <Demo code={`<button class="zui-button">Fill (default)</button>
-<button class="zui-button zui-button-variant-subtle">Subtle</button>
-<button class="zui-button zui-button-variant-outline">Outline</button>
-<button class="zui-button zui-button-variant-ghost">Ghost</button>
-<button class="zui-button zui-button-variant-link">Link</button>`}>
-      <button class="zui-button">Fill (default)</button>
-      <button class="zui-button zui-button-variant-subtle">Subtle</button>
-      <button class="zui-button zui-button-variant-outline">Outline</button>
-      <button class="zui-button zui-button-variant-ghost">Ghost</button>
-      <button class="zui-button zui-button-variant-link">Link</button>
-    </Demo>
+        <p>Import the CSS in your project:</p>
+        <Code code="@import '@mrmartineau/zui/css';" lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+    </section>
 
-    <!-- ================================================================= -->
-    <h2>Accents</h2>
-
-    <Demo code={`<button class="zui-button">Primary (default)</button>
-<button class="zui-button zui-button-accent-secondary">Secondary</button>
-<button class="zui-button zui-button-accent-destructive">Destructive</button>`}>
-      <button class="zui-button">Primary (default)</button>
-      <button class="zui-button zui-button-accent-secondary">Secondary</button>
-      <button class="zui-button zui-button-accent-destructive">Destructive</button>
-    </Demo>
-
-    <!-- ================================================================= -->
-    <h2>Combining Variant + Accent</h2>
-
-    <Demo code={`<button class="zui-button zui-button-variant-outline zui-button-accent-secondary">
-  Outline Secondary
-</button>
-
-<button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">
-  Ghost Destructive
-</button>
-
-<button class="zui-button zui-button-variant-subtle zui-button-accent-primary">
-  Subtle Primary
-</button>`}>
-      <button class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline Secondary</button>
-      <button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">Ghost Destructive</button>
-      <button class="zui-button zui-button-variant-subtle zui-button-accent-primary">Subtle Primary</button>
-    </Demo>
-
-    <!-- ================================================================= -->
-    <h2>Sizes</h2>
-
-    <Demo code={`<button class="zui-button zui-button-size-xs">Extra small</button>
-<button class="zui-button zui-button-size-sm">Small</button>
-<button class="zui-button">Medium (default)</button>
-<button class="zui-button zui-button-size-lg">Large</button>
-<button class="zui-button zui-button-size-xl">Extra large</button>`}>
-      <button class="zui-button zui-button-size-xs">Extra small</button>
-      <button class="zui-button zui-button-size-sm">Small</button>
-      <button class="zui-button">Medium (default)</button>
-      <button class="zui-button zui-button-size-lg">Large</button>
-      <button class="zui-button zui-button-size-xl">Extra large</button>
-    </Demo>
-
-    <!-- ================================================================= -->
-    <h2>Shapes</h2>
-
-    <Demo code={`<button class="zui-button">Default (rounded)</button>
-<button class="zui-button zui-button-shape-hard">Hard (square)</button>
-<button class="zui-button zui-button-shape-soft">Soft (pill)</button>
-<button class="zui-button zui-button-shape-squircle">Squircle</button>`}>
-      <button class="zui-button">Default (rounded)</button>
-      <button class="zui-button zui-button-shape-hard">Hard (square)</button>
-      <button class="zui-button zui-button-shape-soft">Soft (pill)</button>
-      <button class="zui-button zui-button-shape-squircle">Squircle</button>
-    </Demo>
-
-    <!-- ================================================================= -->
-    <h2>Kitchen Sink</h2>
-
-    <Demo code={`<button class="zui-button zui-button-variant-outline zui-button-accent-destructive zui-button-size-lg zui-button-shape-soft">
-  Large Pill Outline Destructive
-</button>`}>
-      <button class="zui-button zui-button-variant-outline zui-button-accent-destructive zui-button-size-lg zui-button-shape-soft">Large Pill Outline Destructive</button>
-    </Demo>
-
-    <!-- ================================================================= -->
-    <h2>Variants × Accents</h2>
-
-    {['fill', 'subtle', 'outline', 'ghost', 'link'].map((variant) => (
-      <ButtonRow label={variant}>
-        {['primary', 'secondary', 'destructive'].map((accent) => (
-          <button class={`zui-button zui-button-variant-${variant} zui-button-accent-${accent}`}>
-            {accent}
-          </button>
-        ))}
-      </ButtonRow>
-    ))}
-
-    <!-- ================================================================= -->
-    <h2>Sizes × Shapes (secondary)</h2>
-    {['default', 'hard', 'soft', 'squircle'].map((shape) => (
-      <ButtonRow label={shape}>
-        {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => {
-          const classes = [
-            'zui-button',
-            'zui-button-accent-secondary',
-            size !== 'md' ? `zui-button-size-${size}` : '',
-            shape !== 'default' ? `zui-button-shape-${shape}` : '',
-          ].filter(Boolean).join(' ')
-          return <button class={classes}>{size}</button>
-        })}
-      </ButtonRow>
-    ))}
-
-    <!-- ================================================================= -->
-    {['primary', 'secondary', 'destructive'].map((accent) => (
-      <>
-        <h2>All Variants × Shapes ({accent})</h2>
-        {['fill', 'subtle', 'outline', 'ghost'].map((variant) => (
-          <ButtonRow label={variant}>
-            {['default', 'hard', 'soft', 'squircle'].map((shape) => {
-              const classes = [
-                'zui-button',
-                `zui-button-accent-${accent}`,
-                `zui-button-variant-${variant}`,
-                shape !== 'default' ? `zui-button-shape-${shape}` : '',
-              ].filter(Boolean).join(' ')
-              return <button class={classes}>{shape}</button>
-            })}
-          </ButtonRow>
-        ))}
-      </>
-    ))}
-
-    <!-- ================================================================= -->
-    <h2>Icon Buttons</h2>
-
-    <Demo code={`<button class="zui-button zui-button-icon" aria-label="Settings">
-  <i class="ph-duotone ph-gear"></i>
-</button>
-
-<button class="zui-button zui-button-icon zui-button-variant-outline" aria-label="Edit">
-  <i class="ph-duotone ph-pencil-simple"></i>
-</button>
-
-<button class="zui-button zui-button-icon zui-button-variant-ghost" aria-label="Close">
-  <i class="ph-duotone ph-x"></i>
-</button>
-
-<button class="zui-button zui-button-icon zui-button-accent-destructive" aria-label="Delete">
-  <i class="ph-duotone ph-trash"></i>
-</button>`}>
-      <button class="zui-button zui-button-icon" aria-label="Settings"><i class="ph-duotone ph-gear"></i></button>
-      <button class="zui-button zui-button-icon zui-button-variant-outline" aria-label="Edit"><i class="ph-duotone ph-pencil-simple"></i></button>
-      <button class="zui-button zui-button-icon zui-button-variant-ghost" aria-label="Close"><i class="ph-duotone ph-x"></i></button>
-      <button class="zui-button zui-button-icon zui-button-accent-destructive" aria-label="Delete"><i class="ph-duotone ph-trash"></i></button>
-    </Demo>
-
-    <h3>Icon Button Sizes</h3>
-    <ButtonRow>
-      <button class="zui-button zui-button-icon zui-button-size-xs" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
-      <button class="zui-button zui-button-icon zui-button-size-sm" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
-      <button class="zui-button zui-button-icon" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
-      <button class="zui-button zui-button-icon zui-button-size-lg" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
-      <button class="zui-button zui-button-icon zui-button-size-xl" aria-label="Star"><i class="ph-duotone ph-star"></i></button>
-    </ButtonRow>
-
-    <h3>Icon Button Shapes</h3>
-    <ButtonRow>
-      <button class="zui-button zui-button-icon" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
-      <button class="zui-button zui-button-icon zui-button-shape-hard" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
-      <button class="zui-button zui-button-icon zui-button-shape-soft" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
-      <button class="zui-button zui-button-icon zui-button-shape-squircle" aria-label="Heart"><i class="ph-duotone ph-heart"></i></button>
-    </ButtonRow>
-
-    <!-- ================================================================= -->
-    <h2>Disabled States</h2>
-    <ButtonRow>
-      <button class="zui-button" disabled>Fill</button>
-      <button class="zui-button zui-button-variant-subtle" disabled>Subtle</button>
-      <button class="zui-button zui-button-variant-outline" disabled>Outline</button>
-      <button class="zui-button zui-button-variant-ghost" disabled>Ghost</button>
-      <button class="zui-button zui-button-accent-destructive" disabled>Destructive</button>
-    </ButtonRow>
-
-    <!-- ================================================================= -->
-    <h2>As Links</h2>
-    <ButtonRow>
-      <a href="#" class="zui-button">Default link</a>
-      <a href="#" class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline link</a>
-      <a href="#" class="zui-button zui-button-variant-link">Text link</a>
-    </ButtonRow>
+    <nav class="links">
+        <a href="/installation" class="zui-button">Installation</a>
+        <a href="/components/button" class="zui-button zui-button-variant-outline">Components</a>
+    </nav>
 </Layout>
+
+<style>
+    .subtitle {
+        font-size: var(--font-size-lg);
+        color: var(--color-text);
+        max-width: 48ch;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+        gap: var(--space-md);
+        margin-block-start: var(--space-lg);
+    }
+
+    .card {
+        padding: var(--space-md);
+        border: 1px var(--border-style) var(--color-border);
+        border-radius: calc(var(--radius-md) * var(--radius-scale));
+    }
+
+    .card h2 {
+        margin-block-end: var(--space-xs);
+    }
+
+    .card p {
+        color: var(--color-text);
+    }
+
+    section {
+        margin-block-start: var(--space-xl);
+    }
+
+    .links {
+        display: flex;
+        gap: var(--space-sm);
+        margin-block-start: var(--space-xl);
+    }
+</style>

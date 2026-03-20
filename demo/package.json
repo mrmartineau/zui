@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^5.0.2",
     "@mrmartineau/zui": "file:..",
     "astro": "^6.0.5"
   },

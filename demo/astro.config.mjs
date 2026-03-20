@@ -1,9 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 import { resolve } from 'node:path';
 
 // https://astro.build/config
 export default defineConfig({
+  integrations: [mdx()],
   vite: {
     resolve: {
       alias: {

@@ -1,0 +1,117 @@
+---
+import { Code } from 'astro:components'
+
+interface Props {
+  html?: string
+  react?: string
+  astro?: string
+}
+
+const { html, react, astro: astroCode } = Astro.props
+const tabs = [
+  html && { id: 'html', label: 'HTML', code: html, lang: 'html' as const },
+  react && { id: 'react', label: 'React', code: react, lang: 'tsx' as const },
+  astroCode && { id: 'astro', label: 'Astro', code: astroCode, lang: 'astro' as const },
+].filter(Boolean) as { id: string; label: string; code: string; lang: string }[]
+---
+
+<div class="code-tabs" data-code-tabs>
+  <div class="code-tabs__bar" role="tablist">
+    {tabs.map((tab, i) => (
+      <button
+        class="code-tabs__tab"
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        data-tab={tab.id}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+  {tabs.map((tab, i) => (
+    <div
+      class="code-tabs__panel"
+      role="tabpanel"
+      data-panel={tab.id}
+      hidden={i !== 0}
+    >
+      <Code code={tab.code.trim()} lang={tab.lang} themes={{
+        light: 'rose-pine-dawn',
+        dark: 'rose-pine',
+      }} />
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach((container) => {
+    const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
+    const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.tab
+
+        tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
+        tab.setAttribute('aria-selected', 'true')
+
+        panels.forEach((p) => {
+          p.hidden = p.dataset.panel !== id
+        })
+      })
+    })
+  })
+</script>
+
+<style>
+  .code-tabs {
+    margin-bottom: 1.5rem;
+  }
+
+  .code-tabs__bar {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    /* background: light-dark(var(--color-mist-100), var(--color-mist-900)); */
+    background-color:
+      light-dark(oklch(from var(--color-background) calc(l + 0.02) c h),
+      oklch(from var(--color-background) calc(l - 0.04) c h)) !important;
+    overflow: hidden;
+  }
+
+  .code-tabs__tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: var(--space-3xs) var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    color: var(--color-text);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    opacity: 0.6;
+    transition: opacity 0.15s ease, border-color 0.15s ease;
+    text-transform: uppercase;
+  }
+
+  .code-tabs__tab:hover {
+    opacity: 0.85;
+  }
+
+  .code-tabs__tab[aria-selected='true'] {
+    opacity: 1;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .code-tabs__panel :global(pre) {
+    margin: 0;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    font-size: 0.8125rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+</style>

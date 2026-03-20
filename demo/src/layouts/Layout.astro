@@ -1,12 +1,14 @@
 ---
 import '@mrmartineau/zui/css'
 import '../index.css';
+import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <html lang="en">
@@ -25,15 +27,77 @@ const { title } = Astro.props;
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css"
     />
   </head>
-  <body class="flow">
-    <slot />
+  <body>
+    <header class="site-header">
+      <a href="/" class="site-logo">ZUI</a>
+    </header>
+    <div class="site-layout">
+      <aside class="site-sidebar">
+        <Sidebar currentPath={currentPath} />
+      </aside>
+      <main class="site-main flow">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
 
 <style>
   body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--color-background);
+  }
+
+  .site-header {
+    display: flex;
+    align-items: center;
+    padding: var(--space-xs) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  .site-logo {
+    font-size: var(--step-1);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .site-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100dvh - var(--space-xl));
+  }
+
+  .site-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    overflow-y: auto;
+    border-right: 1px solid var(--color-border);
+    padding: var(--space-sm) var(--space-xs);
+    background-color: var(--color-surface);
+  }
+
+  .site-main {
+    padding: var(--space-lg) var(--space-xl);
     max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem;
+  }
+
+  @media (max-width: 767px) {
+    .site-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .site-sidebar {
+      display: none;
+    }
+
+    .site-main {
+      padding: var(--space-md);
+    }
   }
 </style>

@@ -1,0 +1,64 @@
+---
+layout: ../layouts/Layout.astro
+title: Installation
+---
+
+# Installation
+
+## Install the package
+
+```sh
+npm install @mrmartineau/zui
+```
+
+## CSS Import
+
+Import the stylesheet in your CSS:
+
+```css
+@import '@mrmartineau/zui/css';
+```
+
+Or the minified version:
+
+```css
+@import '@mrmartineau/zui/css/min';
+```
+
+Or link directly in HTML:
+
+```html
+<link rel="stylesheet" href="node_modules/@mrmartineau/zui/dist/css/zui.css" />
+```
+
+## Using with React
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+
+export function App() {
+  return <Button>Click me</Button>
+}
+```
+
+## Using with Astro
+
+```astro
+---
+import { Button } from '@mrmartineau/zui/astro'
+---
+
+<Button>Click me</Button>
+```
+
+## Customisation
+
+Edit `src/css/theme.css` to override semantic colour tokens and font settings:
+
+```css
+:root {
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-secondary: light-dark(var(--color-slate-700), var(--color-slate-300));
+  /* ... */
+}
+```

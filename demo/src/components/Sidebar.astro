@@ -1,0 +1,100 @@
+---
+interface Props {
+  currentPath: string
+}
+
+const { currentPath } = Astro.props
+
+const guides = [
+  { href: '/', label: 'Home' },
+  { href: '/installation', label: 'Installation' },
+  { href: '/colors', label: 'Colors' },
+]
+
+const components = [
+  { href: '/components/button', label: 'Button' },
+]
+
+function isCurrent(href: string) {
+  if (href === '/') return currentPath === '/' || currentPath === ''
+  return currentPath.startsWith(href)
+}
+---
+
+<nav class="sidebar">
+  <section>
+    <h2 class="section-heading">Guide</h2>
+    <ul>
+      {guides.map(({ href, label }) => (
+        <li>
+          <a href={href} class:list={[{ active: isCurrent(href) }]} aria-current={isCurrent(href) ? 'page' : undefined}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-heading">Components</h2>
+    <ul>
+      {components.map(({ href, label }) => (
+        <li>
+          <a href={href} class:list={[{ active: isCurrent(href) }]} aria-current={isCurrent(href) ? 'page' : undefined}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</nav>
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+  }
+
+  .section-heading {
+    font-size: var(--step--2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    opacity: 0.5;
+    margin: 0 0 var(--space-3xs);
+    padding: 0 var(--space-xs);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5xs);
+  }
+
+  a {
+    display: block;
+    padding: var(--space-3xs) var(--space-xs);
+    font-size: var(--step--1);
+    color: var(--color-text);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 0.25rem 0.25rem 0;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  a:hover {
+    background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
+  }
+
+  a.active {
+    border-left-color: var(--color-primary);
+    background-color: color-mix(in oklch, var(--color-primary) 10%, transparent);
+    font-weight: 600;
+  }
+</style>
