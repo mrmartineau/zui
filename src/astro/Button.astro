@@ -1,13 +1,17 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { buttonVariants } from '../shared/buttonVariants'
 
-interface Props extends HTMLAttributes<'button'> {
+type ButtonVariantProps = VariantProps<typeof buttonVariants>
+
+interface Props extends HTMLAttributes<'button'>, ButtonVariantProps {
   href?: string
   class?: string
 }
 
-const { href, class: className, ...props } = Astro.props
-const classes = ['zui-button', className].filter(Boolean).join(' ')
+const { href, class: className, variant, accent, size, shape, icon, ...props } = Astro.props
+const classes = buttonVariants({ variant, accent, size, shape, icon, class: className })
 ---
 
 {

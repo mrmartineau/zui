@@ -28,7 +28,8 @@
   "files": [
     "dist",
     "src/css",
-    "src/astro"
+    "src/astro",
+    "src/shared"
   ],
   "scripts": {
     "build": "tsdown",
@@ -55,5 +56,8 @@
     "astro": {
       "optional": true
     }
+  },
+  "dependencies": {
+    "cva": "1.0.0-beta.4"
   }
 }

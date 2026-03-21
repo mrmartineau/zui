@@ -1,4 +1,5 @@
 export { Button, type ButtonProps } from './Button'
+export { buttonVariants } from '../shared/buttonVariants'
 export { Input, type InputProps } from './Input'
 export { Textarea, type TextareaProps } from './Textarea'
 export { Label, type LabelProps } from './Label'

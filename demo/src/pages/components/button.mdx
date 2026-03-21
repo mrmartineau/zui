@@ -74,19 +74,19 @@ Controls how the accent colour is applied.
   react={`import { Button } from '@mrmartineau/zui/react'
 
 <Button>Fill (default)</Button>
-<Button className="zui-button-variant-subtle">Subtle</Button>
-<Button className="zui-button-variant-outline">Outline</Button>
-<Button className="zui-button-variant-ghost">Ghost</Button>
-<Button className="zui-button-variant-link">Link</Button>`}
+<Button variant="subtle">Subtle</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button>Fill (default)</Button>
-<Button class="zui-button-variant-subtle">Subtle</Button>
-<Button class="zui-button-variant-outline">Outline</Button>
-<Button class="zui-button-variant-ghost">Ghost</Button>
-<Button class="zui-button-variant-link">Link</Button>`}
+<Button variant="subtle">Subtle</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>`}
 />
 
 ## Accents
@@ -108,15 +108,15 @@ Sets the colour palette.
   react={`import { Button } from '@mrmartineau/zui/react'
 
 <Button>Primary (default)</Button>
-<Button className="zui-button-accent-secondary">Secondary</Button>
-<Button className="zui-button-accent-destructive">Destructive</Button>`}
+<Button accent="secondary">Secondary</Button>
+<Button accent="destructive">Destructive</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button>Primary (default)</Button>
-<Button class="zui-button-accent-secondary">Secondary</Button>
-<Button class="zui-button-accent-destructive">Destructive</Button>`}
+<Button accent="secondary">Secondary</Button>
+<Button accent="destructive">Destructive</Button>`}
 />
 
 ## Sizes
@@ -143,20 +143,20 @@ Five size options from extra small to extra large.
 <button class="zui-button zui-button-size-xl">Extra large</button>`}
   react={`import { Button } from '@mrmartineau/zui/react'
 
-<Button className="zui-button-size-xs">Extra small</Button>
-<Button className="zui-button-size-sm">Small</Button>
+<Button size="xs">Extra small</Button>
+<Button size="sm">Small</Button>
 <Button>Medium (default)</Button>
-<Button className="zui-button-size-lg">Large</Button>
-<Button className="zui-button-size-xl">Extra large</Button>`}
+<Button size="lg">Large</Button>
+<Button size="xl">Extra large</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button class="zui-button-size-xs">Extra small</Button>
-<Button class="zui-button-size-sm">Small</Button>
+<Button size="xs">Extra small</Button>
+<Button size="sm">Small</Button>
 <Button>Medium (default)</Button>
-<Button class="zui-button-size-lg">Large</Button>
-<Button class="zui-button-size-xl">Extra large</Button>`}
+<Button size="lg">Large</Button>
+<Button size="xl">Extra large</Button>`}
 />
 
 ## Shapes
@@ -181,22 +181,22 @@ Controls border-radius. Includes squircle (limited browser support, uses `corner
   react={`import { Button } from '@mrmartineau/zui/react'
 
 <Button>Default (rounded)</Button>
-<Button className="zui-button-shape-hard">Hard (square)</Button>
-<Button className="zui-button-shape-soft">Soft (pill)</Button>
-<Button className="zui-button-shape-squircle">Squircle</Button>`}
+<Button shape="hard">Hard (square)</Button>
+<Button shape="soft">Soft (pill)</Button>
+<Button shape="squircle">Squircle</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button>Default (rounded)</Button>
-<Button class="zui-button-shape-hard">Hard (square)</Button>
-<Button class="zui-button-shape-soft">Soft (pill)</Button>
-<Button class="zui-button-shape-squircle">Squircle</Button>`}
+<Button shape="hard">Hard (square)</Button>
+<Button shape="soft">Soft (pill)</Button>
+<Button shape="squircle">Squircle</Button>`}
 />
 
 ## Icon Buttons
 
-Square 1:1 buttons for single icons. Uses the `zui-button-icon` class. Always include an `aria-label`.
+Square 1:1 buttons for single icons. Uses the `icon` prop. Always include an `aria-label`.
 
 <Demo code={`<button class="zui-button zui-button-icon" aria-label="Settings">
   <i class="ph ph-gear"></i>
@@ -230,22 +230,22 @@ Square 1:1 buttons for single icons. Uses the `zui-button-icon` class. Always in
   react={`import { Button } from '@mrmartineau/zui/react'
 import { Gear, PencilSimple } from '@phosphor-icons/react'
 
-<Button className="zui-button-icon" aria-label="Settings">
+<Button icon aria-label="Settings">
   <Gear />
 </Button>
 
-<Button className="zui-button-icon zui-button-variant-outline" aria-label="Edit">
+<Button icon variant="outline" aria-label="Edit">
   <PencilSimple />
 </Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button class="zui-button-icon" aria-label="Settings">
+<Button icon aria-label="Settings">
   <i class="ph ph-gear"></i>
 </Button>
 
-<Button class="zui-button-icon zui-button-variant-outline" aria-label="Edit">
+<Button icon variant="outline" aria-label="Edit">
   <i class="ph ph-pencil-simple"></i>
 </Button>`}
 />
@@ -289,22 +289,22 @@ import { Button } from '@mrmartineau/zui/astro'
 </button>`}
   react={`import { Button } from '@mrmartineau/zui/react'
 
-<Button className="zui-button-variant-outline zui-button-accent-secondary">
+<Button variant="outline" accent="secondary">
   Outline Secondary
 </Button>
 
-<Button className="zui-button-variant-ghost zui-button-accent-destructive">
+<Button variant="ghost" accent="destructive">
   Ghost Destructive
 </Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button class="zui-button-variant-outline zui-button-accent-secondary">
+<Button variant="outline" accent="secondary">
   Outline Secondary
 </Button>
 
-<Button class="zui-button-variant-ghost zui-button-accent-destructive">
+<Button variant="ghost" accent="destructive">
   Ghost Destructive
 </Button>`}
 />
@@ -361,13 +361,13 @@ import { Button } from '@mrmartineau/zui/astro'
   react={`import { Button } from '@mrmartineau/zui/react'
 
 <Button disabled>Fill</Button>
-<Button className="zui-button-variant-outline" disabled>Outline</Button>`}
+<Button variant="outline" disabled>Outline</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button disabled>Fill</Button>
-<Button class="zui-button-variant-outline" disabled>Outline</Button>`}
+<Button variant="outline" disabled>Outline</Button>`}
 />
 
 ## As Links
@@ -385,13 +385,13 @@ import { Button } from '@mrmartineau/zui/astro'
   react={`import { Button } from '@mrmartineau/zui/react'
 
 <Button href="/action">Default link</Button>
-<Button href="/action" className="zui-button-variant-outline zui-button-accent-secondary">Outline link</Button>
-<Button href="/action" className="zui-button-variant-link">Text link</Button>`}
+<Button href="/action" variant="outline" accent="secondary">Outline link</Button>
+<Button href="/action" variant="link">Text link</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button href="/action">Default link</Button>
-<Button href="/action" class="zui-button-variant-outline zui-button-accent-secondary">Outline link</Button>
-<Button href="/action" class="zui-button-variant-link">Text link</Button>`}
+<Button href="/action" variant="outline" accent="secondary">Outline link</Button>
+<Button href="/action" variant="link">Text link</Button>`}
 />

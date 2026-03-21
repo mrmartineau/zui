@@ -1,6 +1,10 @@
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
+import type { VariantProps } from 'cva'
+import { buttonVariants } from '../shared/buttonVariants'
 
-type ButtonBaseProps = {
+type ButtonVariantProps = VariantProps<typeof buttonVariants>
+
+type ButtonBaseProps = ButtonVariantProps & {
   className?: string
 }
 
@@ -16,8 +20,16 @@ type ButtonAsAnchor = ButtonBaseProps &
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor
 
-export function Button({ className, ...props }: ButtonProps) {
-  const classes = ['zui-button', className].filter(Boolean).join(' ')
+export function Button({
+  className,
+  variant,
+  accent,
+  size,
+  shape,
+  icon,
+  ...props
+}: ButtonProps) {
+  const classes = buttonVariants({ variant, accent, size, shape, icon, className })
 
   if ('href' in props && props.href) {
     return <a className={classes} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)} />
