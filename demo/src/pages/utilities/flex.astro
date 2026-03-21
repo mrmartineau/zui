@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { Code } from 'astro:components'
+---
+
+<Layout title="Flex">
+  <h1>Flex</h1>
+  <p class="subtitle">Flexbox utility classes for layout, alignment, and distribution.</p>
+
+  <section class="flow">
+    <h2>Display</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.flex</code><span>display: flex</span></div>
+      <div class="class-row"><code class="zui-code">.inline-flex</code><span>display: inline-flex</span></div>
+      <div class="class-row"><code class="zui-code">.flex-center</code><span>display: flex; align-items: center</span></div>
+      <div class="class-row"><code class="zui-code">.inline-flex-center</code><span>display: inline-flex; align-items: center</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Direction</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.flex-row</code><span>flex-direction: row</span></div>
+      <div class="class-row"><code class="zui-code">.flex-row-reverse</code><span>flex-direction: row-reverse</span></div>
+      <div class="class-row"><code class="zui-code">.flex-column</code><span>flex-direction: column</span></div>
+      <div class="class-row"><code class="zui-code">.flex-column-reverse</code><span>flex-direction: column-reverse</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Wrap</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.flex-wrap</code><span>flex-wrap: wrap</span></div>
+      <div class="class-row"><code class="zui-code">.flex-nowrap</code><span>flex-wrap: nowrap</span></div>
+      <div class="class-row"><code class="zui-code">.flex-wrap-reverse</code><span>flex-wrap: wrap-reverse</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Flex sizing</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.flex-auto</code><span>flex: 1 1 auto (with min-width/height: 0)</span></div>
+      <div class="class-row"><code class="zui-code">.flex-none</code><span>flex: none</span></div>
+      <div class="class-row"><code class="zui-code">.flex-shrink</code><span>flex-shrink: 0</span></div>
+      <div class="class-row"><code class="zui-code">.flex-grow</code><span>flex-grow: 1</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Align items</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.items-start</code><span>align-items: flex-start</span></div>
+      <div class="class-row"><code class="zui-code">.items-end</code><span>align-items: flex-end</span></div>
+      <div class="class-row"><code class="zui-code">.items-center</code><span>align-items: center</span></div>
+      <div class="class-row"><code class="zui-code">.items-baseline</code><span>align-items: baseline</span></div>
+      <div class="class-row"><code class="zui-code">.items-stretch</code><span>align-items: stretch</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Align self</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.self-start</code><span>align-self: flex-start</span></div>
+      <div class="class-row"><code class="zui-code">.self-end</code><span>align-self: flex-end</span></div>
+      <div class="class-row"><code class="zui-code">.self-center</code><span>align-self: center</span></div>
+      <div class="class-row"><code class="zui-code">.self-baseline</code><span>align-self: baseline</span></div>
+      <div class="class-row"><code class="zui-code">.self-stretch</code><span>align-self: stretch</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Justify content</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.justify-start</code><span>justify-content: flex-start</span></div>
+      <div class="class-row"><code class="zui-code">.justify-end</code><span>justify-content: flex-end</span></div>
+      <div class="class-row"><code class="zui-code">.justify-center</code><span>justify-content: center</span></div>
+      <div class="class-row"><code class="zui-code">.justify-between</code><span>justify-content: space-between</span></div>
+      <div class="class-row"><code class="zui-code">.justify-around</code><span>justify-content: space-around</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Align content</h2>
+    <div class="class-table">
+      <div class="class-row"><code class="zui-code">.content-start</code><span>align-content: flex-start</span></div>
+      <div class="class-row"><code class="zui-code">.content-end</code><span>align-content: flex-end</span></div>
+      <div class="class-row"><code class="zui-code">.content-center</code><span>align-content: center</span></div>
+      <div class="class-row"><code class="zui-code">.content-between</code><span>align-content: space-between</span></div>
+      <div class="class-row"><code class="zui-code">.content-around</code><span>align-content: space-around</span></div>
+      <div class="class-row"><code class="zui-code">.content-stretch</code><span>align-content: stretch</span></div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Example</h2>
+    <Code code={`<nav class="flex items-center justify-between gap-m">
+  <a href="/">Logo</a>
+  <div class="flex gap-xs">
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .class-table {
+    display: flex;
+    flex-direction: column;
+    margin-block: var(--space-sm);
+  }
+
+  .class-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-3xs) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .class-row code {
+    min-width: 14rem;
+    flex-shrink: 0;
+  }
+
+  .class-row span {
+    font-size: var(--step--1);
+    font-family: var(--font-mono);
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+  }
+</style>

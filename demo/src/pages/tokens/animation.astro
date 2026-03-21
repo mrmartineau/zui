@@ -1,0 +1,164 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { Code } from 'astro:components'
+---
+
+<Layout title="Animation">
+  <h1>Animation</h1>
+  <p class="subtitle">Pre-built animation tokens combining keyframes with easing and duration. Apply via the <code class="zui-code">animation</code> property.</p>
+
+  <section class="flow">
+    <h2>Entrance &amp; exit</h2>
+    <div class="anim-grid">
+      <div class="anim-card" data-anim="fade-in">
+        <code class="zui-code">--animation-fade-in</code>
+      </div>
+      <div class="anim-card" data-anim="fade-out">
+        <code class="zui-code">--animation-fade-out</code>
+      </div>
+      <div class="anim-card" data-anim="scale-up">
+        <code class="zui-code">--animation-scale-up</code>
+      </div>
+      <div class="anim-card" data-anim="scale-down">
+        <code class="zui-code">--animation-scale-down</code>
+      </div>
+      <div class="anim-card" data-anim="slide-in-up">
+        <code class="zui-code">--animation-slide-in-up</code>
+      </div>
+      <div class="anim-card" data-anim="slide-in-down">
+        <code class="zui-code">--animation-slide-in-down</code>
+      </div>
+      <div class="anim-card" data-anim="slide-in-left">
+        <code class="zui-code">--animation-slide-in-left</code>
+      </div>
+      <div class="anim-card" data-anim="slide-in-right">
+        <code class="zui-code">--animation-slide-in-right</code>
+      </div>
+      <div class="anim-card" data-anim="slide-out-up">
+        <code class="zui-code">--animation-slide-out-up</code>
+      </div>
+      <div class="anim-card" data-anim="slide-out-down">
+        <code class="zui-code">--animation-slide-out-down</code>
+      </div>
+      <div class="anim-card" data-anim="slide-out-left">
+        <code class="zui-code">--animation-slide-out-left</code>
+      </div>
+      <div class="anim-card" data-anim="slide-out-right">
+        <code class="zui-code">--animation-slide-out-right</code>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Looping</h2>
+    <div class="anim-grid">
+      <div class="anim-card">
+        <div class="demo-dot" style="animation: var(--animation-spin);"></div>
+        <code class="zui-code">--animation-spin</code>
+      </div>
+      <div class="anim-card">
+        <div class="demo-dot" style="animation: var(--animation-ping);"></div>
+        <code class="zui-code">--animation-ping</code>
+      </div>
+      <div class="anim-card">
+        <div class="demo-dot" style="animation: var(--animation-blink);"></div>
+        <code class="zui-code">--animation-blink</code>
+      </div>
+      <div class="anim-card">
+        <div class="demo-dot" style="animation: var(--animation-float);"></div>
+        <code class="zui-code">--animation-float</code>
+      </div>
+      <div class="anim-card">
+        <div class="demo-dot" style="animation: var(--animation-bounce);"></div>
+        <code class="zui-code">--animation-bounce</code>
+      </div>
+      <div class="anim-card">
+        <div class="demo-dot" style="animation: var(--animation-pulse);"></div>
+        <code class="zui-code">--animation-pulse</code>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Feedback</h2>
+    <div class="anim-grid">
+      <div class="anim-card" data-anim="shake-x">
+        <code class="zui-code">--animation-shake-x</code>
+      </div>
+      <div class="anim-card" data-anim="shake-y">
+        <code class="zui-code">--animation-shake-y</code>
+      </div>
+      <div class="anim-card" data-anim="shake-z">
+        <code class="zui-code">--animation-shake-z</code>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Usage</h2>
+    <Code code={`.notification {
+  animation: var(--animation-slide-in-right);
+}
+
+.spinner {
+  animation: var(--animation-spin);
+}
+
+.error-field {
+  animation: var(--animation-shake-x);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-anim]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const name = card.dataset.anim!
+      card.style.animation = 'none'
+      card.offsetHeight // force reflow
+      card.style.animation = `var(--animation-${name})`
+    })
+  })
+</script>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .anim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-sm);
+    margin-block: var(--space-sm);
+  }
+
+  .anim-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .anim-card:hover {
+    border-color: var(--color-primary);
+  }
+
+  .demo-dot {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--radius-round);
+    background-color: var(--color-primary);
+  }
+</style>

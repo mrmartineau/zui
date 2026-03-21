@@ -14,6 +14,17 @@ const guides = [
   { href: '/layers', label: 'CSS Layers' },
 ]
 
+const tokens = [
+  { href: '/tokens/space', label: 'Space' },
+  { href: '/tokens/shadows', label: 'Shadows' },
+  { href: '/tokens/radii', label: 'Radii' },
+  { href: '/tokens/easing', label: 'Easing' },
+  { href: '/tokens/animation', label: 'Animation' },
+  { href: '/tokens/aspect-ratio', label: 'Aspect Ratio' },
+  { href: '/tokens/size', label: 'Size' },
+  { href: '/tokens/z-index', label: 'Z-Index' },
+]
+
 const components = [
   { href: '/components/badge', label: 'Badge' },
   { href: '/components/button', label: 'Button' },
@@ -26,6 +37,21 @@ const components = [
   { href: '/components/textarea', label: 'Textarea' },
 ]
 
+const utilities = [
+  { href: '/utilities/spacing', label: 'Spacing' },
+  { href: '/utilities/flex', label: 'Flex' },
+  { href: '/utilities/flow', label: 'Flow' },
+  { href: '/utilities/prose', label: 'Prose' },
+  { href: '/utilities/visibility', label: 'Visibility' },
+]
+
+const sections = [
+  { heading: 'Guide', items: guides },
+  { heading: 'Tokens', items: tokens },
+  { heading: 'Components', items: components },
+  { heading: 'Utilities', items: utilities },
+]
+
 function isCurrent(href: string) {
   if (href === '/') return currentPath === '/' || currentPath === ''
   return currentPath.startsWith(href)
@@ -33,31 +59,20 @@ function isCurrent(href: string) {
 ---
 
 <nav class="sidebar">
-  <section>
-    <h2 class="section-heading">Guide</h2>
-    <ul>
-      {guides.map(({ href, label }) => (
-        <li>
-          <a href={href} class:list={[{ active: isCurrent(href) }]} aria-current={isCurrent(href) ? 'page' : undefined}>
-            {label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section>
-    <h2 class="section-heading">Components</h2>
-    <ul>
-      {components.map(({ href, label }) => (
-        <li>
-          <a href={href} class:list={[{ active: isCurrent(href) }]} aria-current={isCurrent(href) ? 'page' : undefined}>
-            {label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
+  {sections.map(({ heading, items }) => (
+    <section>
+      <h2 class="section-heading">{heading}</h2>
+      <ul>
+        {items.map(({ href, label }) => (
+          <li>
+            <a href={href} class:list={[{ active: isCurrent(href) }]} aria-current={isCurrent(href) ? 'page' : undefined}>
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </nav>
 
 <style>

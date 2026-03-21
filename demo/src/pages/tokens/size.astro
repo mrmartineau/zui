@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { Code } from 'astro:components'
+---
+
+<Layout title="Size">
+  <h1>Size</h1>
+  <p class="subtitle">Semantic size tokens for widths, heights, and responsive viewport units.</p>
+
+  <section class="flow">
+    <h2>Fractions</h2>
+    <div class="token-table">
+      <div class="token-row">
+        <code class="zui-code">--size-quarter</code>
+        <div class="bar" style="width: 25%;"></div>
+        <span>25%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-third</code>
+        <div class="bar" style="width: 33.333%;"></div>
+        <span>33.3%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-half</code>
+        <div class="bar" style="width: 50%;"></div>
+        <span>50%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-twothirds</code>
+        <div class="bar" style="width: 66.666%;"></div>
+        <span>66.7%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-threequarters</code>
+        <div class="bar" style="width: 75%;"></div>
+        <span>75%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-full</code>
+        <div class="bar" style="width: 100%;"></div>
+        <span>100%</span>
+      </div>
+    </div>
+
+    <h3>Fifths</h3>
+    <div class="token-table">
+      <div class="token-row">
+        <code class="zui-code">--size-fifth</code>
+        <div class="bar" style="width: 20%;"></div>
+        <span>20%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-twofifths</code>
+        <div class="bar" style="width: 40%;"></div>
+        <span>40%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-threefifths</code>
+        <div class="bar" style="width: 60%;"></div>
+        <span>60%</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--size-fourfifths</code>
+        <div class="bar" style="width: 80%;"></div>
+        <span>80%</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>Viewport units</h2>
+    <Code code={`--size-svw: 100svw;   --size-svh: 100svh;
+--size-lvw: 100lvw;   --size-lvh: 100lvh;
+--size-dvw: 100dvw;   --size-dvh: 100dvh;`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Intrinsic sizing</h2>
+    <Code code={`--size-min: min-content;
+--size-max: max-content;
+--size-fit: fit-content;`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Usage</h2>
+    <Code code={`.sidebar {
+  width: var(--size-quarter);
+}
+
+.hero {
+  min-height: var(--size-dvh);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .token-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-block: var(--space-sm);
+  }
+
+  .token-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-3xs) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .token-row code {
+    flex-shrink: 0;
+    min-width: 14rem;
+  }
+
+  .bar {
+    height: var(--space-xs);
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    flex: 1;
+    max-width: 100%;
+  }
+
+  .token-row span {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 60%, transparent);
+    min-width: 4rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>

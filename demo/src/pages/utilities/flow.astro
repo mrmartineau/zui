@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { Code } from 'astro:components'
+---
+
+<Layout title="Flow">
+  <h1>Flow</h1>
+  <p class="subtitle">Automatic vertical spacing between child elements using the lobotomised owl selector.</p>
+
+  <section class="flow">
+    <h2>How it works</h2>
+    <p>The <code class="zui-code">.flow</code> class adds vertical margin between consecutive child elements using <code class="zui-code">&gt; * + *</code>. It uses a <code class="zui-code">--flow-space</code> custom property (defaulting to <code class="zui-code">1em</code>) that headings and blockquotes automatically increase.</p>
+
+    <Code code={`.flow {
+  & > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  :is(h1, h2, h3, blockquote) {
+    --flow-space: 2rem;
+  }
+
+  :is(h1, h2, h3) + * {
+    --flow-space: 1rem;
+  }
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Usage</h2>
+    <Code code={`<article class="flow">
+  <h1>Title</h1>
+  <p>First paragraph gets 1rem gap after heading.</p>
+  <p>Subsequent paragraphs get 1em gap.</p>
+  <h2>Subheading</h2>
+  <p>2rem gap before heading, 1rem after.</p>
+</article>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Custom spacing</h2>
+    <p>Override <code class="zui-code">--flow-space</code> on any element to adjust its top margin:</p>
+    <Code code={`<div class="flow">
+  <p>Normal spacing</p>
+  <p style="--flow-space: 3rem;">Extra space above this paragraph</p>
+  <p>Back to normal</p>
+</div>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+</style>
