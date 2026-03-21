@@ -1,0 +1,46 @@
+@layer zui.components {
+  .zui-input {
+    /* shared custom properties */
+    --zui-input-radius: var(--radius-lg);
+    --zui-input-border: var(--color-border);
+    --zui-input-bg: var(--color-background);
+    --zui-input-fg: var(--color-text);
+    --zui-input-padding-block: var(--space-3xs);
+    --zui-input-padding-inline: var(--space-xs);
+    
+    display: block;
+    width: 100%;
+    padding-block: var(--zui-input-padding-block);
+    padding-inline: var(--zui-input-padding-inline);
+    border: 1px var(--border-style, solid) var(--zui-input-border);
+    border-radius: var(--zui-input-radius);
+    background-color: var(--zui-input-bg);
+    color: var(--zui-input-fg);
+    font-family: inherit;
+    font-size: var(--step-0);
+    line-height: var(--line-height-md);
+    transition-property: border-color, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .zui-input::placeholder {
+    color: color-mix(in oklch, var(--color-text) 50%, transparent);
+  }
+
+  .zui-input:focus {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+    border-color: var(--color-primary);
+  }
+
+  .zui-input:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%) opacity(50%);
+  }
+
+  .zui-input[aria-invalid="true"],
+  .zui-input:user-invalid {
+    border-color: var(--color-error);
+  }
+}

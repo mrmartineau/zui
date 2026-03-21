@@ -1,0 +1,66 @@
+@layer zui.components {
+  .zui-card {
+    --zui-card-radius: var(--radius-xl);
+    --zui-card-border: var(--color-border);
+    --zui-card-bg: var(--color-surface);
+    --zui-card-padding: var(--space-md);
+
+    padding: var(--zui-card-padding);
+    border: 1px var(--border-style, solid) var(--zui-card-border);
+    border-radius: var(--zui-card-radius);
+    background-color: var(--zui-card-bg);
+  }
+
+  .zui-card-header {
+    margin-block-end: var(--space-sm);
+  }
+
+  .zui-card-title {
+    font-size: var(--step-1);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-sm);
+    color: var(--color-text);
+  }
+
+  .zui-card-description {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+    margin-block-start: var(--space-3xs);
+  }
+
+  .zui-card-body {
+    font-size: var(--step-0);
+  }
+
+  .zui-card-footer {
+    margin-block-start: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  /* Elevated variant */
+  .zui-card-elevated {
+    border-color: transparent;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Interactive variant */
+  .zui-card-interactive {
+    cursor: pointer;
+    transition-property: border-color, box-shadow, scale;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .zui-card-interactive:hover {
+    border-color: var(--color-primary);
+  }
+
+  .zui-card-interactive:active {
+    scale: 0.99;
+  }
+}

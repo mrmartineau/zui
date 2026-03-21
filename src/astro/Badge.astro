@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'span'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-badge', className].filter(Boolean).join(' ')
+---
+
+<span class={classes} {...props}><slot /></span>

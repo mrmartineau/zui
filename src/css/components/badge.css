@@ -1,0 +1,48 @@
+@layer zui.components {
+  .zui-badge {
+    --zui-badge-accent: var(--color-primary);
+    --zui-badge-radius: var(--radius-full);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4xs);
+    padding: var(--space-4xs) var(--space-2xs);
+    border-radius: var(--zui-badge-radius);
+    font-size: var(--step--2);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    background-color: oklch(from var(--zui-badge-accent) l c h / 15%);
+    color: var(--zui-badge-accent);
+  }
+
+  /* Accents */
+  .zui-badge-accent-secondary {
+    --zui-badge-accent: var(--color-secondary);
+  }
+
+  .zui-badge-accent-success {
+    --zui-badge-accent: var(--color-success);
+  }
+
+  .zui-badge-accent-warning {
+    --zui-badge-accent: var(--color-warning);
+  }
+
+  .zui-badge-accent-error {
+    --zui-badge-accent: var(--color-error);
+  }
+
+  /* Fill variant */
+  .zui-badge-fill {
+    background-color: var(--zui-badge-accent);
+    color: oklch(from var(--zui-badge-accent) 1 0 0);
+  }
+
+  /* Outline variant */
+  .zui-badge-outline {
+    background-color: transparent;
+    border: 1px var(--border-style, solid) oklch(from var(--zui-badge-accent) l c h / 40%);
+    color: var(--zui-badge-accent);
+  }
+}

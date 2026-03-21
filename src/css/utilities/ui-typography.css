@@ -74,7 +74,6 @@
     transition:
       color 0.2s var(--ease-in-out),
       background-color 0.2s var(--ease-in-out);
-    padding: 0 var(--space-2xs);
     border-radius: var(--radius-m);
 
     &:hover {
@@ -86,18 +85,18 @@
 
   .zui-pre,
   .zui-code {
-    --prose-code-color: var(--violet-11);
-    --prose-code-bg-color: var(--violet-3);
-    font-family: var(--font-family-mono);
+    --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
+    --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+    font-family: var(--font-mono);
     background-color: var(--prose-code-bg-color);
     color: var(--prose-code-color);
   }
 
   .zui-pre {
-    padding: var(--space-s) var(--space-m);
+    padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-xl);
     max-width: 100%;
-    box-shadow: var(--shadow-s);
+    box-shadow: var(--shadow-sm);
     position: relative;
 
     code {
@@ -106,10 +105,10 @@
   }
 
   .zui-code {
-    padding: var(--space-3xs) var(--space-2xs);
+    padding: 2px 4px;
     font-size: var(--step--1);
     display: inline-block;
-    border-radius: var(--radius-m);
+    border-radius: var(--radius-md);
     line-height: var(--line-height-snug);
   }
 }

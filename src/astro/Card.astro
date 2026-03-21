@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+  href?: string
+  class?: string
+}
+
+const { href, class: className, ...props } = Astro.props
+const classes = ['zui-card', href && 'zui-card-interactive', className].filter(Boolean).join(' ')
+---
+
+{
+  href ? (
+    <a class={classes} href={href} {...props}>
+      <slot />
+    </a>
+  ) : (
+    <div class={classes} {...props}>
+      <slot />
+    </div>
+  )
+}

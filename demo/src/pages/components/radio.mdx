@@ -1,0 +1,126 @@
+---
+layout: ../../layouts/Layout.astro
+title: Radio
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Radio
+
+Custom-styled radio buttons with list layout.
+
+## Usage
+
+<Demo code={`<label class="zui-radio">
+  <input type="radio" name="fruit" value="apple" checked />
+  Apple
+</label>
+<label class="zui-radio">
+  <input type="radio" name="fruit" value="banana" />
+  Banana
+</label>
+<label class="zui-radio">
+  <input type="radio" name="fruit" value="cherry" />
+  Cherry
+</label>`}>
+  <label class="zui-radio">
+    <input type="radio" name="fruit" value="apple" checked />
+    Apple
+  </label>
+  <label class="zui-radio">
+    <input type="radio" name="fruit" value="banana" />
+    Banana
+  </label>
+  <label class="zui-radio">
+    <input type="radio" name="fruit" value="cherry" />
+    Cherry
+  </label>
+</Demo>
+
+<CodeTabs
+  html={`<label class="zui-radio">
+  <input type="radio" name="fruit" value="apple" checked />
+  Apple
+</label>
+<label class="zui-radio">
+  <input type="radio" name="fruit" value="banana" />
+  Banana
+</label>`}
+  react={`<label className="zui-radio">
+  <input type="radio" name="fruit" value="apple" defaultChecked />
+  Apple
+</label>
+<label className="zui-radio">
+  <input type="radio" name="fruit" value="banana" />
+  Banana
+</label>`}
+  astro={`<label class="zui-radio">
+  <input type="radio" name="fruit" value="apple" checked />
+  Apple
+</label>
+<label class="zui-radio">
+  <input type="radio" name="fruit" value="banana" />
+  Banana
+</label>`}
+/>
+
+## Radio List
+
+Use `.zui-radio-list` for vertical grouping.
+
+<Demo code={`<fieldset>
+  <legend class="zui-label">Favourite colour</legend>
+  <div class="zui-radio-list">
+    <label class="zui-radio">
+      <input type="radio" name="colour" value="red" />
+      Red
+    </label>
+    <label class="zui-radio">
+      <input type="radio" name="colour" value="blue" checked />
+      Blue
+    </label>
+    <label class="zui-radio">
+      <input type="radio" name="colour" value="green" />
+      Green
+    </label>
+  </div>
+</fieldset>`}>
+  <fieldset style="border: none; padding: 0; width: 100%;">
+    <legend class="zui-label">Favourite colour</legend>
+    <div class="zui-radio-list">
+      <label class="zui-radio">
+        <input type="radio" name="colour" value="red" />
+        Red
+      </label>
+      <label class="zui-radio">
+        <input type="radio" name="colour" value="blue" checked />
+        Blue
+      </label>
+      <label class="zui-radio">
+        <input type="radio" name="colour" value="green" />
+        Green
+      </label>
+    </div>
+  </fieldset>
+</Demo>
+
+## Disabled
+
+<Demo code={`<label class="zui-radio">
+  <input type="radio" name="disabled" disabled checked />
+  Disabled checked
+</label>
+<label class="zui-radio">
+  <input type="radio" name="disabled2" disabled />
+  Disabled unchecked
+</label>`}>
+  <label class="zui-radio">
+    <input type="radio" name="disabled" disabled checked />
+    Disabled checked
+  </label>
+  <label class="zui-radio">
+    <input type="radio" name="disabled2" disabled />
+    Disabled unchecked
+  </label>
+</Demo>

@@ -1,0 +1,51 @@
+---
+layout: ../../layouts/Layout.astro
+title: Textarea
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Textarea
+
+A multi-line text input with auto-sizing via `field-sizing: content`.
+
+## Usage
+
+<Demo code={`<textarea class="zui-textarea" placeholder="Write something..."></textarea>`}>
+  <textarea class="zui-textarea" placeholder="Write something..."></textarea>
+</Demo>
+
+<CodeTabs
+  html={`<textarea class="zui-textarea" placeholder="Write something..."></textarea>`}
+  react={`import { Textarea } from '@mrmartineau/zui/react'
+
+<Textarea placeholder="Write something..." />`}
+  astro={`---
+import { Textarea } from '@mrmartineau/zui/astro'
+---
+
+<Textarea placeholder="Write something..." />`}
+/>
+
+## With Label
+
+<Demo code={`<label class="zui-label" for="message">Message</label>
+<textarea class="zui-textarea" id="message" placeholder="Your message..."></textarea>`}>
+  <div style="width: 100%;">
+    <label class="zui-label" for="message">Message</label>
+    <textarea class="zui-textarea" id="message" placeholder="Your message..."></textarea>
+  </div>
+</Demo>
+
+## Invalid State
+
+<Demo code={`<textarea class="zui-textarea" aria-invalid="true">This field has an error</textarea>`}>
+  <textarea class="zui-textarea" aria-invalid="true">This field has an error</textarea>
+</Demo>
+
+## Disabled
+
+<Demo code={`<textarea class="zui-textarea" disabled>Cannot edit this</textarea>`}>
+  <textarea class="zui-textarea" disabled>Cannot edit this</textarea>
+</Demo>

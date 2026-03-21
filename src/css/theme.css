@@ -10,6 +10,7 @@
     --color-success: light-dark(var(--color-emerald-600), var(--color-emerald-400));
     --color-error: light-dark(var(--color-red-600), var(--color-red-400));
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
+    --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
 
     /* Add your own custom fonts here */
     --custom-font-sans: Geist, Inter;

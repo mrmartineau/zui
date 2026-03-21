@@ -1,10 +1,10 @@
 .astro-code {
   padding: var(--space-4xs) var(--space-2xs);
   border-radius: var(--radius-sm);
-  /* background-color: oklch(from var(--color-background) calc(l - 0.05) c h) !important; */
-  background-color:
-      light-dark(oklch(from var(--color-background) calc(l - 0.08) c h),
-      oklch(from var(--color-background) calc(l - 0.02) c h)) !important;
+  background-color: light-dark(
+    oklch(from var(--color-background) calc(l + 0.03) c h),
+    oklch(from var(--color-background) calc(l - 0.02) c h)
+  ) !important;
 }
 
 .astro-code,

@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'textarea'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-textarea', className].filter(Boolean).join(' ')
+---
+
+<textarea class={classes} {...props}><slot /></textarea>

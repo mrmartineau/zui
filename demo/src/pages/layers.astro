@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Code } from 'astro:components'
+---
+
+<Layout title="CSS Layers">
+  <h1>CSS Layers</h1>
+  <p class="subtitle">ZUI uses <code class="zui-code">@layer</code> to organise its styles into a predictable cascade, making it easy to override without specificity battles.</p>
+
+  <section class="flow">
+    <h2>Layer order</h2>
+    <p>All ZUI styles are scoped inside four ordered layers, declared at the top of the stylesheet:</p>
+
+    <Code code={`@layer zui.reset, zui.base, zui.components, zui.utilities;`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <p>Layers declared later in the list have higher priority. This means utilities always beat components, components always beat base styles, and so on.</p>
+
+    <div class="layer-stack">
+      <div class="layer-card layer-4">
+        <div class="layer-label">4</div>
+        <div class="layer-content">
+          <strong>zui.utilities</strong>
+          <span>Typography classes, spacing helpers, layout utilities. Highest priority within ZUI.</span>
+        </div>
+      </div>
+      <div class="layer-card layer-3">
+        <div class="layer-label">3</div>
+        <div class="layer-content">
+          <strong>zui.components</strong>
+          <span>Button, input, card, badge, and all other component styles.</span>
+        </div>
+      </div>
+      <div class="layer-card layer-2">
+        <div class="layer-label">2</div>
+        <div class="layer-content">
+          <strong>zui.base</strong>
+          <span>Design tokens (colours, spacing, typography, shadows, radii), theme configuration, and base element styles.</span>
+        </div>
+      </div>
+      <div class="layer-card layer-1">
+        <div class="layer-label">1</div>
+        <div class="layer-content">
+          <strong>zui.reset</strong>
+          <span>Minimal CSS reset — box-sizing, margin removal, media defaults. Lowest priority.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <h2>What lives in each layer</h2>
+
+    <h3>zui.reset</h3>
+    <p>A lightweight reset that normalises browser defaults. Sets <code class="zui-code">box-sizing: border-box</code>, removes margins, and ensures media elements are block-level with <code class="zui-code">max-width: 100%</code>.</p>
+    <Code code={`@layer zui.reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  img, picture, video, canvas, svg { display: block; max-width: 100%; }
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <h3>zui.base</h3>
+    <p>The foundation layer containing:</p>
+    <ul>
+      <li><strong>Design tokens</strong> — colour palettes, spacing scale, type scale, font stacks, font weights, line heights, letter spacing, radii, shadows, easing, z-index, and aspect ratios</li>
+      <li><strong>Theme configuration</strong> — semantic colour mappings, font assignments, radius scale, and border style</li>
+      <li><strong>Base styles</strong> — root element defaults (<code class="zui-code">color-scheme</code>, font family, background, text colour), selection styling, and reduced-motion preferences</li>
+    </ul>
+
+    <h3>zui.components</h3>
+    <p>All component styles: button, input, textarea, select, label, radio, checkbox, card, and badge. Each component file wraps its rules in <code class="zui-code">@layer zui.components</code>.</p>
+
+    <h3>zui.utilities</h3>
+    <p>Helper classes for typography (<code class="zui-code">.zui-text-*</code>), links (<code class="zui-code">.zui-link</code>), code (<code class="zui-code">.zui-code</code>, <code class="zui-code">.zui-pre</code>), colour utilities, spacing, flex, and layout. These sit at the top of the cascade so they can reliably override component defaults.</p>
+  </section>
+
+  <section class="flow">
+    <h2>File structure</h2>
+    <p>The layer order maps directly to the import order in <code class="zui-code">index.css</code>:</p>
+
+    <Code code={`@import './layers.css';       /* declares layer order */
+@import './reset.css';       /* → zui.reset */
+@import './tokens.css';      /* → zui.base (design tokens) */
+@import './theme.css';       /* → zui.base (semantic mappings) */
+@import './core.css';        /* → zui.base (element defaults) */
+@import './components.css';  /* → zui.components */
+@import './utilities.css';   /* → zui.utilities */
+@import './print.css';       /* print media query (unlayered) */`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Overriding ZUI styles</h2>
+    <p>Because all ZUI styles live inside layers, any <strong>unlayered CSS</strong> you write will automatically take precedence — no <code class="zui-code">!important</code> needed.</p>
+
+    <Code code={`/* This wins over any ZUI layer, regardless of specificity */
+.my-custom-button {
+  background-color: hotpink;
+  border-radius: 0;
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <p>If you prefer to stay within the layer system, you can target a specific layer:</p>
+
+    <Code code={`/* Override within the components layer */
+@layer zui.components {
+  .zui-button {
+    --zui-btn-radius: 0;
+  }
+}
+
+/* Or add your own layer after ZUI's layers */
+@layer zui.reset, zui.base, zui.components, zui.utilities, app;
+
+@layer app {
+  .my-override {
+    color: red;
+  }
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Integrating with other libraries</h2>
+    <p>If you're using another CSS library alongside ZUI, you can control the cascade by declaring all layers upfront:</p>
+
+    <Code code={`/* Declare order: ZUI layers first, then your app layer */
+@layer zui.reset, zui.base, zui.components, zui.utilities, app;
+
+@import '@mrmartineau/zui/css';
+
+/* Your styles in the app layer will beat ZUI's utilities */
+@layer app {
+  .hero-title {
+    font-size: 4rem;
+  }
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  ul {
+    padding-inline-start: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  li {
+    line-height: var(--line-height-md);
+  }
+
+  .layer-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-block: var(--space-sm);
+  }
+
+  .layer-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .layer-label {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    font-weight: var(--font-weight-bold);
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  .layer-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5xs);
+  }
+
+  .layer-content span {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+  }
+</style>

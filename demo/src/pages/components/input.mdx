@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/Layout.astro
+title: Input
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Input
+
+A styled text input for forms.
+
+## Usage
+
+<Demo code={`<input class="zui-input" type="text" placeholder="Enter your name" />`}>
+  <input class="zui-input" type="text" placeholder="Enter your name" />
+</Demo>
+
+<CodeTabs
+  html={`<input class="zui-input" type="text" placeholder="Enter your name" />`}
+  react={`import { Input } from '@mrmartineau/zui/react'
+
+<Input type="text" placeholder="Enter your name" />`}
+  astro={`---
+import { Input } from '@mrmartineau/zui/astro'
+---
+
+<Input type="text" placeholder="Enter your name" />`}
+/>
+
+## Input Types
+
+<Demo code={`<input class="zui-input" type="text" placeholder="Text" />
+<input class="zui-input" type="email" placeholder="Email" />
+<input class="zui-input" type="password" placeholder="Password" />
+<input class="zui-input" type="number" placeholder="Number" />
+<input class="zui-input" type="search" placeholder="Search" />
+<input class="zui-input" type="url" placeholder="URL" />`}>
+  <input class="zui-input" type="text" placeholder="Text" />
+  <input class="zui-input" type="email" placeholder="Email" />
+  <input class="zui-input" type="password" placeholder="Password" />
+  <input class="zui-input" type="number" placeholder="Number" />
+  <input class="zui-input" type="search" placeholder="Search" />
+  <input class="zui-input" type="url" placeholder="URL" />
+</Demo>
+
+## With Label
+
+<Demo code={`<label class="zui-label" for="name">Full name</label>
+<input class="zui-input" type="text" id="name" placeholder="Jane Doe" />`}>
+  <div style="width: 100%;">
+    <label class="zui-label" for="name">Full name</label>
+    <input class="zui-input" type="text" id="name" placeholder="Jane Doe" />
+  </div>
+</Demo>
+
+## Invalid State
+
+<Demo code={`<input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />`}>
+  <input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />
+</Demo>
+
+## Disabled
+
+<Demo code={`<input class="zui-input" type="text" value="Cannot edit" disabled />`}>
+  <input class="zui-input" type="text" value="Cannot edit" disabled />
+</Demo>

@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'label'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-label', className].filter(Boolean).join(' ')
+---
+
+<label class={classes} {...props}><slot /></label>

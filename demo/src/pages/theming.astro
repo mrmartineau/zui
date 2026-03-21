@@ -1,0 +1,298 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Code } from 'astro:components'
+---
+
+<Layout title="Theming">
+  <h1>Theming</h1>
+  <p class="subtitle">Customise ZUI's appearance by overriding the custom properties defined in <code class="zui-code">theme.css</code>.</p>
+
+  <section class="flow">
+    <h2>How it works</h2>
+    <p>ZUI ships with a default <code class="zui-code">theme.css</code> that maps semantic tokens to the underlying colour palettes, fonts, and radii. To customise, create your own CSS file that's imported <strong>after</strong> ZUI's stylesheet and override the <code class="zui-code">:root</code> custom properties.</p>
+
+    <Code code={`/* Import ZUI first */
+@import '@mrmartineau/zui/css';
+
+/* Then override in your own stylesheet */
+:root {
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --custom-font-sans: "IBM Plex Sans";
+  --radius-scale: 1.5;
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <p>Because ZUI uses <code class="zui-code">@layer</code>, your unlayered overrides will always win regardless of source order. Alternatively, place overrides inside the <code class="zui-code">zui.base</code> layer.</p>
+  </section>
+
+  <section class="flow">
+    <h2>Default theme</h2>
+    <p>Here is the full default <code class="zui-code">theme.css</code> for reference:</p>
+
+    <Code code={`@layer zui.base {
+  :root {
+    /* Semantic colours */
+    --color-primary: light-dark(var(--color-mist-600), var(--color-mist-400));
+    --color-secondary: light-dark(var(--color-sky-600), var(--color-sky-400));
+    --color-background: light-dark(var(--color-mist-200), var(--color-mist-800));
+    --color-surface: light-dark(var(--color-mist-200), var(--color-mist-800));
+    --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
+    --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
+    --color-success: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+    --color-error: light-dark(var(--color-red-600), var(--color-red-400));
+    --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
+
+    /* Fonts */
+    --custom-font-sans: Geist, Inter;
+    --custom-font-serif: Times New Roman;
+    --custom-font-mono: Geist Mono;
+
+    --font-sans: var(--custom-font-sans), var(--font-stack-sans);
+    --font-serif: var(--custom-font-serif), var(--font-stack-serif);
+    --font-mono: var(--custom-font-mono), var(--font-stack-mono);
+    --font-headings: var(--font-serif);
+    --font-body: var(--font-sans);
+    --line-height: var(--line-height-md);
+
+    /* Shape */
+    --radius-scale: 1;
+    --border-style: solid;
+  }
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Semantic colours</h2>
+    <p>These tokens are used throughout all components. Each uses <code class="zui-code">light-dark()</code> to automatically adapt to the user's colour scheme.</p>
+
+    <div class="token-table">
+      <div class="token-row">
+        <code class="zui-code">--color-primary</code>
+        <div class="swatch" style="background-color: var(--color-primary);"></div>
+        <span>Main accent used by buttons, links, focus rings, and active states.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-secondary</code>
+        <div class="swatch" style="background-color: var(--color-secondary);"></div>
+        <span>Secondary accent for alternative actions and highlights.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-background</code>
+        <div class="swatch" style="background-color: var(--color-background); border: 1px solid var(--color-border);"></div>
+        <span>Page background colour.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-surface</code>
+        <div class="swatch" style="background-color: var(--color-surface); border: 1px solid var(--color-border);"></div>
+        <span>Elevated surface colour for cards, sidebars, and panels.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-border</code>
+        <div class="swatch" style="background-color: var(--color-border);"></div>
+        <span>Default border colour for inputs, cards, and dividers.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-text</code>
+        <div class="swatch" style="background-color: var(--color-text);"></div>
+        <span>Default text colour.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-success</code>
+        <div class="swatch" style="background-color: var(--color-success);"></div>
+        <span>Positive feedback — confirmations, success states.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-error</code>
+        <div class="swatch" style="background-color: var(--color-error);"></div>
+        <span>Negative feedback — errors, destructive actions, invalid inputs.</span>
+      </div>
+      <div class="token-row">
+        <code class="zui-code">--color-warning</code>
+        <div class="swatch" style="background-color: var(--color-warning);"></div>
+        <span>Cautionary feedback — warnings, attention needed.</span>
+      </div>
+    </div>
+
+    <h3>Example: changing the primary colour</h3>
+    <Code code={`:root {
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <p>You can use any of the 26 built-in colour palettes: <code class="zui-code">slate</code>, <code class="zui-code">gray</code>, <code class="zui-code">zinc</code>, <code class="zui-code">neutral</code>, <code class="zui-code">stone</code>, <code class="zui-code">red</code>, <code class="zui-code">orange</code>, <code class="zui-code">amber</code>, <code class="zui-code">yellow</code>, <code class="zui-code">lime</code>, <code class="zui-code">green</code>, <code class="zui-code">emerald</code>, <code class="zui-code">teal</code>, <code class="zui-code">cyan</code>, <code class="zui-code">sky</code>, <code class="zui-code">blue</code>, <code class="zui-code">indigo</code>, <code class="zui-code">violet</code>, <code class="zui-code">purple</code>, <code class="zui-code">fuchsia</code>, <code class="zui-code">pink</code>, <code class="zui-code">rose</code>, <code class="zui-code">mist</code>, <code class="zui-code">mauve</code>, <code class="zui-code">olive</code>, <code class="zui-code">taupe</code>. Each palette has shades from <code class="zui-code">50</code> to <code class="zui-code">950</code>.</p>
+
+    <p>Or use any raw colour value:</p>
+    <Code code={`:root {
+  --color-primary: light-dark(oklch(0.55 0.2 270), oklch(0.75 0.15 270));
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Fonts</h2>
+    <p>Override the <code class="zui-code">--custom-font-*</code> properties to change typefaces. ZUI appends robust fallback stacks automatically.</p>
+
+    <Code code={`:root {
+  --custom-font-sans: "IBM Plex Sans";
+  --custom-font-serif: "Playfair Display";
+  --custom-font-mono: "JetBrains Mono";
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <p>You can also control which font stack is used for headings and body text independently:</p>
+    <Code code={`:root {
+  /* Use serif for headings, sans for body */
+  --font-headings: var(--font-serif);
+  --font-body: var(--font-sans);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Border radius</h2>
+    <p>All radii in ZUI are multiplied by <code class="zui-code">--radius-scale</code>. Change this single value to globally adjust roundness.</p>
+
+    <div class="radius-demo">
+      {[0, 0.5, 1, 1.5, 2, 3].map((scale) => (
+        <div class="radius-example" style={`--radius-scale: ${scale};`}>
+          <button class="zui-button">Scale {scale}</button>
+          <input class="zui-input" placeholder={`--radius-scale: ${scale}`} style="width: auto;" />
+        </div>
+      ))}
+    </div>
+
+    <Code code={`:root {
+  /* Sharper corners */
+  --radius-scale: 0.5;
+
+  /* Rounder corners */
+  --radius-scale: 2;
+
+  /* No rounding at all */
+  --radius-scale: 0;
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Border style</h2>
+    <p>The <code class="zui-code">--border-style</code> token controls the border style used by all components. Defaults to <code class="zui-code">solid</code>.</p>
+
+    <div class="border-demo">
+      <div class="border-example" style="--border-style: solid;">
+        <button class="zui-button zui-button-variant-outline">solid</button>
+        <input class="zui-input" placeholder="solid" style="width: auto;" />
+      </div>
+      <div class="border-example" style="--border-style: dashed;">
+        <button class="zui-button zui-button-variant-outline">dashed</button>
+        <input class="zui-input" placeholder="dashed" style="width: auto;" />
+      </div>
+      <div class="border-example" style="--border-style: dotted;">
+        <button class="zui-button zui-button-variant-outline">dotted</button>
+        <input class="zui-input" placeholder="dotted" style="width: auto;" />
+      </div>
+    </div>
+
+    <Code code={`:root {
+  --border-style: dashed;
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Line height</h2>
+    <p>The base body line height is controlled by <code class="zui-code">--line-height</code>. It defaults to <code class="zui-code">--line-height-md</code> (1.5).</p>
+
+    <Code code={`:root {
+  /* Tighter body text */
+  --line-height: var(--line-height-sm);
+
+  /* More generous spacing */
+  --line-height: var(--line-height-lg);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Full example</h2>
+    <p>A complete theme override combining colours, fonts, and shape:</p>
+
+    <Code code={`@import '@mrmartineau/zui/css';
+
+:root {
+  /* Colours — violet primary, slate secondary */
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-secondary: light-dark(var(--color-slate-600), var(--color-slate-400));
+  --color-background: light-dark(var(--color-stone-100), var(--color-stone-900));
+  --color-surface: light-dark(var(--color-stone-50), var(--color-stone-800));
+  --color-border: light-dark(var(--color-stone-300), var(--color-stone-700));
+  --color-text: light-dark(var(--color-stone-800), var(--color-stone-200));
+
+  /* Fonts */
+  --custom-font-sans: "Inter";
+  --custom-font-mono: "Fira Code";
+  --font-headings: var(--font-sans);
+
+  /* Shape */
+  --radius-scale: 1.5;
+  --border-style: solid;
+
+  /* Line height */
+  --line-height: var(--line-height-md);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .token-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-block: var(--space-sm);
+  }
+
+  .token-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-3xs) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .token-row code {
+    flex-shrink: 0;
+    min-width: 14rem;
+  }
+
+  .token-row span {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 75%, transparent);
+  }
+
+  .swatch {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+
+  .radius-demo,
+  .border-demo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-block: var(--space-sm);
+  }
+
+  .radius-example,
+  .border-example {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+</style>

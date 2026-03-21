@@ -1,0 +1,89 @@
+---
+layout: ../../layouts/Layout.astro
+title: Badge
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Badge
+
+Small status indicators and labels.
+
+## Usage
+
+<Demo code={`<span class="zui-badge">Default</span>`}>
+  <span class="zui-badge">Default</span>
+</Demo>
+
+<CodeTabs
+  html={`<span class="zui-badge">Default</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge>Default</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge>Default</Badge>`}
+/>
+
+## Accents
+
+<Demo code={`<span class="zui-badge">Primary</span>
+<span class="zui-badge zui-badge-accent-secondary">Secondary</span>
+<span class="zui-badge zui-badge-accent-success">Success</span>
+<span class="zui-badge zui-badge-accent-warning">Warning</span>
+<span class="zui-badge zui-badge-accent-error">Error</span>`}>
+  <span class="zui-badge">Primary</span>
+  <span class="zui-badge zui-badge-accent-secondary">Secondary</span>
+  <span class="zui-badge zui-badge-accent-success">Success</span>
+  <span class="zui-badge zui-badge-accent-warning">Warning</span>
+  <span class="zui-badge zui-badge-accent-error">Error</span>
+</Demo>
+
+## Fill Variant
+
+<Demo code={`<span class="zui-badge zui-badge-fill">Primary</span>
+<span class="zui-badge zui-badge-fill zui-badge-accent-secondary">Secondary</span>
+<span class="zui-badge zui-badge-fill zui-badge-accent-success">Success</span>
+<span class="zui-badge zui-badge-fill zui-badge-accent-warning">Warning</span>
+<span class="zui-badge zui-badge-fill zui-badge-accent-error">Error</span>`}>
+  <span class="zui-badge zui-badge-fill">Primary</span>
+  <span class="zui-badge zui-badge-fill zui-badge-accent-secondary">Secondary</span>
+  <span class="zui-badge zui-badge-fill zui-badge-accent-success">Success</span>
+  <span class="zui-badge zui-badge-fill zui-badge-accent-warning">Warning</span>
+  <span class="zui-badge zui-badge-fill zui-badge-accent-error">Error</span>
+</Demo>
+
+## Outline Variant
+
+<Demo code={`<span class="zui-badge zui-badge-outline">Primary</span>
+<span class="zui-badge zui-badge-outline zui-badge-accent-secondary">Secondary</span>
+<span class="zui-badge zui-badge-outline zui-badge-accent-success">Success</span>
+<span class="zui-badge zui-badge-outline zui-badge-accent-warning">Warning</span>
+<span class="zui-badge zui-badge-outline zui-badge-accent-error">Error</span>`}>
+  <span class="zui-badge zui-badge-outline">Primary</span>
+  <span class="zui-badge zui-badge-outline zui-badge-accent-secondary">Secondary</span>
+  <span class="zui-badge zui-badge-outline zui-badge-accent-success">Success</span>
+  <span class="zui-badge zui-badge-outline zui-badge-accent-warning">Warning</span>
+  <span class="zui-badge zui-badge-outline zui-badge-accent-error">Error</span>
+</Demo>
+
+<CodeTabs
+  html={`<span class="zui-badge zui-badge-fill">Fill</span>
+<span class="zui-badge zui-badge-outline">Outline</span>
+<span class="zui-badge zui-badge-accent-success">Success</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge className="zui-badge-fill">Fill</Badge>
+<Badge className="zui-badge-outline">Outline</Badge>
+<Badge className="zui-badge-accent-success">Success</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge class="zui-badge-fill">Fill</Badge>
+<Badge class="zui-badge-outline">Outline</Badge>
+<Badge class="zui-badge-accent-success">Success</Badge>`}
+/>

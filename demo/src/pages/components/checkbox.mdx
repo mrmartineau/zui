@@ -1,0 +1,106 @@
+---
+layout: ../../layouts/Layout.astro
+title: Checkbox
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Checkbox
+
+Custom-styled checkboxes with list layout.
+
+## Usage
+
+<Demo code={`<label class="zui-checkbox">
+  <input type="checkbox" checked />
+  Accept terms
+</label>`}>
+  <label class="zui-checkbox">
+    <input type="checkbox" checked />
+    Accept terms
+  </label>
+</Demo>
+
+<CodeTabs
+  html={`<label class="zui-checkbox">
+  <input type="checkbox" checked />
+  Accept terms
+</label>`}
+  react={`<label className="zui-checkbox">
+  <input type="checkbox" defaultChecked />
+  Accept terms
+</label>`}
+  astro={`<label class="zui-checkbox">
+  <input type="checkbox" checked />
+  Accept terms
+</label>`}
+/>
+
+## Checkbox List
+
+Use `.zui-checkbox-list` for vertical grouping.
+
+<Demo code={`<fieldset>
+  <legend class="zui-label">Interests</legend>
+  <div class="zui-checkbox-list">
+    <label class="zui-checkbox">
+      <input type="checkbox" checked />
+      Music
+    </label>
+    <label class="zui-checkbox">
+      <input type="checkbox" />
+      Sports
+    </label>
+    <label class="zui-checkbox">
+      <input type="checkbox" checked />
+      Travel
+    </label>
+    <label class="zui-checkbox">
+      <input type="checkbox" />
+      Reading
+    </label>
+  </div>
+</fieldset>`}>
+  <fieldset style="border: none; padding: 0; width: 100%;">
+    <legend class="zui-label">Interests</legend>
+    <div class="zui-checkbox-list">
+      <label class="zui-checkbox">
+        <input type="checkbox" checked />
+        Music
+      </label>
+      <label class="zui-checkbox">
+        <input type="checkbox" />
+        Sports
+      </label>
+      <label class="zui-checkbox">
+        <input type="checkbox" checked />
+        Travel
+      </label>
+      <label class="zui-checkbox">
+        <input type="checkbox" />
+        Reading
+      </label>
+    </div>
+  </fieldset>
+</Demo>
+
+## Disabled
+
+<Demo code={`<label class="zui-checkbox">
+  <input type="checkbox" disabled checked />
+  Disabled checked
+</label>
+<label class="zui-checkbox">
+  <input type="checkbox" disabled />
+  Disabled unchecked
+</label>`}>
+  <label class="zui-checkbox">
+    <input type="checkbox" disabled checked />
+    Disabled checked
+  </label>
+  <label class="zui-checkbox">
+    <input type="checkbox" disabled />
+    Disabled unchecked
+  </label>
+</Demo>

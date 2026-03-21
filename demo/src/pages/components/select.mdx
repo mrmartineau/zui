@@ -1,0 +1,83 @@
+---
+layout: ../../layouts/Layout.astro
+title: Select
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Select
+
+A styled native select dropdown.
+
+## Usage
+
+<Demo code={`<select class="zui-select">
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>`}>
+  <select class="zui-select">
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+</Demo>
+
+<CodeTabs
+  html={`<select class="zui-select">
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+</select>`}
+  react={`import { Select } from '@mrmartineau/zui/react'
+
+<Select>
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+</Select>`}
+  astro={`---
+import { Select } from '@mrmartineau/zui/astro'
+---
+
+<Select>
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+</Select>`}
+/>
+
+## With Label
+
+<Demo code={`<label class="zui-label" for="country">Country</label>
+<select class="zui-select" id="country">
+  <option value="">Select a country</option>
+  <option value="uk">United Kingdom</option>
+  <option value="us">United States</option>
+  <option value="de">Germany</option>
+  <option value="fr">France</option>
+</select>`}>
+  <div style="width: 100%;">
+    <label class="zui-label" for="country">Country</label>
+    <select class="zui-select" id="country">
+      <option value="">Select a country</option>
+      <option value="uk">United Kingdom</option>
+      <option value="us">United States</option>
+      <option value="de">Germany</option>
+      <option value="fr">France</option>
+    </select>
+  </div>
+</Demo>
+
+## Disabled
+
+<Demo code={`<select class="zui-select" disabled>
+  <option>Cannot change</option>
+</select>`}>
+  <select class="zui-select" disabled>
+    <option>Cannot change</option>
+  </select>
+</Demo>

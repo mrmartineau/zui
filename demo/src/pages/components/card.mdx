@@ -1,0 +1,143 @@
+---
+layout: ../../layouts/Layout.astro
+title: Card
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Card
+
+A container for grouping related content.
+
+## Usage
+
+<Demo code={`<div class="zui-card">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Card Title</div>
+    <div class="zui-card-description">A brief description of this card's content.</div>
+  </div>
+  <div class="zui-card-body">
+    <p>Card body content goes here.</p>
+  </div>
+</div>`}>
+  <div class="zui-card" style="width: 100%;">
+    <div class="zui-card-header">
+      <div class="zui-card-title">Card Title</div>
+      <div class="zui-card-description">A brief description of this card's content.</div>
+    </div>
+    <div class="zui-card-body">
+      <p>Card body content goes here.</p>
+    </div>
+  </div>
+</Demo>
+
+<CodeTabs
+  html={`<div class="zui-card">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Card Title</div>
+    <div class="zui-card-description">Description text.</div>
+  </div>
+  <div class="zui-card-body">Content here.</div>
+</div>`}
+  react={`import { Card } from '@mrmartineau/zui/react'
+
+<Card>
+  <div className="zui-card-header">
+    <div className="zui-card-title">Card Title</div>
+    <div className="zui-card-description">Description text.</div>
+  </div>
+  <div className="zui-card-body">Content here.</div>
+</Card>`}
+  astro={`---
+import { Card } from '@mrmartineau/zui/astro'
+---
+
+<Card>
+  <div class="zui-card-header">
+    <div class="zui-card-title">Card Title</div>
+    <div class="zui-card-description">Description text.</div>
+  </div>
+  <div class="zui-card-body">Content here.</div>
+</Card>`}
+/>
+
+## With Footer
+
+<Demo code={`<div class="zui-card">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Confirm Action</div>
+    <div class="zui-card-description">Are you sure you want to proceed?</div>
+  </div>
+  <div class="zui-card-footer">
+    <button class="zui-button zui-button-variant-outline">Cancel</button>
+    <button class="zui-button">Confirm</button>
+  </div>
+</div>`}>
+  <div class="zui-card" style="width: 100%;">
+    <div class="zui-card-header">
+      <div class="zui-card-title">Confirm Action</div>
+      <div class="zui-card-description">Are you sure you want to proceed?</div>
+    </div>
+    <div class="zui-card-footer">
+      <button class="zui-button zui-button-variant-outline">Cancel</button>
+      <button class="zui-button">Confirm</button>
+    </div>
+  </div>
+</Demo>
+
+## Elevated
+
+<Demo code={`<div class="zui-card zui-card-elevated">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Elevated Card</div>
+    <div class="zui-card-description">Uses a shadow instead of a border.</div>
+  </div>
+  <div class="zui-card-body">
+    <p>Shadow-based card style.</p>
+  </div>
+</div>`}>
+  <div class="zui-card zui-card-elevated" style="width: 100%;">
+    <div class="zui-card-header">
+      <div class="zui-card-title">Elevated Card</div>
+      <div class="zui-card-description">Uses a shadow instead of a border.</div>
+    </div>
+    <div class="zui-card-body">
+      <p>Shadow-based card style.</p>
+    </div>
+  </div>
+</Demo>
+
+## Interactive
+
+<Demo code={`<a href="#" class="zui-card zui-card-interactive">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Clickable Card</div>
+    <div class="zui-card-description">This entire card is a link.</div>
+  </div>
+</a>`}>
+  <a href="#" class="zui-card zui-card-interactive" style="width: 100%;">
+    <div class="zui-card-header">
+      <div class="zui-card-title">Clickable Card</div>
+      <div class="zui-card-description">This entire card is a link.</div>
+    </div>
+  </a>
+</Demo>
+
+<CodeTabs
+  html={`<a href="/details" class="zui-card zui-card-interactive">
+  <div class="zui-card-title">Clickable Card</div>
+</a>`}
+  react={`import { Card } from '@mrmartineau/zui/react'
+
+<Card href="/details">
+  <div className="zui-card-title">Clickable Card</div>
+</Card>`}
+  astro={`---
+import { Card } from '@mrmartineau/zui/astro'
+---
+
+<Card href="/details">
+  <div class="zui-card-title">Clickable Card</div>
+</Card>`}
+/>

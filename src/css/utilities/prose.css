@@ -125,7 +125,7 @@
 
     pre,
     code {
-      font-family: var(--font-family-mono);
+      font-family: var(--font-mono);
       background-color: var(--prose-code-bg-color);
       color: var(--prose-code-color);
       font-feature-settings: "ss09" 1;
@@ -144,7 +144,7 @@
       padding: var(--space-s) var(--space-m);
       border-radius: var(--radius-xl);
       max-width: 100%;
-      box-shadow: var(--shadow-s);
+      box-shadow: var(--shadow-sm);
       position: relative;
 
       code {

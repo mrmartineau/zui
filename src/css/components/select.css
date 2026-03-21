@@ -1,0 +1,48 @@
+@layer zui.components {
+  .zui-select {
+    --zui-select-radius: var(--radius-lg);
+    --zui-select-border: var(--color-border);
+    --zui-select-bg: var(--color-background);
+    --zui-select-fg: var(--color-text);
+    --zui-select-padding-block: var(--space-3xs);
+    --zui-select-padding-inline: var(--space-xs);
+
+    display: block;
+    width: 100%;
+    padding-block: var(--zui-select-padding-block);
+    padding-inline: var(--zui-select-padding-inline);
+    padding-inline-end: var(--space-lg);
+    border: 1px var(--border-style, solid) var(--zui-select-border);
+    border-radius: var(--zui-select-radius);
+    background-color: var(--zui-select-bg);
+    color: var(--zui-select-fg);
+    font-family: inherit;
+    font-size: var(--step-0);
+    line-height: var(--line-height-md);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-xs) center;
+    background-size: 1em;
+    cursor: pointer;
+    transition-property: border-color, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .zui-select:focus {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+    border-color: var(--color-primary);
+  }
+
+  .zui-select:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%) opacity(50%);
+  }
+
+  .zui-select[aria-invalid="true"],
+  .zui-select:user-invalid {
+    border-color: var(--color-error);
+  }
+}
