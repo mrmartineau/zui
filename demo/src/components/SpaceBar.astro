@@ -1,0 +1,17 @@
+---
+interface Props {
+  token: string
+}
+
+const { token } = Astro.props
+---
+
+<div class="bar" style={`width: var(${token}); min-width: 2px;`}></div>
+
+<style>
+  .bar {
+    height: var(--space-xs);
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+  }
+</style>

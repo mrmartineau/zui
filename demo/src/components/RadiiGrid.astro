@@ -1,0 +1,52 @@
+---
+import CopyCode from './CopyCode.astro'
+
+interface Radius {
+  token: string
+  label: string
+}
+
+interface Props {
+  radii: Radius[]
+}
+
+const { radii } = Astro.props
+---
+
+<div class="radii-grid">
+  {radii.map(({ token, label }) => (
+    <div class="radii-card">
+      <div class="radii-preview" style={`border-radius: var(${token});`}></div>
+      <CopyCode>{token}</CopyCode>
+      <span>{label} × scale</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .radii-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
+    margin-block: var(--space-sm);
+  }
+
+  .radii-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3xs);
+    text-align: center;
+  }
+
+  .radii-preview {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--color-primary);
+  }
+
+  .radii-card span {
+    font-size: var(--step--2);
+    color: color-mix(in oklch, var(--color-text) 60%, transparent);
+  }
+</style>

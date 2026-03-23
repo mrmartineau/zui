@@ -1,0 +1,104 @@
+---
+layout: ../../layouts/Layout.astro
+title: Size
+---
+
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+import SizeBar from '../../components/SizeBar.astro'
+
+# Size
+
+Semantic size tokens for widths, heights, and responsive viewport units.
+
+## Fractions
+
+<TokenGrid columns={3}>
+  <TokenRow>
+    <CopyCode>--size-quarter</CopyCode>
+    <SizeBar width="25%" />
+    <span>25%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-third</CopyCode>
+    <SizeBar width="33.333%" />
+    <span>33.3%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-half</CopyCode>
+    <SizeBar width="50%" />
+    <span>50%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-twothirds</CopyCode>
+    <SizeBar width="66.666%" />
+    <span>66.7%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-threequarters</CopyCode>
+    <SizeBar width="75%" />
+    <span>75%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-full</CopyCode>
+    <SizeBar width="100%" />
+    <span>100%</span>
+  </TokenRow>
+</TokenGrid>
+
+### Fifths
+
+<TokenGrid columns={3}>
+  <TokenRow>
+    <CopyCode>--size-fifth</CopyCode>
+    <SizeBar width="20%" />
+    <span>20%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-twofifths</CopyCode>
+    <SizeBar width="40%" />
+    <span>40%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-threefifths</CopyCode>
+    <SizeBar width="60%" />
+    <span>60%</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--size-fourfifths</CopyCode>
+    <SizeBar width="80%" />
+    <span>80%</span>
+  </TokenRow>
+</TokenGrid>
+
+## Viewport units
+
+```css
+--size-svw: 100svw;
+--size-svh: 100svh;
+--size-lvw: 100lvw;
+--size-lvh: 100lvh;
+--size-dvw: 100dvw;
+--size-dvh: 100dvh;
+```
+
+## Intrinsic sizing
+
+```css
+--size-min: min-content;
+--size-max: max-content;
+--size-fit: fit-content;
+```
+
+## Usage
+
+```css
+.sidebar {
+  width: var(--size-quarter);
+}
+
+.hero {
+  min-height: var(--size-dvh);
+}
+```

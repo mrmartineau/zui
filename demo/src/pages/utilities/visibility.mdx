@@ -1,0 +1,41 @@
+---
+layout: ../../layouts/Layout.astro
+title: Visibility
+---
+
+# Visibility
+
+Utility classes for hiding content visually while keeping it accessible to screen readers.
+
+## Screen reader only
+
+The `.sr-only` (aliased as `.visually-hidden`) class hides an element visually but keeps it in the accessibility tree for screen readers.
+
+```css
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+```
+
+## Usage
+
+```html
+<!-- Label for icon-only button -->
+<button class="zui-button zui-button-icon">
+  <i class="ph ph-gear"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+<!-- Skip navigation link -->
+<a href="#main" class="sr-only">Skip to main content</a>
+```
+

@@ -1,0 +1,46 @@
+---
+import CopyCode from './CopyCode.astro'
+
+interface Shadow {
+  token: string
+  label: string
+}
+
+interface Props {
+  shadows: Shadow[]
+}
+
+const { shadows } = Astro.props
+---
+
+<div class="shadow-grid">
+  {shadows.map(({ token, label }) => (
+    <div class="shadow-card" style={`box-shadow: var(${token});`}>
+      <CopyCode>{token}</CopyCode>
+      <span>{label}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-block: var(--space-sm);
+  }
+
+  .shadow-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+  }
+
+  .shadow-card span {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+  }
+</style>

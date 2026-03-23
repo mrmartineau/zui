@@ -1,0 +1,55 @@
+---
+import CopyCode from './CopyCode.astro'
+
+interface Ratio {
+  token: string
+  value: string
+  label: string
+}
+
+interface Props {
+  ratios: Ratio[]
+}
+
+const { ratios } = Astro.props
+---
+
+<div class="ratio-grid">
+  {ratios.map(({ token, value, label }) => (
+    <div class="ratio-card">
+      <div class="ratio-preview" style={`aspect-ratio: var(${token});`}></div>
+      <CopyCode>{token}</CopyCode>
+      <span>{label} ({value})</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .ratio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-md);
+    margin-block: var(--space-sm);
+  }
+
+  .ratio-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3xs);
+    text-align: center;
+  }
+
+  .ratio-preview {
+    width: 100%;
+    max-width: 8rem;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-md);
+    opacity: 0.8;
+  }
+
+  .ratio-card span {
+    font-size: var(--step--2);
+    color: color-mix(in oklch, var(--color-text) 60%, transparent);
+  }
+</style>

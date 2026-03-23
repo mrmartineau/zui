@@ -1,0 +1,178 @@
+---
+layout: ../layouts/Layout.astro
+title: Typography
+---
+
+import TokenGrid from '../components/TokenGrid.astro'
+import TokenRow from '../components/TokenRow.astro'
+import CopyCode from '../components/CopyCode.astro'
+
+# Typography
+
+## Fluid type scale, font stacks, and typography utility classes powered by design tokens.
+
+### Type Scale
+
+ZUI uses a fluid type scale generated with <a href="https://utopia.fyi" class="zui-link">Utopia</a>. Sizes interpolate between viewport widths for seamless responsive typography.
+
+<TokenGrid>
+  <TokenRow>
+    <CopyCode>--step--4</CopyCode>
+    <span class="zui-text--4">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step--3</CopyCode>
+    <span class="zui-text--3">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step--2</CopyCode>
+    <span class="zui-text--2">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step--1</CopyCode>
+    <span class="zui-text--1">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-0</CopyCode>
+    <span class="zui-text-base">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-1</CopyCode>
+    <span class="zui-text-1">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-2</CopyCode>
+    <span class="zui-text-2">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-3</CopyCode>
+    <span class="zui-text-3">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-4</CopyCode>
+    <span class="zui-text-4">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-5</CopyCode>
+    <span class="zui-text-5">The quick brown fox</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--step-6</CopyCode>
+    <span class="zui-text-6">The quick brown fox</span>
+  </TokenRow>
+</TokenGrid>
+
+### Usage
+
+```html
+/* With utility classes */
+<p class="zui-text-2">Large text</p>
+<p class="zui-text-base">Base text</p>
+<p class="zui-text--1">Small text</p>
+```
+
+```css
+/* With custom properties */
+.my-heading {
+  font-size: var(--step-4);
+}
+```
+
+### Font Stacks
+
+Configure fonts in <code class="zui-code">theme.css</code>. ZUI provides robust fallback stacks.
+
+<TokenGrid>
+  <TokenRow>
+    <CopyCode>--font-sans</CopyCode>
+    <span style={{ fontFamily: 'var(--font-sans)' }}>The quick brown fox jumps over the lazy dog</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--font-serif</CopyCode>
+    <span style={{ fontFamily: 'var(--font-serif)' }}>The quick brown fox jumps over the lazy dog</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--font-mono</CopyCode>
+    <span style={{ fontFamily: 'var(--font-mono)' }}>The quick brown fox jumps over the lazy dog</span>
+  </TokenRow>
+</TokenGrid>
+
+```css
+/* Override in theme.css */
+:root {
+  --custom-font-sans: Geist, Inter;
+  --custom-font-serif: Times New Roman;
+  --custom-font-mono: Geist Mono;
+}
+```
+
+### Font Weights
+
+<TokenGrid>
+  <TokenRow>
+    <CopyCode>--font-weight-light</CopyCode>
+    <span style={{ fontWeight: 'var(--font-weight-light)' }}>Light (300)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--font-weight-regular</CopyCode>
+    <span style={{ fontWeight: 'var(--font-weight-regular)' }}>Regular (400)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--font-weight-medium</CopyCode>
+    <span style={{ fontWeight: 'var(--font-weight-medium)' }}>Medium (500)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--font-weight-bold</CopyCode>
+    <span style={{ fontWeight: 'var(--font-weight-bold)' }}>Bold (700)</span>
+  </TokenRow>
+</TokenGrid>
+
+### Line Heights
+
+<TokenGrid>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--line-height-xs</CopyCode>
+    <p style={{ lineHeight: 'var(--line-height-xs)', maxWidth: '40ch' }}>1.25 — Tight line height suited for headings and large display text where lines are short.</p>
+  </TokenRow>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--line-height-sm</CopyCode>
+    <p style={{ lineHeight: 'var(--line-height-sm)', maxWidth: '40ch' }}>1.375 — Slightly tighter than default, good for UI labels and short blocks of text.</p>
+  </TokenRow>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--line-height-md</CopyCode>
+    <p style={{ lineHeight: 'var(--line-height-md)', maxWidth: '40ch' }}>1.5 — The default line height for body text. Provides comfortable reading for paragraphs.</p>
+  </TokenRow>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--line-height-lg</CopyCode>
+    <p style={{ lineHeight: 'var(--line-height-lg)', maxWidth: '40ch' }}>1.625 — Generous spacing for improved readability in longer prose content.</p>
+  </TokenRow>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--line-height-xl</CopyCode>
+    <p style={{ lineHeight: 'var(--line-height-xl)', maxWidth: '40ch' }}>2 — Double-spaced. Useful for emphasised text or legal/document content.</p>
+  </TokenRow>
+</TokenGrid>
+
+### Letter Spacing
+
+<TokenGrid>
+  <TokenRow>
+    <CopyCode>--letter-spacing-2xs</CopyCode>
+    <span style={{ letterSpacing: 'var(--letter-spacing-2xs)' }}>Tighter tracking (-0.05em)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--letter-spacing-xs</CopyCode>
+    <span style={{ letterSpacing: 'var(--letter-spacing-xs)' }}>Slightly tight (0.025em)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--letter-spacing-sm</CopyCode>
+    <span style={{ letterSpacing: 'var(--letter-spacing-sm)' }}>Small caps style (0.05em)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--letter-spacing-md</CopyCode>
+    <span style={{ letterSpacing: 'var(--letter-spacing-md)' }}>Medium tracking (0.075em)</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--letter-spacing-lg</CopyCode>
+    <span style={{ letterSpacing: 'var(--letter-spacing-lg)' }}>Wide tracking (0.15em)</span>
+  </TokenRow>
+</TokenGrid>

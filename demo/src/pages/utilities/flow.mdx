@@ -1,0 +1,53 @@
+---
+layout: ../../layouts/Layout.astro
+title: Flow
+---
+
+# Flow
+
+## Automatic vertical spacing between child elements using the lobotomised owl selector.
+
+
+## How it works
+
+The `.flow` class adds vertical margin between consecutive child elements using `> * + *`. It uses a `--flow-space` custom property (defaulting to `1em`) that headings and blockquotes automatically increase.
+
+```css
+.flow {
+  & > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  :is(h1, h2, h3, blockquote) {
+    --flow-space: 2rem;
+  }
+
+  :is(h1, h2, h3) + * {
+    --flow-space: 1rem;
+  }
+}
+```
+
+## Usage
+
+```html
+<article class="flow">
+  <h1>Title</h1>
+  <p>First paragraph gets 1rem gap after heading.</p>
+  <p>Subsequent paragraphs get 1em gap.</p>
+  <h2>Subheading</h2>
+  <p>2rem gap before heading, 1rem after.</p>
+</article>
+```
+
+## Custom spacing
+
+Override `--flow-space` on any element to adjust its top margin:
+
+```html
+<div class="flow">
+  <p>Normal spacing</p>
+  <p style="--flow-space: 3rem;">Extra space above this paragraph</p>
+  <p>Back to normal</p>
+</div>
+```

@@ -47,22 +47,16 @@ Custom-styled radio buttons with list layout.
   <input type="radio" name="fruit" value="banana" />
   Banana
 </label>`}
-  react={`<label className="zui-radio">
-  <input type="radio" name="fruit" value="apple" defaultChecked />
-  Apple
-</label>
-<label className="zui-radio">
-  <input type="radio" name="fruit" value="banana" />
-  Banana
-</label>`}
-  astro={`<label class="zui-radio">
-  <input type="radio" name="fruit" value="apple" checked />
-  Apple
-</label>
-<label class="zui-radio">
-  <input type="radio" name="fruit" value="banana" />
-  Banana
-</label>`}
+  react={`import { Radio } from '@mrmartineau/zui/react'
+
+<Radio name="fruit" value="apple" defaultChecked>Apple</Radio>
+<Radio name="fruit" value="banana">Banana</Radio>`}
+  astro={`---
+import { Radio } from '@mrmartineau/zui/astro'
+---
+
+<Radio name="fruit" value="apple" checked>Apple</Radio>
+<Radio name="fruit" value="banana">Banana</Radio>`}
 />
 
 ## Radio List

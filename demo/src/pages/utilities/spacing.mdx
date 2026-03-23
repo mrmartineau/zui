@@ -1,0 +1,87 @@
+---
+layout: ../../layouts/Layout.astro
+title: Spacing
+---
+
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+
+# Spacing
+
+Margin, padding, and gap utility classes mapped to the fluid space scale.
+
+## Margin
+
+Classes follow the pattern `.m-{side}-{size};` where side is optional (`x`, `y`, `t`, `r`, `b`, `l`) and size comes from the space scale.
+
+<TokenGrid>
+  <TokenRow header>
+    <span>Class</span>
+    <span>Property</span>
+  </TokenRow>
+  <TokenRow><CopyCode>{`.m-{size}`}</CopyCode><span>margin</span></TokenRow>
+  <TokenRow><CopyCode>{`.mx-{size}`}</CopyCode><span>margin-inline</span></TokenRow>
+  <TokenRow><CopyCode>{`.my-{size}`}</CopyCode><span>margin-block</span></TokenRow>
+  <TokenRow><CopyCode>{`.mt-{size}`}</CopyCode><span>margin-block-start</span></TokenRow>
+  <TokenRow><CopyCode>{`.mr-{size}`}</CopyCode><span>margin-inline-end</span></TokenRow>
+  <TokenRow><CopyCode>{`.mb-{size}`}</CopyCode><span>margin-block-end</span></TokenRow>
+  <TokenRow><CopyCode>{`.ml-{size}`}</CopyCode><span>margin-inline-start</span></TokenRow>
+</TokenGrid>
+
+### Available sizes
+
+`0`, `auto`, `2xs`, `xs`, `s`, `m`, `l`, `xl`, `2xl`, `3xl`, `4xl`
+
+```html
+<div class="mt-xl mb-m mx-auto">Centred with vertical spacing</div>
+```
+
+## Padding
+
+Same pattern as margin: `.p-{side}-{size};`.
+
+<TokenGrid>
+  <TokenRow header>
+    <span>Class</span>
+    <span>Property</span>
+  </TokenRow>
+  <TokenRow><CopyCode>{`.p-{size}`}</CopyCode><span>padding</span></TokenRow>
+  <TokenRow><CopyCode>{`.px-{size}`}</CopyCode><span>padding-inline</span></TokenRow>
+  <TokenRow><CopyCode>{`.py-{size}`}</CopyCode><span>padding-block</span></TokenRow>
+  <TokenRow><CopyCode>{`.pt-{size}`}</CopyCode><span>padding-block-start</span></TokenRow>
+  <TokenRow><CopyCode>{`.pr-{size}`}</CopyCode><span>padding-inline-end</span></TokenRow>
+  <TokenRow><CopyCode>{`.pb-{size}`}</CopyCode><span>padding-block-end</span></TokenRow>
+  <TokenRow><CopyCode>{`.pl-{size}`}</CopyCode><span>padding-inline-start</span></TokenRow>
+</TokenGrid>
+
+```html
+<section class="px-m py-xl">Horizontal and vertical padding</section>
+```
+
+## Gap
+
+Gap utilities for flex and grid containers: `.gap-{side}-{size};`, `.gapx-{side}-{size};` (column-gap), `.gapy-{side}-{size};` (row-gap).
+
+<TokenGrid>
+  <TokenRow header>
+    <span>Class</span>
+    <span>Property</span>
+  </TokenRow>
+  <TokenRow><CopyCode>{`.gap-{size}`}</CopyCode><span>gap</span></TokenRow>
+  <TokenRow><CopyCode>{`.gapx-{size}`}</CopyCode><span>column-gap</span></TokenRow>
+  <TokenRow><CopyCode>{`.gapy-{size}`}</CopyCode><span>row-gap</span></TokenRow>
+</TokenGrid>
+
+### Available sizes
+
+`0`, `2xs`, `xs`, `s`, `m`, `l`, `xl`, `2xl`, `3xl`, `4xl`
+
+```html
+<div class="flex flex-wrap gap-m">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+

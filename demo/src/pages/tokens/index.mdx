@@ -1,0 +1,85 @@
+---
+layout: ../../layouts/Layout.astro
+title: Design Tokens
+---
+
+# Design Tokens
+
+ZUI exposes its entire design system as CSS custom properties. Every colour, spacing value, font size, shadow, radius, easing curve, and z-index level is a token you can reference directly in your CSS.
+
+## Naming conventions
+
+ZUI uses two distinct scale styles depending on the token type:
+
+### Numeric scales: `1, 2, 3…`
+
+Used when the scale is **open-ended** or maps to a raw numeric value. The number is the value itself or an index in a simple sequence.
+
+| Token | Example | Pattern |
+|:------|:--------|:--------|
+| Font weight | `--font-weight-1` … `--font-weight-9` | Maps directly to CSS weight values (100–900) |
+| Z-index | `--z-1` … `--z-9` | Ordered layers (1000, 2000, …) |
+| Font size steps | `--step--2` … `--step-10` | Fluid type scale from [Utopia](https://utopia.fyi) |
+
+### T-shirt sizes: `sm, md, lg…`
+
+Used when the scale has a **bounded, semantic range** — you pick a size relative to a baseline.
+
+| Token | Example | Pattern |
+|:------|:--------|:--------|
+| Space | `--space-sm`, `--space-md`, `--space-lg` | Fluid spacing scale with sub-steps (`2xs`, `3xs`, etc.) |
+| Radius | `--radius-sm` … `--radius-3xl` | Multiplied by `--radius-scale` for global control |
+| Shadow | `--shadow-sm` … `--shadow-2xl` | Increasing depth / elevation |
+| Line height | `--line-height-xs` … `--line-height-2xl` | Tighter → looser leading |
+
+### Named scales
+
+Some tokens use descriptive names instead of a size or number:
+
+| Token | Example | Pattern |
+|:------|:--------|:--------|
+| Easing | `--ease-in`, `--ease-out`, `--ease-spring` | Named by curve behaviour |
+| Font stacks | `--font-sans`, `--font-serif`, `--font-mono` | Named by font category |
+| Colours | `--color-blue-500`, `--color-mist-300` | Colour name + shade (50–950) |
+| Size | `--size-half`, `--size-full`, `--size-dvh` | Named by value or unit |
+
+## Fluid tokens
+
+Space and font-size tokens use `clamp()` to scale fluidly between a minimum and maximum viewport width. This means you get responsive sizing without media queries — values interpolate smoothly between breakpoints.
+
+```css
+/* Space md: 24px at 320px viewport → 30px at 1350px */
+--space-md: clamp(1.5rem, 1.3835rem + 0.5825vw, 1.875rem);
+```
+
+Space tokens also provide **one-up pairs** for fluid spacing that jumps between two steps:
+
+```css
+/* Jumps from sm to md fluidly */
+--space-sm-md: clamp(1rem, 0.7282rem + 1.3592vw, 1.875rem);
+```
+
+## Theming with tokens
+
+All tokens can be overridden. The recommended approach is to edit `theme.css`, which maps semantic tokens to the underlying palette:
+
+```css
+:root {
+  --color-primary: light-dark(var(--color-blue-600), var(--color-blue-400));
+  --custom-font-sans: Inter;
+  --radius-scale: 1.5;
+}
+```
+
+See [Theming](/theming) for the full guide.
+
+## Token categories
+
+- [Space](/tokens/space) — fluid spacing scale
+- [Shadows](/tokens/shadows) — elevation levels
+- [Radii](/tokens/radii) — border radius with global scale control
+- [Easing](/tokens/easing) — timing functions and spring curves
+- [Animation](/tokens/animation) — keyframe presets
+- [Aspect Ratio](/tokens/aspect-ratio) — common aspect ratios
+- [Size](/tokens/size) — fractional, viewport, and intrinsic sizing
+- [Z-Index](/tokens/z-index) — stacking layers

@@ -3,11 +3,17 @@
     /* Semantic colours */
     --color-primary: light-dark(var(--color-mist-600), var(--color-mist-400));
     --color-secondary: light-dark(var(--color-sky-600), var(--color-sky-400));
-    --color-background: light-dark(var(--color-mist-200), var(--color-mist-800));
+    --color-background: light-dark(
+      var(--color-mist-200),
+      var(--color-mist-800)
+    );
     --color-surface: light-dark(var(--color-mist-200), var(--color-mist-800));
     --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
     --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
-    --color-success: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+    --color-success: light-dark(
+      var(--color-emerald-600),
+      var(--color-emerald-400)
+    );
     --color-error: light-dark(var(--color-red-600), var(--color-red-400));
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
     --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
@@ -20,7 +26,7 @@
     --font-sans: var(--custom-font-sans), var(--font-stack-sans);
     --font-serif: var(--custom-font-serif), var(--font-stack-serif);
     --font-mono: var(--custom-font-mono), var(--font-stack-mono);
-    --font-headings: var(--font-serif);
+    --font-headings: var(--font-sans);
     --font-body: var(--font-sans);
     --line-height: var(--line-height-md);
 

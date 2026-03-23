@@ -40,25 +40,25 @@ A container for grouping related content.
   </div>
   <div class="zui-card-body">Content here.</div>
 </div>`}
-  react={`import { Card } from '@mrmartineau/zui/react'
+  react={`import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/react'
 
 <Card>
-  <div className="zui-card-header">
-    <div className="zui-card-title">Card Title</div>
-    <div className="zui-card-description">Description text.</div>
-  </div>
-  <div className="zui-card-body">Content here.</div>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Description text.</CardDescription>
+  </CardHeader>
+  <CardBody>Content here.</CardBody>
 </Card>`}
   astro={`---
-import { Card } from '@mrmartineau/zui/astro'
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/astro'
 ---
 
 <Card>
-  <div class="zui-card-header">
-    <div class="zui-card-title">Card Title</div>
-    <div class="zui-card-description">Description text.</div>
-  </div>
-  <div class="zui-card-body">Content here.</div>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Description text.</CardDescription>
+  </CardHeader>
+  <CardBody>Content here.</CardBody>
 </Card>`}
 />
 
@@ -128,16 +128,16 @@ import { Card } from '@mrmartineau/zui/astro'
   html={`<a href="/details" class="zui-card zui-card-interactive">
   <div class="zui-card-title">Clickable Card</div>
 </a>`}
-  react={`import { Card } from '@mrmartineau/zui/react'
+  react={`import { Card, CardTitle } from '@mrmartineau/zui/react'
 
 <Card href="/details">
-  <div className="zui-card-title">Clickable Card</div>
+  <CardTitle>Clickable Card</CardTitle>
 </Card>`}
   astro={`---
-import { Card } from '@mrmartineau/zui/astro'
+import { Card, CardTitle } from '@mrmartineau/zui/astro'
 ---
 
 <Card href="/details">
-  <div class="zui-card-title">Clickable Card</div>
+  <CardTitle>Clickable Card</CardTitle>
 </Card>`}
 />

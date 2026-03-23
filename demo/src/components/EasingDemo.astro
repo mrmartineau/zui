@@ -1,0 +1,61 @@
+---
+import CopyCode from './CopyCode.astro'
+import TokenGrid from './TokenGrid.astro'
+import TokenRow from './TokenRow.astro'
+
+interface Easing {
+  token: string
+  desc: string
+}
+
+interface Props {
+  easings: Easing[]
+}
+
+const { easings } = Astro.props
+---
+
+<TokenGrid columns={3}>
+  {easings.map(({ token, desc }) => (
+    <TokenRow class="easing-row" style={`--demo-easing: var(${token});`}>
+      <CopyCode>{token}</CopyCode>
+      <span class="desc">{desc}</span>
+      <div class="track">
+        <div class="dot"></div>
+      </div>
+    </TokenRow>
+  ))}
+</TokenGrid>
+
+<style>
+  .desc {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 60%, transparent);
+    min-width: 10rem;
+    flex-shrink: 0;
+  }
+
+  .track {
+    flex: 1;
+    height: 4px;
+    background-color: var(--color-border);
+    border-radius: var(--radius-full);
+    position: relative;
+  }
+
+  .dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: var(--radius-round);
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: left 0.8s var(--demo-easing);
+  }
+
+  :global(.token-row):hover .dot {
+    left: calc(100% - 1rem);
+  }
+</style>

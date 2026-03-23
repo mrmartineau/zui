@@ -1,0 +1,49 @@
+---
+layout: ../../layouts/Layout.astro
+title: Shadows
+---
+
+import ShadowGrid from '../../components/ShadowGrid.astro'
+
+export const shadows = [
+  { token: '--shadow-sm', label: 'Small' },
+  { token: '--shadow', label: 'Default' },
+  { token: '--shadow-md', label: 'Medium' },
+  { token: '--shadow-lg', label: 'Large' },
+  { token: '--shadow-xl', label: 'Extra large' },
+  { token: '--shadow-2xl', label: '2× large' },
+]
+
+# Shadows
+
+Box shadow tokens using <code class="zui-code">oklch</code> relative colour syntax. The shadow colour is configurable via <code class="zui-code">--shadow-color</code>.
+
+## Scale
+
+<ShadowGrid shadows={shadows} />
+
+## Customising shadow colour
+
+Override <code class="zui-code">--shadow-color</code> in your theme to tint all shadows. It defaults to a neutral near-black (<code class="zui-code">oklch(0.2 0 0)</code>) and is overridden to <code class="zui-code">--color-sky-600</code> in the default theme.
+
+```css
+:root {
+  /* Neutral shadows */
+  --shadow-color: oklch(0.2 0 0);
+
+  /* Tinted shadows */
+  --shadow-color: var(--color-indigo-600);
+}
+```
+
+## Usage
+
+```css
+.card {
+  box-shadow: var(--shadow-md);
+}
+
+.modal {
+  box-shadow: var(--shadow-xl);
+}
+```

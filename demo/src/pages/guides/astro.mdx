@@ -1,0 +1,247 @@
+---
+layout: ../../layouts/Layout.astro
+title: Using with Astro
+---
+
+# Using with Astro
+
+ZUI provides native Astro components that render at build time with zero client-side JavaScript.
+
+## Setup
+
+Install ZUI and import the CSS in your layout:
+
+```astro
+---
+// src/layouts/Layout.astro
+import '@mrmartineau/zui/css'
+---
+
+<html lang="en">
+  <body>
+    <slot />
+  </body>
+</html>
+```
+
+Then import components from `@mrmartineau/zui/astro`:
+
+```astro
+---
+import { Button, Badge, Input } from '@mrmartineau/zui/astro'
+---
+```
+
+You can also import individual components directly:
+
+```astro
+---
+import Button from '@mrmartineau/zui/astro/Button.astro'
+---
+```
+
+## Available components
+
+All components are exported from `@mrmartineau/zui/astro`:
+
+- **Button** — with `variant`, `accent`, `size`, `shape`, and `icon` props
+- **Badge** — with `variant` and `color` props
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
+- **Input**, **Textarea**, **Select**
+- **Label**, **Checkbox**, **Radio**
+- **Text**, **Link**, **Code**, **Pre**, **Prose**
+
+Every component accepts a `class` prop and forwards all standard HTML attributes.
+
+## Component examples
+
+### Button
+
+```astro
+---
+import { Button } from '@mrmartineau/zui/astro'
+---
+
+<Button variant="fill" accent="primary">Save</Button>
+<Button variant="outline" accent="secondary">Cancel</Button>
+<Button variant="ghost" size="sm">Settings</Button>
+<Button variant="subtle" accent="destructive">Delete</Button>
+<Button href="/about">About (renders as anchor)</Button>
+```
+
+Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
+
+Accents: `primary`, `secondary`, `destructive`
+
+Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
+
+Shapes: `default`, `hard`, `soft`, `squircle`
+
+### Badge
+
+```astro
+---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge color="green">Active</Badge>
+<Badge variant="fill" color="red">Error</Badge>
+<Badge variant="outline" color="blue">Info</Badge>
+```
+
+### Card
+
+```astro
+---
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/astro'
+---
+
+<Card>
+  <CardHeader>
+    <CardTitle>John Doe</CardTitle>
+    <CardDescription>Software Engineer</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Card content goes here.</p>
+  </CardBody>
+</Card>
+```
+
+Pass an `href` prop to make the card an interactive link:
+
+```astro
+<Card href="/users/1">
+  <CardBody>Clickable card</CardBody>
+</Card>
+```
+
+### Forms
+
+```astro
+---
+import { Label, Input, Textarea, Select, Checkbox, Radio, Button } from '@mrmartineau/zui/astro'
+---
+
+<form>
+  <Label for="name">Name</Label>
+  <Input id="name" type="text" placeholder="Your name" />
+
+  <Label for="email">Email</Label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+
+  <Label for="message">Message</Label>
+  <Textarea id="message" rows={4} placeholder="Your message" />
+
+  <Label for="role">Role</Label>
+  <Select id="role">
+    <option value="dev">Developer</option>
+    <option value="design">Designer</option>
+  </Select>
+
+  <Checkbox id="terms" />
+  <Label for="terms">I agree to the terms</Label>
+
+  <Radio name="plan" value="free" id="free" />
+  <Label for="free">Free</Label>
+  <Radio name="plan" value="pro" id="pro" />
+  <Label for="pro">Pro</Label>
+
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+### Typography
+
+```astro
+---
+import { Text, Link, Code, Prose } from '@mrmartineau/zui/astro'
+---
+
+<Prose>
+  <Text size="lg">Large text</Text>
+  <Text size="sm">Small text</Text>
+  <p>
+    Visit the <Link href="/docs">documentation</Link> for more info.
+  </p>
+  <p>
+    Run <Code>npm install @mrmartineau/zui</Code> to get started.
+  </p>
+</Prose>
+```
+
+## Using in MDX
+
+ZUI Astro components work in `.mdx` files:
+
+```mdx
+---
+layout: ../layouts/Layout.astro
+title: My Page
+---
+
+import { Badge, Button } from '@mrmartineau/zui/astro'
+
+# My Page
+
+Status: <Badge color="green">Live</Badge>
+
+<Button href="/contact">Get in touch</Button>
+```
+
+## Using CSS classes directly
+
+You can always use the underlying CSS classes without importing components — useful in plain `.astro` templates or HTML:
+
+```astro
+<button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+  Save
+</button>
+
+<span class="zui-badge zui-badge-color-green">
+  Active
+</span>
+```
+
+## Mixing with client-side frameworks
+
+Astro's [islands architecture](https://docs.astro.build/en/concepts/islands/) lets you use ZUI's React components alongside the Astro components for interactive islands:
+
+```astro
+---
+import { Card, CardBody } from '@mrmartineau/zui/astro'
+import InteractiveForm from '../components/InteractiveForm.tsx'
+---
+
+<Card>
+  <CardBody>
+    <!-- Static Astro shell, interactive React island -->
+    <InteractiveForm client:visible />
+  </CardBody>
+</Card>
+```
+
+Inside `InteractiveForm.tsx`, use the React components:
+
+```tsx
+import { Input, Button } from '@mrmartineau/zui/react'
+
+export default function InteractiveForm() {
+  return (
+    <form onSubmit={(e) => { e.preventDefault(); /* handle */ }}>
+      <Input type="email" placeholder="you@example.com" />
+      <Button type="submit">Subscribe</Button>
+    </form>
+  )
+}
+```
+
+## Theming
+
+ZUI themes are pure CSS. Override custom properties in your layout's stylesheet. See the [Theming](/theming) page for full details.
+
+```css
+:root {
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --radius-scale: 1.5;
+}
+```

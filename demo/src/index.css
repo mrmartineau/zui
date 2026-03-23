@@ -5,6 +5,7 @@
     oklch(from var(--color-background) calc(l + 0.03) c h),
     oklch(from var(--color-background) calc(l - 0.02) c h)
     ) !important;
+  font-variant-ligatures: none;
 
   @supports (corner-shape: squircle) {
     corner-shape: superellipse(1.25);

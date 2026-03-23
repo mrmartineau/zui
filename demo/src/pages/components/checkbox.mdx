@@ -27,14 +27,14 @@ Custom-styled checkboxes with list layout.
   <input type="checkbox" checked />
   Accept terms
 </label>`}
-  react={`<label className="zui-checkbox">
-  <input type="checkbox" defaultChecked />
-  Accept terms
-</label>`}
-  astro={`<label class="zui-checkbox">
-  <input type="checkbox" checked />
-  Accept terms
-</label>`}
+  react={`import { Checkbox } from '@mrmartineau/zui/react'
+
+<Checkbox defaultChecked>Accept terms</Checkbox>`}
+  astro={`---
+import { Checkbox } from '@mrmartineau/zui/astro'
+---
+
+<Checkbox checked>Accept terms</Checkbox>`}
 />
 
 ## Checkbox List

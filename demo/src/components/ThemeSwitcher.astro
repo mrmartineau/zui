@@ -1,0 +1,317 @@
+---
+const primaryColorNames = [
+  'slate', 'gray', 'zinc', 'neutral', 'stone',
+  'mauve', 'olive', 'mist', 'taupe',
+]
+const secondaryColorNames = [
+  'slate', 'gray', 'zinc', 'neutral', 'stone',
+  'mauve', 'olive', 'mist', 'taupe',
+  'red', 'orange', 'amber', 'yellow', 'lime', 'green',
+  'emerald', 'teal', 'cyan', 'sky', 'blue',
+  'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose',
+]
+
+const fonts = [
+  'Geist, Inter',
+  'Inter',
+  'system-ui',
+  'Georgia, serif',
+  'Menlo, monospace',
+]
+
+const radiusScales = [
+  { label: 'None', value: '0' },
+  { label: 'Small', value: '0.5' },
+  { label: 'Default', value: '1' },
+  { label: 'Large', value: '1.5' },
+  { label: 'XL', value: '2' },
+  { label: 'Full', value: '6' },
+]
+---
+
+<button class="theme-toggle zui-button zui-button-icon zui-button-variant-subtle zui-button-size-xl zui-button-shape-squircle" id="theme-toggle" type="button" aria-label="Open theme switcher">
+  <i class="ph ph-palette"></i>
+</button>
+
+<dialog class="theme-dialog" id="theme-dialog">
+  <div class="panel-header">
+    <h3 class="panel-title">Theme</h3>
+    <div class="panel-actions">
+      <button class="zui-button zui-button-variant-outline zui-button-size-sm" id="theme-copy" type="button">Copy CSS</button>
+      <button class="zui-button zui-button-variant-outline zui-button-size-sm" id="theme-reset" type="button">Reset</button>
+      <button class="zui-button zui-button-icon zui-button-variant-ghost zui-button-size-sm" id="theme-close" type="button" aria-label="Close"><i class="ph ph-x"></i></button>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <div class="panel-controls">
+      <div class="control-group">
+        <label class="control-label" for="ctrl-primary">Primary</label>
+        <select class="zui-select" id="ctrl-primary">
+          {primaryColorNames.map(name => (
+            <option value={name} selected={name === 'mist'}>{name}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="ctrl-secondary">Secondary</label>
+        <select class="zui-select" id="ctrl-secondary">
+          {secondaryColorNames.map(name => (
+            <option value={name} selected={name === 'sky'}>{name}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="ctrl-font">Font</label>
+        <select class="zui-select" id="ctrl-font">
+          {fonts.map(font => (
+            <option value={font} selected={font === 'Geist, Inter'}>{font.split(',')[0]}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="ctrl-radius">Corners</label>
+        <select class="zui-select" id="ctrl-radius">
+          {radiusScales.map(({ label, value }) => (
+            <option value={value} selected={value === '1'}>{label}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <p class="zui-color-muted">Copy this CSS to your project's theme.css file:</p>
+    <pre class="zui-pre panel-preview"><code id="theme-code"></code></pre>
+  </div>
+</dialog>
+
+<script>
+  const toggle = document.getElementById('theme-toggle')!
+  const dialog = document.getElementById('theme-dialog') as HTMLDialogElement
+  const closeBtn = document.getElementById('theme-close')!
+  const copyBtn = document.getElementById('theme-copy')!
+  const resetBtn = document.getElementById('theme-reset')!
+  const codeEl = document.getElementById('theme-code')!
+
+  const ctrlPrimary = document.getElementById('ctrl-primary') as HTMLSelectElement
+  const ctrlSecondary = document.getElementById('ctrl-secondary') as HTMLSelectElement
+  const ctrlFont = document.getElementById('ctrl-font') as HTMLSelectElement
+  const ctrlRadius = document.getElementById('ctrl-radius') as HTMLSelectElement
+
+  const defaults = {
+    primary: 'mist',
+    secondary: 'sky',
+    font: 'Geist, Inter',
+    radius: '1',
+  }
+
+  toggle.addEventListener('click', () => {
+    if (dialog.open) {
+      dialog.close()
+    } else {
+      dialog.show()
+    }
+  })
+
+  closeBtn.addEventListener('click', () => dialog.close())
+
+  function applyTheme() {
+    const primary = ctrlPrimary.value
+    const secondary = ctrlSecondary.value
+    const font = ctrlFont.value
+    const radius = ctrlRadius.value
+
+    const root = document.documentElement
+
+    root.style.setProperty('--color-primary', `light-dark(var(--color-${primary}-600), var(--color-${primary}-400))`)
+    root.style.setProperty('--color-secondary', `light-dark(var(--color-${secondary}-600), var(--color-${secondary}-400))`)
+    root.style.setProperty('--color-background', `light-dark(var(--color-${primary}-200), var(--color-${primary}-800))`)
+    root.style.setProperty('--color-surface', `light-dark(var(--color-${primary}-200), var(--color-${primary}-800))`)
+    root.style.setProperty('--color-border', `light-dark(var(--color-${primary}-300), var(--color-${primary}-700))`)
+    root.style.setProperty('--color-text', `light-dark(var(--color-${primary}-700), var(--color-${primary}-300))`)
+    root.style.setProperty('--custom-font-sans', font)
+    root.style.setProperty('--radius-scale', radius)
+
+    updatePreview()
+  }
+
+  function getFullCSS() {
+    const primary = ctrlPrimary.value
+    const secondary = ctrlSecondary.value
+    const font = ctrlFont.value
+    const radius = ctrlRadius.value
+
+    return `@layer zui.base {
+  :root {
+    --color-primary: light-dark(var(--color-${primary}-600), var(--color-${primary}-400));
+    --color-secondary: light-dark(var(--color-${secondary}-600), var(--color-${secondary}-400));
+    --color-background: light-dark(
+      var(--color-${primary}-200),
+      var(--color-${primary}-800)
+    );
+    --color-surface: light-dark(var(--color-${primary}-200), var(--color-${primary}-800));
+    --color-border: light-dark(var(--color-${primary}-300), var(--color-${primary}-700));
+    --color-text: light-dark(var(--color-${primary}-700), var(--color-${primary}-300));
+    --color-success: light-dark(
+      var(--color-emerald-600),
+      var(--color-emerald-400)
+    );
+    --color-error: light-dark(var(--color-red-600), var(--color-red-400));
+    --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
+    --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
+    --custom-font-sans: ${font};
+    --custom-font-serif: Times New Roman;
+    --custom-font-mono: Geist Mono;
+    --font-sans: var(--custom-font-sans), var(--font-stack-sans);
+    --font-serif: var(--custom-font-serif), var(--font-stack-serif);
+    --font-mono: var(--custom-font-mono), var(--font-stack-mono);
+    --font-headings: var(--font-sans);
+    --font-body: var(--font-sans);
+    --line-height: var(--line-height-md);
+    --radius-scale: ${radius};
+    --border-style: solid;
+  }
+}`
+  }
+
+  function updatePreview() {
+    codeEl.textContent = getFullCSS()
+  }
+
+  function resetTheme() {
+    ctrlPrimary.value = defaults.primary
+    ctrlSecondary.value = defaults.secondary
+    ctrlFont.value = defaults.font
+    ctrlRadius.value = defaults.radius
+
+    const root = document.documentElement
+    root.style.removeProperty('--color-primary')
+    root.style.removeProperty('--color-secondary')
+    root.style.removeProperty('--color-background')
+    root.style.removeProperty('--color-surface')
+    root.style.removeProperty('--color-border')
+    root.style.removeProperty('--color-text')
+    root.style.removeProperty('--custom-font-sans')
+    root.style.removeProperty('--radius-scale')
+
+    updatePreview()
+  }
+
+  copyBtn.addEventListener('click', () => {
+    const css = getFullCSS()
+    navigator.clipboard.writeText(css).then(() => {
+      const orig = copyBtn.textContent
+      copyBtn.textContent = 'Copied!'
+      setTimeout(() => { copyBtn.textContent = orig }, 1500)
+    })
+  })
+
+  resetBtn.addEventListener('click', resetTheme)
+
+  const controls = [ctrlPrimary, ctrlSecondary, ctrlFont, ctrlRadius]
+  controls.forEach(ctrl => ctrl.addEventListener('change', applyTheme))
+
+  updatePreview()
+</script>
+
+<style>
+  .theme-toggle {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    z-index: var(--z-4);
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+  }
+
+  .theme-toggle:hover {
+    background-color: color-mix(in oklch, var(--color-primary) 15%, var(--color-surface));
+    transform: scale(1.05);
+  }
+
+  .theme-dialog {
+    position: fixed;
+    bottom: calc(var(--space-md) + 60px);
+    right: var(--space-md);
+    left: auto;
+    top: auto;
+    width: 420px;
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 0;
+    margin: 0;
+    z-index: var(--z-4);
+    color: var(--color-text);
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xs) var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .panel-title {
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .panel-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xs);
+  }
+
+  .panel-body {
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .panel-preview {
+    font-size: var(--step--3);
+    padding: var(--space-2xs);
+    overflow-x: auto;
+    max-height: 150px;
+  }
+
+  .panel-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xs);
+  }
+
+  .control-label {
+    font-size: var(--step--2);
+    font-weight: 500;
+    color: var(--color-text);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 480px) {
+    .theme-dialog {
+      width: calc(100vw - var(--space-md) * 2);
+      right: var(--space-md);
+    }
+
+    .panel-controls {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

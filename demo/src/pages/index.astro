@@ -4,82 +4,404 @@ import { Code } from 'astro:components'
 ---
 
 <Layout title="Home">
-    <h1>ZUI</h1>
-    <p class="subtitle">A CSS UI library with optional React and Astro components.</p>
-
-    <div class="grid">
-        <div class="card">
-            <h2>CSS-first</h2>
-            <p>Built on standard CSS with <code>@layer</code> for clean cascade control and custom properties for full configurability. No build step required&mdash;just import and go.</p>
-        </div>
-
-        <div class="card">
-            <h2>Framework components</h2>
-            <p>Use the plain CSS classes anywhere, or reach for ready-made React and Astro component wrappers that map props to the underlying class API.</p>
-        </div>
-
-        <div class="card">
-            <h2>Themeable</h2>
-            <p>Override semantic colours, fonts, and radii through <code>theme.css</code> custom properties. Supports <code>light-dark()</code> colour schemes out of the box.</p>
-        </div>
-
-        <div class="card">
-            <h2>Design tokens</h2>
-            <p>A comprehensive token system covering colours, spacing, typography, shadows, radii, easing, and z-index&mdash;all exposed as CSS custom properties.</p>
-        </div>
+  <section class="hero">
+    <span class="zui-badge zui-badge-variant-outline">v0.0.1</span>
+    <h1 class="hero-title">Build interfaces<br>with intention</h1>
+    <p class="hero-subtitle">A CSS-first UI library with design tokens, layered architecture, and optional React&nbsp;&amp;&nbsp;Astro components. No build step required.</p>
+    <div class="hero-actions">
+      <a href="/installation" class="zui-button">Get started</a>
+      <a href="/components/button" class="zui-button zui-button-variant-outline">Browse components</a>
     </div>
 
-    <section class="flow">
-        <h2>Quick start</h2>
+    <div class="hero-install">
+      <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+    </div>
+  </section>
 
-        <p>Install the package:</p>
-        <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  <section class="showcase">
+    <h2 class="section-label">Live components</h2>
+    <div class="showcase-grid">
+      <div class="showcase-panel">
+        <span class="showcase-label">Buttons</span>
+        <div class="showcase-row">
+          <button class="zui-button">Primary</button>
+          <button class="zui-button zui-button-variant-outline">Outline</button>
+          <button class="zui-button zui-button-variant-ghost">Ghost</button>
+          <button class="zui-button zui-button-variant-subtle">Subtle</button>
+          <button class="zui-button zui-button-variant-link">Link</button>
+        </div>
+      </div>
 
-        <p>Import the CSS in your project:</p>
-        <Code code="@import '@mrmartineau/zui/css';" lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
-    </section>
+      <div class="showcase-panel">
+        <span class="showcase-label">Badges</span>
+        <div class="showcase-row">
+          <span class="zui-badge">Default</span>
+          <span class="zui-badge zui-badge-variant-fill">Fill</span>
+          <span class="zui-badge zui-badge-variant-outline">Outline</span>
+          <span class="zui-badge zui-badge-color-green">Green</span>
+          <span class="zui-badge zui-badge-color-red">Red</span>
+          <span class="zui-badge zui-badge-color-amber">Amber</span>
+        </div>
+      </div>
 
-    <nav class="links">
-        <a href="/installation" class="zui-button">Installation</a>
-        <a href="/components/button" class="zui-button zui-button-variant-outline">Components</a>
-    </nav>
+      <div class="showcase-panel">
+        <span class="showcase-label">Form controls</span>
+        <div class="showcase-stack">
+          <label class="zui-label" for="demo-input">Email address</label>
+          <input class="zui-input" id="demo-input" type="email" placeholder="you@example.com" />
+          <div class="showcase-row">
+            <label class="zui-label" style="display:flex;align-items:center;gap:var(--space-3xs)">
+              <input class="zui-checkbox" type="checkbox" checked />
+              Remember me
+            </label>
+            <select class="zui-select" style="width:auto;">
+              <option>Option A</option>
+              <option>Option B</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-panel">
+        <span class="showcase-label">Card</span>
+        <div class="zui-card">
+          <div class="zui-card-header">
+            <div class="zui-card-title">Notification settings</div>
+            <div class="zui-card-description">Choose what you want to be notified about.</div>
+          </div>
+          <div class="zui-card-body">
+            <label class="zui-label" style="display:flex;align-items:center;gap:var(--space-3xs)">
+              <input class="zui-checkbox" type="checkbox" checked />
+              Email notifications
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2 class="section-label">Why ZUI</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>CSS-first</h3>
+        <p>Standard CSS with <code>@layer</code> for clean cascade control. Custom properties for full configurability. Import and go&mdash;no build step, no&nbsp;JS&nbsp;runtime.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Framework wrappers</h3>
+        <p>Use plain CSS classes anywhere, or reach for typed React and Astro component wrappers that map props to the underlying class API.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Themeable in seconds</h3>
+        <p>Override semantic colours, fonts, and border radii through one <code>theme.css</code> file. Supports <code>light-dark()</code> colour schemes natively.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Design tokens</h3>
+        <p>A comprehensive token system&mdash;colours, spacing, type scale, shadows, radii, easing, z-index&mdash;all exposed as CSS custom properties.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Layered architecture</h3>
+        <p>Base, component, and utility layers keep specificity predictable. Override anything without <code>!important</code> hacks.</p>
+      </div>
+
+      <div class="feature">
+        <h3>Modern CSS</h3>
+        <p>Built on <code>oklch()</code>, relative colour syntax, <code>light-dark()</code>, and container queries. Designed for how CSS works today.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quickstart">
+    <h2 class="section-label">Quick start</h2>
+    <div class="quickstart-steps">
+      <div class="step">
+        <span class="step-number">1</span>
+        <div class="step-content">
+          <h3>Install</h3>
+          <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <div class="step-content">
+          <h3>Import</h3>
+          <Code code={`@import '@mrmartineau/zui/css';`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <div class="step-content">
+          <h3>Use</h3>
+          <Code code={`<button class="zui-button">Click me</button>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Guide</h4>
+        <a href="/installation">Installation</a>
+        <a href="/theming">Theming</a>
+        <a href="/colors">Colors</a>
+        <a href="/typography">Typography</a>
+        <a href="/layers">CSS Layers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tokens</h4>
+        <a href="/tokens">Overview</a>
+        <a href="/tokens/space">Space</a>
+        <a href="/tokens/radii">Radii</a>
+        <a href="/tokens/shadows">Shadows</a>
+        <a href="/tokens/easing">Easing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Components</h4>
+        <a href="/components/button">Button</a>
+        <a href="/components/badge">Badge</a>
+        <a href="/components/card">Card</a>
+        <a href="/components/input">Input</a>
+      </div>
+    </div>
+  </footer>
 </Layout>
 
 <style>
-    .subtitle {
-        font-size: var(--font-size-lg);
-        color: var(--color-text);
-        max-width: 48ch;
+  /* Hero ------------------------------------------------------------------ */
+  .hero {
+    padding-block: var(--space-xl) var(--space-2xl);
+    max-width: 640px;
+  }
+
+  .hero-title {
+    font-size: var(--step-5);
+    font-weight: 800;
+    line-height: var(--line-height-xs);
+    letter-spacing: -0.025em;
+    margin-block: var(--space-sm) var(--space-md);
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: var(--step-1);
+    line-height: var(--line-height-md);
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+    max-width: 50ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-lg);
+  }
+
+  .hero-install {
+    margin-block-start: var(--space-lg);
+  }
+
+  .hero-install :global(pre) {
+    margin: 0;
+  }
+
+  /* Section label --------------------------------------------------------- */
+  .section-label {
+    font-size: var(--step--2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    margin-block-end: var(--space-md);
+  }
+
+  /* Showcase -------------------------------------------------------------- */
+  .showcase {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .showcase-panel {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .showcase-label {
+    font-size: var(--step--2);
+    font-weight: 500;
+    color: color-mix(in oklch, var(--color-text) 50%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .showcase-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+
+  .showcase-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  /* Features -------------------------------------------------------------- */
+  .features {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md) var(--space-lg);
+  }
+
+  .feature h3 {
+    font-size: var(--step-0);
+    font-weight: 650;
+    margin-block-end: var(--space-3xs);
+  }
+
+  .feature p {
+    font-size: var(--step--1);
+    line-height: var(--line-height-md);
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+  }
+
+  .feature code {
+    font-size: 0.875em;
+    font-family: var(--font-mono);
+    background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Quick start ----------------------------------------------------------- */
+  .quickstart {
+    padding-block: var(--space-xl) var(--space-2xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .quickstart-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .step {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: light-dark(var(--color-white), oklch(from var(--color-primary) 0.15 c h));
+    font-size: var(--step--1);
+    font-weight: 700;
+    margin-block-start: 2px;
+  }
+
+  .step-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .step-content h3 {
+    font-size: var(--step-0);
+    font-weight: 600;
+    margin-block-end: var(--space-3xs);
+  }
+
+  .step-content :global(pre) {
+    margin: 0;
+  }
+
+  /* Footer ---------------------------------------------------------------- */
+  .site-footer {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .footer-col h4 {
+    font-size: var(--step--2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: color-mix(in oklch, var(--color-text) 50%, transparent);
+    margin-block-end: var(--space-3xs);
+  }
+
+  .footer-col a {
+    font-size: var(--step--1);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--color-primary);
+  }
+
+  /* Responsive ------------------------------------------------------------ */
+  @media (max-width: 767px) {
+    .showcase-grid {
+      grid-template-columns: 1fr;
     }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-        gap: var(--space-md);
-        margin-block-start: var(--space-lg);
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
     }
 
-    .card {
-        padding: var(--space-md);
-        border: 1px var(--border-style) var(--color-border);
-        border-radius: calc(var(--radius-md) * var(--radius-scale));
+    .hero-title {
+      font-size: var(--step-4);
     }
 
-    .card h2 {
-        margin-block-end: var(--space-xs);
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
     }
+  }
 
-    .card p {
-        color: var(--color-text);
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
-
-    section {
-        margin-block-start: var(--space-xl);
-    }
-
-    .links {
-        display: flex;
-        gap: var(--space-sm);
-        margin-block-start: var(--space-xl);
-    }
+  }
 </style>

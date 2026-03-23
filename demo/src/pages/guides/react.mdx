@@ -1,0 +1,213 @@
+---
+layout: ../../layouts/Layout.astro
+title: Using with React
+---
+
+# Using with React
+
+ZUI ships first-party React components that wrap the underlying CSS classes, giving you type-safe props and variant support out of the box.
+
+## Setup
+
+Install ZUI and import the CSS in your app's entry point:
+
+```tsx
+// main.tsx or App.tsx
+import '@mrmartineau/zui/css'
+```
+
+Then import components from `@mrmartineau/zui/react`:
+
+```tsx
+import { Button, Badge, Input } from '@mrmartineau/zui/react'
+```
+
+## Available components
+
+All components are exported from `@mrmartineau/zui/react`:
+
+- **Button** — with `variant`, `accent`, `size`, `shape`, and `icon` props
+- **Badge** — with `variant` and `color` props
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
+- **Input**, **Textarea**, **Select**
+- **Label**, **Checkbox**, **Radio**
+- **Text**, **Link**, **Code**, **Pre**, **Prose**
+
+Every component forwards all standard HTML attributes and accepts a `className` prop for additional styling.
+
+## Component examples
+
+### Button
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+
+function App() {
+  return (
+    <>
+      <Button variant="fill" accent="primary">Save</Button>
+      <Button variant="outline" accent="secondary">Cancel</Button>
+      <Button variant="ghost" size="sm">Settings</Button>
+      <Button variant="subtle" accent="destructive">Delete</Button>
+      <Button href="/about">About (renders as anchor)</Button>
+    </>
+  )
+}
+```
+
+Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
+
+Accents: `primary`, `secondary`, `destructive`
+
+Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
+
+Shapes: `default`, `hard`, `soft`, `squircle`
+
+### Badge
+
+```tsx
+import { Badge } from '@mrmartineau/zui/react'
+
+function StatusBadge() {
+  return (
+    <>
+      <Badge color="green">Active</Badge>
+      <Badge variant="fill" color="red">Error</Badge>
+      <Badge variant="outline" color="blue">Info</Badge>
+    </>
+  )
+}
+```
+
+### Card
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/react'
+
+function UserCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>John Doe</CardTitle>
+        <CardDescription>Software Engineer</CardDescription>
+      </CardHeader>
+      <CardBody>
+        <p>Card content goes here.</p>
+      </CardBody>
+    </Card>
+  )
+}
+```
+
+Pass an `href` prop to make the card an interactive link:
+
+```tsx
+<Card href="/users/1">
+  <CardBody>Clickable card</CardBody>
+</Card>
+```
+
+### Forms
+
+```tsx
+import { Label, Input, Textarea, Select, Checkbox, Radio } from '@mrmartineau/zui/react'
+
+function ContactForm() {
+  return (
+    <form>
+      <Label htmlFor="name">Name</Label>
+      <Input id="name" type="text" placeholder="Your name" />
+
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" placeholder="you@example.com" />
+
+      <Label htmlFor="message">Message</Label>
+      <Textarea id="message" rows={4} placeholder="Your message" />
+
+      <Label htmlFor="role">Role</Label>
+      <Select id="role">
+        <option value="dev">Developer</option>
+        <option value="design">Designer</option>
+      </Select>
+
+      <Checkbox id="terms" />
+      <Label htmlFor="terms">I agree to the terms</Label>
+
+      <Radio name="plan" value="free" id="free" />
+      <Label htmlFor="free">Free</Label>
+      <Radio name="plan" value="pro" id="pro" />
+      <Label htmlFor="pro">Pro</Label>
+
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+}
+```
+
+### Typography
+
+```tsx
+import { Text, Link, Code, Prose } from '@mrmartineau/zui/react'
+
+function Content() {
+  return (
+    <Prose>
+      <Text size="lg">Large text</Text>
+      <Text size="sm">Small text</Text>
+      <p>
+        Visit the <Link href="/docs">documentation</Link> for more info.
+      </p>
+      <p>
+        Run <Code>npm install @mrmartineau/zui</Code> to get started.
+      </p>
+    </Prose>
+  )
+}
+```
+
+## Using variant helpers directly
+
+ZUI exports the `buttonVariants` and `badgeVariants` functions if you need to generate class strings manually — useful when composing with other libraries or building custom wrappers:
+
+```tsx
+import { buttonVariants, badgeVariants } from '@mrmartineau/zui/react'
+
+const classes = buttonVariants({ variant: 'outline', size: 'sm' })
+// → "zui-button zui-button-variant-outline zui-button-size-sm …"
+```
+
+## Using CSS classes directly
+
+You can always use the underlying CSS classes without the React components. This is useful for elements that ZUI doesn't ship a component for:
+
+```tsx
+function CustomElement() {
+  return (
+    <div className="zui-card">
+      <div className="zui-card-header">
+        <h2 className="zui-card-title">Title</h2>
+      </div>
+    </div>
+  )
+}
+```
+
+## Theming
+
+ZUI themes are pure CSS — override custom properties in your stylesheet. See the [Theming](/theming) page for full details.
+
+```css
+/* your-theme.css */
+:root {
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --radius-scale: 1.5;
+}
+```
+
+## TypeScript
+
+All component props are exported as types:
+
+```tsx
+import type { ButtonProps, BadgeProps, CardProps, InputProps } from '@mrmartineau/zui/react'
+```

@@ -1,0 +1,108 @@
+---
+layout: ../../layouts/Layout.astro
+title: Z-Index
+---
+
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+
+export const valueStyle = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: 'var(--step--1)',
+  minWidth: '8rem',
+  flexShrink: 0,
+}
+export const descStyle = {
+  fontSize: 'var(--step--1)',
+  color: 'color-mix(in oklch, var(--color-text) 60%, transparent)',
+}
+
+# Z-Index
+
+A structured z-index scale with wide gaps between layers to avoid collisions.
+
+## Scale
+
+<TokenGrid columns={3}>
+  <TokenRow>
+    <CopyCode>--z--1</CopyCode>
+    <span style={valueStyle}>-1</span>
+    <span style={descStyle}>Behind everything</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-0</CopyCode>
+    <span style={valueStyle}>0</span>
+    <span style={descStyle}>Default stacking</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-1</CopyCode>
+    <span style={valueStyle}>1000</span>
+    <span style={descStyle}>Dropdowns, tooltips</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-2</CopyCode>
+    <span style={valueStyle}>2000</span>
+    <span style={descStyle}>Sticky elements</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-3</CopyCode>
+    <span style={valueStyle}>3000</span>
+    <span style={descStyle}>Fixed headers</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-4</CopyCode>
+    <span style={valueStyle}>4000</span>
+    <span style={descStyle}>Overlays</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-5</CopyCode>
+    <span style={valueStyle}>5000</span>
+    <span style={descStyle}>Modals</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-6</CopyCode>
+    <span style={valueStyle}>6000</span>
+    <span style={descStyle}>Popovers</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-7</CopyCode>
+    <span style={valueStyle}>7000</span>
+    <span style={descStyle}>Toasts</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-8</CopyCode>
+    <span style={valueStyle}>8000</span>
+    <span style={descStyle}>Alerts</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-9</CopyCode>
+    <span style={valueStyle}>9000</span>
+    <span style={descStyle}>Top-level UI</span>
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--z-important</CopyCode>
+    <span style={valueStyle}>2147483647</span>
+    <span style={descStyle}>Maximum (nuclear option)</span>
+  </TokenRow>
+</TokenGrid>
+
+## Usage
+
+```css
+.dropdown {
+  z-index: var(--z-1);
+}
+
+.modal-backdrop {
+  z-index: var(--z-4);
+}
+
+.modal {
+  z-index: var(--z-5);
+}
+
+.toast {
+  z-index: var(--z-7);
+}
+```

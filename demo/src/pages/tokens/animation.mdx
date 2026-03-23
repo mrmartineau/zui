@@ -1,0 +1,28 @@
+---
+layout: ../../layouts/Layout.astro
+title: Animation
+---
+
+import AnimationDemo from '../../components/AnimationDemo.astro'
+
+# Animation
+
+## Pre-built animation tokens combining keyframes with easing and duration. Apply via the <code class="zui-code">animation</code> property.
+
+<AnimationDemo />
+
+### Usage
+
+```css
+.notification {
+  animation: var(--animation-slide-in-right);
+}
+
+.spinner {
+  animation: var(--animation-spin);
+}
+
+.error-field {
+  animation: var(--animation-shake-x);
+}
+```

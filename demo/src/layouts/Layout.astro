@@ -2,6 +2,7 @@
 import '@mrmartineau/zui/css'
 import '../index.css';
 import Sidebar from '../components/Sidebar.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
 interface Props {
   title: string;
@@ -30,15 +31,57 @@ const currentPath = Astro.url.pathname;
   <body>
     <header class="site-header">
       <a href="/" class="site-logo">ZUI</a>
+      <button
+        class="mobile-menu-btn zui-button zui-button-variant-ghost"
+        type="button"
+        aria-label="Open navigation"
+        onclick="document.getElementById('mobile-nav').showModal()"
+      >
+        <i class="ph ph-list"></i>
+      </button>
     </header>
+
+    <dialog id="mobile-nav" class="mobile-nav-dialog">
+      <div class="mobile-nav-header">
+        <a href="/" class="site-logo">ZUI</a>
+        <button
+          class="zui-button zui-button-variant-ghost"
+          type="button"
+          aria-label="Close navigation"
+          onclick="document.getElementById('mobile-nav').close()"
+        >
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div class="mobile-nav-body">
+        <Sidebar currentPath={currentPath} />
+      </div>
+    </dialog>
+
     <div class="site-layout">
       <aside class="site-sidebar">
         <Sidebar currentPath={currentPath} />
       </aside>
-      <main class="site-main flow">
+      <main class="site-main docs-prose">
         <slot />
       </main>
     </div>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <p class="site-footer-credit">
+          Made by <a href="https://zander.wtf">Zander Martineau</a>
+        </p>
+        <nav class="site-footer-nav" aria-label="Footer">
+          <a href="/">Guide</a>
+          <a href="/tokens/space">Tokens</a>
+          <a href="/components/badge">Components</a>
+          <a href="/utilities/spacing">Utilities</a>
+        </nav>
+      </div>
+    </footer>
+
+    <ThemeSwitcher />
   </body>
 </html>
 
@@ -52,12 +95,17 @@ const currentPath = Astro.url.pathname;
   .site-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: var(--space-xs) var(--space-md);
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-surface);
     position: sticky;
     top: 0;
     z-index: var(--z-1);
+  }
+
+  .mobile-menu-btn {
+    display: none;
   }
 
   .site-logo {
@@ -90,6 +138,91 @@ const currentPath = Astro.url.pathname;
     max-width: 960px;
   }
 
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-lg) var(--space-md);
+    background-color: var(--color-surface);
+  }
+
+  .site-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 960px;
+    margin-inline: auto;
+    gap: var(--space-md);
+  }
+
+  .site-footer-credit {
+    font-size: var(--step--1);
+    color: var(--color-text);
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .site-footer-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: oklch(from currentColor l c h / 40%);
+    text-underline-offset: 0.3ex;
+    transition: text-decoration-color 0.2s var(--ease-in-out);
+  }
+
+  .site-footer-credit a:hover {
+    text-decoration-color: oklch(from currentColor l c h / 80%);
+  }
+
+  .site-footer-nav {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .site-footer-nav a {
+    font-size: var(--step--1);
+    color: var(--color-text);
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.2s var(--ease-in-out);
+  }
+
+  .site-footer-nav a:hover {
+    opacity: 1;
+  }
+
+  /* Mobile nav dialog */
+  .mobile-nav-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    z-index: var(--z-4);
+    overflow-y: auto;
+  }
+
+  .mobile-nav-dialog::backdrop {
+    background-color: oklch(0 0 0 / 50%);
+  }
+
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xs) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-nav-body {
+    padding: var(--space-sm) var(--space-md);
+  }
+
   @media (max-width: 767px) {
     .site-layout {
       grid-template-columns: 1fr;
@@ -102,5 +235,116 @@ const currentPath = Astro.url.pathname;
     .site-main {
       padding: var(--space-md);
     }
+
+    .mobile-menu-btn {
+      display: inline-flex;
+    }
+
+    .site-footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+<style is:global>
+  .docs-prose {
+    color: var(--color-text);
+  }
+
+  .docs-prose > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  .docs-prose :is(h1, h2, h3, blockquote) {
+    --flow-space: 2rem;
+  }
+
+  .docs-prose :is(h1, h2, h3) + * {
+    --flow-space: 1rem;
+  }
+
+  .docs-prose h1 {
+    font-size: var(--step-3);
+    line-height: 1.1;
+    text-wrap: balance;
+    font-family: var(--font-headings);
+    font-weight: var(--font-weight-7);
+    scroll-margin-top: 1em;
+  }
+
+  .docs-prose h2 {
+    font-size: var(--step-2);
+    line-height: 1.1;
+    text-wrap: balance;
+    font-family: var(--font-headings);
+    font-weight: var(--font-weight-7);
+    color: var(--color-primary);
+    scroll-margin-top: 1em;
+  }
+
+  .docs-prose h3 {
+    font-size: var(--step-1);
+    line-height: 1.1;
+    text-wrap: balance;
+    font-family: var(--font-headings);
+    font-weight: var(--font-weight-7);
+    scroll-margin-top: 1em;
+  }
+
+  .docs-prose > p,
+  .docs-prose > li {
+    font-size: var(--step-0);
+  }
+
+  .docs-prose a {
+    color: var(--color-text);
+    text-decoration-line: underline;
+    text-decoration-color: oklch(from var(--color-text) l c h / 50%);
+    text-decoration-thickness: 0.2ex;
+    text-underline-offset: 0.3ex;
+    border-radius: var(--radius-md);
+    transition: text-decoration-color 0.2s var(--ease-in-out);
+  }
+
+  .docs-prose a:hover {
+    text-decoration-color: oklch(from var(--color-text) l c h / 90%);
+  }
+
+  .docs-prose :not(pre) > code {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    background-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+    color: oklch(from var(--color-text) calc(l + 0.1) c h);
+    padding: 2px 4px;
+    border-radius: var(--radius-md);
+    line-height: var(--line-height-xs);
+  }
+
+  .docs-prose ul,
+  .docs-prose ol {
+    padding-inline-start: 0;
+    list-style-position: inside;
+  }
+
+  .docs-prose ul { list-style-type: disc; }
+  .docs-prose ol { list-style-type: decimal; }
+
+  .docs-prose ul ul,
+  .docs-prose ol ol {
+    padding-inline-start: 1rem;
+  }
+
+  .docs-prose blockquote {
+    padding-inline-start: 1em;
+    border-inline-start: 0.3em solid;
+    font-style: italic;
+  }
+
+  .docs-prose hr {
+    margin: 2em 0;
+    height: 1px;
+    border: 0;
+    background-color: var(--color-border);
   }
 </style>

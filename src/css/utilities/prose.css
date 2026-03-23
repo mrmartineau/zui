@@ -1,14 +1,13 @@
 @layer zui.utilities {
-  .prose {
-    --prose-color: var(--text-color);
-    --prose-accent-color: var(--accent-9);
-    --prose-link-color: var(--accent-11);
-    --prose-link-color-decoration: var(--accent-7);
-    --prose-link-color-decoration-hover: var(--accent-8);
-    --prose-code-color: var(--violet-11);
-    --prose-code-bg-color: var(--violet-3);
+.prose {
+    --prose-accent-color: var(--color-primary);
+    --prose-link-color: var(--color-text);
+    --prose-link-color-decoration: oklch(from var(--color-text) l c h / 50%);
+    --prose-link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);
+    --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
+    --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
 
-    color: var(--prose-color);
+    color: var(--prose-color, var(--color-text));
 
     * {
       margin: 0;
@@ -113,13 +112,11 @@
       transition:
         color 0.2s var(--ease-in-out),
         background-color 0.2s var(--ease-in-out);
-      padding: 0 var(--space-2xs);
-      border-radius: var(--radius-m);
+      border-radius: var(--radius-md);
 
       &:hover {
         color: var(--prose-link-color);
         text-decoration-color: var(--prose-link-color-decoration-hover);
-        background-color: var(--black-a2);
       }
     }
 
@@ -132,16 +129,16 @@
     }
 
     code {
-      padding: var(--space-3xs) var(--space-2xs);
+      padding: 2px 4px;
       font-size: var(--step--1);
       display: inline-block;
-      border-radius: var(--radius-m);
-      line-height: var(--line-height-snug);
+      border-radius: var(--radius-md);
+      line-height: var(--line-height-xs);
       font-feature-settings: "ss09" 1;
     }
 
     pre {
-      padding: var(--space-s) var(--space-m);
+      padding: var(--space-sm) var(--space-md);
       border-radius: var(--radius-xl);
       max-width: 100%;
       box-shadow: var(--shadow-sm);

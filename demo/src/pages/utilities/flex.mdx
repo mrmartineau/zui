@@ -1,0 +1,102 @@
+---
+layout: ../../layouts/Layout.astro
+title: Flex
+---
+
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+
+export const monoStyle = { fontFamily: 'var(--font-mono)' }
+
+# Flex
+
+Flexbox utility classes for layout, alignment, and distribution.
+
+## Display
+
+<TokenGrid>
+  <TokenRow><CopyCode>.flex</CopyCode><span style={monoStyle}>display: flex</span></TokenRow>
+  <TokenRow><CopyCode>.inline-flex</CopyCode><span style={monoStyle}>display: inline-flex</span></TokenRow>
+  <TokenRow><CopyCode>.flex-center</CopyCode><span style={monoStyle}>display: flex; align-items: center</span></TokenRow>
+  <TokenRow><CopyCode>.inline-flex-center</CopyCode><span style={monoStyle}>display: inline-flex; align-items: center</span></TokenRow>
+</TokenGrid>
+
+## Direction
+
+<TokenGrid>
+  <TokenRow><CopyCode>.flex-row</CopyCode><span style={monoStyle}>flex-direction: row</span></TokenRow>
+  <TokenRow><CopyCode>.flex-row-reverse</CopyCode><span style={monoStyle}>flex-direction: row-reverse</span></TokenRow>
+  <TokenRow><CopyCode>.flex-column</CopyCode><span style={monoStyle}>flex-direction: column</span></TokenRow>
+  <TokenRow><CopyCode>.flex-column-reverse</CopyCode><span style={monoStyle}>flex-direction: column-reverse</span></TokenRow>
+</TokenGrid>
+
+## Wrap
+
+<TokenGrid>
+  <TokenRow><CopyCode>.flex-wrap</CopyCode><span style={monoStyle}>flex-wrap: wrap</span></TokenRow>
+  <TokenRow><CopyCode>.flex-nowrap</CopyCode><span style={monoStyle}>flex-wrap: nowrap</span></TokenRow>
+  <TokenRow><CopyCode>.flex-wrap-reverse</CopyCode><span style={monoStyle}>flex-wrap: wrap-reverse</span></TokenRow>
+</TokenGrid>
+
+## Flex sizing
+
+<TokenGrid>
+  <TokenRow><CopyCode>.flex-auto</CopyCode><span style={monoStyle}>flex: 1 1 auto (with min-width/height: 0)</span></TokenRow>
+  <TokenRow><CopyCode>.flex-none</CopyCode><span style={monoStyle}>flex: none</span></TokenRow>
+  <TokenRow><CopyCode>.flex-shrink</CopyCode><span style={monoStyle}>flex-shrink: 0</span></TokenRow>
+  <TokenRow><CopyCode>.flex-grow</CopyCode><span style={monoStyle}>flex-grow: 1</span></TokenRow>
+</TokenGrid>
+
+## Align items
+
+<TokenGrid>
+  <TokenRow><CopyCode>.items-start</CopyCode><span style={monoStyle}>align-items: flex-start</span></TokenRow>
+  <TokenRow><CopyCode>.items-end</CopyCode><span style={monoStyle}>align-items: flex-end</span></TokenRow>
+  <TokenRow><CopyCode>.items-center</CopyCode><span style={monoStyle}>align-items: center</span></TokenRow>
+  <TokenRow><CopyCode>.items-baseline</CopyCode><span style={monoStyle}>align-items: baseline</span></TokenRow>
+  <TokenRow><CopyCode>.items-stretch</CopyCode><span style={monoStyle}>align-items: stretch</span></TokenRow>
+</TokenGrid>
+
+## Align self
+
+<TokenGrid>
+  <TokenRow><CopyCode>.self-start</CopyCode><span style={monoStyle}>align-self: flex-start</span></TokenRow>
+  <TokenRow><CopyCode>.self-end</CopyCode><span style={monoStyle}>align-self: flex-end</span></TokenRow>
+  <TokenRow><CopyCode>.self-center</CopyCode><span style={monoStyle}>align-self: center</span></TokenRow>
+  <TokenRow><CopyCode>.self-baseline</CopyCode><span style={monoStyle}>align-self: baseline</span></TokenRow>
+  <TokenRow><CopyCode>.self-stretch</CopyCode><span style={monoStyle}>align-self: stretch</span></TokenRow>
+</TokenGrid>
+
+## Justify content
+
+<TokenGrid>
+  <TokenRow><CopyCode>.justify-start</CopyCode><span style={monoStyle}>justify-content: flex-start</span></TokenRow>
+  <TokenRow><CopyCode>.justify-end</CopyCode><span style={monoStyle}>justify-content: flex-end</span></TokenRow>
+  <TokenRow><CopyCode>.justify-center</CopyCode><span style={monoStyle}>justify-content: center</span></TokenRow>
+  <TokenRow><CopyCode>.justify-between</CopyCode><span style={monoStyle}>justify-content: space-between</span></TokenRow>
+  <TokenRow><CopyCode>.justify-around</CopyCode><span style={monoStyle}>justify-content: space-around</span></TokenRow>
+</TokenGrid>
+
+## Align content
+
+<TokenGrid>
+  <TokenRow><CopyCode>.content-start</CopyCode><span style={monoStyle}>align-content: flex-start</span></TokenRow>
+  <TokenRow><CopyCode>.content-end</CopyCode><span style={monoStyle}>align-content: flex-end</span></TokenRow>
+  <TokenRow><CopyCode>.content-center</CopyCode><span style={monoStyle}>align-content: center</span></TokenRow>
+  <TokenRow><CopyCode>.content-between</CopyCode><span style={monoStyle}>align-content: space-between</span></TokenRow>
+  <TokenRow><CopyCode>.content-around</CopyCode><span style={monoStyle}>align-content: space-around</span></TokenRow>
+  <TokenRow><CopyCode>.content-stretch</CopyCode><span style={monoStyle}>align-content: stretch</span></TokenRow>
+</TokenGrid>
+
+## Example
+
+```html
+<nav class="flex items-center justify-between gap-m">
+  <a href="/">Logo</a>
+  <div class="flex gap-xs">
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+```

@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends Omit<HTMLAttributes<'input'>, 'type'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-radio', className].filter(Boolean).join(' ')
+---
+
+<label class={classes}>
+  <input type="radio" {...props} />
+  <slot />
+</label>

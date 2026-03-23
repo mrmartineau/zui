@@ -1,0 +1,84 @@
+---
+---
+
+<div class="token-table">
+  <div class="token-row">
+    <code class="zui-code">--color-primary</code>
+    <div class="swatch" style="background-color: var(--color-primary);"></div>
+    <span>Main accent used by buttons, links, focus rings, and active states.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-secondary</code>
+    <div class="swatch" style="background-color: var(--color-secondary);"></div>
+    <span>Secondary accent for alternative actions and highlights.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-background</code>
+    <div class="swatch" style="background-color: var(--color-background); border: 1px solid var(--color-border);"></div>
+    <span>Page background colour.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-surface</code>
+    <div class="swatch" style="background-color: var(--color-surface); border: 1px solid var(--color-border);"></div>
+    <span>Elevated surface colour for cards, sidebars, and panels.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-border</code>
+    <div class="swatch" style="background-color: var(--color-border);"></div>
+    <span>Default border colour for inputs, cards, and dividers.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-text</code>
+    <div class="swatch" style="background-color: var(--color-text);"></div>
+    <span>Default text colour.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-success</code>
+    <div class="swatch" style="background-color: var(--color-success);"></div>
+    <span>Positive feedback — confirmations, success states.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-error</code>
+    <div class="swatch" style="background-color: var(--color-error);"></div>
+    <span>Negative feedback — errors, destructive actions, invalid inputs.</span>
+  </div>
+  <div class="token-row">
+    <code class="zui-code">--color-warning</code>
+    <div class="swatch" style="background-color: var(--color-warning);"></div>
+    <span>Cautionary feedback — warnings, attention needed.</span>
+  </div>
+</div>
+
+<style>
+  .token-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    margin-block: var(--space-sm);
+  }
+
+  .token-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-3xs) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .token-row code {
+    flex-shrink: 0;
+    min-width: 14rem;
+  }
+
+  .token-row span {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 75%, transparent);
+  }
+
+  .swatch {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+</style>

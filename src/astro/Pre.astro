@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'pre'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-pre', className].filter(Boolean).join(' ')
+---
+
+<pre class={classes} {...props}><slot /></pre>

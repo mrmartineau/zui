@@ -1,0 +1,258 @@
+---
+layout: ../../layouts/Layout.astro
+title: Other UI Libraries
+---
+
+# Using with other UI libraries
+
+ZUI is a CSS-first library. The React and Astro components are thin wrappers around CSS classes, so ZUI works with **any** UI library or framework — Vue, Svelte, Solid, Angular, Web Components, or plain HTML.
+
+## Setup
+
+Install ZUI and import the stylesheet however your framework handles CSS:
+
+```sh
+npm install @mrmartineau/zui
+```
+
+```css
+@import '@mrmartineau/zui/css';
+```
+
+Or use the minified version:
+
+```css
+@import '@mrmartineau/zui/css/min';
+```
+
+Or link directly in HTML:
+
+```html
+<link rel="stylesheet" href="node_modules/@mrmartineau/zui/dist/css/zui.css" />
+```
+
+## CSS class reference
+
+All ZUI components use BEM-style classes prefixed with `zui-`. Apply them directly in any template language.
+
+### Button
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-button` | Base button styles |
+| `zui-button-variant-fill` | Solid filled button (default) |
+| `zui-button-variant-subtle` | Subtle background |
+| `zui-button-variant-outline` | Outlined border |
+| `zui-button-variant-ghost` | No background until hover |
+| `zui-button-variant-link` | Looks like a text link |
+| `zui-button-accent-primary` | Primary colour (default) |
+| `zui-button-accent-secondary` | Secondary colour |
+| `zui-button-accent-destructive` | Destructive/danger colour |
+| `zui-button-size-xs` | Extra small |
+| `zui-button-size-sm` | Small |
+| `zui-button-size-lg` | Large |
+| `zui-button-size-xl` | Extra large |
+| `zui-button-shape-hard` | Sharp corners |
+| `zui-button-shape-soft` | Extra rounded corners |
+| `zui-button-shape-squircle` | Squircle shape |
+| `zui-button-icon` | Icon-only button (square) |
+
+### Badge
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-badge` | Base badge styles |
+| `zui-badge-variant-fill` | Solid filled badge |
+| `zui-badge-variant-outline` | Outlined badge |
+| `zui-badge-color-{color}` | Color variant (`red`, `green`, `blue`, `violet`, `amber`, `orange`, `yellow`, `lime`, `emerald`, `teal`, `cyan`, `sky`, `indigo`, `purple`, `fuchsia`, `pink`, `rose`, `gray`) |
+
+### Card
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-card` | Base card container |
+| `zui-card-interactive` | Adds hover/focus styles for clickable cards |
+| `zui-card-header` | Card header section |
+| `zui-card-title` | Card title text |
+| `zui-card-description` | Card description text |
+| `zui-card-body` | Card body content |
+
+### Form elements
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-input` | Text input |
+| `zui-textarea` | Textarea |
+| `zui-select` | Select dropdown |
+| `zui-label` | Form label |
+| `zui-checkbox` | Checkbox |
+| `zui-radio` | Radio button |
+
+## Framework examples
+
+### Vue
+
+```vue
+<template>
+  <button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+    Save
+  </button>
+  <span class="zui-badge zui-badge-color-green">Active</span>
+
+  <div class="zui-card">
+    <div class="zui-card-header">
+      <h2 class="zui-card-title">{{ title }}</h2>
+      <p class="zui-card-description">{{ description }}</p>
+    </div>
+    <div class="zui-card-body">
+      <input class="zui-input" v-model="email" type="email" placeholder="Email" />
+      <button class="zui-button zui-button-variant-outline" @click="submit">
+        Submit
+      </button>
+    </div>
+  </div>
+</template>
+```
+
+### Svelte
+
+```svelte
+<button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+  Save
+</button>
+<span class="zui-badge zui-badge-color-green">Active</span>
+
+<div class="zui-card">
+  <div class="zui-card-header">
+    <h2 class="zui-card-title">{title}</h2>
+    <p class="zui-card-description">{description}</p>
+  </div>
+  <div class="zui-card-body">
+    <input class="zui-input" bind:value={email} type="email" placeholder="Email" />
+    <button class="zui-button zui-button-variant-outline" on:click={submit}>
+      Submit
+    </button>
+  </div>
+</div>
+```
+
+### Solid
+
+```tsx
+function App() {
+  return (
+    <>
+      <button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+        Save
+      </button>
+      <span class="zui-badge zui-badge-color-green">Active</span>
+
+      <div class="zui-card">
+        <div class="zui-card-header">
+          <h2 class="zui-card-title">{title()}</h2>
+        </div>
+        <div class="zui-card-body">
+          <input class="zui-input" type="email" placeholder="Email" />
+        </div>
+      </div>
+    </>
+  )
+}
+```
+
+### Plain HTML
+
+```html
+<button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+  Save
+</button>
+
+<span class="zui-badge zui-badge-color-green">Active</span>
+
+<div class="zui-card">
+  <div class="zui-card-header">
+    <h2 class="zui-card-title">Card title</h2>
+    <p class="zui-card-description">Card description</p>
+  </div>
+  <div class="zui-card-body">
+    <label class="zui-label" for="email">Email</label>
+    <input class="zui-input" id="email" type="email" />
+    <button class="zui-button zui-button-variant-outline">Submit</button>
+  </div>
+</div>
+```
+
+## Utility classes
+
+ZUI also ships utility classes you can use in any framework:
+
+```html
+<!-- Spacing -->
+<div class="zui-mt-md zui-px-lg">...</div>
+
+<!-- Flex -->
+<div class="zui-flex zui-flex-row zui-gap-md">...</div>
+
+<!-- Flow (vertical rhythm) -->
+<div class="zui-flow">...</div>
+
+<!-- Prose (long-form content) -->
+<div class="zui-prose">...</div>
+```
+
+## Building wrapper components
+
+You can create thin wrapper components in any framework using the CSS classes. Here's a Vue example:
+
+```vue
+<!-- ZButton.vue -->
+<template>
+  <component
+    :is="href ? 'a' : 'button'"
+    :href="href"
+    :class="classes"
+  >
+    <slot />
+  </component>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  variant: { type: String, default: 'fill' },
+  accent: { type: String, default: 'primary' },
+  size: { type: String, default: null },
+  href: { type: String, default: null },
+})
+
+const classes = computed(() => [
+  'zui-button',
+  `zui-button-variant-${props.variant}`,
+  `zui-button-accent-${props.accent}`,
+  props.size && `zui-button-size-${props.size}`,
+].filter(Boolean))
+</script>
+```
+
+## CSS Layers
+
+ZUI uses CSS `@layer` to organize styles. Your unlayered styles will always take precedence, making overrides straightforward in any framework:
+
+```css
+/* Your framework's styles — always wins over ZUI layers */
+.my-custom-button {
+  background-color: hotpink;
+}
+```
+
+## Theming
+
+Theming is framework-agnostic — just override CSS custom properties. See the [Theming](/theming) page for full details.
+
+```css
+:root {
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --radius-scale: 1.5;
+}
+```

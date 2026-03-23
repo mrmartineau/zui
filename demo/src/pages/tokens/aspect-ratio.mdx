@@ -1,0 +1,37 @@
+---
+layout: ../../layouts/Layout.astro
+title: Aspect Ratio
+---
+
+import AspectRatioGrid from '../../components/AspectRatioGrid.astro'
+
+export const ratios = [
+  { token: '--ratio-square', value: '1', label: '1:1' },
+  { token: '--ratio-landscape', value: '4/3', label: '4:3' },
+  { token: '--ratio-portrait', value: '3/4', label: '3:4' },
+  { token: '--ratio-widescreen', value: '16/9', label: '16:9' },
+  { token: '--ratio-ultrawide', value: '18/5', label: '18:5' },
+  { token: '--ratio-golden', value: '1.618/1', label: 'φ' },
+]
+
+# Aspect Ratio
+
+## Predefined aspect ratio tokens for consistent media and container proportions.
+
+### Ratios
+
+<AspectRatioGrid ratios={ratios} />
+
+### Usage
+
+```css
+.video-embed {
+  aspect-ratio: var(--ratio-widescreen);
+  width: 100%;
+}
+
+.avatar {
+  aspect-ratio: var(--ratio-square);
+  width: 3rem;
+}
+```

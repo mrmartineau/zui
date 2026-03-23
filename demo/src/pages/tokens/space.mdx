@@ -1,0 +1,107 @@
+---
+layout: ../../layouts/Layout.astro
+title: Space
+---
+
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+import SpaceBar from '../../components/SpaceBar.astro'
+
+export const labelStyle = {
+  fontSize: 'var(--step--1)',
+  color: 'color-mix(in oklch, var(--color-text) 60%, transparent)',
+  minWidth: '6rem',
+  flexShrink: 0,
+}
+
+# Space
+
+A fluid spacing scale generated with <a href="https://utopia.fyi/space/calculator" class="zui-link">Utopia</a>. Values interpolate between 320px and 1350px viewport widths.
+
+## Scale
+
+<TokenGrid columns={3}>
+  <TokenRow>
+    <CopyCode>--space-5xs</CopyCode>
+    <span style={labelStyle}>3→4px</span>
+    <SpaceBar token="--space-5xs" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-4xs</CopyCode>
+    <span style={labelStyle}>4→5px</span>
+    <SpaceBar token="--space-4xs" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-3xs</CopyCode>
+    <span style={labelStyle}>6→8px</span>
+    <SpaceBar token="--space-3xs" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-2xs</CopyCode>
+    <span style={labelStyle}>8→10px</span>
+    <SpaceBar token="--space-2xs" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-xs</CopyCode>
+    <span style={labelStyle}>12→15px</span>
+    <SpaceBar token="--space-xs" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-sm</CopyCode>
+    <span style={labelStyle}>16→20px</span>
+    <SpaceBar token="--space-sm" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-md</CopyCode>
+    <span style={labelStyle}>24→30px</span>
+    <SpaceBar token="--space-md" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-lg</CopyCode>
+    <span style={labelStyle}>32→40px</span>
+    <SpaceBar token="--space-lg" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-xl</CopyCode>
+    <span style={labelStyle}>48→60px</span>
+    <SpaceBar token="--space-xl" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-2xl</CopyCode>
+    <span style={labelStyle}>64→80px</span>
+    <SpaceBar token="--space-2xl" />
+  </TokenRow>
+  <TokenRow>
+    <CopyCode>--space-3xl</CopyCode>
+    <span style={labelStyle}>96→120px</span>
+    <SpaceBar token="--space-3xl" />
+  </TokenRow>
+</TokenGrid>
+
+## One-up pairs
+
+Fluid pairs that transition between two adjacent steps for responsive spacing that grows faster.
+
+```css
+--space-5xs-4xs   /* 3→5px */
+--space-4xs-3xs   /* 4→8px */
+--space-3xs-2xs   /* 6→10px */
+--space-2xs-xs    /* 8→15px */
+--space-xs-sm     /* 12→20px */
+--space-sm-md     /* 16→30px */
+--space-md-lg     /* 24→40px */
+--space-lg-xl     /* 32→60px */
+--space-xl-2xl    /* 48→80px */
+--space-2xl-3xl   /* 64→120px */
+```
+
+## Usage
+
+```css
+.card {
+  padding: var(--space-md);
+  gap: var(--space-xs);
+  margin-block-start: var(--space-lg-xl); /* fluid pair */
+}
+```

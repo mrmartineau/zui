@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { textSizeClass, type TextSize } from '../shared/textSizeClass'
+
+interface Props extends HTMLAttributes<'span'> {
+  size?: TextSize
+  class?: string
+}
+
+const { size = 'base', class: className, ...props } = Astro.props
+const classes = [textSizeClass(size), className].filter(Boolean).join(' ')
+---
+
+<span class={classes} {...props}><slot /></span>

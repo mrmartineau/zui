@@ -21,5 +21,6 @@ export default defineConfig({
       },
       defaultColor: 'light-dark()',
     },
+    smartypants: false,
   },
 });

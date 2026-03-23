@@ -1,0 +1,136 @@
+---
+import CopyCode from './CopyCode.astro'
+---
+
+<div class="anim-section">
+  <h2>Entrance &amp; exit</h2>
+  <div class="anim-grid">
+    <div class="anim-card" data-anim="fade-in">
+      <CopyCode>--animation-fade-in</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="fade-out">
+      <CopyCode>--animation-fade-out</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="scale-up">
+      <CopyCode>--animation-scale-up</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="scale-down">
+      <CopyCode>--animation-scale-down</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-in-up">
+      <CopyCode>--animation-slide-in-up</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-in-down">
+      <CopyCode>--animation-slide-in-down</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-in-left">
+      <CopyCode>--animation-slide-in-left</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-in-right">
+      <CopyCode>--animation-slide-in-right</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-out-up">
+      <CopyCode>--animation-slide-out-up</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-out-down">
+      <CopyCode>--animation-slide-out-down</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-out-left">
+      <CopyCode>--animation-slide-out-left</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="slide-out-right">
+      <CopyCode>--animation-slide-out-right</CopyCode>
+    </div>
+  </div>
+
+  <h2>Looping</h2>
+  <div class="anim-grid">
+    <div class="anim-card">
+      <div class="demo-dot" style="animation: var(--animation-spin);"><i class="ph ph-aperture"></i></div>
+      <CopyCode>--animation-spin</CopyCode>
+    </div>
+    <div class="anim-card">
+      <div class="demo-dot" style="animation: var(--animation-ping);"></div>
+      <CopyCode>--animation-ping</CopyCode>
+    </div>
+    <div class="anim-card">
+      <div class="demo-dot" style="animation: var(--animation-blink);"><i class="ph ph-aperture"></i></div>
+      <CopyCode>--animation-blink</CopyCode>
+    </div>
+    <div class="anim-card">
+      <div class="demo-dot" style="animation: var(--animation-float);"><i class="ph ph-aperture"></i></div>
+      <CopyCode>--animation-float</CopyCode>
+    </div>
+    <div class="anim-card">
+      <div class="demo-dot" style="animation: var(--animation-bounce);"><i class="ph ph-aperture"></i></div>
+      <CopyCode>--animation-bounce</CopyCode>
+    </div>
+    <div class="anim-card">
+      <div class="demo-dot" style="animation: var(--animation-pulse);"><i class="ph ph-aperture"></i></div>
+      <CopyCode>--animation-pulse</CopyCode>
+    </div>
+  </div>
+
+  <h2>Feedback</h2>
+  <div class="anim-grid">
+    <div class="anim-card" data-anim="shake-x">
+      <CopyCode>--animation-shake-x</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="shake-y">
+      <CopyCode>--animation-shake-y</CopyCode>
+    </div>
+    <div class="anim-card" data-anim="shake-z">
+      <CopyCode>--animation-shake-z</CopyCode>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-anim]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const name = card.dataset.anim!
+      card.style.animation = 'none'
+      card.offsetHeight // force reflow
+      card.style.animation = `var(--animation-${name})`
+    })
+  })
+</script>
+
+<style>
+  .anim-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .anim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-sm);
+    margin-block: var(--space-sm);
+  }
+
+  .anim-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    text-align: center;
+    border-radius: var(--radius-xl);
+  }
+
+  .anim-card:hover {
+    border-color: var(--color-primary);
+  }
+
+  .demo-dot {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: var(--radius-round);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+</style>

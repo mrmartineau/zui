@@ -1,0 +1,24 @@
+---
+interface Props {
+  width: string
+}
+
+const { width } = Astro.props
+---
+
+<div class="bar-wrapper">
+  <div class="bar" style={`width: ${width};`}></div>
+</div>
+
+<style>
+  .bar-wrapper {
+    flex-grow: 1;
+  }
+
+  .bar {
+    height: var(--space-xs);
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    max-width: 100%;
+  }
+</style>

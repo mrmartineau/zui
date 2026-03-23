@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<p class:list={['subtitle', className]}>
+  <slot />
+</p>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+</style>

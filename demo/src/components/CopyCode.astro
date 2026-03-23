@@ -15,7 +15,7 @@ const { value, class: className } = Astro.props
 >
   <slot />
   <i class="ph-duotone ph-copy copy-icon"></i>
-  <span class="copy-feedback" aria-hidden="true">Copied!</span>
+  <i class="ph-duotone ph-check-circle copy-icon-success" aria-hidden="true"></i>
 </code>
 
 <script>
@@ -44,6 +44,7 @@ const { value, class: className } = Astro.props
     cursor: pointer;
     position: relative;
     transition: opacity 0.15s ease;
+    font-variant-ligatures: none;
   }
 
   .copy-code:hover {
@@ -64,23 +65,17 @@ const { value, class: className } = Astro.props
   }
 
   .copy-code.copied .copy-icon {
-    opacity: 0;
+    display: none;
   }
 
-  .copy-feedback {
-    position: absolute;
-    inset-inline-end: 0;
-    top: 50%;
-    transform: translateY(-50%) translateX(calc(100% + 0.5em));
-    font-size: var(--step--2);
+  .copy-icon-success {
+    display: none;
+    margin-inline-start: 0.3em;
+    vertical-align: middle;
     color: var(--color-success, green);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.15s ease;
-    pointer-events: none;
   }
 
-  .copy-code.copied .copy-feedback {
-    opacity: 1;
+  .copy-code.copied .copy-icon-success {
+    display: inline-flex;
   }
 </style>

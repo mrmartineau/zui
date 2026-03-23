@@ -1,0 +1,49 @@
+---
+layout: ../../layouts/Layout.astro
+title: Radii
+---
+
+import RadiiGrid from '../../components/RadiiGrid.astro'
+
+export const radii = [
+  { token: '--radius-sm', label: '3px' },
+  { token: '--radius-md', label: '5px' },
+  { token: '--radius-lg', label: '6px' },
+  { token: '--radius-xl', label: '8px' },
+  { token: '--radius-2xl', label: '12px' },
+  { token: '--radius-3xl', label: '16px' },
+  { token: '--radius-full', label: '9999px' },
+  { token: '--radius-round', label: '50%' },
+]
+
+# Radii
+
+Border radius tokens scaled by <code class="zui-code">--radius-scale</code> for global roundness control.
+
+## Scale
+
+<RadiiGrid radii={radii} />
+
+## Scaling
+
+All radii (except <code class="zui-code">--radius-round</code>) are multiplied by <code class="zui-code">--radius-scale</code>. Change this single value to globally adjust roundness.
+
+```css
+:root {
+  --radius-scale: 1; /* default */
+  --radius-scale: 0; /* sharp corners */
+  --radius-scale: 2; /* extra round */
+}
+```
+
+## Usage
+
+```css
+.card {
+  border-radius: var(--radius-xl);
+}
+
+.avatar {
+  border-radius: var(--radius-round);
+}
+```

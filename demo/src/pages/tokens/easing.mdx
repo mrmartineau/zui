@@ -1,0 +1,46 @@
+---
+layout: ../../layouts/Layout.astro
+title: Easing
+---
+
+import EasingDemo from '../../components/EasingDemo.astro'
+
+export const easings = [
+  { token: '--ease', desc: 'General purpose' },
+  { token: '--ease-in', desc: 'Accelerate' },
+  { token: '--ease-out', desc: 'Decelerate' },
+  { token: '--ease-in-out', desc: 'Smooth both ends' },
+  { token: '--ease-elastic-out', desc: 'Overshoot on exit' },
+  { token: '--ease-elastic-in', desc: 'Overshoot on entry' },
+  { token: '--ease-elastic-in-out', desc: 'Overshoot both ends' },
+  { token: '--ease-spring', desc: 'Spring physics (linear())' },
+]
+
+# Easing
+
+## Timing functions for transitions and animations, from standard curves to elastic and spring-based easing.
+
+## Curves
+
+Hover over each row to see the easing in action.
+
+<EasingDemo easings={easings} />
+
+## Aliases
+
+```css
+--ease-elastic: var(--ease-elastic-out);
+--ease-squish: var(--ease-elastic-in-out);
+```
+
+## Usage
+
+```css
+.button {
+  transition: background-color 200ms var(--ease-in-out);
+}
+
+.modal {
+  animation: slide-in-up 0.4s var(--ease-spring);
+}
+```

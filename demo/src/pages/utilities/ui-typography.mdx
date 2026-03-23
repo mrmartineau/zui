@@ -1,0 +1,178 @@
+---
+layout: ../../layouts/Layout.astro
+title: UI Typography
+---
+
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+import DemoPreview from '../../components/DemoPreview.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# UI Typography
+
+Utility classes for text sizing, colour, links, and code — designed for UI rather than long-form prose.
+
+## Text Size
+
+Map directly to the fluid type scale tokens. All classes reset `line-height` to tight and `margin` to 0, making them ideal for UI labels and headings.
+
+<TokenGrid>
+  <TokenRow><CopyCode>.zui-text--4</CopyCode><span class="zui-text--4">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text--3</CopyCode><span class="zui-text--3">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text--2</CopyCode><span class="zui-text--2">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text--1</CopyCode><span class="zui-text--1">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-base</CopyCode><span class="zui-text-base">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-1</CopyCode><span class="zui-text-1">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-2</CopyCode><span class="zui-text-2">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-3</CopyCode><span class="zui-text-3">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-4</CopyCode><span class="zui-text-4">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-5</CopyCode><span class="zui-text-5">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-6</CopyCode><span class="zui-text-6">The quick brown fox</span></TokenRow>
+</TokenGrid>
+
+<CodeTabs
+  html={`<p class="zui-text-2">Large UI text</p>
+<p class="zui-text-base">Base size</p>
+<span class="zui-text--1">Small label</span>`}
+  react={`import { Text } from '@mrmartineau/zui/react'
+
+<Text size="2">Large UI text</Text>
+<Text size="base">Base size</Text>
+<Text size="-1">Small label</Text>`}
+  astro={`---
+import { Text } from '@mrmartineau/zui/astro'
+---
+
+<Text size="2">Large UI text</Text>
+<Text size="base">Base size</Text>
+<Text size="-1">Small label</Text>`}
+/>
+
+## Text Colour
+
+Reduce text prominence with muted and faint utilities.
+
+<TokenGrid>
+  <TokenRow><CopyCode>.zui-color-muted</CopyCode><span class="zui-color-muted">Muted text for secondary information</span></TokenRow>
+  <TokenRow><CopyCode>.zui-color-faint</CopyCode><span class="zui-color-faint">Faint text for tertiary or disabled content</span></TokenRow>
+</TokenGrid>
+
+```html
+<p>Primary text</p>
+<p class="zui-color-muted">Secondary text</p>
+<p class="zui-color-faint">Tertiary text</p>
+```
+
+## Link
+
+Style any anchor as an accessible, accent-coloured link with underline and hover transition.
+
+<DemoPreview>
+  <a href="#" class="zui-link">A styled link</a>
+</DemoPreview>
+
+<CodeTabs
+  html={`<a href="/about" class="zui-link">About us</a>`}
+  react={`import { Link } from '@mrmartineau/zui/react'
+
+<Link href="/about">About us</Link>`}
+  astro={`---
+import { Link } from '@mrmartineau/zui/astro'
+---
+
+<Link href="/about">About us</Link>`}
+/>
+
+### Custom properties
+
+```css
+.zui-link {
+  --link-color: var(--accent-11);
+  --link-color-decoration: var(--accent-7);
+  --link-color-decoration-hover: var(--accent-8);
+}
+```
+
+## Code
+
+Inline code and preformatted blocks with monospace font, background, and rounded corners.
+
+### Inline code
+
+<DemoPreview>
+  <p>Use `var(--space-md)` for medium spacing.</p>
+</DemoPreview>
+
+<CodeTabs
+  html={`<code class="zui-code">var(--space-md)</code>`}
+  react={`import { Code } from '@mrmartineau/zui/react'
+
+<Code>var(--space-md)</Code>`}
+  astro={`---
+import { Code } from '@mrmartineau/zui/astro'
+---
+
+<Code>var(--space-md)</Code>`}
+/>
+
+### Code block
+
+<DemoPreview>
+  <pre class="zui-pre"><code>const greeting = "Hello, world!"
+  console.log(greeting)</code></pre>
+</DemoPreview>
+
+<CodeTabs
+  html={`<pre class="zui-pre">
+  <code>
+    const greeting = "Hello, world!";
+    console.log(greeting);
+  </code>
+</pre>`}
+  react={`import { Pre } from '@mrmartineau/zui/react'
+
+<Pre>
+  <code>
+    const greeting = "Hello, world!";
+    console.log(greeting);
+  </code>
+</Pre>`}
+  astro={`---
+import { Pre } from '@mrmartineau/zui/astro'
+---
+
+<Pre>
+  <code>
+    const greeting = "Hello, world!";
+    console.log(greeting);
+  </code>
+</Pre>`}
+/>
+
+### Custom properties
+
+```css
+.zui-pre,
+.zui-code {
+  --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
+  --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+}
+```
+
+## Surface
+
+A subtle background for section alternation.
+
+<DemoPreview>
+  <div class="surface" style="padding: var(--space-md); border-radius: var(--radius-lg);">
+    Content on a surface background
+  </div>
+</DemoPreview>
+
+```html
+<section class="surface">
+  Alternating section background
+</section>
+```
+
