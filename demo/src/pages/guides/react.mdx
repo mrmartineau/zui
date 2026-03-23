@@ -45,8 +45,8 @@ import { Button } from '@mrmartineau/zui/react'
 function App() {
   return (
     <>
-      <Button variant="fill" accent="primary">Save</Button>
-      <Button variant="outline" accent="secondary">Cancel</Button>
+      <Button variant="fill" accent="theme">Save</Button>
+      <Button variant="outline" accent="accent">Cancel</Button>
       <Button variant="ghost" size="sm">Settings</Button>
       <Button variant="subtle" accent="destructive">Delete</Button>
       <Button href="/about">About (renders as anchor)</Button>
@@ -57,7 +57,7 @@ function App() {
 
 Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
 
-Accents: `primary`, `secondary`, `destructive`
+Accents: `theme`, `accent`, `destructive`
 
 Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
 
@@ -199,7 +199,7 @@ ZUI themes are pure CSS — override custom properties in your stylesheet. See t
 ```css
 /* your-theme.css */
 :root {
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
   --radius-scale: 1.5;
 }
 ```

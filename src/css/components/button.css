@@ -106,19 +106,19 @@
    * Override these custom properties with your own design tokens.
    * ---------------------------------------------------------------------- */
 
-  /* primary (default) */
+  /* theme (default) */
   .zui-button,
-  .zui-button.zui-button-accent-primary {
-    --zui-btn-accent: var(--color-primary);
+  .zui-button.zui-button-color-theme {
+    --zui-btn-accent: var(--color-theme);
   }
 
-  /* secondary */
-  .zui-button.zui-button-accent-secondary {
-    --zui-btn-accent: var(--color-secondary);
+  /* accent */
+  .zui-button.zui-button-color-accent {
+    --zui-btn-accent: var(--color-accent);
   }
 
   /* destructive */
-  .zui-button.zui-button-accent-destructive {
+  .zui-button.zui-button-color-destructive {
     --zui-btn-accent: var(--color-error);
   }
 

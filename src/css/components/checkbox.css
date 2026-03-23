@@ -37,8 +37,8 @@
   }
 
   .zui-checkbox input[type="checkbox"]:checked {
-    border-color: var(--color-primary);
-    background-color: var(--color-primary);
+    border-color: var(--color-theme);
+    background-color: var(--color-theme);
   }
 
   .zui-checkbox input[type="checkbox"]:checked::before {

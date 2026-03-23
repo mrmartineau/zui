@@ -1,8 +1,8 @@
 @layer zui.base {
   :root {
     /* Semantic colours */
-    --color-primary: light-dark(var(--color-mist-600), var(--color-mist-400));
-    --color-secondary: light-dark(var(--color-sky-600), var(--color-sky-400));
+    --color-theme: light-dark(var(--color-mist-600), var(--color-mist-400));
+    --color-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
     --color-background: light-dark(
       var(--color-mist-200),
       var(--color-mist-800)

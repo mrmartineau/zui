@@ -1,6 +1,6 @@
 @layer zui.utilities {
 .prose {
-    --prose-accent-color: var(--color-primary);
+    --prose-accent-color: var(--color-theme);
     --prose-link-color: var(--color-text);
     --prose-link-color-decoration: oklch(from var(--color-text) l c h / 50%);
     --prose-link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);

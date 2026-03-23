@@ -1,0 +1,250 @@
+---
+layout: ../../layouts/Layout.astro
+title: Table
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Table
+
+A styled table for displaying tabular data.
+
+## Usage
+
+<Demo code={`<table class="zui-table">
+  <thead class="zui-table-header">
+    <tr class="zui-table-row">
+      <th class="zui-table-head">Name</th>
+      <th class="zui-table-head">Status</th>
+      <th class="zui-table-head">Role</th>
+    </tr>
+  </thead>
+  <tbody class="zui-table-body">
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Alice Johnson</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Designer</td>
+    </tr>
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Bob Smith</td>
+      <td class="zui-table-cell">Away</td>
+      <td class="zui-table-cell">Engineer</td>
+    </tr>
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Carol Davis</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Product Manager</td>
+    </tr>
+  </tbody>
+</table>`}>
+  <table class="zui-table" style="width: 100%;">
+    <thead class="zui-table-header">
+      <tr class="zui-table-row">
+        <th class="zui-table-head">Name</th>
+        <th class="zui-table-head">Status</th>
+        <th class="zui-table-head">Role</th>
+      </tr>
+    </thead>
+    <tbody class="zui-table-body">
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Alice Johnson</td>
+        <td class="zui-table-cell">Active</td>
+        <td class="zui-table-cell">Designer</td>
+      </tr>
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Bob Smith</td>
+        <td class="zui-table-cell">Away</td>
+        <td class="zui-table-cell">Engineer</td>
+      </tr>
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Carol Davis</td>
+        <td class="zui-table-cell">Active</td>
+        <td class="zui-table-cell">Product Manager</td>
+      </tr>
+    </tbody>
+  </table>
+</Demo>
+
+<CodeTabs
+  html={`<table class="zui-table">
+  <thead class="zui-table-header">
+    <tr class="zui-table-row">
+      <th class="zui-table-head">Name</th>
+      <th class="zui-table-head">Status</th>
+      <th class="zui-table-head">Role</th>
+    </tr>
+  </thead>
+  <tbody class="zui-table-body">
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Alice Johnson</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Designer</td>
+    </tr>
+  </tbody>
+</table>`}
+  react={`import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/react'
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+  astro={`---
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/astro'
+---
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+/>
+
+## With Caption
+
+<Demo code={`<table class="zui-table">
+  <caption class="zui-table-caption">Team members and their current status.</caption>
+  <thead class="zui-table-header">
+    <tr class="zui-table-row">
+      <th class="zui-table-head">Name</th>
+      <th class="zui-table-head">Status</th>
+      <th class="zui-table-head">Role</th>
+    </tr>
+  </thead>
+  <tbody class="zui-table-body">
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Alice Johnson</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Designer</td>
+    </tr>
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Bob Smith</td>
+      <td class="zui-table-cell">Away</td>
+      <td class="zui-table-cell">Engineer</td>
+    </tr>
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Carol Davis</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Product Manager</td>
+    </tr>
+  </tbody>
+</table>`}>
+  <table class="zui-table" style="width: 100%;">
+    <caption class="zui-table-caption">Team members and their current status.</caption>
+    <thead class="zui-table-header">
+      <tr class="zui-table-row">
+        <th class="zui-table-head">Name</th>
+        <th class="zui-table-head">Status</th>
+        <th class="zui-table-head">Role</th>
+      </tr>
+    </thead>
+    <tbody class="zui-table-body">
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Alice Johnson</td>
+        <td class="zui-table-cell">Active</td>
+        <td class="zui-table-cell">Designer</td>
+      </tr>
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Bob Smith</td>
+        <td class="zui-table-cell">Away</td>
+        <td class="zui-table-cell">Engineer</td>
+      </tr>
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Carol Davis</td>
+        <td class="zui-table-cell">Active</td>
+        <td class="zui-table-cell">Product Manager</td>
+      </tr>
+    </tbody>
+  </table>
+</Demo>
+
+## With Footer
+
+<Demo code={`<table class="zui-table">
+  <thead class="zui-table-header">
+    <tr class="zui-table-row">
+      <th class="zui-table-head">Name</th>
+      <th class="zui-table-head">Status</th>
+      <th class="zui-table-head">Role</th>
+    </tr>
+  </thead>
+  <tbody class="zui-table-body">
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Alice Johnson</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Designer</td>
+    </tr>
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Bob Smith</td>
+      <td class="zui-table-cell">Away</td>
+      <td class="zui-table-cell">Engineer</td>
+    </tr>
+    <tr class="zui-table-row">
+      <td class="zui-table-cell">Carol Davis</td>
+      <td class="zui-table-cell">Active</td>
+      <td class="zui-table-cell">Product Manager</td>
+    </tr>
+  </tbody>
+  <tfoot class="zui-table-footer">
+    <tr class="zui-table-row">
+      <td class="zui-table-cell" colspan="2">Total members</td>
+      <td class="zui-table-cell">3</td>
+    </tr>
+  </tfoot>
+</table>`}>
+  <table class="zui-table" style="width: 100%;">
+    <thead class="zui-table-header">
+      <tr class="zui-table-row">
+        <th class="zui-table-head">Name</th>
+        <th class="zui-table-head">Status</th>
+        <th class="zui-table-head">Role</th>
+      </tr>
+    </thead>
+    <tbody class="zui-table-body">
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Alice Johnson</td>
+        <td class="zui-table-cell">Active</td>
+        <td class="zui-table-cell">Designer</td>
+      </tr>
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Bob Smith</td>
+        <td class="zui-table-cell">Away</td>
+        <td class="zui-table-cell">Engineer</td>
+      </tr>
+      <tr class="zui-table-row">
+        <td class="zui-table-cell">Carol Davis</td>
+        <td class="zui-table-cell">Active</td>
+        <td class="zui-table-cell">Product Manager</td>
+      </tr>
+    </tbody>
+    <tfoot class="zui-table-footer">
+      <tr class="zui-table-row">
+        <td class="zui-table-cell" colspan="2">Total members</td>
+        <td class="zui-table-cell">3</td>
+      </tr>
+    </tfoot>
+  </table>
+</Demo>

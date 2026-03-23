@@ -62,8 +62,8 @@ Every component accepts a `class` prop and forwards all standard HTML attributes
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button variant="fill" accent="primary">Save</Button>
-<Button variant="outline" accent="secondary">Cancel</Button>
+<Button variant="fill" accent="theme">Save</Button>
+<Button variant="outline" accent="accent">Cancel</Button>
 <Button variant="ghost" size="sm">Settings</Button>
 <Button variant="subtle" accent="destructive">Delete</Button>
 <Button href="/about">About (renders as anchor)</Button>
@@ -71,7 +71,7 @@ import { Button } from '@mrmartineau/zui/astro'
 
 Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
 
-Accents: `primary`, `secondary`, `destructive`
+Accents: `theme`, `accent`, `destructive`
 
 Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
 
@@ -193,7 +193,7 @@ Status: <Badge color="green">Live</Badge>
 You can always use the underlying CSS classes without importing components — useful in plain `.astro` templates or HTML:
 
 ```astro
-<button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+<button class="zui-button zui-button-variant-fill zui-button-color-theme">
   Save
 </button>
 
@@ -241,7 +241,7 @@ ZUI themes are pure CSS. Override custom properties in your layout's stylesheet.
 
 ```css
 :root {
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
   --radius-scale: 1.5;
 }
 ```

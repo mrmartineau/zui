@@ -25,10 +25,10 @@
   }
 
   .zui-radio input[type="radio"]:checked {
-    border-color: var(--color-primary);
+    border-color: var(--color-theme);
     background: radial-gradient(
       circle,
-      var(--color-primary) 40%,
+      var(--color-theme) 40%,
       transparent 41%
     );
   }

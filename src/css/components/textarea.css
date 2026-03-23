@@ -31,7 +31,7 @@
   .zui-textarea:focus {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
-    border-color: var(--color-primary);
+    border-color: var(--color-theme);
   }
 
   .zui-textarea:disabled {

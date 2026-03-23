@@ -59,8 +59,8 @@ import { Button } from '@mrmartineau/zui/astro'
 ```css
 /* src/css/theme.css */
 :root {
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
-  --color-secondary: light-dark(var(--color-slate-700), var(--color-slate-300));
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-accent: light-dark(var(--color-slate-700), var(--color-slate-300));
   --color-background: light-dark(var(--color-slate-50), var(--color-slate-950));
   --color-text: light-dark(var(--color-slate-900), var(--color-slate-100));
   /* … */

@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'table'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-table', className].filter(Boolean).join(' ')
+---
+
+<table class={classes} {...props}><slot /></table>

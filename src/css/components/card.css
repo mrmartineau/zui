@@ -57,7 +57,7 @@
   }
 
   .zui-card-interactive:hover {
-    border-color: var(--color-primary);
+    border-color: var(--color-theme);
   }
 
   .zui-card-interactive:active {

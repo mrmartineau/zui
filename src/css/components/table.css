@@ -1,0 +1,53 @@
+@layer zui.components {
+  .zui-table {
+    width: 100%;
+    caption-side: bottom;
+    font-variant-numeric: tabular-nums;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 0;
+  }
+
+  .zui-table-row {
+    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .zui-table-body .zui-table-row:hover {
+    background-color: oklch(from currentColor l c h / 10%);
+  }
+
+  .zui-table-row[data-state='selected'] {
+    background-color: oklch(from currentColor l c h / 25%);
+  }
+
+  .zui-table-head {
+    line-height: var(--line-height-xl);
+    padding-inline: var(--space-2xs);
+    text-align: left;
+    vertical-align: middle;
+    font-weight: var(--font-weight-bold);
+    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+  }
+
+  .zui-table-cell {
+    padding: var(--space-2xs);
+    vertical-align: middle;
+  }
+
+  .zui-table-footer {
+    border-top: 1px solid oklch(from currentColor l c h / 15%);
+    background-color: oklch(from currentColor l c h / 5%);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .zui-table-footer > tr:last-child {
+    border-bottom: 0;
+  }
+
+  .zui-table-caption {
+    margin-top: var(--space-2xs);
+    font-size: var(--step--1);
+    color: oklch(from currentColor l c h / 80%);
+  }
+}

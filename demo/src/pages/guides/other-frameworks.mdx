@@ -45,9 +45,9 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 | `zui-button-variant-outline` | Outlined border |
 | `zui-button-variant-ghost` | No background until hover |
 | `zui-button-variant-link` | Looks like a text link |
-| `zui-button-accent-primary` | Primary colour (default) |
-| `zui-button-accent-secondary` | Secondary colour |
-| `zui-button-accent-destructive` | Destructive/danger colour |
+| `zui-button-color-theme` | Theme colour (default) |
+| `zui-button-color-accent` | Accent colour |
+| `zui-button-color-destructive` | Destructive/danger colour |
 | `zui-button-size-xs` | Extra small |
 | `zui-button-size-sm` | Small |
 | `zui-button-size-lg` | Large |
@@ -94,7 +94,7 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 
 ```vue
 <template>
-  <button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+  <button class="zui-button zui-button-variant-fill zui-button-color-theme">
     Save
   </button>
   <span class="zui-badge zui-badge-color-green">Active</span>
@@ -117,7 +117,7 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 ### Svelte
 
 ```svelte
-<button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+<button class="zui-button zui-button-variant-fill zui-button-color-theme">
   Save
 </button>
 <span class="zui-badge zui-badge-color-green">Active</span>
@@ -142,7 +142,7 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 function App() {
   return (
     <>
-      <button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+      <button class="zui-button zui-button-variant-fill zui-button-color-theme">
         Save
       </button>
       <span class="zui-badge zui-badge-color-green">Active</span>
@@ -163,7 +163,7 @@ function App() {
 ### Plain HTML
 
 ```html
-<button class="zui-button zui-button-variant-fill zui-button-accent-primary">
+<button class="zui-button zui-button-variant-fill zui-button-color-theme">
   Save
 </button>
 
@@ -229,7 +229,7 @@ const props = defineProps({
 const classes = computed(() => [
   'zui-button',
   `zui-button-variant-${props.variant}`,
-  `zui-button-accent-${props.accent}`,
+  `zui-button-color-${props.accent}`,
   props.size && `zui-button-size-${props.size}`,
 ].filter(Boolean))
 </script>
@@ -252,7 +252,7 @@ Theming is framework-agnostic — just override CSS custom properties. See the [
 
 ```css
 :root {
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
   --radius-scale: 1.5;
 }
 ```

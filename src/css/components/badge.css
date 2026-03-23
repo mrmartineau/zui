@@ -1,6 +1,6 @@
 @layer zui.components {
   .zui-badge {
-    --zui-badge-accent: var(--color-primary);
+    --zui-badge-accent: var(--color-theme);
     --zui-badge-radius: var(--radius-full);
 
     display: inline-flex;

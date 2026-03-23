@@ -21,7 +21,7 @@ ZUI ships with a default `theme.css` that maps semantic tokens to the underlying
 
 /* Then override in your own stylesheet */
 :root {
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
   --custom-font-sans: "IBM Plex Sans";
   --radius-scale: 1.5;
 }
@@ -37,8 +37,8 @@ Here is the full default `theme.css` for reference:
 @layer zui.base {
   :root {
     /* Semantic colours */
-    --color-primary: light-dark(var(--color-mist-600), var(--color-mist-400));
-    --color-secondary: light-dark(var(--color-sky-600), var(--color-sky-400));
+    --color-theme: light-dark(var(--color-mist-600), var(--color-mist-400));
+    --color-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
     --color-background: light-dark(var(--color-mist-200), var(--color-mist-800));
     --color-surface: light-dark(var(--color-mist-200), var(--color-mist-800));
     --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
@@ -72,11 +72,11 @@ These tokens are used throughout all components. Each uses `light-dark()` to aut
 
 <ThemingTokenTable />
 
-#### Example: changing the primary colour
+#### Example: changing the theme colour
 
 ```css
 :root {
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
 }
 ```
 
@@ -86,7 +86,7 @@ Or use any raw colour value:
 
 ```css
 :root {
-  --color-primary: light-dark(oklch(0.55 0.2 270), oklch(0.75 0.15 270));
+  --color-theme: light-dark(oklch(0.55 0.2 270), oklch(0.75 0.15 270));
 }
 ```
 
@@ -175,9 +175,9 @@ A complete theme override combining colours, fonts, and shape:
 @import '@mrmartineau/zui/css';
 
 :root {
-  /* Colours — violet primary, slate secondary */
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-400));
-  --color-secondary: light-dark(var(--color-slate-600), var(--color-slate-400));
+  /* Colours — violet theme, slate accent */
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --color-accent: light-dark(var(--color-slate-600), var(--color-slate-400));
   --color-background: light-dark(var(--color-stone-100), var(--color-stone-900));
   --color-surface: light-dark(var(--color-stone-50), var(--color-stone-800));
   --color-border: light-dark(var(--color-stone-300), var(--color-stone-700));

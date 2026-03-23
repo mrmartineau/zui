@@ -1,9 +1,9 @@
 ---
-const primaryColorNames = [
+const themeColorNames = [
   'slate', 'gray', 'zinc', 'neutral', 'stone',
   'mauve', 'olive', 'mist', 'taupe',
 ]
-const secondaryColorNames = [
+const accentColorNames = [
   'slate', 'gray', 'zinc', 'neutral', 'stone',
   'mauve', 'olive', 'mist', 'taupe',
   'red', 'orange', 'amber', 'yellow', 'lime', 'green',
@@ -46,18 +46,18 @@ const radiusScales = [
   <div class="panel-body">
     <div class="panel-controls">
       <div class="control-group">
-        <label class="control-label" for="ctrl-primary">Primary</label>
-        <select class="zui-select" id="ctrl-primary">
-          {primaryColorNames.map(name => (
+        <label class="control-label" for="ctrl-theme">Theme</label>
+        <select class="zui-select" id="ctrl-theme">
+          {themeColorNames.map(name => (
             <option value={name} selected={name === 'mist'}>{name}</option>
           ))}
         </select>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="ctrl-secondary">Secondary</label>
-        <select class="zui-select" id="ctrl-secondary">
-          {secondaryColorNames.map(name => (
+        <label class="control-label" for="ctrl-accent">Accent</label>
+        <select class="zui-select" id="ctrl-accent">
+          {accentColorNames.map(name => (
             <option value={name} selected={name === 'sky'}>{name}</option>
           ))}
         </select>
@@ -95,14 +95,14 @@ const radiusScales = [
   const resetBtn = document.getElementById('theme-reset')!
   const codeEl = document.getElementById('theme-code')!
 
-  const ctrlPrimary = document.getElementById('ctrl-primary') as HTMLSelectElement
-  const ctrlSecondary = document.getElementById('ctrl-secondary') as HTMLSelectElement
+  const ctrlTheme = document.getElementById('ctrl-theme') as HTMLSelectElement
+  const ctrlAccent = document.getElementById('ctrl-accent') as HTMLSelectElement
   const ctrlFont = document.getElementById('ctrl-font') as HTMLSelectElement
   const ctrlRadius = document.getElementById('ctrl-radius') as HTMLSelectElement
 
   const defaults = {
-    primary: 'mist',
-    secondary: 'sky',
+    theme: 'mist',
+    accent: 'sky',
     font: 'Geist, Inter',
     radius: '1',
   }
@@ -118,19 +118,19 @@ const radiusScales = [
   closeBtn.addEventListener('click', () => dialog.close())
 
   function applyTheme() {
-    const primary = ctrlPrimary.value
-    const secondary = ctrlSecondary.value
+    const theme = ctrlTheme.value
+    const accent = ctrlAccent.value
     const font = ctrlFont.value
     const radius = ctrlRadius.value
 
     const root = document.documentElement
 
-    root.style.setProperty('--color-primary', `light-dark(var(--color-${primary}-600), var(--color-${primary}-400))`)
-    root.style.setProperty('--color-secondary', `light-dark(var(--color-${secondary}-600), var(--color-${secondary}-400))`)
-    root.style.setProperty('--color-background', `light-dark(var(--color-${primary}-200), var(--color-${primary}-800))`)
-    root.style.setProperty('--color-surface', `light-dark(var(--color-${primary}-200), var(--color-${primary}-800))`)
-    root.style.setProperty('--color-border', `light-dark(var(--color-${primary}-300), var(--color-${primary}-700))`)
-    root.style.setProperty('--color-text', `light-dark(var(--color-${primary}-700), var(--color-${primary}-300))`)
+    root.style.setProperty('--color-theme', `light-dark(var(--color-${theme}-600), var(--color-${theme}-400))`)
+    root.style.setProperty('--color-accent', `light-dark(var(--color-${accent}-600), var(--color-${accent}-400))`)
+    root.style.setProperty('--color-background', `light-dark(var(--color-${theme}-200), var(--color-${theme}-800))`)
+    root.style.setProperty('--color-surface', `light-dark(var(--color-${theme}-200), var(--color-${theme}-800))`)
+    root.style.setProperty('--color-border', `light-dark(var(--color-${theme}-300), var(--color-${theme}-700))`)
+    root.style.setProperty('--color-text', `light-dark(var(--color-${theme}-700), var(--color-${theme}-300))`)
     root.style.setProperty('--custom-font-sans', font)
     root.style.setProperty('--radius-scale', radius)
 
@@ -138,22 +138,22 @@ const radiusScales = [
   }
 
   function getFullCSS() {
-    const primary = ctrlPrimary.value
-    const secondary = ctrlSecondary.value
+    const theme = ctrlTheme.value
+    const accent = ctrlAccent.value
     const font = ctrlFont.value
     const radius = ctrlRadius.value
 
     return `@layer zui.base {
   :root {
-    --color-primary: light-dark(var(--color-${primary}-600), var(--color-${primary}-400));
-    --color-secondary: light-dark(var(--color-${secondary}-600), var(--color-${secondary}-400));
+    --color-theme: light-dark(var(--color-${theme}-600), var(--color-${theme}-400));
+    --color-accent: light-dark(var(--color-${accent}-600), var(--color-${accent}-400));
     --color-background: light-dark(
-      var(--color-${primary}-200),
-      var(--color-${primary}-800)
+      var(--color-${theme}-200),
+      var(--color-${theme}-800)
     );
-    --color-surface: light-dark(var(--color-${primary}-200), var(--color-${primary}-800));
-    --color-border: light-dark(var(--color-${primary}-300), var(--color-${primary}-700));
-    --color-text: light-dark(var(--color-${primary}-700), var(--color-${primary}-300));
+    --color-surface: light-dark(var(--color-${theme}-200), var(--color-${theme}-800));
+    --color-border: light-dark(var(--color-${theme}-300), var(--color-${theme}-700));
+    --color-text: light-dark(var(--color-${theme}-700), var(--color-${theme}-300));
     --color-success: light-dark(
       var(--color-emerald-600),
       var(--color-emerald-400)
@@ -181,14 +181,14 @@ const radiusScales = [
   }
 
   function resetTheme() {
-    ctrlPrimary.value = defaults.primary
-    ctrlSecondary.value = defaults.secondary
+    ctrlTheme.value = defaults.theme
+    ctrlAccent.value = defaults.accent
     ctrlFont.value = defaults.font
     ctrlRadius.value = defaults.radius
 
     const root = document.documentElement
-    root.style.removeProperty('--color-primary')
-    root.style.removeProperty('--color-secondary')
+    root.style.removeProperty('--color-theme')
+    root.style.removeProperty('--color-accent')
     root.style.removeProperty('--color-background')
     root.style.removeProperty('--color-surface')
     root.style.removeProperty('--color-border')
@@ -210,7 +210,7 @@ const radiusScales = [
 
   resetBtn.addEventListener('click', resetTheme)
 
-  const controls = [ctrlPrimary, ctrlSecondary, ctrlFont, ctrlRadius]
+  const controls = [ctrlTheme, ctrlAccent, ctrlFont, ctrlRadius]
   controls.forEach(ctrl => ctrl.addEventListener('change', applyTheme))
 
   updatePreview()
@@ -227,7 +227,7 @@ const radiusScales = [
   }
 
   .theme-toggle:hover {
-    background-color: color-mix(in oklch, var(--color-primary) 15%, var(--color-surface));
+    background-color: color-mix(in oklch, var(--color-theme) 15%, var(--color-surface));
     transform: scale(1.05);
   }
 

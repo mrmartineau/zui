@@ -23,13 +23,13 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor
 export function Button({
   className,
   variant,
-  accent,
+  color,
   size,
   shape,
   icon,
   ...props
 }: ButtonProps) {
-  const classes = buttonVariants({ variant, accent, size, shape, icon, className })
+  const classes = buttonVariants({ variant, color, size, shape, icon, className })
 
   if ('href' in props && props.href) {
     return <a className={classes} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)} />

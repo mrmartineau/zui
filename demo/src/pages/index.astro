@@ -148,7 +148,7 @@ import { Code } from 'astro:components'
         <h4>Guide</h4>
         <a href="/installation">Installation</a>
         <a href="/theming">Theming</a>
-        <a href="/colors">Colors</a>
+        <a href="/colors">Colours</a>
         <a href="/typography">Typography</a>
         <a href="/layers">CSS Layers</a>
       </div>
@@ -214,7 +214,7 @@ import { Code } from 'astro:components'
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-primary);
+    color: var(--color-theme);
     margin-block-end: var(--space-md);
   }
 
@@ -318,8 +318,8 @@ import { Code } from 'astro:components'
     height: 32px;
     flex-shrink: 0;
     border-radius: var(--radius-full);
-    background-color: var(--color-primary);
-    color: light-dark(var(--color-white), oklch(from var(--color-primary) 0.15 c h));
+    background-color: var(--color-theme);
+    color: light-dark(var(--color-white), oklch(from var(--color-theme) 0.15 c h));
     font-size: var(--step--1);
     font-weight: 700;
     margin-block-start: 2px;
@@ -375,7 +375,7 @@ import { Code } from 'astro:components'
   }
 
   .footer-col a:hover {
-    color: var(--color-primary);
+    color: var(--color-theme);
   }
 
   /* Responsive ------------------------------------------------------------ */

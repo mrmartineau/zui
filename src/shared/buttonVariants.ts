@@ -10,10 +10,10 @@ export const buttonVariants = cva({
       ghost: 'zui-button-variant-ghost',
       link: 'zui-button-variant-link',
     },
-    accent: {
-      primary: 'zui-button-accent-primary',
-      secondary: 'zui-button-accent-secondary',
-      destructive: 'zui-button-accent-destructive',
+    color: {
+      theme: 'zui-button-color-theme',
+      accent: 'zui-button-color-accent',
+      destructive: 'zui-button-color-destructive',
     },
     size: {
       xs: 'zui-button-size-xs',
@@ -35,7 +35,7 @@ export const buttonVariants = cva({
   },
   defaultVariants: {
     variant: 'fill',
-    accent: 'primary',
+    color: 'theme',
     size: 'md',
     shape: 'default',
     icon: false,

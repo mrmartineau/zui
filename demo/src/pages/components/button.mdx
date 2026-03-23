@@ -93,29 +93,29 @@ import { Button } from '@mrmartineau/zui/astro'
 
 Sets the colour palette.
 
-<Demo code={`<button class="zui-button">Primary (default)</button>
-<button class="zui-button zui-button-accent-secondary">Secondary</button>
-<button class="zui-button zui-button-accent-destructive">Destructive</button>`}>
-  <button class="zui-button">Primary (default)</button>
-  <button class="zui-button zui-button-accent-secondary">Secondary</button>
-  <button class="zui-button zui-button-accent-destructive">Destructive</button>
+<Demo code={`<button class="zui-button">Theme (default)</button>
+<button class="zui-button zui-button-color-accent">Accent</button>
+<button class="zui-button zui-button-color-destructive">Destructive</button>`}>
+  <button class="zui-button">Theme (default)</button>
+  <button class="zui-button zui-button-color-accent">Accent</button>
+  <button class="zui-button zui-button-color-destructive">Destructive</button>
 </Demo>
 
 <CodeTabs
-  html={`<button class="zui-button">Primary (default)</button>
-<button class="zui-button zui-button-accent-secondary">Secondary</button>
-<button class="zui-button zui-button-accent-destructive">Destructive</button>`}
+  html={`<button class="zui-button">Theme (default)</button>
+<button class="zui-button zui-button-color-accent">Accent</button>
+<button class="zui-button zui-button-color-destructive">Destructive</button>`}
   react={`import { Button } from '@mrmartineau/zui/react'
 
-<Button>Primary (default)</Button>
-<Button accent="secondary">Secondary</Button>
+<Button>Theme (default)</Button>
+<Button accent="accent">Accent</Button>
 <Button accent="destructive">Destructive</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button>Primary (default)</Button>
-<Button accent="secondary">Secondary</Button>
+<Button>Theme (default)</Button>
+<Button accent="accent">Accent</Button>
 <Button accent="destructive">Destructive</Button>`}
 />
 
@@ -210,13 +210,13 @@ Square 1:1 buttons for single icons. Uses the `icon` prop. Always include an `ar
   <i class="ph ph-x"></i>
 </button>
 
-<button class="zui-button zui-button-icon zui-button-accent-destructive" aria-label="Delete">
+<button class="zui-button zui-button-icon zui-button-color-destructive" aria-label="Delete">
   <i class="ph ph-trash"></i>
 </button>`}>
   <button class="zui-button zui-button-icon" aria-label="Settings"><i class="ph ph-gear"></i></button>
   <button class="zui-button zui-button-icon zui-button-variant-outline" aria-label="Edit"><i class="ph ph-pencil-simple"></i></button>
   <button class="zui-button zui-button-icon zui-button-variant-ghost" aria-label="Close"><i class="ph ph-x"></i></button>
-  <button class="zui-button zui-button-icon zui-button-accent-destructive" aria-label="Delete"><i class="ph ph-trash"></i></button>
+  <button class="zui-button zui-button-icon zui-button-color-destructive" aria-label="Delete"><i class="ph ph-trash"></i></button>
 </Demo>
 
 <CodeTabs
@@ -271,26 +271,26 @@ import { Button } from '@mrmartineau/zui/astro'
 
 ## Combining Variant + Accent
 
-<Demo code={`<button class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline Secondary</button>
-<button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">Ghost Destructive</button>
-<button class="zui-button zui-button-variant-subtle zui-button-accent-primary">Subtle Primary</button>`}>
-  <button class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline Secondary</button>
-  <button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">Ghost Destructive</button>
-  <button class="zui-button zui-button-variant-subtle zui-button-accent-primary">Subtle Primary</button>
+<Demo code={`<button class="zui-button zui-button-variant-outline zui-button-color-accent">Outline Accent</button>
+<button class="zui-button zui-button-variant-ghost zui-button-color-destructive">Ghost Destructive</button>
+<button class="zui-button zui-button-variant-subtle zui-button-color-theme">Subtle Theme</button>`}>
+  <button class="zui-button zui-button-variant-outline zui-button-color-accent">Outline Accent</button>
+  <button class="zui-button zui-button-variant-ghost zui-button-color-destructive">Ghost Destructive</button>
+  <button class="zui-button zui-button-variant-subtle zui-button-color-theme">Subtle Theme</button>
 </Demo>
 
 <CodeTabs
-  html={`<button class="zui-button zui-button-variant-outline zui-button-accent-secondary">
-  Outline Secondary
+  html={`<button class="zui-button zui-button-variant-outline zui-button-color-accent">
+  Outline Accent
 </button>
 
-<button class="zui-button zui-button-variant-ghost zui-button-accent-destructive">
+<button class="zui-button zui-button-variant-ghost zui-button-color-destructive">
   Ghost Destructive
 </button>`}
   react={`import { Button } from '@mrmartineau/zui/react'
 
-<Button variant="outline" accent="secondary">
-  Outline Secondary
+<Button variant="outline" accent="accent">
+  Outline Accent
 </Button>
 
 <Button variant="ghost" accent="destructive">
@@ -300,8 +300,8 @@ import { Button } from '@mrmartineau/zui/astro'
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button variant="outline" accent="secondary">
-  Outline Secondary
+<Button variant="outline" accent="accent">
+  Outline Accent
 </Button>
 
 <Button variant="ghost" accent="destructive">
@@ -311,19 +311,19 @@ import { Button } from '@mrmartineau/zui/astro'
 
 ## Kitchen Sink
 
-<Demo code={`<button class="zui-button zui-button-variant-outline zui-button-accent-destructive zui-button-size-lg zui-button-shape-soft">
+<Demo code={`<button class="zui-button zui-button-variant-outline zui-button-color-destructive zui-button-size-lg zui-button-shape-soft">
   Large Pill Outline Destructive
 </button>`}>
-  <button class="zui-button zui-button-variant-outline zui-button-accent-destructive zui-button-size-lg zui-button-shape-soft">Large Pill Outline Destructive</button>
+  <button class="zui-button zui-button-variant-outline zui-button-color-destructive zui-button-size-lg zui-button-shape-soft">Large Pill Outline Destructive</button>
 </Demo>
 
 ## Variants × Accents
 
 {['fill', 'subtle', 'outline', 'ghost', 'link'].map((variant) => (
   <ButtonRow label={variant}>
-    {['primary', 'secondary', 'destructive'].map((accent) => (
-      <button class={`zui-button zui-button-variant-${variant} zui-button-accent-${accent}`}>
-        {accent}
+    {['theme', 'accent', 'destructive'].map((color) => (
+      <button class={`zui-button zui-button-variant-${variant} zui-button-color-${color}`}>
+        {color}
       </button>
     ))}
   </ButtonRow>
@@ -336,7 +336,7 @@ import { Button } from '@mrmartineau/zui/astro'
     {['xs', 'sm', 'md', 'lg', 'xl'].map((size) => {
       const classes = [
         'zui-button',
-        'zui-button-accent-secondary',
+        'zui-button-color-accent',
         size !== 'md' ? `zui-button-size-${size}` : '',
         shape !== 'default' ? `zui-button-shape-${shape}` : '',
       ].filter(Boolean).join(' ')
@@ -352,7 +352,7 @@ import { Button } from '@mrmartineau/zui/astro'
   <button class="zui-button zui-button-variant-subtle" disabled>Subtle</button>
   <button class="zui-button zui-button-variant-outline" disabled>Outline</button>
   <button class="zui-button zui-button-variant-ghost" disabled>Ghost</button>
-  <button class="zui-button zui-button-accent-destructive" disabled>Destructive</button>
+  <button class="zui-button zui-button-color-destructive" disabled>Destructive</button>
 </ButtonRow>
 
 <CodeTabs
@@ -374,24 +374,24 @@ import { Button } from '@mrmartineau/zui/astro'
 
 <ButtonRow>
   <a href="#" class="zui-button">Default link</a>
-  <a href="#" class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline link</a>
+  <a href="#" class="zui-button zui-button-variant-outline zui-button-color-accent">Outline link</a>
   <a href="#" class="zui-button zui-button-variant-link">Text link</a>
 </ButtonRow>
 
 <CodeTabs
   html={`<a href="/action" class="zui-button">Default link</a>
-<a href="/action" class="zui-button zui-button-variant-outline zui-button-accent-secondary">Outline link</a>
+<a href="/action" class="zui-button zui-button-variant-outline zui-button-color-accent">Outline link</a>
 <a href="/action" class="zui-button zui-button-variant-link">Text link</a>`}
   react={`import { Button } from '@mrmartineau/zui/react'
 
 <Button href="/action">Default link</Button>
-<Button href="/action" variant="outline" accent="secondary">Outline link</Button>
+<Button href="/action" variant="outline" accent="accent">Outline link</Button>
 <Button href="/action" variant="link">Text link</Button>`}
   astro={`---
 import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button href="/action">Default link</Button>
-<Button href="/action" variant="outline" accent="secondary">Outline link</Button>
+<Button href="/action" variant="outline" accent="accent">Outline link</Button>
 <Button href="/action" variant="link">Text link</Button>`}
 />

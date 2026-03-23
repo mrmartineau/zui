@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'tfoot'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = ['zui-table-footer', className].filter(Boolean).join(' ')
+---
+
+<tfoot class={classes} {...props}><slot /></tfoot>
