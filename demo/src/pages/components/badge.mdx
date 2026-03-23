@@ -28,62 +28,136 @@ import { Badge } from '@mrmartineau/zui/astro'
 <Badge>Default</Badge>`}
 />
 
-## Accents
+## Colours
 
-<Demo code={`<span class="zui-badge">Primary</span>
-<span class="zui-badge zui-badge-accent-secondary">Secondary</span>
-<span class="zui-badge zui-badge-accent-success">Success</span>
-<span class="zui-badge zui-badge-accent-warning">Warning</span>
-<span class="zui-badge zui-badge-accent-error">Error</span>`}>
-  <span class="zui-badge">Primary</span>
-  <span class="zui-badge zui-badge-accent-secondary">Secondary</span>
-  <span class="zui-badge zui-badge-accent-success">Success</span>
-  <span class="zui-badge zui-badge-accent-warning">Warning</span>
-  <span class="zui-badge zui-badge-accent-error">Error</span>
-</Demo>
-
-## Fill Variant
-
-<Demo code={`<span class="zui-badge zui-badge-fill">Primary</span>
-<span class="zui-badge zui-badge-fill zui-badge-accent-secondary">Secondary</span>
-<span class="zui-badge zui-badge-fill zui-badge-accent-success">Success</span>
-<span class="zui-badge zui-badge-fill zui-badge-accent-warning">Warning</span>
-<span class="zui-badge zui-badge-fill zui-badge-accent-error">Error</span>`}>
-  <span class="zui-badge zui-badge-fill">Primary</span>
-  <span class="zui-badge zui-badge-fill zui-badge-accent-secondary">Secondary</span>
-  <span class="zui-badge zui-badge-fill zui-badge-accent-success">Success</span>
-  <span class="zui-badge zui-badge-fill zui-badge-accent-warning">Warning</span>
-  <span class="zui-badge zui-badge-fill zui-badge-accent-error">Error</span>
-</Demo>
-
-## Outline Variant
-
-<Demo code={`<span class="zui-badge zui-badge-outline">Primary</span>
-<span class="zui-badge zui-badge-outline zui-badge-accent-secondary">Secondary</span>
-<span class="zui-badge zui-badge-outline zui-badge-accent-success">Success</span>
-<span class="zui-badge zui-badge-outline zui-badge-accent-warning">Warning</span>
-<span class="zui-badge zui-badge-outline zui-badge-accent-error">Error</span>`}>
-  <span class="zui-badge zui-badge-outline">Primary</span>
-  <span class="zui-badge zui-badge-outline zui-badge-accent-secondary">Secondary</span>
-  <span class="zui-badge zui-badge-outline zui-badge-accent-success">Success</span>
-  <span class="zui-badge zui-badge-outline zui-badge-accent-warning">Warning</span>
-  <span class="zui-badge zui-badge-outline zui-badge-accent-error">Error</span>
+<Demo code={`<span class="zui-badge">Default</span>
+<span class="zui-badge zui-badge-color-red">Red</span>
+<span class="zui-badge zui-badge-color-orange">Orange</span>
+<span class="zui-badge zui-badge-color-amber">Amber</span>
+<span class="zui-badge zui-badge-color-yellow">Yellow</span>
+<span class="zui-badge zui-badge-color-lime">Lime</span>
+<span class="zui-badge zui-badge-color-green">Green</span>
+<span class="zui-badge zui-badge-color-emerald">Emerald</span>
+<span class="zui-badge zui-badge-color-teal">Teal</span>
+<span class="zui-badge zui-badge-color-cyan">Cyan</span>
+<span class="zui-badge zui-badge-color-sky">Sky</span>
+<span class="zui-badge zui-badge-color-blue">Blue</span>
+<span class="zui-badge zui-badge-color-indigo">Indigo</span>
+<span class="zui-badge zui-badge-color-violet">Violet</span>
+<span class="zui-badge zui-badge-color-purple">Purple</span>
+<span class="zui-badge zui-badge-color-fuchsia">Fuchsia</span>
+<span class="zui-badge zui-badge-color-pink">Pink</span>
+<span class="zui-badge zui-badge-color-rose">Rose</span>
+<span class="zui-badge zui-badge-color-gray">Gray</span>`}>
+  <span class="zui-badge">Default</span>
+  <span class="zui-badge zui-badge-color-red">Red</span>
+  <span class="zui-badge zui-badge-color-orange">Orange</span>
+  <span class="zui-badge zui-badge-color-amber">Amber</span>
+  <span class="zui-badge zui-badge-color-yellow">Yellow</span>
+  <span class="zui-badge zui-badge-color-lime">Lime</span>
+  <span class="zui-badge zui-badge-color-green">Green</span>
+  <span class="zui-badge zui-badge-color-emerald">Emerald</span>
+  <span class="zui-badge zui-badge-color-teal">Teal</span>
+  <span class="zui-badge zui-badge-color-cyan">Cyan</span>
+  <span class="zui-badge zui-badge-color-sky">Sky</span>
+  <span class="zui-badge zui-badge-color-blue">Blue</span>
+  <span class="zui-badge zui-badge-color-indigo">Indigo</span>
+  <span class="zui-badge zui-badge-color-violet">Violet</span>
+  <span class="zui-badge zui-badge-color-purple">Purple</span>
+  <span class="zui-badge zui-badge-color-fuchsia">Fuchsia</span>
+  <span class="zui-badge zui-badge-color-pink">Pink</span>
+  <span class="zui-badge zui-badge-color-rose">Rose</span>
+  <span class="zui-badge zui-badge-color-gray">Gray</span>
 </Demo>
 
 <CodeTabs
-  html={`<span class="zui-badge zui-badge-fill">Fill</span>
-<span class="zui-badge zui-badge-outline">Outline</span>
-<span class="zui-badge zui-badge-accent-success">Success</span>`}
+  html={`<span class="zui-badge zui-badge-color-emerald">Emerald</span>
+<span class="zui-badge zui-badge-color-red">Red</span>
+<span class="zui-badge zui-badge-color-blue">Blue</span>`}
   react={`import { Badge } from '@mrmartineau/zui/react'
 
-<Badge className="zui-badge-fill">Fill</Badge>
-<Badge className="zui-badge-outline">Outline</Badge>
-<Badge className="zui-badge-accent-success">Success</Badge>`}
+<Badge color="emerald">Emerald</Badge>
+<Badge color="red">Red</Badge>
+<Badge color="blue">Blue</Badge>`}
   astro={`---
 import { Badge } from '@mrmartineau/zui/astro'
 ---
 
-<Badge class="zui-badge-fill">Fill</Badge>
-<Badge class="zui-badge-outline">Outline</Badge>
-<Badge class="zui-badge-accent-success">Success</Badge>`}
+<Badge color="emerald">Emerald</Badge>
+<Badge color="red">Red</Badge>
+<Badge color="blue">Blue</Badge>`}
 />
+
+## Variants
+
+Controls how the colour is applied.
+
+### Subtle (default)
+
+<Demo code={`<span class="zui-badge">Default</span>
+<span class="zui-badge zui-badge-color-emerald">Emerald</span>
+<span class="zui-badge zui-badge-color-amber">Amber</span>
+<span class="zui-badge zui-badge-color-red">Red</span>`}>
+  <span class="zui-badge">Default</span>
+  <span class="zui-badge zui-badge-color-emerald">Emerald</span>
+  <span class="zui-badge zui-badge-color-amber">Amber</span>
+  <span class="zui-badge zui-badge-color-red">Red</span>
+</Demo>
+
+### Fill
+
+<Demo code={`<span class="zui-badge zui-badge-variant-fill">Default</span>
+<span class="zui-badge zui-badge-variant-fill zui-badge-color-emerald">Emerald</span>
+<span class="zui-badge zui-badge-variant-fill zui-badge-color-amber">Amber</span>
+<span class="zui-badge zui-badge-variant-fill zui-badge-color-red">Red</span>`}>
+  <span class="zui-badge zui-badge-variant-fill">Default</span>
+  <span class="zui-badge zui-badge-variant-fill zui-badge-color-emerald">Emerald</span>
+  <span class="zui-badge zui-badge-variant-fill zui-badge-color-amber">Amber</span>
+  <span class="zui-badge zui-badge-variant-fill zui-badge-color-red">Red</span>
+</Demo>
+
+### Outline
+
+<Demo code={`<span class="zui-badge zui-badge-variant-outline">Default</span>
+<span class="zui-badge zui-badge-variant-outline zui-badge-color-emerald">Emerald</span>
+<span class="zui-badge zui-badge-variant-outline zui-badge-color-amber">Amber</span>
+<span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Red</span>`}>
+  <span class="zui-badge zui-badge-variant-outline">Default</span>
+  <span class="zui-badge zui-badge-variant-outline zui-badge-color-emerald">Emerald</span>
+  <span class="zui-badge zui-badge-variant-outline zui-badge-color-amber">Amber</span>
+  <span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Red</span>
+</Demo>
+
+<CodeTabs
+  html={`<span class="zui-badge">Subtle (default)</span>
+<span class="zui-badge zui-badge-variant-fill zui-badge-color-emerald">Fill</span>
+<span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Outline</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge>Subtle (default)</Badge>
+<Badge variant="fill" color="emerald">Fill</Badge>
+<Badge variant="outline" color="red">Outline</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge>Subtle (default)</Badge>
+<Badge variant="fill" color="emerald">Fill</Badge>
+<Badge variant="outline" color="red">Outline</Badge>`}
+/>
+
+## All Variants × Colours
+
+{['subtle', 'fill', 'outline'].map((variant) => {
+  const variantClass = variant !== 'subtle' ? ` zui-badge-variant-${variant}` : ''
+  return (
+    <>
+      <h3>{variant}</h3>
+      <Demo code={`<!-- ${variant} variant -->`}>
+        {['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose', 'gray'].map((color) => (
+          <span class={`zui-badge${variantClass} zui-badge-color-${color}`}>{color}</span>
+        ))}
+      </Demo>
+    </>
+  )
+})}

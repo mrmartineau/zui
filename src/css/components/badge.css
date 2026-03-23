@@ -16,33 +16,149 @@
     color: var(--zui-badge-accent);
   }
 
-  /* Accents */
-  .zui-badge-accent-secondary {
-    --zui-badge-accent: var(--color-secondary);
-  }
+  /* -------------------------------------------------------------------------
+   * Variant — determines how the accent colour is applied
+   * ---------------------------------------------------------------------- */
 
-  .zui-badge-accent-success {
-    --zui-badge-accent: var(--color-success);
-  }
+  /* subtle is the default — no extra class needed */
 
-  .zui-badge-accent-warning {
-    --zui-badge-accent: var(--color-warning);
-  }
-
-  .zui-badge-accent-error {
-    --zui-badge-accent: var(--color-error);
-  }
-
-  /* Fill variant */
-  .zui-badge-fill {
+  /* fill */
+  .zui-badge.zui-badge-variant-fill {
     background-color: var(--zui-badge-accent);
-    color: oklch(from var(--zui-badge-accent) 1 0 0);
+    color: light-dark(
+      oklch(from var(--zui-badge-accent) calc(l + 0.4) 0 0),
+      oklch(from var(--zui-badge-accent) calc(l - 0.4) 0 0)
+    );
   }
 
-  /* Outline variant */
-  .zui-badge-outline {
+  /* outline */
+  .zui-badge.zui-badge-variant-outline {
     background-color: transparent;
-    border: 1px var(--border-style, solid) oklch(from var(--zui-badge-accent) l c h / 40%);
+    border: 1px var(--border-style, solid)
+      oklch(from var(--zui-badge-accent) l c h / 40%);
     color: var(--zui-badge-accent);
+  }
+
+  /* -------------------------------------------------------------------------
+   * Colour — sets the accent colour
+   * ---------------------------------------------------------------------- */
+  .zui-badge.zui-badge-color-red {
+    --zui-badge-accent: light-dark(var(--color-red-600), var(--color-red-400));
+  }
+
+  .zui-badge.zui-badge-color-orange {
+    --zui-badge-accent: light-dark(
+      var(--color-orange-600),
+      var(--color-orange-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-amber {
+    --zui-badge-accent: light-dark(
+      var(--color-amber-600),
+      var(--color-amber-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-yellow {
+    --zui-badge-accent: light-dark(
+      var(--color-yellow-600),
+      var(--color-yellow-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-lime {
+    --zui-badge-accent: light-dark(
+      var(--color-lime-600),
+      var(--color-lime-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-green {
+    --zui-badge-accent: light-dark(
+      var(--color-green-600),
+      var(--color-green-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-emerald {
+    --zui-badge-accent: light-dark(
+      var(--color-emerald-600),
+      var(--color-emerald-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-teal {
+    --zui-badge-accent: light-dark(
+      var(--color-teal-600),
+      var(--color-teal-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-cyan {
+    --zui-badge-accent: light-dark(
+      var(--color-cyan-600),
+      var(--color-cyan-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-sky {
+    --zui-badge-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
+  }
+
+  .zui-badge.zui-badge-color-blue {
+    --zui-badge-accent: light-dark(
+      var(--color-blue-600),
+      var(--color-blue-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-indigo {
+    --zui-badge-accent: light-dark(
+      var(--color-indigo-600),
+      var(--color-indigo-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-violet {
+    --zui-badge-accent: light-dark(
+      var(--color-violet-600),
+      var(--color-violet-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-purple {
+    --zui-badge-accent: light-dark(
+      var(--color-purple-600),
+      var(--color-purple-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-fuchsia {
+    --zui-badge-accent: light-dark(
+      var(--color-fuchsia-600),
+      var(--color-fuchsia-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-pink {
+    --zui-badge-accent: light-dark(
+      var(--color-pink-600),
+      var(--color-pink-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-rose {
+    --zui-badge-accent: light-dark(
+      var(--color-rose-600),
+      var(--color-rose-400)
+    );
+  }
+
+  .zui-badge.zui-badge-color-gray {
+    --zui-badge-accent: light-dark(
+      var(--color-gray-600),
+      var(--color-gray-400)
+    );
   }
 }

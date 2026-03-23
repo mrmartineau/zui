@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
 
 const easings = [
   { token: '--ease', desc: 'General purpose' },
@@ -21,17 +24,17 @@ const easings = [
   <section class="flow">
     <h2>Curves</h2>
     <p>Hover over each row to see the easing in action.</p>
-    <div class="token-table">
+    <TokenGrid columns={3}>
       {easings.map(({ token, desc }) => (
-        <div class="token-row" style={`--demo-easing: var(${token});`}>
-          <code class="zui-code">{token}</code>
+        <TokenRow class="easing-row" style={`--demo-easing: var(${token});`}>
+          <CopyCode>{token}</CopyCode>
           <span class="desc">{desc}</span>
           <div class="track">
             <div class="dot"></div>
           </div>
-        </div>
+        </TokenRow>
       ))}
-    </div>
+    </TokenGrid>
   </section>
 
   <section class="flow">
@@ -63,26 +66,6 @@ const easings = [
     margin-block-start: var(--space-xl);
   }
 
-  .token-table {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-    margin-block: var(--space-sm);
-  }
-
-  .token-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-3xs) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .token-row code {
-    flex-shrink: 0;
-    min-width: 14rem;
-  }
-
   .desc {
     font-size: var(--step--1);
     color: color-mix(in oklch, var(--color-text) 60%, transparent);
@@ -110,7 +93,7 @@ const easings = [
     transition: left 0.8s var(--demo-easing);
   }
 
-  .token-row:hover .dot {
+  :global(.token-row):hover .dot {
     left: calc(100% - 1rem);
   }
 </style>

@@ -1,10 +1,15 @@
 import type { HTMLAttributes } from 'react'
+import type { VariantProps } from 'cva'
+import { badgeVariants } from '../shared/badgeVariants'
 
-export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
-  className?: string
-}
+type BadgeVariantProps = VariantProps<typeof badgeVariants>
 
-export function Badge({ className, children, ...props }: BadgeProps) {
-  const classes = ['zui-badge', className].filter(Boolean).join(' ')
+export type BadgeProps = HTMLAttributes<HTMLSpanElement> &
+  BadgeVariantProps & {
+    className?: string
+  }
+
+export function Badge({ className, variant, color, children, ...props }: BadgeProps) {
+  const classes = badgeVariants({ variant, color, className })
   return <span className={classes} {...props}>{children}</span>
 }

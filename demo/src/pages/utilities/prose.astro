@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
 ---
 
 <Layout title="Prose">
@@ -50,10 +53,10 @@ import { Code } from 'astro:components'
 
   <section class="flow">
     <h2>Modifiers</h2>
-    <div class="class-table">
-      <div class="class-row"><code class="zui-code">.prose.inverted</code><span>Inverted colour scheme for dark backgrounds</span></div>
-      <div class="class-row"><code class="zui-code">.prose.max-width-p</code><span>Limits paragraph width to 65ch for readability</span></div>
-    </div>
+    <TokenGrid>
+      <TokenRow><CopyCode>.prose.inverted</CopyCode><span>Inverted colour scheme for dark backgrounds</span></TokenRow>
+      <TokenRow><CopyCode>.prose.max-width-p</CopyCode><span>Limits paragraph width to 65ch for readability</span></TokenRow>
+    </TokenGrid>
   </section>
 </Layout>
 
@@ -77,29 +80,5 @@ import { Code } from 'astro:components'
 
   .feature-list li {
     line-height: var(--line-height-md);
-  }
-
-  .class-table {
-    display: flex;
-    flex-direction: column;
-    margin-block: var(--space-sm);
-  }
-
-  .class-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-3xs) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .class-row code {
-    min-width: 14rem;
-    flex-shrink: 0;
-  }
-
-  .class-row span {
-    font-size: var(--step--1);
-    color: color-mix(in oklch, var(--color-text) 70%, transparent);
   }
 </style>

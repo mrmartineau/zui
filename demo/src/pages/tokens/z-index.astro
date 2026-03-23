@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
 
 const layers = [
   { token: '--z--1', value: '-1', desc: 'Behind everything' },
@@ -24,15 +27,15 @@ const layers = [
 
   <section class="flow">
     <h2>Scale</h2>
-    <div class="token-table">
+    <TokenGrid columns={3}>
       {layers.map(({ token, value, desc }) => (
-        <div class="token-row">
-          <code class="zui-code">{token}</code>
+        <TokenRow>
+          <CopyCode>{token}</CopyCode>
           <span class="value">{value}</span>
           <span class="desc">{desc}</span>
-        </div>
+        </TokenRow>
       ))}
-    </div>
+    </TokenGrid>
   </section>
 
   <section class="flow">
@@ -64,26 +67,6 @@ const layers = [
 
   section {
     margin-block-start: var(--space-xl);
-  }
-
-  .token-table {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-    margin-block: var(--space-sm);
-  }
-
-  .token-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-3xs) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .token-row code {
-    flex-shrink: 0;
-    min-width: 10rem;
   }
 
   .value {

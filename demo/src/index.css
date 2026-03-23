@@ -1,10 +1,16 @@
 .astro-code {
   padding: var(--space-4xs) var(--space-2xs);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   background-color: light-dark(
     oklch(from var(--color-background) calc(l + 0.03) c h),
     oklch(from var(--color-background) calc(l - 0.02) c h)
-  ) !important;
+    ) !important;
+
+  @supports (corner-shape: squircle) {
+    corner-shape: superellipse(1.25);
+    border-radius: 20px;
+    padding: var(--space-2xs) var(--space-xs);
+  }
 }
 
 .astro-code,

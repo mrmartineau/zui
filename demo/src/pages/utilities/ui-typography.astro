@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+---
+
+<Layout title="UI Typography">
+  <h1>UI Typography</h1>
+  <p class="subtitle">Utility classes for text sizing, colour, links, and code — designed for UI rather than long-form prose.</p>
+
+  <section class="flow">
+    <h2>Text Size</h2>
+    <p>Map directly to the fluid type scale tokens. All classes reset <code class="zui-code">line-height</code> to tight and <code class="zui-code">margin</code> to 0, making them ideal for UI labels and headings.</p>
+
+    <TokenGrid>
+      <TokenRow><CopyCode>.zui-text--4</CopyCode><span class="zui-text--4">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text--3</CopyCode><span class="zui-text--3">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text--2</CopyCode><span class="zui-text--2">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text--1</CopyCode><span class="zui-text--1">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-base</CopyCode><span class="zui-text-base">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-1</CopyCode><span class="zui-text-1">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-2</CopyCode><span class="zui-text-2">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-3</CopyCode><span class="zui-text-3">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-4</CopyCode><span class="zui-text-4">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-5</CopyCode><span class="zui-text-5">The quick brown fox</span></TokenRow>
+      <TokenRow><CopyCode>.zui-text-6</CopyCode><span class="zui-text-6">The quick brown fox</span></TokenRow>
+    </TokenGrid>
+
+    <Code code={`<p class="zui-text-2">Large UI text</p>
+<p class="zui-text-base">Base size</p>
+<span class="zui-text--1">Small label</span>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Text Colour</h2>
+    <p>Reduce text prominence with muted and faint utilities.</p>
+
+    <TokenGrid>
+      <TokenRow><CopyCode>.zui-color-muted</CopyCode><span class="zui-color-muted">Muted text for secondary information</span></TokenRow>
+      <TokenRow><CopyCode>.zui-color-faint</CopyCode><span class="zui-color-faint">Faint text for tertiary or disabled content</span></TokenRow>
+    </TokenGrid>
+
+    <Code code={`<p>Primary text</p>
+<p class="zui-color-muted">Secondary text</p>
+<p class="zui-color-faint">Tertiary text</p>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Link</h2>
+    <p>Style any anchor as an accessible, accent-coloured link with underline and hover transition.</p>
+
+    <div class="demo-preview">
+      <a href="#" class="zui-link">A styled link</a>
+    </div>
+
+    <Code code={`<a href="/about" class="zui-link">About us</a>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <h3>Custom properties</h3>
+    <Code code={`.zui-link {
+  --link-color: var(--accent-11);
+  --link-color-decoration: var(--accent-7);
+  --link-color-decoration-hover: var(--accent-8);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Code</h2>
+    <p>Inline code and preformatted blocks with monospace font, background, and rounded corners.</p>
+
+    <h3>Inline code</h3>
+    <div class="demo-preview">
+      <p>Use <code class="zui-code">var(--space-md)</code> for medium spacing.</p>
+    </div>
+    <Code code={`<code class="zui-code">var(--space-md)</code>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <h3>Code block</h3>
+    <div class="demo-preview">
+      <pre class="zui-pre"><code>const greeting = "Hello, world!"
+console.log(greeting)</code></pre>
+    </div>
+    <Code code={`<pre class="zui-pre"><code>const greeting = "Hello, world!"
+console.log(greeting)</code></pre>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+
+    <h3>Custom properties</h3>
+    <Code code={`.zui-pre,
+.zui-code {
+  --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
+  --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+}`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+
+  <section class="flow">
+    <h2>Surface</h2>
+    <p>A subtle background for section alternation.</p>
+
+    <div class="demo-preview">
+      <div class="surface" style="padding: var(--space-md); border-radius: var(--radius-lg);">
+        Content on a surface background
+      </div>
+    </div>
+
+    <Code code={`<section class="surface">
+  Alternating section background
+</section>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+  </section>
+</Layout>
+
+<style>
+  .subtitle {
+    font-size: var(--step-1);
+    color: var(--color-text);
+    max-width: 55ch;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .demo-preview {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-block: var(--space-sm);
+  }
+</style>

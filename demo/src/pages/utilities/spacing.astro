@@ -1,6 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
+import CopyCode from '../../components/CopyCode.astro'
+
+const side = `{side}`
+const size = `{size}`
 ---
 
 <Layout title="Spacing">
@@ -11,19 +17,19 @@ import { Code } from 'astro:components'
     <h2>Margin</h2>
     <p>Classes follow the pattern <code class="zui-code">.m{side}-{size}</code> where side is optional (<code class="zui-code">x</code>, <code class="zui-code">y</code>, <code class="zui-code">t</code>, <code class="zui-code">r</code>, <code class="zui-code">b</code>, <code class="zui-code">l</code>) and size comes from the space scale.</p>
 
-    <div class="class-table">
-      <div class="class-row header">
+    <TokenGrid>
+      <TokenRow header>
         <span>Class</span>
         <span>Property</span>
-      </div>
-      <div class="class-row"><code class="zui-code">.m-{size}</code><span>margin</span></div>
-      <div class="class-row"><code class="zui-code">.mx-{size}</code><span>margin-inline</span></div>
-      <div class="class-row"><code class="zui-code">.my-{size}</code><span>margin-block</span></div>
-      <div class="class-row"><code class="zui-code">.mt-{size}</code><span>margin-block-start</span></div>
-      <div class="class-row"><code class="zui-code">.mr-{size}</code><span>margin-inline-end</span></div>
-      <div class="class-row"><code class="zui-code">.mb-{size}</code><span>margin-block-end</span></div>
-      <div class="class-row"><code class="zui-code">.ml-{size}</code><span>margin-inline-start</span></div>
-    </div>
+      </TokenRow>
+      <TokenRow><CopyCode>{`.m-{size}`}</CopyCode><span>margin</span></TokenRow>
+      <TokenRow><CopyCode>{`.mx-{size}`}</CopyCode><span>margin-inline</span></TokenRow>
+      <TokenRow><CopyCode>{`.my-{size}`}</CopyCode><span>margin-block</span></TokenRow>
+      <TokenRow><CopyCode>{`.mt-{size}`}</CopyCode><span>margin-block-start</span></TokenRow>
+      <TokenRow><CopyCode>{`.mr-{size}`}</CopyCode><span>margin-inline-end</span></TokenRow>
+      <TokenRow><CopyCode>{`.mb-{size}`}</CopyCode><span>margin-block-end</span></TokenRow>
+      <TokenRow><CopyCode>{`.ml-{size}`}</CopyCode><span>margin-inline-start</span></TokenRow>
+    </TokenGrid>
 
     <h3>Available sizes</h3>
     <p><code class="zui-code">0</code>, <code class="zui-code">auto</code>, <code class="zui-code">2xs</code>, <code class="zui-code">xs</code>, <code class="zui-code">s</code>, <code class="zui-code">m</code>, <code class="zui-code">l</code>, <code class="zui-code">xl</code>, <code class="zui-code">2xl</code>, <code class="zui-code">3xl</code>, <code class="zui-code">4xl</code></p>
@@ -35,19 +41,19 @@ import { Code } from 'astro:components'
     <h2>Padding</h2>
     <p>Same pattern as margin: <code class="zui-code">.p{side}-{size}</code>.</p>
 
-    <div class="class-table">
-      <div class="class-row header">
+    <TokenGrid>
+      <TokenRow header>
         <span>Class</span>
         <span>Property</span>
-      </div>
-      <div class="class-row"><code class="zui-code">.p-{size}</code><span>padding</span></div>
-      <div class="class-row"><code class="zui-code">.px-{size}</code><span>padding-inline</span></div>
-      <div class="class-row"><code class="zui-code">.py-{size}</code><span>padding-block</span></div>
-      <div class="class-row"><code class="zui-code">.pt-{size}</code><span>padding-block-start</span></div>
-      <div class="class-row"><code class="zui-code">.pr-{size}</code><span>padding-inline-end</span></div>
-      <div class="class-row"><code class="zui-code">.pb-{size}</code><span>padding-block-end</span></div>
-      <div class="class-row"><code class="zui-code">.pl-{size}</code><span>padding-inline-start</span></div>
-    </div>
+      </TokenRow>
+      <TokenRow><CopyCode>{`.p-{size}`}</CopyCode><span>padding</span></TokenRow>
+      <TokenRow><CopyCode>{`.px-{size}`}</CopyCode><span>padding-inline</span></TokenRow>
+      <TokenRow><CopyCode>{`.py-{size}`}</CopyCode><span>padding-block</span></TokenRow>
+      <TokenRow><CopyCode>{`.pt-{size}`}</CopyCode><span>padding-block-start</span></TokenRow>
+      <TokenRow><CopyCode>{`.pr-{size}`}</CopyCode><span>padding-inline-end</span></TokenRow>
+      <TokenRow><CopyCode>{`.pb-{size}`}</CopyCode><span>padding-block-end</span></TokenRow>
+      <TokenRow><CopyCode>{`.pl-{size}`}</CopyCode><span>padding-inline-start</span></TokenRow>
+    </TokenGrid>
 
     <Code code={`<section class="px-m py-xl">Horizontal and vertical padding</section>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
   </section>
@@ -56,15 +62,15 @@ import { Code } from 'astro:components'
     <h2>Gap</h2>
     <p>Gap utilities for flex and grid containers: <code class="zui-code">.gap-{size}</code>, <code class="zui-code">.gapx-{size}</code> (column-gap), <code class="zui-code">.gapy-{size}</code> (row-gap).</p>
 
-    <div class="class-table">
-      <div class="class-row header">
+    <TokenGrid>
+      <TokenRow header>
         <span>Class</span>
         <span>Property</span>
-      </div>
-      <div class="class-row"><code class="zui-code">.gap-{size}</code><span>gap</span></div>
-      <div class="class-row"><code class="zui-code">.gapx-{size}</code><span>column-gap</span></div>
-      <div class="class-row"><code class="zui-code">.gapy-{size}</code><span>row-gap</span></div>
-    </div>
+      </TokenRow>
+      <TokenRow><CopyCode>{`.gap-{size}`}</CopyCode><span>gap</span></TokenRow>
+      <TokenRow><CopyCode>{`.gapx-{size}`}</CopyCode><span>column-gap</span></TokenRow>
+      <TokenRow><CopyCode>{`.gapy-{size}`}</CopyCode><span>row-gap</span></TokenRow>
+    </TokenGrid>
 
     <h3>Available sizes</h3>
     <p><code class="zui-code">0</code>, <code class="zui-code">2xs</code>, <code class="zui-code">xs</code>, <code class="zui-code">s</code>, <code class="zui-code">m</code>, <code class="zui-code">l</code>, <code class="zui-code">xl</code>, <code class="zui-code">2xl</code>, <code class="zui-code">3xl</code>, <code class="zui-code">4xl</code></p>
@@ -86,40 +92,5 @@ import { Code } from 'astro:components'
 
   section {
     margin-block-start: var(--space-xl);
-  }
-
-  .class-table {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-block: var(--space-sm);
-  }
-
-  .class-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-3xs) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .class-row.header {
-    font-weight: var(--font-weight-bold);
-    font-size: var(--step--1);
-    border-bottom-width: 2px;
-  }
-
-  .class-row code {
-    min-width: 12rem;
-    flex-shrink: 0;
-  }
-
-  .class-row span {
-    font-size: var(--step--1);
-    color: color-mix(in oklch, var(--color-text) 70%, transparent);
-  }
-
-  .class-row.header span {
-    color: var(--color-text);
   }
 </style>

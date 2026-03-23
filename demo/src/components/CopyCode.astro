@@ -1,0 +1,86 @@
+---
+interface Props {
+  value?: string
+  class?: string
+}
+
+const { value, class: className } = Astro.props
+---
+
+<code
+  class:list={['zui-code', 'copy-code', className]}
+  data-copy={value}
+  tabindex="0"
+  role="button"
+>
+  <slot />
+  <i class="ph-duotone ph-copy copy-icon"></i>
+  <span class="copy-feedback" aria-hidden="true">Copied!</span>
+</code>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const el = (e.target as HTMLElement).closest<HTMLElement>('.copy-code')
+    if (!el) return
+
+    const text = el.dataset.copy || el.textContent?.replace('Copied!', '').trim() || ''
+    navigator.clipboard.writeText(text)
+
+    el.classList.add('copied')
+    setTimeout(() => el.classList.remove('copied'), 1200)
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return
+    const el = (e.target as HTMLElement).closest<HTMLElement>('.copy-code')
+    if (!el) return
+    e.preventDefault()
+    el.click()
+  })
+</script>
+
+<style>
+  .copy-code {
+    cursor: pointer;
+    position: relative;
+    transition: opacity 0.15s ease;
+  }
+
+  .copy-code:hover {
+    opacity: 0.8;
+  }
+
+  .copy-icon {
+    display: inline-flex;
+    opacity: 0;
+    margin-inline-start: 0.3em;
+    vertical-align: middle;
+    transition: opacity 0.15s ease;
+  }
+
+  .copy-code:hover .copy-icon,
+  .copy-code:focus-visible .copy-icon {
+    opacity: 1;
+  }
+
+  .copy-code.copied .copy-icon {
+    opacity: 0;
+  }
+
+  .copy-feedback {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(calc(100% + 0.5em));
+    font-size: var(--step--2);
+    color: var(--color-success, green);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+
+  .copy-code.copied .copy-feedback {
+    opacity: 1;
+  }
+</style>

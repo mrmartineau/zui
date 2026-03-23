@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
+import TokenGrid from '../../components/TokenGrid.astro'
+import TokenRow from '../../components/TokenRow.astro'
 ---
 
 <Layout title="Size">
@@ -9,62 +12,82 @@ import { Code } from 'astro:components'
 
   <section class="flow">
     <h2>Fractions</h2>
-    <div class="token-table">
-      <div class="token-row">
-        <code class="zui-code">--size-quarter</code>
-        <div class="bar" style="width: 25%;"></div>
+    <TokenGrid columns={3}>
+      <TokenRow>
+        <CopyCode>--size-quarter</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 25%;"></div>
+        </div>
         <span>25%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-third</code>
-        <div class="bar" style="width: 33.333%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-third</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 33.333%;"></div>
+        </div>
         <span>33.3%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-half</code>
-        <div class="bar" style="width: 50%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-half</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 50%;"></div>
+        </div>
         <span>50%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-twothirds</code>
-        <div class="bar" style="width: 66.666%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-twothirds</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 66.666%;"></div>
+        </div>
         <span>66.7%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-threequarters</code>
-        <div class="bar" style="width: 75%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-threequarters</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 75%;"></div>
+        </div>
         <span>75%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-full</code>
-        <div class="bar" style="width: 100%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-full</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 100%;"></div>
+        </div>
         <span>100%</span>
-      </div>
-    </div>
+      </TokenRow>
+    </TokenGrid>
 
     <h3>Fifths</h3>
-    <div class="token-table">
-      <div class="token-row">
-        <code class="zui-code">--size-fifth</code>
-        <div class="bar" style="width: 20%;"></div>
+    <TokenGrid columns={3}>
+      <TokenRow>
+        <CopyCode>--size-fifth</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 20%;"></div>
+        </div>
         <span>20%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-twofifths</code>
-        <div class="bar" style="width: 40%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-twofifths</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 40%;"></div>
+        </div>
         <span>40%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-threefifths</code>
-        <div class="bar" style="width: 60%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-threefifths</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 60%;"></div>
+        </div>
         <span>60%</span>
-      </div>
-      <div class="token-row">
-        <code class="zui-code">--size-fourfifths</code>
-        <div class="bar" style="width: 80%;"></div>
+      </TokenRow>
+      <TokenRow>
+        <CopyCode>--size-fourfifths</CopyCode>
+        <div class="bar-wrapper">
+          <div class="bar" style="width: 80%;"></div>
+        </div>
         <span>80%</span>
-      </div>
-    </div>
+      </TokenRow>
+    </TokenGrid>
   </section>
 
   <section class="flow">
@@ -104,39 +127,19 @@ import { Code } from 'astro:components'
     margin-block-start: var(--space-xl);
   }
 
-  .token-table {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-    margin-block: var(--space-sm);
+  :global(.token-row) > span {
+    min-width: 4rem;
+    text-align: right;
   }
 
-  .token-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-3xs) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .token-row code {
-    flex-shrink: 0;
-    min-width: 14rem;
+  .bar-wrapper {
+    flex-grow: 1;
   }
 
   .bar {
     height: var(--space-xs);
     background-color: var(--color-primary);
     border-radius: var(--radius-sm);
-    flex: 1;
     max-width: 100%;
-  }
-
-  .token-row span {
-    font-size: var(--step--1);
-    color: color-mix(in oklch, var(--color-text) 60%, transparent);
-    min-width: 4rem;
-    flex-shrink: 0;
-    text-align: right;
   }
 </style>

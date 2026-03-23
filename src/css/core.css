@@ -9,6 +9,7 @@
     background-color: var(--color-background);
     height: stretch;
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
     accent-color: var(--color-primary);
   }
 
@@ -22,6 +23,14 @@
       oklch(from var(--color-primary) calc(l + 0.1) c h / 30%)
     );
     color: oklch(from var(--color-primary) calc(l + 0.7) c h);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: light-dark(
+      oklch(from var(--color-primary) calc(l - 0.1) c h),
+      oklch(from var(--color-primary) calc(l + 0.1) c h / 30%)
+    ) transparent;
   }
 
   /* Reduced Motion - Respect user preference for reduced motion */

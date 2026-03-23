@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
 
 const radii = [
   { token: '--radius-sm', label: '3px' },
@@ -24,7 +25,7 @@ const radii = [
       {radii.map(({ token, label }) => (
         <div class="radii-card">
           <div class="radii-preview" style={`border-radius: var(${token});`}></div>
-          <code class="zui-code">{token}</code>
+          <CopyCode>{token}</CopyCode>
           <span>{label} × scale</span>
         </div>
       ))}

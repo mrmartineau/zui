@@ -73,8 +73,7 @@ const tabs = [
     gap: 0;
     border: 1px solid var(--color-border);
     border-bottom: none;
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-    /* background: light-dark(var(--color-mist-100), var(--color-mist-900)); */
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     background-color:
       light-dark(oklch(from var(--color-background) calc(l + 0.02) c h),
       oklch(from var(--color-background) calc(l - 0.04) c h)) !important;
@@ -107,7 +106,7 @@ const tabs = [
 
   .code-tabs__panel :global(pre) {
     margin: 0;
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     border: 1px solid var(--color-border);
     border-top: none;
     font-size: 0.8125rem;

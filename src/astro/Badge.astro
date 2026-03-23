@@ -1,12 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { badgeVariants } from '../shared/badgeVariants'
 
-interface Props extends HTMLAttributes<'span'> {
+type BadgeVariantProps = VariantProps<typeof badgeVariants>
+
+interface Props extends HTMLAttributes<'span'>, BadgeVariantProps {
   class?: string
 }
 
-const { class: className, ...props } = Astro.props
-const classes = ['zui-badge', className].filter(Boolean).join(' ')
+const { class: className, variant, color, ...props } = Astro.props
+const classes = badgeVariants({ variant, color, class: className })
 ---
 
 <span class={classes} {...props}><slot /></span>

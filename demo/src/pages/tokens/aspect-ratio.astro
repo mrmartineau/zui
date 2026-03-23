@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
 
 const ratios = [
   { token: '--ratio-square', value: '1', label: '1:1' },
@@ -22,7 +23,7 @@ const ratios = [
       {ratios.map(({ token, value, label }) => (
         <div class="ratio-card">
           <div class="ratio-preview" style={`aspect-ratio: var(${token});`}></div>
-          <code class="zui-code">{token}</code>
+          <CopyCode>{token}</CopyCode>
           <span>{label} ({value})</span>
         </div>
       ))}

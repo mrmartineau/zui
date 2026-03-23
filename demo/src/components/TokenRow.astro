@@ -1,0 +1,40 @@
+---
+interface Props {
+  header?: boolean
+  class?: string
+  style?: string
+}
+
+const { header = false, class: className, style } = Astro.props
+---
+
+<div class:list={['token-row', { 'token-row-header': header }, className]} style={style}>
+  <slot />
+</div>
+
+<style>
+  .token-row {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-3xs) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--step--1);
+  }
+
+  .token-row :global(> span) {
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+  }
+
+  .token-row-header {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--step--1);
+    border-bottom-width: 2px;
+  }
+
+  .token-row-header :global(> span) {
+    color: var(--color-text);
+  }
+</style>

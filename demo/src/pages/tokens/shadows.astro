@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import CopyCode from '../../components/CopyCode.astro'
 
 const shadows = [
   { token: '--shadow-sm', label: 'Small' },
@@ -21,7 +22,7 @@ const shadows = [
     <div class="shadow-grid">
       {shadows.map(({ token, label }) => (
         <div class="shadow-card" style={`box-shadow: var(${token});`}>
-          <code class="zui-code">{token}</code>
+          <CopyCode>{token}</CopyCode>
           <span>{label}</span>
         </div>
       ))}

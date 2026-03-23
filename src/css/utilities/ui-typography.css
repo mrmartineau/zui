@@ -48,13 +48,12 @@
     font-size: var(--step-6);
   }
 
-  /* TODO check and use these */
   /* Muted text utilities */
   .zui-color-muted {
-    color: var(--fg-5);
+    color: oklch(from var(--color-text) l c h / 70%);
   }
   .zui-color-faint {
-    color: var(--fg-3);
+    color: oklch(from var(--color-text) l c h / 50%);
   }
 
   /* Surface - subtle background for section alternation */
@@ -63,9 +62,9 @@
   }
 
   .zui-link {
-    --link-color: var(--accent-11);
-    --link-color-decoration: var(--accent-7);
-    --link-color-decoration-hover: var(--accent-8);
+    --link-color: var(--color-text);
+    --link-color-decoration: oklch(from var(--color-text) l c h / 50%);
+    --link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);
     color: var(--link-color);
     text-decoration-color: var(--link-color-decoration);
     text-decoration-thickness: 0.2ex;
@@ -77,9 +76,8 @@
     border-radius: var(--radius-m);
 
     &:hover {
-      color: var(--link-color);
+      color: oklch(from var(--color-text) l c h / 90%);
       text-decoration-color: var(--link-color-decoration-hover);
-      background-color: var(--black-a2);
     }
   }
 

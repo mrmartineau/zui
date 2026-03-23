@@ -42,7 +42,7 @@
   /* Elevated variant */
   .zui-card-elevated {
     border-color: transparent;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-lg);
   }
 
   /* Interactive variant */
