@@ -2,6 +2,7 @@
 import '@mrmartineau/zui/css'
 import '../index.css';
 import Sidebar from '../components/Sidebar.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
 interface Props {
@@ -65,6 +66,7 @@ const currentPath = Astro.url.pathname;
       <main class="site-main docs-prose">
         <slot />
       </main>
+      <TableOfContents />
     </div>
 
     <footer class="site-footer">
@@ -119,7 +121,7 @@ const currentPath = Astro.url.pathname;
 
   .site-layout {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px 1fr 200px;
     min-height: calc(100dvh - var(--space-xl));
   }
 
@@ -221,6 +223,16 @@ const currentPath = Astro.url.pathname;
 
   .mobile-nav-body {
     padding: var(--space-sm) var(--space-md);
+  }
+
+  @media (max-width: 1024px) {
+    .site-layout {
+      grid-template-columns: 240px 1fr;
+    }
+
+    .site-layout > :global(.toc) {
+      display: none;
+    }
   }
 
   @media (max-width: 767px) {
@@ -348,33 +360,35 @@ const currentPath = Astro.url.pathname;
     background-color: var(--color-border);
   }
 
-  /* .docs-prose table {
+  .docs-prose table {
     width: 100%;
+    caption-side: bottom;
+    font-variant-numeric: tabular-nums;
+    table-layout: fixed;
     border-collapse: collapse;
-    border: 1px var(--border-style, solid) var(--color-border);
-    border-radius: var(--radius-xl);
-    font-size: var(--step--1);
+    border: 0;
   }
 
-  .docs-prose thead {
-    background-color: oklch(from var(--color-surface) calc(l - 0.02) c h);
+  .docs-prose tr {
+    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+    transition: background-color 150ms ease-in-out;
+  }
+
+  .docs-prose tbody tr:hover {
+    background-color: oklch(from currentColor l c h / 10%);
   }
 
   .docs-prose th {
-    padding: var(--space-2xs) var(--space-xs);
+    line-height: var(--line-height-xl);
+    padding-inline: var(--space-2xs);
     text-align: left;
-    font-weight: var(--font-weight-medium);
-    font-size: var(--step--2);
-    color: color-mix(in oklch, var(--color-text) 70%, transparent);
-    border-bottom: 1px var(--border-style, solid) var(--color-border);
+    vertical-align: middle;
+    font-weight: var(--font-weight-bold);
+    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
   }
 
   .docs-prose td {
-    padding: var(--space-2xs) var(--space-xs);
-    border-bottom: 1px var(--border-style, solid) var(--color-border);
+    padding: var(--space-2xs);
+    vertical-align: middle;
   }
-
-  .docs-prose tr:last-child td {
-    border-bottom: none;
-  } */
 </style>

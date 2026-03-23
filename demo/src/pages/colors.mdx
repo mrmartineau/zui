@@ -4,11 +4,72 @@ title: Colours
 ---
 
 import ColorPalette from '../components/ColorPalette.astro'
+import ThemingTokenTable from '../components/ThemingTokenTable.astro'
 
-# Colour Palette
+# Colours
 
 ZUI uses Tailwind's colour palette.
 
-All colour tokens available as CSS custom properties. Hover a swatch to see its CSS custom property value. Click to copy.
+Colours are exposed as CSS custom properties in the form `--color-{name}-{shade}`, e.g. `--color-blue-500`. A handful of special values have no shade: `--color-black`, `--color-white`, `--color-transparent`, `--color-inherit`, `--color-current`.
+
+## Colour Palette
+
+Hover a swatch to see its CSS custom property value. Click to copy.
 
 <ColorPalette />
+
+## Semantic Colours
+
+These tokens are defined in `theme.css` and adapt automatically between light and dark mode via `light-dark()`. Use these instead of raw palette tokens for UI surfaces, text, borders, and feedback states.
+
+<ThemingTokenTable />
+
+```css
+.my-element {
+  /* raw palette token */
+  background-color: var(--color-blue-500);
+
+  /* semantic token from theme.css */
+  color: var(--color-text);
+}
+```
+
+## Adapting colours with CSS relative color syntax
+
+Rather than shipping a separate variable for every possible transparency or tint, ZUI uses CSS [relative color syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors) to let you derive new values on the fly from any existing token.
+
+**Add transparency**
+
+```css
+.my-element {
+  /* 50% opacity blue */
+  background-color: oklch(from var(--color-blue-500) l c h / 50%);
+
+  /* 10% opacity — useful for subtle tinted backgrounds */
+  background-color: oklch(from var(--color-blue-500) l c h / 10%);
+}
+```
+
+### Lighten or darken
+
+```css
+.my-element {
+  /* Lighter — increase l toward 1 */
+  color: oklch(from var(--color-blue-500) calc(l + 0.15) c h);
+
+  /* Darker — decrease l toward 0 */
+  color: oklch(from var(--color-blue-500) calc(l - 0.15) c h);
+}
+```
+
+### Desaturate or shift hue
+
+```css
+.my-element {
+  /* Half the chroma (more muted) */
+  color: oklch(from var(--color-blue-500) l calc(c * 0.5) h);
+
+  /* Rotate hue by 30° */
+  color: oklch(from var(--color-blue-500) l c calc(h + 30));
+}
+```
