@@ -58,7 +58,7 @@
 
   /* Surface - subtle background for section alternation */
   .surface {
-    background: var(--surface-bg, var(--fg-05));
+    background: var(--surface-bg, var(--color-background));
   }
 
   .zui-link {

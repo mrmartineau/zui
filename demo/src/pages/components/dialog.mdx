@@ -1,0 +1,341 @@
+---
+layout: ../../layouts/Layout.astro
+title: Dialog
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Dialog
+
+Modal dialogs built on the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element with a styled backdrop. Requires minimal JavaScript to open.
+
+## Usage
+
+Use `showModal()` to open the dialog as a modal (with backdrop and focus trap). Use `close()` or a `<form method="dialog">` to close it.
+
+<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-demo').showModal()">
+  Open dialog
+</button>
+
+<dialog id="dialog-demo" class="zui-dialog">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Dialog title</h2>
+    <p class="zui-dialog-description">A short description of the dialog content.</p>
+  </div>
+  <div class="zui-dialog-body">
+    <p>Dialog body content goes here.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog">
+      <button class="zui-button zui-button-variant-outline">Cancel</button>
+    </form>
+    <button class="zui-button" onclick="document.getElementById('dialog-demo').close()">Confirm</button>
+  </div>
+</dialog>`}>
+  <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').showModal()">
+    Open dialog
+  </button>
+  <dialog id="dialog-usage-demo" class="zui-dialog">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Dialog title</h2>
+      <p class="zui-dialog-description">A short description of the dialog content.</p>
+    </div>
+    <div class="zui-dialog-body">
+      <p>Dialog body content goes here.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog">
+        <button class="zui-button zui-button-variant-outline">Cancel</button>
+      </form>
+      <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').close()">Confirm</button>
+    </div>
+  </dialog>
+</Demo>
+
+<CodeTabs
+  html={`<button class="zui-button" onclick="document.getElementById('my-dialog').showModal()">
+  Open dialog
+</button>
+
+<dialog id="my-dialog" class="zui-dialog">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Dialog title</h2>
+    <p class="zui-dialog-description">A short description.</p>
+  </div>
+  <div class="zui-dialog-body">
+    <p>Dialog body content.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog">
+      <button class="zui-button zui-button-variant-outline">Cancel</button>
+    </form>
+    <button class="zui-button">Confirm</button>
+  </div>
+</dialog>`}
+  react={`import { useState } from 'react'
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from '@mrmartineau/zui/react'
+
+function MyComponent() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogHeader>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogDescription>A short description.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Dialog body content.</p>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={() => setOpen(false)}>Confirm</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('my-dialog').showModal()">Open dialog</Button>
+
+<Dialog id="my-dialog">
+  <DialogHeader>
+    <DialogTitle>Dialog title</DialogTitle>
+    <DialogDescription>A short description.</DialogDescription>
+  </DialogHeader>
+  <DialogBody>
+    <p>Dialog body content.</p>
+  </DialogBody>
+  <DialogFooter>
+    <form method="dialog">
+      <Button variant="outline">Cancel</Button>
+    </form>
+    <Button>Confirm</Button>
+  </DialogFooter>
+</Dialog>`}
+/>
+
+## Sizes
+
+Control the dialog width with `size` variants.
+
+<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-sm').showModal()">Small</button>
+<button class="zui-button" onclick="document.getElementById('dialog-md').showModal()">Medium (default)</button>
+<button class="zui-button" onclick="document.getElementById('dialog-lg').showModal()">Large</button>
+<button class="zui-button" onclick="document.getElementById('dialog-full').showModal()">Full</button>
+
+<dialog id="dialog-sm" class="zui-dialog zui-dialog-size-sm">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Small dialog</h2>
+  </div>
+  <div class="zui-dialog-body"><p>Max width 24rem.</p></div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-md" class="zui-dialog">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Medium dialog</h2>
+  </div>
+  <div class="zui-dialog-body"><p>Max width 32rem (default).</p></div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-lg" class="zui-dialog zui-dialog-size-lg">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Large dialog</h2>
+  </div>
+  <div class="zui-dialog-body"><p>Max width 42rem.</p></div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-full" class="zui-dialog zui-dialog-size-full">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Full dialog</h2>
+  </div>
+  <div class="zui-dialog-body"><p>Full viewport size.</p></div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>`}>
+  <button class="zui-button" onclick="document.getElementById('dialog-sm-demo').showModal()">Small</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-md-demo').showModal()">Medium (default)</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-lg-demo').showModal()">Large</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-full-demo').showModal()">Full</button>
+
+  <dialog id="dialog-sm-demo" class="zui-dialog zui-dialog-size-sm">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Small dialog</h2>
+    </div>
+    <div class="zui-dialog-body"><p>Max width 24rem.</p></div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-md-demo" class="zui-dialog">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Medium dialog</h2>
+    </div>
+    <div class="zui-dialog-body"><p>Max width 32rem (default).</p></div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-lg-demo" class="zui-dialog zui-dialog-size-lg">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Large dialog</h2>
+    </div>
+    <div class="zui-dialog-body"><p>Max width 42rem.</p></div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-full-demo" class="zui-dialog zui-dialog-size-full">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Full dialog</h2>
+    </div>
+    <div class="zui-dialog-body"><p>Full viewport size.</p></div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+</Demo>
+
+<CodeTabs
+  html={`<dialog class="zui-dialog zui-dialog-size-sm">…</dialog>
+<dialog class="zui-dialog">…</dialog> <!-- md default -->
+<dialog class="zui-dialog zui-dialog-size-lg">…</dialog>
+<dialog class="zui-dialog zui-dialog-size-full">…</dialog>`}
+  react={`import { Dialog } from '@mrmartineau/zui/react'
+
+<Dialog size="sm">…</Dialog>
+<Dialog>…</Dialog>           {/* md default */}
+<Dialog size="lg">…</Dialog>
+<Dialog size="full">…</Dialog>`}
+  astro={`---
+import { Dialog } from '@mrmartineau/zui/astro'
+---
+
+<Dialog id="d1" size="sm">…</Dialog>
+<Dialog id="d2">…</Dialog>           <!-- md default -->
+<Dialog id="d3" size="lg">…</Dialog>
+<Dialog id="d4" size="full">…</Dialog>`}
+/>
+
+## Close button
+
+Add a close button inside the dialog using `.zui-dialog-close`.
+
+<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-close-btn').showModal()">
+  Open dialog
+</button>
+
+<dialog id="dialog-close-btn" class="zui-dialog">
+  <button
+    class="zui-button zui-button-variant-ghost zui-button-size-sm zui-button-icon zui-dialog-close"
+    onclick="document.getElementById('dialog-close-btn').close()"
+    aria-label="Close"
+  >
+    <i class="ph ph-x"></i>
+  </button>
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">With close button</h2>
+    <p class="zui-dialog-description">A close button is positioned in the top-right corner.</p>
+  </div>
+  <div class="zui-dialog-body">
+    <p>Content goes here.</p>
+  </div>
+</dialog>`}>
+  <button class="zui-button" onclick="document.getElementById('dialog-close-btn-demo').showModal()">
+    Open dialog
+  </button>
+  <dialog id="dialog-close-btn-demo" class="zui-dialog">
+    <button
+      class="zui-button zui-button-variant-ghost zui-button-size-sm zui-button-icon zui-dialog-close"
+      onclick="document.getElementById('dialog-close-btn-demo').close()"
+      aria-label="Close"
+    >
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">With close button</h2>
+      <p class="zui-dialog-description">A close button is positioned in the top-right corner.</p>
+    </div>
+    <div class="zui-dialog-body">
+      <p>Content goes here.</p>
+    </div>
+  </dialog>
+</Demo>
+
+## Closing behaviour
+
+Clicking the backdrop or pressing <kbd>Esc</kbd> will close the dialog by default. To close on backdrop click, listen for the `click` event:
+
+```html
+<dialog id="my-dialog" class="zui-dialog" onclick="if(event.target===this)this.close()">
+  ...
+</dialog>
+```
+
+## With form
+
+Use `<form method="dialog">` for native form submission that closes the dialog and sets `returnValue`.
+
+<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-form').showModal()">
+  Delete item
+</button>
+
+<dialog id="dialog-form" class="zui-dialog">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Are you sure?</h2>
+    <p class="zui-dialog-description">This action cannot be undone.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog">
+      <button class="zui-button zui-button-variant-outline" value="cancel">Cancel</button>
+    </form>
+    <form method="dialog">
+      <button class="zui-button zui-button-color-destructive" value="confirm">Delete</button>
+    </form>
+  </div>
+</dialog>`}>
+  <button class="zui-button" onclick="document.getElementById('dialog-form-demo').showModal()">
+    Delete item
+  </button>
+  <dialog id="dialog-form-demo" class="zui-dialog">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Are you sure?</h2>
+      <p class="zui-dialog-description">This action cannot be undone.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog">
+        <button class="zui-button zui-button-variant-outline" value="cancel">Cancel</button>
+      </form>
+      <form method="dialog">
+        <button class="zui-button zui-button-color-destructive" value="confirm">Delete</button>
+      </form>
+    </div>
+  </dialog>
+</Demo>

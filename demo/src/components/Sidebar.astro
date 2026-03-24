@@ -20,7 +20,7 @@ const tokens = [
   { href: '/tokens', label: 'Overview' },
   { href: '/tokens/space', label: 'Space' },
   { href: '/tokens/shadows', label: 'Shadows' },
-  { href: '/tokens/radii', label: 'Radii' },
+  { href: '/tokens/radii', label: 'Border Radius' },
   { href: '/tokens/easing', label: 'Easing' },
   { href: '/tokens/animation', label: 'Animation' },
   { href: '/tokens/aspect-ratio', label: 'Aspect Ratio' },
@@ -39,6 +39,9 @@ const components = [
   { href: '/components/select', label: 'Select' },
   { href: '/components/table', label: 'Table' },
   { href: '/components/textarea', label: 'Textarea' },
+  { href: '/components/dialog', label: 'Dialog' },
+  { href: '/components/popover', label: 'Popover' },
+  { href: '/components/tooltip', label: 'Tooltip' },
 ]
 
 const utilities = [
@@ -129,3 +132,21 @@ function isCurrent(href: string) {
     font-weight: 600;
   }
 </style>
+
+<script>
+  let savedScrollTop = 0
+
+  document.addEventListener('astro:before-swap', () => {
+    const sidebar = document.querySelector('.site-sidebar')
+    if (sidebar) {
+      savedScrollTop = sidebar.scrollTop
+    }
+  })
+
+  document.addEventListener('astro:after-swap', () => {
+    const sidebar = document.querySelector('.site-sidebar')
+    if (sidebar) {
+      sidebar.scrollTop = savedScrollTop
+    }
+  })
+</script>

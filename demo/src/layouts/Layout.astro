@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import '@mrmartineau/zui/css'
 import '../index.css';
 import Sidebar from '../components/Sidebar.astro';
@@ -13,7 +14,7 @@ const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<html lang="en">
+<html lang="en" transition:name="root" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,6 +29,7 @@ const currentPath = Astro.url.pathname;
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css"
     />
+    <ClientRouter />
   </head>
   <body>
     <header class="site-header">
@@ -60,10 +62,10 @@ const currentPath = Astro.url.pathname;
     </dialog>
 
     <div class="site-layout">
-      <aside class="site-sidebar">
+      <aside class="site-sidebar" transition:animate="none">
         <Sidebar currentPath={currentPath} />
       </aside>
-      <main class="site-main docs-prose">
+      <main class="site-main docs-prose" transition:animate="fade">
         <slot />
       </main>
       <TableOfContents />
@@ -104,6 +106,7 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: var(--z-1);
+    height: 3.5rem;
   }
 
   .mobile-menu-btn {
@@ -122,12 +125,12 @@ const currentPath = Astro.url.pathname;
   .site-layout {
     display: grid;
     grid-template-columns: 240px 1fr 200px;
-    min-height: calc(100dvh - var(--space-xl));
+    height: stretch;
   }
 
   .site-sidebar {
     position: sticky;
-    top: 0;
+    top: 3.5rem;
     height: 100dvh;
     overflow-y: auto;
     border-right: 1px solid var(--color-border);

@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { dialogVariants } from '../shared/dialogVariants'
+
+type DialogVariantProps = VariantProps<typeof dialogVariants>
+
+interface Props extends HTMLAttributes<'dialog'>, DialogVariantProps {
+  id: string
+  class?: string
+}
+
+const { id, class: className, size, ...props } = Astro.props
+const classes = dialogVariants({ size, class: className })
+---
+
+<dialog id={id} class={classes} {...props}>
+  <slot />
+</dialog>

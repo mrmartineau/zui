@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+  id: string
+  type?: 'auto' | 'manual'
+  class?: string
+  style?: string
+}
+
+const { id, type = 'auto', class: className, style, ...props } = Astro.props
+const classes = ['zui-popover', className].filter(Boolean).join(' ')
+const anchorStyle = `position-anchor: --${id};${style ? ` ${style}` : ''}`
+---
+
+<div id={id} popover={type} class={classes} style={anchorStyle} {...props}>
+  <slot />
+</div>

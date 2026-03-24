@@ -1,13 +1,12 @@
 @layer zui.base {
   :root {
-    /* Semantic colours */
     --color-theme: light-dark(var(--color-mist-600), var(--color-mist-400));
     --color-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
     --color-background: light-dark(
       var(--color-mist-200),
       var(--color-mist-800)
     );
-    --color-surface: light-dark(var(--color-mist-200), var(--color-mist-800));
+    --color-surface: light-dark(var(--color-mist-100), var(--color-mist-900));
     --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
     --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
     --color-success: light-dark(
@@ -18,14 +17,15 @@
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
     --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
 
-    /* Add your own custom fonts here */
+    /* Add your own custom fonts here, these are examples */
     --custom-font-sans: Geist, Inter;
-    --custom-font-serif: Times New Roman;
+    --custom-font-serif: ; /* Left blank to use the default serif stack */
     --custom-font-mono: Geist Mono;
 
     --font-sans: var(--custom-font-sans), var(--font-stack-sans);
     --font-serif: var(--custom-font-serif), var(--font-stack-serif);
-    --font-mono: var(--custom-font-mono), var(--font-stack-mono);
+    --font-mono: Geist Mono, var(--font-stack-mono);
+
     --font-headings: var(--font-sans);
     --font-body: var(--font-sans);
     --line-height: var(--line-height-md);

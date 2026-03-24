@@ -8,3 +8,6 @@
 @import './components/card.css';
 @import './components/badge.css';
 @import './components/table.css';
+@import './components/tooltip.css';
+@import './components/popover.css';
+@import './components/dialog.css';

@@ -44,23 +44,27 @@ const tabs = [
 </div>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach((container) => {
-    const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
-    const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
+  function initCodeTabs() {
+    document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach((container) => {
+      const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
+      const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
 
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const id = tab.dataset.tab
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const id = tab.dataset.tab
 
-        tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
-        tab.setAttribute('aria-selected', 'true')
+          tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
+          tab.setAttribute('aria-selected', 'true')
 
-        panels.forEach((p) => {
-          p.hidden = p.dataset.panel !== id
+          panels.forEach((p) => {
+            p.hidden = p.dataset.panel !== id
+          })
         })
       })
     })
-  })
+  }
+
+  document.addEventListener('astro:page-load', initCodeTabs)
 </script>
 
 <style>

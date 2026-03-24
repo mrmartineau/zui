@@ -1,0 +1,47 @@
+@layer zui.components {
+  .zui-popover {
+    --zui-popover-bg: var(--color-surface);
+    --zui-popover-border: var(--color-border);
+    --zui-popover-radius: var(--radius-lg);
+    --zui-popover-shadow: var(--shadow-lg);
+    --zui-popover-padding: var(--space-xs);
+
+    background-color: var(--zui-popover-bg);
+    border: 0;
+    border-radius: var(--zui-popover-radius);
+    box-shadow: var(--zui-popover-shadow);
+    padding: var(--zui-popover-padding);
+    margin: 0;
+    min-width: 12rem;
+
+    /* CSS Anchor Positioning — positions below and start-aligned with the trigger.
+       The trigger must have anchor-name set; the popover must have position-anchor set. */
+    position-area: block-end center;
+    margin-block-start: var(--space-3xs);
+
+    /* Transition in/out */
+    opacity: 0;
+    transition:
+      opacity 150ms ease,
+      display 150ms ease allow-discrete,
+      overlay 150ms ease allow-discrete;
+
+    &:popover-open {
+      opacity: 1;
+    }
+
+    &:popover-open::backdrop {
+      opacity: 1;
+    }
+
+    @starting-style {
+      &:popover-open {
+        opacity: 0;
+      }
+
+      &:popover-open::backdrop {
+        opacity: 0;
+      }
+    }
+  }
+}

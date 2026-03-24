@@ -6,6 +6,8 @@
     oklch(from var(--color-background) calc(l - 0.02) c h)
     ) !important;
   font-variant-ligatures: none;
+  overflow-y: auto;
+  white-space: pre-wrap;
 
   @supports (corner-shape: squircle) {
     corner-shape: superellipse(1.25);
@@ -23,6 +25,5 @@
   .astro-code,
   .astro-code span {
     color: var(--shiki-dark) !important;
-    /* background-color: var(--shiki-dark-bg) !important; */
   }
 }

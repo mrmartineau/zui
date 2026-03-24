@@ -1,0 +1,145 @@
+---
+layout: ../../layouts/Layout.astro
+title: Popover
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Popover
+
+Floating panels that appear below their trigger, built on the native [HTML Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning). No JavaScript required.
+
+The trigger needs `anchor-name` set to match the popover's `id` (prefixed with `--`). The Astro and React wrappers set `position-anchor` automatically from the `id` prop.
+
+## Usage
+
+<Demo code={`<button
+  class="zui-button"
+  popovertarget="demo-popover"
+  style="anchor-name: --demo-popover"
+>
+  Open popover
+</button>
+<div id="demo-popover" popover class="zui-popover" style="position-anchor: --demo-popover;">
+  <p>Popover content goes here.</p>
+</div>`}>
+  <button
+    class="zui-button"
+    popovertarget="demo-popover-usage"
+    style="anchor-name: --demo-popover-usage"
+  >
+    Open popover
+  </button>
+  <div id="demo-popover-usage" popover class="zui-popover" style="position-anchor: --demo-popover-usage;">
+    <p>Popover content goes here.</p>
+  </div>
+</Demo>
+
+<CodeTabs
+  html={`<button
+  class="zui-button"
+  popovertarget="my-popover"
+  style="anchor-name: --my-popover"
+>
+  Open popover
+</button>
+<div id="my-popover" popover class="zui-popover" style="position-anchor: --my-popover;">
+  <p>Popover content goes here.</p>
+</div>`}
+  react={`import { Popover, Button } from '@mrmartineau/zui/react'
+
+// The Popover component sets position-anchor automatically from the id.
+// Set anchor-name on the trigger to match.
+<Button popovertarget="my-popover" style={{ anchorName: '--my-popover' }}>
+  Open popover
+</Button>
+<Popover id="my-popover">
+  <p>Popover content goes here.</p>
+</Popover>`}
+  astro={`---
+import { Popover, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button popovertarget="my-popover" style="anchor-name: --my-popover">
+  Open popover
+</Button>
+<Popover id="my-popover">
+  <p>Popover content goes here.</p>
+</Popover>`}
+/>
+
+## Auto vs manual
+
+`popover="auto"` (default) closes when clicking outside or pressing <kbd>Esc</kbd>. `popover="manual"` requires an explicit close trigger.
+
+<Demo code={`<button class="zui-button" popovertarget="pop-auto" style="anchor-name: --pop-auto">
+  Auto (click outside to close)
+</button>
+<div id="pop-auto" popover="auto" class="zui-popover" style="position-anchor: --pop-auto;">
+  <p>I close when you click outside.</p>
+</div>
+
+<button class="zui-button zui-button-variant-outline" popovertarget="pop-manual" style="anchor-name: --pop-manual">
+  Manual (must use close button)
+</button>
+<div id="pop-manual" popover="manual" class="zui-popover" style="position-anchor: --pop-manual;">
+  <p>I stay open until explicitly closed.</p>
+  <button class="zui-button zui-button-size-sm" style="margin-top:0.5rem;" popovertarget="pop-manual" popovertargetaction="hide">
+    Close
+  </button>
+</div>`}>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <button class="zui-button" popovertarget="pop-auto-demo" style="anchor-name: --pop-auto-demo">
+      Auto (click outside to close)
+    </button>
+    <div id="pop-auto-demo" popover="auto" class="zui-popover" style="position-anchor: --pop-auto-demo;">
+      <p>I close when you click outside.</p>
+    </div>
+    <button class="zui-button zui-button-variant-outline" popovertarget="pop-manual-demo" style="anchor-name: --pop-manual-demo">
+      Manual (must use close button)
+    </button>
+    <div id="pop-manual-demo" popover="manual" class="zui-popover" style="position-anchor: --pop-manual-demo;">
+      <p>I stay open until explicitly closed.</p>
+      <button class="zui-button zui-button-size-sm" style="margin-top:0.5rem;" popovertarget="pop-manual-demo" popovertargetaction="hide">
+        Close
+      </button>
+    </div>
+  </div>
+</Demo>
+
+## With rich content
+
+<Demo code={`<button class="zui-button" popovertarget="pop-rich" style="anchor-name: --pop-rich">
+  Options
+</button>
+<div id="pop-rich" popover class="zui-popover" style="position-anchor: --pop-rich; min-width:14rem;">
+  <div style="display:flex;flex-direction:column;gap:0.25rem;">
+    <button class="zui-button zui-button-variant-ghost" style="justify-content:flex-start;">
+      <i class="ph ph-pencil"></i> Edit
+    </button>
+    <button class="zui-button zui-button-variant-ghost" style="justify-content:flex-start;">
+      <i class="ph ph-copy"></i> Duplicate
+    </button>
+    <button class="zui-button zui-button-variant-ghost zui-button-color-destructive" style="justify-content:flex-start;">
+      <i class="ph ph-trash"></i> Delete
+    </button>
+  </div>
+</div>`}>
+  <button class="zui-button" popovertarget="pop-rich-demo" style="anchor-name: --pop-rich-demo">
+    Options
+  </button>
+  <div id="pop-rich-demo" popover class="zui-popover" style="position-anchor: --pop-rich-demo; min-width:14rem;">
+    <div style="display:flex;flex-direction:column;gap:0.25rem;">
+      <button class="zui-button zui-button-variant-ghost" style="justify-content:flex-start;">
+        <i class="ph ph-pencil"></i> Edit
+      </button>
+      <button class="zui-button zui-button-variant-ghost" style="justify-content:flex-start;">
+        <i class="ph ph-copy"></i> Duplicate
+      </button>
+      <button class="zui-button zui-button-variant-ghost zui-button-color-destructive" style="justify-content:flex-start;">
+        <i class="ph ph-trash"></i> Delete
+      </button>
+    </div>
+  </div>
+</Demo>

@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { tooltipVariants } from '../shared/tooltipVariants'
+
+type TooltipVariantProps = VariantProps<typeof tooltipVariants>
+
+interface Props extends HTMLAttributes<'span'>, TooltipVariantProps {
+  text: string
+  class?: string
+}
+
+const { text, placement, class: className, ...props } = Astro.props
+
+const id = `tooltip-${Math.random().toString(36).slice(2, 9)}`
+const anchorName = `--${id}`
+const contentClasses = [
+  'zui-tooltip-content',
+  tooltipVariants({ placement }).split(' ').find((c) => c.startsWith('zui-tooltip-placement-')),
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<span class:list={['zui-tooltip', className]} {...props}>
+  <span style={`anchor-name: ${anchorName}`} popovertarget={id} popovertargetaction="hover">
+    <slot />
+  </span>
+  <span
+    popover="hint"
+    id={id}
+    class={contentClasses}
+    role="tooltip"
+    style={`position-anchor: ${anchorName}`}
+  >{text}</span>
+</span>

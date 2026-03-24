@@ -9,9 +9,9 @@ import BorderStyleDemo from '../components/BorderStyleDemo.astro'
 
 # Theming
 
-## Customise ZUI's appearance by overriding the custom properties defined in `theme.css`.
+Customise ZUI's appearance by overriding the custom properties defined in `theme.css`.
 
-### How it works
+## How it works
 
 ZUI ships with a default `theme.css` that maps semantic tokens to the underlying colour palettes, fonts, and radii. To customise, create your own CSS file that's imported **after** ZUI's stylesheet and override the `:root` custom properties.
 
@@ -22,14 +22,14 @@ ZUI ships with a default `theme.css` that maps semantic tokens to the underlying
 /* Then override in your own stylesheet */
 :root {
   --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
-  --custom-font-sans: "IBM Plex Sans";
+  --custom-font-sans: 'IBM Plex Sans';
   --radius-scale: 1.5;
 }
 ```
 
 Because ZUI uses `@layer`, your unlayered overrides will always win regardless of source order. Alternatively, place overrides inside the `zui.base` layer.
 
-### Default theme
+## Default theme
 
 Here is the full default `theme.css` for reference:
 
@@ -39,11 +39,17 @@ Here is the full default `theme.css` for reference:
     /* Semantic colours */
     --color-theme: light-dark(var(--color-mist-600), var(--color-mist-400));
     --color-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
-    --color-background: light-dark(var(--color-mist-200), var(--color-mist-800));
+    --color-background: light-dark(
+      var(--color-mist-200),
+      var(--color-mist-800)
+    );
     --color-surface: light-dark(var(--color-mist-200), var(--color-mist-800));
     --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
     --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
-    --color-success: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+    --color-success: light-dark(
+      var(--color-emerald-600),
+      var(--color-emerald-400)
+    );
     --color-error: light-dark(var(--color-red-600), var(--color-red-400));
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
 
@@ -66,7 +72,7 @@ Here is the full default `theme.css` for reference:
 }
 ```
 
-### Semantic colours
+## Semantic colours
 
 These tokens are used throughout all components. Each uses `light-dark()` to automatically adapt to the user's colour scheme.
 
@@ -90,17 +96,15 @@ Or use any raw colour value:
 }
 ```
 
-
-
 ## Fonts
 
 Override the `--custom-font-*` properties to change typefaces. ZUI appends robust fallback stacks automatically.
 
 ```css
 :root {
-  --custom-font-sans: "IBM Plex Sans";
-  --custom-font-serif: "Playfair Display";
-  --custom-font-mono: "JetBrains Mono";
+  --custom-font-sans: 'IBM Plex Sans';
+  --custom-font-serif: 'Playfair Display';
+  --custom-font-mono: 'JetBrains Mono';
 }
 ```
 
@@ -114,13 +118,9 @@ You can also control which font stack is used for headings and body text indepen
 }
 ```
 
-
-
 ## Border radius
 
 All radii in ZUI are multiplied by `--radius-scale`. Change this single value to globally adjust roundness.
-
-<RadiusScaleDemo />
 
 ```css
 :root {
@@ -135,8 +135,6 @@ All radii in ZUI are multiplied by `--radius-scale`. Change this single value to
 }
 ```
 
-
-
 ## Border style
 
 The `--border-style` token controls the border style used by all components. Defaults to `solid`.
@@ -148,8 +146,6 @@ The `--border-style` token controls the border style used by all components. Def
   --border-style: dashed;
 }
 ```
-
-
 
 ## Line height
 
@@ -165,8 +161,6 @@ The base body line height is controlled by `--line-height`. It defaults to `--li
 }
 ```
 
-
-
 ## Full example
 
 A complete theme override combining colours, fonts, and shape:
@@ -178,14 +172,17 @@ A complete theme override combining colours, fonts, and shape:
   /* Colours — violet theme, slate accent */
   --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
   --color-accent: light-dark(var(--color-slate-600), var(--color-slate-400));
-  --color-background: light-dark(var(--color-stone-100), var(--color-stone-900));
+  --color-background: light-dark(
+    var(--color-stone-100),
+    var(--color-stone-900)
+  );
   --color-surface: light-dark(var(--color-stone-50), var(--color-stone-800));
   --color-border: light-dark(var(--color-stone-300), var(--color-stone-700));
   --color-text: light-dark(var(--color-stone-800), var(--color-stone-200));
 
   /* Fonts */
-  --custom-font-sans: "Inter";
-  --custom-font-mono: "Fira Code";
+  --custom-font-sans: 'Inter';
+  --custom-font-mono: 'Fira Code';
   --font-headings: var(--font-sans);
 
   /* Shape */
@@ -196,4 +193,3 @@ A complete theme override combining colours, fonts, and shape:
   --line-height: var(--line-height-md);
 }
 ```
-

@@ -14,7 +14,7 @@
     appearance: none;
     width: 1.25em;
     height: 1.25em;
-    border: 2px var(--border-style, solid) var(--color-border);
+    border: 2px var(--border-style, solid) var(--color-accent, currentColor);
     border-radius: var(--radius-sm);
     background-color: var(--color-background);
     cursor: pointer;
@@ -37,8 +37,8 @@
   }
 
   .zui-checkbox input[type="checkbox"]:checked {
-    border-color: var(--color-theme);
-    background-color: var(--color-theme);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
   }
 
   .zui-checkbox input[type="checkbox"]:checked::before {
