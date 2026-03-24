@@ -3,9 +3,12 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import { resolve } from 'node:path';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx()],
+
   vite: {
     resolve: {
       alias: {
@@ -13,6 +16,7 @@ export default defineConfig({
       },
     },
   },
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -23,4 +27,6 @@ export default defineConfig({
     },
     smartypants: false,
   },
+
+  adapter: cloudflare(),
 });
