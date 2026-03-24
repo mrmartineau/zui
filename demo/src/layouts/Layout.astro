@@ -5,6 +5,7 @@ import '../index.css';
 import Sidebar from '../components/Sidebar.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import MiniThemeSwitcher from '../components/MiniThemeSwitcher.astro';
 
 interface Props {
   title: string;
@@ -34,14 +35,17 @@ const currentPath = Astro.url.pathname;
   <body>
     <header class="site-header">
       <a href="/" class="site-logo">ZUI</a>
-      <button
-        class="mobile-menu-btn zui-button zui-button-variant-ghost"
-        type="button"
-        aria-label="Open navigation"
-        onclick="document.getElementById('mobile-nav').showModal()"
-      >
-        <i class="ph ph-list"></i>
-      </button>
+      <div class="site-header-end">
+        <MiniThemeSwitcher />
+        <button
+          class="mobile-menu-btn zui-button zui-button-variant-ghost"
+          type="button"
+          aria-label="Open navigation"
+          onclick="document.getElementById('mobile-nav').showModal()"
+        >
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
     </header>
 
     <dialog id="mobile-nav" class="mobile-nav-dialog">
@@ -107,6 +111,12 @@ const currentPath = Astro.url.pathname;
     top: 0;
     z-index: var(--z-1);
     height: 3.5rem;
+  }
+
+  .site-header-end {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
   }
 
   .mobile-menu-btn {

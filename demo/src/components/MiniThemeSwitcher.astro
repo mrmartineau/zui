@@ -1,0 +1,95 @@
+---
+const themes = [
+  { id: 'slate',   color: 'var(--color-slate-500)'   },
+  { id: 'taupe',   color: 'var(--color-taupe-500)'   },
+  { id: 'mist',    color: 'var(--color-mist-500)'    },
+  { id: 'neutral', color: 'var(--color-neutral-500)' },
+  { id: 'mauve',   color: 'var(--color-mauve-500)'   },
+]
+---
+
+<form class="mini-theme-switcher" action="">
+  <fieldset>
+    <legend class="visually-hidden">Pick a colour theme</legend>
+    {themes.map(({ id, color }) => (
+      <>
+        <label for={`mini-theme-${id}`} class="visually-hidden">{id} theme</label>
+        <input
+          type="radio"
+          id={`mini-theme-${id}`}
+          name="mini-theme"
+          value={id}
+          style={`--swatch-color: ${color}`}
+          title={id}
+        />
+      </>
+    ))}
+  </fieldset>
+</form>
+
+<script>
+  function initMiniThemeSwitcher() {
+    const inputs = document.querySelectorAll<HTMLInputElement>('[name="mini-theme"]')
+
+    function applyTheme(themeName: string) {
+      const root = document.documentElement
+      root.style.setProperty('--color-theme',      `light-dark(var(--color-${themeName}-600), var(--color-${themeName}-400))`)
+      root.style.setProperty('--color-background',  `light-dark(var(--color-${themeName}-200), var(--color-${themeName}-800))`)
+      root.style.setProperty('--color-surface',     `light-dark(var(--color-${themeName}-100), var(--color-${themeName}-900))`)
+      root.style.setProperty('--color-border',      `light-dark(var(--color-${themeName}-300), var(--color-${themeName}-700))`)
+      root.style.setProperty('--color-text',        `light-dark(var(--color-${themeName}-700), var(--color-${themeName}-300))`)
+    }
+
+    function restoreTheme() {
+      const saved = localStorage.getItem('mini-theme')
+      if (!saved) return
+      inputs.forEach(input => {
+        if (input.value === saved) input.checked = true
+      })
+      applyTheme(saved)
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('change', () => {
+        localStorage.setItem('mini-theme', input.value)
+        applyTheme(input.value)
+      })
+    })
+
+    restoreTheme()
+  }
+
+  document.addEventListener('astro:page-load', initMiniThemeSwitcher)
+</script>
+
+<style>
+  .mini-theme-switcher fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xs);
+  }
+
+  .mini-theme-switcher input[type="radio"] {
+    appearance: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background-color: var(--swatch-color);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    cursor: pointer;
+    transition: outline-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .mini-theme-switcher input[type="radio"]:hover {
+    transform: scale(1.15);
+    outline-color: oklch(from var(--swatch-color) l c h / 50%);
+  }
+
+  .mini-theme-switcher input[type="radio"]:checked {
+    outline-color: var(--swatch-color);
+  }
+</style>
