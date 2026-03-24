@@ -38,7 +38,9 @@
     "generate:colors": "node scripts/generate-colors.js",
     "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial",
     "docs:dev": "pnpm run build && pnpm --filter demo dev",
-    "docs:build": "pnpm run build && pnpm --filter demo build"
+    "docs:build": "pnpm run build && pnpm --filter demo build",
+    "deploy": "pnpm run docs:build && npx wrangler deploy",
+    "preview": "pnpm run docs:build && npx wrangler preview"
   },
   "devDependencies": {
     "@tsdown/css": "^0.21.4",
