@@ -88,62 +88,63 @@ const radiusScales = [
 </dialog>
 
 <script>
-  const toggle = document.getElementById('theme-toggle')!
-  const dialog = document.getElementById('theme-dialog') as HTMLDialogElement
-  const closeBtn = document.getElementById('theme-close')!
-  const copyBtn = document.getElementById('theme-copy')!
-  const resetBtn = document.getElementById('theme-reset')!
-  const codeEl = document.getElementById('theme-code')!
+  function initThemeSwitcher() {
+    const toggle = document.getElementById('theme-toggle')!
+    const dialog = document.getElementById('theme-dialog') as HTMLDialogElement
+    const closeBtn = document.getElementById('theme-close')!
+    const copyBtn = document.getElementById('theme-copy')!
+    const resetBtn = document.getElementById('theme-reset')!
+    const codeEl = document.getElementById('theme-code')!
 
-  const ctrlTheme = document.getElementById('ctrl-theme') as HTMLSelectElement
-  const ctrlAccent = document.getElementById('ctrl-accent') as HTMLSelectElement
-  const ctrlFont = document.getElementById('ctrl-font') as HTMLSelectElement
-  const ctrlRadius = document.getElementById('ctrl-radius') as HTMLSelectElement
+    const ctrlTheme = document.getElementById('ctrl-theme') as HTMLSelectElement
+    const ctrlAccent = document.getElementById('ctrl-accent') as HTMLSelectElement
+    const ctrlFont = document.getElementById('ctrl-font') as HTMLSelectElement
+    const ctrlRadius = document.getElementById('ctrl-radius') as HTMLSelectElement
 
-  const defaults = {
-    theme: 'mist',
-    accent: 'sky',
-    font: 'Geist, Inter',
-    radius: '1',
-  }
-
-  toggle.addEventListener('click', () => {
-    if (dialog.open) {
-      dialog.close()
-    } else {
-      dialog.show()
+    const defaults = {
+      theme: 'mist',
+      accent: 'sky',
+      font: 'Geist, Inter',
+      radius: '1',
     }
-  })
 
-  closeBtn.addEventListener('click', () => dialog.close())
+    toggle.addEventListener('click', () => {
+      if (dialog.open) {
+        dialog.close()
+      } else {
+        dialog.show()
+      }
+    })
 
-  function applyTheme() {
-    const theme = ctrlTheme.value
-    const accent = ctrlAccent.value
-    const font = ctrlFont.value
-    const radius = ctrlRadius.value
+    closeBtn.addEventListener('click', () => dialog.close())
 
-    const root = document.documentElement
+    function applyTheme() {
+      const theme = ctrlTheme.value
+      const accent = ctrlAccent.value
+      const font = ctrlFont.value
+      const radius = ctrlRadius.value
 
-    root.style.setProperty('--color-theme', `light-dark(var(--color-${theme}-600), var(--color-${theme}-400))`)
-    root.style.setProperty('--color-accent', `light-dark(var(--color-${accent}-600), var(--color-${accent}-400))`)
-    root.style.setProperty('--color-background', `light-dark(var(--color-${theme}-200), var(--color-${theme}-800))`)
-    root.style.setProperty('--color-surface', `light-dark(var(--color-${theme}-100), var(--color-${theme}-900))`)
-    root.style.setProperty('--color-border', `light-dark(var(--color-${theme}-300), var(--color-${theme}-700))`)
-    root.style.setProperty('--color-text', `light-dark(var(--color-${theme}-700), var(--color-${theme}-300))`)
-    root.style.setProperty('--custom-font-sans', font)
-    root.style.setProperty('--radius-scale', radius)
+      const root = document.documentElement
 
-    updatePreview()
-  }
+      root.style.setProperty('--color-theme', `light-dark(var(--color-${theme}-600), var(--color-${theme}-400))`)
+      root.style.setProperty('--color-accent', `light-dark(var(--color-${accent}-600), var(--color-${accent}-400))`)
+      root.style.setProperty('--color-background', `light-dark(var(--color-${theme}-200), var(--color-${theme}-800))`)
+      root.style.setProperty('--color-surface', `light-dark(var(--color-${theme}-100), var(--color-${theme}-900))`)
+      root.style.setProperty('--color-border', `light-dark(var(--color-${theme}-300), var(--color-${theme}-700))`)
+      root.style.setProperty('--color-text', `light-dark(var(--color-${theme}-700), var(--color-${theme}-300))`)
+      root.style.setProperty('--custom-font-sans', font)
+      root.style.setProperty('--radius-scale', radius)
 
-  function getFullCSS() {
-    const theme = ctrlTheme.value
-    const accent = ctrlAccent.value
-    const font = ctrlFont.value
-    const radius = ctrlRadius.value
+      updatePreview()
+    }
 
-    return `@layer zui.base {
+    function getFullCSS() {
+      const theme = ctrlTheme.value
+      const accent = ctrlAccent.value
+      const font = ctrlFont.value
+      const radius = ctrlRadius.value
+
+      return `@layer zui.base {
   :root {
     --color-theme: light-dark(var(--color-${theme}-600), var(--color-${theme}-400));
     --color-accent: light-dark(var(--color-${accent}-600), var(--color-${accent}-400));
@@ -174,46 +175,49 @@ const radiusScales = [
     --border-style: solid;
   }
 }`
-  }
+    }
 
-  function updatePreview() {
-    codeEl.textContent = getFullCSS()
-  }
+    function updatePreview() {
+      codeEl.textContent = getFullCSS()
+    }
 
-  function resetTheme() {
-    ctrlTheme.value = defaults.theme
-    ctrlAccent.value = defaults.accent
-    ctrlFont.value = defaults.font
-    ctrlRadius.value = defaults.radius
+    function resetTheme() {
+      ctrlTheme.value = defaults.theme
+      ctrlAccent.value = defaults.accent
+      ctrlFont.value = defaults.font
+      ctrlRadius.value = defaults.radius
 
-    const root = document.documentElement
-    root.style.removeProperty('--color-theme')
-    root.style.removeProperty('--color-accent')
-    root.style.removeProperty('--color-background')
-    root.style.removeProperty('--color-surface')
-    root.style.removeProperty('--color-border')
-    root.style.removeProperty('--color-text')
-    root.style.removeProperty('--custom-font-sans')
-    root.style.removeProperty('--radius-scale')
+      const root = document.documentElement
+      root.style.removeProperty('--color-theme')
+      root.style.removeProperty('--color-accent')
+      root.style.removeProperty('--color-background')
+      root.style.removeProperty('--color-surface')
+      root.style.removeProperty('--color-border')
+      root.style.removeProperty('--color-text')
+      root.style.removeProperty('--custom-font-sans')
+      root.style.removeProperty('--radius-scale')
+
+      updatePreview()
+    }
+
+    copyBtn.addEventListener('click', () => {
+      const css = getFullCSS()
+      navigator.clipboard.writeText(css).then(() => {
+        const orig = copyBtn.textContent
+        copyBtn.textContent = 'Copied!'
+        setTimeout(() => { copyBtn.textContent = orig }, 1500)
+      })
+    })
+
+    resetBtn.addEventListener('click', resetTheme)
+
+    const controls = [ctrlTheme, ctrlAccent, ctrlFont, ctrlRadius]
+    controls.forEach(ctrl => ctrl.addEventListener('change', applyTheme))
 
     updatePreview()
   }
 
-  copyBtn.addEventListener('click', () => {
-    const css = getFullCSS()
-    navigator.clipboard.writeText(css).then(() => {
-      const orig = copyBtn.textContent
-      copyBtn.textContent = 'Copied!'
-      setTimeout(() => { copyBtn.textContent = orig }, 1500)
-    })
-  })
-
-  resetBtn.addEventListener('click', resetTheme)
-
-  const controls = [ctrlTheme, ctrlAccent, ctrlFont, ctrlRadius]
-  controls.forEach(ctrl => ctrl.addEventListener('change', applyTheme))
-
-  updatePreview()
+  document.addEventListener('astro:page-load', initThemeSwitcher)
 </script>
 
 <style>

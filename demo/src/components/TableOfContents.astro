@@ -60,7 +60,7 @@
     headings.forEach((heading) => observer.observe(heading))
   }
 
-  buildToc()
+  document.addEventListener('astro:page-load', buildToc)
 </script>
 
 <style>

@@ -96,6 +96,40 @@ Or use any raw colour value:
 }
 ```
 
+#### Shorthand: derive light/dark from a single colour
+
+Because ZUI's palette is defined in OKLCH, you can use [CSS relative colour syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors) to derive both light and dark variants from a single base colour. The idea is to fix the lightness for each mode and let the hue and chroma carry through from whatever colour you supply:
+
+```css
+:root {
+  --color-theme-base: var(--color-violet-500);
+
+  --color-theme: light-dark(
+    oklch(from var(--color-theme-base) 0.46 c h),
+    oklch(from var(--color-theme-base) 0.72 c h)
+  );
+}
+```
+
+The fixed lightness values (`0.46` for light mode, `0.72` for dark mode) approximate the `-600`/`-400` weight split used by the defaults. You can tune them to taste.
+
+This works with any valid colour — a palette variable, a raw `oklch()`, or even a hex value:
+
+```css
+:root {
+  --color-theme: light-dark(
+    oklch(from #7c3aed 0.46 c h),
+    oklch(from #7c3aed 0.72 c h)
+  );
+  --color-accent: light-dark(
+    oklch(from var(--color-sky-500) 0.46 c h),
+    oklch(from var(--color-sky-500) 0.72 c h)
+  );
+}
+```
+
+**Things to be aware of:** OKLCH chroma is not linear across lightness, so very saturated or unusual hues (e.g. yellow, lime) may need slightly adjusted lightness targets to feel visually balanced. Full manual `light-dark(…)` overrides are always available when you need precise control.
+
 ## Fonts
 
 Override the `--custom-font-*` properties to change typefaces. ZUI appends robust fallback stacks automatically.
