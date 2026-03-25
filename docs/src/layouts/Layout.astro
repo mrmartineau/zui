@@ -22,6 +22,11 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ZUI — {title}</title>
     <meta name="description" content="A CSS-first UI library with optional React and Astro components." />
+    <link rel="author" href="Zander Martineau" />
+    <meta name="author" content="Zander Martineau">
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content={Astro.url} />
+    <meta name="generator" content={Astro.generator} />
     <link
       rel="stylesheet"
       type="text/css"
