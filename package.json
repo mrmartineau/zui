@@ -5,10 +5,12 @@
   "type": "module",
   "exports": {
     "./css": {
+      "types": "./dist/css/zui.css.d.ts",
       "style": "./dist/css/zui.css",
       "default": "./dist/css/zui.css"
     },
     "./css/min": {
+      "types": "./dist/css/zui.min.css.d.ts",
       "style": "./dist/css/zui.min.css",
       "default": "./dist/css/zui.min.css"
     },
