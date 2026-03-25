@@ -4,6 +4,7 @@ const STORAGE_KEY = 'zui-color-scheme'
 const DARK_CLASS = 'zui-dark'
 const LIGHT_CLASS = 'zui-light'
 const EVENT = 'zui-color-scheme-change'
+const CYCLE: ColorScheme[] = ['light', 'dark', 'system']
 
 export function getColorScheme(): ColorScheme {
   if (typeof localStorage === 'undefined') return 'system'
@@ -17,6 +18,15 @@ export function setColorScheme(scheme: ColorScheme): void {
   else if (scheme === 'light') root.classList.add(LIGHT_CLASS)
   localStorage.setItem(STORAGE_KEY, scheme)
   window.dispatchEvent(new CustomEvent(EVENT, { detail: scheme }))
+}
+
+/**
+ * Returns the next colour scheme in the cycle: light → dark → system → light…
+ */
+export function nextColorScheme(current?: ColorScheme): ColorScheme {
+  const scheme = current ?? getColorScheme()
+  const idx = CYCLE.indexOf(scheme)
+  return CYCLE[(idx + 1) % CYCLE.length]
 }
 
 export function initColorScheme(): void {

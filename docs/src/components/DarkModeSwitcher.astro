@@ -10,59 +10,42 @@
 >
   <i class="ph ph-sun" id="dms-icon-sun" hidden></i>
   <i class="ph ph-moon" id="dms-icon-moon" hidden></i>
+  <i class="ph ph-monitor" id="dms-icon-system" hidden></i>
 </button>
 
 <script>
-  const STORAGE_KEY = 'zui-color-scheme'
+  import {
+    getColorScheme,
+    setColorScheme,
+    nextColorScheme,
+    type ColorScheme,
+  } from '@mrmartineau/zui/utils'
 
-  function getScheme() {
-    return localStorage.getItem(STORAGE_KEY) ?? 'system'
-  }
-
-  function isDarkActive() {
-    const scheme = getScheme()
-    return (
-      scheme === 'dark' ||
-      (scheme === 'system' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    )
-  }
-
-  function applyScheme(dark: boolean) {
-    document.documentElement.classList.toggle('zui-dark', dark)
-    document.documentElement.classList.toggle('zui-light', !dark)
-    localStorage.setItem(STORAGE_KEY, dark ? 'dark' : 'light')
-    window.dispatchEvent(
-      new CustomEvent('zui-color-scheme-change', {
-        detail: dark ? 'dark' : 'light',
-      }),
-    )
-  }
-
-  function updateIcon(dark: boolean) {
+  function updateIcon(scheme: ColorScheme) {
     const sun = document.getElementById('dms-icon-sun')
     const moon = document.getElementById('dms-icon-moon')
-    if (sun) sun.hidden = !dark
-    if (moon) moon.hidden = dark
+    const system = document.getElementById('dms-icon-system')
+    if (sun) sun.hidden = scheme !== 'light'
+    if (moon) moon.hidden = scheme !== 'dark'
+    if (system) system.hidden = scheme !== 'system'
   }
 
   function init() {
     const btn = document.getElementById('dark-mode-toggle')
     if (!btn) return
 
-    const dark = isDarkActive()
-    updateIcon(dark)
+    updateIcon(getColorScheme())
 
     btn.addEventListener('click', () => {
-      const next = !isDarkActive()
-      applyScheme(next)
+      const next = nextColorScheme()
+      setColorScheme(next)
       updateIcon(next)
     })
 
     window
       .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => {
-        if (getScheme() === 'system') updateIcon(e.matches)
+      .addEventListener('change', () => {
+        if (getColorScheme() === 'system') updateIcon('system')
       })
   }
 

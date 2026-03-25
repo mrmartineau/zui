@@ -99,19 +99,33 @@ import { getColorScheme } from '@mrmartineau/zui/utils'
 const scheme = getColorScheme() // 'dark' | 'light' | 'system'
 ```
 
+### `nextColorScheme(current?)`
+
+Returns the next scheme in the cycle: `light` → `dark` → `system` → `light` …
+
+If `current` is omitted it reads from `localStorage` automatically.
+
+```ts
+import { getColorScheme, setColorScheme, nextColorScheme } from '@mrmartineau/zui/utils'
+
+// Advance to the next scheme and apply it
+setColorScheme(nextColorScheme())
+```
+
 ## React hook
 
 The `useColorScheme` hook is available from `@mrmartineau/zui/react`. It re-renders whenever the scheme changes, including changes made outside React (e.g. from a plain JS toggle button).
 
 ```tsx
 import { useColorScheme } from '@mrmartineau/zui/react'
+import { nextColorScheme } from '@mrmartineau/zui/utils'
 
 function ThemeToggle() {
   const { scheme, set } = useColorScheme()
 
   return (
-    <button onClick={() => set(scheme === 'dark' ? 'light' : 'dark')}>
-      {scheme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+    <button onClick={() => set(nextColorScheme(scheme))}>
+      {scheme === 'dark' ? '🌙 Dark' : scheme === 'light' ? '☀️ Light' : '💻 System'}
     </button>
   )
 }
