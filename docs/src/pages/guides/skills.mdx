@@ -1,0 +1,58 @@
+---
+layout: ../../layouts/Layout.astro
+title: AI Agent Skills
+---
+
+# AI Agent Skills
+
+ZUI ships an agent skill for AI coding assistants (Claude Code, Cursor, Copilot, etc.) that gives the model deep knowledge of ZUI's components, design tokens, utility classes, and conventions. With the skill loaded, your AI assistant can generate accurate ZUI markup without hallucinating class names or token values.
+
+## Install the skill
+
+```sh
+npx skills add @mrmartineau/zui
+```
+
+This writes the skill file into your project's `.skills/` directory and registers it with your AI tooling.
+
+## What the skill teaches the model
+
+Once installed, the skill gives the AI assistant:
+
+- **Component API** — every `zui-*` class, variant axis, size, and shape for all components (Button, Badge, Card, Input, Dialog, Tooltip, Popover, and more)
+- **Design tokens** — the full set of `--space-*`, `--step-*`, `--color-*`, `--radius-*`, `--shadow-*`, `--ease-*`, and `--z-*` custom properties
+- **Semantic theme tokens** — `--color-theme`, `--color-accent`, `--color-background`, `--color-surface`, `--color-border`, `--color-text`, and state colours
+- **Utility classes** — layout (`flex`, `flex-center`, `gap-*`), spacing (`p-*`, `px-*`), typography (`zui-text-*`), flow (`flow`, `prose`), and visibility (`sr-only`)
+- **CSS layer system** — when to place custom CSS in `zui.reset`, `zui.base`, `zui.components`, or `zui.utilities`
+- **React and Astro wrappers** — import paths and prop names for `@mrmartineau/zui/react` and `@mrmartineau/zui/astro`
+- **Icon convention** — use `<i class="ph ph-icon-name"></i>` (HTML/Astro) or `@phosphor-icons/react` (React), never inline SVGs
+- **Colour patterns** — `light-dark()` for theme-aware values, `oklch(from …)` for tints and transparency
+
+## Usage
+
+After installing, the skill is automatically loaded in supported editors. You can then prompt your AI assistant naturally:
+
+```
+Add a success badge next to the user's name
+```
+
+```
+Create a contact form with name, email, and message fields
+```
+
+```
+Build a card grid with hover effects using ZUI tokens
+```
+
+The model will use correct ZUI classes and tokens rather than generic Tailwind or inline styles.
+
+## Manual installation
+
+If your tooling doesn't support `npx skills add`, copy the skill file directly:
+
+```sh
+curl -o .skills/using-zui.md \
+  https://raw.githubusercontent.com/mrmartineau/zui/main/skills/using-zui/SKILL.md
+```
+
+Or reference the skill content from the repository at `skills/using-zui/SKILL.md`.
