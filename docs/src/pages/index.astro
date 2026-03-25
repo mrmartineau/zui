@@ -112,6 +112,18 @@ import { Code } from 'astro:components'
         <h3>Modern CSS</h3>
         <p>Built on <code>oklch()</code>, relative colour syntax, <code>light-dark()</code>, and container queries. Designed for how CSS works today.</p>
       </div>
+
+      <div class="feature">
+        <h3>Copy source into your project</h3>
+        <p>Want full control? Run <code>npx @mrmartineau/zui init</code> to copy all components, CSS, and tokens directly into your project — no package dependency required.</p>
+        <a href="/guides/copy-source" class="feature-link">Learn more</a>
+      </div>
+
+      <div class="feature">
+        <h3>AI-ready</h3>
+        <p>Ships an agent skill for Claude Code, Cursor, and other AI assistants. The model learns ZUI's class names, tokens, and conventions — no hallucinated classes.</p>
+        <a href="/guides/skills" class="feature-link">Install the skill</a>
+      </div>
     </div>
   </section>
 
@@ -151,6 +163,8 @@ import { Code } from 'astro:components'
         <a href="/colors">Colours</a>
         <a href="/typography">Typography</a>
         <a href="/layers">CSS Layers</a>
+        <a href="/guides/copy-source">Copy source into project</a>
+        <a href="/guides/skills">AI Agent Skills</a>
       </div>
       <div class="footer-col">
         <h4>Tokens</h4>
@@ -282,6 +296,18 @@ import { Code } from 'astro:components'
     font-size: var(--step--1);
     line-height: var(--line-height-md);
     color: color-mix(in oklch, var(--color-text) 70%, transparent);
+  }
+
+  .feature-link {
+    display: inline-block;
+    margin-block-start: var(--space-3xs);
+    font-size: var(--step--1);
+    color: var(--color-theme);
+    text-decoration: none;
+  }
+
+  .feature-link:hover {
+    text-decoration: underline;
   }
 
   .feature code {

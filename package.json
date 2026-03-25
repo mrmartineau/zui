@@ -31,10 +31,15 @@
       "import": "./src/astro/*"
     }
   },
+  "bin": {
+    "zui": "scripts/init.mjs"
+  },
   "files": [
     "dist",
+    "scripts",
     "src/css",
     "src/astro",
+    "src/react",
     "src/shared",
     "src/utils",
     "skills"

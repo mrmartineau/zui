@@ -1,0 +1,125 @@
+---
+layout: ../../layouts/Layout.astro
+title: Copy source into your project
+---
+
+# Copy source into your project
+
+By default ZUI is consumed as an npm package — you import CSS and components from `@mrmartineau/zui`. If you want full control over the source code (edit components, adjust variants, restructure files), you can copy the entire library directly into your project.
+
+This is similar to [shadcn/ui](https://ui.shadcn.com/)'s approach: the files become yours to own and modify.
+
+## When to use this
+
+- You need to modify component logic or variant definitions
+- You want to vendor the CSS and customise it beyond what theming tokens allow
+- You prefer not to depend on an external package at runtime
+
+## Run the init script
+
+```sh
+npx @mrmartineau/zui init
+```
+
+You do not need to install the package first — `npx` will fetch it transiently.
+
+The script will prompt you for:
+
+1. **Framework** — React, Astro, or CSS only
+2. **CSS destination** — where to copy the CSS files (default: `src/styles/zui`)
+3. **Components destination** — where to copy component files (default: `src/components/zui`, skipped for CSS only)
+
+## What gets copied
+
+### CSS (all frameworks)
+
+The full `src/css/` directory is copied to your chosen destination, preserving its structure:
+
+```
+src/styles/zui/
+  index.css         ← single entry point
+  layers.css
+  reset.css
+  theme.css
+  tokens.css
+  core.css
+  components.css
+  utilities.css
+  print.css
+  tokens/           ← design token files
+  components/       ← per-component CSS
+  utilities/        ← utility class files
+```
+
+### React
+
+```
+src/components/zui/
+  react/            ← all React components (.tsx)
+  shared/           ← cva variant definitions + colorScheme utility
+```
+
+### Astro
+
+```
+src/components/zui/
+  astro/            ← all Astro components (.astro)
+  shared/           ← cva variant definitions + colorScheme utility
+```
+
+## After init
+
+### 1. Import the CSS
+
+Add the entry file to your app's entry point:
+
+```ts
+// React (main.tsx / App.tsx)
+import './src/styles/zui/index.css'
+```
+
+```astro
+---
+// Astro layout
+import '../styles/zui/index.css'
+---
+```
+
+### 2. Import components from your local copy
+
+**React:**
+
+```tsx
+import { Button, Badge, Input } from './src/components/zui/react/index'
+```
+
+**Astro:**
+
+```astro
+---
+import Button from './src/components/zui/astro/Button.astro'
+---
+```
+
+### 3. Remove the npm package
+
+Once you've confirmed everything works, remove `@mrmartineau/zui` from your `package.json`:
+
+```sh
+npm uninstall @mrmartineau/zui
+# or pnpm remove / yarn remove / bun remove
+```
+
+The script will remind you to do this, but it won't modify your `package.json` automatically.
+
+## Conflict warning
+
+If `@mrmartineau/zui` is already listed in your `package.json` when you run `init`, the script will warn you before proceeding. The installed package and the copied source can conflict — both define the same CSS classes and component names. Remove the npm package once your local copy is working.
+
+## Dependencies installed automatically
+
+The script detects your package manager (npm, pnpm, yarn, or bun) and installs `cva` automatically for React and Astro workflows. CSS-only installs have no JavaScript dependencies.
+
+## Keeping up to date
+
+Once copied, the files are yours — ZUI updates will not reach them automatically. To pick up changes, re-run `npx @mrmartineau/zui init` and review the diff, or manually apply upstream changes from the [ZUI repository](https://github.com/mrmartineau/zui).
