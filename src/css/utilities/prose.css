@@ -103,7 +103,7 @@
       scroll-margin-top: 1em;
     }
 
-    a {
+    a:not(.zui-button) {
       color: var(--prose-link-color);
       text-decoration-color: var(--prose-link-color-decoration);
       text-decoration-thickness: 0.2ex;

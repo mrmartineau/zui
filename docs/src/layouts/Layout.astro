@@ -340,7 +340,7 @@ const currentPath = Astro.url.pathname;
     font-size: var(--step-0);
   }
 
-  .docs-prose a {
+  .docs-prose a:not(.zui-button) {
     color: var(--color-text);
     text-decoration-line: underline;
     text-decoration-color: oklch(from var(--color-text) l c h / 50%);
@@ -350,7 +350,7 @@ const currentPath = Astro.url.pathname;
     transition: text-decoration-color 0.2s var(--ease-in-out);
   }
 
-  .docs-prose a:hover {
+  .docs-prose a:not(.zui-button):hover {
     text-decoration-color: oklch(from var(--color-text) l c h / 90%);
   }
 

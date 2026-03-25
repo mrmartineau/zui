@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Code } from 'astro:components'
+import { version } from '../../../package.json'
 ---
 
 <Layout title="Home">
   <section class="hero">
-    <span class="zui-badge zui-badge-variant-outline">v0.0.1</span>
+    <span class="zui-badge zui-badge-variant-outline">v{version}</span>
     <h1 class="hero-title">Build interfaces<br>with intention</h1>
     <p class="hero-subtitle">A CSS-first UI library with design tokens, layered architecture, and optional React&nbsp;&amp;&nbsp;Astro components. No build step required.</p>
     <div class="hero-actions">

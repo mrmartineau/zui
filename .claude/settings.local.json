@@ -3,7 +3,8 @@
     "allow": [
       "Bash(node:*)",
       "Bash(pnpm run:*)",
-      "Bash(chmod +x /Users/zander/code/mrmartineau/zui/scripts/init.mjs)"
+      "Bash(chmod +x /Users/zander/code/mrmartineau/zui/scripts/init.mjs)",
+      "Bash(grep -r docs-prose /Users/zander/code/mrmartineau/zui --include=*.css --include=*.astro)"
     ]
   }
 }
