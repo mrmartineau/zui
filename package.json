@@ -44,6 +44,10 @@
     "src/utils",
     "skills"
   ],
+
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -51,13 +55,15 @@
     "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial",
     "docs:dev": "pnpm run build && pnpm --filter docs run dev",
     "docs:build": "pnpm run build && pnpm --filter docs run build",
-    "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy"
+    "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
+    "release": "release-it"
   },
   "devDependencies": {
     "@tsdown/css": "^0.21.4",
     "@types/react": "^19.0.0",
     "chokidar-cli": "^3.0.0",
     "lightningcss": "^1.32.0",
+    "release-it": "^19.2.4",
     "tsdown": "^0.21.4",
     "typescript": "^5.8.0"
   },
