@@ -20,7 +20,7 @@ const guides = [
 ]
 
 const tokens = [
-  { href: '/tokens', label: 'Overview' },
+  { href: '/tokens', label: 'Overview', exact: true },
   { href: '/tokens/space', label: 'Space' },
   { href: '/tokens/shadows', label: 'Shadows' },
   { href: '/tokens/radii', label: 'Border Radius' },
@@ -32,7 +32,7 @@ const tokens = [
 ]
 
 const components = [
-  { href: '/components', label: 'Overview' },
+  { href: '/components', label: 'Overview', exact: true },
   { href: '/components/badge', label: 'Badge' },
   { href: '/components/button', label: 'Button' },
   { href: '/components/card', label: 'Card' },
@@ -49,7 +49,7 @@ const components = [
 ]
 
 const utilities = [
-  { href: '/utilities', label: 'Overview' },
+  { href: '/utilities', label: 'Overview', exact: true },
   { href: '/utilities/spacing', label: 'Spacing' },
   { href: '/utilities/flex', label: 'Flex' },
   { href: '/utilities/flow', label: 'Flow' },
@@ -65,9 +65,10 @@ const sections = [
   { heading: 'Utilities', items: utilities },
 ]
 
-function isCurrent(href: string) {
+function isCurrent(href: string, exact = false) {
   if (href === '/') return currentPath === '/' || currentPath === ''
-  return currentPath.startsWith(href)
+  if (exact) return currentPath === href
+  return currentPath === href || currentPath.startsWith(href + '/')
 }
 ---
 
@@ -76,9 +77,9 @@ function isCurrent(href: string) {
     <section>
       <h2 class="section-heading">{heading}</h2>
       <ul>
-        {items.map(({ href, label }) => (
+        {items.map(({ href, label, exact }) => (
           <li>
-            <a href={href} class:list={[{ active: isCurrent(href) }]} aria-current={isCurrent(href) ? 'page' : undefined}>
+            <a href={href} class:list={[{ active: isCurrent(href, exact) }]} aria-current={isCurrent(href, exact) ? 'page' : undefined}>
               {label}
             </a>
           </li>
@@ -139,19 +140,41 @@ function isCurrent(href: string) {
 </style>
 
 <script>
-  let savedScrollTop = 0
+  let savedScrollTop = 0;
 
-  document.addEventListener('astro:before-swap', () => {
-    const sidebar = document.querySelector('.site-sidebar')
-    if (sidebar) {
-      savedScrollTop = sidebar.scrollTop
+  function scrollActiveIntoView() {
+    const sidebar = document.querySelector(".site-sidebar");
+    const activeLink = document.querySelector(
+      ".site-sidebar .sidebar a.active",
+    );
+    if (!sidebar || !activeLink) {
+      return;
     }
-  })
+    const sidebarTop = sidebar.scrollTop;
+    const sidebarHeight = sidebar.clientHeight;
+    const linkTop = activeLink.offsetTop;
+    const linkHeight = activeLink.offsetHeight;
+    const isVisible =
+      linkTop >= sidebarTop &&
+      linkTop + linkHeight <= sidebarTop + sidebarHeight;
+    if (!isVisible) {
+      sidebar.scrollTop = linkTop - sidebarHeight / 2 + linkHeight / 2;
+    }
+  }
 
-  document.addEventListener('astro:after-swap', () => {
-    const sidebar = document.querySelector('.site-sidebar')
+  document.addEventListener("astro:page-load", scrollActiveIntoView);
+
+  document.addEventListener("astro:before-swap", () => {
+    const sidebar = document.querySelector(".site-sidebar");
     if (sidebar) {
-      sidebar.scrollTop = savedScrollTop
+      savedScrollTop = sidebar.scrollTop;
     }
-  })
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    const sidebar = document.querySelector(".site-sidebar");
+    if (sidebar) {
+      sidebar.scrollTop = savedScrollTop;
+    }
+  });
 </script>
