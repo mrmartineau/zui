@@ -33,4 +33,12 @@
     --radius-scale: 1;
     --border-style: solid;
   }
+
+  :root.zui-dark {
+    color-scheme: dark;
+  }
+
+  :root.zui-light {
+    color-scheme: light;
+  }
 }

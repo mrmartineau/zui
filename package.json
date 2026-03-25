@@ -18,6 +18,12 @@
         "default": "./dist/react/index.mjs"
       }
     },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils/index.d.mts",
+        "default": "./dist/utils/index.mjs"
+      }
+    },
     "./astro": {
       "import": "./src/astro/index.ts"
     },
@@ -30,6 +36,7 @@
     "src/css",
     "src/astro",
     "src/shared",
+    "src/utils",
     "skills"
   ],
   "scripts": {

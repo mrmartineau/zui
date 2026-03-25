@@ -1,6 +1,7 @@
 ---
 name: using-zui
 description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, or Astro markup that should use ZUI components, design tokens, and utility classes. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui."
+user-invocable: true
 ---
 
 # Using ZUI

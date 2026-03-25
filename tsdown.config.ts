@@ -13,6 +13,14 @@ export default defineConfig([
     },
   },
   {
+    entry: {
+      'utils/index': 'src/utils/colorScheme.ts',
+    },
+    format: 'esm',
+    dts: true,
+    clean: ['dist/utils'],
+  },
+  {
     entry: ['src/css/index.css'],
     css: {
       minify: false,

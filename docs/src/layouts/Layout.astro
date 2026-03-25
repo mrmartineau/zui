@@ -6,6 +6,7 @@ import Sidebar from '../components/Sidebar.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import MiniThemeSwitcher from '../components/MiniThemeSwitcher.astro';
+import DarkModeSwitcher from '../components/DarkModeSwitcher.astro';
 
 interface Props {
   title: string;
@@ -30,13 +31,24 @@ const currentPath = Astro.url.pathname;
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css"
     />
+    <script is:inline>(function(){var s=localStorage.getItem('zui-color-scheme');if(s==='dark')document.documentElement.classList.add('zui-dark');else if(s==='light')document.documentElement.classList.add('zui-light');})()</script>
     <ClientRouter />
   </head>
   <body>
     <header class="site-header">
       <a href="/" class="site-logo">ZUI</a>
       <div class="site-header-end">
+        <a
+          href="https://github.com/mrmartineau/zui"
+          class="zui-button zui-button-variant-ghost"
+          aria-label="View on GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="ph ph-github-logo"></i> Repo
+        </a>
         <MiniThemeSwitcher />
+        <DarkModeSwitcher />
         <button
           class="mobile-menu-btn zui-button zui-button-variant-ghost"
           type="button"
@@ -85,6 +97,12 @@ const currentPath = Astro.url.pathname;
           <a href="/tokens/space">Tokens</a>
           <a href="/components/badge">Components</a>
           <a href="/utilities/spacing">Utilities</a>
+          <a
+            href="https://github.com/mrmartineau/zui"
+            aria-label="View on GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+          ><i class="ph ph-github-logo"></i></a>
         </nav>
       </div>
     </footer>

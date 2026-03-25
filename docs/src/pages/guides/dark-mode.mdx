@@ -1,0 +1,120 @@
+---
+layout: ../../layouts/Layout.astro
+title: Dark Mode
+---
+
+# Dark Mode
+
+ZUI uses the CSS `light-dark()` function for all semantic colour tokens, which means it respects `prefers-color-scheme` automatically with no JavaScript required.
+
+The `@mrmartineau/zui/utils` package provides utilities to let users override their system preference at runtime, persisted to `localStorage`.
+
+## How it works
+
+When a user selects a preference, ZUI adds `.zui-dark` or `.zui-light` to `<html>`. These classes set the CSS `color-scheme` property, which controls how `light-dark()` resolves — overriding the system preference.
+
+```css
+:root.zui-dark  { color-scheme: dark; }
+:root.zui-light { color-scheme: light; }
+```
+
+No `prefers-color-scheme` media queries, no duplicated token overrides. All existing `light-dark()` values just work.
+
+## Preventing flash of wrong theme
+
+Add this **blocking script** before any stylesheets in your `<head>`. It runs before paint and applies the stored preference immediately:
+
+```html
+<script>(function(){var s=localStorage.getItem('zui-color-scheme');if(s==='dark')document.documentElement.classList.add('zui-dark');else if(s==='light')document.documentElement.classList.add('zui-light');})()</script>
+```
+
+You can also import it as a string for SSR frameworks:
+
+```ts
+import { headScript } from '@mrmartineau/zui/utils'
+```
+
+### Next.js (App Router)
+
+```tsx
+import { headScript } from '@mrmartineau/zui/utils'
+
+// app/layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: headScript }} />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+### Astro
+
+```astro
+---
+import { headScript } from '@mrmartineau/zui/utils'
+---
+<html>
+  <head>
+    <script is:inline set:html={headScript} />
+  </head>
+</html>
+```
+
+## API
+
+### `initColorScheme()`
+
+Reads the stored preference from `localStorage` and applies the appropriate class to `<html>`. Call this once on app boot (after the `headScript` covers the blocking case).
+
+```ts
+import { initColorScheme } from '@mrmartineau/zui/utils'
+
+initColorScheme()
+```
+
+### `setColorScheme(scheme)`
+
+Sets the colour scheme and persists it to `localStorage`.
+
+```ts
+import { setColorScheme } from '@mrmartineau/zui/utils'
+
+setColorScheme('dark')    // force dark
+setColorScheme('light')   // force light
+setColorScheme('system')  // follow system preference
+```
+
+### `getColorScheme()`
+
+Returns the current stored preference (`'dark'`, `'light'`, or `'system'`).
+
+```ts
+import { getColorScheme } from '@mrmartineau/zui/utils'
+
+const scheme = getColorScheme() // 'dark' | 'light' | 'system'
+```
+
+## React hook
+
+The `useColorScheme` hook is available from `@mrmartineau/zui/react`. It re-renders whenever the scheme changes, including changes made outside React (e.g. from a plain JS toggle button).
+
+```tsx
+import { useColorScheme } from '@mrmartineau/zui/react'
+
+function ThemeToggle() {
+  const { scheme, set } = useColorScheme()
+
+  return (
+    <button onClick={() => set(scheme === 'dark' ? 'light' : 'dark')}>
+      {scheme === 'dark' ? 'Switch to light' : 'Switch to dark'}
+    </button>
+  )
+}
+```
+
+The `set` function is the same as `setColorScheme` — calling it from anywhere dispatches a `zui-color-scheme-change` event that keeps all hook instances in sync.
