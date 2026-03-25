@@ -1,6 +1,6 @@
 {
   "name": "@mrmartineau/zui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ZUI — a CSS UI library with React and Astro components",
   "type": "module",
   "exports": {
@@ -44,7 +44,6 @@
     "src/utils",
     "skills"
   ],
-
   "publishConfig": {
     "access": "public"
   },
