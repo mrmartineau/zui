@@ -10,7 +10,7 @@ import { Code } from 'astro:components'
     <p class="hero-subtitle">A CSS-first UI library with design tokens, layered architecture, and optional React&nbsp;&amp;&nbsp;Astro components. No build step required.</p>
     <div class="hero-actions">
       <a href="/installation" class="zui-button">Get started</a>
-      <a href="/components/button" class="zui-button zui-button-variant-outline">Browse components</a>
+      <a href="/components" class="zui-button zui-button-variant-outline">Browse components</a>
     </div>
 
     <div class="hero-install">
@@ -176,10 +176,18 @@ import { Code } from 'astro:components'
       </div>
       <div class="footer-col">
         <h4>Components</h4>
+        <a href="/components">Overview</a>
         <a href="/components/button">Button</a>
         <a href="/components/badge">Badge</a>
         <a href="/components/card">Card</a>
         <a href="/components/input">Input</a>
+      </div>
+      <div class="footer-col">
+        <h4>Utilities</h4>
+        <a href="/utilities">Overview</a>
+        <a href="/utilities/spacing">Spacing</a>
+        <a href="/utilities/flex">Flex</a>
+        <a href="/utilities/flow">Flow</a>
       </div>
     </div>
   </footer>
@@ -374,7 +382,7 @@ import { Code } from 'astro:components'
 
   .footer-links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
   }
 

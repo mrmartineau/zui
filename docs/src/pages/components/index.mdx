@@ -1,0 +1,104 @@
+---
+layout: ../../layouts/Layout.astro
+title: Components
+---
+
+# Components
+
+ZUI provides a set of UI components available in three forms: plain CSS classes, React components, and Astro components. All three target the same underlying styles — the React and Astro wrappers are thin conveniences that map props to the CSS class names.
+
+## Usage approaches
+
+### Plain CSS classes
+
+Every component is usable with any HTML element by applying the right class names. This works in any framework or with no framework at all.
+
+```html
+<button class="zui-button zui-button-variant-outline">Click me</button>
+```
+
+### React
+
+React wrappers accept typed props instead of class strings. Import from `@mrmartineau/zui/react`.
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+
+<Button variant="outline">Click me</Button>
+```
+
+### Astro
+
+Astro wrappers work the same way. Import from `@mrmartineau/zui/astro`.
+
+```astro
+---
+import { Button } from '@mrmartineau/zui/astro'
+---
+
+<Button variant="outline">Click me</Button>
+```
+
+See [Using with React](/guides/react) and [Using with Astro](/guides/astro) for setup instructions.
+
+## CSS layer
+
+Component styles live in the `zui.components` layer, below `zui.utilities`. This means utility classes always override component styles when both apply, without needing `!important`.
+
+```css
+@layer zui.base, zui.components, zui.utilities;
+```
+
+## Components
+
+### [Badge](/components/badge)
+
+Small status indicators and labels. Supports colour variants and size modifiers.
+
+### [Button](/components/button)
+
+A flexible button with five variants (fill, subtle, outline, ghost, link), three accent colours, five sizes, four shapes, and icon-only mode.
+
+### [Card](/components/card)
+
+A container for grouping related content, with optional header, body, and footer sections.
+
+### [Checkbox](/components/checkbox)
+
+Custom-styled checkboxes with list layout.
+
+### [Input](/components/input)
+
+A styled text input for forms.
+
+### [Label](/components/label)
+
+Form labels with optional required indicator and description text.
+
+### [Radio](/components/radio)
+
+Custom-styled radio buttons with list layout.
+
+### [Select](/components/select)
+
+A styled native select dropdown.
+
+### [Table](/components/table)
+
+A styled table for displaying tabular data.
+
+### [Textarea](/components/textarea)
+
+A multi-line text input with auto-sizing via `field-sizing: content`.
+
+### [Dialog](/components/dialog)
+
+Modal dialogs built on the native `<dialog>` element with a styled backdrop. No third-party dependency required.
+
+### [Popover](/components/popover)
+
+Floating panels built on the native HTML Popover API and CSS Anchor Positioning. No JavaScript required.
+
+### [Tooltip](/components/tooltip)
+
+Small contextual labels on hover or focus, using `popover="hint"` and CSS Anchor Positioning. No JavaScript required.
