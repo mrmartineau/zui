@@ -53,6 +53,13 @@ const currentPath = Astro.url.pathname;
         >
           <i class="ph ph-github-logo"></i> Repo
         </a>
+        <a
+          href="https://npmx.dev/package/@mrmartineau/zui"
+          aria-label="View on npmx"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="zui-button zui-button-variant-ghost"
+        ><i class="ph ph-package"></i></a>
         <MiniThemeSwitcher />
         <DarkModeSwitcher />
         <button
@@ -87,7 +94,7 @@ const currentPath = Astro.url.pathname;
       <aside class="site-sidebar" transition:animate="none">
         <Sidebar currentPath={currentPath} />
       </aside>
-      <main class="site-main docs-prose" transition:animate="fade">
+      <main class="site-main docs-prose" transition:animate="fade" data-pagefind-body>
         <slot />
       </main>
       <TableOfContents />
@@ -99,7 +106,7 @@ const currentPath = Astro.url.pathname;
           Made by <a href="https://zander.wtf">Zander Martineau</a>
         </p>
         <nav class="site-footer-nav" aria-label="Footer">
-          <a href="/">Guide</a>
+          <a href="/">Guides</a>
           <a href="/tokens/space">Tokens</a>
           <a href="/components/badge">Components</a>
           <a href="/utilities/spacing">Utilities</a>
@@ -109,6 +116,12 @@ const currentPath = Astro.url.pathname;
             target="_blank"
             rel="noopener noreferrer"
           ><i class="ph ph-github-logo"></i></a>
+          <a
+            href="https://npmx.dev/package/@mrmartineau/zui"
+            aria-label="View on GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+          ><i class="ph ph-package"></i></a>
         </nav>
       </div>
     </footer>
@@ -134,13 +147,13 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: var(--z-1);
-    height: 3.5rem;
+    height:  var(--site-header-height);
   }
 
   .site-header-end {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
+    gap: var(--space-2xs);
   }
 
   .mobile-menu-btn {
@@ -164,7 +177,7 @@ const currentPath = Astro.url.pathname;
 
   .site-sidebar {
     position: sticky;
-    top: 3.5rem;
+    top:  var(--site-header-height);
     height: 100dvh;
     overflow-y: auto;
     border-right: 1px solid var(--color-border);
@@ -297,8 +310,17 @@ const currentPath = Astro.url.pathname;
 </style>
 
 <style is:global>
+
+  :root {
+    --site-header-height: 3.5rem;
+    --scroll-margin: calc(var(--site-header-height) + 1rem);
+  }
   .docs-prose {
     color: var(--color-text);
+
+  }
+  [id] {
+    scroll-margin-top: var(--scroll-margin);
   }
 
   .docs-prose > * + * {
@@ -319,7 +341,6 @@ const currentPath = Astro.url.pathname;
     text-wrap: balance;
     font-family: var(--font-headings);
     font-weight: var(--font-weight-7);
-    scroll-margin-top: 1em;
   }
 
   .docs-prose h2 {
@@ -329,7 +350,6 @@ const currentPath = Astro.url.pathname;
     font-family: var(--font-headings);
     font-weight: var(--font-weight-7);
     color: var(--color-theme);
-    scroll-margin-top: 1em;
   }
 
   .docs-prose h3 {
@@ -338,7 +358,6 @@ const currentPath = Astro.url.pathname;
     text-wrap: balance;
     font-family: var(--font-headings);
     font-weight: var(--font-weight-7);
-    scroll-margin-top: 1em;
   }
 
   .docs-prose > p,

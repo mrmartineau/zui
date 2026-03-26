@@ -5,12 +5,17 @@ interface Props {
 
 const { currentPath } = Astro.props
 
-const guides = [
-  { href: '/installation', label: 'Installation' },
-  { href: '/colors', label: 'Colours' },
-  { href: '/typography', label: 'Typography' },
-  { href: '/theming', label: 'Theming' },
-  { href: '/layers', label: 'CSS Layers' },
+interface NavItem {
+  href: string
+  label: string
+  exact?: boolean
+}
+const guides: NavItem[] = [
+  { href: '/guides/installation', label: 'Installation' },
+  { href: '/guides/colors', label: 'Colours' },
+  { href: '/guides/typography', label: 'Typography' },
+  { href: '/guides/theming', label: 'Theming' },
+  { href: '/guides/layers', label: 'CSS Layers' },
   { href: '/guides/react', label: 'Using with React' },
   { href: '/guides/astro', label: 'Using with Astro' },
   { href: '/guides/other-frameworks', label: 'Other UI Libraries' },
@@ -19,7 +24,7 @@ const guides = [
   { href: '/guides/copy-source', label: 'Copy source into project' },
 ]
 
-const tokens = [
+const tokens: NavItem[] = [
   { href: '/tokens', label: 'Overview', exact: true },
   { href: '/tokens/space', label: 'Space' },
   { href: '/tokens/shadows', label: 'Shadows' },
@@ -31,7 +36,7 @@ const tokens = [
   { href: '/tokens/z-index', label: 'Z-Index' },
 ]
 
-const components = [
+const components: NavItem[] = [
   { href: '/components', label: 'Overview', exact: true },
   { href: '/components/badge', label: 'Badge' },
   { href: '/components/button', label: 'Button' },
