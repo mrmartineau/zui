@@ -1,0 +1,88 @@
+@layer zui.components {
+  .zui-accordion {
+    --zui-accordion-border: var(--color-border);
+    --zui-accordion-radius: var(--radius-md);
+    --zui-accordion-bg: var(--color-surface);
+    --zui-accordion-padding-x: var(--space-sm);
+    --zui-accordion-padding-y: var(--space-sm);
+
+    display: flex;
+    flex-direction: column;
+    border: 1px var(--border-style, solid) var(--zui-accordion-border);
+    border-radius: var(--zui-accordion-radius);
+    background-color: var(--zui-accordion-bg);
+    overflow: hidden;
+  }
+
+  .zui-accordion-item {
+    border-block-start: 1px var(--border-style, solid) var(--zui-accordion-border);
+
+    &:first-child {
+      border-block-start: none;
+    }
+  }
+
+  .zui-accordion-trigger {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    padding: var(--zui-accordion-padding-y) var(--zui-accordion-padding-x);
+    cursor: pointer;
+    font-weight: var(--font-weight-medium, 500);
+    font-size: var(--step-0);
+    color: var(--color-text);
+    user-select: none;
+    width: 100%;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::marker {
+      content: '';
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0.45em;
+      height: 0.45em;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      flex-shrink: 0;
+      transition: transform 200ms var(--ease-out, ease-out);
+    }
+  }
+
+  .zui-accordion-item[open] > .zui-accordion-trigger::after {
+    transform: rotate(-135deg) translateY(1px);
+  }
+
+  .zui-accordion-content {
+    padding: 0 var(--zui-accordion-padding-x) var(--zui-accordion-padding-y);
+    font-size: var(--step-0);
+    color: var(--color-text);
+  }
+
+  /* Flush variant — no outer border or background, items separated by dividers */
+  .zui-accordion-flush {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+
+    .zui-accordion-item {
+      border-block-start: 1px var(--border-style, solid) var(--zui-accordion-border);
+    }
+
+    .zui-accordion-item:first-child {
+      border-block-start: none;
+    }
+
+    .zui-accordion-item:last-child {
+      border-block-end: 1px var(--border-style, solid) var(--zui-accordion-border);
+    }
+  }
+}

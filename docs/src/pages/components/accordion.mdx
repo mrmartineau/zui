@@ -1,0 +1,217 @@
+---
+layout: ../../layouts/Layout.astro
+title: Accordion
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Accordion
+
+A stacked set of disclosure panels using the native `<details>`/`<summary>` elements.
+
+## Usage
+
+<Demo code={`<div class="zui-accordion">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Is ZUI free to use?</summary>
+    <div class="zui-accordion-content">
+      <p>Yes, ZUI is open source and free to use in any project.</p>
+    </div>
+  </details>
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Which frameworks does ZUI support?</summary>
+    <div class="zui-accordion-content">
+      <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+    </div>
+  </details>
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Does ZUI support dark mode?</summary>
+    <div class="zui-accordion-content">
+      <p>Yes, all components use <code>light-dark()</code> and CSS custom properties for automatic theme switching.</p>
+    </div>
+  </details>
+</div>`}>
+  <div class="zui-accordion" style="width: 100%;">
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">Is ZUI free to use?</summary>
+      <div class="zui-accordion-content">
+        <p>Yes, ZUI is open source and free to use in any project.</p>
+      </div>
+    </details>
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">Which frameworks does ZUI support?</summary>
+      <div class="zui-accordion-content">
+        <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+      </div>
+    </details>
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">Does ZUI support dark mode?</summary>
+      <div class="zui-accordion-content">
+        <p>Yes, all components use <code>light-dark()</code> and CSS custom properties for automatic theme switching.</p>
+      </div>
+    </details>
+  </div>
+</Demo>
+
+<CodeTabs
+  html={`<div class="zui-accordion">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Is ZUI free to use?</summary>
+    <div class="zui-accordion-content">
+      <p>Yes, ZUI is open source and free to use in any project.</p>
+    </div>
+  </details>
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Which frameworks does ZUI support?</summary>
+    <div class="zui-accordion-content">
+      <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+    </div>
+  </details>
+</div>`}
+  react={`import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/react'
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Is ZUI free to use?</AccordionTrigger>
+    <AccordionContent>
+      <p>Yes, ZUI is open source and free to use in any project.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
+    <AccordionContent>
+      <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  astro={`---
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/astro'
+---
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Is ZUI free to use?</AccordionTrigger>
+    <AccordionContent>
+      <p>Yes, ZUI is open source and free to use in any project.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
+    <AccordionContent>
+      <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+/>
+
+## Exclusive (only one open at a time)
+
+Add a shared `name` attribute to `<details>` items to get native exclusive accordion behaviour — only one panel can be open at a time.
+
+<Demo code={`<div class="zui-accordion">
+  <details class="zui-accordion-item" name="faq">
+    <summary class="zui-accordion-trigger">First item</summary>
+    <div class="zui-accordion-content">
+      <p>Opening another item will close this one.</p>
+    </div>
+  </details>
+  <details class="zui-accordion-item" name="faq">
+    <summary class="zui-accordion-trigger">Second item</summary>
+    <div class="zui-accordion-content">
+      <p>Only one item can be open at a time thanks to the shared <code>name</code> attribute.</p>
+    </div>
+  </details>
+  <details class="zui-accordion-item" name="faq">
+    <summary class="zui-accordion-trigger">Third item</summary>
+    <div class="zui-accordion-content">
+      <p>This is native browser behaviour — no JavaScript needed.</p>
+    </div>
+  </details>
+</div>`}>
+  <div class="zui-accordion" style="width: 100%;">
+    <details class="zui-accordion-item" name="faq-demo">
+      <summary class="zui-accordion-trigger">First item</summary>
+      <div class="zui-accordion-content">
+        <p>Opening another item will close this one.</p>
+      </div>
+    </details>
+    <details class="zui-accordion-item" name="faq-demo">
+      <summary class="zui-accordion-trigger">Second item</summary>
+      <div class="zui-accordion-content">
+        <p>Only one item can be open at a time thanks to the shared <code>name</code> attribute.</p>
+      </div>
+    </details>
+    <details class="zui-accordion-item" name="faq-demo">
+      <summary class="zui-accordion-trigger">Third item</summary>
+      <div class="zui-accordion-content">
+        <p>This is native browser behaviour — no JavaScript needed.</p>
+      </div>
+    </details>
+  </div>
+</Demo>
+
+## Flush variant
+
+Remove the outer border and background, leaving only the item dividers.
+
+<Demo code={`<div class="zui-accordion zui-accordion-flush">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">First item</summary>
+    <div class="zui-accordion-content">
+      <p>Flush accordions blend into the surrounding layout.</p>
+    </div>
+  </details>
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Second item</summary>
+    <div class="zui-accordion-content">
+      <p>No outer border or background.</p>
+    </div>
+  </details>
+</div>`}>
+  <div class="zui-accordion zui-accordion-flush" style="width: 100%;">
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">First item</summary>
+      <div class="zui-accordion-content">
+        <p>Flush accordions blend into the surrounding layout.</p>
+      </div>
+    </details>
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">Second item</summary>
+      <div class="zui-accordion-content">
+        <p>No outer border or background.</p>
+      </div>
+    </details>
+  </div>
+</Demo>
+
+<CodeTabs
+  html={`<div class="zui-accordion zui-accordion-flush">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">First item</summary>
+    <div class="zui-accordion-content">Content here.</div>
+  </details>
+</div>`}
+  react={`<Accordion flush>
+  <AccordionItem>
+    <AccordionTrigger>First item</AccordionTrigger>
+    <AccordionContent>Content here.</AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  astro={`<Accordion flush>
+  <AccordionItem>
+    <AccordionTrigger>First item</AccordionTrigger>
+    <AccordionContent>Content here.</AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+/>
+
+## CSS custom properties
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-accordion-border` | `var(--color-border)` | Border colour |
+| `--zui-accordion-radius` | `var(--radius-md)` | Border radius |
+| `--zui-accordion-bg` | `var(--color-surface)` | Background colour |
+| `--zui-accordion-padding-x` | `var(--space-sm)` | Horizontal padding |
+| `--zui-accordion-padding-y` | `var(--space-sm)` | Vertical padding |

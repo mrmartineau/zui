@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {
+  flush?: boolean
+  class?: string
+}
+
+const { class: className, flush, ...props } = Astro.props
+const classes = ['zui-accordion', flush && 'zui-accordion-flush', className].filter(Boolean).join(' ')
+---
+
+<div class={classes} {...props}>
+  <slot />
+</div>
