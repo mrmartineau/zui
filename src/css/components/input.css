@@ -7,7 +7,7 @@
     --zui-input-fg: var(--color-text);
     --zui-input-padding-block: var(--space-3xs);
     --zui-input-padding-inline: var(--space-xs);
-    
+
     display: block;
     width: 100%;
     padding-block: var(--zui-input-padding-block);
@@ -36,7 +36,7 @@
 
   .zui-input:disabled {
     cursor: not-allowed;
-    filter: grayscale(100%) opacity(50%);
+    opacity: 0.5;
   }
 
   .zui-input[aria-invalid="true"],
