@@ -52,6 +52,6 @@
 
     /* Custom pairs */
     /* Space s-l: 16px → 40px */
-    --space-s-l: clamp(1rem, 0.534rem + 2.3301vw, 2.5rem);
+    --space-sm-lg: clamp(1rem, 0.534rem + 2.3301vw, 2.5rem);
   }
 }
