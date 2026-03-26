@@ -47,7 +47,7 @@ importers:
         version: 5.0.2(astro@6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3))
       '@mrmartineau/zui':
         specifier: file:..
-        version: file:(@types/node@25.5.0)(astro@6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3))(magicast@0.5.2)(react@19.2.4)(typescript@5.9.3)
+        version: file:(astro@6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3))(react@19.2.4)(typescript@5.9.3)
       astro:
         specifier: ^6.0.5
         version: 6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3)
@@ -3817,17 +3817,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mrmartineau/zui@file:(@types/node@25.5.0)(astro@6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3))(magicast@0.5.2)(react@19.2.4)(typescript@5.9.3)':
+  '@mrmartineau/zui@file:(astro@6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3))(react@19.2.4)(typescript@5.9.3)':
     dependencies:
       cva: 1.0.0-beta.4(typescript@5.9.3)
-      release-it: 19.2.4(@types/node@25.5.0)(magicast@0.5.2)
     optionalDependencies:
       astro: 6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3)
       react: 19.2.4
     transitivePeerDependencies:
-      - '@types/node'
-      - magicast
-      - supports-color
       - typescript
 
   '@napi-rs/wasm-runtime@1.1.1':
