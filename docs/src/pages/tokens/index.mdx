@@ -15,33 +15,33 @@ ZUI uses two distinct scale styles depending on the token type:
 
 Used when the scale is **open-ended** or maps to a raw numeric value. The number is the value itself or an index in a simple sequence.
 
-| Token | Example | Pattern |
-|:------|:--------|:--------|
-| Font weight | `--font-weight-1` … `--font-weight-9` | Maps directly to CSS weight values (100–900) |
-| Z-index | `--z-1` … `--z-9` | Ordered layers (1000, 2000, …) |
-| Font size steps | `--step--2` … `--step-10` | Fluid type scale from [Utopia](https://utopia.fyi) |
+| Token           | Example                               | Pattern                                            |
+| :-------------- | :------------------------------------ | :------------------------------------------------- |
+| Font weight     | `--font-weight-1` … `--font-weight-9` | Maps directly to CSS weight values (100–900)       |
+| Z-index         | `--z-1` … `--z-9`                     | Ordered layers (1000, 2000, …)                     |
+| Font size steps | `--step--2` … `--step-10`             | Fluid type scale from [Utopia](https://utopia.fyi) |
 
 ### T-shirt sizes: `sm, md, lg…`
 
 Used when the scale has a **bounded, semantic range** — you pick a size relative to a baseline.
 
-| Token | Example | Pattern |
-|:------|:--------|:--------|
-| Space | `--space-sm`, `--space-md`, `--space-lg` | Fluid spacing scale with sub-steps (`2xs`, `3xs`, etc.) |
-| Radius | `--radius-sm` … `--radius-3xl` | Multiplied by `--radius-scale` for global control |
-| Shadow | `--shadow-sm` … `--shadow-2xl` | Increasing depth / elevation |
-| Line height | `--line-height-xs` … `--line-height-2xl` | Tighter → looser leading |
+| Token       | Example                                  | Pattern                                                 |
+| :---------- | :--------------------------------------- | :------------------------------------------------------ |
+| Space       | `--space-sm`, `--space-md`, `--space-lg` | Fluid spacing scale with sub-steps (`2xs`, `3xs`, etc.) |
+| Radius      | `--radius-sm` … `--radius-3xl`           | Multiplied by `--radius-scale` for global control       |
+| Shadow      | `--shadow-sm` … `--shadow-2xl`           | Increasing depth / elevation                            |
+| Line height | `--line-height-xs` … `--line-height-2xl` | Tighter → looser leading                                |
 
 ### Named scales
 
 Some tokens use descriptive names instead of a size or number:
 
-| Token | Example | Pattern |
-|:------|:--------|:--------|
-| Easing | `--ease-in`, `--ease-out`, `--ease-spring` | Named by curve behaviour |
-| Font stacks | `--font-sans`, `--font-serif`, `--font-mono` | Named by font category |
-| Colours | `--color-blue-500`, `--color-mist-300` | Colour name + shade (50–950) |
-| Size | `--size-half`, `--size-full`, `--size-dvh` | Named by value or unit |
+| Token       | Example                                        | Pattern                      |
+| :---------- | :--------------------------------------------- | :--------------------------- |
+| Easing      | `--ease-in`, `--ease-out`, `--ease-spring`     | Named by curve behaviour     |
+| Font stacks | `--font-body`, `--font-display`, `--font-code` | Named by font category       |
+| Colours     | `--color-blue-500`, `--color-mist-300`         | Colour name + shade (50–950) |
+| Size        | `--size-half`, `--size-full`, `--size-dvh`     | Named by value or unit       |
 
 ## Fluid tokens
 

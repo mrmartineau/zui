@@ -17,19 +17,11 @@
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
     --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
 
-    /* Add your own custom fonts here, these are examples */
-    --custom-font-sans: Geist, Inter;
-    --custom-font-serif: ; /* Left blank to use the default serif stack */
-    --custom-font-mono: Geist Mono;
+    --font-body: var(--font-stack-sans);
+    --font-display: var(--font-body);
+    --font-code: Geist Mono, var(--font-stack-mono);
 
-    --font-sans: var(--custom-font-sans), var(--font-stack-sans);
-    --font-serif: var(--custom-font-serif), var(--font-stack-serif);
-    --font-mono: Geist Mono, var(--font-stack-mono);
-
-    --font-headings: var(--font-sans);
-    --font-body: var(--font-sans);
     --line-height: var(--line-height-md);
-
     --radius-scale: 1;
     --border-style: solid;
   }

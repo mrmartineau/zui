@@ -85,7 +85,7 @@
   .zui-code {
     --zui-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
     --zui-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
-    font-family: var(--font-mono);
+    font-family: var(--font-code);
     background-color: var(--zui-code-bg-color);
     color: var(--zui-code-color);
   }

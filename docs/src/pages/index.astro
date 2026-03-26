@@ -12,11 +12,12 @@ import { version } from '../../../package.json'
     <div class="hero-actions">
       <a href="/guides/installation" class="zui-button">Get started</a>
       <a href="/components" class="zui-button zui-button-variant-outline">Browse components</a>
-      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost"><i class="ph ph-github-logo"></i> View source</a>
     </div>
 
     <div class="hero-install">
       <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost"><i class="ph ph-github-logo"></i> View source</a>
+      <a href="https://codepen.io/mrmartineau/pen/gbwoRZj?editors=1100" class="zui-button zui-button-variant-ghost mt-sm"><i class="ph ph-codepen-logo"></i> Try it on CodePen</a>
     </div>
   </section>
 
@@ -198,7 +199,7 @@ import { version } from '../../../package.json'
 <style>
   /* Hero ------------------------------------------------------------------ */
   .hero {
-    padding-block: var(--space-xl) var(--space-2xl);
+    padding-block: var(--space-xl) var(--space-md);
     max-width: 640px;
   }
 
@@ -322,7 +323,7 @@ import { version } from '../../../package.json'
 
   .feature code {
     font-size: 0.875em;
-    font-family: var(--font-mono);
+    font-family: var(--font-code);
     background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
     padding: 0.1em 0.35em;
     border-radius: var(--radius-sm);

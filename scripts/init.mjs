@@ -9,7 +9,7 @@ import {
   mkdirSync,
   cpSync,
 } from 'node:fs'
-import { join, dirname, relative } from 'node:path'
+import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
 

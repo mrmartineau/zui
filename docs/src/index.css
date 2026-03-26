@@ -19,7 +19,7 @@
 
 .astro-code,
 .astro-code span {
-  font-family: var(--font-mono);
+  font-family: var(--font-code);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -6,10 +6,14 @@ title: Theming
 import ThemingTokenTable from '../../components/ThemingTokenTable.astro'
 import RadiusScaleDemo from '../../components/RadiusScaleDemo.astro'
 import BorderStyleDemo from '../../components/BorderStyleDemo.astro'
+import ThemeSwitcher from '../../components/ThemeSwitcher.astro'
 
 # Theming
 
-Customise ZUI's appearance by overriding the custom properties defined in `theme.css`.
+Customise ZUI's appearance by overriding the custom properties defined in `theme.css`. Try the controls below to preview changes live:
+
+<ThemeSwitcher inline />
+
 
 ## How it works
 
@@ -43,7 +47,7 @@ Here is the full default `theme.css` for reference:
       var(--color-mist-200),
       var(--color-mist-800)
     );
-    --color-surface: light-dark(var(--color-mist-200), var(--color-mist-800));
+    --color-surface: light-dark(var(--color-mist-100), var(--color-mist-900));
     --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
     --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
     --color-success: light-dark(
@@ -54,18 +58,12 @@ Here is the full default `theme.css` for reference:
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
 
     /* Fonts */
-    --custom-font-sans: Geist, Inter;
-    --custom-font-serif: Times New Roman;
-    --custom-font-mono: Geist Mono;
-
-    --font-sans: var(--custom-font-sans), var(--font-stack-sans);
-    --font-serif: var(--custom-font-serif), var(--font-stack-serif);
-    --font-mono: var(--custom-font-mono), var(--font-stack-mono);
-    --font-headings: var(--font-serif);
-    --font-body: var(--font-sans);
-    --line-height: var(--line-height-md);
+    --font-body: var(--font-stack-sans);
+    --font-display: var(--font-body);
+    --font-code: Geist Mono, var(--font-stack-mono);
 
     /* Shape */
+    --line-height: var(--line-height-md);
     --radius-scale: 1;
     --border-style: solid;
   }
@@ -132,23 +130,22 @@ This works with any valid colour — a palette variable, a raw `oklch()`, or eve
 
 ## Fonts
 
-Override the `--custom-font-*` properties to change typefaces. ZUI appends robust fallback stacks automatically.
+Override `--font-body`, `--font-display`, and `--font-code` to change typefaces. These accept any valid CSS font family value.
 
 ```css
 :root {
-  --custom-font-sans: 'IBM Plex Sans';
-  --custom-font-serif: 'Playfair Display';
-  --custom-font-mono: 'JetBrains Mono';
+  --font-body: 'IBM Plex Sans', var(--font-stack-sans);
+  --font-display: 'Playfair Display', var(--font-stack-serif);
+  --font-code: 'JetBrains Mono', var(--font-stack-mono);
 }
 ```
 
-You can also control which font stack is used for headings and body text independently:
+`--font-display` defaults to `var(--font-body)`, so setting `--font-body` alone changes both. Override `--font-display` separately to use a different typeface for headings:
 
 ```css
 :root {
-  /* Use serif for headings, sans for body */
-  --font-headings: var(--font-serif);
-  --font-body: var(--font-sans);
+  --font-body: 'Inter', var(--font-stack-sans);
+  --font-display: 'Playfair Display', var(--font-stack-serif);
 }
 ```
 
@@ -215,9 +212,9 @@ A complete theme override combining colours, fonts, and shape:
   --color-text: light-dark(var(--color-stone-800), var(--color-stone-200));
 
   /* Fonts */
-  --custom-font-sans: 'Inter';
-  --custom-font-mono: 'Fira Code';
-  --font-headings: var(--font-sans);
+  --font-body: 'Inter', var(--font-stack-sans);
+  --font-display: 'Playfair Display', var(--font-stack-serif);
+  --font-code: 'Fira Code', var(--font-stack-mono);
 
   /* Shape */
   --radius-scale: 1.5;

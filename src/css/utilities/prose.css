@@ -6,8 +6,13 @@
     --prose-link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);
     --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
     --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+    --prose-scroll-margin: 1.5rem;
 
     color: var(--prose-color, var(--color-text));
+
+    [id] {
+      scroll-margin-top: var(--prose-scroll-margin);
+    }
 
     * {
       margin: 0;
@@ -91,16 +96,14 @@
     h3 {
       line-height: 1.1;
       text-wrap: balance;
-      font-family: var(--font-headings);
-      scroll-margin-top: 1em;
+      font-family: var(--font-display);
       font-weight: var(--font-weight-7);
     }
 
     h4 {
       line-height: 1.1;
       text-wrap: balance;
-      font-family: var(--font-headings);
-      scroll-margin-top: 1em;
+      font-family: var(--font-display);
     }
 
     a:not(.zui-button) {
@@ -122,7 +125,7 @@
 
     pre,
     code {
-      font-family: var(--font-mono);
+      font-family: var(--font-code);
       background-color: var(--prose-code-bg-color);
       color: var(--prose-code-color);
       font-feature-settings: "ss09" 1;

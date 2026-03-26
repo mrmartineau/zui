@@ -78,32 +78,59 @@ ZUI uses a fluid type scale generated with <a href="https://utopia.fyi" class="z
 }
 ```
 
-## Font Stacks
+## Fonts
 
-Configure fonts in <code class="zui-code">theme.css</code>. ZUI provides robust fallback stacks.
+Configure fonts in `theme.css`. ZUI provides robust fallback stacks for sans-serif, serif, and monospace.
 
 <TokenGrid>
   <TokenRow>
-    <CopyCode>--font-sans</CopyCode>
-    <span style={{ fontFamily: 'var(--font-sans)' }}>The quick brown fox jumps over the lazy dog</span>
+    <CopyCode>--font-body</CopyCode>
+    <span style={{ fontFamily: 'var(--font-body)' }}>The quick brown fox jumps over the lazy dog</span>
   </TokenRow>
   <TokenRow>
-    <CopyCode>--font-serif</CopyCode>
-    <span style={{ fontFamily: 'var(--font-serif)' }}>The quick brown fox jumps over the lazy dog</span>
+    <CopyCode>--font-display</CopyCode>
+    <span style={{ fontFamily: 'var(--font-display)' }}>The quick brown fox jumps over the lazy dog</span>
   </TokenRow>
   <TokenRow>
-    <CopyCode>--font-mono</CopyCode>
-    <span style={{ fontFamily: 'var(--font-mono)' }}>The quick brown fox jumps over the lazy dog</span>
+    <CopyCode>--font-code</CopyCode>
+    <span style={{ fontFamily: 'var(--font-code)' }}>The quick brown fox jumps over the lazy dog</span>
   </TokenRow>
 </TokenGrid>
 
 ```css
 /* Override in theme.css */
 :root {
-  --custom-font-sans: Geist, Inter;
-  --custom-font-serif: Times New Roman;
-  --custom-font-mono: Geist Mono;
+  --font-body: 'Inter', var(--font-stack-sans);
+  --font-display: 'Playfair Display', var(--font-stack-serif);
+  --font-code: 'JetBrains Mono', var(--font-stack-mono);
 }
+```
+
+`--font-display` defaults to `var(--font-body)`, so setting `--font-body` alone changes both. Override `--font-display` separately to use a different typeface for headings.
+
+## Font Stacks
+
+ZUI ships built-in fallback stacks for each generic family. These are used as the base for `--font-body`, `--font-display`, and `--font-code`, and can be referenced directly in your own CSS.
+
+<TokenGrid>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--font-stack-sans</CopyCode>
+    <span style={{ fontFamily: 'var(--font-stack-sans)' }}>The quick brown fox jumps over the lazy dog</span>
+  </TokenRow>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--font-stack-serif</CopyCode>
+    <span style={{ fontFamily: 'var(--font-stack-serif)' }}>The quick brown fox jumps over the lazy dog</span>
+  </TokenRow>
+  <TokenRow style="align-items: flex-start;">
+    <CopyCode>--font-stack-mono</CopyCode>
+    <span style={{ fontFamily: 'var(--font-stack-mono)' }}>The quick brown fox jumps over the lazy dog</span>
+  </TokenRow>
+</TokenGrid>
+
+```css
+--font-stack-sans:  system-ui, sans-serif;
+--font-stack-serif: Charter, 'Bitstream Charter', 'Sitka Text', Georgia, Cambria, serif;
+--font-stack-mono:  ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 ```
 
 ## Font Weights
