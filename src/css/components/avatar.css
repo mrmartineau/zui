@@ -1,0 +1,87 @@
+@layer zui.components {
+  /* -------------------------------------------------------------------------
+   * Base
+   * ---------------------------------------------------------------------- */
+  .zui-avatar {
+    --zui-avatar-size: 2.5rem;
+    --zui-avatar-radius: var(--radius-full);
+    --zui-avatar-font-size: 90%;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--zui-avatar-size);
+    height: var(--zui-avatar-size);
+    border-radius: var(--zui-avatar-radius);
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    flex-shrink: 0;
+    font-size: var(--zui-avatar-font-size);
+    font-weight: 500;
+    color: var(--color-text);
+    user-select: none;
+  }
+
+  .zui-avatar-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .zui-avatar-image[data-error] {
+    display: none;
+  }
+
+  .zui-avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+  }
+
+  /* -------------------------------------------------------------------------
+   * Size
+   * ---------------------------------------------------------------------- */
+  /* sm */
+  .zui-avatar.zui-avatar-size-sm {
+    --zui-avatar-size: 1.5rem;
+    --zui-avatar-font-size: var(--step--5);
+  }
+
+  /* md is the default — no extra class needed */
+
+  /* lg */
+  .zui-avatar.zui-avatar-size-lg {
+    --zui-avatar-size: 3.5rem;
+    --zui-avatar-font-size: var(--step-2);
+  }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-avatar-radius */
+
+  /* hard */
+  .zui-avatar.zui-avatar-shape-hard {
+    --zui-avatar-radius: 0;
+  }
+
+  /* soft */
+  .zui-avatar.zui-avatar-shape-soft {
+    --zui-avatar-radius: var(--radius-full);
+  }
+
+  /* squircle - limited browser support */
+  .zui-avatar.zui-avatar-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
+}

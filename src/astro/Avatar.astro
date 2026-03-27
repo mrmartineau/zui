@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { avatarVariants } from '../shared/avatarVariants'
+
+type AvatarVariantProps = VariantProps<typeof avatarVariants>
+
+interface Props extends HTMLAttributes<'span'>, AvatarVariantProps {
+  src?: string
+  alt?: string
+  fallback?: string
+  class?: string
+}
+
+const { src, alt, fallback, class: className, size, shape, ...props } = Astro.props
+const classes = avatarVariants({ size, shape, class: className })
+---
+
+<span class={classes} {...props}>
+  <span class="zui-avatar-fallback">
+    {fallback ? fallback : <i class="ph ph-user" aria-hidden="true" />}
+  </span>
+  {src && (
+    <img
+      class="zui-avatar-image"
+      src={src}
+      alt={alt ?? ''}
+      onerror="this.setAttribute('data-error', '')"
+    />
+  )}
+</span>

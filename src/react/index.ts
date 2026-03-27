@@ -1,3 +1,5 @@
+export { Avatar, type AvatarProps } from './Avatar'
+export { avatarVariants } from '../shared/avatarVariants'
 export { Button, type ButtonProps } from './Button'
 export { buttonVariants } from '../shared/buttonVariants'
 export { Input, type InputProps } from './Input'
