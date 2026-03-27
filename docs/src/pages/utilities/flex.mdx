@@ -20,6 +20,7 @@ Flexbox utility classes for layout, alignment, and distribution.
   <TokenRow><CopyCode>.inline-flex</CopyCode><span style={monoStyle}>display: inline-flex</span></TokenRow>
   <TokenRow><CopyCode>.flex-center</CopyCode><span style={monoStyle}>display: flex; align-items: center</span></TokenRow>
   <TokenRow><CopyCode>.inline-flex-center</CopyCode><span style={monoStyle}>display: inline-flex; align-items: center</span></TokenRow>
+  <TokenRow><CopyCode>.stack</CopyCode><span style={monoStyle}>display: flex; flex-direction: column</span></TokenRow>
 </TokenGrid>
 
 ## Direction
@@ -92,11 +93,21 @@ Flexbox utility classes for layout, alignment, and distribution.
 ## Example
 
 ```html
-<nav class="flex items-center justify-between gap-m">
+<nav class="flex items-center justify-between gap-md">
   <a href="/">Logo</a>
   <div class="flex gap-xs">
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
   </div>
 </nav>
+```
+
+Use `.stack` as a shorthand for a vertical flex column:
+
+```html
+<div class="stack gap-md">
+  <h2>Title</h2>
+  <p>Description</p>
+  <button class="zui-button zui-button-variant-fill">Action</button>
+</div>
 ```
