@@ -1,0 +1,115 @@
+---
+layout: ../../layouts/Layout.astro
+title: Menu
+---
+
+import Demo from '../../components/Demo.astro'
+import CodeTabs from '../../components/CodeTabs.astro'
+
+# Menu
+
+A dropdown menu built on the native `<details>`/`<summary>` elements — no JavaScript required. The menu panel uses `::details-content` for absolute positioning.
+
+## Usage
+
+Menu items inherit all styles from the [Button](/components/button) component. Always combine `.zui-menu-item` with `.zui-button` and a variant class (typically `.zui-button-variant-ghost`). The summary trigger similarly uses `.zui-button` classes.
+
+<Demo code={`<details class="zui-menu">
+  <summary class="zui-button zui-button-variant-outline">
+    Open menu <i class="ph ph-caret-down"></i>
+  </summary>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
+</details>`}>
+  <details class="zui-menu">
+    <summary class="zui-button zui-button-variant-outline">
+      Open menu <i class="ph ph-caret-down"></i>
+    </summary>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
+  </details>
+</Demo>
+
+<CodeTabs
+  html={`<details class="zui-menu">
+  <summary class="zui-button zui-button-variant-outline">
+    Open menu <i class="ph ph-caret-down"></i>
+  </summary>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
+</details>`}
+  react={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/react'
+
+<Menu>
+  <MenuTrigger>Open menu <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem>Profile</MenuItem>
+  <MenuItem>Settings</MenuItem>
+  <MenuItem>Logout</MenuItem>
+</Menu>`}
+  astro={`---
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem>Profile</MenuItem>
+  <MenuItem>Settings</MenuItem>
+  <MenuItem>Logout</MenuItem>
+</Menu>`}
+/>
+
+## With icons
+
+<Demo code={`<details class="zui-menu">
+  <summary class="zui-button">
+    Account <i class="ph ph-caret-down"></i>
+  </summary>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-user"></i> Profile</button>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-gear"></i> Settings</button>
+  <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-sign-out"></i> Logout</button>
+</details>`}>
+  <details class="zui-menu">
+    <summary class="zui-button">
+      Account <i class="ph ph-caret-down"></i>
+    </summary>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-user"></i> Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-gear"></i> Settings</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-sign-out"></i> Logout</button>
+  </details>
+</Demo>
+
+## As links
+
+Use an `<a>` element (or pass `href` to `MenuItem`) when items navigate to a page.
+
+<Demo code={`<details class="zui-menu">
+  <summary class="zui-button zui-button-variant-outline">
+    Navigate <i class="ph ph-caret-down"></i>
+  </summary>
+  <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Home</a>
+  <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">About</a>
+  <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Contact</a>
+</details>`}>
+  <details class="zui-menu">
+    <summary class="zui-button zui-button-variant-outline">
+      Navigate <i class="ph ph-caret-down"></i>
+    </summary>
+    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Home</a>
+    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">About</a>
+    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Contact</a>
+  </details>
+</Demo>
+
+## CSS custom properties
+
+These custom properties are set on `.zui-menu[open]::details-content` and can be overridden inline or in your own CSS.
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-menu-radius` | `var(--radius-xl)` | Border radius of the dropdown panel |
+| `--zui-menu-border` | `var(--color-border)` | Border colour |
+| `--zui-menu-bg` | `var(--color-surface)` | Background colour |
+| `--zui-menu-padding` | `var(--space-2xs)` | Padding inside the panel |

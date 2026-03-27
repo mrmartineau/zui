@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'details'> {
+  open?: boolean
+  class?: string
+}
+
+const { class: className, open, ...props } = Astro.props
+const classes = ['zui-menu', className].filter(Boolean).join(' ')
+---
+
+<details class={classes} open={open} {...props}>
+  <slot />
+</details>

@@ -1,0 +1,25 @@
+@layer zui.components {
+  .zui-menu[open]::details-content {
+    --zui-menu-radius: var(--radius-xl);
+    --zui-menu-border: var(--color-border);
+    --zui-menu-bg: var(--color-surface);
+    --zui-menu-padding: var(--space-2xs);
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xs);
+    width: 200px;
+    margin-block-start: var(--space-2xs);
+    padding: var(--zui-menu-padding);
+    border: 1px var(--border-style, solid) var(--zui-menu-border);
+    border-radius: var(--zui-menu-radius);
+    background-color: var(--zui-menu-bg);
+    box-shadow: var(--shadow-md);
+    z-index: var(--z-dropdown, 100);
+  }
+
+  .zui-menu-item {
+    justify-content: flex-start;
+  }
+}
