@@ -22,6 +22,7 @@ Map directly to the fluid type scale tokens. All classes reset `line-height` to 
   <TokenRow><CopyCode>.zui-text--3</CopyCode><span class="zui-text--3">The quick brown fox</span></TokenRow>
   <TokenRow><CopyCode>.zui-text--2</CopyCode><span class="zui-text--2">The quick brown fox</span></TokenRow>
   <TokenRow><CopyCode>.zui-text--1</CopyCode><span class="zui-text--1">The quick brown fox</span></TokenRow>
+  <TokenRow><CopyCode>.zui-text-0</CopyCode><span class="zui-text-0">The quick brown fox</span></TokenRow>
   <TokenRow><CopyCode>.zui-text-base</CopyCode><span class="zui-text-base">The quick brown fox</span></TokenRow>
   <TokenRow><CopyCode>.zui-text-1</CopyCode><span class="zui-text-1">The quick brown fox</span></TokenRow>
   <TokenRow><CopyCode>.zui-text-2</CopyCode><span class="zui-text-2">The quick brown fox</span></TokenRow>
@@ -33,19 +34,19 @@ Map directly to the fluid type scale tokens. All classes reset `line-height` to 
 
 <CodeTabs
   html={`<p class="zui-text-2">Large UI text</p>
-<p class="zui-text-base">Base size</p>
+<p class="zui-text-0">Base size</p>
 <span class="zui-text--1">Small label</span>`}
   react={`import { Text } from '@mrmartineau/zui/react'
 
 <Text size="2">Large UI text</Text>
-<Text size="base">Base size</Text>
+<Text size="0">Base size</Text>
 <Text size="-1">Small label</Text>`}
   astro={`---
 import { Text } from '@mrmartineau/zui/astro'
 ---
 
 <Text size="2">Large UI text</Text>
-<Text size="base">Base size</Text>
+<Text size="0">Base size</Text>
 <Text size="-1">Small label</Text>`}
 />
 

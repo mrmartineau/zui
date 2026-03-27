@@ -3,6 +3,7 @@ const sizeMap: Record<string, string> = {
   '-3': 'zui-text--3',
   '-2': 'zui-text--2',
   '-1': 'zui-text--1',
+  '0': 'zui-text-0',
   base: 'zui-text-base',
   '1': 'zui-text-1',
   '2': 'zui-text-2',

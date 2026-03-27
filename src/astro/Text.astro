@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<'span'> {
   class?: string
 }
 
-const { size = 'base', class: className, ...props } = Astro.props
+const { size = '0', class: className, ...props } = Astro.props
 const classes = [textSizeClass(size), className].filter(Boolean).join(' ')
 ---
 
