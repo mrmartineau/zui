@@ -33,6 +33,11 @@
     ) transparent;
   }
 
+  :focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
   /* Reduced Motion - Respect user preference for reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,

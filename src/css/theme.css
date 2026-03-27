@@ -24,6 +24,8 @@
     --line-height: var(--line-height-md);
     --radius-scale: 1;
     --border-style: solid;
+    --focus-ring: oklch(from var(--color-accent) l c h / 80%) auto 2px;
+    --focus-ring-offset: 4px;
   }
 
   :root.zui-dark {

@@ -28,9 +28,7 @@
     color: color-mix(in oklch, var(--color-text) 50%, transparent);
   }
 
-  .zui-textarea:focus {
-    outline: var(--focus-ring);
-    outline-offset: var(--focus-ring-offset);
+  .zui-textarea:focus-visible {
     border-color: var(--color-theme);
   }
 

@@ -30,9 +30,7 @@
     transition-timing-function: ease-in-out;
   }
 
-  .zui-select:focus {
-    outline: var(--focus-ring);
-    outline-offset: var(--focus-ring-offset);
+  .zui-select:focus-visible {
     border-color: var(--color-theme);
   }
 

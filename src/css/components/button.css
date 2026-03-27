@@ -92,11 +92,6 @@
     filter: grayscale(100%) opacity(50%);
   }
 
-  .zui-button:focus-visible {
-    outline: var(--focus-ring);
-    outline-offset: var(--focus-ring-offset);
-  }
-
   /* -------------------------------------------------------------------------
    * Accent — sets the colour palette
    *
