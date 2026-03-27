@@ -7,13 +7,21 @@ import TableOfContents from '../components/TableOfContents.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import MiniThemeSwitcher from '../components/MiniThemeSwitcher.astro';
 import DarkModeSwitcher from '../components/DarkModeSwitcher.astro';
-
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
 const currentPath = Astro.url.pathname;
+
+const indexPages = import.meta.glob('../pages/*/index.mdx', { eager: true })
+const footerSections = Object.entries(indexPages)
+  .map(([path, mod]) => {
+    const fm = (mod as { frontmatter: { title: string; sectionOrder?: number } }).frontmatter
+    const key = path.match(/\/pages\/([^/]+)\//)?.[1] ?? ''
+    return { label: key.charAt(0).toUpperCase() + key.slice(1), href: `/${key}`, sectionOrder: fm.sectionOrder ?? Infinity }
+  })
+  .sort((a, b) => a.sectionOrder - b.sectionOrder || a.label.localeCompare(b.label))
 ---
 
 <html lang="en" transition:name="root" transition:animate="none">
@@ -107,10 +115,9 @@ const currentPath = Astro.url.pathname;
           Made by <a href="https://zander.wtf">Zander Martineau</a>
         </p>
         <nav class="site-footer-nav" aria-label="Footer">
-          <a href="/guides/installation">Guides</a>
-          <a href="/tokens">Tokens</a>
-          <a href="/components">Components</a>
-          <a href="/utilities">Utilities</a>
+          {footerSections.map(({ label, href }) => (
+            <a href={href}>{label}</a>
+          ))}
           <a
             href="https://github.com/mrmartineau/zui"
             aria-label="View on GitHub"

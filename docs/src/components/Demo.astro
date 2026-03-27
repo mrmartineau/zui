@@ -5,14 +5,14 @@ interface Props {
   code: string
 }
 
-const { code } = Astro.props
+const { code = '' } = Astro.props
 ---
 
 <div class="demo">
   <div class="demo-preview">
     <slot />
   </div>
-  <Code code={code.trim()} lang="html" themes={{
+  <Code code={code?.trim()} lang="html" themes={{
     light: 'rose-pine-dawn',
     dark: 'rose-pine'
   }} />

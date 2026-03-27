@@ -5,72 +5,74 @@ interface Props {
 
 const { currentPath } = Astro.props
 
+interface PageFrontmatter {
+  title: string
+  order?: number
+  sectionOrder?: number
+}
+
 interface NavItem {
   href: string
   label: string
   exact?: boolean
+  order?: number
 }
-const guides: NavItem[] = [
-  { href: '/guides/installation', label: 'Installation' },
-  { href: '/guides/colors', label: 'Colours' },
-  { href: '/guides/theming', label: 'Theming' },
-  { href: '/guides/layers', label: 'CSS Layers' },
-  { href: '/guides/react', label: 'Using with React' },
-  { href: '/guides/astro', label: 'Using with Astro' },
-  { href: '/guides/other-frameworks', label: 'Other UI Libraries' },
-  { href: '/guides/dark-mode', label: 'Dark Mode' },
-  { href: '/guides/skills', label: 'AI Agent Skills' },
-  { href: '/guides/copy-source', label: 'Copy source into project' },
-]
 
-const tokens: NavItem[] = [
-  { href: '/tokens', label: 'Overview', exact: true },
-  { href: '/tokens/space', label: 'Space' },
-  { href: '/tokens/shadows', label: 'Shadows' },
-  { href: '/tokens/radii', label: 'Border Radius' },
-  { href: '/tokens/easing', label: 'Easing' },
-  { href: '/tokens/animation', label: 'Animation' },
-  { href: '/tokens/aspect-ratio', label: 'Aspect Ratio' },
-  { href: '/tokens/typography', label: 'Typography' },
-  { href: '/tokens/size', label: 'Size' },
-  { href: '/tokens/z-index', label: 'Z-Index' },
-]
+const allPages = import.meta.glob('../pages/**/*.mdx', { eager: true })
 
-const components: NavItem[] = [
-  { href: '/components', label: 'Overview', exact: true },
-  { href: '/components/accordion', label: 'Accordion' },
-  { href: '/components/badge', label: 'Badge' },
-  { href: '/components/button', label: 'Button' },
-  { href: '/components/card', label: 'Card' },
-  { href: '/components/checkbox', label: 'Checkbox' },
-  { href: '/components/collapsible', label: 'Collapsible' },
-  { href: '/components/input', label: 'Input' },
-  { href: '/components/label', label: 'Label' },
-  { href: '/components/radio', label: 'Radio' },
-  { href: '/components/select', label: 'Select' },
-  { href: '/components/table', label: 'Table' },
-  { href: '/components/textarea', label: 'Textarea' },
-  { href: '/components/dialog', label: 'Dialog' },
-  { href: '/components/popover', label: 'Popover' },
-  { href: '/components/tooltip', label: 'Tooltip' },
-]
+function pathToHref(filePath: string): string {
+  return filePath
+    .replace('../pages', '')
+    .replace(/\.mdx$/, '')
+    .replace(/\/index$/, '') || '/'
+}
 
-const utilities = [
-  { href: '/utilities', label: 'Overview', exact: true },
-  { href: '/utilities/spacing', label: 'Spacing' },
-  { href: '/utilities/flex', label: 'Flex' },
-  { href: '/utilities/flow', label: 'Flow' },
-  { href: '/utilities/prose', label: 'Prose' },
-  { href: '/utilities/ui-typography', label: 'UI Typography' },
-  { href: '/utilities/visibility', label: 'Visibility' },
-]
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
 
-const sections = [
-  { heading: 'Guide', items: guides },
-  { heading: 'Tokens', items: tokens },
-  { heading: 'Components', items: components },
-  { heading: 'Utilities', items: utilities },
-]
+// Group pages by top-level directory (section)
+const sectionMap = new Map<string, { sectionOrder: number; heading: string; items: NavItem[] }>()
+
+for (const [path, mod] of Object.entries(allPages)) {
+  const match = path.match(/^\.\.\/pages\/([^/]+)\//)
+  if (!match) continue
+  const key = match[1]
+  const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
+  const isIndex = path.endsWith('/index.mdx')
+  const href = pathToHref(path)
+
+  if (!sectionMap.has(key)) {
+    sectionMap.set(key, { sectionOrder: Infinity, heading: capitalize(key), items: [] })
+  }
+
+  const section = sectionMap.get(key)!
+
+  if (isIndex) {
+    section.sectionOrder = fm.sectionOrder ?? Infinity
+  }
+
+  section.items.push({
+    href,
+    label: fm.title,
+    exact: isIndex || undefined,
+    order: isIndex ? (fm.order ?? 0) : fm.order,
+  })
+}
+
+const sections = [...sectionMap.values()]
+  .sort((a, b) => a.sectionOrder - b.sectionOrder || a.heading.localeCompare(b.heading))
+  .map(({ heading, items }) => ({
+    heading,
+    items: items.sort((a, b) => {
+      const aOrdered = a.order !== undefined
+      const bOrdered = b.order !== undefined
+      if (aOrdered && bOrdered) return a.order! - b.order!
+      if (aOrdered) return -1
+      if (bOrdered) return 1
+      return a.label.localeCompare(b.label)
+    }),
+  }))
 
 function isCurrent(href: string, exact = false) {
   if (href === '/') return currentPath === '/' || currentPath === ''

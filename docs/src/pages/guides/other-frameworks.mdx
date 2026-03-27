@@ -7,29 +7,7 @@ title: Other UI Libraries
 
 ZUI is a CSS-first library. The React and Astro components are thin wrappers around CSS classes, so ZUI works with **any** UI library or framework — Vue, Svelte, Solid, Angular, Web Components, or plain HTML.
 
-## Setup
-
-Install ZUI and import the stylesheet however your framework handles CSS:
-
-```sh
-npm install @mrmartineau/zui
-```
-
-```css
-@import '@mrmartineau/zui/css';
-```
-
-Or use the minified version:
-
-```css
-@import '@mrmartineau/zui/css/min';
-```
-
-Or link directly in HTML:
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@mrmartineau/zui/dist/css/zui.css" />
-```
+Install ZUI and import the stylesheet however your framework handles CSS
 
 ## CSS class reference
 
@@ -71,11 +49,13 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 | Class | Purpose |
 |:------|:--------|
 | `zui-card` | Base card container |
+| `zui-card-elevated` | Elevated shadow style |
 | `zui-card-interactive` | Adds hover/focus styles for clickable cards |
 | `zui-card-header` | Card header section |
 | `zui-card-title` | Card title text |
 | `zui-card-description` | Card description text |
 | `zui-card-body` | Card body content |
+| `zui-card-footer` | Card footer section |
 
 ### Form elements
 
@@ -85,8 +65,73 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 | `zui-textarea` | Textarea |
 | `zui-select` | Select dropdown |
 | `zui-label` | Form label |
+| `zui-label-required` | Adds a required indicator after the label |
+| `zui-label-description` | Descriptive/hint text below a label |
 | `zui-checkbox` | Checkbox |
+| `zui-checkbox-list` | Vertical list of checkboxes |
 | `zui-radio` | Radio button |
+| `zui-radio-list` | Vertical list of radio buttons |
+
+### Table
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-table` | Base table styles |
+| `zui-table-head` | Table header cell (`<th>`) |
+| `zui-table-row` | Table row |
+| `zui-table-cell` | Table body cell (`<td>`) |
+| `zui-table-footer` | Table footer row/section |
+| `zui-table-caption` | Table caption |
+
+### Dialog
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-dialog` | Dialog container |
+| `zui-dialog-header` | Dialog header section |
+| `zui-dialog-title` | Dialog title text |
+| `zui-dialog-description` | Dialog description text |
+| `zui-dialog-body` | Dialog body content |
+| `zui-dialog-footer` | Dialog footer section |
+| `zui-dialog-close` | Close button |
+| `zui-dialog-size-sm` | Small dialog |
+| `zui-dialog-size-lg` | Large dialog |
+| `zui-dialog-size-full` | Full-screen dialog |
+
+### Tooltip
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-tooltip` | Tooltip wrapper |
+| `zui-tooltip-content` | Tooltip content bubble |
+| `zui-tooltip-placement-top` | Position above the trigger |
+| `zui-tooltip-placement-bottom` | Position below the trigger |
+| `zui-tooltip-placement-left` | Position left of the trigger |
+| `zui-tooltip-placement-right` | Position right of the trigger |
+
+### Accordion
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-accordion` | Accordion container |
+| `zui-accordion-item` | Individual accordion item (`<details>`) |
+| `zui-accordion-trigger` | Accordion toggle (`<summary>`) |
+| `zui-accordion-content` | Accordion content panel |
+| `zui-accordion-flush` | Flush (borderless) variant |
+
+### Collapsible
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-collapsible` | Collapsible container (`<details>`) |
+| `zui-collapsible-trigger` | Toggle trigger (`<summary>`) |
+| `zui-collapsible-content` | Collapsible content panel |
+
+### Popover
+
+| Class | Purpose |
+|:------|:--------|
+| `zui-popover` | Popover container |
 
 ## Framework examples
 
@@ -184,20 +229,64 @@ function App() {
 
 ## Utility classes
 
-ZUI also ships utility classes you can use in any framework:
+ZUI ships utility classes you can use in any framework. Note that spacing, flex, flow, and prose utilities do **not** use the `zui-` prefix.
+
+### Spacing
 
 ```html
-<!-- Spacing -->
-<div class="zui-mt-md zui-px-lg">...</div>
+<!-- Margin -->
+<div class="mt-md mx-lg">...</div>
 
-<!-- Flex -->
-<div class="zui-flex zui-flex-row zui-gap-md">...</div>
+<!-- Padding -->
+<div class="px-lg py-sm">...</div>
 
+<!-- Gap (for flex/grid) -->
+<div class="flex flex-row gap-md">...</div>
+```
+
+### Flex
+
+```html
+<div class="flex flex-row gap-md items-center">...</div>
+<div class="flex flex-column gap-sm">...</div>
+<div class="inline-flex items-center gap-xs">...</div>
+```
+
+### Layout
+
+```html
 <!-- Flow (vertical rhythm) -->
-<div class="zui-flow">...</div>
+<div class="flow">...</div>
 
 <!-- Prose (long-form content) -->
-<div class="zui-prose">...</div>
+<div class="prose">...</div>
+```
+
+### Typography
+
+```html
+<!-- Font size scale -->
+<p class="zui-text-sm">Small text</p>
+<p class="zui-text-base">Base text</p>
+<p class="zui-text-1">Larger text</p>
+
+<!-- Muted text -->
+<p class="zui-color-muted">Secondary text</p>
+<p class="zui-color-faint">Faint text</p>
+
+<!-- Link styling -->
+<a href="#" class="zui-link">Styled link</a>
+
+<!-- Code -->
+<code class="zui-code">inline code</code>
+<pre class="zui-pre"><code>block code</code></pre>
+```
+
+### Accessibility
+
+```html
+<!-- Visually hidden (screen reader only) -->
+<span class="sr-only">Screen reader label</span>
 ```
 
 ## Building wrapper components
