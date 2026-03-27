@@ -2,26 +2,88 @@
 import { Code } from 'astro:components'
 
 interface Props {
-  code: string
+  html?: string
+  react?: string
+  astro?: string
 }
 
-const { code = '' } = Astro.props
+const { html, react, astro: astroCode } = Astro.props
+const tabs = [
+  html && { id: 'html', label: 'HTML', code: html, lang: 'html' as const },
+  react && { id: 'react', label: 'React', code: react, lang: 'tsx' as const },
+  astroCode && { id: 'astro', label: 'Astro', code: astroCode, lang: 'astro' as const },
+].filter(Boolean) as { id: string; label: string; code: string; lang: string }[]
+
+const hasCode = tabs.length > 0
+const hasTabs = tabs.length > 1
+const hasPreview = Astro.slots.has('default')
 ---
 
-<div class="demo">
-  <div class="demo-preview">
-    <slot />
-  </div>
-  <Code code={code?.trim()} lang="html" themes={{
-    light: 'rose-pine-dawn',
-    dark: 'rose-pine'
-  }} />
+<div class="demo" data-code-tabs={hasTabs || undefined}>
+  {hasPreview && (
+    <div class="demo-preview">
+      <slot />
+    </div>
+  )}
+  <!-- Code Tabs -->
+  {hasCode && hasTabs && (
+    <div class="code-tabs__bar" role="tablist">
+      {tabs.map((tab, i) => (
+        <button
+          class="code-tabs__tab"
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-tab={tab.id}
+        >
+          {tab.label}
+        </button>
+      ))}
+    </div>
+  )}
+  {hasCode && tabs.map((tab, i) => (
+    <div
+      class="demo-code"
+      role={hasTabs ? 'tabpanel' : undefined}
+      data-panel={hasTabs ? tab.id : undefined}
+      hidden={hasTabs && i !== 0}
+    >
+      <Code code={tab.code.trim()} lang={tab.lang} themes={{
+        light: 'rose-pine-dawn',
+        dark: 'rose-pine',
+      }} />
+    </div>
+  ))}
 </div>
+
+<script>
+  function initCodeTabs() {
+    document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach((container) => {
+      const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
+      const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const id = tab.dataset.tab
+
+          tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
+          tab.setAttribute('aria-selected', 'true')
+
+          panels.forEach((p) => {
+            p.hidden = p.dataset.panel !== id
+          })
+        })
+      })
+    })
+  }
+
+  document.addEventListener('astro:page-load', initCodeTabs)
+</script>
 
 <style>
   .demo {
     margin-bottom: 1.5rem;
   }
+
   .demo-preview {
     display: flex;
     flex-wrap: wrap;
@@ -31,7 +93,50 @@ const { code = '' } = Astro.props
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   }
-  .demo :global(pre) {
+
+  .demo:not(:has(.demo-preview)) .demo-code :global(pre) {
+    border-radius: var(--radius-xl) !important;
+    border-top: 1px solid var(--color-border) !important;
+  }
+
+  .code-tabs__bar {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-bottom: none;
+    background-color:
+      light-dark(oklch(from var(--color-background) calc(l + 0.02) c h),
+      oklch(from var(--color-background) calc(l - 0.04) c h)) !important;
+    overflow: hidden;
+  }
+
+  .code-tabs__tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: var(--space-3xs) var(--space-sm);
+    font-family: var(--font-code);
+    font-size: var(--step--3);
+    color: var(--color-text);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    opacity: 0.6;
+    transition: opacity 0.15s ease, border-color 0.15s ease;
+    text-transform: uppercase;
+    flex-grow: 1;
+  }
+
+  .code-tabs__tab:hover {
+    opacity: 0.85;
+  }
+
+  .code-tabs__tab[aria-selected='true'] {
+    opacity: 1;
+    border-bottom-color: var(--color-theme);
+  }
+
+  .demo-code :global(pre) {
     margin: 0;
     border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     border: 1px solid var(--color-border);

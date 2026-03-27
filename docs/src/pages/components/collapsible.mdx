@@ -4,7 +4,6 @@ title: Collapsible
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Collapsible
 
@@ -12,21 +11,7 @@ A single disclosure widget using the native `<details>`/`<summary>` elements.
 
 ## Usage
 
-<Demo code={`<details class="zui-collapsible">
-  <summary class="zui-collapsible-trigger">What is ZUI?</summary>
-  <div class="zui-collapsible-content">
-    <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
-  </div>
-</details>`}>
-  <details class="zui-collapsible" style="width: 100%;">
-    <summary class="zui-collapsible-trigger">What is ZUI?</summary>
-    <div class="zui-collapsible-content">
-      <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
-    </div>
-  </details>
-</Demo>
-
-<CodeTabs
+<Demo
   html={`<details class="zui-collapsible">
   <summary class="zui-collapsible-trigger">What is ZUI?</summary>
   <div class="zui-collapsible-content">
@@ -51,18 +36,45 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartinea
     <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
   </CollapsibleContent>
 </Collapsible>`}
-/>
+>
+  <details class="zui-collapsible" style="width: 100%;">
+    <summary class="zui-collapsible-trigger">What is ZUI?</summary>
+    <div class="zui-collapsible-content">
+      <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
+    </div>
+  </details>
+</Demo>
 
 ## Open by default
 
 Add the `open` attribute to show the content on load.
 
-<Demo code={`<details class="zui-collapsible" open>
+<Demo
+  html={`<details class="zui-collapsible" open>
   <summary class="zui-collapsible-trigger">Already open</summary>
   <div class="zui-collapsible-content">
     <p>This collapsible starts in the open state.</p>
   </div>
-</details>`}>
+</details>`}
+  react={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/react'
+
+<Collapsible open>
+  <CollapsibleTrigger>Already open</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>This collapsible starts in the open state.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+  astro={`---
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/astro'
+---
+
+<Collapsible open>
+  <CollapsibleTrigger>Already open</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>This collapsible starts in the open state.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+>
   <details class="zui-collapsible" open style="width: 100%;">
     <summary class="zui-collapsible-trigger">Already open</summary>
     <div class="zui-collapsible-content">

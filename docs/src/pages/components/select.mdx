@@ -4,7 +4,6 @@ title: Select
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Select
 
@@ -12,25 +11,12 @@ A styled native select dropdown.
 
 ## Usage
 
-<Demo code={`<select class="zui-select">
-  <option value="">Choose an option</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</select>`}>
-  <select class="zui-select">
-    <option value="">Choose an option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-</Demo>
-
-<CodeTabs
+<Demo
   html={`<select class="zui-select">
   <option value="">Choose an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
 </select>`}
   react={`import { Select } from '@mrmartineau/zui/react'
 
@@ -38,6 +24,7 @@ A styled native select dropdown.
   <option value="">Choose an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
 </Select>`}
   astro={`---
 import { Select } from '@mrmartineau/zui/astro'
@@ -47,19 +34,51 @@ import { Select } from '@mrmartineau/zui/astro'
   <option value="">Choose an option</option>
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
 </Select>`}
-/>
+>
+  <select class="zui-select">
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+</Demo>
 
 ## With Label
 
-<Demo code={`<label class="zui-label" for="country">Country</label>
+<Demo
+  html={`<label class="zui-label" for="country">Country</label>
 <select class="zui-select" id="country">
   <option value="">Select a country</option>
   <option value="uk">United Kingdom</option>
   <option value="us">United States</option>
   <option value="de">Germany</option>
   <option value="fr">France</option>
-</select>`}>
+</select>`}
+  react={`import { Label, Select } from '@mrmartineau/zui/react'
+
+<Label htmlFor="country">Country</Label>
+<Select id="country">
+  <option value="">Select a country</option>
+  <option value="uk">United Kingdom</option>
+  <option value="us">United States</option>
+  <option value="de">Germany</option>
+  <option value="fr">France</option>
+</Select>`}
+  astro={`---
+import { Label, Select } from '@mrmartineau/zui/astro'
+---
+
+<Label for="country">Country</Label>
+<Select id="country">
+  <option value="">Select a country</option>
+  <option value="uk">United Kingdom</option>
+  <option value="us">United States</option>
+  <option value="de">Germany</option>
+  <option value="fr">France</option>
+</Select>`}
+>
   <div style="width: 100%;">
     <label class="zui-label" for="country">Country</label>
     <select class="zui-select" id="country">
@@ -74,9 +93,23 @@ import { Select } from '@mrmartineau/zui/astro'
 
 ## Disabled
 
-<Demo code={`<select class="zui-select" disabled>
+<Demo
+  html={`<select class="zui-select" disabled>
   <option>Cannot change</option>
-</select>`}>
+</select>`}
+  react={`import { Select } from '@mrmartineau/zui/react'
+
+<Select disabled>
+  <option>Cannot change</option>
+</Select>`}
+  astro={`---
+import { Select } from '@mrmartineau/zui/astro'
+---
+
+<Select disabled>
+  <option>Cannot change</option>
+</Select>`}
+>
   <select class="zui-select" disabled>
     <option>Cannot change</option>
   </select>

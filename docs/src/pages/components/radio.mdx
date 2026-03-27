@@ -4,7 +4,6 @@ title: Radio
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Radio
 
@@ -12,7 +11,8 @@ Custom-styled radio buttons with list layout.
 
 ## Usage
 
-<Demo code={`<label class="zui-radio">
+<Demo
+  html={`<label class="zui-radio">
   <input type="radio" name="fruit" value="apple" checked />
   Apple
 </label>
@@ -23,7 +23,20 @@ Custom-styled radio buttons with list layout.
 <label class="zui-radio">
   <input type="radio" name="fruit" value="cherry" />
   Cherry
-</label>`}>
+</label>`}
+  react={`import { Radio } from '@mrmartineau/zui/react'
+
+<Radio name="fruit" value="apple" defaultChecked>Apple</Radio>
+<Radio name="fruit" value="banana">Banana</Radio>
+<Radio name="fruit" value="cherry">Cherry</Radio>`}
+  astro={`---
+import { Radio } from '@mrmartineau/zui/astro'
+---
+
+<Radio name="fruit" value="apple" checked>Apple</Radio>
+<Radio name="fruit" value="banana">Banana</Radio>
+<Radio name="fruit" value="cherry">Cherry</Radio>`}
+>
   <label class="zui-radio">
     <input type="radio" name="fruit" value="apple" checked />
     Apple
@@ -38,32 +51,12 @@ Custom-styled radio buttons with list layout.
   </label>
 </Demo>
 
-<CodeTabs
-  html={`<label class="zui-radio">
-  <input type="radio" name="fruit" value="apple" checked />
-  Apple
-</label>
-<label class="zui-radio">
-  <input type="radio" name="fruit" value="banana" />
-  Banana
-</label>`}
-  react={`import { Radio } from '@mrmartineau/zui/react'
-
-<Radio name="fruit" value="apple" defaultChecked>Apple</Radio>
-<Radio name="fruit" value="banana">Banana</Radio>`}
-  astro={`---
-import { Radio } from '@mrmartineau/zui/astro'
----
-
-<Radio name="fruit" value="apple" checked>Apple</Radio>
-<Radio name="fruit" value="banana">Banana</Radio>`}
-/>
-
 ## Radio List
 
 Use `.zui-radio-list` for vertical grouping.
 
-<Demo code={`<fieldset>
+<Demo
+  html={`<fieldset>
   <legend class="zui-label">Favourite colour</legend>
   <div class="zui-radio-list">
     <label class="zui-radio">
@@ -79,7 +72,30 @@ Use `.zui-radio-list` for vertical grouping.
       Green
     </label>
   </div>
-</fieldset>`}>
+</fieldset>`}
+  react={`import { Radio, Label } from '@mrmartineau/zui/react'
+
+<fieldset>
+  <Label as="legend">Favourite colour</Label>
+  <div className="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" defaultChecked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</fieldset>`}
+  astro={`---
+import { Radio, Label } from '@mrmartineau/zui/astro'
+---
+
+<fieldset>
+  <Label>Favourite colour</Label>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" checked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</fieldset>`}
+>
   <fieldset style="border: none; padding: 0; width: 100%;">
     <legend class="zui-label">Favourite colour</legend>
     <div class="zui-radio-list">
@@ -101,14 +117,26 @@ Use `.zui-radio-list` for vertical grouping.
 
 ## Disabled
 
-<Demo code={`<label class="zui-radio">
+<Demo
+  html={`<label class="zui-radio">
   <input type="radio" name="disabled" disabled checked />
   Disabled checked
 </label>
 <label class="zui-radio">
   <input type="radio" name="disabled2" disabled />
   Disabled unchecked
-</label>`}>
+</label>`}
+  react={`import { Radio } from '@mrmartineau/zui/react'
+
+<Radio name="disabled" disabled defaultChecked>Disabled checked</Radio>
+<Radio name="disabled2" disabled>Disabled unchecked</Radio>`}
+  astro={`---
+import { Radio } from '@mrmartineau/zui/astro'
+---
+
+<Radio name="disabled" disabled checked>Disabled checked</Radio>
+<Radio name="disabled2" disabled>Disabled unchecked</Radio>`}
+>
   <label class="zui-radio">
     <input type="radio" name="disabled" disabled checked />
     Disabled checked

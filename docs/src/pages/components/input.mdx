@@ -4,7 +4,6 @@ title: Input
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Input
 
@@ -12,11 +11,7 @@ A styled text input for forms.
 
 ## Usage
 
-<Demo code={`<input class="zui-input" type="text" placeholder="Enter your name" />`}>
-  <input class="zui-input" type="text" placeholder="Enter your name" />
-</Demo>
-
-<CodeTabs
+<Demo
   html={`<input class="zui-input" type="text" placeholder="Enter your name" />`}
   react={`import { Input } from '@mrmartineau/zui/react'
 
@@ -26,16 +21,38 @@ import { Input } from '@mrmartineau/zui/astro'
 ---
 
 <Input type="text" placeholder="Enter your name" />`}
-/>
+>
+  <input class="zui-input" type="text" placeholder="Enter your name" />
+</Demo>
 
 ## Input Types
 
-<Demo code={`<input class="zui-input" type="text" placeholder="Text" />
+<Demo
+  html={`<input class="zui-input" type="text" placeholder="Text" />
 <input class="zui-input" type="email" placeholder="Email" />
 <input class="zui-input" type="password" placeholder="Password" />
 <input class="zui-input" type="number" placeholder="Number" />
 <input class="zui-input" type="search" placeholder="Search" />
-<input class="zui-input" type="url" placeholder="URL" />`}>
+<input class="zui-input" type="url" placeholder="URL" />`}
+  react={`import { Input } from '@mrmartineau/zui/react'
+
+<Input type="text" placeholder="Text" />
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="Number" />
+<Input type="search" placeholder="Search" />
+<Input type="url" placeholder="URL" />`}
+  astro={`---
+import { Input } from '@mrmartineau/zui/astro'
+---
+
+<Input type="text" placeholder="Text" />
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="Number" />
+<Input type="search" placeholder="Search" />
+<Input type="url" placeholder="URL" />`}
+>
   <input class="zui-input" type="text" placeholder="Text" />
   <input class="zui-input" type="email" placeholder="Email" />
   <input class="zui-input" type="password" placeholder="Password" />
@@ -46,8 +63,20 @@ import { Input } from '@mrmartineau/zui/astro'
 
 ## With Label
 
-<Demo code={`<label class="zui-label" for="name">Full name</label>
-<input class="zui-input" type="text" id="name" placeholder="Jane Doe" />`}>
+<Demo
+  html={`<label class="zui-label" for="name">Full name</label>
+<input class="zui-input" type="text" id="name" placeholder="Jane Doe" />`}
+  react={`import { Label, Input } from '@mrmartineau/zui/react'
+
+<Label htmlFor="name">Full name</Label>
+<Input type="text" id="name" placeholder="Jane Doe" />`}
+  astro={`---
+import { Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<Label for="name">Full name</Label>
+<Input type="text" id="name" placeholder="Jane Doe" />`}
+>
   <div style="width: 100%;">
     <label class="zui-label" for="name">Full name</label>
     <input class="zui-input" type="text" id="name" placeholder="Jane Doe" />
@@ -56,12 +85,32 @@ import { Input } from '@mrmartineau/zui/astro'
 
 ## Invalid State
 
-<Demo code={`<input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />`}>
+<Demo
+  html={`<input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />`}
+  react={`import { Input } from '@mrmartineau/zui/react'
+
+<Input type="email" defaultValue="not-an-email" aria-invalid="true" />`}
+  astro={`---
+import { Input } from '@mrmartineau/zui/astro'
+---
+
+<Input type="email" value="not-an-email" aria-invalid="true" />`}
+>
   <input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />
 </Demo>
 
 ## Disabled
 
-<Demo code={`<input class="zui-input" type="text" value="Cannot edit" disabled />`}>
+<Demo
+  html={`<input class="zui-input" type="text" value="Cannot edit" disabled />`}
+  react={`import { Input } from '@mrmartineau/zui/react'
+
+<Input type="text" defaultValue="Cannot edit" disabled />`}
+  astro={`---
+import { Input } from '@mrmartineau/zui/astro'
+---
+
+<Input type="text" value="Cannot edit" disabled />`}
+>
   <input class="zui-input" type="text" value="Cannot edit" disabled />
 </Demo>

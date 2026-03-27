@@ -4,7 +4,6 @@ title: Label
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Label
 
@@ -12,33 +11,42 @@ Form labels with optional required indicator and description text.
 
 ## Usage
 
-<Demo code={`<label class="zui-label" for="demo">Email address</label>
-<input class="zui-input" type="email" id="demo" placeholder="you@example.com" />`}>
+<Demo
+  html={`<label class="zui-label" for="demo">Email address</label>
+<input class="zui-input" type="email" id="demo" placeholder="you@example.com" />`}
+  react={`import { Label, Input } from '@mrmartineau/zui/react'
+
+<Label htmlFor="demo">Email address</Label>
+<Input type="email" id="demo" placeholder="you@example.com" />`}
+  astro={`---
+import { Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<Label for="demo">Email address</Label>
+<Input type="email" id="demo" placeholder="you@example.com" />`}
+>
   <div style="width: 100%;">
     <label class="zui-label" for="demo">Email address</label>
     <input class="zui-input" type="email" id="demo" placeholder="you@example.com" />
   </div>
 </Demo>
 
-<CodeTabs
-  html={`<label class="zui-label" for="email">Email address</label>
-<input class="zui-input" type="email" id="email" />`}
+## Required
+
+<Demo
+  html={`<label class="zui-label zui-label-required" for="req">Required field</label>
+<input class="zui-input" type="text" id="req" required />`}
   react={`import { Label, Input } from '@mrmartineau/zui/react'
 
-<Label htmlFor="email">Email address</Label>
-<Input type="email" id="email" />`}
+<Label htmlFor="req" className="zui-label-required">Required field</Label>
+<Input type="text" id="req" required />`}
   astro={`---
 import { Label, Input } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="email">Email address</Label>
-<Input type="email" id="email" />`}
-/>
-
-## Required
-
-<Demo code={`<label class="zui-label zui-label-required" for="req">Required field</label>
-<input class="zui-input" type="text" id="req" required />`}>
+<Label for="req" class="zui-label-required">Required field</Label>
+<Input type="text" id="req" required />`}
+>
   <div style="width: 100%;">
     <label class="zui-label zui-label-required" for="req">Required field</label>
     <input class="zui-input" type="text" id="req" required />
@@ -47,11 +55,29 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 
 ## With Description
 
-<Demo code={`<label class="zui-label" for="desc">
+<Demo
+  html={`<label class="zui-label" for="desc">
   Username
   <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
 </label>
-<input class="zui-input" type="text" id="desc" />`}>
+<input class="zui-input" type="text" id="desc" />`}
+  react={`import { Label, Input } from '@mrmartineau/zui/react'
+
+<Label htmlFor="desc">
+  Username
+  <span className="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+</Label>
+<Input type="text" id="desc" />`}
+  astro={`---
+import { Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<Label for="desc">
+  Username
+  <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+</Label>
+<Input type="text" id="desc" />`}
+>
   <div style="width: 100%;">
     <label class="zui-label" for="desc">
       Username

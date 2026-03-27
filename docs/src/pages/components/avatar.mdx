@@ -4,7 +4,6 @@ title: Avatar
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Avatar
 
@@ -12,7 +11,8 @@ A circular (or shaped) image with a fallback for when the image fails to load or
 
 ## Usage
 
-<Demo code={`<span class="zui-avatar">
+<Demo
+  html={`<span class="zui-avatar">
     <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
     <img
       class="zui-avatar-image"
@@ -20,22 +20,6 @@ A circular (or shaped) image with a fallback for when the image fails to load or
       alt="User"
       onerror="this.setAttribute('data-error', '')"
     />
-</span>`}>
-  <span class="zui-avatar">
-    <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
-    <img class="zui-avatar-image" src="/avatar.webp" alt="User" onerror="this.setAttribute('data-error', '')" />
-  </span>
-</Demo>
-
-<CodeTabs
-  html={`<span class="zui-avatar">
-  <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
-  <img
-      class="zui-avatar-image"
-      src="/avatar.webp"
-      alt="User"
-      onerror="this.setAttribute('data-error', '')"
-    />
 </span>`}
   react={`import { Avatar } from '@mrmartineau/zui/react'
 
@@ -45,7 +29,12 @@ import { Avatar } from '@mrmartineau/zui/astro'
 ---
 
 <Avatar src="/avatar.webp" alt="User" />`}
-/>
+>
+  <span class="zui-avatar">
+    <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
+    <img class="zui-avatar-image" src="/avatar.webp" alt="User" onerror="this.setAttribute('data-error', '')" />
+  </span>
+</Demo>
 
 ## Fallback
 
@@ -53,9 +42,19 @@ When no `src` is provided or the image fails to load, the fallback content is sh
 
 ### Default icon fallback
 
-<Demo code={`<span class="zui-avatar">
+<Demo
+  html={`<span class="zui-avatar">
   <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
-</span>`}>
+</span>`}
+  react={`import { Avatar } from '@mrmartineau/zui/react'
+
+<Avatar />`}
+  astro={`---
+import { Avatar } from '@mrmartineau/zui/astro'
+---
+
+<Avatar />`}
+>
   <span class="zui-avatar">
     <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
   </span>
@@ -63,65 +62,27 @@ When no `src` is provided or the image fails to load, the fallback content is sh
 
 ### Initials fallback
 
-<Demo code={`<span class="zui-avatar">
-  <span class="zui-avatar-fallback">AB</span>
-</span>`}>
-  <span class="zui-avatar">
-    <span class="zui-avatar-fallback">AB</span>
-  </span>
-</Demo>
-
-<CodeTabs
-  html={`<!-- Default icon -->
-<span class="zui-avatar">
-  <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
-</span>
-
-<!-- Initials -->
-<span class="zui-avatar">
+<Demo
+  html={`<span class="zui-avatar">
   <span class="zui-avatar-fallback">AB</span>
 </span>`}
   react={`import { Avatar } from '@mrmartineau/zui/react'
 
-{/* Default icon */}
-<Avatar />
-
-{/* Initials */}
 <Avatar fallback="AB" />`}
   astro={`---
 import { Avatar } from '@mrmartineau/zui/astro'
 ---
 
-{/* Default icon */}
-<Avatar />
-
-{/* Initials */}
 <Avatar fallback="AB" />`}
-/>
-
-## Sizes
-
-<Demo code={`<span class="zui-avatar zui-avatar-size-sm">
-  <span class="zui-avatar-fallback">AB</span>
-</span>
-<span class="zui-avatar">
-  <span class="zui-avatar-fallback">AB</span>
-</span>
-<span class="zui-avatar zui-avatar-size-lg">
-  <span class="zui-avatar-fallback">AB</span>
-</span>`}>
-  <span class="zui-avatar zui-avatar-size-sm">
-    <span class="zui-avatar-fallback">AB</span>
-  </span>
+>
   <span class="zui-avatar">
-    <span class="zui-avatar-fallback">AB</span>
-  </span>
-  <span class="zui-avatar zui-avatar-size-lg">
     <span class="zui-avatar-fallback">AB</span>
   </span>
 </Demo>
 
-<CodeTabs
+## Sizes
+
+<Demo
   html={`<span class="zui-avatar zui-avatar-size-sm">
   <span class="zui-avatar-fallback">AB</span>
 </span>
@@ -143,37 +104,21 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <Avatar size="sm" fallback="AB" />
 <Avatar fallback="AB" />
 <Avatar size="lg" fallback="AB" />`}
-/>
-
-## Shapes
-
-<Demo code={`<span class="zui-avatar">
-  <span class="zui-avatar-fallback">AB</span>
-</span>
-<span class="zui-avatar zui-avatar-shape-hard">
-  <span class="zui-avatar-fallback">AB</span>
-</span>
-<span class="zui-avatar zui-avatar-shape-soft">
-  <span class="zui-avatar-fallback">AB</span>
-</span>
-<span class="zui-avatar zui-avatar-shape-squircle">
-  <span class="zui-avatar-fallback">AB</span>
-</span>`}>
+>
+  <span class="zui-avatar zui-avatar-size-sm">
+    <span class="zui-avatar-fallback">AB</span>
+  </span>
   <span class="zui-avatar">
     <span class="zui-avatar-fallback">AB</span>
   </span>
-  <span class="zui-avatar zui-avatar-shape-hard">
-    <span class="zui-avatar-fallback">AB</span>
-  </span>
-  <span class="zui-avatar zui-avatar-shape-soft">
-    <span class="zui-avatar-fallback">AB</span>
-  </span>
-  <span class="zui-avatar zui-avatar-shape-squircle">
+  <span class="zui-avatar zui-avatar-size-lg">
     <span class="zui-avatar-fallback">AB</span>
   </span>
 </Demo>
 
-<CodeTabs
+## Shapes
+
+<Demo
   html={`<span class="zui-avatar">
   <span class="zui-avatar-fallback">AB</span>
 </span>
@@ -200,5 +145,18 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <Avatar shape="hard" fallback="AB" />
 <Avatar shape="soft" fallback="AB" />
 <Avatar shape="squircle" fallback="AB" />`}
-/>
+>
+  <span class="zui-avatar">
+    <span class="zui-avatar-fallback">AB</span>
+  </span>
+  <span class="zui-avatar zui-avatar-shape-hard">
+    <span class="zui-avatar-fallback">AB</span>
+  </span>
+  <span class="zui-avatar zui-avatar-shape-soft">
+    <span class="zui-avatar-fallback">AB</span>
+  </span>
+  <span class="zui-avatar zui-avatar-shape-squircle">
+    <span class="zui-avatar-fallback">AB</span>
+  </span>
+</Demo>
 

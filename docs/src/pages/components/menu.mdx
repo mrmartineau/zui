@@ -4,7 +4,6 @@ title: Menu
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Menu
 
@@ -14,25 +13,7 @@ A dropdown menu built on the native `<details>`/`<summary>` elements — no Java
 
 Menu items inherit all styles from the [Button](/components/button) component. Always combine `.zui-menu-item` with `.zui-button` and a variant class (typically `.zui-button-variant-ghost`). The summary trigger similarly uses `.zui-button` classes.
 
-<Demo code={`<details class="zui-menu">
-  <summary class="zui-button zui-button-variant-outline">
-    Open menu <i class="ph ph-caret-down"></i>
-  </summary>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
-</details>`}>
-  <details class="zui-menu">
-    <summary class="zui-button zui-button-variant-outline">
-      Open menu <i class="ph ph-caret-down"></i>
-    </summary>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
-  </details>
-</Demo>
-
-<CodeTabs
+<Demo
   html={`<details class="zui-menu">
   <summary class="zui-button zui-button-variant-outline">
     Open menu <i class="ph ph-caret-down"></i>
@@ -59,18 +40,47 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
   <MenuItem>Settings</MenuItem>
   <MenuItem>Logout</MenuItem>
 </Menu>`}
-/>
+>
+  <details class="zui-menu">
+    <summary class="zui-button zui-button-variant-outline">
+      Open menu <i class="ph ph-caret-down"></i>
+    </summary>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
+  </details>
+</Demo>
 
 ## With icons
 
-<Demo code={`<details class="zui-menu">
+<Demo
+  html={`<details class="zui-menu">
   <summary class="zui-button">
     Account <i class="ph ph-caret-down"></i>
   </summary>
   <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-user"></i> Profile</button>
   <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-gear"></i> Settings</button>
   <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-sign-out"></i> Logout</button>
-</details>`}>
+</details>`}
+  react={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/react'
+
+<Menu>
+  <MenuTrigger>Account <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem><i className="ph ph-user" /> Profile</MenuItem>
+  <MenuItem><i className="ph ph-gear" /> Settings</MenuItem>
+  <MenuItem><i className="ph ph-sign-out" /> Logout</MenuItem>
+</Menu>`}
+  astro={`---
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem><i class="ph ph-user" /> Profile</MenuItem>
+  <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
+  <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+</Menu>`}
+>
   <details class="zui-menu">
     <summary class="zui-button">
       Account <i class="ph ph-caret-down"></i>
@@ -85,14 +95,34 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
 
 Use an `<a>` element (or pass `href` to `MenuItem`) when items navigate to a page.
 
-<Demo code={`<details class="zui-menu">
+<Demo
+  html={`<details class="zui-menu">
   <summary class="zui-button zui-button-variant-outline">
     Navigate <i class="ph ph-caret-down"></i>
   </summary>
   <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Home</a>
   <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">About</a>
   <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Contact</a>
-</details>`}>
+</details>`}
+  react={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/react'
+
+<Menu>
+  <MenuTrigger variant="outline">Navigate <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem href="#">Home</MenuItem>
+  <MenuItem href="#">About</MenuItem>
+  <MenuItem href="#">Contact</MenuItem>
+</Menu>`}
+  astro={`---
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem href="#">Home</MenuItem>
+  <MenuItem href="#">About</MenuItem>
+  <MenuItem href="#">Contact</MenuItem>
+</Menu>`}
+>
   <details class="zui-menu">
     <summary class="zui-button zui-button-variant-outline">
       Navigate <i class="ph ph-caret-down"></i>

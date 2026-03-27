@@ -4,7 +4,6 @@ title: Dialog
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Dialog
 
@@ -14,7 +13,8 @@ Modal dialogs built on the native [`<dialog>`](https://developer.mozilla.org/en-
 
 Use `showModal()` to open the dialog as a modal (with backdrop and focus trap). Use `close()` or a `<form method="dialog">` to close it.
 
-<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-demo').showModal()">
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('dialog-demo').showModal()">
   Open dialog
 </button>
 
@@ -31,46 +31,6 @@ Use `showModal()` to open the dialog as a modal (with backdrop and focus trap). 
       <button class="zui-button zui-button-variant-outline">Cancel</button>
     </form>
     <button class="zui-button" onclick="document.getElementById('dialog-demo').close()">Confirm</button>
-  </div>
-</dialog>`}>
-  <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').showModal()">
-    Open dialog
-  </button>
-  <dialog id="dialog-usage-demo" class="zui-dialog">
-    <div class="zui-dialog-header">
-      <h2 class="zui-dialog-title">Dialog title</h2>
-      <p class="zui-dialog-description">A short description of the dialog content.</p>
-    </div>
-    <div class="zui-dialog-body">
-      <p>Dialog body content goes here.</p>
-    </div>
-    <div class="zui-dialog-footer">
-      <form method="dialog">
-        <button class="zui-button zui-button-variant-outline">Cancel</button>
-      </form>
-      <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').close()">Confirm</button>
-    </div>
-  </dialog>
-</Demo>
-
-<CodeTabs
-  html={`<button class="zui-button" onclick="document.getElementById('my-dialog').showModal()">
-  Open dialog
-</button>
-
-<dialog id="my-dialog" class="zui-dialog">
-  <div class="zui-dialog-header">
-    <h2 class="zui-dialog-title">Dialog title</h2>
-    <p class="zui-dialog-description">A short description.</p>
-  </div>
-  <div class="zui-dialog-body">
-    <p>Dialog body content.</p>
-  </div>
-  <div class="zui-dialog-footer">
-    <form method="dialog">
-      <button class="zui-button zui-button-variant-outline">Cancel</button>
-    </form>
-    <button class="zui-button">Confirm</button>
   </div>
 </dialog>`}
   react={`import { useState } from 'react'
@@ -93,10 +53,10 @@ function MyComponent() {
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogHeader>
           <DialogTitle>Dialog title</DialogTitle>
-          <DialogDescription>A short description.</DialogDescription>
+          <DialogDescription>A short description of the dialog content.</DialogDescription>
         </DialogHeader>
         <DialogBody>
-          <p>Dialog body content.</p>
+          <p>Dialog body content goes here.</p>
         </DialogBody>
         <DialogFooter>
           <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
@@ -110,15 +70,15 @@ function MyComponent() {
 import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/astro'
 ---
 
-<Button onclick="document.getElementById('my-dialog').showModal()">Open dialog</Button>
+<Button onclick="document.getElementById('dialog-demo').showModal()">Open dialog</Button>
 
-<Dialog id="my-dialog">
+<Dialog id="dialog-demo">
   <DialogHeader>
     <DialogTitle>Dialog title</DialogTitle>
-    <DialogDescription>A short description.</DialogDescription>
+    <DialogDescription>A short description of the dialog content.</DialogDescription>
   </DialogHeader>
   <DialogBody>
-    <p>Dialog body content.</p>
+    <p>Dialog body content goes here.</p>
   </DialogBody>
   <DialogFooter>
     <form method="dialog">
@@ -127,13 +87,33 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Dialo
     <Button>Confirm</Button>
   </DialogFooter>
 </Dialog>`}
-/>
+>
+  <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').showModal()">
+    Open dialog
+  </button>
+  <dialog id="dialog-usage-demo" class="zui-dialog">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">Dialog title</h2>
+      <p class="zui-dialog-description">A short description of the dialog content.</p>
+    </div>
+    <div class="zui-dialog-body">
+      <p>Dialog body content goes here.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog">
+        <button class="zui-button zui-button-variant-outline">Cancel</button>
+      </form>
+      <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').close()">Confirm</button>
+    </div>
+  </dialog>
+</Demo>
 
 ## Sizes
 
 Control the dialog width with `size` variants.
 
-<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-sm').showModal()">Small</button>
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('dialog-sm').showModal()">Small</button>
 <button class="zui-button" onclick="document.getElementById('dialog-md').showModal()">Medium (default)</button>
 <button class="zui-button" onclick="document.getElementById('dialog-lg').showModal()">Large</button>
 <button class="zui-button" onclick="document.getElementById('dialog-full').showModal()">Full</button>
@@ -176,7 +156,64 @@ Control the dialog width with `size` variants.
   <div class="zui-dialog-footer">
     <form method="dialog"><button class="zui-button">Close</button></form>
   </div>
-</dialog>`}>
+</dialog>`}
+  react={`import { useState } from 'react'
+import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/react'
+
+function SizeDemo() {
+  const [size, setSize] = useState(null)
+
+  return (
+    <>
+      <Button onClick={() => setSize('sm')}>Small</Button>
+      <Button onClick={() => setSize('md')}>Medium (default)</Button>
+      <Button onClick={() => setSize('lg')}>Large</Button>
+      <Button onClick={() => setSize('full')}>Full</Button>
+      <Dialog open={!!size} size={size} onClose={() => setSize(null)}>
+        <DialogHeader>
+          <DialogTitle>{size} dialog</DialogTitle>
+        </DialogHeader>
+        <DialogBody><p>Dialog content.</p></DialogBody>
+        <DialogFooter>
+          <Button onClick={() => setSize(null)}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('dialog-sm').showModal()">Small</Button>
+<Button onclick="document.getElementById('dialog-md').showModal()">Medium (default)</Button>
+<Button onclick="document.getElementById('dialog-lg').showModal()">Large</Button>
+<Button onclick="document.getElementById('dialog-full').showModal()">Full</Button>
+
+<Dialog id="dialog-sm" size="sm">
+  <DialogHeader><DialogTitle>Small dialog</DialogTitle></DialogHeader>
+  <DialogBody><p>Max width 24rem.</p></DialogBody>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-md">
+  <DialogHeader><DialogTitle>Medium dialog</DialogTitle></DialogHeader>
+  <DialogBody><p>Max width 32rem (default).</p></DialogBody>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-lg" size="lg">
+  <DialogHeader><DialogTitle>Large dialog</DialogTitle></DialogHeader>
+  <DialogBody><p>Max width 42rem.</p></DialogBody>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-full" size="full">
+  <DialogHeader><DialogTitle>Full dialog</DialogTitle></DialogHeader>
+  <DialogBody><p>Full viewport size.</p></DialogBody>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>`}
+>
   <button class="zui-button" onclick="document.getElementById('dialog-sm-demo').showModal()">Small</button>
   <button class="zui-button" onclick="document.getElementById('dialog-md-demo').showModal()">Medium (default)</button>
   <button class="zui-button" onclick="document.getElementById('dialog-lg-demo').showModal()">Large</button>
@@ -223,32 +260,12 @@ Control the dialog width with `size` variants.
   </dialog>
 </Demo>
 
-<CodeTabs
-  html={`<dialog class="zui-dialog zui-dialog-size-sm">…</dialog>
-<dialog class="zui-dialog">…</dialog> <!-- md default -->
-<dialog class="zui-dialog zui-dialog-size-lg">…</dialog>
-<dialog class="zui-dialog zui-dialog-size-full">…</dialog>`}
-  react={`import { Dialog } from '@mrmartineau/zui/react'
-
-<Dialog size="sm">…</Dialog>
-<Dialog>…</Dialog>           {/* md default */}
-<Dialog size="lg">…</Dialog>
-<Dialog size="full">…</Dialog>`}
-  astro={`---
-import { Dialog } from '@mrmartineau/zui/astro'
----
-
-<Dialog id="d1" size="sm">…</Dialog>
-<Dialog id="d2">…</Dialog>           <!-- md default -->
-<Dialog id="d3" size="lg">…</Dialog>
-<Dialog id="d4" size="full">…</Dialog>`}
-/>
-
 ## Close button
 
 Add a close button inside the dialog using `.zui-dialog-close`.
 
-<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-close-btn').showModal()">
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('dialog-close-btn').showModal()">
   Open dialog
 </button>
 
@@ -267,7 +284,64 @@ Add a close button inside the dialog using `.zui-dialog-close`.
   <div class="zui-dialog-body">
     <p>Content goes here.</p>
   </div>
-</dialog>`}>
+</dialog>`}
+  react={`import { useState } from 'react'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Button } from '@mrmartineau/zui/react'
+
+function MyComponent() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <Button
+          variant="ghost"
+          size="sm"
+          icon
+          className="zui-dialog-close"
+          aria-label="Close"
+          onClick={() => setOpen(false)}
+        >
+          <i className="ph ph-x" />
+        </Button>
+        <DialogHeader>
+          <DialogTitle>With close button</DialogTitle>
+          <DialogDescription>A close button is positioned in the top-right corner.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Content goes here.</p>
+        </DialogBody>
+      </Dialog>
+    </>
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('dialog-close-btn').showModal()">Open dialog</Button>
+
+<Dialog id="dialog-close-btn">
+  <Button
+    variant="ghost"
+    size="sm"
+    icon
+    class="zui-dialog-close"
+    aria-label="Close"
+    onclick="document.getElementById('dialog-close-btn').close()"
+  >
+    <i class="ph ph-x"></i>
+  </Button>
+  <DialogHeader>
+    <DialogTitle>With close button</DialogTitle>
+    <DialogDescription>A close button is positioned in the top-right corner.</DialogDescription>
+  </DialogHeader>
+  <DialogBody>
+    <p>Content goes here.</p>
+  </DialogBody>
+</Dialog>`}
+>
   <button class="zui-button" onclick="document.getElementById('dialog-close-btn-demo').showModal()">
     Open dialog
   </button>
@@ -303,7 +377,8 @@ Clicking the backdrop or pressing <kbd>Esc</kbd> will close the dialog by defaul
 
 Use `<form method="dialog">` for native form submission that closes the dialog and sets `returnValue`.
 
-<Demo code={`<button class="zui-button" onclick="document.getElementById('dialog-form').showModal()">
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('dialog-form').showModal()">
   Delete item
 </button>
 
@@ -320,7 +395,50 @@ Use `<form method="dialog">` for native form submission that closes the dialog a
       <button class="zui-button zui-button-color-destructive" value="confirm">Delete</button>
     </form>
   </div>
-</dialog>`}>
+</dialog>`}
+  react={`import { useState } from 'react'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/react'
+
+function MyComponent() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Delete item</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+          <DialogDescription>This action cannot be undone.</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button color="destructive" onClick={() => setOpen(false)}>Delete</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('dialog-form').showModal()">Delete item</Button>
+
+<Dialog id="dialog-form">
+  <DialogHeader>
+    <DialogTitle>Are you sure?</DialogTitle>
+    <DialogDescription>This action cannot be undone.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter>
+    <form method="dialog">
+      <Button variant="outline" value="cancel">Cancel</Button>
+    </form>
+    <form method="dialog">
+      <Button color="destructive" value="confirm">Delete</Button>
+    </form>
+  </DialogFooter>
+</Dialog>`}
+>
   <button class="zui-button" onclick="document.getElementById('dialog-form-demo').showModal()">
     Delete item
   </button>

@@ -4,7 +4,6 @@ title: Checkbox
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Checkbox
 
@@ -12,17 +11,7 @@ Custom-styled checkboxes with list layout.
 
 ## Usage
 
-<Demo code={`<label class="zui-checkbox">
-  <input type="checkbox" checked />
-  Accept terms
-</label>`}>
-  <label class="zui-checkbox">
-    <input type="checkbox" checked />
-    Accept terms
-  </label>
-</Demo>
-
-<CodeTabs
+<Demo
   html={`<label class="zui-checkbox">
   <input type="checkbox" checked />
   Accept terms
@@ -35,13 +24,19 @@ import { Checkbox } from '@mrmartineau/zui/astro'
 ---
 
 <Checkbox checked>Accept terms</Checkbox>`}
-/>
+>
+  <label class="zui-checkbox">
+    <input type="checkbox" checked />
+    Accept terms
+  </label>
+</Demo>
 
 ## Checkbox List
 
 Use `.zui-checkbox-list` for vertical grouping.
 
-<Demo code={`<fieldset>
+<Demo
+  html={`<fieldset>
   <legend class="zui-label">Interests</legend>
   <div class="zui-checkbox-list">
     <label class="zui-checkbox">
@@ -61,7 +56,32 @@ Use `.zui-checkbox-list` for vertical grouping.
       Reading
     </label>
   </div>
-</fieldset>`}>
+</fieldset>`}
+  react={`import { Checkbox, Label } from '@mrmartineau/zui/react'
+
+<fieldset>
+  <Label as="legend">Interests</Label>
+  <div className="zui-checkbox-list">
+    <Checkbox defaultChecked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox defaultChecked>Travel</Checkbox>
+    <Checkbox>Reading</Checkbox>
+  </div>
+</fieldset>`}
+  astro={`---
+import { Checkbox, Label } from '@mrmartineau/zui/astro'
+---
+
+<fieldset>
+  <Label>Interests</Label>
+  <div class="zui-checkbox-list">
+    <Checkbox checked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox checked>Travel</Checkbox>
+    <Checkbox>Reading</Checkbox>
+  </div>
+</fieldset>`}
+>
   <fieldset style="border: none; padding: 0; width: 100%;">
     <legend class="zui-label">Interests</legend>
     <div class="zui-checkbox-list">
@@ -87,14 +107,26 @@ Use `.zui-checkbox-list` for vertical grouping.
 
 ## Disabled
 
-<Demo code={`<label class="zui-checkbox">
+<Demo
+  html={`<label class="zui-checkbox">
   <input type="checkbox" disabled checked />
   Disabled checked
 </label>
 <label class="zui-checkbox">
   <input type="checkbox" disabled />
   Disabled unchecked
-</label>`}>
+</label>`}
+  react={`import { Checkbox } from '@mrmartineau/zui/react'
+
+<Checkbox disabled defaultChecked>Disabled checked</Checkbox>
+<Checkbox disabled>Disabled unchecked</Checkbox>`}
+  astro={`---
+import { Checkbox } from '@mrmartineau/zui/astro'
+---
+
+<Checkbox disabled checked>Disabled checked</Checkbox>
+<Checkbox disabled>Disabled unchecked</Checkbox>`}
+>
   <label class="zui-checkbox">
     <input type="checkbox" disabled checked />
     Disabled checked

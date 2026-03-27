@@ -7,7 +7,6 @@ import TokenGrid from '../../components/TokenGrid.astro'
 import TokenRow from '../../components/TokenRow.astro'
 import CopyCode from '../../components/CopyCode.astro'
 import DemoPreview from '../../components/DemoPreview.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # UI Typography
 
@@ -32,7 +31,7 @@ Map directly to the fluid type scale tokens. All classes reset `line-height` to 
   <TokenRow><CopyCode>.zui-text-6</CopyCode><span class="zui-text-6">The quick brown fox</span></TokenRow>
 </TokenGrid>
 
-<CodeTabs
+<Demo
   html={`<p class="zui-text-2">Large UI text</p>
 <p class="zui-text-0">Base size</p>
 <span class="zui-text--1">Small label</span>`}
@@ -73,7 +72,7 @@ Style any anchor as an accessible, accent-coloured link with underline and hover
   <a href="#" class="zui-link">A styled link</a>
 </DemoPreview>
 
-<CodeTabs
+<Demo
   html={`<a href="/about" class="zui-link">About us</a>`}
   react={`import { Link } from '@mrmartineau/zui/react'
 
@@ -105,7 +104,7 @@ Inline code and preformatted blocks with monospace font, background, and rounded
   <p>Use `var(--space-md)` for medium spacing.</p>
 </DemoPreview>
 
-<CodeTabs
+<Demo
   html={`<code class="zui-code">var(--space-md)</code>`}
   react={`import { Code } from '@mrmartineau/zui/react'
 
@@ -124,7 +123,7 @@ import { Code } from '@mrmartineau/zui/astro'
   console.log(greeting)</code></pre>
 </DemoPreview>
 
-<CodeTabs
+<Demo
   html={`<pre class="zui-pre">
   <code>
     const greeting = "Hello, world!";

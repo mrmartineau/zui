@@ -4,7 +4,6 @@ title: Badge
 ---
 
 import Demo from '../../components/Demo.astro'
-import CodeTabs from '../../components/CodeTabs.astro'
 
 # Badge
 
@@ -12,11 +11,7 @@ Small status indicators and labels.
 
 ## Usage
 
-<Demo code={`<span class="zui-badge">Default</span>`}>
-  <span class="zui-badge">Default</span>
-</Demo>
-
-<CodeTabs
+<Demo
   html={`<span class="zui-badge">Default</span>`}
   react={`import { Badge } from '@mrmartineau/zui/react'
 
@@ -26,11 +21,13 @@ import { Badge } from '@mrmartineau/zui/astro'
 ---
 
 <Badge>Default</Badge>`}
-/>
+>
+  <span class="zui-badge">Default</span>
+</Demo>
 
 ## Colours
 
-<Demo code={`<span class="zui-badge">Default</span>
+<Demo html={`<span class="zui-badge">Default</span>
 <span class="zui-badge zui-badge-color-red">Red</span>
 <span class="zui-badge zui-badge-color-orange">Orange</span>
 <span class="zui-badge zui-badge-color-amber">Amber</span>
@@ -48,7 +45,52 @@ import { Badge } from '@mrmartineau/zui/astro'
 <span class="zui-badge zui-badge-color-fuchsia">Fuchsia</span>
 <span class="zui-badge zui-badge-color-pink">Pink</span>
 <span class="zui-badge zui-badge-color-rose">Rose</span>
-<span class="zui-badge zui-badge-color-gray">Gray</span>`}>
+<span class="zui-badge zui-badge-color-gray">Gray</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge>Default</Badge>
+<Badge color="red">Red</Badge>
+<Badge color="orange">Orange</Badge>
+<Badge color="amber">Amber</Badge>
+<Badge color="yellow">Yellow</Badge>
+<Badge color="lime">Lime</Badge>
+<Badge color="green">Green</Badge>
+<Badge color="emerald">Emerald</Badge>
+<Badge color="teal">Teal</Badge>
+<Badge color="cyan">Cyan</Badge>
+<Badge color="sky">Sky</Badge>
+<Badge color="blue">Blue</Badge>
+<Badge color="indigo">Indigo</Badge>
+<Badge color="violet">Violet</Badge>
+<Badge color="purple">Purple</Badge>
+<Badge color="fuchsia">Fuchsia</Badge>
+<Badge color="pink">Pink</Badge>
+<Badge color="rose">Rose</Badge>
+<Badge color="gray">Gray</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge>Default</Badge>
+<Badge color="red">Red</Badge>
+<Badge color="orange">Orange</Badge>
+<Badge color="amber">Amber</Badge>
+<Badge color="yellow">Yellow</Badge>
+<Badge color="lime">Lime</Badge>
+<Badge color="green">Green</Badge>
+<Badge color="emerald">Emerald</Badge>
+<Badge color="teal">Teal</Badge>
+<Badge color="cyan">Cyan</Badge>
+<Badge color="sky">Sky</Badge>
+<Badge color="blue">Blue</Badge>
+<Badge color="indigo">Indigo</Badge>
+<Badge color="violet">Violet</Badge>
+<Badge color="purple">Purple</Badge>
+<Badge color="fuchsia">Fuchsia</Badge>
+<Badge color="pink">Pink</Badge>
+<Badge color="rose">Rose</Badge>
+<Badge color="gray">Gray</Badge>`}
+>
   <span class="zui-badge">Default</span>
   <span class="zui-badge zui-badge-color-red">Red</span>
   <span class="zui-badge zui-badge-color-orange">Orange</span>
@@ -70,34 +112,32 @@ import { Badge } from '@mrmartineau/zui/astro'
   <span class="zui-badge zui-badge-color-gray">Gray</span>
 </Demo>
 
-<CodeTabs
-  html={`<span class="zui-badge zui-badge-color-emerald">Emerald</span>
-<span class="zui-badge zui-badge-color-red">Red</span>
-<span class="zui-badge zui-badge-color-blue">Blue</span>`}
-  react={`import { Badge } from '@mrmartineau/zui/react'
-
-<Badge color="emerald">Emerald</Badge>
-<Badge color="red">Red</Badge>
-<Badge color="blue">Blue</Badge>`}
-  astro={`---
-import { Badge } from '@mrmartineau/zui/astro'
----
-
-<Badge color="emerald">Emerald</Badge>
-<Badge color="red">Red</Badge>
-<Badge color="blue">Blue</Badge>`}
-/>
-
 ## Variants
 
 Controls how the colour is applied.
 
 ### Subtle (default)
 
-<Demo code={`<span class="zui-badge">Default</span>
+<Demo
+  html={`<span class="zui-badge">Default</span>
 <span class="zui-badge zui-badge-color-emerald">Emerald</span>
 <span class="zui-badge zui-badge-color-amber">Amber</span>
-<span class="zui-badge zui-badge-color-red">Red</span>`}>
+<span class="zui-badge zui-badge-color-red">Red</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge>Default</Badge>
+<Badge color="emerald">Emerald</Badge>
+<Badge color="amber">Amber</Badge>
+<Badge color="red">Red</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge>Default</Badge>
+<Badge color="emerald">Emerald</Badge>
+<Badge color="amber">Amber</Badge>
+<Badge color="red">Red</Badge>`}
+>
   <span class="zui-badge">Default</span>
   <span class="zui-badge zui-badge-color-emerald">Emerald</span>
   <span class="zui-badge zui-badge-color-amber">Amber</span>
@@ -106,10 +146,26 @@ Controls how the colour is applied.
 
 ### Fill
 
-<Demo code={`<span class="zui-badge zui-badge-variant-fill">Default</span>
+<Demo
+  html={`<span class="zui-badge zui-badge-variant-fill">Default</span>
 <span class="zui-badge zui-badge-variant-fill zui-badge-color-emerald">Emerald</span>
 <span class="zui-badge zui-badge-variant-fill zui-badge-color-amber">Amber</span>
-<span class="zui-badge zui-badge-variant-fill zui-badge-color-red">Red</span>`}>
+<span class="zui-badge zui-badge-variant-fill zui-badge-color-red">Red</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge variant="fill">Default</Badge>
+<Badge variant="fill" color="emerald">Emerald</Badge>
+<Badge variant="fill" color="amber">Amber</Badge>
+<Badge variant="fill" color="red">Red</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge variant="fill">Default</Badge>
+<Badge variant="fill" color="emerald">Emerald</Badge>
+<Badge variant="fill" color="amber">Amber</Badge>
+<Badge variant="fill" color="red">Red</Badge>`}
+>
   <span class="zui-badge zui-badge-variant-fill">Default</span>
   <span class="zui-badge zui-badge-variant-fill zui-badge-color-emerald">Emerald</span>
   <span class="zui-badge zui-badge-variant-fill zui-badge-color-amber">Amber</span>
@@ -118,33 +174,31 @@ Controls how the colour is applied.
 
 ### Outline
 
-<Demo code={`<span class="zui-badge zui-badge-variant-outline">Default</span>
+<Demo
+  html={`<span class="zui-badge zui-badge-variant-outline">Default</span>
 <span class="zui-badge zui-badge-variant-outline zui-badge-color-emerald">Emerald</span>
 <span class="zui-badge zui-badge-variant-outline zui-badge-color-amber">Amber</span>
-<span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Red</span>`}>
+<span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Red</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge variant="outline">Default</Badge>
+<Badge variant="outline" color="emerald">Emerald</Badge>
+<Badge variant="outline" color="amber">Amber</Badge>
+<Badge variant="outline" color="red">Red</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge variant="outline">Default</Badge>
+<Badge variant="outline" color="emerald">Emerald</Badge>
+<Badge variant="outline" color="amber">Amber</Badge>
+<Badge variant="outline" color="red">Red</Badge>`}
+>
   <span class="zui-badge zui-badge-variant-outline">Default</span>
   <span class="zui-badge zui-badge-variant-outline zui-badge-color-emerald">Emerald</span>
   <span class="zui-badge zui-badge-variant-outline zui-badge-color-amber">Amber</span>
   <span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Red</span>
 </Demo>
-
-<CodeTabs
-  html={`<span class="zui-badge">Subtle (default)</span>
-<span class="zui-badge zui-badge-variant-fill zui-badge-color-emerald">Fill</span>
-<span class="zui-badge zui-badge-variant-outline zui-badge-color-red">Outline</span>`}
-  react={`import { Badge } from '@mrmartineau/zui/react'
-
-<Badge>Subtle (default)</Badge>
-<Badge variant="fill" color="emerald">Fill</Badge>
-<Badge variant="outline" color="red">Outline</Badge>`}
-  astro={`---
-import { Badge } from '@mrmartineau/zui/astro'
----
-
-<Badge>Subtle (default)</Badge>
-<Badge variant="fill" color="emerald">Fill</Badge>
-<Badge variant="outline" color="red">Outline</Badge>`}
-/>
 
 ## All Variants × Colours
 
@@ -153,7 +207,7 @@ import { Badge } from '@mrmartineau/zui/astro'
   return (
     <>
       <h3>{variant}</h3>
-      <Demo code={`<!-- ${variant} variant -->`}>
+      <Demo html={`<!-- ${variant} variant -->`}>
         {['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose', 'gray'].map((color) => (
           <span class={`zui-badge${variantClass} zui-badge-color-${color}`}>{color}</span>
         ))}
