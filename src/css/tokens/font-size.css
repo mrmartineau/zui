@@ -1,35 +1,35 @@
 @layer zui.base {
-  /* @link https://utopia.fyi/type/calculator?c=320,13,1.067,1350,16,1.125,10,4,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  /* @link https://utopia.fyi/type/calculator?c=320,14,1.067,1350,17,1.125,10,4,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
   :root {
-    /* Step -4: 10.0296px → 9.9887px */
-    --step--4: clamp(0.6243rem, 0.6276rem + -0.004vw, 0.6269rem);
-    /* Step -3: 10.7016px → 11.2373px */
-    --step--3: clamp(0.6689rem, 0.6585rem + 0.052vw, 0.7023rem);
-    /* Step -2: 11.4186px → 12.642px */
-    --step--2: clamp(0.7137rem, 0.6899rem + 0.1188vw, 0.7901rem);
-    /* Step -1: 12.1837px → 14.2222px */
-    --step--1: clamp(0.7615rem, 0.7219rem + 0.1979vw, 0.8889rem);
-    /* Step 0: 13px → 16px */
-    --step-0: clamp(0.8125rem, 0.7542rem + 0.2913vw, 1rem);
-    /* Step 1: 13.871px → 18px */
-    --step-1: clamp(0.8669rem, 0.7868rem + 0.4009vw, 1.125rem);
-    /* Step 2: 14.8004px → 20.25px */
-    --step-2: clamp(0.925rem, 0.8192rem + 0.5291vw, 1.2656rem);
-    /* Step 3: 15.792px → 22.7813px */
-    --step-3: clamp(0.987rem, 0.8513rem + 0.6786vw, 1.4238rem);
-    /* Step 4: 16.85px → 25.6289px */
-    --step-4: clamp(1.0531rem, 0.8827rem + 0.8523vw, 1.6018rem);
-    /* Step 5: 17.979px → 28.8325px */
-    --step-5: clamp(1.1237rem, 0.9129rem + 1.0537vw, 1.802rem);
-    /* Step 6: 19.1836px → 32.4366px */
-    --step-6: clamp(1.199rem, 0.9416rem + 1.2867vw, 2.0273rem);
-    /* Step 7: 20.4689px → 36.4912px */
-    --step-7: clamp(1.2793rem, 0.9682rem + 1.5556vw, 2.2807rem);
-    /* Step 8: 21.8403px → 41.0526px */
-    --step-8: clamp(1.365rem, 0.992rem + 1.8653vw, 2.5658rem);
-    /* Step 9: 23.3036px → 46.1841px */
-    --step-9: clamp(1.4565rem, 1.0122rem + 2.2214vw, 2.8865rem);
-    /* Step 10: 24.8649px → 51.9571px */
-    --step-10: clamp(1.5541rem, 1.028rem + 2.6303vw, 3.2473rem);
+    /* Step -4: 10.8012px → 10.613px */
+    --step--4: clamp(0.6633rem, 0.6787rem + -0.0183vw, 0.6751rem);
+    /* Step -3: 11.5248px → 11.9396px */
+    --step--3: clamp(0.7203rem, 0.7122rem + 0.0403vw, 0.7462rem);
+    /* Step -2: 12.297px → 13.4321px */
+    --step--2: clamp(0.7686rem, 0.7465rem + 0.1102vw, 0.8395rem);
+    /* Step -1: 13.1209px → 15.1111px */
+    --step--1: clamp(0.8201rem, 0.7814rem + 0.1932vw, 0.9444rem);
+    /* Step 0: 14px → 17px */
+    --step-0: clamp(0.875rem, 0.8167rem + 0.2913vw, 1.0625rem);
+    /* Step 1: 14.938px → 19.125px */
+    --step-1: clamp(0.9336rem, 0.8523rem + 0.4065vw, 1.1953rem);
+    /* Step 2: 15.9388px → 21.5156px */
+    --step-2: clamp(0.9962rem, 0.8879rem + 0.5414vw, 1.3447rem);
+    /* Step 3: 17.0067px → 24.2051px */
+    --step-3: clamp(1.0629rem, 0.9231rem + 0.6989vw, 1.5128rem);
+    /* Step 4: 18.1462px → 27.2307px */
+    --step-4: clamp(1.1341rem, 0.9577rem + 0.882vw, 1.7019rem);
+    /* Step 5: 19.362px → 30.6346px */
+    --step-5: clamp(1.2101rem, 0.9912rem + 1.0944vw, 1.9147rem);
+    /* Step 6: 20.6593px → 34.4639px */
+    --step-6: clamp(1.2912rem, 1.0232rem + 1.3403vw, 2.154rem);
+    /* Step 7: 22.0434px → 38.7719px */
+    --step-7: clamp(1.3777rem, 1.0529rem + 1.6241vw, 2.4232rem);
+    /* Step 8: 23.5203px → 43.6183px */
+    --step-8: clamp(1.47rem, 1.0798rem + 1.9513vw, 2.7261rem);
+    /* Step 9: 25.0962px → 49.0706px */
+    --step-9: clamp(1.5685rem, 1.103rem + 2.3276vw, 3.0669rem);
+    /* Step 10: 26.7776px → 55.2045px */
+    --step-10: clamp(1.6736rem, 1.1216rem + 2.7599vw, 3.4503rem);
   }
 }
