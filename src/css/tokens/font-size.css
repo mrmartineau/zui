@@ -1,6 +1,8 @@
 @layer zui.base {
-  /* @link https://utopia.fyi/type/calculator?c=320,14,1.067,1350,17,1.125,10,4,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  /* @link https://utopia.fyi/type/calculator/?c=320,14,1.067,1350,17,1.125,10,5,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12 */
   :root {
+    /* Step -5: 10.1229px → 9.4338px */
+    --step--5: clamp(0.5896rem, 0.6461rem + -0.0669vw, 0.6327rem);
     /* Step -4: 10.8012px → 10.613px */
     --step--4: clamp(0.6633rem, 0.6787rem + -0.0183vw, 0.6751rem);
     /* Step -3: 11.5248px → 11.9396px */
