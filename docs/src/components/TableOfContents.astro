@@ -14,7 +14,9 @@
     const list = document.getElementById('toc-list')
     if (!main || !list) return
 
-    const headings = main.querySelectorAll('h2, h3')
+    const headings = Array.from(main.querySelectorAll('h2, h3')).filter(
+      (h) => !h.closest('.demo')
+    )
     if (headings.length === 0) {
       const toc = document.querySelector('.toc') as HTMLElement
       if (toc) toc.style.display = 'none'
