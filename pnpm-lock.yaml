@@ -21,6 +21,9 @@ importers:
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.14
+      astro:
+        specifier: ^6.0.8
+        version: 6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3)
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
@@ -49,7 +52,7 @@ importers:
         specifier: file:..
         version: file:(astro@6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3))(react@19.2.4)(typescript@5.9.3)
       astro:
-        specifier: ^6.0.5
+        specifier: ^6.0.8
         version: 6.0.8(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.59.0)(typescript@5.9.3)
       wrangler:
         specifier: ^4.77.0
