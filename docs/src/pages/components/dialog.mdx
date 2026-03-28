@@ -18,7 +18,7 @@ Use `showModal()` to open the dialog as a modal (with backdrop and focus trap). 
   Open dialog
 </button>
 
-<dialog id="dialog-demo" class="zui-dialog">
+<dialog id="dialog-demo" class="zui-dialog" closedby="any">
   <div class="zui-dialog-header">
     <h2 class="zui-dialog-title">Dialog title</h2>
     <p class="zui-dialog-description">A short description of the dialog content.</p>
@@ -91,7 +91,7 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Dialo
   <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').showModal()">
     Open dialog
   </button>
-  <dialog id="dialog-usage-demo" class="zui-dialog">
+  <dialog id="dialog-usage-demo" class="zui-dialog" closedby="any">
     <div class="zui-dialog-header">
       <h2 class="zui-dialog-title">Dialog title</h2>
       <p class="zui-dialog-description">A short description of the dialog content.</p>
@@ -365,13 +365,141 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Butto
 
 ## Closing behaviour
 
-Clicking the backdrop or pressing <kbd>Esc</kbd> will close the dialog by default. To close on backdrop click, listen for the `click` event:
+The `closedby` attribute controls how a dialog can be dismissed. ZUI defaults to `closedby="any"` on all components.
 
-```html
-<dialog id="my-dialog" class="zui-dialog" onclick="if(event.target===this)this.close()">
-  ...
+| Value | Behaviour |
+|---|---|
+| `any` | Closed by backdrop click **or** Esc key (default) |
+| `closerequest` | Only closed by Esc key — backdrop click does nothing |
+| `none` | Cannot be dismissed by backdrop or Esc — requires a button or script |
+
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('dialog-closedby-any').showModal()">any (default)</button>
+<button class="zui-button" onclick="document.getElementById('dialog-closedby-closerequest').showModal()">closerequest</button>
+<button class="zui-button" onclick="document.getElementById('dialog-closedby-none').showModal()">none</button>
+
+<dialog id="dialog-closedby-any" class="zui-dialog" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">closedby="any"</h2>
+    <p class="zui-dialog-description">Click the backdrop or press Esc to close.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
 </dialog>
-```
+
+<dialog id="dialog-closedby-closerequest" class="zui-dialog" closedby="closerequest">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">closedby="closerequest"</h2>
+    <p class="zui-dialog-description">Only Esc closes this dialog — backdrop click does nothing.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-closedby-none" class="zui-dialog" closedby="none">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">closedby="none"</h2>
+    <p class="zui-dialog-description">Backdrop and Esc are both disabled — use the button below.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>`}
+  react={`import { useState } from 'react'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/react'
+
+function ClosedByDemo() {
+  const [closedby, setClosedby] = useState(null)
+
+  return (
+    <>
+      <Button onClick={() => setClosedby('any')}>any (default)</Button>
+      <Button onClick={() => setClosedby('closerequest')}>closerequest</Button>
+      <Button onClick={() => setClosedby('none')}>none</Button>
+      <Dialog open={!!closedby} closedby={closedby} onClose={() => setClosedby(null)}>
+        <DialogHeader>
+          <DialogTitle>closedby="{closedby}"</DialogTitle>
+          <DialogDescription>
+            {closedby === 'any' && 'Click the backdrop or press Esc to close.'}
+            {closedby === 'closerequest' && 'Only Esc closes this dialog — backdrop click does nothing.'}
+            {closedby === 'none' && 'Backdrop and Esc are both disabled — use the button below.'}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setClosedby(null)}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('dialog-closedby-any').showModal()">any (default)</Button>
+<Button onclick="document.getElementById('dialog-closedby-cr').showModal()">closerequest</Button>
+<Button onclick="document.getElementById('dialog-closedby-none').showModal()">none</Button>
+
+<Dialog id="dialog-closedby-any" closedby="any">
+  <DialogHeader>
+    <DialogTitle>closedby="any"</DialogTitle>
+    <DialogDescription>Click the backdrop or press Esc to close.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-closedby-cr" closedby="closerequest">
+  <DialogHeader>
+    <DialogTitle>closedby="closerequest"</DialogTitle>
+    <DialogDescription>Only Esc closes this dialog — backdrop click does nothing.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-closedby-none" closedby="none">
+  <DialogHeader>
+    <DialogTitle>closedby="none"</DialogTitle>
+    <DialogDescription>Backdrop and Esc are both disabled — use the button below.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>`}
+>
+  <button class="zui-button" onclick="document.getElementById('dialog-closedby-any-demo').showModal()">any (default)</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-closedby-cr-demo').showModal()">closerequest</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-closedby-none-demo').showModal()">none</button>
+
+  <dialog id="dialog-closedby-any-demo" class="zui-dialog" closedby="any">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">closedby="any"</h2>
+      <p class="zui-dialog-description">Click the backdrop or press Esc to close.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-closedby-cr-demo" class="zui-dialog" closedby="closerequest">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">closedby="closerequest"</h2>
+      <p class="zui-dialog-description">Only Esc closes this dialog — backdrop click does nothing.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-closedby-none-demo" class="zui-dialog" closedby="none">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">closedby="none"</h2>
+      <p class="zui-dialog-description">Backdrop and Esc are both disabled — use the button below.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+</Demo>
 
 ## With form
 

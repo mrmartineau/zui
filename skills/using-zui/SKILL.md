@@ -235,7 +235,7 @@ Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in back
 | full | `zui-dialog-size-full` |
 
 ```html
-<dialog class="zui-dialog">
+<dialog class="zui-dialog" closedby="any">
   <div class="zui-dialog-header">
     <h2 class="zui-dialog-title">Title</h2>
     <p class="zui-dialog-description">Description</p>

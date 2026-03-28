@@ -8,12 +8,14 @@ type DialogVariantProps = VariantProps<typeof dialogVariants>
 interface Props extends HTMLAttributes<'dialog'>, DialogVariantProps {
   id: string
   class?: string
+  /** Controls how the dialog can be dismissed. Defaults to `"any"` (backdrop click or Esc). */
+  closedby?: 'any' | 'closerequest' | 'none'
 }
 
-const { id, class: className, size, ...props } = Astro.props
+const { id, class: className, size, closedby = 'any', ...props } = Astro.props
 const classes = dialogVariants({ size, class: className })
 ---
 
-<dialog id={id} class={classes} {...props}>
+<dialog id={id} class={classes} closedby={closedby} {...props}>
   <slot />
 </dialog>
