@@ -26,6 +26,15 @@ import { Badge } from '@mrmartineau/zui/astro'
 ---
 
 <Badge>Default</Badge>`}
+  solid={`import { Badge } from '@mrmartineau/zui/solid'
+
+<Badge>Default</Badge>`}
+  vue={`<script setup>
+import { Badge } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Badge>Default</Badge>
+</template>`}
 />
 
 ## Colours
@@ -86,6 +95,19 @@ import { Badge } from '@mrmartineau/zui/astro'
 <Badge color="emerald">Emerald</Badge>
 <Badge color="red">Red</Badge>
 <Badge color="blue">Blue</Badge>`}
+  solid={`import { Badge } from '@mrmartineau/zui/solid'
+
+<Badge color="emerald">Emerald</Badge>
+<Badge color="red">Red</Badge>
+<Badge color="blue">Blue</Badge>`}
+  vue={`<script setup>
+import { Badge } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Badge color="emerald">Emerald</Badge>
+  <Badge color="red">Red</Badge>
+  <Badge color="blue">Blue</Badge>
+</template>`}
 />
 
 ## Variants
@@ -144,6 +166,19 @@ import { Badge } from '@mrmartineau/zui/astro'
 <Badge>Subtle (default)</Badge>
 <Badge variant="fill" color="emerald">Fill</Badge>
 <Badge variant="outline" color="red">Outline</Badge>`}
+  solid={`import { Badge } from '@mrmartineau/zui/solid'
+
+<Badge>Subtle (default)</Badge>
+<Badge variant="fill" color="emerald">Fill</Badge>
+<Badge variant="outline" color="red">Outline</Badge>`}
+  vue={`<script setup>
+import { Badge } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Badge>Subtle (default)</Badge>
+  <Badge variant="fill" color="emerald">Fill</Badge>
+  <Badge variant="outline" color="red">Outline</Badge>
+</template>`}
 />
 
 ## All Variants × Colours

@@ -33,6 +33,17 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 
 <Label for="email">Email address</Label>
 <Input type="email" id="email" />`}
+  solid={`import { Label, Input } from '@mrmartineau/zui/solid'
+
+<Label for="email">Email address</Label>
+<Input type="email" id="email" />`}
+  vue={`<script setup>
+import { Label, Input } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Label for="email">Email address</Label>
+  <Input type="email" id="email" />
+</template>`}
 />
 
 ## Required

@@ -32,6 +32,17 @@ import { Button } from '@mrmartineau/zui/astro'
 
 <Button>Click me</Button>
 <Button href="/action">Link as button</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button>Click me</Button>
+<Button href="/action">Link as button</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button>Click me</Button>
+  <Button href="/action">Link as button</Button>
+</template>`}
 />
 
 ## Button Types
@@ -87,6 +98,23 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button>Fill (default)</Button>
+<Button variant="subtle">Subtle</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button>Fill (default)</Button>
+  <Button variant="subtle">Subtle</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+</template>`}
 />
 
 ## Accents
@@ -117,6 +145,19 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button>Theme (default)</Button>
 <Button accent="accent">Accent</Button>
 <Button accent="destructive">Destructive</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button>Theme (default)</Button>
+<Button accent="accent">Accent</Button>
+<Button accent="destructive">Destructive</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button>Theme (default)</Button>
+  <Button accent="accent">Accent</Button>
+  <Button accent="destructive">Destructive</Button>
+</template>`}
 />
 
 ## Sizes
@@ -157,6 +198,23 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button>Medium (default)</Button>
 <Button size="lg">Large</Button>
 <Button size="xl">Extra large</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button size="xs">Extra small</Button>
+<Button size="sm">Small</Button>
+<Button>Medium (default)</Button>
+<Button size="lg">Large</Button>
+<Button size="xl">Extra large</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button size="xs">Extra small</Button>
+  <Button size="sm">Small</Button>
+  <Button>Medium (default)</Button>
+  <Button size="lg">Large</Button>
+  <Button size="xl">Extra large</Button>
+</template>`}
 />
 
 ## Shapes
@@ -192,6 +250,21 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button shape="hard">Hard (square)</Button>
 <Button shape="soft">Soft (pill)</Button>
 <Button shape="squircle">Squircle</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button>Default (rounded)</Button>
+<Button shape="hard">Hard (square)</Button>
+<Button shape="soft">Soft (pill)</Button>
+<Button shape="squircle">Squircle</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button>Default (rounded)</Button>
+  <Button shape="hard">Hard (square)</Button>
+  <Button shape="soft">Soft (pill)</Button>
+  <Button shape="squircle">Squircle</Button>
+</template>`}
 />
 
 ## Icon Buttons
@@ -248,6 +321,27 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button icon variant="outline" aria-label="Edit">
   <i class="ph ph-pencil-simple"></i>
 </Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button icon aria-label="Settings">
+  <i class="ph ph-gear" />
+</Button>
+
+<Button icon variant="outline" aria-label="Edit">
+  <i class="ph ph-pencil-simple" />
+</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button icon aria-label="Settings">
+    <i class="ph ph-gear" />
+  </Button>
+
+  <Button icon variant="outline" aria-label="Edit">
+    <i class="ph ph-pencil-simple" />
+  </Button>
+</template>`}
 />
 
 ### Icon Button Sizes
@@ -307,6 +401,27 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button variant="ghost" accent="destructive">
   Ghost Destructive
 </Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button variant="outline" accent="accent">
+  Outline Accent
+</Button>
+
+<Button variant="ghost" accent="destructive">
+  Ghost Destructive
+</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button variant="outline" accent="accent">
+    Outline Accent
+  </Button>
+
+  <Button variant="ghost" accent="destructive">
+    Ghost Destructive
+  </Button>
+</template>`}
 />
 
 ## Kitchen Sink
@@ -368,6 +483,17 @@ import { Button } from '@mrmartineau/zui/astro'
 
 <Button disabled>Fill</Button>
 <Button variant="outline" disabled>Outline</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button disabled>Fill</Button>
+<Button variant="outline" disabled>Outline</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button disabled>Fill</Button>
+  <Button variant="outline" disabled>Outline</Button>
+</template>`}
 />
 
 ## As Links
@@ -394,4 +520,17 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button href="/action">Default link</Button>
 <Button href="/action" variant="outline" accent="accent">Outline link</Button>
 <Button href="/action" variant="link">Text link</Button>`}
+  solid={`import { Button } from '@mrmartineau/zui/solid'
+
+<Button href="/action">Default link</Button>
+<Button href="/action" variant="outline" accent="accent">Outline link</Button>
+<Button href="/action" variant="link">Text link</Button>`}
+  vue={`<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button href="/action">Default link</Button>
+  <Button href="/action" variant="outline" accent="accent">Outline link</Button>
+  <Button href="/action" variant="link">Text link</Button>
+</template>`}
 />

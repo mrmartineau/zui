@@ -121,6 +121,45 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@
     </TableRow>
   </TableBody>
 </Table>`}
+  solid={`import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/solid'
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+  vue={`<script setup>
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead>Role</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Alice Johnson</TableCell>
+        <TableCell>Active</TableCell>
+        <TableCell>Designer</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</template>`}
 />
 
 ## With Caption

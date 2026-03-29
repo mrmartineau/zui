@@ -41,6 +41,19 @@ import { Tooltip, Button } from '@mrmartineau/zui/astro'
 <Tooltip text="Helpful information">
   <Button>Hover me</Button>
 </Tooltip>`}
+  solid={`import { Tooltip, Button } from '@mrmartineau/zui/solid'
+
+<Tooltip text="Helpful information">
+  <Button>Hover me</Button>
+</Tooltip>`}
+  vue={`<script setup>
+import { Tooltip, Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Tooltip text="Helpful information">
+    <Button>Hover me</Button>
+  </Tooltip>
+</template>`}
 />
 
 ## Placement
@@ -135,4 +148,30 @@ import { Tooltip, Button } from '@mrmartineau/zui/astro'
 <Tooltip text="Appears below" placement="bottom"><Button>Bottom</Button></Tooltip>
 <Tooltip text="Appears left" placement="left"><Button>Left</Button></Tooltip>
 <Tooltip text="Appears right" placement="right"><Button>Right</Button></Tooltip>`}
+  solid={`import { Tooltip, Button } from '@mrmartineau/zui/solid'
+
+<Tooltip text="Appears above">
+  <Button>Top</Button>
+</Tooltip>
+
+<Tooltip text="Appears below" placement="bottom">
+  <Button>Bottom</Button>
+</Tooltip>
+
+<Tooltip text="Appears left" placement="left">
+  <Button>Left</Button>
+</Tooltip>
+
+<Tooltip text="Appears right" placement="right">
+  <Button>Right</Button>
+</Tooltip>`}
+  vue={`<script setup>
+import { Tooltip, Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Tooltip text="Appears above"><Button>Top</Button></Tooltip>
+  <Tooltip text="Appears below" placement="bottom"><Button>Bottom</Button></Tooltip>
+  <Tooltip text="Appears left" placement="left"><Button>Left</Button></Tooltip>
+  <Tooltip text="Appears right" placement="right"><Button>Right</Button></Tooltip>
+</template>`}
 />

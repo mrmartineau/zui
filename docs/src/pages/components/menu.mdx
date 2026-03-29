@@ -59,6 +59,25 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
   <MenuItem>Settings</MenuItem>
   <MenuItem>Logout</MenuItem>
 </Menu>`}
+  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
+
+<Menu>
+  <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem>Profile</MenuItem>
+  <MenuItem>Settings</MenuItem>
+  <MenuItem>Logout</MenuItem>
+</Menu>`}
+  vue={`<script setup>
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Menu>
+    <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+    <MenuItem>Logout</MenuItem>
+  </Menu>
+</template>`}
 />
 
 ## With icons

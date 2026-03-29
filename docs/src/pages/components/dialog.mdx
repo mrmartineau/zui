@@ -127,6 +127,70 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Dialo
     <Button>Confirm</Button>
   </DialogFooter>
 </Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from '@mrmartineau/zui/solid'
+
+function MyComponent() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+      <Dialog open={open()} onClose={() => setOpen(false)}>
+        <DialogHeader>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogDescription>A short description.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Dialog body content.</p>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={() => setOpen(false)}>Confirm</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<script setup>
+import { ref } from 'vue'
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from '@mrmartineau/zui/vue'
+
+const open = ref(false)
+</script>
+
+<template>
+  <Button @click="open = true">Open dialog</Button>
+  <Dialog :open="open" @close="open = false">
+    <DialogHeader>
+      <DialogTitle>Dialog title</DialogTitle>
+      <DialogDescription>A short description.</DialogDescription>
+    </DialogHeader>
+    <DialogBody>
+      <p>Dialog body content.</p>
+    </DialogBody>
+    <DialogFooter>
+      <Button variant="outline" @click="open = false">Cancel</Button>
+      <Button @click="open = false">Confirm</Button>
+    </DialogFooter>
+  </Dialog>
+</template>`}
 />
 
 ## Sizes
@@ -242,6 +306,21 @@ import { Dialog } from '@mrmartineau/zui/astro'
 <Dialog id="d2">…</Dialog>           <!-- md default -->
 <Dialog id="d3" size="lg">…</Dialog>
 <Dialog id="d4" size="full">…</Dialog>`}
+  solid={`import { Dialog } from '@mrmartineau/zui/solid'
+
+<Dialog size="sm">…</Dialog>
+<Dialog>…</Dialog>           {/* md default */}
+<Dialog size="lg">…</Dialog>
+<Dialog size="full">…</Dialog>`}
+  vue={`<script setup>
+import { Dialog } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Dialog size="sm">…</Dialog>
+  <Dialog>…</Dialog>           <!-- md default -->
+  <Dialog size="lg">…</Dialog>
+  <Dialog size="full">…</Dialog>
+</template>`}
 />
 
 ## Close button

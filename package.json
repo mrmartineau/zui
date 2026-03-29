@@ -1,7 +1,7 @@
 {
   "name": "@mrmartineau/zui",
   "version": "0.4.0",
-  "description": "ZUI — a CSS UI library with React and Astro components",
+  "description": "ZUI — a CSS UI library with React, Astro, Solid, and Vue components",
   "type": "module",
   "exports": {
     "./css": {
@@ -31,6 +31,18 @@
     },
     "./astro/*": {
       "import": "./src/astro/*"
+    },
+    "./solid": {
+      "import": "./src/solid/index.ts"
+    },
+    "./solid/*": {
+      "import": "./src/solid/*"
+    },
+    "./vue": {
+      "import": "./src/vue/index.ts"
+    },
+    "./vue/*": {
+      "import": "./src/vue/*"
     }
   },
   "bin": {
@@ -42,6 +54,8 @@
     "src/css",
     "src/astro",
     "src/react",
+    "src/solid",
+    "src/vue",
     "src/shared",
     "src/utils",
     "skills"
@@ -69,13 +83,21 @@
     "typescript": "^5.8.0"
   },
   "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0"
+    "react": "^18.0.0 || ^19.0.0",
+    "solid-js": "^1.0.0",
+    "vue": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
       "optional": true
     },
     "astro": {
+      "optional": true
+    },
+    "solid-js": {
+      "optional": true
+    },
+    "vue": {
       "optional": true
     }
   },

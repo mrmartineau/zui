@@ -60,6 +60,27 @@ import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmarti
   </CardHeader>
   <CardBody>Content here.</CardBody>
 </Card>`}
+  solid={`import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/solid'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Description text.</CardDescription>
+  </CardHeader>
+  <CardBody>Content here.</CardBody>
+</Card>`}
+  vue={`<script setup>
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>Card Title</CardTitle>
+      <CardDescription>Description text.</CardDescription>
+    </CardHeader>
+    <CardBody>Content here.</CardBody>
+  </Card>
+</template>`}
 />
 
 ## With Footer
@@ -140,4 +161,17 @@ import { Card, CardTitle } from '@mrmartineau/zui/astro'
 <Card href="/details">
   <CardTitle>Clickable Card</CardTitle>
 </Card>`}
+  solid={`import { Card, CardTitle } from '@mrmartineau/zui/solid'
+
+<Card href="/details">
+  <CardTitle>Clickable Card</CardTitle>
+</Card>`}
+  vue={`<script setup>
+import { Card, CardTitle } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Card href="/details">
+    <CardTitle>Clickable Card</CardTitle>
+  </Card>
+</template>`}
 />

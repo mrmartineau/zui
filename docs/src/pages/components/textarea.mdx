@@ -26,6 +26,15 @@ import { Textarea } from '@mrmartineau/zui/astro'
 ---
 
 <Textarea placeholder="Write something..." />`}
+  solid={`import { Textarea } from '@mrmartineau/zui/solid'
+
+<Textarea placeholder="Write something..." />`}
+  vue={`<script setup>
+import { Textarea } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Textarea placeholder="Write something..." />
+</template>`}
 />
 
 ## With Label

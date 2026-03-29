@@ -26,6 +26,15 @@ import { Input } from '@mrmartineau/zui/astro'
 ---
 
 <Input type="text" placeholder="Enter your name" />`}
+  solid={`import { Input } from '@mrmartineau/zui/solid'
+
+<Input type="text" placeholder="Enter your name" />`}
+  vue={`<script setup>
+import { Input } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Input type="text" placeholder="Enter your name" />
+</template>`}
 />
 
 ## Input Types

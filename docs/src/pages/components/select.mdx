@@ -48,6 +48,23 @@ import { Select } from '@mrmartineau/zui/astro'
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
 </Select>`}
+  solid={`import { Select } from '@mrmartineau/zui/solid'
+
+<Select>
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+</Select>`}
+  vue={`<script setup>
+import { Select } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Select>
+    <option value="">Choose an option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </Select>
+</template>`}
 />
 
 ## With Label

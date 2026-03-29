@@ -103,6 +103,42 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
     </AccordionContent>
   </AccordionItem>
 </Accordion>`}
+  solid={`import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/solid'
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Is ZUI free to use?</AccordionTrigger>
+    <AccordionContent>
+      <p>Yes, ZUI is open source and free to use in any project.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
+    <AccordionContent>
+      <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  vue={`<script setup>
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'
+</script>
+
+<template>
+  <Accordion>
+    <AccordionItem>
+      <AccordionTrigger>Is ZUI free to use?</AccordionTrigger>
+      <AccordionContent>
+        <p>Yes, ZUI is open source and free to use in any project.</p>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
+      <AccordionContent>
+        <p>ZUI provides CSS classes for any framework, plus first-class React and Astro component wrappers.</p>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>`}
 />
 
 ## Exclusive (only one open at a time)
@@ -204,6 +240,23 @@ Remove the outer border and background, leaving only the item dividers.
     <AccordionContent>Content here.</AccordionContent>
   </AccordionItem>
 </Accordion>`}
+  solid={`<Accordion flush>
+  <AccordionItem>
+    <AccordionTrigger>First item</AccordionTrigger>
+    <AccordionContent>Content here.</AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  vue={`<script setup>
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Accordion :flush="true">
+    <AccordionItem>
+      <AccordionTrigger>First item</AccordionTrigger>
+      <AccordionContent>Content here.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>`}
 />
 
 ## CSS custom properties

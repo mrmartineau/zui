@@ -67,6 +67,27 @@ import { Popover, Button } from '@mrmartineau/zui/astro'
 <Popover id="my-popover">
   <p>Popover content goes here.</p>
 </Popover>`}
+  solid={`import { Popover, Button } from '@mrmartineau/zui/solid'
+
+// The Popover component sets position-anchor automatically from the id.
+// Set anchor-name on the trigger to match.
+<Button popovertarget="my-popover" style={{ 'anchor-name': '--my-popover' }}>
+  Open popover
+</Button>
+<Popover id="my-popover">
+  <p>Popover content goes here.</p>
+</Popover>`}
+  vue={`<script setup>
+import { Popover, Button } from '@mrmartineau/zui/vue'
+</script>
+<template>
+  <Button popovertarget="my-popover" style="anchor-name: --my-popover">
+    Open popover
+  </Button>
+  <Popover id="my-popover">
+    <p>Popover content goes here.</p>
+  </Popover>
+</template>`}
 />
 
 ## Auto vs manual
