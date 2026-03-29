@@ -57,9 +57,13 @@
     "docs:dev": "pnpm run build && pnpm --filter docs run dev",
     "docs:build": "pnpm run build && pnpm --filter docs run build",
     "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
-    "release": "release-it"
+    "release": "release-it",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "pnpm run build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.30.0",
     "@tsdown/css": "^0.21.4",
     "@types/react": "^19.0.0",
     "astro": "^6.0.8",
