@@ -36,6 +36,26 @@ import { Select } from '@mrmartineau/zui/astro'
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
 </Select>`}
+  solid={`import { Select } from '@mrmartineau/zui/solid'
+
+<Select>
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</Select>`}
+  vue={`<template>
+  <Select>
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</Select>
+</template>
+
+<script setup>
+import { Select } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <select class="zui-select">
     <option value="">Choose an option</option>
@@ -78,6 +98,30 @@ import { Label, Select } from '@mrmartineau/zui/astro'
   <option value="de">Germany</option>
   <option value="fr">France</option>
 </Select>`}
+  solid={`import { Label, Select } from '@mrmartineau/zui/solid'
+
+<Label htmlFor="country">Country</Label>
+<Select id="country">
+  <option value="">Select a country</option>
+  <option value="uk">United Kingdom</option>
+  <option value="us">United States</option>
+  <option value="de">Germany</option>
+  <option value="fr">France</option>
+</Select>`}
+  vue={`<template>
+  <Label for="country">Country</Label>
+<Select id="country">
+  <option value="">Select a country</option>
+  <option value="uk">United Kingdom</option>
+  <option value="us">United States</option>
+  <option value="de">Germany</option>
+  <option value="fr">France</option>
+</Select>
+</template>
+
+<script setup>
+import { Label, Select } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="country">Country</label>
@@ -109,6 +153,20 @@ import { Select } from '@mrmartineau/zui/astro'
 <Select disabled>
   <option>Cannot change</option>
 </Select>`}
+  solid={`import { Select } from '@mrmartineau/zui/solid'
+
+<Select disabled>
+  <option>Cannot change</option>
+</Select>`}
+  vue={`<template>
+  <Select disabled>
+  <option>Cannot change</option>
+</Select>
+</template>
+
+<script setup>
+import { Select } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <select class="zui-select" disabled>
     <option>Cannot change</option>

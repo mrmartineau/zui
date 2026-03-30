@@ -1,0 +1,225 @@
+---
+layout: ../../layouts/Layout.astro
+title: Using with Vue
+---
+
+# Using with Vue
+
+ZUI ships first-party Vue 3 components (SFCs with `<script setup>`) that wrap the underlying CSS classes, giving you typed props and variant support out of the box.
+
+## Setup
+
+Install ZUI and import the CSS in your app's entry point:
+
+```ts
+// main.ts
+import '@mrmartineau/zui/css'
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
+```
+
+Then import components from `@mrmartineau/zui/vue`:
+
+```vue
+<script setup>
+import { Button, Badge, Input } from '@mrmartineau/zui/vue'
+</script>
+```
+
+## Available components
+
+All components are exported from `@mrmartineau/zui/vue`:
+
+- **Button** — with `variant`, `color`, `size`, `shape`, and `icon` props
+- **Badge** — with `variant` and `color` props
+- **Avatar** — with `size` and `shape` props, and a `fallback` slot
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
+- **Input**, **Textarea**, **Select**
+- **Label**, **Checkbox**, **Radio**
+- **Text**, **ZuiLink**, **Code**, **Pre**, **Prose**
+- **Table**, **TableHeader**, **TableBody**, **TableFooter**, **TableRow**, **TableHead**, **TableCell**, **TableCaption**
+- **Tooltip**, **Popover**, **Dialog** and sub-components
+- **Menu**, **MenuTrigger**, **MenuItem**
+- **Collapsible**, **CollapsibleTrigger**, **CollapsibleContent**
+- **Accordion**, **AccordionItem**, **AccordionTrigger**, **AccordionContent**
+
+Every component uses `defineOptions({ inheritAttrs: false })` and `v-bind="$attrs"` on the root element, so all standard HTML attributes are forwarded.
+
+> **Note:** The link component is exported as `ZuiLink` to avoid conflicts with Vue Router's `<RouterLink>`.
+
+## Component examples
+
+### Button
+
+```vue
+<template>
+  <Button variant="fill" color="theme">Save</Button>
+  <Button variant="outline" color="accent">Cancel</Button>
+  <Button variant="ghost" size="sm">Settings</Button>
+  <Button variant="subtle" color="destructive">Delete</Button>
+  <Button href="/about">About (renders as anchor)</Button>
+</template>
+
+<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+```
+
+Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
+
+Colours: `theme`, `accent`, `destructive`
+
+Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
+
+Shapes: `default`, `hard`, `soft`, `squircle`
+
+### Badge
+
+```vue
+<template>
+  <Badge color="green">Active</Badge>
+  <Badge variant="fill" color="red">Error</Badge>
+  <Badge variant="outline" color="blue">Info</Badge>
+</template>
+
+<script setup>
+import { Badge } from '@mrmartineau/zui/vue'
+</script>
+```
+
+### Card
+
+```vue
+<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>John Doe</CardTitle>
+      <CardDescription>Software Engineer</CardDescription>
+    </CardHeader>
+    <CardBody>
+      <p>Card content goes here.</p>
+    </CardBody>
+  </Card>
+</template>
+
+<script setup>
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/vue'
+</script>
+```
+
+Pass an `href` prop to make the card an interactive link:
+
+```vue
+<template>
+  <Card href="/users/1">
+    <CardBody>Clickable card</CardBody>
+  </Card>
+</template>
+```
+
+### Forms
+
+```vue
+<template>
+  <form @submit.prevent="onSubmit">
+    <Label for="name">Name</Label>
+    <Input id="name" type="text" placeholder="Your name" />
+
+    <Label for="email">Email</Label>
+    <Input id="email" type="email" placeholder="you@example.com" />
+
+    <Label for="message">Message</Label>
+    <Textarea id="message" :rows="4" placeholder="Your message" />
+
+    <Label for="role">Role</Label>
+    <Select id="role">
+      <option value="dev">Developer</option>
+      <option value="design">Designer</option>
+    </Select>
+
+    <Checkbox>I agree to the terms</Checkbox>
+
+    <Radio name="plan" value="free">Free</Radio>
+    <Radio name="plan" value="pro">Pro</Radio>
+
+    <Button type="submit">Submit</Button>
+  </form>
+</template>
+
+<script setup>
+import { Label, Input, Textarea, Select, Checkbox, Radio, Button } from '@mrmartineau/zui/vue'
+</script>
+```
+
+### Typography
+
+```vue
+<template>
+  <Prose>
+    <Text size="lg">Large text</Text>
+    <Text size="sm">Small text</Text>
+    <p>
+      Visit the <ZuiLink href="/docs">documentation</ZuiLink> for more info.
+    </p>
+    <p>
+      Run <Code>npm install @mrmartineau/zui</Code> to get started.
+    </p>
+  </Prose>
+</template>
+
+<script setup>
+import { Text, ZuiLink, Code, Prose } from '@mrmartineau/zui/vue'
+</script>
+```
+
+## Using variant helpers directly
+
+ZUI exports the `buttonVariants` and `badgeVariants` functions if you need to generate class strings manually:
+
+```ts
+import { buttonVariants, badgeVariants } from '@mrmartineau/zui/vue'
+
+const classes = buttonVariants({ variant: 'outline', size: 'sm' })
+// → "zui-button zui-button-variant-outline zui-button-size-sm …"
+```
+
+## Colour scheme composable
+
+```vue
+<template>
+  <button @click="set(scheme === 'dark' ? 'light' : 'dark')">{{ scheme }}</button>
+</template>
+
+<script setup>
+import { useColorScheme } from '@mrmartineau/zui/vue'
+
+const { scheme, set } = useColorScheme()
+</script>
+```
+
+## Using CSS classes directly
+
+You can always use the underlying CSS classes without the Vue components:
+
+```vue
+<template>
+  <div class="zui-card">
+    <div class="zui-card-header">
+      <h2 class="zui-card-title">Title</h2>
+    </div>
+  </div>
+</template>
+```
+
+## Theming
+
+ZUI themes are pure CSS — override custom properties in your stylesheet. See the [Theming](/theming) page for full details.
+
+```css
+:root {
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --radius-scale: 1.5;
+}
+```

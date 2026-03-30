@@ -29,6 +29,16 @@ import { Avatar } from '@mrmartineau/zui/astro'
 ---
 
 <Avatar src="/avatar.webp" alt="User" />`}
+  solid={`import { Avatar } from '@mrmartineau/zui/solid'
+
+<Avatar src="/avatar.webp" alt="User" />`}
+  vue={`<template>
+  <Avatar src="/avatar.webp" alt="User" />
+</template>
+
+<script setup>
+import { Avatar } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
@@ -54,6 +64,16 @@ import { Avatar } from '@mrmartineau/zui/astro'
 ---
 
 <Avatar />`}
+  solid={`import { Avatar } from '@mrmartineau/zui/solid'
+
+<Avatar />`}
+  vue={`<template>
+  <Avatar />
+</template>
+
+<script setup>
+import { Avatar } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
@@ -74,6 +94,16 @@ import { Avatar } from '@mrmartineau/zui/astro'
 ---
 
 <Avatar fallback="AB" />`}
+  solid={`import { Avatar } from '@mrmartineau/zui/solid'
+
+<Avatar fallback="AB" />`}
+  vue={`<template>
+  <Avatar fallback="AB" />
+</template>
+
+<script setup>
+import { Avatar } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback">AB</span>
@@ -104,6 +134,20 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <Avatar size="sm" fallback="AB" />
 <Avatar fallback="AB" />
 <Avatar size="lg" fallback="AB" />`}
+  solid={`import { Avatar } from '@mrmartineau/zui/solid'
+
+<Avatar size="sm" fallback="AB" />
+<Avatar fallback="AB" />
+<Avatar size="lg" fallback="AB" />`}
+  vue={`<template>
+  <Avatar size="sm" fallback="AB" />
+<Avatar fallback="AB" />
+<Avatar size="lg" fallback="AB" />
+</template>
+
+<script setup>
+import { Avatar } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <span class="zui-avatar zui-avatar-size-sm">
     <span class="zui-avatar-fallback">AB</span>
@@ -145,6 +189,22 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <Avatar shape="hard" fallback="AB" />
 <Avatar shape="soft" fallback="AB" />
 <Avatar shape="squircle" fallback="AB" />`}
+  solid={`import { Avatar } from '@mrmartineau/zui/solid'
+
+<Avatar fallback="AB" />
+<Avatar shape="hard" fallback="AB" />
+<Avatar shape="soft" fallback="AB" />
+<Avatar shape="squircle" fallback="AB" />`}
+  vue={`<template>
+  <Avatar fallback="AB" />
+<Avatar shape="hard" fallback="AB" />
+<Avatar shape="soft" fallback="AB" />
+<Avatar shape="squircle" fallback="AB" />
+</template>
+
+<script setup>
+import { Avatar } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback">AB</span>

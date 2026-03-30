@@ -5,7 +5,9 @@ title: Other UI Libraries
 
 # Using with other UI libraries
 
-ZUI is a CSS-first library. The React and Astro components are thin wrappers around CSS classes, so ZUI works with **any** UI library or framework — Vue, Svelte, Solid, Angular, Web Components, or plain HTML.
+ZUI is a CSS-first library. The React, Astro, Solid, and Vue components are thin wrappers around CSS classes, so ZUI works with **any** UI library or framework — Svelte, Angular, Web Components, or plain HTML.
+
+ZUI ships first-party wrappers for [React](/guides/react), [Astro](/guides/astro), [Solid](/guides/solid), and [Vue](/guides/vue). For other frameworks, use the CSS classes directly.
 
 Install ZUI and import the stylesheet however your framework handles CSS
 
@@ -135,30 +137,6 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 
 ## Framework examples
 
-### Vue
-
-```vue
-<template>
-  <button class="zui-button zui-button-variant-fill zui-button-color-theme">
-    Save
-  </button>
-  <span class="zui-badge zui-badge-color-green">Active</span>
-
-  <div class="zui-card">
-    <div class="zui-card-header">
-      <h2 class="zui-card-title">{{ title }}</h2>
-      <p class="zui-card-description">{{ description }}</p>
-    </div>
-    <div class="zui-card-body">
-      <input class="zui-input" v-model="email" type="email" placeholder="Email" />
-      <button class="zui-button zui-button-variant-outline" @click="submit">
-        Submit
-      </button>
-    </div>
-  </div>
-</template>
-```
-
 ### Svelte
 
 ```svelte
@@ -179,30 +157,6 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
     </button>
   </div>
 </div>
-```
-
-### Solid
-
-```tsx
-function App() {
-  return (
-    <>
-      <button class="zui-button zui-button-variant-fill zui-button-color-theme">
-        Save
-      </button>
-      <span class="zui-badge zui-badge-color-green">Active</span>
-
-      <div class="zui-card">
-        <div class="zui-card-header">
-          <h2 class="zui-card-title">{title()}</h2>
-        </div>
-        <div class="zui-card-body">
-          <input class="zui-input" type="email" placeholder="Email" />
-        </div>
-      </div>
-    </>
-  )
-}
 ```
 
 ### Plain HTML
@@ -291,38 +245,32 @@ ZUI ships utility classes you can use in any framework. Note that spacing, flex,
 
 ## Building wrapper components
 
-You can create thin wrapper components in any framework using the CSS classes. Here's a Vue example:
+You can create thin wrapper components in any framework using the CSS classes. Here's a Svelte example:
 
-```vue
-<!-- ZButton.vue -->
-<template>
-  <component
-    :is="href ? 'a' : 'button'"
-    :href="href"
-    :class="classes"
-  >
-    <slot />
-  </component>
-</template>
+```svelte
+<!-- Button.svelte -->
+<script>
+  export let variant = 'fill'
+  export let color = 'theme'
+  export let size = undefined
+  export let href = undefined
 
-<script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-  variant: { type: String, default: 'fill' },
-  accent: { type: String, default: 'primary' },
-  size: { type: String, default: null },
-  href: { type: String, default: null },
-})
-
-const classes = computed(() => [
-  'zui-button',
-  `zui-button-variant-${props.variant}`,
-  `zui-button-color-${props.accent}`,
-  props.size && `zui-button-size-${props.size}`,
-].filter(Boolean))
+  $: classes = [
+    'zui-button',
+    `zui-button-variant-${variant}`,
+    `zui-button-color-${color}`,
+    size && `zui-button-size-${size}`,
+  ].filter(Boolean).join(' ')
 </script>
+
+{#if href}
+  <a {href} class={classes}><slot /></a>
+{:else}
+  <button class={classes} on:click><slot /></button>
+{/if}
 ```
+
+> **Tip:** ZUI already ships first-party wrappers for [React](/guides/react), [Astro](/guides/astro), [Solid](/guides/solid), and [Vue](/guides/vue).
 
 ## CSS Layers
 

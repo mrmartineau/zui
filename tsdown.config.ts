@@ -14,6 +14,18 @@ export default defineConfig([
   },
   {
     entry: {
+      'solid/index': 'src/solid/index.ts',
+    },
+    format: 'esm',
+    dts: true,
+    clean: ['dist/solid'],
+    deps: {
+      neverBundle: ['solid-js', 'solid-js/web'],
+    },
+  },
+
+  {
+    entry: {
       'utils/index': 'src/utils/colorScheme.ts',
     },
     format: 'esm',

@@ -1,12 +1,12 @@
 ---
 name: using-zui
-description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, or Astro markup that should use ZUI components, design tokens, and utility classes. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui."
+description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, or Vue markup that should use ZUI components, design tokens, and utility classes. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui."
 user-invocable: true
 ---
 
 # Using ZUI
 
-ZUI is a CSS-first UI library with optional React and Astro component wrappers. Import `@mrmartineau/zui/css` for styles, `@mrmartineau/zui/react` for React components, or `@mrmartineau/zui/astro` for Astro components.
+ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers. Import `@mrmartineau/zui/css` for styles, then import components from the framework-specific path.
 
 ## Setup
 
@@ -21,6 +21,12 @@ import { Button, Card, Input } from '@mrmartineau/zui/react'
 
 // Astro
 import { Button, Card, Input } from '@mrmartineau/zui/astro'
+
+// Solid
+import { Button, Card, Input } from '@mrmartineau/zui/solid'
+
+// Vue
+import { Button, Card, Input } from '@mrmartineau/zui/vue'
 ```
 
 Icons use [Phosphor Icons](https://phosphoricons.com/) — HTML: `<i class="ph ph-icon-name"></i>`, React: `import { IconName } from '@phosphor-icons/react'`.

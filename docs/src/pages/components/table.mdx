@@ -94,6 +94,66 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@
     </TableRow>
   </TableBody>
 </Table>`}
+  solid={`import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/solid'
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+  vue={`<template>
+  <Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+</template>
+
+<script setup>
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <table class="zui-table" style="width: 100%;">
     <thead class="zui-table-header">
@@ -213,6 +273,68 @@ import { Table, TableCaption, TableHeader, TableBody, TableRow, TableHead, Table
     </TableRow>
   </TableBody>
 </Table>`}
+  solid={`import { Table, TableCaption, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/solid'
+
+<Table>
+  <TableCaption>Team members and their current status.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
+  vue={`<template>
+  <Table>
+  <TableCaption>Team members and their current status.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+</template>
+
+<script setup>
+import { Table, TableCaption, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <table class="zui-table" style="width: 100%;">
     <caption class="zui-table-caption">Team members and their current status.</caption>
@@ -348,6 +470,78 @@ import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableC
     </TableRow>
   </TableFooter>
 </Table>`}
+  solid={`import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell } from '@mrmartineau/zui/solid'
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell colSpan={2}>Total members</TableCell>
+      <TableCell>3</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>`}
+  vue={`<template>
+  <Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell colspan="2">Total members</TableCell>
+      <TableCell>3</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>
+</template>
+
+<script setup>
+import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <table class="zui-table" style="width: 100%;">
     <thead class="zui-table-header">

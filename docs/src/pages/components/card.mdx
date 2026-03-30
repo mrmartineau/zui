@@ -45,6 +45,32 @@ import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmarti
     <p>Card body content goes here.</p>
   </CardBody>
 </Card>`}
+  solid={`import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/solid'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>A brief description of this card's content.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Card body content goes here.</p>
+  </CardBody>
+</Card>`}
+  vue={`<template>
+  <Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>A brief description of this card's content.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Card body content goes here.</p>
+  </CardBody>
+</Card>
+</template>
+
+<script setup>
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <div class="zui-card" style="width: 100%;">
     <div class="zui-card-header">
@@ -96,6 +122,34 @@ import { Card, CardHeader, CardTitle, CardDescription, Button } from '@mrmartine
     <Button>Confirm</Button>
   </div>
 </Card>`}
+  solid={`import { Card, CardHeader, CardTitle, CardDescription, Button } from '@mrmartineau/zui/solid'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Confirm Action</CardTitle>
+    <CardDescription>Are you sure you want to proceed?</CardDescription>
+  </CardHeader>
+  <div class="zui-card-footer">
+    <Button variant="outline">Cancel</Button>
+    <Button>Confirm</Button>
+  </div>
+</Card>`}
+  vue={`<template>
+  <Card>
+  <CardHeader>
+    <CardTitle>Confirm Action</CardTitle>
+    <CardDescription>Are you sure you want to proceed?</CardDescription>
+  </CardHeader>
+  <div class="zui-card-footer">
+    <Button variant="outline">Cancel</Button>
+    <Button>Confirm</Button>
+  </div>
+</Card>
+</template>
+
+<script setup>
+import { Card, CardHeader, CardTitle, CardDescription, Button } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <div class="zui-card" style="width: 100%;">
     <div class="zui-card-header">
@@ -145,6 +199,32 @@ import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmarti
     <p>Shadow-based card style.</p>
   </CardBody>
 </Card>`}
+  solid={`import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/solid'
+
+<Card class="zui-card-elevated">
+  <CardHeader>
+    <CardTitle>Elevated Card</CardTitle>
+    <CardDescription>Uses a shadow instead of a border.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Shadow-based card style.</p>
+  </CardBody>
+</Card>`}
+  vue={`<template>
+  <Card class="zui-card-elevated">
+  <CardHeader>
+    <CardTitle>Elevated Card</CardTitle>
+    <CardDescription>Uses a shadow instead of a border.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Shadow-based card style.</p>
+  </CardBody>
+</Card>
+</template>
+
+<script setup>
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <div class="zui-card zui-card-elevated" style="width: 100%;">
     <div class="zui-card-header">
@@ -184,6 +264,26 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/a
     <CardDescription>This entire card is a link.</CardDescription>
   </CardHeader>
 </Card>`}
+  solid={`import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/solid'
+
+<Card href="#">
+  <CardHeader>
+    <CardTitle>Clickable Card</CardTitle>
+    <CardDescription>This entire card is a link.</CardDescription>
+  </CardHeader>
+</Card>`}
+  vue={`<template>
+  <Card href="#">
+  <CardHeader>
+    <CardTitle>Clickable Card</CardTitle>
+    <CardDescription>This entire card is a link.</CardDescription>
+  </CardHeader>
+</Card>
+</template>
+
+<script setup>
+import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <a href="#" class="zui-card zui-card-interactive" style="width: 100%;">
     <div class="zui-card-header">
