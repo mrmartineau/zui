@@ -51,10 +51,10 @@
 
   /* Muted text utilities */
   .zui-color-muted {
-    color: oklch(from var(--color-text) l c h / 70%);
+    color: var(--color-muted);
   }
   .zui-color-faint {
-    color: oklch(from var(--color-text) l c h / 50%);
+    color: var(--color-faint);
   }
 
   /* Surface - subtle background for section alternation */
