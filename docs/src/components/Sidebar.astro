@@ -103,7 +103,6 @@ function isCurrent(href: string, exact = false) {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    padding: var(--space-sm) 0;
   }
 
   .section-heading {
@@ -111,10 +110,12 @@ function isCurrent(href: string, exact = false) {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--color-text);
-    opacity: 0.5;
-    margin: 0 0 var(--space-3xs);
-    padding: 0 var(--space-xs);
+    color: var(--color-muted);
+    margin: 0;
+    padding: var(--space-xs);
+    position: sticky;
+    top: 0;
+    background-color: var(--color-surface);
   }
 
   ul {
@@ -128,8 +129,8 @@ function isCurrent(href: string, exact = false) {
 
   a {
     display: block;
-    padding: var(--space-3xs) var(--space-xs);
-    font-size: var(--step--1);
+    padding: var(--space-4xs) var(--space-xs);
+    font-size: var(--step--2);
     color: var(--color-text);
     text-decoration: none;
     border-left: 2px solid transparent;
