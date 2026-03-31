@@ -121,8 +121,8 @@ function MyComponent() {
   )
 }`}
   vue={`<template>
-  <Button @click="setOpen(true)">Open dialog</Button>
-      <Dialog :open="open" @close="setOpen(false)">
+  <Button @click="open = true">Open dialog</Button>
+      <Dialog :open="open" @close="open = false">
         <DialogHeader>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogDescription>A short description of the dialog content.</DialogDescription>
@@ -131,8 +131,8 @@ function MyComponent() {
           <p>Dialog body content goes here.</p>
         </DialogBody>
         <DialogFooter>
-          <Button variant="outline" @click="setOpen(false)">Cancel</Button>
-          <Button @click="setOpen(false)">Confirm</Button>
+          <Button variant="outline" @click="open = false">Cancel</Button>
+          <Button @click="open = false">Confirm</Button>
         </DialogFooter>
       </Dialog>
 </template>
@@ -294,17 +294,17 @@ function SizeDemo() {
   )
 }`}
   vue={`<template>
-  <Button @click="setSize('sm')">Small</Button>
-      <Button @click="setSize('md')">Medium (default)</Button>
-      <Button @click="setSize('lg')">Large</Button>
-      <Button @click="setSize('full')">Full</Button>
-      <Dialog open={!!size} :size="size" @close="setSize(null)">
+  <Button @click="size = 'sm'">Small</Button>
+      <Button @click="size = 'md'">Medium (default)</Button>
+      <Button @click="size = 'lg'">Large</Button>
+      <Button @click="size = 'full'">Full</Button>
+      <Dialog :open="!!size" :size="size" @close="size = null">
         <DialogHeader>
           <DialogTitle>{{ size }} dialog</DialogTitle>
         </DialogHeader>
         <DialogBody><p>Dialog content.</p></DialogBody>
         <DialogFooter>
-          <Button @click="setSize(null)">Close</Button>
+          <Button @click="size = null">Close</Button>
         </DialogFooter>
       </Dialog>
 </template>
@@ -655,20 +655,20 @@ function ClosedByDemo() {
   )
 }`}
   vue={`<template>
-  <Button @click="setClosedby('any')">any (default)</Button>
-      <Button @click="setClosedby('closerequest')">closerequest</Button>
-      <Button @click="setClosedby('none')">none</Button>
-      <Dialog open={!!closedby} :closedby="closedby" @close="setClosedby(null)">
+  <Button @click="closedby = 'any'">any (default)</Button>
+      <Button @click="closedby = 'closerequest'">closerequest</Button>
+      <Button @click="closedby = 'none'">none</Button>
+      <Dialog :open="!!closedby" :closedby="closedby" @close="closedby = null">
         <DialogHeader>
-          <DialogTitle>closedby="{closedby}"</DialogTitle>
+          <DialogTitle>closedby="{{ closedby }}"</DialogTitle>
           <DialogDescription>
-            {closedby === 'any' && 'Click the backdrop or press Esc to close.'}
-            {closedby === 'closerequest' && 'Only Esc closes this dialog — backdrop click does nothing.'}
-            {closedby === 'none' && 'Backdrop and Esc are both disabled — use the button below.'}
+            <template v-if="closedby === 'any'">Click the backdrop or press Esc to close.</template>
+            <template v-else-if="closedby === 'closerequest'">Only Esc closes this dialog — backdrop click does nothing.</template>
+            <template v-else-if="closedby === 'none'">Backdrop and Esc are both disabled — use the button below.</template>
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button @click="setClosedby(null)">Close</Button>
+          <Button @click="closedby = null">Close</Button>
         </DialogFooter>
       </Dialog>
 </template>

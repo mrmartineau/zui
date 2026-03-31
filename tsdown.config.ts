@@ -19,6 +19,7 @@ export default defineConfig([
     format: 'esm',
     dts: true,
     clean: ['dist/solid'],
+    tsconfig: 'src/solid/tsconfig.json',
     deps: {
       neverBundle: ['solid-js', 'solid-js/web'],
     },

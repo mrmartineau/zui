@@ -21,6 +21,7 @@ export function Button(props: ButtonProps) {
 		'shape',
 		'icon',
 		'href',
+		'children',
 	])
 	const classes = () =>
 		buttonVariants({
@@ -39,12 +40,16 @@ export function Button(props: ButtonProps) {
 					class={classes()}
 					href={local.href}
 					{...(rest as JSX.AnchorHTMLAttributes<HTMLAnchorElement>)}
-				/>
+				>
+					{local.children}
+				</a>
 			) : (
 				<button
 					class={classes()}
 					{...(rest as JSX.ButtonHTMLAttributes<HTMLButtonElement>)}
-				/>
+				>
+					{local.children}
+				</button>
 			)}
 		</>
 	)
