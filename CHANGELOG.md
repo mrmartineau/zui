@@ -1,5 +1,11 @@
 # @mrmartineau/zui
 
+## 0.7.0
+
+### Minor Changes
+
+- Add Solid.js and Vue components
+
 ## 0.6.0
 
 ### Minor Changes
