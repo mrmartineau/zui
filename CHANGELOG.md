@@ -1,5 +1,11 @@
 # @mrmartineau/zui
 
+## 0.6.0
+
+### Minor Changes
+
+- add CSS vars for muted and faint colours
+
 ## 0.5.0
 
 ### Minor Changes

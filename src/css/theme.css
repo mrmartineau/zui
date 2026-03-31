@@ -15,6 +15,8 @@
     );
     --color-error: light-dark(var(--color-red-600), var(--color-red-400));
     --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
+    --color-muted: oklch(from var(--color-text) l c h / 70%);
+    --color-faint: oklch(from var(--color-text) l c h / 50%);
     --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
 
     --font-body: var(--font-stack-sans);

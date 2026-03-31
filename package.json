@@ -1,6 +1,6 @@
 {
   "name": "@mrmartineau/zui",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "ZUI — a CSS UI library with React, Astro, Solid, and Vue components",
   "type": "module",
   "exports": {
