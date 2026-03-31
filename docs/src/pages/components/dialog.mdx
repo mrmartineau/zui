@@ -87,6 +87,62 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Dialo
     <Button>Confirm</Button>
   </DialogFooter>
 </Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from '@mrmartineau/zui/solid'
+
+function MyComponent() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogHeader>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogDescription>A short description of the dialog content.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Dialog body content goes here.</p>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={() => setOpen(false)}>Confirm</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button @click="open = true">Open dialog</Button>
+      <Dialog :open="open" @close="open = false">
+        <DialogHeader>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogDescription>A short description of the dialog content.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Dialog body content goes here.</p>
+        </DialogBody>
+        <DialogFooter>
+          <Button variant="outline" @click="open = false">Cancel</Button>
+          <Button @click="open = false">Confirm</Button>
+        </DialogFooter>
+      </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const open = ref(false)
+</script>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').showModal()">
     Open dialog
@@ -213,6 +269,52 @@ import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } f
   <DialogBody><p>Full viewport size.</p></DialogBody>
   <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
 </Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/solid'
+
+function SizeDemo() {
+  const [size, setSize] = createSignal(null)
+
+  return (
+    <>
+      <Button onClick={() => setSize('sm')}>Small</Button>
+      <Button onClick={() => setSize('md')}>Medium (default)</Button>
+      <Button onClick={() => setSize('lg')}>Large</Button>
+      <Button onClick={() => setSize('full')}>Full</Button>
+      <Dialog open={!!size} size={size} onClose={() => setSize(null)}>
+        <DialogHeader>
+          <DialogTitle>{size} dialog</DialogTitle>
+        </DialogHeader>
+        <DialogBody><p>Dialog content.</p></DialogBody>
+        <DialogFooter>
+          <Button onClick={() => setSize(null)}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button @click="size = 'sm'">Small</Button>
+      <Button @click="size = 'md'">Medium (default)</Button>
+      <Button @click="size = 'lg'">Large</Button>
+      <Button @click="size = 'full'">Full</Button>
+      <Dialog :open="!!size" :size="size" @close="size = null">
+        <DialogHeader>
+          <DialogTitle>{{ size }} dialog</DialogTitle>
+        </DialogHeader>
+        <DialogBody><p>Dialog content.</p></DialogBody>
+        <DialogFooter>
+          <Button @click="size = null">Close</Button>
+        </DialogFooter>
+      </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const size = ref(null)
+</script>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-sm-demo').showModal()">Small</button>
   <button class="zui-button" onclick="document.getElementById('dialog-md-demo').showModal()">Medium (default)</button>
@@ -341,6 +443,66 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Butto
     <p>Content goes here.</p>
   </DialogBody>
 </Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Button } from '@mrmartineau/zui/solid'
+
+function MyComponent() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open dialog</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <Button
+          variant="ghost"
+          size="sm"
+          icon
+          class="zui-dialog-close"
+          aria-label="Close"
+          onClick={() => setOpen(false)}
+        >
+          <i class="ph ph-x" />
+        </Button>
+        <DialogHeader>
+          <DialogTitle>With close button</DialogTitle>
+          <DialogDescription>A close button is positioned in the top-right corner.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Content goes here.</p>
+        </DialogBody>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button @click="setOpen(true)">Open dialog</Button>
+      <Dialog :open="open" @close="setOpen(false)">
+        <Button
+          variant="ghost"
+          size="sm"
+          icon
+          class="zui-dialog-close"
+          aria-label="Close"
+          @click="setOpen(false)"
+        >
+          <i class="ph ph-x" />
+        </Button>
+        <DialogHeader>
+          <DialogTitle>With close button</DialogTitle>
+          <DialogDescription>A close button is positioned in the top-right corner.</DialogDescription>
+        </DialogHeader>
+        <DialogBody>
+          <p>Content goes here.</p>
+        </DialogBody>
+      </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Button } from '@mrmartineau/zui/vue'
+
+const open = ref(false)
+</script>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-close-btn-demo').showModal()">
     Open dialog
@@ -465,6 +627,58 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, But
   </DialogHeader>
   <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
 </Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/solid'
+
+function ClosedByDemo() {
+  const [closedby, setClosedby] = createSignal(null)
+
+  return (
+    <>
+      <Button onClick={() => setClosedby('any')}>any (default)</Button>
+      <Button onClick={() => setClosedby('closerequest')}>closerequest</Button>
+      <Button onClick={() => setClosedby('none')}>none</Button>
+      <Dialog open={!!closedby} closedby={closedby} onClose={() => setClosedby(null)}>
+        <DialogHeader>
+          <DialogTitle>closedby="{closedby}"</DialogTitle>
+          <DialogDescription>
+            {closedby === 'any' && 'Click the backdrop or press Esc to close.'}
+            {closedby === 'closerequest' && 'Only Esc closes this dialog — backdrop click does nothing.'}
+            {closedby === 'none' && 'Backdrop and Esc are both disabled — use the button below.'}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setClosedby(null)}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button @click="closedby = 'any'">any (default)</Button>
+      <Button @click="closedby = 'closerequest'">closerequest</Button>
+      <Button @click="closedby = 'none'">none</Button>
+      <Dialog :open="!!closedby" :closedby="closedby" @close="closedby = null">
+        <DialogHeader>
+          <DialogTitle>closedby="{{ closedby }}"</DialogTitle>
+          <DialogDescription>
+            <template v-if="closedby === 'any'">Click the backdrop or press Esc to close.</template>
+            <template v-else-if="closedby === 'closerequest'">Only Esc closes this dialog — backdrop click does nothing.</template>
+            <template v-else-if="closedby === 'none'">Backdrop and Esc are both disabled — use the button below.</template>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button @click="closedby = null">Close</Button>
+        </DialogFooter>
+      </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const closedby = ref(null)
+</script>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-closedby-any-demo').showModal()">any (default)</button>
   <button class="zui-button" onclick="document.getElementById('dialog-closedby-cr-demo').showModal()">closerequest</button>
@@ -566,6 +780,48 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, But
     </form>
   </DialogFooter>
 </Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/solid'
+
+function MyComponent() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Delete item</Button>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+          <DialogDescription>This action cannot be undone.</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button color="destructive" onClick={() => setOpen(false)}>Delete</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button @click="setOpen(true)">Delete item</Button>
+      <Dialog :open="open" @close="setOpen(false)">
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+          <DialogDescription>This action cannot be undone.</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="outline" @click="setOpen(false)">Cancel</Button>
+          <Button color="destructive" @click="setOpen(false)">Delete</Button>
+        </DialogFooter>
+      </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const open = ref(false)
+</script>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-form-demo').showModal()">
     Delete item

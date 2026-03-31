@@ -21,6 +21,16 @@ import { Input } from '@mrmartineau/zui/astro'
 ---
 
 <Input type="text" placeholder="Enter your name" />`}
+  solid={`import { Input } from '@mrmartineau/zui/solid'
+
+<Input type="text" placeholder="Enter your name" />`}
+  vue={`<template>
+  <Input type="text" placeholder="Enter your name" />
+</template>
+
+<script setup>
+import { Input } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <input class="zui-input" type="text" placeholder="Enter your name" />
 </Demo>
@@ -52,6 +62,26 @@ import { Input } from '@mrmartineau/zui/astro'
 <Input type="number" placeholder="Number" />
 <Input type="search" placeholder="Search" />
 <Input type="url" placeholder="URL" />`}
+  solid={`import { Input } from '@mrmartineau/zui/solid'
+
+<Input type="text" placeholder="Text" />
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="Number" />
+<Input type="search" placeholder="Search" />
+<Input type="url" placeholder="URL" />`}
+  vue={`<template>
+  <Input type="text" placeholder="Text" />
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="Number" />
+<Input type="search" placeholder="Search" />
+<Input type="url" placeholder="URL" />
+</template>
+
+<script setup>
+import { Input } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <input class="zui-input" type="text" placeholder="Text" />
   <input class="zui-input" type="email" placeholder="Email" />
@@ -76,6 +106,18 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 
 <Label for="name">Full name</Label>
 <Input type="text" id="name" placeholder="Jane Doe" />`}
+  solid={`import { Label, Input } from '@mrmartineau/zui/solid'
+
+<Label htmlFor="name">Full name</Label>
+<Input type="text" id="name" placeholder="Jane Doe" />`}
+  vue={`<template>
+  <Label for="name">Full name</Label>
+<Input type="text" id="name" placeholder="Jane Doe" />
+</template>
+
+<script setup>
+import { Label, Input } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="name">Full name</label>
@@ -95,6 +137,16 @@ import { Input } from '@mrmartineau/zui/astro'
 ---
 
 <Input type="email" value="not-an-email" aria-invalid="true" />`}
+  solid={`import { Input } from '@mrmartineau/zui/solid'
+
+<Input type="email" defaultValue="not-an-email" aria-invalid="true" />`}
+  vue={`<template>
+  <Input type="email" value="not-an-email" aria-invalid="true" />
+</template>
+
+<script setup>
+import { Input } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />
 </Demo>
@@ -111,6 +163,16 @@ import { Input } from '@mrmartineau/zui/astro'
 ---
 
 <Input type="text" value="Cannot edit" disabled />`}
+  solid={`import { Input } from '@mrmartineau/zui/solid'
+
+<Input type="text" defaultValue="Cannot edit" disabled />`}
+  vue={`<template>
+  <Input type="text" value="Cannot edit" disabled />
+</template>
+
+<script setup>
+import { Input } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <input class="zui-input" type="text" value="Cannot edit" disabled />
 </Demo>

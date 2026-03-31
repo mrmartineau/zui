@@ -15,7 +15,7 @@ A single disclosure widget using the native `<details>`/`<summary>` elements.
   html={`<details class="zui-collapsible">
   <summary class="zui-collapsible-trigger">What is ZUI?</summary>
   <div class="zui-collapsible-content">
-    <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
+    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers.</p>
   </div>
 </details>`}
   react={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/react'
@@ -23,7 +23,7 @@ A single disclosure widget using the native `<details>`/`<summary>` elements.
 <Collapsible>
   <CollapsibleTrigger>What is ZUI?</CollapsibleTrigger>
   <CollapsibleContent>
-    <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
+    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers.</p>
   </CollapsibleContent>
 </Collapsible>`}
   astro={`---
@@ -33,14 +33,34 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartinea
 <Collapsible>
   <CollapsibleTrigger>What is ZUI?</CollapsibleTrigger>
   <CollapsibleContent>
-    <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
+    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers.</p>
   </CollapsibleContent>
 </Collapsible>`}
+  solid={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/solid'
+
+<Collapsible>
+  <CollapsibleTrigger>What is ZUI?</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+  vue={`<template>
+  <Collapsible>
+  <CollapsibleTrigger>What is ZUI?</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers.</p>
+  </CollapsibleContent>
+</Collapsible>
+</template>
+
+<script setup>
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <details class="zui-collapsible" style="width: 100%;">
     <summary class="zui-collapsible-trigger">What is ZUI?</summary>
     <div class="zui-collapsible-content">
-      <p>ZUI is a CSS-first UI library with optional React and Astro component wrappers.</p>
+      <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers.</p>
     </div>
   </details>
 </Demo>
@@ -74,6 +94,26 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartinea
     <p>This collapsible starts in the open state.</p>
   </CollapsibleContent>
 </Collapsible>`}
+  solid={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/solid'
+
+<Collapsible open>
+  <CollapsibleTrigger>Already open</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>This collapsible starts in the open state.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+  vue={`<template>
+  <Collapsible open>
+  <CollapsibleTrigger>Already open</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>This collapsible starts in the open state.</p>
+  </CollapsibleContent>
+</Collapsible>
+</template>
+
+<script setup>
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <details class="zui-collapsible" open style="width: 100%;">
     <summary class="zui-collapsible-trigger">Already open</summary>

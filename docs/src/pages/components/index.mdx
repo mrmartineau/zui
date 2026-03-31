@@ -6,7 +6,7 @@ title: Overview
 
 # Components
 
-ZUI provides a set of UI components available in three forms: plain CSS classes, React components, and Astro components. All three target the same underlying styles — the React and Astro wrappers are thin conveniences that map props to the CSS class names.
+ZUI provides a set of UI components available in five forms: plain CSS classes, React, Astro, Solid, and Vue components. All target the same underlying styles — the framework wrappers are thin conveniences that map props to the CSS class names.
 
 ## Usage approaches
 
@@ -40,7 +40,31 @@ import { Button } from '@mrmartineau/zui/astro'
 <Button variant="outline">Click me</Button>
 ```
 
-See [Using with React](/guides/react) and [Using with Astro](/guides/astro) for setup instructions.
+### Solid
+
+Solid wrappers use `class` instead of `className`. Import from `@mrmartineau/zui/solid`.
+
+```tsx
+import { Button } from '@mrmartineau/zui/solid'
+
+<Button variant="outline">Click me</Button>
+```
+
+### Vue
+
+Vue wrappers are SFC components. Import from `@mrmartineau/zui/vue`.
+
+```vue
+<template>
+  <Button variant="outline">Click me</Button>
+</template>
+
+<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
+```
+
+See [Using with React](/guides/react), [Using with Astro](/guides/astro), [Using with Solid](/guides/solid), and [Using with Vue](/guides/vue) for setup instructions.
 
 ## CSS layer
 

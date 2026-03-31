@@ -16,6 +16,12 @@ export default defineConfig({
         '@mrmartineau/zui/utils': resolve(import.meta.dirname, '../src/utils/colorScheme.ts'),
       },
     },
+    optimizeDeps: {
+      exclude: ['@mrmartineau/zui/vue'],
+    },
+    ssr: {
+      external: ['@mrmartineau/zui/vue'],
+    },
   },
 
   markdown: {

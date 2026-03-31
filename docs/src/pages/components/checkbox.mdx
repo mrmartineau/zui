@@ -24,6 +24,16 @@ import { Checkbox } from '@mrmartineau/zui/astro'
 ---
 
 <Checkbox checked>Accept terms</Checkbox>`}
+  solid={`import { Checkbox } from '@mrmartineau/zui/solid'
+
+<Checkbox defaultChecked>Accept terms</Checkbox>`}
+  vue={`<template>
+  <Checkbox checked>Accept terms</Checkbox>
+</template>
+
+<script setup>
+import { Checkbox } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <label class="zui-checkbox">
     <input type="checkbox" checked />
@@ -81,6 +91,32 @@ import { Checkbox, Label } from '@mrmartineau/zui/astro'
     <Checkbox>Reading</Checkbox>
   </div>
 </fieldset>`}
+  solid={`import { Checkbox, Label } from '@mrmartineau/zui/solid'
+
+<fieldset>
+  <Label as="legend">Interests</Label>
+  <div class="zui-checkbox-list">
+    <Checkbox defaultChecked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox defaultChecked>Travel</Checkbox>
+    <Checkbox>Reading</Checkbox>
+  </div>
+</fieldset>`}
+  vue={`<template>
+  <fieldset>
+  <Label as="legend">Interests</Label>
+  <div class="zui-checkbox-list">
+    <Checkbox checked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox checked>Travel</Checkbox>
+    <Checkbox>Reading</Checkbox>
+  </div>
+</fieldset>
+</template>
+
+<script setup>
+import { Checkbox, Label } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <fieldset style="border: none; padding: 0; width: 100%;">
     <legend class="zui-label">Interests</legend>
@@ -126,6 +162,18 @@ import { Checkbox } from '@mrmartineau/zui/astro'
 
 <Checkbox disabled checked>Disabled checked</Checkbox>
 <Checkbox disabled>Disabled unchecked</Checkbox>`}
+  solid={`import { Checkbox } from '@mrmartineau/zui/solid'
+
+<Checkbox disabled defaultChecked>Disabled checked</Checkbox>
+<Checkbox disabled>Disabled unchecked</Checkbox>`}
+  vue={`<template>
+  <Checkbox disabled checked>Disabled checked</Checkbox>
+<Checkbox disabled>Disabled unchecked</Checkbox>
+</template>
+
+<script setup>
+import { Checkbox } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <label class="zui-checkbox">
     <input type="checkbox" disabled checked />
