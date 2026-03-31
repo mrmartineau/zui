@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React and Astro component wrappers. See `AGENTS.md` for full architecture and conventions — everything there applies here too.
+ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, Solid, and Vue component wrappers. See `AGENTS.md` for full architecture and conventions — everything there applies here too.
 
 ## Critical Rules
 

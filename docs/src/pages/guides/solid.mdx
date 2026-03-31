@@ -1,0 +1,226 @@
+---
+layout: ../../layouts/Layout.astro
+title: Using with Solid
+---
+
+# Using with Solid
+
+ZUI ships first-party Solid components that wrap the underlying CSS classes, giving you type-safe props and variant support out of the box.
+
+## Setup
+
+Install ZUI and import the CSS in your app's entry point:
+
+```tsx
+// index.tsx or App.tsx
+import '@mrmartineau/zui/css'
+```
+
+Then import components from `@mrmartineau/zui/solid`:
+
+```tsx
+import { Button, Badge, Input } from '@mrmartineau/zui/solid'
+```
+
+## Available components
+
+All components are exported from `@mrmartineau/zui/solid`:
+
+- **Button** — with `variant`, `color`, `size`, `shape`, and `icon` props
+- **Badge** — with `variant` and `color` props
+- **Avatar** — with `size` and `shape` props
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
+- **Input**, **Textarea**, **Select**
+- **Label**, **Checkbox**, **Radio**
+- **Text**, **Link**, **Code**, **Pre**, **Prose**
+- **Table**, **TableHeader**, **TableBody**, **TableFooter**, **TableRow**, **TableHead**, **TableCell**, **TableCaption**
+- **Tooltip**, **Popover**, **Dialog** and sub-components
+- **Menu**, **MenuTrigger**, **MenuItem**
+- **Collapsible**, **CollapsibleTrigger**, **CollapsibleContent**
+- **Accordion**, **AccordionItem**, **AccordionTrigger**, **AccordionContent**
+
+Every component uses `splitProps` to separate custom props from HTML attributes and accepts a `class` prop for additional styling.
+
+## Component examples
+
+### Button
+
+```tsx
+import { Button } from '@mrmartineau/zui/solid'
+
+function App() {
+  return (
+    <>
+      <Button variant="fill" color="theme">Save</Button>
+      <Button variant="outline" color="accent">Cancel</Button>
+      <Button variant="ghost" size="sm">Settings</Button>
+      <Button variant="subtle" color="destructive">Delete</Button>
+      <Button href="/about">About (renders as anchor)</Button>
+    </>
+  )
+}
+```
+
+Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
+
+Colours: `theme`, `accent`, `destructive`
+
+Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
+
+Shapes: `default`, `hard`, `soft`, `squircle`
+
+### Badge
+
+```tsx
+import { Badge } from '@mrmartineau/zui/solid'
+
+function StatusBadge() {
+  return (
+    <>
+      <Badge color="green">Active</Badge>
+      <Badge variant="fill" color="red">Error</Badge>
+      <Badge variant="outline" color="blue">Info</Badge>
+    </>
+  )
+}
+```
+
+### Card
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/solid'
+
+function UserCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>John Doe</CardTitle>
+        <CardDescription>Software Engineer</CardDescription>
+      </CardHeader>
+      <CardBody>
+        <p>Card content goes here.</p>
+      </CardBody>
+    </Card>
+  )
+}
+```
+
+Pass an `href` prop to make the card an interactive link:
+
+```tsx
+<Card href="/users/1">
+  <CardBody>Clickable card</CardBody>
+</Card>
+```
+
+### Forms
+
+```tsx
+import { Label, Input, Textarea, Select, Checkbox, Radio, Button } from '@mrmartineau/zui/solid'
+
+function ContactForm() {
+  return (
+    <form>
+      <Label for="name">Name</Label>
+      <Input id="name" type="text" placeholder="Your name" />
+
+      <Label for="email">Email</Label>
+      <Input id="email" type="email" placeholder="you@example.com" />
+
+      <Label for="message">Message</Label>
+      <Textarea id="message" rows={4} placeholder="Your message" />
+
+      <Label for="role">Role</Label>
+      <Select id="role">
+        <option value="dev">Developer</option>
+        <option value="design">Designer</option>
+      </Select>
+
+      <Checkbox>I agree to the terms</Checkbox>
+
+      <Radio name="plan" value="free">Free</Radio>
+      <Radio name="plan" value="pro">Pro</Radio>
+
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+}
+```
+
+### Typography
+
+```tsx
+import { Text, Link, Code, Prose } from '@mrmartineau/zui/solid'
+
+function Content() {
+  return (
+    <Prose>
+      <Text size="lg">Large text</Text>
+      <Text size="sm">Small text</Text>
+      <p>
+        Visit the <Link href="/docs">documentation</Link> for more info.
+      </p>
+      <p>
+        Run <Code>npm install @mrmartineau/zui</Code> to get started.
+      </p>
+    </Prose>
+  )
+}
+```
+
+## Using variant helpers directly
+
+ZUI exports the `buttonVariants` and `badgeVariants` functions if you need to generate class strings manually:
+
+```tsx
+import { buttonVariants, badgeVariants } from '@mrmartineau/zui/solid'
+
+const classes = buttonVariants({ variant: 'outline', size: 'sm' })
+// → "zui-button zui-button-variant-outline zui-button-size-sm …"
+```
+
+## Colour scheme hook
+
+```tsx
+import { useColorScheme } from '@mrmartineau/zui/solid'
+
+function ThemeToggle() {
+  const { scheme, set } = useColorScheme()
+  return <button onClick={() => set(scheme() === 'dark' ? 'light' : 'dark')}>{scheme()}</button>
+}
+```
+
+## Using CSS classes directly
+
+You can always use the underlying CSS classes without the Solid components:
+
+```tsx
+function CustomElement() {
+  return (
+    <div class="zui-card">
+      <div class="zui-card-header">
+        <h2 class="zui-card-title">Title</h2>
+      </div>
+    </div>
+  )
+}
+```
+
+## Theming
+
+ZUI themes are pure CSS — override custom properties in your stylesheet. See the [Theming](/theming) page for full details.
+
+```css
+:root {
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --radius-scale: 1.5;
+}
+```
+
+## TypeScript
+
+All component props are exported as types:
+
+```tsx
+import type { ButtonProps, BadgeProps, CardProps, InputProps } from '@mrmartineau/zui/solid'
+```

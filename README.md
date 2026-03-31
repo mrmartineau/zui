@@ -1,6 +1,6 @@
 # ZUI
 
-A CSS-first UI library with optional React and Astro components.
+A CSS-first UI library with optional React, Astro, Solid, and Vue components.
 
 **Full documentation: [zui.zander.wtf](https://zui.zander.wtf)**
 
@@ -42,6 +42,28 @@ import { Button } from '@mrmartineau/zui/astro'
 ---
 
 <Button>Click me</Button>
+```
+
+### Solid
+
+```tsx
+import { Button } from '@mrmartineau/zui/solid'
+
+export function App() {
+  return <Button>Click me</Button>
+}
+```
+
+### Vue
+
+```vue
+<template>
+  <Button>Click me</Button>
+</template>
+
+<script setup>
+import { Button } from '@mrmartineau/zui/vue'
+</script>
 ```
 
 ## Customisation
@@ -114,6 +136,9 @@ The workflow requires an `NPM_TOKEN` secret set in the repository settings.
 | `@mrmartineau/zui/css`       | `dist/css/zui.css`           |
 | `@mrmartineau/zui/css/min`   | `dist/css/zui.min.css`       |
 | `@mrmartineau/zui/react`     | `dist/react/index.mjs`       |
+| `@mrmartineau/zui/solid`     | `dist/solid/index.mjs`       |
+| `@mrmartineau/zui/vue`       | `src/vue/index.ts`           |
+| `@mrmartineau/zui/vue/*`     | `src/vue/*`                  |
 | `@mrmartineau/zui/astro`     | `src/astro/index.ts`         |
 | `@mrmartineau/zui/astro/*`   | `src/astro/*`                |
 | `@mrmartineau/zui/utils`     | `dist/utils/index.mjs`       |

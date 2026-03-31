@@ -1,0 +1,21 @@
+<template>
+  <a v-if="href" :class="classes" :href="href" v-bind="$attrs">
+    <slot />
+  </a>
+  <div v-else :class="classes" v-bind="$attrs">
+    <slot />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+
+defineOptions({ inheritAttrs: false })
+
+const props = defineProps<{
+  class?: string
+  href?: string
+}>()
+
+const classes = computed(() => ['zui-card', props.href && 'zui-card-interactive', props.class].filter(Boolean).join(' '))
+</script>

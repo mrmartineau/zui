@@ -30,6 +30,20 @@ import { Tooltip, Button } from '@mrmartineau/zui/astro'
 <Tooltip text="Helpful information">
   <Button>Hover me</Button>
 </Tooltip>`}
+  solid={`import { Tooltip, Button } from '@mrmartineau/zui/solid'
+
+<Tooltip text="Helpful information">
+  <Button>Hover me</Button>
+</Tooltip>`}
+  vue={`<template>
+  <Tooltip text="Helpful information">
+  <Button>Hover me</Button>
+</Tooltip>
+</template>
+
+<script setup>
+import { Tooltip, Button } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <span class="zui-tooltip">
     <button class="zui-button" style="anchor-name: --tooltip-demo" popovertarget="tooltip-demo">Hover me</button>
@@ -90,6 +104,44 @@ import { Tooltip, Button } from '@mrmartineau/zui/astro'
 <Tooltip text="Appears below" placement="bottom"><Button>Bottom</Button></Tooltip>
 <Tooltip text="Appears left" placement="left"><Button>Left</Button></Tooltip>
 <Tooltip text="Appears right" placement="right"><Button>Right</Button></Tooltip>`}
+  solid={`import { Tooltip, Button } from '@mrmartineau/zui/solid'
+
+<Tooltip text="Appears above">
+  <Button>Top</Button>
+</Tooltip>
+
+<Tooltip text="Appears below" placement="bottom">
+  <Button>Bottom</Button>
+</Tooltip>
+
+<Tooltip text="Appears left" placement="left">
+  <Button>Left</Button>
+</Tooltip>
+
+<Tooltip text="Appears right" placement="right">
+  <Button>Right</Button>
+</Tooltip>`}
+  vue={`<template>
+  <Tooltip text="Appears above">
+  <Button>Top</Button>
+</Tooltip>
+
+<Tooltip text="Appears below" placement="bottom">
+  <Button>Bottom</Button>
+</Tooltip>
+
+<Tooltip text="Appears left" placement="left">
+  <Button>Left</Button>
+</Tooltip>
+
+<Tooltip text="Appears right" placement="right">
+  <Button>Right</Button>
+</Tooltip>
+</template>
+
+<script setup>
+import { Tooltip, Button } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <div style="display:flex;gap:1rem;flex-wrap:wrap;padding:2rem;">
     <span class="zui-tooltip">

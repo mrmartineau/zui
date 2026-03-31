@@ -36,6 +36,20 @@ import { Radio } from '@mrmartineau/zui/astro'
 <Radio name="fruit" value="apple" checked>Apple</Radio>
 <Radio name="fruit" value="banana">Banana</Radio>
 <Radio name="fruit" value="cherry">Cherry</Radio>`}
+  solid={`import { Radio } from '@mrmartineau/zui/solid'
+
+<Radio name="fruit" value="apple" defaultChecked>Apple</Radio>
+<Radio name="fruit" value="banana">Banana</Radio>
+<Radio name="fruit" value="cherry">Cherry</Radio>`}
+  vue={`<template>
+  <Radio name="fruit" value="apple" checked>Apple</Radio>
+<Radio name="fruit" value="banana">Banana</Radio>
+<Radio name="fruit" value="cherry">Cherry</Radio>
+</template>
+
+<script setup>
+import { Radio } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <label class="zui-radio">
     <input type="radio" name="fruit" value="apple" checked />
@@ -95,6 +109,30 @@ import { Radio, Label } from '@mrmartineau/zui/astro'
     <Radio name="colour" value="green">Green</Radio>
   </div>
 </fieldset>`}
+  solid={`import { Radio, Label } from '@mrmartineau/zui/solid'
+
+<fieldset>
+  <Label as="legend">Favourite colour</Label>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" defaultChecked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</fieldset>`}
+  vue={`<template>
+  <fieldset>
+  <Label as="legend">Favourite colour</Label>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" checked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</fieldset>
+</template>
+
+<script setup>
+import { Radio, Label } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <fieldset style="border: none; padding: 0; width: 100%;">
     <legend class="zui-label">Favourite colour</legend>
@@ -136,6 +174,18 @@ import { Radio } from '@mrmartineau/zui/astro'
 
 <Radio name="disabled" disabled checked>Disabled checked</Radio>
 <Radio name="disabled2" disabled>Disabled unchecked</Radio>`}
+  solid={`import { Radio } from '@mrmartineau/zui/solid'
+
+<Radio name="disabled" disabled defaultChecked>Disabled checked</Radio>
+<Radio name="disabled2" disabled>Disabled unchecked</Radio>`}
+  vue={`<template>
+  <Radio name="disabled" disabled checked>Disabled checked</Radio>
+<Radio name="disabled2" disabled>Disabled unchecked</Radio>
+</template>
+
+<script setup>
+import { Radio } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <label class="zui-radio">
     <input type="radio" name="disabled" disabled checked />

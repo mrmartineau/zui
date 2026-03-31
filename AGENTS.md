@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ZUI is a CSS-first UI library with optional React and Astro component wrappers. CSS is authored as modular source files in `src/css/` using `@import` and `@layer`, then bundled with [tsdown](https://tsdown.dev/) (Lightning CSS) into `dist/css/zui.css`.
+ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers. CSS is authored as modular source files in `src/css/` using `@import` and `@layer`, then bundled with [tsdown](https://tsdown.dev/) (Lightning CSS) into `dist/css/zui.css`.
 
 ## Architecture
 
@@ -18,7 +18,9 @@ src/
     layouts/            → Layout styles
   astro/                → Astro components (.astro files)
   react/                → React components (.tsx files)
-  shared/               → Shared variant definitions using `cva` (consumed by both Astro & React)
+  solid/                → Solid components (.tsx files)
+  vue/                  → Vue components (.vue SFCs)
+  shared/               → Shared variant definitions using `cva` (consumed by Astro, React, Solid & Vue)
 demo/                   → Astro docs site (see "Documentation" below)
 ```
 
@@ -35,11 +37,13 @@ demo/                   → Astro docs site (see "Documentation" below)
 
 ### Components
 
-- Every component has three layers: CSS class in `src/css/components/`, an Astro wrapper in `src/astro/`, and a React wrapper in `src/react/`.
-- Shared variant logic (using `cva`) lives in `src/shared/` and is imported by both Astro and React components.
+- Every component has five layers: CSS class in `src/css/components/`, an Astro wrapper in `src/astro/`, a React wrapper in `src/react/`, a Solid wrapper in `src/solid/`, and a Vue wrapper in `src/vue/`.
+- Shared variant logic (using `cva`) lives in `src/shared/` and is imported by Astro, React, Solid, and Vue components.
 - Astro components use `HTMLAttributes` from `astro/types` and `VariantProps` from `cva`.
 - React components use standard React types and `VariantProps` from `cva`.
-- Export new components from `src/astro/index.ts` and `src/react/index.ts`.
+- Solid components use `JSX` types from `solid-js`, `splitProps`, and `VariantProps` from `cva`.
+- Vue components use `<script setup lang="ts">` with `defineProps`, `defineOptions({ inheritAttrs: false })`, and `VariantProps` from `cva`.
+- Export new components from `src/astro/index.ts`, `src/react/index.ts`, `src/solid/index.ts`, and `src/vue/index.ts`.
 
 ### Icons
 

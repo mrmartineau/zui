@@ -40,6 +40,26 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
   <MenuItem>Settings</MenuItem>
   <MenuItem>Logout</MenuItem>
 </Menu>`}
+  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
+
+<Menu>
+  <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem>Profile</MenuItem>
+  <MenuItem>Settings</MenuItem>
+  <MenuItem>Logout</MenuItem>
+</Menu>`}
+  vue={`<template>
+  <Menu>
+  <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem>Profile</MenuItem>
+  <MenuItem>Settings</MenuItem>
+  <MenuItem>Logout</MenuItem>
+</Menu>
+</template>
+
+<script setup>
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <details class="zui-menu">
     <summary class="zui-button zui-button-variant-outline">
@@ -80,6 +100,26 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
   <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
   <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
 </Menu>`}
+  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
+
+<Menu>
+  <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem><i class="ph ph-user" /> Profile</MenuItem>
+  <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
+  <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+</Menu>`}
+  vue={`<template>
+  <Menu>
+  <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem><i class="ph ph-user" /> Profile</MenuItem>
+  <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
+  <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+</Menu>
+</template>
+
+<script setup>
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <details class="zui-menu">
     <summary class="zui-button">
@@ -122,6 +162,26 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
   <MenuItem href="#">About</MenuItem>
   <MenuItem href="#">Contact</MenuItem>
 </Menu>`}
+  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
+
+<Menu>
+  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem href="#">Home</MenuItem>
+  <MenuItem href="#">About</MenuItem>
+  <MenuItem href="#">Contact</MenuItem>
+</Menu>`}
+  vue={`<template>
+  <Menu>
+  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuItem href="#">Home</MenuItem>
+  <MenuItem href="#">About</MenuItem>
+  <MenuItem href="#">Contact</MenuItem>
+</Menu>
+</template>
+
+<script setup>
+import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
+</script>`}
 >
   <details class="zui-menu">
     <summary class="zui-button zui-button-variant-outline">
