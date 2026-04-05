@@ -3,8 +3,8 @@
     --zui-accordion-border: var(--color-border);
     --zui-accordion-radius: var(--radius-md);
     --zui-accordion-bg: var(--color-surface);
-    --zui-accordion-padding-x: var(--space-sm);
-    --zui-accordion-padding-y: var(--space-sm);
+    --zui-accordion-padding-x: var(--space-xs);
+    --zui-accordion-padding-y: var(--space-2xs);
 
     display: flex;
     flex-direction: column;
@@ -15,7 +15,9 @@
   }
 
   .zui-accordion-item {
-    border-block-start: 1px var(--border-style, solid) var(--zui-accordion-border);
+    border-block-start: 1px var(--border-style, solid)
+      var(--zui-accordion-border);
+    overflow: hidden;
 
     &:first-child {
       border-block-start: none;
@@ -61,6 +63,17 @@
     transform: rotate(-135deg) translateY(1px);
   }
 
+  .zui-accordion-item::details-content {
+    block-size: 0;
+    transition:
+      block-size 250ms allow-discrete,
+      content-visibility 250ms allow-discrete;
+  }
+
+  .zui-accordion-item:open::details-content {
+    block-size: auto;
+  }
+
   .zui-accordion-content {
     padding: 0 var(--zui-accordion-padding-x) var(--zui-accordion-padding-y);
     font-size: var(--step-0);
@@ -74,7 +87,8 @@
     background: transparent;
 
     .zui-accordion-item {
-      border-block-start: 1px var(--border-style, solid) var(--zui-accordion-border);
+      border-block-start: 1px var(--border-style, solid)
+        var(--zui-accordion-border);
     }
 
     .zui-accordion-item:first-child {
@@ -82,7 +96,8 @@
     }
 
     .zui-accordion-item:last-child {
-      border-block-end: 1px var(--border-style, solid) var(--zui-accordion-border);
+      border-block-end: 1px var(--border-style, solid)
+        var(--zui-accordion-border);
     }
   }
 }
