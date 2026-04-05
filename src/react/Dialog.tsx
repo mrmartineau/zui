@@ -13,10 +13,10 @@ export type DialogProps = DialogHTMLAttributes<HTMLDialogElement> &
   }
 
 export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
-  function Dialog({ open, onClose, className, size, closedby = 'any', children, ...props }, forwardedRef) {
+  function Dialog({ open, onClose, className, size, position, closedby = 'any', children, ...props }, forwardedRef) {
     const innerRef = useRef<HTMLDialogElement>(null)
     const ref = (forwardedRef ?? innerRef) as React.RefObject<HTMLDialogElement>
-    const classes = dialogVariants({ size, className })
+    const classes = dialogVariants({ size, position, className })
 
     useEffect(() => {
       if (open) {

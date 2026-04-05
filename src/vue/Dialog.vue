@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<{
   class?: string
   open?: boolean
   size?: DialogVariantProps['size']
+  position?: DialogVariantProps['position']
   closedby?: 'any' | 'closerequest' | 'none'
 }>(), {
   closedby: 'any',
@@ -27,7 +28,7 @@ defineEmits<{
 }>()
 
 const dialogRef = ref<HTMLDialogElement>()
-const classes = computed(() => dialogVariants({ size: props.size, className: props.class }))
+const classes = computed(() => dialogVariants({ size: props.size, position: props.position, className: props.class }))
 
 watch(() => props.open, (val) => {
   if (val) {
