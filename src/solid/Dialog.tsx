@@ -19,10 +19,11 @@ export function Dialog(props: DialogProps) {
 		'onClose',
 		'class',
 		'size',
+		'position',
 		'closedby',
 		'children',
 	])
-	const classes = () => dialogVariants({ size: local.size, className: local.class })
+	const classes = () => dialogVariants({ size: local.size, position: local.position, className: local.class })
 
 	createEffect(() => {
 		if (local.open) {

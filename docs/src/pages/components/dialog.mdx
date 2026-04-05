@@ -362,6 +362,255 @@ const size = ref(null)
   </dialog>
 </Demo>
 
+## Positions
+
+Control where the dialog appears with the `position` variant. The default (`center`) uses `margin: auto` to center the dialog in the viewport. The other positions pin the dialog to a viewport edge and animate it into view from that side.
+
+| Value | Description |
+|---|---|
+| `center` | Centered in the viewport (default) |
+| `central` | Centered horizontally, anchored 60px from the top — useful for command palettes |
+| `left` | Full-height drawer sliding in from the left |
+| `right` | Full-height drawer sliding in from the right |
+| `top` | Full-width sheet sliding in from the top |
+| `bottom` | Full-width sheet sliding in from the bottom |
+
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('dialog-pos-central').showModal()">central</button>
+<button class="zui-button" onclick="document.getElementById('dialog-pos-left').showModal()">left</button>
+<button class="zui-button" onclick="document.getElementById('dialog-pos-right').showModal()">right</button>
+<button class="zui-button" onclick="document.getElementById('dialog-pos-top').showModal()">top</button>
+<button class="zui-button" onclick="document.getElementById('dialog-pos-bottom').showModal()">bottom</button>
+
+<dialog id="dialog-pos-central" class="zui-dialog zui-dialog-position-central" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">central</h2>
+    <p class="zui-dialog-description">Anchored 60px from the top of the viewport.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-pos-left" class="zui-dialog zui-dialog-position-left" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">left</h2>
+    <p class="zui-dialog-description">Slides in from the left edge.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-pos-right" class="zui-dialog zui-dialog-position-right" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">right</h2>
+    <p class="zui-dialog-description">Slides in from the right edge.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-pos-top" class="zui-dialog zui-dialog-position-top" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">top</h2>
+    <p class="zui-dialog-description">Slides in from the top edge.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="dialog-pos-bottom" class="zui-dialog zui-dialog-position-bottom" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">bottom</h2>
+    <p class="zui-dialog-description">Slides in from the bottom edge.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog"><button class="zui-button">Close</button></form>
+  </div>
+</dialog>`}
+  react={`import { useState } from 'react'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/react'
+
+function PositionDemo() {
+  const [position, setPosition] = useState(null)
+
+  return (
+    <>
+      <Button onClick={() => setPosition('central')}>central</Button>
+      <Button onClick={() => setPosition('left')}>left</Button>
+      <Button onClick={() => setPosition('right')}>right</Button>
+      <Button onClick={() => setPosition('top')}>top</Button>
+      <Button onClick={() => setPosition('bottom')}>bottom</Button>
+      <Dialog open={!!position} position={position} onClose={() => setPosition(null)}>
+        <DialogHeader>
+          <DialogTitle>{position}</DialogTitle>
+          <DialogDescription>Slides in from the {position} edge.</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setPosition(null)}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('dialog-pos-central').showModal()">central</Button>
+<Button onclick="document.getElementById('dialog-pos-left').showModal()">left</Button>
+<Button onclick="document.getElementById('dialog-pos-right').showModal()">right</Button>
+<Button onclick="document.getElementById('dialog-pos-top').showModal()">top</Button>
+<Button onclick="document.getElementById('dialog-pos-bottom').showModal()">bottom</Button>
+
+<Dialog id="dialog-pos-central" position="central">
+  <DialogHeader>
+    <DialogTitle>central</DialogTitle>
+    <DialogDescription>Anchored 60px from the top of the viewport.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-pos-left" position="left">
+  <DialogHeader>
+    <DialogTitle>left</DialogTitle>
+    <DialogDescription>Slides in from the left edge.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-pos-right" position="right">
+  <DialogHeader>
+    <DialogTitle>right</DialogTitle>
+    <DialogDescription>Slides in from the right edge.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-pos-top" position="top">
+  <DialogHeader>
+    <DialogTitle>top</DialogTitle>
+    <DialogDescription>Slides in from the top edge.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>
+
+<Dialog id="dialog-pos-bottom" position="bottom">
+  <DialogHeader>
+    <DialogTitle>bottom</DialogTitle>
+    <DialogDescription>Slides in from the bottom edge.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter><form method="dialog"><Button>Close</Button></form></DialogFooter>
+</Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/solid'
+
+function PositionDemo() {
+  const [position, setPosition] = createSignal(null)
+
+  return (
+    <>
+      <Button onClick={() => setPosition('central')}>central</Button>
+      <Button onClick={() => setPosition('left')}>left</Button>
+      <Button onClick={() => setPosition('right')}>right</Button>
+      <Button onClick={() => setPosition('top')}>top</Button>
+      <Button onClick={() => setPosition('bottom')}>bottom</Button>
+      <Dialog open={!!position()} position={position()} onClose={() => setPosition(null)}>
+        <DialogHeader>
+          <DialogTitle>{position()}</DialogTitle>
+          <DialogDescription>Slides in from the {position()} edge.</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button onClick={() => setPosition(null)}>Close</Button>
+        </DialogFooter>
+      </Dialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button @click="position = 'central'">central</Button>
+  <Button @click="position = 'left'">left</Button>
+  <Button @click="position = 'right'">right</Button>
+  <Button @click="position = 'top'">top</Button>
+  <Button @click="position = 'bottom'">bottom</Button>
+  <Dialog :open="!!position" :position="position" @close="position = null">
+    <DialogHeader>
+      <DialogTitle>{{ position }}</DialogTitle>
+      <DialogDescription>Slides in from the {{ position }} edge.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <Button @click="position = null">Close</Button>
+    </DialogFooter>
+  </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const position = ref(null)
+</script>`}
+>
+  <button class="zui-button" onclick="document.getElementById('dialog-pos-central-demo').showModal()">central</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-pos-left-demo').showModal()">left</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-pos-right-demo').showModal()">right</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-pos-top-demo').showModal()">top</button>
+  <button class="zui-button" onclick="document.getElementById('dialog-pos-bottom-demo').showModal()">bottom</button>
+
+  <dialog id="dialog-pos-central-demo" class="zui-dialog zui-dialog-position-central" closedby="any">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">central</h2>
+      <p class="zui-dialog-description">Anchored 60px from the top of the viewport.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-pos-left-demo" class="zui-dialog zui-dialog-position-left" closedby="any">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">left</h2>
+      <p class="zui-dialog-description">Slides in from the left edge.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-pos-right-demo" class="zui-dialog zui-dialog-position-right" closedby="any">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">right</h2>
+      <p class="zui-dialog-description">Slides in from the right edge.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-pos-top-demo" class="zui-dialog zui-dialog-position-top" closedby="any">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">top</h2>
+      <p class="zui-dialog-description">Slides in from the top edge.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-pos-bottom-demo" class="zui-dialog zui-dialog-position-bottom" closedby="any">
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title">bottom</h2>
+      <p class="zui-dialog-description">Slides in from the bottom edge.</p>
+    </div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+</Demo>
+
 ## Close button
 
 Add a close button inside the dialog using `.zui-dialog-close`.

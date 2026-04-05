@@ -69,8 +69,9 @@
 
     blockquote {
       padding-inline-start: 1em;
-      border-inline-start: 0.3em solid;
+      border-inline-start: 0.15em solid oklch(from currentColor l c h / 20%);
       font-style: italic;
+      font-family: var(--font-stack-serif);
     }
 
     h1 {
@@ -141,11 +142,12 @@
     }
 
     pre {
-      padding: var(--space-sm) var(--space-md);
+      padding: var(--space-2xs) var(--space-xs);
       border-radius: var(--radius-xl);
       max-width: 100%;
       box-shadow: var(--shadow-sm);
       position: relative;
+      font-size: var(--step--2);
 
       code {
         all: unset;

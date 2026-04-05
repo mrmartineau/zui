@@ -11,6 +11,7 @@
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
     accent-color: var(--color-theme);
+    interpolate-size: allow-keywords;
   }
 
   body {

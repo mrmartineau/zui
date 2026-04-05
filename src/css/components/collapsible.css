@@ -3,12 +3,13 @@
     --zui-collapsible-border: var(--color-border);
     --zui-collapsible-radius: var(--radius-md);
     --zui-collapsible-bg: var(--color-surface);
-    --zui-collapsible-padding-x: var(--space-sm);
-    --zui-collapsible-padding-y: var(--space-sm);
+    --zui-collapsible-padding-x: var(--space-xs);
+    --zui-collapsible-padding-y: var(--space-2xs);
 
     border: 1px var(--border-style, solid) var(--zui-collapsible-border);
     border-radius: var(--zui-collapsible-radius);
     background-color: var(--zui-collapsible-bg);
+    overflow: hidden;
   }
 
   .zui-collapsible-trigger {
@@ -54,6 +55,17 @@
 
   .zui-collapsible[open] > .zui-collapsible-trigger::after {
     transform: rotate(-135deg) translateY(1px);
+  }
+
+  .zui-collapsible::details-content {
+    block-size: 0;
+    transition:
+      block-size 250ms allow-discrete,
+      content-visibility 250ms allow-discrete;
+  }
+
+  .zui-collapsible:open::details-content {
+    block-size: auto;
   }
 
   .zui-collapsible-content {

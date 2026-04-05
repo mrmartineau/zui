@@ -7,6 +7,7 @@ import TokenGrid from '../../components/TokenGrid.astro'
 import TokenRow from '../../components/TokenRow.astro'
 import CopyCode from '../../components/CopyCode.astro'
 import DemoPreview from '../../components/DemoPreview.astro'
+import Demo from '../../components/Demo.astro'
 
 # UI Typography
 
@@ -47,6 +48,20 @@ import { Text } from '@mrmartineau/zui/astro'
 <Text size="2">Large UI text</Text>
 <Text size="0">Base size</Text>
 <Text size="-1">Small label</Text>`}
+  solid={`import { Text } from '@mrmartineau/zui/solid'
+
+<Text size="2">Large UI text</Text>
+<Text size="0">Base size</Text>
+<Text size="-1">Small label</Text>`}
+  vue={`<template>
+  <Text size="2">Large UI text</Text>
+  <Text size="0">Base size</Text>
+  <Text size="-1">Small label</Text>
+</template>
+
+<script setup>
+import { Text } from '@mrmartineau/zui/vue'
+</script>`}
 />
 
 ## Text Colour
@@ -82,6 +97,16 @@ import { Link } from '@mrmartineau/zui/astro'
 ---
 
 <Link href="/about">About us</Link>`}
+  solid={`import { Link } from '@mrmartineau/zui/solid'
+
+<Link href="/about">About us</Link>`}
+  vue={`<template>
+  <Link href="/about">About us</Link>
+</template>
+
+<script setup>
+import { Link } from '@mrmartineau/zui/vue'
+</script>`}
 />
 
 ### Custom properties
@@ -114,6 +139,16 @@ import { Code } from '@mrmartineau/zui/astro'
 ---
 
 <Code>var(--space-md)</Code>`}
+  solid={`import { Code } from '@mrmartineau/zui/solid'
+
+<Code>var(--space-md)</Code>`}
+  vue={`<template>
+  <Code>var(--space-md)</Code>
+</template>
+
+<script setup>
+import { Code } from '@mrmartineau/zui/vue'
+</script>`}
 />
 
 ### Code block
@@ -148,6 +183,26 @@ import { Pre } from '@mrmartineau/zui/astro'
     console.log(greeting);
   </code>
 </Pre>`}
+  solid={`import { Pre } from '@mrmartineau/zui/solid'
+
+<Pre>
+  <code>
+    const greeting = "Hello, world!";
+    console.log(greeting);
+  </code>
+</Pre>`}
+  vue={`<template>
+  <Pre>
+    <code>
+      const greeting = "Hello, world!";
+      console.log(greeting);
+    </code>
+  </Pre>
+</template>
+
+<script setup>
+import { Pre } from '@mrmartineau/zui/vue'
+</script>`}
 />
 
 ### Custom properties

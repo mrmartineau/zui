@@ -92,11 +92,12 @@
   }
 
   .zui-pre {
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-2xs) var(--space-xs);
     border-radius: var(--radius-xl);
     max-width: 100%;
     box-shadow: var(--shadow-sm);
     position: relative;
+    font-size: var(--step--2);
 
     code {
       all: unset;
