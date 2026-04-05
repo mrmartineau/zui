@@ -7,7 +7,7 @@
     --radius-xl: calc(8px * var(--radius-scale));
     --radius-2xl: calc(12px * var(--radius-scale));
     --radius-3xl: calc(16px * var(--radius-scale));
-    --radius-full: calc(9999px * var(--radius-scale));
+    --radius-full: 9999px;
     --radius-round: 50%; /* % can't be multiplied meaningfully, keep fixed */
   }
 }
