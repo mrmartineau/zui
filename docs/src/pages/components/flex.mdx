@@ -1,0 +1,253 @@
+---
+layout: ../../layouts/Layout.astro
+title: Flex
+---
+
+import Demo from '../../components/Demo.astro'
+
+# Flex
+
+A layout component for flexbox-based arrangements. Controls direction, alignment, justification, wrapping, and gap spacing via props.
+
+## Usage
+
+<Demo
+  html={`<div class="flex gap-md">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>`}
+  react={`import { Flex } from '@mrmartineau/zui/react'
+
+<Flex gap="md">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
+  astro={`---
+import { Flex } from '@mrmartineau/zui/astro'
+---
+
+<Flex gap="md">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
+  solid={`import { Flex } from '@mrmartineau/zui/solid'
+
+<Flex gap="md">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
+  vue={`<template>
+  <Flex gap="md">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+  </Flex>
+</template>
+
+<script setup>
+import { Flex } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div class="flex gap-md">
+    <div class="zui-badge">One</div>
+    <div class="zui-badge">Two</div>
+    <div class="zui-badge">Three</div>
+  </div>
+</Demo>
+
+## Direction
+
+<Demo
+  html={`<div class="flex flex-column gap-sm">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</div>`}
+  react={`<Flex direction="column" gap="sm">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
+  astro={`<Flex direction="column" gap="sm">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
+  solid={`import { Flex } from '@mrmartineau/zui/solid'
+
+<Flex direction="column" gap="sm">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
+  vue={`<template>
+  <Flex direction="column" gap="sm">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+  </Flex>
+</template>
+
+<script setup>
+import { Flex } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div class="flex flex-column gap-sm">
+    <div class="zui-badge">One</div>
+    <div class="zui-badge">Two</div>
+    <div class="zui-badge">Three</div>
+  </div>
+</Demo>
+
+## Alignment & Justification
+
+<Demo
+  html={`<div class="flex items-center justify-between gap-md" style="min-height: 80px;">
+  <div>Start</div>
+  <div>End</div>
+</div>`}
+  react={`<Flex align="center" justify="between" gap="md" style={{ minHeight: 80 }}>
+  <div>Start</div>
+  <div>End</div>
+</Flex>`}
+  astro={`<Flex align="center" justify="between" gap="md" style="min-height: 80px;">
+  <div>Start</div>
+  <div>End</div>
+</Flex>`}
+  solid={`import { Flex } from '@mrmartineau/zui/solid'
+
+<Flex align="center" justify="between" gap="md" style={{ "min-height": "80px" }}>
+  <div>Start</div>
+  <div>End</div>
+</Flex>`}
+  vue={`<template>
+  <Flex align="center" justify="between" gap="md" style="min-height: 80px;">
+    <div>Start</div>
+    <div>End</div>
+  </Flex>
+</template>
+
+<script setup>
+import { Flex } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div class="flex items-center justify-between gap-md" style="min-height: 80px;">
+    <div class="zui-badge">Start</div>
+    <div class="zui-badge">End</div>
+  </div>
+</Demo>
+
+## Wrapping
+
+<Demo
+  html={`<div class="flex flex-wrap gap-sm">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</div>`}
+  react={`<Flex wrap="wrap" gap="sm">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
+  astro={`<Flex wrap="wrap" gap="sm">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
+  solid={`import { Flex } from '@mrmartineau/zui/solid'
+
+<Flex wrap="wrap" gap="sm">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
+  vue={`<template>
+  <Flex wrap="wrap" gap="sm">
+    <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+  </Flex>
+</template>
+
+<script setup>
+import { Flex } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <div class="zui-badge">A</div>
+    <div class="zui-badge">B</div>
+    <div class="zui-badge">C</div>
+    <div class="zui-badge">D</div>
+    <div class="zui-badge">E</div>
+    <div class="zui-badge">F</div>
+  </div>
+</Demo>
+
+## Inline display
+
+<Demo
+  html={`<p>Text with <span class="inline-flex items-center gap-2xs"><span class="zui-badge">inline</span><span class="zui-badge">flex</span></span> content.</p>`}
+  react={`<p>Text with <Flex display="inline" align="center" gap="2xs"><Badge>inline</Badge><Badge>flex</Badge></Flex> content.</p>`}
+  astro={`<p>Text with <Flex display="inline" align="center" gap="2xs"><Badge>inline</Badge><Badge>flex</Badge></Flex> content.</p>`}
+  solid={`import { Flex } from '@mrmartineau/zui/solid'
+import { Badge } from '@mrmartineau/zui/solid'
+
+<p>Text with <Flex display="inline" align="center" gap="2xs"><Badge>inline</Badge><Badge>flex</Badge></Flex> content.</p>`}
+  vue={`<template>
+  <p>Text with <Flex display="inline" align="center" gap="2xs"><Badge>inline</Badge><Badge>flex</Badge></Flex> content.</p>
+</template>
+
+<script setup>
+import { Flex } from '@mrmartineau/zui/vue'
+import { Badge } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <p>Text with <span class="inline-flex items-center gap-2xs"><span class="zui-badge">inline</span><span class="zui-badge">flex</span></span> content.</p>
+</Demo>
+
+## Independent axis gaps
+
+Use `gapX` and `gapY` for different horizontal and vertical spacing.
+
+<Demo
+  html={`<div class="flex flex-wrap gapx-xl gapy-2xs">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</div>`}
+  react={`<Flex wrap="wrap" gapX="xl" gapY="2xs">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
+  astro={`<Flex wrap="wrap" gapX="xl" gapY="2xs">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
+  solid={`import { Flex } from '@mrmartineau/zui/solid'
+
+<Flex wrap="wrap" gapX="xl" gapY="2xs">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
+  vue={`<template>
+  <Flex wrap="wrap" gapX="xl" gapY="2xs">
+    <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+  </Flex>
+</template>
+
+<script setup>
+import { Flex } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div class="flex flex-wrap gapx-xl gapy-2xs">
+    <div class="zui-badge">A</div>
+    <div class="zui-badge">B</div>
+    <div class="zui-badge">C</div>
+    <div class="zui-badge">D</div>
+    <div class="zui-badge">E</div>
+    <div class="zui-badge">F</div>
+  </div>
+</Demo>
+
+## Props
+
+| Prop | Values | Default |
+|------|--------|---------|
+| `display` | `flex`, `inline` | `flex` |
+| `direction` | `row`, `rowReverse`, `column`, `columnReverse` | — |
+| `align` | `start`, `end`, `center`, `baseline`, `stretch` | — |
+| `justify` | `start`, `end`, `center`, `between`, `around` | — |
+| `wrap` | `wrap`, `nowrap`, `wrapReverse` | — |
+| `gap` | `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl` | — |
+| `gapX` | `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl` | — |
+| `gapY` | `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl` | — |

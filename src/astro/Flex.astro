@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { flexVariants } from '../shared/flexVariants'
+
+type FlexVariantProps = VariantProps<typeof flexVariants>
+
+interface Props extends HTMLAttributes<'div'>, FlexVariantProps {
+  class?: string
+}
+
+const { class: className, display, direction, align, justify, wrap, gap, gapX, gapY, ...props } = Astro.props
+const classes = flexVariants({ display, direction, align, justify, wrap, gap, gapX, gapY, class: className })
+---
+
+<div class={classes} {...props}><slot /></div>
