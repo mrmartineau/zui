@@ -77,7 +77,8 @@
     }
   }
 
-  .zui-button:not(:disabled):hover {
+  .zui-button:not(:disabled):hover,
+  .zui-button:not(:disabled)[aria-pressed="true"] {
     background-color: var(--zui-btn-hover-bg);
     color: var(--zui-btn-hover-fg, var(--auto-color));
     border-color: var(--zui-btn-hover-border, transparent);
