@@ -2,9 +2,10 @@
 sectionOrder: 2
 layout: ../../layouts/Layout.astro
 title: Overview
+description: CSS custom properties exposing the full design system — colour, space, type, radius, shadow, easing, and more.
 ---
 
-# Design Tokens
+import SectionCards from '../../components/SectionCards.astro'
 
 ZUI exposes its entire design system as CSS custom properties. Every colour, spacing value, font size, shadow, radius, easing curve, and z-index level is a token you can reference directly in your CSS.
 
@@ -76,11 +77,4 @@ See [Theming](/theming) for the full guide.
 
 ## Token categories
 
-- [Space](/tokens/space) — fluid spacing scale
-- [Shadows](/tokens/shadows) — elevation levels
-- [Radii](/tokens/radii) — border radius with global scale control
-- [Easing](/tokens/easing) — timing functions and spring curves
-- [Animation](/tokens/animation) — keyframe presets
-- [Aspect Ratio](/tokens/aspect-ratio) — common aspect ratios
-- [Size](/tokens/size) — fractional, viewport, and intrinsic sizing
-- [Z-Index](/tokens/z-index) — stacking layers
+<SectionCards section="tokens" />

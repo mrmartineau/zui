@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Shadows
+description: Box shadow tokens with configurable colour via oklch relative colour syntax.
 ---
 
 import ShadowGrid from '../../components/ShadowGrid.astro'
@@ -13,10 +14,6 @@ export const shadows = [
   { token: '--shadow-xl', label: 'Extra large' },
   { token: '--shadow-2xl', label: '2× large' },
 ]
-
-# Shadows
-
-Box shadow tokens using <code class="zui-code">oklch</code> relative colour syntax. The shadow colour is configurable via <code class="zui-code">--shadow-color</code>.
 
 ## Scale
 

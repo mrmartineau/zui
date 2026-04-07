@@ -1,0 +1,88 @@
+---
+interface Props {
+  section: string
+}
+
+const { section } = Astro.props
+
+interface PageFrontmatter {
+  title: string
+  description?: string
+  order?: number
+}
+
+const allPages = import.meta.glob('../pages/**/*.mdx', { eager: true })
+
+function pathToHref(filePath: string): string {
+  return filePath
+    .replace('../pages', '')
+    .replace(/\.mdx$/, '')
+    .replace(/\/index$/, '') || '/'
+}
+
+const cards = Object.entries(allPages)
+  .filter(([path]) => {
+    const match = path.match(/^\.\.\/pages\/([^/]+)\//)
+    return match && match[1] === section && !path.endsWith('/index.mdx')
+  })
+  .map(([path, mod]) => {
+    const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
+    return {
+      href: pathToHref(path),
+      title: fm.title,
+      description: fm.description,
+      order: fm.order,
+    }
+  })
+  .sort((a, b) => {
+    const aOrdered = a.order !== undefined
+    const bOrdered = b.order !== undefined
+    if (aOrdered && bOrdered) return a.order! - b.order!
+    if (aOrdered) return -1
+    if (bOrdered) return 1
+    return a.title.localeCompare(b.title)
+  })
+---
+
+<div class="section-card-grid">
+  {cards.map(({ href, title, description }) => (
+    <a href={href} class="zui-card section-card">
+      <div class="zui-card-body">
+        <p class="section-card-title">{title}</p>
+        {description && <p class="section-card-description">{description}</p>}
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .section-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .section-card {
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .section-card:hover {
+    border-color: var(--color-theme);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-card-title {
+    font-size: var(--step-0);
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-theme);
+  }
+
+  .section-card-description {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+    margin: var(--space-4xs) 0 0;
+    line-height: var(--line-height-md);
+  }
+</style>

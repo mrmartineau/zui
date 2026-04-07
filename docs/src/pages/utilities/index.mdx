@@ -2,13 +2,12 @@
 sectionOrder: 4
 layout: ../../layouts/Layout.astro
 title: Utility Classes
+description: A minimal set of utility classes for layout, spacing, flexbox, prose, and visibility.
 ---
 
-# Utility Classes
+import SectionCards from '../../components/SectionCards.astro'
 
 ZUI includes a minimal set of utility classes for common layout and typography tasks. The philosophy is similar to Tailwind CSS — single-purpose classes you compose directly in HTML — but scoped to what ZUI actually needs rather than a full atomic CSS framework.
-
-Unlike Tailwind, ZUI's utilities are intentionally small. They cover the patterns that come up repeatedly when building with ZUI components: spacing, flexbox layout, vertical flow, prose styling, and visibility. For anything beyond that, reach for plain CSS or a dedicated utility library.
 
 ## CSS layer
 
@@ -20,57 +19,4 @@ All utility classes live in the `zui.utilities` layer, which sits above `zui.com
 
 ## Utility categories
 
-### [Spacing](/utilities/spacing)
-
-Margin, padding, and gap classes mapped to ZUI's fluid space scale. Classes follow a shorthand pattern (`m-`, `p-`, `gap-`) with optional side modifiers (`x`, `y`, `t`, `r`, `b`, `l`) and a size suffix from the space token scale.
-
-```html
-<div class="px-m py-xl mt-auto mx-auto">…</div>
-```
-
-### [Flex](/utilities/flex)
-
-Flexbox display, direction, wrap, sizing, alignment, and justification classes. Covers the most common flex patterns without a responsive prefix system.
-
-```html
-<nav class="flex items-center justify-between gap-md">…</nav>
-```
-
-### [Flow](/utilities/flow)
-
-The `.flow` class adds consistent vertical spacing between child elements using the CSS lobotomised owl selector (`* + *`). Useful for article content and stacked layouts where every sibling needs a gap.
-
-```html
-<article class="flow">
-  <h1>…</h1>
-  <p>…</p>
-  <p>…</p>
-</article>
-```
-
-### [Prose](/utilities/prose)
-
-The `.prose` class applies readable typographic defaults to long-form content: constrained line length, scaled headings, styled links, and vertical rhythm. Designed for markdown output and editorial pages.
-
-```html
-<div class="prose">…</div>
-```
-
-### [UI Typography](/utilities/ui-typography)
-
-Typography utilities for interface text — font-sizes, links, code snippets — using ZUI's fluid type scale and font stacks.
-
-```html
-<span class="zui-color-muted">Muted text</span>
-```
-
-### [Visibility](/utilities/visibility)
-
-`.sr-only` (aliased as `.visually-hidden`) hides content visually while keeping it in the accessibility tree. Use it for screen-reader labels on icon buttons, skip links, and other accessible-but-invisible text.
-
-```html
-<button>
-  <svg aria-hidden="true">…</svg>
-  <span class="sr-only">Close</span>
-</button>
-```
+<SectionCards section="utilities" />
