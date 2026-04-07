@@ -76,7 +76,7 @@ Component styles live in the `zui.components` layer, below `zui.utilities`. This
 
 ## CSS custom properties
 
-Every component exposes a set of CSS custom properties (variables) that control its appearance — things like colours, border radius, padding, and shadow. You can override these without touching the source CSS, and without needing to eject or copy any styles.
+Every component exposes CSS custom properties (variables) that control its appearance — colours, border radius, padding, shadow, and more. You can override these without touching the source CSS and without ejecting any styles.
 
 ### Inline overrides
 
@@ -90,7 +90,7 @@ Pass overrides via the `style` attribute on the component's root element:
 
 ### CSS overrides
 
-Target the component class in your own stylesheet. Because component styles live in `zui.components`, any rule outside a `@layer` will already win — no `!important` needed:
+Target the component class in your own stylesheet. Because component styles live in `zui.components`, any rule outside a `@layer` already wins — no `!important` needed:
 
 ```css
 .zui-card {
@@ -107,7 +107,7 @@ To scope an override to a specific context, nest it under a parent selector:
 }
 ```
 
-Each component's page lists its available custom properties and their defaults.
+See this [live CodePen example](https://codepen.io/mrmartineau/pen/VYKBEqQ?editors=1100) showing three cards side by side: one with default styles, one customised via inline `style` attributes, and one themed via scoped CSS classes. Each component page lists its available custom properties and their defaults.
 
 ## Components
 
