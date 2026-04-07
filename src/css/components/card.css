@@ -3,7 +3,7 @@
     --zui-card-radius: var(--radius-xl);
     --zui-card-border: var(--color-border);
     --zui-card-bg: var(--color-surface);
-    --zui-card-padding: var(--space-md);
+    --zui-card-padding: var(--space-sm);
 
     padding: var(--zui-card-padding);
     border: 1px var(--border-style, solid) var(--zui-card-border);
