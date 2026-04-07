@@ -2,15 +2,55 @@
 import Layout from '../layouts/Layout.astro'
 import { Code } from 'astro:components'
 import { version } from '../../../package.json'
+
+interface PageFrontmatter {
+  title: string
+  order?: number
+}
+
+interface FooterLink {
+  href: string
+  title: string
+}
+
+const allMdxPages = import.meta.glob('./**/*.mdx', { eager: true })
+
+function pathToHref(filePath: string): string {
+  return filePath
+    .replace(/^\./, '')
+    .replace(/\.mdx$/, '')
+    .replace(/\/index$/, '') || '/'
+}
+
+function buildSectionLinks(section: string): FooterLink[] {
+  return Object.entries(allMdxPages)
+    .filter(([path]) => path.match(/^\.\/([^/]+)\//)?.[1] === section)
+    .map(([path, mod]) => {
+      const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
+      const isIndex = path.endsWith('/index.mdx')
+      return {
+        href: pathToHref(path),
+        title: fm.title,
+        _sort: isIndex ? -1 : (fm.order ?? Infinity),
+      }
+    })
+    .sort((a, b) => a._sort - b._sort || a.title.localeCompare(b.title))
+    .map(({ href, title }) => ({ href, title }))
+}
+
+const guideLinks = buildSectionLinks('guides')
+const tokenLinks = buildSectionLinks('tokens')
+const componentLinks = buildSectionLinks('components')
+const utilityLinks = buildSectionLinks('utilities')
 ---
 
 <Layout title="Home">
   <section class="hero">
     <span class="zui-badge zui-badge-variant-outline">v{version}</span>
-    <h1 class="hero-title"><abbr title="Zooey">ZUI</abbr> – Build interfaces<br>with intention</h1>
+    <h1 class="hero-title"><abbr title="Zooey">ZUI</abbr> – Build interfaces with intention</h1>
     <p class="hero-subtitle">A CSS-first UI library with design tokens, layered architecture, and optional <a href="/guides/react">React</a>, <a href="/guides/astro">Astro</a>, <a href="/guides/solid">Solid</a> &amp; <a href="/guides/vue">Vue</a> components. No build step required.</p>
     <div class="hero-actions">
-      <a href="/guides/installation" class="zui-button">Get started</a>
+      <a href="/guides" class="zui-button">Get started</a>
       <a href="/components" class="zui-button zui-button-variant-outline">Browse components</a>
     </div>
 
@@ -166,45 +206,20 @@ import { version } from '../../../package.json'
   <footer class="site-footer">
     <div class="footer-links">
       <div class="footer-col">
-        <h4>Guide</h4>
-        <a href="/installation">Installation</a>
-        <a href="/theming">Theming</a>
-        <a href="/colors">Colours</a>
-        <a href="/typography">Typography</a>
-        <a href="/layers">CSS Layers</a>
-        <a href="/guides/copy-source">Copy source into project</a>
-        <a href="/guides/skills">AI Agent Skills</a>
+        <h4>Guides</h4>
+        {guideLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
       </div>
       <div class="footer-col">
         <h4>Tokens</h4>
-        <a href="/tokens">Overview</a>
-        <a href="/tokens/space">Space</a>
-        <a href="/tokens/radii">Radii</a>
-        <a href="/tokens/shadows">Shadows</a>
-        <a href="/tokens/easing">Easing</a>
+        {tokenLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
       </div>
       <div class="footer-col">
         <h4>Components</h4>
-        <a href="/components">Overview</a>
-        <a href="/components/button">Button</a>
-        <a href="/components/badge">Badge</a>
-        <a href="/components/card">Card</a>
-        <a href="/components/input">Input</a>
+        {componentLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
       </div>
       <div class="footer-col">
         <h4>Utilities</h4>
-        <a href="/utilities">Overview</a>
-        <a href="/utilities/spacing">Spacing</a>
-        <a href="/utilities/flex">Flex</a>
-        <a href="/utilities/flow">Flow</a>
-      </div>
-      <div class="footer-col">
-        <h4>Frameworks</h4>
-        <a href="/guides/react">React</a>
-        <a href="/guides/astro">Astro</a>
-        <a href="/guides/solid">Solid</a>
-        <a href="/guides/vue">Vue</a>
-        <a href="/guides/other-frameworks">Other</a>
+        {utilityLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
       </div>
     </div>
   </footer>
@@ -410,7 +425,7 @@ import { version } from '../../../package.json'
 
   .footer-links {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
   }
 
