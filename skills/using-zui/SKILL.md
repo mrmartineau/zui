@@ -39,6 +39,37 @@ All styles are organised into cascading layers. When writing custom CSS that int
 @layer zui.reset, zui.base, zui.components, zui.utilities;
 ```
 
+## Overriding Component Styles
+
+### CSS custom properties
+
+Every component exposes CSS custom properties that control its appearance — colours, border radius, padding, shadow, and more. Override these without touching source CSS.
+
+**Inline** — via `style` attribute on the component's root element:
+
+```html
+<div class="zui-card" style="--zui-card-radius: var(--radius-sm); --zui-card-padding: var(--space-lg);">…</div>
+```
+
+**Stylesheet** — target the component class. Rules outside a `@layer` win over `zui.components` automatically, no `!important` needed:
+
+```css
+.zui-card {
+  --zui-card-radius: var(--radius-sm);
+  --zui-card-padding: var(--space-lg);
+}
+```
+
+**Scoped** — nest under a parent selector to restrict the override to a specific context:
+
+```css
+.my-sidebar .zui-button {
+  --zui-btn-radius: 0;
+}
+```
+
+Each component page in the docs lists its available custom properties and their defaults.
+
 ## Design Tokens
 
 Always use tokens via CSS custom properties — never hard-code raw values.
@@ -90,6 +121,12 @@ Controlled globally by `--radius-scale` (default `1`).
 ### Border
 
 Use `var(--border-style)` for border-style (defaults to `solid`).
+
+### Animation
+
+Pre-built animation tokens for use with `animation:`:
+
+`--animation-fade-in` · `--animation-fade-out` · `--animation-scale-up` · `--animation-scale-down` · `--animation-slide-in-up` · `--animation-slide-in-down` · `--animation-slide-in-right` · `--animation-slide-in-left` · `--animation-slide-out-up` · `--animation-slide-out-down` · `--animation-slide-out-right` · `--animation-slide-out-left` · `--animation-shake-x` · `--animation-shake-y` · `--animation-shake-z` · `--animation-spin` · `--animation-ping` · `--animation-blink` · `--animation-float` · `--animation-bounce` · `--animation-pulse`
 
 ## Components
 
@@ -386,6 +423,116 @@ Uses CSS Anchor Positioning and Popover API. Positioned below the trigger by def
 ```tsx
 <Prose><p>Long-form content…</p></Prose>
 ```
+
+### Accordion
+
+**CSS classes:** `zui-accordion` (wrapper), `zui-accordion-item` (`<details>`), `zui-accordion-trigger` (`<summary>`), `zui-accordion-content`
+
+Variant: `zui-accordion-flush` — no outer border/background, items separated by dividers.
+
+Uses native `<details>`/`<summary>` elements with CSS animated open/close. Add `name` attribute to `<details>` items to make them mutually exclusive (browser-native accordion behaviour).
+
+```html
+<div class="zui-accordion">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Section 1</summary>
+    <div class="zui-accordion-content">Content here</div>
+  </details>
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Section 2</summary>
+    <div class="zui-accordion-content">Content here</div>
+  </details>
+</div>
+```
+
+```tsx
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Section 1</AccordionTrigger>
+    <AccordionContent>Content here</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+{/* Flush variant */}
+<Accordion flush>…</Accordion>
+```
+
+### Avatar
+
+**CSS classes:** `zui-avatar` (base), `zui-avatar-image` (`<img>`), `zui-avatar-fallback`
+
+| Variant axis | Options | Class pattern |
+|---|---|---|
+| size | `sm`, `md` (default), `lg` | `zui-avatar-size-{name}` |
+| shape | `default` (round), `hard` (square), `soft` (round), `squircle` | `zui-avatar-shape-{name}` |
+
+Falls back to a user icon when `src` is absent or fails to load. The `fallback` prop accepts any React node.
+
+```html
+<span class="zui-avatar">
+  <span class="zui-avatar-fallback"><i class="ph ph-user"></i></span>
+  <img class="zui-avatar-image" src="…" alt="Name" />
+</span>
+```
+
+```tsx
+<Avatar src="/photo.jpg" alt="Zander" size="md" shape="default" />
+<Avatar fallback="ZM" size="lg" />
+```
+
+### Collapsible
+
+**CSS classes:** `zui-collapsible` (`<details>`), `zui-collapsible-trigger` (`<summary>`), `zui-collapsible-content`
+
+Single disclosure widget with animated open/close. Uses native `<details>`/`<summary>`.
+
+```html
+<details class="zui-collapsible">
+  <summary class="zui-collapsible-trigger">Show more</summary>
+  <div class="zui-collapsible-content">Hidden content</div>
+</details>
+```
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>Show more</CollapsibleTrigger>
+  <CollapsibleContent>Hidden content</CollapsibleContent>
+</Collapsible>
+```
+
+### Menu
+
+**CSS classes:** `zui-menu` (`<details>`), `zui-menu-item`
+
+Dropdown menu using native `<details>`/`<summary>`. `MenuTrigger` renders as a `<summary>` styled like a button (accepts all button variant props, defaults to `variant="outline"`). `MenuItem` renders as a `<button>` or `<a>` styled like a ghost button; pass `href` to get an anchor.
+
+```html
+<details class="zui-menu">
+  <summary class="zui-button zui-button-variant-outline">Open menu</summary>
+  <button class="zui-button zui-button-variant-ghost zui-menu-item">Action</button>
+  <a class="zui-button zui-button-variant-ghost zui-menu-item" href="/page">Link</a>
+</details>
+```
+
+```tsx
+<Menu>
+  <MenuTrigger>Open menu</MenuTrigger>
+  <MenuItem>Action</MenuItem>
+  <MenuItem href="/page">Link</MenuItem>
+</Menu>
+```
+
+### Flex
+
+Convenience React/Astro wrapper that applies flex utility classes via props. No dedicated CSS component — uses the utility layer.
+
+```tsx
+<Flex direction="row" align="center" justify="between" gap="sm">
+  …
+</Flex>
+```
+
+Props: `display` (`flex` | `inline-flex`), `direction` (`row` | `column`), `align`, `justify`, `wrap`, `gap`, `gapX`, `gapY`
 
 ### Table
 
