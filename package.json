@@ -1,6 +1,6 @@
 {
   "name": "@mrmartineau/zui",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "ZUI — a CSS UI library with React, Astro, Solid, and Vue components",
   "type": "module",
   "exports": {
@@ -73,6 +73,7 @@
     "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
     "@tsdown/css": "^0.21.4",
     "@types/react": "^19.0.0",
     "astro": "^6.0.8",
