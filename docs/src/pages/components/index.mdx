@@ -74,6 +74,41 @@ Component styles live in the `zui.components` layer, below `zui.utilities`. This
 @layer zui.base, zui.components, zui.utilities;
 ```
 
+## CSS custom properties
+
+Every component exposes a set of CSS custom properties (variables) that control its appearance — things like colours, border radius, padding, and shadow. You can override these without touching the source CSS, and without needing to eject or copy any styles.
+
+### Inline overrides
+
+Pass overrides via the `style` attribute on the component's root element:
+
+```html
+<div class="zui-card" style="--zui-card-radius: var(--radius-sm); --zui-card-padding: var(--space-lg);">
+  …
+</div>
+```
+
+### CSS overrides
+
+Target the component class in your own stylesheet. Because component styles live in `zui.components`, any rule outside a `@layer` will already win — no `!important` needed:
+
+```css
+.zui-card {
+  --zui-card-radius: var(--radius-sm);
+  --zui-card-padding: var(--space-lg);
+}
+```
+
+To scope an override to a specific context, nest it under a parent selector:
+
+```css
+.my-sidebar .zui-button {
+  --zui-btn-radius: 0;
+}
+```
+
+Each component's page lists its available custom properties and their defaults.
+
 ## Components
 
 ### [Badge](/components/badge)
