@@ -12,7 +12,8 @@ interface Props {
   description?: string;
 }
 
-const { title, description } = Astro.props;
+// @ts-expect-error ignore
+const { title, description } = (Astro.props.frontmatter ?? Astro.props) as Props;
 const currentPath = Astro.url.pathname;
 
 const indexPages = import.meta.glob('../pages/*/index.mdx', { eager: true })
