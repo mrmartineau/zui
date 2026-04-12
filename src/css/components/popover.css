@@ -1,12 +1,14 @@
 @layer zui.components {
   .zui-popover {
     --zui-popover-bg: var(--color-surface);
+    --zui-popover-fg: currentColor;
     --zui-popover-border: var(--color-border);
     --zui-popover-radius: var(--radius-lg);
     --zui-popover-shadow: var(--shadow-lg);
     --zui-popover-padding: var(--space-xs);
 
     background-color: var(--zui-popover-bg);
+    color: var(--zui-popover-fg);
     border: 0;
     border-radius: var(--zui-popover-radius);
     box-shadow: var(--zui-popover-shadow);
