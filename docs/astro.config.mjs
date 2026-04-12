@@ -14,6 +14,7 @@ export default defineConfig({
       alias: {
         '@mrmartineau/zui/css': resolve(import.meta.dirname, '../dist/css/zui.css'),
         '@mrmartineau/zui/utils': resolve(import.meta.dirname, '../src/utils/colorScheme.ts'),
+        '@mrmartineau/zui/astro': resolve(import.meta.dirname, '../src/astro/index.ts'),
       },
     },
     optimizeDeps: {

@@ -23,14 +23,36 @@ const contentClasses = [
 ---
 
 <span class:list={['zui-tooltip', className]} {...props}>
-  <span style={`anchor-name: ${anchorName}`} popovertarget={id} popovertargetaction="hover">
+  <span
+    style={`anchor-name: ${anchorName}`}
+    data-tooltip-trigger={id}
+  >
     <slot />
   </span>
   <span
-    popover="hint"
+    popover="manual"
     id={id}
     class={contentClasses}
     role="tooltip"
     style={`position-anchor: ${anchorName}`}
   >{text}</span>
 </span>
+
+<script>
+  const bound = new WeakSet<HTMLElement>()
+
+  function initTooltips() {
+    document.querySelectorAll<HTMLElement>('[data-tooltip-trigger]').forEach((trigger) => {
+      if (bound.has(trigger)) return
+      bound.add(trigger)
+      const popover = document.getElementById(trigger.dataset.tooltipTrigger!)
+      if (!popover) return
+      trigger.addEventListener('mouseenter', () => popover.showPopover())
+      trigger.addEventListener('mouseleave', () => popover.hidePopover())
+      trigger.addEventListener('focus', () => popover.showPopover())
+      trigger.addEventListener('blur', () => popover.hidePopover())
+    })
+  }
+
+  document.addEventListener('astro:page-load', initTooltips)
+</script>

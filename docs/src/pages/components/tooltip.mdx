@@ -1,20 +1,30 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Tooltip
-description: Small contextual labels on hover or focus, using the Popover API and CSS Anchor Positioning. No JavaScript required.
+description: Small contextual labels on hover or focus, using the Popover API and CSS Anchor Positioning.
 ---
 
 import Demo from '../../components/Demo.astro'
-
-> **Browser support:** CSS Anchor Positioning and `popover="hint"` are cutting-edge features. They are supported in Chrome 125+ and Edge 125+. Firefox and Safari have partial support — check [caniuse](https://caniuse.com/css-anchor-positioning) for the latest status.
+import { Tooltip } from '@mrmartineau/zui/astro'
 
 ## Usage
 
 <Demo
   html={`<span class="zui-tooltip">
-  <button class="zui-button" style="anchor-name: --tooltip-demo" popovertarget="tooltip-demo">Hover me</button>
-  <span popover="hint" id="tooltip-demo" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --tooltip-demo" role="tooltip">Helpful information</span>
-</span>`}
+  <button class="zui-button" style="anchor-name: --tooltip-demo" data-tooltip-trigger="tooltip-demo">Hover me</button>
+  <span popover="manual" id="tooltip-demo" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --tooltip-demo" role="tooltip">Helpful information</span>
+</span>
+
+<script>
+  document.querySelectorAll('[data-tooltip-trigger]').forEach((trigger) => {
+    const popover = document.getElementById(trigger.dataset.tooltipTrigger)
+    if (!popover) return
+    trigger.addEventListener('mouseenter', () => popover.showPopover())
+    trigger.addEventListener('mouseleave', () => popover.hidePopover())
+    trigger.addEventListener('focus', () => popover.showPopover())
+    trigger.addEventListener('blur', () => popover.hidePopover())
+  })
+</script>`}
   react={`import { Tooltip, Button } from '@mrmartineau/zui/react'
 
 <Tooltip text="Helpful information">
@@ -34,48 +44,58 @@ import { Tooltip, Button } from '@mrmartineau/zui/astro'
 </Tooltip>`}
   vue={`<template>
   <Tooltip text="Helpful information">
-  <Button>Hover me</Button>
-</Tooltip>
+    <Button>Hover me</Button>
+  </Tooltip>
 </template>
 
 <script setup>
 import { Tooltip, Button } from '@mrmartineau/zui/vue'
 </script>`}
 >
-  <span class="zui-tooltip">
-    <button class="zui-button" style="anchor-name: --tooltip-demo" popovertarget="tooltip-demo">Hover me</button>
-    <span popover="hint" id="tooltip-demo" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --tooltip-demo" role="tooltip">Helpful information</span>
-  </span>
+  <Tooltip text="Helpful information">
+    <button class="zui-button">Hover me</button>
+  </Tooltip>
 </Demo>
 
 ## Placement
 
-Tooltips default to top placement. Use placement classes to change direction.
+Tooltips default to top placement. Use the `placement` prop (or placement class) to change direction.
 
 <Demo
   html={`<!-- Top (default) -->
 <span class="zui-tooltip">
-  <button class="zui-button" style="anchor-name: --tt-top" popovertarget="tt-top">Top</button>
-  <span popover="hint" id="tt-top" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --tt-top" role="tooltip">Appears above</span>
+  <button class="zui-button" style="anchor-name: --tt-top" data-tooltip-trigger="tt-top">Top</button>
+  <span popover="manual" id="tt-top" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --tt-top" role="tooltip">Appears above</span>
 </span>
 
 <!-- Bottom -->
 <span class="zui-tooltip">
-  <button class="zui-button" style="anchor-name: --tt-bottom" popovertarget="tt-bottom">Bottom</button>
-  <span popover="hint" id="tt-bottom" class="zui-tooltip-content zui-tooltip-placement-bottom" style="position-anchor: --tt-bottom" role="tooltip">Appears below</span>
+  <button class="zui-button" style="anchor-name: --tt-bottom" data-tooltip-trigger="tt-bottom">Bottom</button>
+  <span popover="manual" id="tt-bottom" class="zui-tooltip-content zui-tooltip-placement-bottom" style="position-anchor: --tt-bottom" role="tooltip">Appears below</span>
 </span>
 
 <!-- Left -->
 <span class="zui-tooltip">
-  <button class="zui-button" style="anchor-name: --tt-left" popovertarget="tt-left">Left</button>
-  <span popover="hint" id="tt-left" class="zui-tooltip-content zui-tooltip-placement-left" style="position-anchor: --tt-left" role="tooltip">Appears left</span>
+  <button class="zui-button" style="anchor-name: --tt-left" data-tooltip-trigger="tt-left">Left</button>
+  <span popover="manual" id="tt-left" class="zui-tooltip-content zui-tooltip-placement-left" style="position-anchor: --tt-left" role="tooltip">Appears left</span>
 </span>
 
 <!-- Right -->
 <span class="zui-tooltip">
-  <button class="zui-button" style="anchor-name: --tt-right" popovertarget="tt-right">Right</button>
-  <span popover="hint" id="tt-right" class="zui-tooltip-content zui-tooltip-placement-right" style="position-anchor: --tt-right" role="tooltip">Appears right</span>
-</span>`}
+  <button class="zui-button" style="anchor-name: --tt-right" data-tooltip-trigger="tt-right">Right</button>
+  <span popover="manual" id="tt-right" class="zui-tooltip-content zui-tooltip-placement-right" style="position-anchor: --tt-right" role="tooltip">Appears right</span>
+</span>
+
+<script>
+  document.querySelectorAll('[data-tooltip-trigger]').forEach((trigger) => {
+    const popover = document.getElementById(trigger.dataset.tooltipTrigger)
+    if (!popover) return
+    trigger.addEventListener('mouseenter', () => popover.showPopover())
+    trigger.addEventListener('mouseleave', () => popover.hidePopover())
+    trigger.addEventListener('focus', () => popover.showPopover())
+    trigger.addEventListener('blur', () => popover.hidePopover())
+  })
+</script>`}
   react={`import { Tooltip, Button } from '@mrmartineau/zui/react'
 
 <Tooltip text="Appears above">
@@ -120,20 +140,20 @@ import { Tooltip, Button } from '@mrmartineau/zui/astro'
 </Tooltip>`}
   vue={`<template>
   <Tooltip text="Appears above">
-  <Button>Top</Button>
-</Tooltip>
+    <Button>Top</Button>
+  </Tooltip>
 
-<Tooltip text="Appears below" placement="bottom">
-  <Button>Bottom</Button>
-</Tooltip>
+  <Tooltip text="Appears below" placement="bottom">
+    <Button>Bottom</Button>
+  </Tooltip>
 
-<Tooltip text="Appears left" placement="left">
-  <Button>Left</Button>
-</Tooltip>
+  <Tooltip text="Appears left" placement="left">
+    <Button>Left</Button>
+  </Tooltip>
 
-<Tooltip text="Appears right" placement="right">
-  <Button>Right</Button>
-</Tooltip>
+  <Tooltip text="Appears right" placement="right">
+    <Button>Right</Button>
+  </Tooltip>
 </template>
 
 <script setup>
@@ -141,22 +161,10 @@ import { Tooltip, Button } from '@mrmartineau/zui/vue'
 </script>`}
 >
   <div style="display:flex;gap:1rem;flex-wrap:wrap;padding:2rem;">
-    <span class="zui-tooltip">
-      <button class="zui-button" style="anchor-name: --tt-top" popovertarget="tt-top">Top</button>
-      <span popover="hint" id="tt-top" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --tt-top" role="tooltip">Appears above</span>
-    </span>
-    <span class="zui-tooltip">
-      <button class="zui-button" style="anchor-name: --tt-bottom" popovertarget="tt-bottom">Bottom</button>
-      <span popover="hint" id="tt-bottom" class="zui-tooltip-content zui-tooltip-placement-bottom" style="position-anchor: --tt-bottom" role="tooltip">Appears below</span>
-    </span>
-    <span class="zui-tooltip">
-      <button class="zui-button" style="anchor-name: --tt-left" popovertarget="tt-left">Left</button>
-      <span popover="hint" id="tt-left" class="zui-tooltip-content zui-tooltip-placement-left" style="position-anchor: --tt-left" role="tooltip">Appears left</span>
-    </span>
-    <span class="zui-tooltip">
-      <button class="zui-button" style="anchor-name: --tt-right" popovertarget="tt-right">Right</button>
-      <span popover="hint" id="tt-right" class="zui-tooltip-content zui-tooltip-placement-right" style="position-anchor: --tt-right" role="tooltip">Appears right</span>
-    </span>
+    <Tooltip text="Appears above"><button class="zui-button">Top</button></Tooltip>
+    <Tooltip text="Appears below" placement="bottom"><button class="zui-button">Bottom</button></Tooltip>
+    <Tooltip text="Appears left" placement="left"><button class="zui-button">Left</button></Tooltip>
+    <Tooltip text="Appears right" placement="right"><button class="zui-button">Right</button></Tooltip>
   </div>
 </Demo>
 

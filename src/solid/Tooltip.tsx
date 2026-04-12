@@ -15,6 +15,7 @@ export type TooltipProps = JSX.HTMLAttributes<HTMLSpanElement> &
 export function Tooltip(props: TooltipProps) {
 	const id = `tooltip-${createUniqueId()}`
 	const anchorName = `--${id}`
+	let popoverEl: HTMLElement | undefined
 	const [local, rest] = splitProps(props, [
 		'text',
 		'placement',
@@ -28,6 +29,9 @@ export function Tooltip(props: TooltipProps) {
 		return ['zui-tooltip-content', placementClass].filter(Boolean).join(' ')
 	}
 
+	const show = () => (popoverEl as any)?.showPopover()
+	const hide = () => (popoverEl as any)?.hidePopover()
+
 	return (
 		<span
 			class={['zui-tooltip', local.class].filter(Boolean).join(' ')}
@@ -35,13 +39,16 @@ export function Tooltip(props: TooltipProps) {
 		>
 			<span
 				style={{ 'anchor-name': anchorName }}
-				popoverTarget={id}
-				popoverTargetAction="hover"
+				onMouseEnter={show}
+				onMouseLeave={hide}
+				onFocus={show}
+				onBlur={hide}
 			>
 				{local.children}
 			</span>
 			<span
-				popover="hint"
+				popover="manual"
+				ref={popoverEl}
 				id={id}
 				class={contentClass()}
 				role="tooltip"

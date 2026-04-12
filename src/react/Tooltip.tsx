@@ -1,4 +1,4 @@
-import { useId, type HTMLAttributes, type ReactNode } from 'react'
+import { useId, useRef, type HTMLAttributes, type ReactNode } from 'react'
 import type { VariantProps } from 'cva'
 import { tooltipVariants } from '../shared/tooltipVariants'
 
@@ -22,6 +22,8 @@ export function Tooltip({
   const reactId = useId()
   const id = `tooltip-${reactId.replace(/:/g, '')}`
   const anchorName = `--${id}`
+  const popoverRef = useRef<HTMLSpanElement>(null)
+
   const contentClass = [
     'zui-tooltip-content',
     tooltipVariants({ placement }).split(' ').find((c) => c.startsWith('zui-tooltip-placement-')),
@@ -29,13 +31,23 @@ export function Tooltip({
     .filter(Boolean)
     .join(' ')
 
+  const show = () => popoverRef.current?.showPopover()
+  const hide = () => popoverRef.current?.hidePopover()
+
   return (
     <span className={['zui-tooltip', className].filter(Boolean).join(' ')} {...props}>
-      <span style={{ anchorName } as React.CSSProperties} popoverTarget={id} popoverTargetAction="hover">
+      <span
+        style={{ anchorName } as React.CSSProperties}
+        onMouseEnter={show}
+        onMouseLeave={hide}
+        onFocus={show}
+        onBlur={hide}
+      >
         {children}
       </span>
       <span
-        popover="hint"
+        popover="manual"
+        ref={popoverRef}
         id={id}
         className={contentClass}
         role="tooltip"
