@@ -64,7 +64,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && pnpm --filter vscode-zui run build:manifest",
     "dev": "tsdown --watch",
     "generate:colors": "node scripts/generate-colors.js",
     "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial",

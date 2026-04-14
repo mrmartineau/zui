@@ -1,0 +1,3936 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-04-14T00:05:09.607Z",
+  "classes": [
+    {
+      "name": "zui-accordion",
+      "source": "accordion"
+    },
+    {
+      "name": "zui-accordion-item",
+      "source": "accordion"
+    },
+    {
+      "name": "zui-accordion-trigger",
+      "source": "accordion"
+    },
+    {
+      "name": "zui-accordion-content",
+      "source": "accordion"
+    },
+    {
+      "name": "zui-accordion-flush",
+      "source": "accordion"
+    },
+    {
+      "name": "zui-avatar",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-image",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-fallback",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-size-sm",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-size-lg",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-shape-hard",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-shape-soft",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-avatar-shape-squircle",
+      "source": "avatar"
+    },
+    {
+      "name": "zui-badge",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-variant-fill",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-variant-outline",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-red",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-orange",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-amber",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-yellow",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-lime",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-green",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-emerald",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-teal",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-cyan",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-sky",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-blue",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-indigo",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-violet",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-purple",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-fuchsia",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-pink",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-rose",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-color-gray",
+      "source": "badge"
+    },
+    {
+      "name": "zui-button",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-color-theme",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-color-accent",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-color-destructive",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-variant-fill",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-variant-subtle",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-variant-outline",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-variant-ghost",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-variant-link",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-size-xs",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-size-sm",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-size-lg",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-size-xl",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-shape-hard",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-shape-soft",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-shape-squircle",
+      "source": "button"
+    },
+    {
+      "name": "zui-button-icon",
+      "source": "button"
+    },
+    {
+      "name": "zui-card",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-header",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-title",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-description",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-body",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-footer",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-elevated",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-interactive",
+      "source": "card"
+    },
+    {
+      "name": "zui-checkbox",
+      "source": "checkbox"
+    },
+    {
+      "name": "zui-checkbox-list",
+      "source": "checkbox"
+    },
+    {
+      "name": "zui-collapsible",
+      "source": "collapsible"
+    },
+    {
+      "name": "zui-collapsible-trigger",
+      "source": "collapsible"
+    },
+    {
+      "name": "zui-collapsible-content",
+      "source": "collapsible"
+    },
+    {
+      "name": "zui-dialog",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-header",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-title",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-description",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-body",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-footer",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-close",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-size-sm",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-size-lg",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-size-full",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-position-central",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-position-left",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-position-right",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-position-top",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-position-bottom",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-input",
+      "source": "input"
+    },
+    {
+      "name": "zui-label",
+      "source": "label"
+    },
+    {
+      "name": "zui-label-required",
+      "source": "label"
+    },
+    {
+      "name": "zui-label-description",
+      "source": "label"
+    },
+    {
+      "name": "zui-menu",
+      "source": "menu"
+    },
+    {
+      "name": "zui-menu-item",
+      "source": "menu"
+    },
+    {
+      "name": "zui-popover",
+      "source": "popover"
+    },
+    {
+      "name": "zui-radio",
+      "source": "radio"
+    },
+    {
+      "name": "zui-radio-list",
+      "source": "radio"
+    },
+    {
+      "name": "zui-select",
+      "source": "select"
+    },
+    {
+      "name": "zui-table",
+      "source": "table"
+    },
+    {
+      "name": "zui-table-row",
+      "source": "table"
+    },
+    {
+      "name": "zui-table-body",
+      "source": "table"
+    },
+    {
+      "name": "zui-table-head",
+      "source": "table"
+    },
+    {
+      "name": "zui-table-cell",
+      "source": "table"
+    },
+    {
+      "name": "zui-table-footer",
+      "source": "table"
+    },
+    {
+      "name": "zui-table-caption",
+      "source": "table"
+    },
+    {
+      "name": "zui-textarea",
+      "source": "textarea"
+    },
+    {
+      "name": "zui-tooltip",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-content",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-placement-top",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-placement-bottom",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-placement-left",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-placement-right",
+      "source": "tooltip"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex",
+      "source": "utility/flex"
+    },
+    {
+      "name": "inline-flex",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-center",
+      "source": "utility/flex"
+    },
+    {
+      "name": "inline-flex-center",
+      "source": "utility/flex"
+    },
+    {
+      "name": "stack",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-auto",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-none",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-row",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-row-reverse",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-column",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-column-reverse",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-wrap",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-nowrap",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-wrap-reverse",
+      "source": "utility/flex"
+    },
+    {
+      "name": "items-start",
+      "source": "utility/flex"
+    },
+    {
+      "name": "items-end",
+      "source": "utility/flex"
+    },
+    {
+      "name": "items-center",
+      "source": "utility/flex"
+    },
+    {
+      "name": "items-baseline",
+      "source": "utility/flex"
+    },
+    {
+      "name": "items-stretch",
+      "source": "utility/flex"
+    },
+    {
+      "name": "self-start",
+      "source": "utility/flex"
+    },
+    {
+      "name": "self-end",
+      "source": "utility/flex"
+    },
+    {
+      "name": "self-center",
+      "source": "utility/flex"
+    },
+    {
+      "name": "self-baseline",
+      "source": "utility/flex"
+    },
+    {
+      "name": "self-stretch",
+      "source": "utility/flex"
+    },
+    {
+      "name": "justify-start",
+      "source": "utility/flex"
+    },
+    {
+      "name": "justify-end",
+      "source": "utility/flex"
+    },
+    {
+      "name": "justify-center",
+      "source": "utility/flex"
+    },
+    {
+      "name": "justify-between",
+      "source": "utility/flex"
+    },
+    {
+      "name": "justify-around",
+      "source": "utility/flex"
+    },
+    {
+      "name": "content-start",
+      "source": "utility/flex"
+    },
+    {
+      "name": "content-end",
+      "source": "utility/flex"
+    },
+    {
+      "name": "content-center",
+      "source": "utility/flex"
+    },
+    {
+      "name": "content-between",
+      "source": "utility/flex"
+    },
+    {
+      "name": "content-around",
+      "source": "utility/flex"
+    },
+    {
+      "name": "content-stretch",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-shrink",
+      "source": "utility/flex"
+    },
+    {
+      "name": "flex-grow",
+      "source": "utility/flex"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/flow"
+    },
+    {
+      "name": "flow",
+      "source": "utility/flow"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-0",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-2xs",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-xs",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-sm",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-md",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-lg",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-2xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-3xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gap-4xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-0",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-2xs",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-xs",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-sm",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-md",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-lg",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-2xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-3xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapx-4xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-0",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-2xs",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-xs",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-sm",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-md",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-lg",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-2xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-3xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "gapy-4xl",
+      "source": "utility/gap"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/hidden"
+    },
+    {
+      "name": "sr-only",
+      "source": "utility/hidden"
+    },
+    {
+      "name": "visually-hidden",
+      "source": "utility/hidden"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "m-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mx-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "ml-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "my-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mr-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mt-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-0",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-auto",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-2xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-xs",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-sm",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-md",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-lg",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-2xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-3xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "mb-4xl",
+      "source": "utility/margin"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "p-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "px-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pl-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pr-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "py-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pt-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-0",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-2xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-xs",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-sm",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-md",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-lg",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-2xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-3xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "pb-4xl",
+      "source": "utility/padding"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/prose"
+    },
+    {
+      "name": "prose",
+      "source": "utility/prose"
+    },
+    {
+      "name": "15em",
+      "source": "utility/prose"
+    },
+    {
+      "name": "2s",
+      "source": "utility/prose"
+    },
+    {
+      "name": "no-border",
+      "source": "utility/prose"
+    },
+    {
+      "name": "inverted",
+      "source": "utility/prose"
+    },
+    {
+      "name": "max-width-p",
+      "source": "utility/prose"
+    },
+    {
+      "name": "utilities",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "surface",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "2s",
+      "source": "utility/ui-typography"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "--animation-fade-in",
+      "value": "fade-in 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-fade-out",
+      "value": "fade-out 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-scale-up",
+      "value": "scale-up 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-scale-down",
+      "value": "scale-down 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-out-up",
+      "value": "slide-out-up 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-out-down",
+      "value": "slide-out-down 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-out-right",
+      "value": "slide-out-right 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-out-left",
+      "value": "slide-out-left 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-in-up",
+      "value": "slide-in-up 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-in-down",
+      "value": "slide-in-down 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-in-right",
+      "value": "slide-in-right 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-slide-in-left",
+      "value": "slide-in-left 0.5s var(--ease)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-shake-x",
+      "value": "shake-x 0.75s var(--ease-out)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-shake-y",
+      "value": "shake-y 0.75s var(--ease-out)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-shake-z",
+      "value": "shake-z 1s var(--ease-in-out)",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-spin",
+      "value": "spin 2s linear infinite",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-ping",
+      "value": "ping 5s var(--ease-out) infinite",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-blink",
+      "value": "blink 1s var(--ease-out) infinite",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-float",
+      "value": "float 3s var(--ease-in-out) infinite",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-bounce",
+      "value": "bounce 2s var(--ease-squish) infinite",
+      "category": "animation"
+    },
+    {
+      "name": "--animation-pulse",
+      "value": "pulse 2s var(--ease-out) infinite",
+      "category": "animation"
+    },
+    {
+      "name": "--ratio-square",
+      "value": "1",
+      "category": "aspect"
+    },
+    {
+      "name": "--ratio-landscape",
+      "value": "4/3",
+      "category": "aspect"
+    },
+    {
+      "name": "--ratio-portrait",
+      "value": "3/4",
+      "category": "aspect"
+    },
+    {
+      "name": "--ratio-widescreen",
+      "value": "16/9",
+      "category": "aspect"
+    },
+    {
+      "name": "--ratio-ultrawide",
+      "value": "18/5",
+      "category": "aspect"
+    },
+    {
+      "name": "--ratio-golden",
+      "value": "1.618/1",
+      "category": "aspect"
+    },
+    {
+      "name": "--color-inherit",
+      "value": "inherit",
+      "category": "color"
+    },
+    {
+      "name": "--color-current",
+      "value": "currentcolor",
+      "category": "color"
+    },
+    {
+      "name": "--color-transparent",
+      "value": "transparent",
+      "category": "color"
+    },
+    {
+      "name": "--color-black",
+      "value": "#000",
+      "category": "color",
+      "color": "#000"
+    },
+    {
+      "name": "--color-white",
+      "value": "#fff",
+      "category": "color",
+      "color": "#fff"
+    },
+    {
+      "name": "--color-slate-50",
+      "value": "oklch(98.4% 0.003 247.858)",
+      "category": "color",
+      "color": "#f8fafc"
+    },
+    {
+      "name": "--color-slate-100",
+      "value": "oklch(96.8% 0.007 247.896)",
+      "category": "color",
+      "color": "#f1f5f9"
+    },
+    {
+      "name": "--color-slate-200",
+      "value": "oklch(92.9% 0.013 255.508)",
+      "category": "color",
+      "color": "#e2e8f0"
+    },
+    {
+      "name": "--color-slate-300",
+      "value": "oklch(86.9% 0.022 252.894)",
+      "category": "color",
+      "color": "#cad5e2"
+    },
+    {
+      "name": "--color-slate-400",
+      "value": "oklch(70.4% 0.04 256.788)",
+      "category": "color",
+      "color": "#90a1b9"
+    },
+    {
+      "name": "--color-slate-500",
+      "value": "oklch(55.4% 0.046 257.417)",
+      "category": "color",
+      "color": "#62748e"
+    },
+    {
+      "name": "--color-slate-600",
+      "value": "oklch(44.6% 0.043 257.281)",
+      "category": "color",
+      "color": "#45556c"
+    },
+    {
+      "name": "--color-slate-700",
+      "value": "oklch(37.2% 0.044 257.287)",
+      "category": "color",
+      "color": "#314158"
+    },
+    {
+      "name": "--color-slate-800",
+      "value": "oklch(27.9% 0.041 260.031)",
+      "category": "color",
+      "color": "#1d293d"
+    },
+    {
+      "name": "--color-slate-900",
+      "value": "oklch(20.8% 0.042 265.755)",
+      "category": "color",
+      "color": "#0f172b"
+    },
+    {
+      "name": "--color-slate-950",
+      "value": "oklch(12.9% 0.042 264.695)",
+      "category": "color",
+      "color": "#020618"
+    },
+    {
+      "name": "--color-gray-50",
+      "value": "oklch(98.5% 0.002 247.839)",
+      "category": "color",
+      "color": "#f9fafb"
+    },
+    {
+      "name": "--color-gray-100",
+      "value": "oklch(96.7% 0.003 264.542)",
+      "category": "color",
+      "color": "#f3f4f6"
+    },
+    {
+      "name": "--color-gray-200",
+      "value": "oklch(92.8% 0.006 264.531)",
+      "category": "color",
+      "color": "#e5e7eb"
+    },
+    {
+      "name": "--color-gray-300",
+      "value": "oklch(87.2% 0.01 258.338)",
+      "category": "color",
+      "color": "#d1d5dc"
+    },
+    {
+      "name": "--color-gray-400",
+      "value": "oklch(70.7% 0.022 261.325)",
+      "category": "color",
+      "color": "#99a1af"
+    },
+    {
+      "name": "--color-gray-500",
+      "value": "oklch(55.1% 0.027 264.364)",
+      "category": "color",
+      "color": "#6a7282"
+    },
+    {
+      "name": "--color-gray-600",
+      "value": "oklch(44.6% 0.03 256.802)",
+      "category": "color",
+      "color": "#4a5565"
+    },
+    {
+      "name": "--color-gray-700",
+      "value": "oklch(37.3% 0.034 259.733)",
+      "category": "color",
+      "color": "#364153"
+    },
+    {
+      "name": "--color-gray-800",
+      "value": "oklch(27.8% 0.033 256.848)",
+      "category": "color",
+      "color": "#1e2939"
+    },
+    {
+      "name": "--color-gray-900",
+      "value": "oklch(21% 0.034 264.665)",
+      "category": "color",
+      "color": "#101828"
+    },
+    {
+      "name": "--color-gray-950",
+      "value": "oklch(13% 0.028 261.692)",
+      "category": "color",
+      "color": "#030712"
+    },
+    {
+      "name": "--color-zinc-50",
+      "value": "oklch(98.5% 0 0)",
+      "category": "color",
+      "color": "#fafafa"
+    },
+    {
+      "name": "--color-zinc-100",
+      "value": "oklch(96.7% 0.001 286.375)",
+      "category": "color",
+      "color": "#f4f4f5"
+    },
+    {
+      "name": "--color-zinc-200",
+      "value": "oklch(92% 0.004 286.32)",
+      "category": "color",
+      "color": "#e4e4e7"
+    },
+    {
+      "name": "--color-zinc-300",
+      "value": "oklch(87.1% 0.006 286.286)",
+      "category": "color",
+      "color": "#d4d4d8"
+    },
+    {
+      "name": "--color-zinc-400",
+      "value": "oklch(70.5% 0.015 286.067)",
+      "category": "color",
+      "color": "#9f9fa9"
+    },
+    {
+      "name": "--color-zinc-500",
+      "value": "oklch(55.2% 0.016 285.938)",
+      "category": "color",
+      "color": "#71717b"
+    },
+    {
+      "name": "--color-zinc-600",
+      "value": "oklch(44.2% 0.017 285.786)",
+      "category": "color",
+      "color": "#52525c"
+    },
+    {
+      "name": "--color-zinc-700",
+      "value": "oklch(37% 0.013 285.805)",
+      "category": "color",
+      "color": "#3f3f46"
+    },
+    {
+      "name": "--color-zinc-800",
+      "value": "oklch(27.4% 0.006 286.033)",
+      "category": "color",
+      "color": "#27272a"
+    },
+    {
+      "name": "--color-zinc-900",
+      "value": "oklch(21% 0.006 285.885)",
+      "category": "color",
+      "color": "#18181b"
+    },
+    {
+      "name": "--color-zinc-950",
+      "value": "oklch(14.1% 0.005 285.823)",
+      "category": "color",
+      "color": "#09090b"
+    },
+    {
+      "name": "--color-neutral-50",
+      "value": "oklch(98.5% 0 0)",
+      "category": "color",
+      "color": "#fafafa"
+    },
+    {
+      "name": "--color-neutral-100",
+      "value": "oklch(97% 0 0)",
+      "category": "color",
+      "color": "#f5f5f5"
+    },
+    {
+      "name": "--color-neutral-200",
+      "value": "oklch(92.2% 0 0)",
+      "category": "color",
+      "color": "#e5e5e5"
+    },
+    {
+      "name": "--color-neutral-300",
+      "value": "oklch(87% 0 0)",
+      "category": "color",
+      "color": "#d4d4d4"
+    },
+    {
+      "name": "--color-neutral-400",
+      "value": "oklch(70.8% 0 0)",
+      "category": "color",
+      "color": "#a1a1a1"
+    },
+    {
+      "name": "--color-neutral-500",
+      "value": "oklch(55.6% 0 0)",
+      "category": "color",
+      "color": "#737373"
+    },
+    {
+      "name": "--color-neutral-600",
+      "value": "oklch(43.9% 0 0)",
+      "category": "color",
+      "color": "#525252"
+    },
+    {
+      "name": "--color-neutral-700",
+      "value": "oklch(37.1% 0 0)",
+      "category": "color",
+      "color": "#404040"
+    },
+    {
+      "name": "--color-neutral-800",
+      "value": "oklch(26.9% 0 0)",
+      "category": "color",
+      "color": "#262626"
+    },
+    {
+      "name": "--color-neutral-900",
+      "value": "oklch(20.5% 0 0)",
+      "category": "color",
+      "color": "#171717"
+    },
+    {
+      "name": "--color-neutral-950",
+      "value": "oklch(14.5% 0 0)",
+      "category": "color",
+      "color": "#0a0a0a"
+    },
+    {
+      "name": "--color-stone-50",
+      "value": "oklch(98.5% 0.001 106.423)",
+      "category": "color",
+      "color": "#fafaf9"
+    },
+    {
+      "name": "--color-stone-100",
+      "value": "oklch(97% 0.001 106.424)",
+      "category": "color",
+      "color": "#f5f5f4"
+    },
+    {
+      "name": "--color-stone-200",
+      "value": "oklch(92.3% 0.003 48.717)",
+      "category": "color",
+      "color": "#e7e5e4"
+    },
+    {
+      "name": "--color-stone-300",
+      "value": "oklch(86.9% 0.005 56.366)",
+      "category": "color",
+      "color": "#d6d3d1"
+    },
+    {
+      "name": "--color-stone-400",
+      "value": "oklch(70.9% 0.01 56.259)",
+      "category": "color",
+      "color": "#a6a09b"
+    },
+    {
+      "name": "--color-stone-500",
+      "value": "oklch(55.3% 0.013 58.071)",
+      "category": "color",
+      "color": "#79716b"
+    },
+    {
+      "name": "--color-stone-600",
+      "value": "oklch(44.4% 0.011 73.639)",
+      "category": "color",
+      "color": "#57534d"
+    },
+    {
+      "name": "--color-stone-700",
+      "value": "oklch(37.4% 0.01 67.558)",
+      "category": "color",
+      "color": "#44403b"
+    },
+    {
+      "name": "--color-stone-800",
+      "value": "oklch(26.8% 0.007 34.298)",
+      "category": "color",
+      "color": "#292524"
+    },
+    {
+      "name": "--color-stone-900",
+      "value": "oklch(21.6% 0.006 56.043)",
+      "category": "color",
+      "color": "#1c1917"
+    },
+    {
+      "name": "--color-stone-950",
+      "value": "oklch(14.7% 0.004 49.25)",
+      "category": "color",
+      "color": "#0c0a09"
+    },
+    {
+      "name": "--color-mauve-50",
+      "value": "oklch(98.5% 0 0)",
+      "category": "color",
+      "color": "#fafafa"
+    },
+    {
+      "name": "--color-mauve-100",
+      "value": "oklch(96% 0.003 325.6)",
+      "category": "color",
+      "color": "#f3f1f3"
+    },
+    {
+      "name": "--color-mauve-200",
+      "value": "oklch(92.2% 0.005 325.62)",
+      "category": "color",
+      "color": "#e7e4e7"
+    },
+    {
+      "name": "--color-mauve-300",
+      "value": "oklch(86.5% 0.012 325.68)",
+      "category": "color",
+      "color": "#d7d0d7"
+    },
+    {
+      "name": "--color-mauve-400",
+      "value": "oklch(71.1% 0.019 323.02)",
+      "category": "color",
+      "color": "#a89ea9"
+    },
+    {
+      "name": "--color-mauve-500",
+      "value": "oklch(54.2% 0.034 322.5)",
+      "category": "color",
+      "color": "#79697b"
+    },
+    {
+      "name": "--color-mauve-600",
+      "value": "oklch(43.5% 0.029 321.78)",
+      "category": "color",
+      "color": "#594c5b"
+    },
+    {
+      "name": "--color-mauve-700",
+      "value": "oklch(36.4% 0.029 323.89)",
+      "category": "color",
+      "color": "#463947"
+    },
+    {
+      "name": "--color-mauve-800",
+      "value": "oklch(26.3% 0.024 320.12)",
+      "category": "color",
+      "color": "#2a212c"
+    },
+    {
+      "name": "--color-mauve-900",
+      "value": "oklch(21.2% 0.019 322.12)",
+      "category": "color",
+      "color": "#1d161e"
+    },
+    {
+      "name": "--color-mauve-950",
+      "value": "oklch(14.5% 0.008 326)",
+      "category": "color",
+      "color": "#0c090c"
+    },
+    {
+      "name": "--color-olive-50",
+      "value": "oklch(98.8% 0.003 106.5)",
+      "category": "color",
+      "color": "#fbfbf9"
+    },
+    {
+      "name": "--color-olive-100",
+      "value": "oklch(96.6% 0.005 106.5)",
+      "category": "color",
+      "color": "#f4f4f0"
+    },
+    {
+      "name": "--color-olive-200",
+      "value": "oklch(93% 0.007 106.5)",
+      "category": "color",
+      "color": "#e8e8e3"
+    },
+    {
+      "name": "--color-olive-300",
+      "value": "oklch(88% 0.011 106.6)",
+      "category": "color",
+      "color": "#d8d8d0"
+    },
+    {
+      "name": "--color-olive-400",
+      "value": "oklch(73.7% 0.021 106.9)",
+      "category": "color",
+      "color": "#abab9c"
+    },
+    {
+      "name": "--color-olive-500",
+      "value": "oklch(58% 0.031 107.3)",
+      "category": "color",
+      "color": "#7c7c67"
+    },
+    {
+      "name": "--color-olive-600",
+      "value": "oklch(46.6% 0.025 107.3)",
+      "category": "color",
+      "color": "#5b5b4b"
+    },
+    {
+      "name": "--color-olive-700",
+      "value": "oklch(39.4% 0.023 107.4)",
+      "category": "color",
+      "color": "#474739"
+    },
+    {
+      "name": "--color-olive-800",
+      "value": "oklch(28.6% 0.016 107.4)",
+      "category": "color",
+      "color": "#2b2b22"
+    },
+    {
+      "name": "--color-olive-900",
+      "value": "oklch(22.8% 0.013 107.4)",
+      "category": "color",
+      "color": "#1d1d16"
+    },
+    {
+      "name": "--color-olive-950",
+      "value": "oklch(15.3% 0.006 107.1)",
+      "category": "color",
+      "color": "#0c0c09"
+    },
+    {
+      "name": "--color-mist-50",
+      "value": "oklch(98.7% 0.002 197.1)",
+      "category": "color",
+      "color": "#f9fbfb"
+    },
+    {
+      "name": "--color-mist-100",
+      "value": "oklch(96.3% 0.002 197.1)",
+      "category": "color",
+      "color": "#f1f3f3"
+    },
+    {
+      "name": "--color-mist-200",
+      "value": "oklch(92.5% 0.005 214.3)",
+      "category": "color",
+      "color": "#e3e7e8"
+    },
+    {
+      "name": "--color-mist-300",
+      "value": "oklch(87.2% 0.007 219.6)",
+      "category": "color",
+      "color": "#d0d6d8"
+    },
+    {
+      "name": "--color-mist-400",
+      "value": "oklch(72.3% 0.014 214.4)",
+      "category": "color",
+      "color": "#9ca8ab"
+    },
+    {
+      "name": "--color-mist-500",
+      "value": "oklch(56% 0.021 213.5)",
+      "category": "color",
+      "color": "#67787c"
+    },
+    {
+      "name": "--color-mist-600",
+      "value": "oklch(45% 0.017 213.2)",
+      "category": "color",
+      "color": "#4b585b"
+    },
+    {
+      "name": "--color-mist-700",
+      "value": "oklch(37.8% 0.015 216)",
+      "category": "color",
+      "color": "#394447"
+    },
+    {
+      "name": "--color-mist-800",
+      "value": "oklch(27.5% 0.011 216.9)",
+      "category": "color",
+      "color": "#22292b"
+    },
+    {
+      "name": "--color-mist-900",
+      "value": "oklch(21.8% 0.008 223.9)",
+      "category": "color",
+      "color": "#161b1d"
+    },
+    {
+      "name": "--color-mist-950",
+      "value": "oklch(14.8% 0.004 228.8)",
+      "category": "color",
+      "color": "#090b0c"
+    },
+    {
+      "name": "--color-taupe-50",
+      "value": "oklch(98.6% 0.002 67.8)",
+      "category": "color",
+      "color": "#fbfaf9"
+    },
+    {
+      "name": "--color-taupe-100",
+      "value": "oklch(96% 0.002 17.2)",
+      "category": "color",
+      "color": "#f3f1f1"
+    },
+    {
+      "name": "--color-taupe-200",
+      "value": "oklch(92.2% 0.005 34.3)",
+      "category": "color",
+      "color": "#e8e4e3"
+    },
+    {
+      "name": "--color-taupe-300",
+      "value": "oklch(86.8% 0.007 39.5)",
+      "category": "color",
+      "color": "#d8d2d0"
+    },
+    {
+      "name": "--color-taupe-400",
+      "value": "oklch(71.4% 0.014 41.2)",
+      "category": "color",
+      "color": "#aba09c"
+    },
+    {
+      "name": "--color-taupe-500",
+      "value": "oklch(54.7% 0.021 43.1)",
+      "category": "color",
+      "color": "#7c6d67"
+    },
+    {
+      "name": "--color-taupe-600",
+      "value": "oklch(43.8% 0.017 39.3)",
+      "category": "color",
+      "color": "#5b4f4b"
+    },
+    {
+      "name": "--color-taupe-700",
+      "value": "oklch(36.7% 0.016 35.7)",
+      "category": "color",
+      "color": "#473c39"
+    },
+    {
+      "name": "--color-taupe-800",
+      "value": "oklch(26.8% 0.011 36.5)",
+      "category": "color",
+      "color": "#2b2422"
+    },
+    {
+      "name": "--color-taupe-900",
+      "value": "oklch(21.4% 0.009 43.1)",
+      "category": "color",
+      "color": "#1d1816"
+    },
+    {
+      "name": "--color-taupe-950",
+      "value": "oklch(14.7% 0.004 49.3)",
+      "category": "color",
+      "color": "#0c0a09"
+    },
+    {
+      "name": "--color-red-50",
+      "value": "oklch(97.1% 0.013 17.38)",
+      "category": "color",
+      "color": "#fef2f2"
+    },
+    {
+      "name": "--color-red-100",
+      "value": "oklch(93.6% 0.032 17.717)",
+      "category": "color",
+      "color": "#ffe2e2"
+    },
+    {
+      "name": "--color-red-200",
+      "value": "oklch(88.5% 0.062 18.334)",
+      "category": "color",
+      "color": "#ffc9c9"
+    },
+    {
+      "name": "--color-red-300",
+      "value": "oklch(80.8% 0.114 19.571)",
+      "category": "color",
+      "color": "#ffa2a2"
+    },
+    {
+      "name": "--color-red-400",
+      "value": "oklch(70.4% 0.191 22.216)",
+      "category": "color",
+      "color": "#ff6467"
+    },
+    {
+      "name": "--color-red-500",
+      "value": "oklch(63.7% 0.237 25.331)",
+      "category": "color",
+      "color": "#fb2c36"
+    },
+    {
+      "name": "--color-red-600",
+      "value": "oklch(57.7% 0.245 27.325)",
+      "category": "color",
+      "color": "#e7000b"
+    },
+    {
+      "name": "--color-red-700",
+      "value": "oklch(50.5% 0.213 27.518)",
+      "category": "color",
+      "color": "#c10007"
+    },
+    {
+      "name": "--color-red-800",
+      "value": "oklch(44.4% 0.177 26.899)",
+      "category": "color",
+      "color": "#9f0712"
+    },
+    {
+      "name": "--color-red-900",
+      "value": "oklch(39.6% 0.141 25.723)",
+      "category": "color",
+      "color": "#82181a"
+    },
+    {
+      "name": "--color-red-950",
+      "value": "oklch(25.8% 0.092 26.042)",
+      "category": "color",
+      "color": "#460809"
+    },
+    {
+      "name": "--color-orange-50",
+      "value": "oklch(98% 0.016 73.684)",
+      "category": "color",
+      "color": "#fff7ed"
+    },
+    {
+      "name": "--color-orange-100",
+      "value": "oklch(95.4% 0.038 75.164)",
+      "category": "color",
+      "color": "#ffedd4"
+    },
+    {
+      "name": "--color-orange-200",
+      "value": "oklch(90.1% 0.076 70.697)",
+      "category": "color",
+      "color": "#ffd6a7"
+    },
+    {
+      "name": "--color-orange-300",
+      "value": "oklch(83.7% 0.128 66.29)",
+      "category": "color",
+      "color": "#ffb86a"
+    },
+    {
+      "name": "--color-orange-400",
+      "value": "oklch(75% 0.183 55.934)",
+      "category": "color",
+      "color": "#ff8904"
+    },
+    {
+      "name": "--color-orange-500",
+      "value": "oklch(70.5% 0.213 47.604)",
+      "category": "color",
+      "color": "#ff6900"
+    },
+    {
+      "name": "--color-orange-600",
+      "value": "oklch(64.6% 0.222 41.116)",
+      "category": "color",
+      "color": "#f54900"
+    },
+    {
+      "name": "--color-orange-700",
+      "value": "oklch(55.3% 0.195 38.402)",
+      "category": "color",
+      "color": "#ca3500"
+    },
+    {
+      "name": "--color-orange-800",
+      "value": "oklch(47% 0.157 37.304)",
+      "category": "color",
+      "color": "#9f2d00"
+    },
+    {
+      "name": "--color-orange-900",
+      "value": "oklch(40.8% 0.123 38.172)",
+      "category": "color",
+      "color": "#7e2a0c"
+    },
+    {
+      "name": "--color-orange-950",
+      "value": "oklch(26.6% 0.079 36.259)",
+      "category": "color",
+      "color": "#441306"
+    },
+    {
+      "name": "--color-amber-50",
+      "value": "oklch(98.7% 0.022 95.277)",
+      "category": "color",
+      "color": "#fffbeb"
+    },
+    {
+      "name": "--color-amber-100",
+      "value": "oklch(96.2% 0.059 95.617)",
+      "category": "color",
+      "color": "#fef3c6"
+    },
+    {
+      "name": "--color-amber-200",
+      "value": "oklch(92.4% 0.12 95.746)",
+      "category": "color",
+      "color": "#fee685"
+    },
+    {
+      "name": "--color-amber-300",
+      "value": "oklch(87.9% 0.169 91.605)",
+      "category": "color",
+      "color": "#ffd230"
+    },
+    {
+      "name": "--color-amber-400",
+      "value": "oklch(82.8% 0.189 84.429)",
+      "category": "color",
+      "color": "#ffb900"
+    },
+    {
+      "name": "--color-amber-500",
+      "value": "oklch(76.9% 0.188 70.08)",
+      "category": "color",
+      "color": "#fe9a00"
+    },
+    {
+      "name": "--color-amber-600",
+      "value": "oklch(66.6% 0.179 58.318)",
+      "category": "color",
+      "color": "#e17100"
+    },
+    {
+      "name": "--color-amber-700",
+      "value": "oklch(55.5% 0.163 48.998)",
+      "category": "color",
+      "color": "#bb4d00"
+    },
+    {
+      "name": "--color-amber-800",
+      "value": "oklch(47.3% 0.137 46.201)",
+      "category": "color",
+      "color": "#973c00"
+    },
+    {
+      "name": "--color-amber-900",
+      "value": "oklch(41.4% 0.112 45.904)",
+      "category": "color",
+      "color": "#7b3306"
+    },
+    {
+      "name": "--color-amber-950",
+      "value": "oklch(27.9% 0.077 45.635)",
+      "category": "color",
+      "color": "#461901"
+    },
+    {
+      "name": "--color-yellow-50",
+      "value": "oklch(98.7% 0.026 102.212)",
+      "category": "color",
+      "color": "#fefce8"
+    },
+    {
+      "name": "--color-yellow-100",
+      "value": "oklch(97.3% 0.071 103.193)",
+      "category": "color",
+      "color": "#fef9c2"
+    },
+    {
+      "name": "--color-yellow-200",
+      "value": "oklch(94.5% 0.129 101.54)",
+      "category": "color",
+      "color": "#fff085"
+    },
+    {
+      "name": "--color-yellow-300",
+      "value": "oklch(90.5% 0.182 98.111)",
+      "category": "color",
+      "color": "#ffdf20"
+    },
+    {
+      "name": "--color-yellow-400",
+      "value": "oklch(85.2% 0.199 91.936)",
+      "category": "color",
+      "color": "#fdc700"
+    },
+    {
+      "name": "--color-yellow-500",
+      "value": "oklch(79.5% 0.184 86.047)",
+      "category": "color",
+      "color": "#f0b100"
+    },
+    {
+      "name": "--color-yellow-600",
+      "value": "oklch(68.1% 0.162 75.834)",
+      "category": "color",
+      "color": "#d08700"
+    },
+    {
+      "name": "--color-yellow-700",
+      "value": "oklch(55.4% 0.135 66.442)",
+      "category": "color",
+      "color": "#a65f00"
+    },
+    {
+      "name": "--color-yellow-800",
+      "value": "oklch(47.6% 0.114 61.907)",
+      "category": "color",
+      "color": "#894b00"
+    },
+    {
+      "name": "--color-yellow-900",
+      "value": "oklch(42.1% 0.095 57.708)",
+      "category": "color",
+      "color": "#733e0a"
+    },
+    {
+      "name": "--color-yellow-950",
+      "value": "oklch(28.6% 0.066 53.813)",
+      "category": "color",
+      "color": "#432004"
+    },
+    {
+      "name": "--color-lime-50",
+      "value": "oklch(98.6% 0.031 120.757)",
+      "category": "color",
+      "color": "#f7fee7"
+    },
+    {
+      "name": "--color-lime-100",
+      "value": "oklch(96.7% 0.067 122.328)",
+      "category": "color",
+      "color": "#ecfcca"
+    },
+    {
+      "name": "--color-lime-200",
+      "value": "oklch(93.8% 0.127 124.321)",
+      "category": "color",
+      "color": "#d8f999"
+    },
+    {
+      "name": "--color-lime-300",
+      "value": "oklch(89.7% 0.196 126.665)",
+      "category": "color",
+      "color": "#bbf451"
+    },
+    {
+      "name": "--color-lime-400",
+      "value": "oklch(84.1% 0.238 128.85)",
+      "category": "color",
+      "color": "#9ae600"
+    },
+    {
+      "name": "--color-lime-500",
+      "value": "oklch(76.8% 0.233 130.85)",
+      "category": "color",
+      "color": "#7ccf00"
+    },
+    {
+      "name": "--color-lime-600",
+      "value": "oklch(64.8% 0.2 131.684)",
+      "category": "color",
+      "color": "#5ea500"
+    },
+    {
+      "name": "--color-lime-700",
+      "value": "oklch(53.2% 0.157 131.589)",
+      "category": "color",
+      "color": "#497d00"
+    },
+    {
+      "name": "--color-lime-800",
+      "value": "oklch(45.3% 0.124 130.933)",
+      "category": "color",
+      "color": "#3c6300"
+    },
+    {
+      "name": "--color-lime-900",
+      "value": "oklch(40.5% 0.101 131.063)",
+      "category": "color",
+      "color": "#35530e"
+    },
+    {
+      "name": "--color-lime-950",
+      "value": "oklch(27.4% 0.072 132.109)",
+      "category": "color",
+      "color": "#192e03"
+    },
+    {
+      "name": "--color-green-50",
+      "value": "oklch(98.2% 0.018 155.826)",
+      "category": "color",
+      "color": "#f0fdf4"
+    },
+    {
+      "name": "--color-green-100",
+      "value": "oklch(96.2% 0.044 156.743)",
+      "category": "color",
+      "color": "#dcfce7"
+    },
+    {
+      "name": "--color-green-200",
+      "value": "oklch(92.5% 0.084 155.995)",
+      "category": "color",
+      "color": "#b9f8cf"
+    },
+    {
+      "name": "--color-green-300",
+      "value": "oklch(87.1% 0.15 154.449)",
+      "category": "color",
+      "color": "#7bf1a8"
+    },
+    {
+      "name": "--color-green-400",
+      "value": "oklch(79.2% 0.209 151.711)",
+      "category": "color",
+      "color": "#05df72"
+    },
+    {
+      "name": "--color-green-500",
+      "value": "oklch(72.3% 0.219 149.579)",
+      "category": "color",
+      "color": "#00c950"
+    },
+    {
+      "name": "--color-green-600",
+      "value": "oklch(62.7% 0.194 149.214)",
+      "category": "color",
+      "color": "#00a63e"
+    },
+    {
+      "name": "--color-green-700",
+      "value": "oklch(52.7% 0.154 150.069)",
+      "category": "color",
+      "color": "#008236"
+    },
+    {
+      "name": "--color-green-800",
+      "value": "oklch(44.8% 0.119 151.328)",
+      "category": "color",
+      "color": "#016630"
+    },
+    {
+      "name": "--color-green-900",
+      "value": "oklch(39.3% 0.095 152.535)",
+      "category": "color",
+      "color": "#0d542b"
+    },
+    {
+      "name": "--color-green-950",
+      "value": "oklch(26.6% 0.065 152.934)",
+      "category": "color",
+      "color": "#032e15"
+    },
+    {
+      "name": "--color-emerald-50",
+      "value": "oklch(97.9% 0.021 166.113)",
+      "category": "color",
+      "color": "#ecfdf5"
+    },
+    {
+      "name": "--color-emerald-100",
+      "value": "oklch(95% 0.052 163.051)",
+      "category": "color",
+      "color": "#d0fae5"
+    },
+    {
+      "name": "--color-emerald-200",
+      "value": "oklch(90.5% 0.093 164.15)",
+      "category": "color",
+      "color": "#a4f4cf"
+    },
+    {
+      "name": "--color-emerald-300",
+      "value": "oklch(84.5% 0.143 164.978)",
+      "category": "color",
+      "color": "#5ee9b5"
+    },
+    {
+      "name": "--color-emerald-400",
+      "value": "oklch(76.5% 0.177 163.223)",
+      "category": "color",
+      "color": "#00d492"
+    },
+    {
+      "name": "--color-emerald-500",
+      "value": "oklch(69.6% 0.17 162.48)",
+      "category": "color",
+      "color": "#00bc7d"
+    },
+    {
+      "name": "--color-emerald-600",
+      "value": "oklch(59.6% 0.145 163.225)",
+      "category": "color",
+      "color": "#009966"
+    },
+    {
+      "name": "--color-emerald-700",
+      "value": "oklch(50.8% 0.118 165.612)",
+      "category": "color",
+      "color": "#007a55"
+    },
+    {
+      "name": "--color-emerald-800",
+      "value": "oklch(43.2% 0.095 166.913)",
+      "category": "color",
+      "color": "#006045"
+    },
+    {
+      "name": "--color-emerald-900",
+      "value": "oklch(37.8% 0.077 168.94)",
+      "category": "color",
+      "color": "#004f3b"
+    },
+    {
+      "name": "--color-emerald-950",
+      "value": "oklch(26.2% 0.051 172.552)",
+      "category": "color",
+      "color": "#002c22"
+    },
+    {
+      "name": "--color-teal-50",
+      "value": "oklch(98.4% 0.014 180.72)",
+      "category": "color",
+      "color": "#f0fdfa"
+    },
+    {
+      "name": "--color-teal-100",
+      "value": "oklch(95.3% 0.051 180.801)",
+      "category": "color",
+      "color": "#cbfbf1"
+    },
+    {
+      "name": "--color-teal-200",
+      "value": "oklch(91% 0.096 180.426)",
+      "category": "color",
+      "color": "#96f7e4"
+    },
+    {
+      "name": "--color-teal-300",
+      "value": "oklch(85.5% 0.138 181.071)",
+      "category": "color",
+      "color": "#46ecd5"
+    },
+    {
+      "name": "--color-teal-400",
+      "value": "oklch(77.7% 0.152 181.912)",
+      "category": "color",
+      "color": "#00d5be"
+    },
+    {
+      "name": "--color-teal-500",
+      "value": "oklch(70.4% 0.14 182.503)",
+      "category": "color",
+      "color": "#00bba7"
+    },
+    {
+      "name": "--color-teal-600",
+      "value": "oklch(60% 0.118 184.704)",
+      "category": "color",
+      "color": "#009689"
+    },
+    {
+      "name": "--color-teal-700",
+      "value": "oklch(51.1% 0.096 186.391)",
+      "category": "color",
+      "color": "#00786f"
+    },
+    {
+      "name": "--color-teal-800",
+      "value": "oklch(43.7% 0.078 188.216)",
+      "category": "color",
+      "color": "#005f5a"
+    },
+    {
+      "name": "--color-teal-900",
+      "value": "oklch(38.6% 0.063 188.416)",
+      "category": "color",
+      "color": "#0b4f4a"
+    },
+    {
+      "name": "--color-teal-950",
+      "value": "oklch(27.7% 0.046 192.524)",
+      "category": "color",
+      "color": "#022f2e"
+    },
+    {
+      "name": "--color-cyan-50",
+      "value": "oklch(98.4% 0.019 200.873)",
+      "category": "color",
+      "color": "#ecfeff"
+    },
+    {
+      "name": "--color-cyan-100",
+      "value": "oklch(95.6% 0.045 203.388)",
+      "category": "color",
+      "color": "#cefafe"
+    },
+    {
+      "name": "--color-cyan-200",
+      "value": "oklch(91.7% 0.08 205.041)",
+      "category": "color",
+      "color": "#a2f4fd"
+    },
+    {
+      "name": "--color-cyan-300",
+      "value": "oklch(86.5% 0.127 207.078)",
+      "category": "color",
+      "color": "#53eafd"
+    },
+    {
+      "name": "--color-cyan-400",
+      "value": "oklch(78.9% 0.154 211.53)",
+      "category": "color",
+      "color": "#00d3f2"
+    },
+    {
+      "name": "--color-cyan-500",
+      "value": "oklch(71.5% 0.143 215.221)",
+      "category": "color",
+      "color": "#00b8db"
+    },
+    {
+      "name": "--color-cyan-600",
+      "value": "oklch(60.9% 0.126 221.723)",
+      "category": "color",
+      "color": "#0092b8"
+    },
+    {
+      "name": "--color-cyan-700",
+      "value": "oklch(52% 0.105 223.128)",
+      "category": "color",
+      "color": "#007595"
+    },
+    {
+      "name": "--color-cyan-800",
+      "value": "oklch(45% 0.085 224.283)",
+      "category": "color",
+      "color": "#005f78"
+    },
+    {
+      "name": "--color-cyan-900",
+      "value": "oklch(39.8% 0.07 227.392)",
+      "category": "color",
+      "color": "#104e64"
+    },
+    {
+      "name": "--color-cyan-950",
+      "value": "oklch(30.2% 0.056 229.695)",
+      "category": "color",
+      "color": "#053345"
+    },
+    {
+      "name": "--color-sky-50",
+      "value": "oklch(97.7% 0.013 236.62)",
+      "category": "color",
+      "color": "#f0f9ff"
+    },
+    {
+      "name": "--color-sky-100",
+      "value": "oklch(95.1% 0.026 236.824)",
+      "category": "color",
+      "color": "#dff2fe"
+    },
+    {
+      "name": "--color-sky-200",
+      "value": "oklch(90.1% 0.058 230.902)",
+      "category": "color",
+      "color": "#b8e6fe"
+    },
+    {
+      "name": "--color-sky-300",
+      "value": "oklch(82.8% 0.111 230.318)",
+      "category": "color",
+      "color": "#74d4ff"
+    },
+    {
+      "name": "--color-sky-400",
+      "value": "oklch(74.6% 0.16 232.661)",
+      "category": "color",
+      "color": "#00bcff"
+    },
+    {
+      "name": "--color-sky-500",
+      "value": "oklch(68.5% 0.169 237.323)",
+      "category": "color",
+      "color": "#00a6f4"
+    },
+    {
+      "name": "--color-sky-600",
+      "value": "oklch(58.8% 0.158 241.966)",
+      "category": "color",
+      "color": "#0084d1"
+    },
+    {
+      "name": "--color-sky-700",
+      "value": "oklch(50% 0.134 242.749)",
+      "category": "color",
+      "color": "#0069a8"
+    },
+    {
+      "name": "--color-sky-800",
+      "value": "oklch(44.3% 0.11 240.79)",
+      "category": "color",
+      "color": "#00598a"
+    },
+    {
+      "name": "--color-sky-900",
+      "value": "oklch(39.1% 0.09 240.876)",
+      "category": "color",
+      "color": "#024a70"
+    },
+    {
+      "name": "--color-sky-950",
+      "value": "oklch(29.3% 0.066 243.157)",
+      "category": "color",
+      "color": "#052f4a"
+    },
+    {
+      "name": "--color-blue-50",
+      "value": "oklch(97% 0.014 254.604)",
+      "category": "color",
+      "color": "#eff6ff"
+    },
+    {
+      "name": "--color-blue-100",
+      "value": "oklch(93.2% 0.032 255.585)",
+      "category": "color",
+      "color": "#dbeafe"
+    },
+    {
+      "name": "--color-blue-200",
+      "value": "oklch(88.2% 0.059 254.128)",
+      "category": "color",
+      "color": "#bedbff"
+    },
+    {
+      "name": "--color-blue-300",
+      "value": "oklch(80.9% 0.105 251.813)",
+      "category": "color",
+      "color": "#8ec5ff"
+    },
+    {
+      "name": "--color-blue-400",
+      "value": "oklch(70.7% 0.165 254.624)",
+      "category": "color",
+      "color": "#51a2ff"
+    },
+    {
+      "name": "--color-blue-500",
+      "value": "oklch(62.3% 0.214 259.815)",
+      "category": "color",
+      "color": "#2b7fff"
+    },
+    {
+      "name": "--color-blue-600",
+      "value": "oklch(54.6% 0.245 262.881)",
+      "category": "color",
+      "color": "#155dfc"
+    },
+    {
+      "name": "--color-blue-700",
+      "value": "oklch(48.8% 0.243 264.376)",
+      "category": "color",
+      "color": "#1447e6"
+    },
+    {
+      "name": "--color-blue-800",
+      "value": "oklch(42.4% 0.199 265.638)",
+      "category": "color",
+      "color": "#193cb8"
+    },
+    {
+      "name": "--color-blue-900",
+      "value": "oklch(37.9% 0.146 265.522)",
+      "category": "color",
+      "color": "#1c398e"
+    },
+    {
+      "name": "--color-blue-950",
+      "value": "oklch(28.2% 0.091 267.935)",
+      "category": "color",
+      "color": "#162456"
+    },
+    {
+      "name": "--color-indigo-50",
+      "value": "oklch(96.2% 0.018 272.314)",
+      "category": "color",
+      "color": "#eef2ff"
+    },
+    {
+      "name": "--color-indigo-100",
+      "value": "oklch(93% 0.034 272.788)",
+      "category": "color",
+      "color": "#e0e7ff"
+    },
+    {
+      "name": "--color-indigo-200",
+      "value": "oklch(87% 0.065 274.039)",
+      "category": "color",
+      "color": "#c6d2ff"
+    },
+    {
+      "name": "--color-indigo-300",
+      "value": "oklch(78.5% 0.115 274.713)",
+      "category": "color",
+      "color": "#a3b3ff"
+    },
+    {
+      "name": "--color-indigo-400",
+      "value": "oklch(67.3% 0.182 276.935)",
+      "category": "color",
+      "color": "#7c86ff"
+    },
+    {
+      "name": "--color-indigo-500",
+      "value": "oklch(58.5% 0.233 277.117)",
+      "category": "color",
+      "color": "#615fff"
+    },
+    {
+      "name": "--color-indigo-600",
+      "value": "oklch(51.1% 0.262 276.966)",
+      "category": "color",
+      "color": "#4f39f6"
+    },
+    {
+      "name": "--color-indigo-700",
+      "value": "oklch(45.7% 0.24 277.023)",
+      "category": "color",
+      "color": "#432dd7"
+    },
+    {
+      "name": "--color-indigo-800",
+      "value": "oklch(39.8% 0.195 277.366)",
+      "category": "color",
+      "color": "#372aac"
+    },
+    {
+      "name": "--color-indigo-900",
+      "value": "oklch(35.9% 0.144 278.697)",
+      "category": "color",
+      "color": "#312c85"
+    },
+    {
+      "name": "--color-indigo-950",
+      "value": "oklch(25.7% 0.09 281.288)",
+      "category": "color",
+      "color": "#1e1a4d"
+    },
+    {
+      "name": "--color-violet-50",
+      "value": "oklch(96.9% 0.016 293.756)",
+      "category": "color",
+      "color": "#f5f3ff"
+    },
+    {
+      "name": "--color-violet-100",
+      "value": "oklch(94.3% 0.029 294.588)",
+      "category": "color",
+      "color": "#ede9fe"
+    },
+    {
+      "name": "--color-violet-200",
+      "value": "oklch(89.4% 0.057 293.283)",
+      "category": "color",
+      "color": "#ddd6ff"
+    },
+    {
+      "name": "--color-violet-300",
+      "value": "oklch(81.1% 0.111 293.571)",
+      "category": "color",
+      "color": "#c4b4ff"
+    },
+    {
+      "name": "--color-violet-400",
+      "value": "oklch(70.2% 0.183 293.541)",
+      "category": "color",
+      "color": "#a684ff"
+    },
+    {
+      "name": "--color-violet-500",
+      "value": "oklch(60.6% 0.25 292.717)",
+      "category": "color",
+      "color": "#8e51ff"
+    },
+    {
+      "name": "--color-violet-600",
+      "value": "oklch(54.1% 0.281 293.009)",
+      "category": "color",
+      "color": "#7f22fe"
+    },
+    {
+      "name": "--color-violet-700",
+      "value": "oklch(49.1% 0.27 292.581)",
+      "category": "color",
+      "color": "#7008e7"
+    },
+    {
+      "name": "--color-violet-800",
+      "value": "oklch(43.2% 0.232 292.759)",
+      "category": "color",
+      "color": "#5d0ec0"
+    },
+    {
+      "name": "--color-violet-900",
+      "value": "oklch(38% 0.189 293.745)",
+      "category": "color",
+      "color": "#4d179a"
+    },
+    {
+      "name": "--color-violet-950",
+      "value": "oklch(28.3% 0.141 291.089)",
+      "category": "color",
+      "color": "#2f0d68"
+    },
+    {
+      "name": "--color-purple-50",
+      "value": "oklch(97.7% 0.014 308.299)",
+      "category": "color",
+      "color": "#faf5ff"
+    },
+    {
+      "name": "--color-purple-100",
+      "value": "oklch(94.6% 0.033 307.174)",
+      "category": "color",
+      "color": "#f3e8ff"
+    },
+    {
+      "name": "--color-purple-200",
+      "value": "oklch(90.2% 0.063 306.703)",
+      "category": "color",
+      "color": "#e9d4ff"
+    },
+    {
+      "name": "--color-purple-300",
+      "value": "oklch(82.7% 0.119 306.383)",
+      "category": "color",
+      "color": "#dab2ff"
+    },
+    {
+      "name": "--color-purple-400",
+      "value": "oklch(71.4% 0.203 305.504)",
+      "category": "color",
+      "color": "#c27aff"
+    },
+    {
+      "name": "--color-purple-500",
+      "value": "oklch(62.7% 0.265 303.9)",
+      "category": "color",
+      "color": "#ad46ff"
+    },
+    {
+      "name": "--color-purple-600",
+      "value": "oklch(55.8% 0.288 302.321)",
+      "category": "color",
+      "color": "#9810fa"
+    },
+    {
+      "name": "--color-purple-700",
+      "value": "oklch(49.6% 0.265 301.924)",
+      "category": "color",
+      "color": "#8200db"
+    },
+    {
+      "name": "--color-purple-800",
+      "value": "oklch(43.8% 0.218 303.724)",
+      "category": "color",
+      "color": "#6e11b0"
+    },
+    {
+      "name": "--color-purple-900",
+      "value": "oklch(38.1% 0.176 304.987)",
+      "category": "color",
+      "color": "#59168b"
+    },
+    {
+      "name": "--color-purple-950",
+      "value": "oklch(29.1% 0.149 302.717)",
+      "category": "color",
+      "color": "#3c0366"
+    },
+    {
+      "name": "--color-fuchsia-50",
+      "value": "oklch(97.7% 0.017 320.058)",
+      "category": "color",
+      "color": "#fdf4ff"
+    },
+    {
+      "name": "--color-fuchsia-100",
+      "value": "oklch(95.2% 0.037 318.852)",
+      "category": "color",
+      "color": "#fae8ff"
+    },
+    {
+      "name": "--color-fuchsia-200",
+      "value": "oklch(90.3% 0.076 319.62)",
+      "category": "color",
+      "color": "#f6cfff"
+    },
+    {
+      "name": "--color-fuchsia-300",
+      "value": "oklch(83.3% 0.145 321.434)",
+      "category": "color",
+      "color": "#f4a8ff"
+    },
+    {
+      "name": "--color-fuchsia-400",
+      "value": "oklch(74% 0.238 322.16)",
+      "category": "color",
+      "color": "#ed6aff"
+    },
+    {
+      "name": "--color-fuchsia-500",
+      "value": "oklch(66.7% 0.295 322.15)",
+      "category": "color",
+      "color": "#e12afb"
+    },
+    {
+      "name": "--color-fuchsia-600",
+      "value": "oklch(59.1% 0.293 322.896)",
+      "category": "color",
+      "color": "#c800de"
+    },
+    {
+      "name": "--color-fuchsia-700",
+      "value": "oklch(51.8% 0.253 323.949)",
+      "category": "color",
+      "color": "#a800b7"
+    },
+    {
+      "name": "--color-fuchsia-800",
+      "value": "oklch(45.2% 0.211 324.591)",
+      "category": "color",
+      "color": "#8a0194"
+    },
+    {
+      "name": "--color-fuchsia-900",
+      "value": "oklch(40.1% 0.17 325.612)",
+      "category": "color",
+      "color": "#721378"
+    },
+    {
+      "name": "--color-fuchsia-950",
+      "value": "oklch(29.3% 0.136 325.661)",
+      "category": "color",
+      "color": "#4b004f"
+    },
+    {
+      "name": "--color-pink-50",
+      "value": "oklch(97.1% 0.014 343.198)",
+      "category": "color",
+      "color": "#fdf2f8"
+    },
+    {
+      "name": "--color-pink-100",
+      "value": "oklch(94.8% 0.028 342.258)",
+      "category": "color",
+      "color": "#fce7f3"
+    },
+    {
+      "name": "--color-pink-200",
+      "value": "oklch(89.9% 0.061 343.231)",
+      "category": "color",
+      "color": "#fccee8"
+    },
+    {
+      "name": "--color-pink-300",
+      "value": "oklch(82.3% 0.12 346.018)",
+      "category": "color",
+      "color": "#fda5d5"
+    },
+    {
+      "name": "--color-pink-400",
+      "value": "oklch(71.8% 0.202 349.761)",
+      "category": "color",
+      "color": "#fb64b6"
+    },
+    {
+      "name": "--color-pink-500",
+      "value": "oklch(65.6% 0.241 354.308)",
+      "category": "color",
+      "color": "#f6339a"
+    },
+    {
+      "name": "--color-pink-600",
+      "value": "oklch(59.2% 0.249 0.584)",
+      "category": "color",
+      "color": "#e60076"
+    },
+    {
+      "name": "--color-pink-700",
+      "value": "oklch(52.5% 0.223 3.958)",
+      "category": "color",
+      "color": "#c6005c"
+    },
+    {
+      "name": "--color-pink-800",
+      "value": "oklch(45.9% 0.187 3.815)",
+      "category": "color",
+      "color": "#a3004c"
+    },
+    {
+      "name": "--color-pink-900",
+      "value": "oklch(40.8% 0.153 2.432)",
+      "category": "color",
+      "color": "#861043"
+    },
+    {
+      "name": "--color-pink-950",
+      "value": "oklch(28.4% 0.109 3.907)",
+      "category": "color",
+      "color": "#510424"
+    },
+    {
+      "name": "--color-rose-50",
+      "value": "oklch(96.9% 0.015 12.422)",
+      "category": "color",
+      "color": "#fff1f2"
+    },
+    {
+      "name": "--color-rose-100",
+      "value": "oklch(94.1% 0.03 12.58)",
+      "category": "color",
+      "color": "#ffe4e6"
+    },
+    {
+      "name": "--color-rose-200",
+      "value": "oklch(89.2% 0.058 10.001)",
+      "category": "color",
+      "color": "#ffccd3"
+    },
+    {
+      "name": "--color-rose-300",
+      "value": "oklch(81% 0.117 11.638)",
+      "category": "color",
+      "color": "#ffa1ad"
+    },
+    {
+      "name": "--color-rose-400",
+      "value": "oklch(71.2% 0.194 13.428)",
+      "category": "color",
+      "color": "#ff637e"
+    },
+    {
+      "name": "--color-rose-500",
+      "value": "oklch(64.5% 0.246 16.439)",
+      "category": "color",
+      "color": "#ff2056"
+    },
+    {
+      "name": "--color-rose-600",
+      "value": "oklch(58.6% 0.253 17.585)",
+      "category": "color",
+      "color": "#ec003f"
+    },
+    {
+      "name": "--color-rose-700",
+      "value": "oklch(51.4% 0.222 16.935)",
+      "category": "color",
+      "color": "#c70036"
+    },
+    {
+      "name": "--color-rose-800",
+      "value": "oklch(45.5% 0.188 13.697)",
+      "category": "color",
+      "color": "#a50036"
+    },
+    {
+      "name": "--color-rose-900",
+      "value": "oklch(41% 0.159 10.272)",
+      "category": "color",
+      "color": "#8b0836"
+    },
+    {
+      "name": "--color-rose-950",
+      "value": "oklch(27.1% 0.105 12.094)",
+      "category": "color",
+      "color": "#4d0218"
+    },
+    {
+      "name": "--ease",
+      "value": "cubic-bezier(0.25, 0, 0.5, 1)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-in",
+      "value": "cubic-bezier(0.25, 0, 1, 1)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-out",
+      "value": "cubic-bezier(0, 0, 0.75, 1)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-in-out",
+      "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-elastic-out",
+      "value": "cubic-bezier(0.5, 0.75, 0.75, 1.25)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-elastic-in",
+      "value": "cubic-bezier(0.5, -0.25, 0.75, 1)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-elastic-in-out",
+      "value": "cubic-bezier(0.5, -0.1, 0.1, 1.5)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-elastic",
+      "value": "var(--ease-elastic-out)",
+      "category": "easing"
+    },
+    {
+      "name": "--ease-squish",
+      "value": "var(--ease-elastic-in-out)",
+      "category": "easing"
+    },
+    {
+      "name": "--step--5",
+      "value": "clamp(0.5896rem, 0.6461rem + -0.0669vw, 0.6327rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step--4",
+      "value": "clamp(0.6633rem, 0.6787rem + -0.0183vw, 0.6751rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step--3",
+      "value": "clamp(0.7203rem, 0.7122rem + 0.0403vw, 0.7462rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step--2",
+      "value": "clamp(0.7686rem, 0.7465rem + 0.1102vw, 0.8395rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step--1",
+      "value": "clamp(0.8201rem, 0.7814rem + 0.1932vw, 0.9444rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-0",
+      "value": "clamp(0.875rem, 0.8167rem + 0.2913vw, 1.0625rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-1",
+      "value": "clamp(0.9336rem, 0.8523rem + 0.4065vw, 1.1953rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-2",
+      "value": "clamp(0.9962rem, 0.8879rem + 0.5414vw, 1.3447rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-3",
+      "value": "clamp(1.0629rem, 0.9231rem + 0.6989vw, 1.5128rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-4",
+      "value": "clamp(1.1341rem, 0.9577rem + 0.882vw, 1.7019rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-5",
+      "value": "clamp(1.2101rem, 0.9912rem + 1.0944vw, 1.9147rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-6",
+      "value": "clamp(1.2912rem, 1.0232rem + 1.3403vw, 2.154rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-7",
+      "value": "clamp(1.3777rem, 1.0529rem + 1.6241vw, 2.4232rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-8",
+      "value": "clamp(1.47rem, 1.0798rem + 1.9513vw, 2.7261rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-9",
+      "value": "clamp(1.5685rem, 1.103rem + 2.3276vw, 3.0669rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--step-10",
+      "value": "clamp(1.6736rem, 1.1216rem + 2.7599vw, 3.4503rem)",
+      "category": "font-size"
+    },
+    {
+      "name": "--font-stack-sans",
+      "value": "system-ui, sans-serif",
+      "category": "font-stacks"
+    },
+    {
+      "name": "--font-stack-serif",
+      "value": "Charter, 'Bitstream Charter', 'Sitka Text', Georgia, Cambria, serif",
+      "category": "font-stacks"
+    },
+    {
+      "name": "--font-weight-1",
+      "value": "100",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-2",
+      "value": "200",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-3",
+      "value": "300",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-4",
+      "value": "400",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-5",
+      "value": "500",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-6",
+      "value": "600",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-7",
+      "value": "700",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-8",
+      "value": "800",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-9",
+      "value": "900",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-light",
+      "value": "300",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-regular",
+      "value": "400",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-medium",
+      "value": "500",
+      "category": "font-weight"
+    },
+    {
+      "name": "--font-weight-bold",
+      "value": "700",
+      "category": "font-weight"
+    },
+    {
+      "name": "--letter-spacing-2xs",
+      "value": "-0.05em",
+      "category": "letter-spacing"
+    },
+    {
+      "name": "--letter-spacing-xs",
+      "value": "0.025em",
+      "category": "letter-spacing"
+    },
+    {
+      "name": "--letter-spacing-sm",
+      "value": "0.05em",
+      "category": "letter-spacing"
+    },
+    {
+      "name": "--letter-spacing-md",
+      "value": "0.075em",
+      "category": "letter-spacing"
+    },
+    {
+      "name": "--letter-spacing-lg",
+      "value": "0.15em",
+      "category": "letter-spacing"
+    },
+    {
+      "name": "--letter-spacing-xl",
+      "value": "0.3em",
+      "category": "letter-spacing"
+    },
+    {
+      "name": "--line-height-2xs",
+      "value": "1",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-xs",
+      "value": "1.25",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-sm",
+      "value": "1.375",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-md",
+      "value": "1.5",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-lg",
+      "value": "1.625",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-xl",
+      "value": "2",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-2xl",
+      "value": "1.625",
+      "category": "line-height"
+    },
+    {
+      "name": "--line-height-heading",
+      "value": "1.1",
+      "category": "line-height"
+    },
+    {
+      "name": "--radius-sm",
+      "value": "calc(3px * var(--radius-scale))",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-md",
+      "value": "calc(5px * var(--radius-scale))",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-lg",
+      "value": "calc(6px * var(--radius-scale))",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-xl",
+      "value": "calc(8px * var(--radius-scale))",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-2xl",
+      "value": "calc(12px * var(--radius-scale))",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-3xl",
+      "value": "calc(16px * var(--radius-scale))",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-full",
+      "value": "9999px",
+      "category": "radii"
+    },
+    {
+      "name": "--radius-round",
+      "value": "50%",
+      "category": "radii"
+    },
+    {
+      "name": "--shadow-color",
+      "value": "oklch(0.2 0 0)",
+      "category": "shadow",
+      "color": "#161616"
+    },
+    {
+      "name": "--shadow-sm",
+      "value": "0 1px 2px 0 oklch(from var(--shadow-color) l c h / 5%)",
+      "category": "shadow"
+    },
+    {
+      "name": "--shadow-2xl",
+      "value": "0 25px 50px -12px oklch(from var(--shadow-color) l c h / 25%)",
+      "category": "shadow"
+    },
+    {
+      "name": "--size-0",
+      "value": "0",
+      "category": "size"
+    },
+    {
+      "name": "--size-px",
+      "value": "1px",
+      "category": "size"
+    },
+    {
+      "name": "--size-quarter",
+      "value": "25%",
+      "category": "size"
+    },
+    {
+      "name": "--size-third",
+      "value": "33.333333%",
+      "category": "size"
+    },
+    {
+      "name": "--size-half",
+      "value": "50%",
+      "category": "size"
+    },
+    {
+      "name": "--size-twothirds",
+      "value": "66.666667%",
+      "category": "size"
+    },
+    {
+      "name": "--size-threequarters",
+      "value": "75%",
+      "category": "size"
+    },
+    {
+      "name": "--size-fifth",
+      "value": "20%",
+      "category": "size"
+    },
+    {
+      "name": "--size-twofifths",
+      "value": "40%",
+      "category": "size"
+    },
+    {
+      "name": "--size-threefifths",
+      "value": "60%",
+      "category": "size"
+    },
+    {
+      "name": "--size-fourfifths",
+      "value": "80%",
+      "category": "size"
+    },
+    {
+      "name": "--size-full",
+      "value": "100%",
+      "category": "size"
+    },
+    {
+      "name": "--size-auto",
+      "value": "auto",
+      "category": "size"
+    },
+    {
+      "name": "--size-svw",
+      "value": "100svw",
+      "category": "size"
+    },
+    {
+      "name": "--size-lvw",
+      "value": "100lvw",
+      "category": "size"
+    },
+    {
+      "name": "--size-dvw",
+      "value": "100dvw",
+      "category": "size"
+    },
+    {
+      "name": "--size-svh",
+      "value": "100svh",
+      "category": "size"
+    },
+    {
+      "name": "--size-lvh",
+      "value": "100lvh",
+      "category": "size"
+    },
+    {
+      "name": "--size-dvh",
+      "value": "100dvh",
+      "category": "size"
+    },
+    {
+      "name": "--size-min",
+      "value": "min-content",
+      "category": "size"
+    },
+    {
+      "name": "--size-max",
+      "value": "max-content",
+      "category": "size"
+    },
+    {
+      "name": "--size-fit",
+      "value": "fit-content",
+      "category": "size"
+    },
+    {
+      "name": "--space-0",
+      "value": "0",
+      "category": "space"
+    },
+    {
+      "name": "--space-px",
+      "value": "1px",
+      "category": "space"
+    },
+    {
+      "name": "--space-5xs",
+      "value": "clamp(0.1875rem, 0.1681rem + 0.0971vw, 0.25rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-4xs",
+      "value": "clamp(0.25rem, 0.2306rem + 0.0971vw, 0.3125rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-3xs",
+      "value": "clamp(0.375rem, 0.3362rem + 0.1942vw, 0.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-2xs",
+      "value": "clamp(0.5rem, 0.4612rem + 0.1942vw, 0.625rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-xs",
+      "value": "clamp(0.75rem, 0.6917rem + 0.2913vw, 0.9375rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-sm",
+      "value": "clamp(1rem, 0.9223rem + 0.3883vw, 1.25rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-md",
+      "value": "clamp(1.5rem, 1.3835rem + 0.5825vw, 1.875rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-lg",
+      "value": "clamp(2rem, 1.8447rem + 0.7767vw, 2.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-xl",
+      "value": "clamp(3rem, 2.767rem + 1.165vw, 3.75rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-2xl",
+      "value": "clamp(4rem, 3.6893rem + 1.5534vw, 5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-3xl",
+      "value": "clamp(6rem, 5.534rem + 2.3301vw, 7.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-5xs-4xs",
+      "value": "clamp(0.1875rem, 0.1487rem + 0.1942vw, 0.3125rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-4xs-3xs",
+      "value": "clamp(0.25rem, 0.1723rem + 0.3883vw, 0.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-3xs-2xs",
+      "value": "clamp(0.375rem, 0.2973rem + 0.3883vw, 0.625rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-2xs-xs",
+      "value": "clamp(0.5rem, 0.3641rem + 0.6796vw, 0.9375rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-xs-sm",
+      "value": "clamp(0.75rem, 0.5947rem + 0.7767vw, 1.25rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-sm-md",
+      "value": "clamp(1rem, 0.7282rem + 1.3592vw, 1.875rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-md-lg",
+      "value": "clamp(1.5rem, 1.1893rem + 1.5534vw, 2.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-lg-xl",
+      "value": "clamp(2rem, 1.4563rem + 2.7184vw, 3.75rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-xl-2xl",
+      "value": "clamp(3rem, 2.3786rem + 3.1068vw, 5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-2xl-3xl",
+      "value": "clamp(4rem, 2.9126rem + 5.4369vw, 7.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--space-sm-lg",
+      "value": "clamp(1rem, 0.534rem + 2.3301vw, 2.5rem)",
+      "category": "space"
+    },
+    {
+      "name": "--z--1",
+      "value": "-1",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-0",
+      "value": "0",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-1",
+      "value": "1000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-2",
+      "value": "2000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-3",
+      "value": "3000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-4",
+      "value": "4000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-5",
+      "value": "5000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-6",
+      "value": "6000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-7",
+      "value": "7000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-8",
+      "value": "8000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-9",
+      "value": "9000",
+      "category": "zindex"
+    },
+    {
+      "name": "--z-important",
+      "value": "2147483647",
+      "category": "zindex"
+    },
+    {
+      "name": "--color-theme",
+      "value": "light-dark(var(--color-mist-600), var(--color-mist-400))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-accent",
+      "value": "light-dark(var(--color-sky-600), var(--color-sky-400))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-surface",
+      "value": "light-dark(var(--color-mist-100), var(--color-mist-900))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-border",
+      "value": "light-dark(var(--color-mist-300), var(--color-mist-700))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-text",
+      "value": "light-dark(var(--color-mist-700), var(--color-mist-300))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-error",
+      "value": "light-dark(var(--color-red-600), var(--color-red-400))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-warning",
+      "value": "light-dark(var(--color-amber-600), var(--color-amber-400))",
+      "category": "theme"
+    },
+    {
+      "name": "--color-muted",
+      "value": "oklch(from var(--color-text) l c h / 70%)",
+      "category": "theme"
+    },
+    {
+      "name": "--color-faint",
+      "value": "oklch(from var(--color-text) l c h / 50%)",
+      "category": "theme"
+    },
+    {
+      "name": "--shadow-color",
+      "value": "oklch(from var(--color-background) calc(l - 0.3) c h)",
+      "category": "theme"
+    },
+    {
+      "name": "--font-body",
+      "value": "var(--font-stack-sans)",
+      "category": "theme"
+    },
+    {
+      "name": "--font-display",
+      "value": "var(--font-body)",
+      "category": "theme"
+    },
+    {
+      "name": "--font-code",
+      "value": "Geist Mono, var(--font-stack-mono)",
+      "category": "theme"
+    },
+    {
+      "name": "--line-height",
+      "value": "var(--line-height-md)",
+      "category": "theme"
+    },
+    {
+      "name": "--radius-scale",
+      "value": "1",
+      "category": "theme"
+    },
+    {
+      "name": "--border-style",
+      "value": "solid",
+      "category": "theme"
+    },
+    {
+      "name": "--focus-ring",
+      "value": "oklch(from var(--color-accent) l c h / 80%) auto 2px",
+      "category": "theme"
+    },
+    {
+      "name": "--focus-ring-offset",
+      "value": "4px",
+      "category": "theme"
+    }
+  ]
+}

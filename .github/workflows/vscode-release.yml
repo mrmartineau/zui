@@ -1,0 +1,67 @@
+name: VS Code Extension Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  publish:
+    name: Build and publish to VS Code Marketplace
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: extensions/vscode-zui
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: .
+
+      - name: Bump extension patch version
+        run: npm version patch --no-git-tag-version
+
+      - name: Update lockfile for new version
+        run: pnpm install --lockfile-only --no-frozen-lockfile
+        working-directory: .
+
+      - name: Generate manifest
+        run: pnpm run build:manifest
+
+      - name: Build extension
+        run: pnpm run build:ext
+
+      - name: Package .vsix
+        run: pnpm run package
+
+      - name: Publish to VS Code Marketplace
+        run: pnpm run publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Commit version bump
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add extensions/vscode-zui/package.json pnpm-lock.yaml
+          git commit -m "chore(vscode-zui): bump extension version [skip ci]"
+          git push
+        working-directory: .
