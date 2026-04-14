@@ -1,15 +1,15 @@
 ---
 interface Shade {
-  shade: number;
-  value: string;
+  shade: number
+  value: string
 }
 
 interface Props {
-  name: string;
-  shades: Shade[];
+  name: string
+  shades: Shade[]
 }
 
-const { name, shades } = Astro.props;
+const { name, shades } = Astro.props
 ---
 
 <div class="color-row-wrapper">

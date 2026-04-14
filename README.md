@@ -1,6 +1,6 @@
 # ZUI
 
-A CSS-first UI library with optional React, Astro, Solid, and Vue components.
+A CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue components.
 
 **Full documentation: [zui.zander.wtf](https://zui.zander.wtf)**
 
@@ -52,6 +52,16 @@ import { Button } from '@mrmartineau/zui/solid'
 export function App() {
   return <Button>Click me</Button>
 }
+```
+
+### Svelte
+
+```svelte
+<script>
+  import { Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<Button>Click me</Button>
 ```
 
 ### Vue
@@ -112,6 +122,8 @@ The workflow requires an `NPM_TOKEN` secret set in the repository settings. `GIT
 | `@mrmartineau/zui/css/min`   | `dist/css/zui.min.css`       |
 | `@mrmartineau/zui/react`     | `dist/react/index.mjs`       |
 | `@mrmartineau/zui/solid`     | `dist/solid/index.mjs`       |
+| `@mrmartineau/zui/svelte`    | `src/svelte/index.ts`        |
+| `@mrmartineau/zui/svelte/*`  | `src/svelte/*`               |
 | `@mrmartineau/zui/vue`       | `src/vue/index.ts`           |
 | `@mrmartineau/zui/vue/*`     | `src/vue/*`                  |
 | `@mrmartineau/zui/astro`     | `src/astro/index.ts`         |

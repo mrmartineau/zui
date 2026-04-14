@@ -2,51 +2,51 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig([
   {
-    entry: {
-      'react/index': 'src/react/index.ts',
-    },
-    format: 'esm',
-    dts: true,
     clean: ['dist/react'],
     deps: {
       neverBundle: ['react', 'react/jsx-runtime'],
     },
+    dts: true,
+    entry: {
+      'react/index': 'src/react/index.ts',
+    },
+    format: 'esm',
   },
   {
+    clean: ['dist/solid'],
+    deps: {
+      neverBundle: ['solid-js', 'solid-js/web'],
+    },
+    dts: true,
     entry: {
       'solid/index': 'src/solid/index.ts',
     },
     format: 'esm',
-    dts: true,
-    clean: ['dist/solid'],
     tsconfig: 'src/solid/tsconfig.json',
-    deps: {
-      neverBundle: ['solid-js', 'solid-js/web'],
-    },
   },
 
   {
+    clean: ['dist/utils'],
+    dts: true,
     entry: {
       'utils/index': 'src/utils/colorScheme.ts',
     },
     format: 'esm',
-    dts: true,
-    clean: ['dist/utils'],
   },
   {
-    entry: ['src/css/index.css'],
+    clean: false,
     css: {
-      minify: false,
       fileName: 'css/zui.css',
+      minify: false,
     },
-    clean: false,
+    entry: ['src/css/index.css'],
   },
   {
-    entry: ['src/css/index.css'],
-    css: {
-      minify: true,
-      fileName: 'css/zui.min.css',
-    },
     clean: false,
+    css: {
+      fileName: 'css/zui.min.css',
+      minify: true,
+    },
+    entry: ['src/css/index.css'],
   },
 ])

@@ -10,8 +10,24 @@ interface Props extends HTMLAttributes<'button'>, ButtonVariantProps {
   class?: string
 }
 
-const { href, class: className, variant = 'ghost', color, size, shape, icon, ...props } = Astro.props
-const classes = buttonVariants({ variant, color, size, shape, icon, class: ['zui-menu-item', className].filter(Boolean).join(' ') })
+const {
+  href,
+  class: className,
+  variant = 'ghost',
+  color,
+  size,
+  shape,
+  icon,
+  ...props
+} = Astro.props
+const classes = buttonVariants({
+  class: ['zui-menu-item', className].filter(Boolean).join(' '),
+  color,
+  icon,
+  shape,
+  size,
+  variant,
+})
 ---
 
 {

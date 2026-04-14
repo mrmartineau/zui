@@ -5,6 +5,8 @@ export type AccordionProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 export function Accordion({ className, flush, ...props }: AccordionProps) {
-  const classes = ['zui-accordion', flush && 'zui-accordion-flush', className].filter(Boolean).join(' ')
+  const classes = ['zui-accordion', flush && 'zui-accordion-flush', className]
+    .filter(Boolean)
+    .join(' ')
   return <div className={classes} {...props} />
 }

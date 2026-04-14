@@ -1,29 +1,38 @@
 ---
-import { ClientRouter } from "astro:transitions";
+import { ClientRouter } from 'astro:transitions'
 import '@mrmartineau/zui/css'
-import '../index.css';
-import Sidebar from '../components/Sidebar.astro';
-import TableOfContents from '../components/TableOfContents.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher.astro';
-import MiniThemeSwitcher from '../components/MiniThemeSwitcher.astro';
-import DarkModeSwitcher from '../components/DarkModeSwitcher.astro';
+import '../index.css'
+import DarkModeSwitcher from '../components/DarkModeSwitcher.astro'
+import MiniThemeSwitcher from '../components/MiniThemeSwitcher.astro'
+import Sidebar from '../components/Sidebar.astro'
+import TableOfContents from '../components/TableOfContents.astro'
+import ThemeSwitcher from '../components/ThemeSwitcher.astro'
+
 interface Props {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
 // @ts-expect-error ignore
-const { title, description } = (Astro.props.frontmatter ?? Astro.props) as Props;
-const currentPath = Astro.url.pathname;
+const { title, description } = (Astro.props.frontmatter ?? Astro.props) as Props
+const currentPath = Astro.url.pathname
 
 const indexPages = import.meta.glob('../pages/*/index.mdx', { eager: true })
 const footerSections = Object.entries(indexPages)
   .map(([path, mod]) => {
-    const fm = (mod as { frontmatter: { title: string; sectionOrder?: number } }).frontmatter
+    const fm = (
+      mod as { frontmatter: { title: string; sectionOrder?: number } }
+    ).frontmatter
     const key = path.match(/\/pages\/([^/]+)\//)?.[1] ?? ''
-    return { label: key.charAt(0).toUpperCase() + key.slice(1), href: `/${key}`, sectionOrder: fm.sectionOrder ?? Infinity }
+    return {
+      href: `/${key}`,
+      label: key.charAt(0).toUpperCase() + key.slice(1),
+      sectionOrder: fm.sectionOrder ?? Infinity,
+    }
   })
-  .sort((a, b) => a.sectionOrder - b.sectionOrder || a.label.localeCompare(b.label))
+  .sort(
+    (a, b) => a.sectionOrder - b.sectionOrder || a.label.localeCompare(b.label),
+  )
 ---
 
 <html lang="en" transition:name="root" transition:animate="none">
@@ -31,7 +40,7 @@ const footerSections = Object.entries(indexPages)
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ZUI — {title}</title>
-    <meta name="description" content="A CSS-first UI library with optional React, Astro, Solid, and Vue components." />
+    <meta name="description" content="A CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue components." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       rel="apple-touch-icon-precomposed"

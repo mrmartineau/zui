@@ -48,6 +48,15 @@ import { Flex } from '@mrmartineau/zui/astro'
 <script setup>
 import { Flex } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Flex } from '@mrmartineau/zui/svelte'
+</script>
+
+<Flex gap="md">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
 >
   <div class="flex gap-md">
     <div class="zui-badge">One</div>
@@ -92,6 +101,15 @@ import { Flex } from '@mrmartineau/zui/vue'
 <script setup>
 import { Flex } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Flex } from '@mrmartineau/zui/svelte'
+</script>
+
+<Flex direction="column" gap="sm">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+</Flex>`}
 >
   <div class="flex flex-column gap-sm">
     <div class="zui-badge">One</div>
@@ -131,6 +149,14 @@ import { Flex } from '@mrmartineau/zui/vue'
 <script setup>
 import { Flex } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Flex } from '@mrmartineau/zui/svelte'
+</script>
+
+<Flex align="center" justify="between" gap="md" style="min-height: 80px;">
+  <div>Start</div>
+  <div>End</div>
+</Flex>`}
 >
   <div class="flex items-center justify-between gap-md" style="min-height: 80px;">
     <div class="zui-badge">Start</div>
@@ -164,6 +190,13 @@ import { Flex } from '@mrmartineau/zui/vue'
 <script setup>
 import { Flex } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Flex } from '@mrmartineau/zui/svelte'
+</script>
+
+<Flex wrap="wrap" gap="sm">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
 >
   <div class="flex flex-wrap gap-sm">
     <div class="zui-badge">A</div>
@@ -193,6 +226,11 @@ import { Badge } from '@mrmartineau/zui/solid'
 import { Flex } from '@mrmartineau/zui/vue'
 import { Badge } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Flex, Badge } from '@mrmartineau/zui/svelte'
+</script>
+
+<p>Text with <Flex display="inline" align="center" gap="2xs"><Badge>inline</Badge><Badge>flex</Badge></Flex> content.</p>`}
 >
   <p>Text with <span class="inline-flex items-center gap-2xs"><span class="zui-badge">inline</span><span class="zui-badge">flex</span></span> content.</p>
 </Demo>
@@ -225,6 +263,13 @@ Use `gapX` and `gapY` for different horizontal and vertical spacing.
 <script setup>
 import { Flex } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Flex } from '@mrmartineau/zui/svelte'
+</script>
+
+<Flex wrap="wrap" gapX="xl" gapY="2xs">
+  <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div>
+</Flex>`}
 >
   <div class="flex flex-wrap gapx-xl gapy-2xs">
     <div class="zui-badge">A</div>

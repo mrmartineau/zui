@@ -47,6 +47,14 @@ import { Radio } from '@mrmartineau/zui/astro'
 <script setup>
 import { Radio } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Radio } from '@mrmartineau/zui/svelte'
+  let fruit = $state('apple')
+</script>
+
+<Radio name="fruit" value="apple" bind:group={fruit}>Apple</Radio>
+<Radio name="fruit" value="banana" bind:group={fruit}>Banana</Radio>
+<Radio name="fruit" value="cherry" bind:group={fruit}>Cherry</Radio>`}
 >
   <label class="zui-radio">
     <input type="radio" name="fruit" value="apple" checked />
@@ -130,6 +138,19 @@ import { Radio, Label } from '@mrmartineau/zui/astro'
 <script setup>
 import { Radio, Label } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Radio, Label } from '@mrmartineau/zui/svelte'
+  let colour = $state('blue')
+</script>
+
+<fieldset>
+  <Label>Favourite colour</Label>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red" bind:group={colour}>Red</Radio>
+    <Radio name="colour" value="blue" bind:group={colour}>Blue</Radio>
+    <Radio name="colour" value="green" bind:group={colour}>Green</Radio>
+  </div>
+</fieldset>`}
 >
   <fieldset style="border: none; padding: 0; width: 100%;">
     <legend class="zui-label">Favourite colour</legend>
@@ -183,6 +204,12 @@ import { Radio } from '@mrmartineau/zui/astro'
 <script setup>
 import { Radio } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Radio } from '@mrmartineau/zui/svelte'
+</script>
+
+<Radio name="disabled" disabled checked>Disabled checked</Radio>
+<Radio name="disabled2" disabled>Disabled unchecked</Radio>`}
 >
   <label class="zui-radio">
     <input type="radio" name="disabled" disabled checked />

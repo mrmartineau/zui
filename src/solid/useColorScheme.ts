@@ -1,23 +1,23 @@
 import { createSignal, onCleanup } from 'solid-js'
 import {
-	getColorScheme,
-	setColorScheme,
-	type ColorScheme,
+  type ColorScheme,
+  getColorScheme,
+  setColorScheme,
 } from '../utils/colorScheme'
 
 export function useColorScheme() {
-	const [scheme, setScheme] = createSignal<ColorScheme>(getColorScheme())
+  const [scheme, setScheme] = createSignal<ColorScheme>(getColorScheme())
 
-	function onchange(e: Event) {
-		setScheme((e as CustomEvent<ColorScheme>).detail)
-	}
+  function onchange(e: Event) {
+    setScheme((e as CustomEvent<ColorScheme>).detail)
+  }
 
-	if (typeof window !== 'undefined') {
-		window.addEventListener('zui-color-scheme-change', onchange)
-		onCleanup(() =>
-			window.removeEventListener('zui-color-scheme-change', onchange),
-		)
-	}
+  if (typeof window !== 'undefined') {
+    window.addEventListener('zui-color-scheme-change', onchange)
+    onCleanup(() =>
+      window.removeEventListener('zui-color-scheme-change', onchange),
+    )
+  }
 
-	return { scheme, set: setColorScheme }
+  return { scheme, set: setColorScheme }
 }

@@ -3,7 +3,7 @@
     position: relative;
     display: inline-block;
     --zui-tooltip-bg: var(--color-surface);
-    --zui-tooltip-fg: currentColor
+    --zui-tooltip-fg: currentColor;
   }
 
   .zui-tooltip-content {

@@ -17,5 +17,9 @@ const props = defineProps<{
   href?: string
 }>()
 
-const classes = computed(() => ['zui-card', props.href && 'zui-card-interactive', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-card', props.href && 'zui-card-interactive', props.class]
+    .filter(Boolean)
+    .join(' '),
+)
 </script>

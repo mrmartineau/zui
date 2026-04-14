@@ -151,6 +151,36 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@
 <script setup>
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/svelte'
+</script>
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
 >
   <table class="zui-table" style="width: 100%;">
     <thead class="zui-table-header">
@@ -332,6 +362,37 @@ import { Table, TableCaption, TableHeader, TableBody, TableRow, TableHead, Table
 <script setup>
 import { Table, TableCaption, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Table, TableCaption, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@mrmartineau/zui/svelte'
+</script>
+
+<Table>
+  <TableCaption>Team members and their current status.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>`}
 >
   <table class="zui-table" style="width: 100%;">
     <caption class="zui-table-caption">Team members and their current status.</caption>
@@ -539,6 +600,42 @@ import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableC
 <script setup>
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell } from '@mrmartineau/zui/svelte'
+</script>
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Role</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Designer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Away</TableCell>
+      <TableCell>Engineer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Carol Davis</TableCell>
+      <TableCell>Active</TableCell>
+      <TableCell>Product Manager</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell colspan="2">Total members</TableCell>
+      <TableCell>3</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>`}
 >
   <table class="zui-table" style="width: 100%;">
     <thead class="zui-table-header">

@@ -36,6 +36,11 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <script setup>
 import { Avatar } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Avatar } from '@mrmartineau/zui/svelte'
+</script>
+
+<Avatar src="/avatar.webp" alt="User" />`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
@@ -71,6 +76,11 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <script setup>
 import { Avatar } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Avatar } from '@mrmartineau/zui/svelte'
+</script>
+
+<Avatar />`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback"><i class="ph ph-user" aria-hidden="true"></i></span>
@@ -101,6 +111,11 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <script setup>
 import { Avatar } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Avatar } from '@mrmartineau/zui/svelte'
+</script>
+
+<Avatar fallback="AB" />`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback">AB</span>
@@ -145,6 +160,13 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <script setup>
 import { Avatar } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Avatar } from '@mrmartineau/zui/svelte'
+</script>
+
+<Avatar size="sm" fallback="AB" />
+<Avatar fallback="AB" />
+<Avatar size="lg" fallback="AB" />`}
 >
   <span class="zui-avatar zui-avatar-size-sm">
     <span class="zui-avatar-fallback">AB</span>
@@ -202,6 +224,14 @@ import { Avatar } from '@mrmartineau/zui/astro'
 <script setup>
 import { Avatar } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Avatar } from '@mrmartineau/zui/svelte'
+</script>
+
+<Avatar fallback="AB" />
+<Avatar shape="hard" fallback="AB" />
+<Avatar shape="soft" fallback="AB" />
+<Avatar shape="squircle" fallback="AB" />`}
 >
   <span class="zui-avatar">
     <span class="zui-avatar-fallback">AB</span>

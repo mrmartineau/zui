@@ -53,6 +53,17 @@ import { Select } from '@mrmartineau/zui/astro'
 <script setup>
 import { Select } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Select } from '@mrmartineau/zui/svelte'
+  let value = $state('')
+</script>
+
+<Select bind:value>
+  <option value="">Choose an option</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</Select>`}
 >
   <select class="zui-select">
     <option value="">Choose an option</option>
@@ -119,6 +130,19 @@ import { Label, Select } from '@mrmartineau/zui/astro'
 <script setup>
 import { Label, Select } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Label, Select } from '@mrmartineau/zui/svelte'
+  let country = $state('')
+</script>
+
+<Label for="country">Country</Label>
+<Select id="country" bind:value={country}>
+  <option value="">Select a country</option>
+  <option value="uk">United Kingdom</option>
+  <option value="us">United States</option>
+  <option value="de">Germany</option>
+  <option value="fr">France</option>
+</Select>`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="country">Country</label>
@@ -164,6 +188,13 @@ import { Select } from '@mrmartineau/zui/astro'
 <script setup>
 import { Select } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Select } from '@mrmartineau/zui/svelte'
+</script>
+
+<Select disabled>
+  <option>Cannot change</option>
+</Select>`}
 >
   <select class="zui-select" disabled>
     <option>Cannot change</option>

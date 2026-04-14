@@ -7,7 +7,9 @@ interface Props extends HTMLAttributes<'div'> {
 }
 
 const { class: className, flush, ...props } = Astro.props
-const classes = ['zui-accordion', flush && 'zui-accordion-flush', className].filter(Boolean).join(' ')
+const classes = ['zui-accordion', flush && 'zui-accordion-flush', className]
+  .filter(Boolean)
+  .join(' ')
 ---
 
 <div class={classes} {...props}>

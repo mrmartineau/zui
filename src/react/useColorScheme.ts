@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
+  type ColorScheme,
   getColorScheme,
   setColorScheme,
-  type ColorScheme,
 } from '../utils/colorScheme'
 
 export function useColorScheme() {

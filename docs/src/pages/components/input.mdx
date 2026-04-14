@@ -28,6 +28,12 @@ import { Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Input } from '@mrmartineau/zui/svelte'
+  let name = $state('')
+</script>
+
+<Input type="text" placeholder="Enter your name" bind:value={name} />`}
 >
   <input class="zui-input" type="text" placeholder="Enter your name" />
 </Demo>
@@ -79,6 +85,16 @@ import { Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Input type="text" placeholder="Text" />
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="Number" />
+<Input type="search" placeholder="Search" />
+<Input type="url" placeholder="URL" />`}
 >
   <input class="zui-input" type="text" placeholder="Text" />
   <input class="zui-input" type="email" placeholder="Email" />
@@ -115,6 +131,12 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Label for="name">Full name</Label>
+<Input type="text" id="name" placeholder="Jane Doe" />`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="name">Full name</label>
@@ -144,6 +166,11 @@ import { Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Input type="email" value="not-an-email" aria-invalid="true" />`}
 >
   <input class="zui-input" type="email" value="not-an-email" aria-invalid="true" />
 </Demo>
@@ -170,6 +197,11 @@ import { Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Input type="text" value="Cannot edit" disabled />`}
 >
   <input class="zui-input" type="text" value="Cannot edit" disabled />
 </Demo>

@@ -5,7 +5,14 @@ export type PopoverProps = HTMLAttributes<HTMLDivElement> & {
   popover?: 'auto' | 'manual'
 }
 
-export function Popover({ id, popover = 'auto', className, style, children, ...props }: PopoverProps) {
+export function Popover({
+  id,
+  popover = 'auto',
+  className,
+  style,
+  children,
+  ...props
+}: PopoverProps) {
   const classes = ['zui-popover', className].filter(Boolean).join(' ')
   const anchorStyle: CSSProperties = {
     positionAnchor: `--${id}`,
@@ -13,7 +20,13 @@ export function Popover({ id, popover = 'auto', className, style, children, ...p
   }
 
   return (
-    <div id={id} popover={popover} className={classes} style={anchorStyle} {...props}>
+    <div
+      id={id}
+      popover={popover}
+      className={classes}
+      style={anchorStyle}
+      {...props}
+    >
       {children}
     </div>
   )

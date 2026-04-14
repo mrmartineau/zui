@@ -30,7 +30,7 @@
     }
 
     &::marker {
-      content: '';
+      content: "";
     }
 
     @starting-style {
@@ -41,7 +41,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
       width: 0.45em;
       height: 0.45em;

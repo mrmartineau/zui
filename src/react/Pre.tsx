@@ -6,5 +6,9 @@ export type PreProps = HTMLAttributes<HTMLPreElement> & {
 
 export function Pre({ className, children, ...props }: PreProps) {
   const classes = ['zui-pre', className].filter(Boolean).join(' ')
-  return <pre className={classes} {...props}>{children}</pre>
+  return (
+    <pre className={classes} {...props}>
+      {children}
+    </pre>
+  )
 }

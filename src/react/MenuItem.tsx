@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import type { VariantProps } from 'cva'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import { buttonVariants } from '../shared/buttonVariants'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
@@ -18,12 +18,37 @@ type MenuItemAsAnchor = MenuItemBase &
 
 export type MenuItemProps = MenuItemAsButton | MenuItemAsAnchor
 
-export function MenuItem({ className, variant = 'ghost', color, size, shape, icon, ...props }: MenuItemProps) {
-  const classes = buttonVariants({ variant, color, size, shape, icon, className: ['zui-menu-item', className].filter(Boolean).join(' ') })
+export function MenuItem({
+  className,
+  variant = 'ghost',
+  color,
+  size,
+  shape,
+  icon,
+  ...props
+}: MenuItemProps) {
+  const classes = buttonVariants({
+    className: ['zui-menu-item', className].filter(Boolean).join(' '),
+    color,
+    icon,
+    shape,
+    size,
+    variant,
+  })
 
   if ('href' in props && props.href) {
-    return <a className={classes} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)} />
+    return (
+      <a
+        className={classes}
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+      />
+    )
   }
 
-  return <button className={classes} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)} />
+  return (
+    <button
+      className={classes}
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+    />
+  )
 }

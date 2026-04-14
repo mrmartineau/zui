@@ -22,7 +22,7 @@ You do not need to install the package first — `npx` will fetch it transiently
 
 The script will prompt you for:
 
-1. **Framework** — React, Astro, or CSS only
+1. **Framework** — React, Astro, Svelte, or CSS only
 2. **CSS destination** — where to copy the CSS files (default: `src/styles/zui`)
 3. **Components destination** — where to copy component files (default: `src/components/zui`, skipped for CSS only)
 
@@ -64,6 +64,14 @@ src/components/zui/
   shared/           ← cva variant definitions + colorScheme utility
 ```
 
+### Svelte
+
+```
+src/components/zui/
+  svelte/           ← all Svelte 5 components (.svelte)
+  shared/           ← cva variant definitions + colorScheme utility
+```
+
 ## After init
 
 ### 1. Import the CSS
@@ -98,6 +106,14 @@ import Button from './src/components/zui/astro/Button.astro'
 ---
 ```
 
+**Svelte:**
+
+```svelte
+<script lang="ts">
+  import { Button, Badge, Input } from './src/components/zui/svelte/index'
+</script>
+```
+
 ### 3. Remove the npm package
 
 Once you've confirmed everything works, remove `@mrmartineau/zui` from your `package.json`:
@@ -115,7 +131,7 @@ If `@mrmartineau/zui` is already listed in your `package.json` when you run `ini
 
 ## Dependencies installed automatically
 
-The script detects your package manager (npm, pnpm, yarn, or bun) and installs `cva` automatically for React, Astro, Solid, and Vue workflows. CSS-only installs have no JavaScript dependencies.
+The script detects your package manager (npm, pnpm, yarn, or bun) and installs `cva` automatically for React, Astro, Solid, Svelte, and Vue workflows. CSS-only installs have no JavaScript dependencies.
 
 ## Keeping up to date
 

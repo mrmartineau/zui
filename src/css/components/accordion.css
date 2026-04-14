@@ -43,11 +43,11 @@
     }
 
     &::marker {
-      content: '';
+      content: "";
     }
 
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
       width: 0.45em;
       height: 0.45em;

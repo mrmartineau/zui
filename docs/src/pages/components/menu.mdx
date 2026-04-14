@@ -57,6 +57,16 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
 <script setup>
 import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/svelte'
+</script>
+
+<Menu>
+  <MenuTrigger>Open menu <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuItem>Profile</MenuItem>
+  <MenuItem>Settings</MenuItem>
+  <MenuItem>Logout</MenuItem>
+</Menu>`}
 >
   <details class="zui-menu">
     <summary class="zui-button zui-button-variant-outline">
@@ -117,6 +127,16 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
 <script setup>
 import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/svelte'
+</script>
+
+<Menu>
+  <MenuTrigger>Account <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuItem><i class="ph ph-user"></i> Profile</MenuItem>
+  <MenuItem><i class="ph ph-gear"></i> Settings</MenuItem>
+  <MenuItem><i class="ph ph-sign-out"></i> Logout</MenuItem>
+</Menu>`}
 >
   <details class="zui-menu">
     <summary class="zui-button">
@@ -179,6 +199,16 @@ import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
 <script setup>
 import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/svelte'
+</script>
+
+<Menu>
+  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuItem href="#">Home</MenuItem>
+  <MenuItem href="#">About</MenuItem>
+  <MenuItem href="#">Contact</MenuItem>
+</Menu>`}
 >
   <details class="zui-menu">
     <summary class="zui-button zui-button-variant-outline">

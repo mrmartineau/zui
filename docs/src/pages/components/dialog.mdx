@@ -140,6 +140,34 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Dialo
 
 const open = ref(false)
 </script>`}
+  svelte={`<script lang="ts">
+  import {
+    Dialog,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogBody,
+    DialogFooter,
+    Button,
+  } from '@mrmartineau/zui/svelte'
+
+  let open = $state(false)
+</script>
+
+<Button onclick={() => (open = true)}>Open dialog</Button>
+<Dialog bind:open>
+  <DialogHeader>
+    <DialogTitle>Dialog title</DialogTitle>
+    <DialogDescription>A short description of the dialog content.</DialogDescription>
+  </DialogHeader>
+  <DialogBody>
+    <p>Dialog body content goes here.</p>
+  </DialogBody>
+  <DialogFooter>
+    <Button variant="outline" onclick={() => (open = false)}>Cancel</Button>
+    <Button onclick={() => (open = false)}>Confirm</Button>
+  </DialogFooter>
+</Dialog>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-usage-demo').showModal()">
     Open dialog
@@ -312,6 +340,25 @@ import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } f
 
 const size = ref(null)
 </script>`}
+  svelte={`<script lang="ts">
+  import { Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/svelte'
+
+  let size = $state<'sm' | 'md' | 'lg' | 'full' | null>(null)
+</script>
+
+<Button onclick={() => (size = 'sm')}>Small</Button>
+<Button onclick={() => (size = 'md')}>Medium (default)</Button>
+<Button onclick={() => (size = 'lg')}>Large</Button>
+<Button onclick={() => (size = 'full')}>Full</Button>
+<Dialog open={!!size} {size} onclose={() => (size = null)}>
+  <DialogHeader>
+    <DialogTitle>{size} dialog</DialogTitle>
+  </DialogHeader>
+  <DialogBody><p>Dialog content.</p></DialogBody>
+  <DialogFooter>
+    <Button onclick={() => (size = null)}>Close</Button>
+  </DialogFooter>
+</Dialog>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-sm-demo').showModal()">Small</button>
   <button class="zui-button" onclick="document.getElementById('dialog-md-demo').showModal()">Medium (default)</button>
@@ -550,6 +597,26 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, But
 
 const position = ref(null)
 </script>`}
+  svelte={`<script lang="ts">
+  import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/svelte'
+
+  let position = $state<'central' | 'left' | 'right' | 'top' | 'bottom' | null>(null)
+</script>
+
+<Button onclick={() => (position = 'central')}>central</Button>
+<Button onclick={() => (position = 'left')}>left</Button>
+<Button onclick={() => (position = 'right')}>right</Button>
+<Button onclick={() => (position = 'top')}>top</Button>
+<Button onclick={() => (position = 'bottom')}>bottom</Button>
+<Dialog open={!!position} {position} onclose={() => (position = null)}>
+  <DialogHeader>
+    <DialogTitle>{position}</DialogTitle>
+    <DialogDescription>Slides in from the {position} edge.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter>
+    <Button onclick={() => (position = null)}>Close</Button>
+  </DialogFooter>
+</Dialog>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-pos-central-demo').showModal()">central</button>
   <button class="zui-button" onclick="document.getElementById('dialog-pos-left-demo').showModal()">left</button>
@@ -749,6 +816,32 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Butto
 
 const open = ref(false)
 </script>`}
+  svelte={`<script lang="ts">
+  import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, Button } from '@mrmartineau/zui/svelte'
+
+  let open = $state(false)
+</script>
+
+<Button onclick={() => (open = true)}>Open dialog</Button>
+<Dialog bind:open>
+  <Button
+    variant="ghost"
+    size="sm"
+    icon
+    class="zui-dialog-close"
+    aria-label="Close"
+    onclick={() => (open = false)}
+  >
+    <i class="ph ph-x"></i>
+  </Button>
+  <DialogHeader>
+    <DialogTitle>With close button</DialogTitle>
+    <DialogDescription>A close button is positioned in the top-right corner.</DialogDescription>
+  </DialogHeader>
+  <DialogBody>
+    <p>Content goes here.</p>
+  </DialogBody>
+</Dialog>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-close-btn-demo').showModal()">
     Open dialog
@@ -925,6 +1018,28 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, But
 
 const closedby = ref(null)
 </script>`}
+  svelte={`<script lang="ts">
+  import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/svelte'
+
+  let closedby = $state<'any' | 'closerequest' | 'none' | null>(null)
+</script>
+
+<Button onclick={() => (closedby = 'any')}>any (default)</Button>
+<Button onclick={() => (closedby = 'closerequest')}>closerequest</Button>
+<Button onclick={() => (closedby = 'none')}>none</Button>
+<Dialog open={!!closedby} {closedby} onclose={() => (closedby = null)}>
+  <DialogHeader>
+    <DialogTitle>closedby="{closedby}"</DialogTitle>
+    <DialogDescription>
+      {#if closedby === 'any'}Click the backdrop or press Esc to close.{/if}
+      {#if closedby === 'closerequest'}Only Esc closes this dialog — backdrop click does nothing.{/if}
+      {#if closedby === 'none'}Backdrop and Esc are both disabled — use the button below.{/if}
+    </DialogDescription>
+  </DialogHeader>
+  <DialogFooter>
+    <Button onclick={() => (closedby = null)}>Close</Button>
+  </DialogFooter>
+</Dialog>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-closedby-any-demo').showModal()">any (default)</button>
   <button class="zui-button" onclick="document.getElementById('dialog-closedby-cr-demo').showModal()">closerequest</button>
@@ -1068,6 +1183,23 @@ import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, But
 
 const open = ref(false)
 </script>`}
+  svelte={`<script lang="ts">
+  import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@mrmartineau/zui/svelte'
+
+  let open = $state(false)
+</script>
+
+<Button onclick={() => (open = true)}>Delete item</Button>
+<Dialog bind:open>
+  <DialogHeader>
+    <DialogTitle>Are you sure?</DialogTitle>
+    <DialogDescription>This action cannot be undone.</DialogDescription>
+  </DialogHeader>
+  <DialogFooter>
+    <Button variant="outline" onclick={() => (open = false)}>Cancel</Button>
+    <Button color="destructive" onclick={() => (open = false)}>Delete</Button>
+  </DialogFooter>
+</Dialog>`}
 >
   <button class="zui-button" onclick="document.getElementById('dialog-form-demo').showModal()">
     Delete item

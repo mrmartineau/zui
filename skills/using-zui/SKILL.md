@@ -1,12 +1,12 @@
 ---
 name: using-zui
-description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, or Vue markup that should use ZUI components, design tokens, and utility classes. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui."
+description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, Svelte, or Vue markup that should use ZUI components, design tokens, and utility classes. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui."
 user-invocable: true
 ---
 
 # Using ZUI
 
-ZUI is a CSS-first UI library with optional React, Astro, Solid, and Vue component wrappers. Import `@mrmartineau/zui/css` for styles, then import components from the framework-specific path.
+ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers. Import `@mrmartineau/zui/css` for styles, then import components from the framework-specific path.
 
 ## Setup
 
@@ -24,6 +24,9 @@ import { Button, Card, Input } from '@mrmartineau/zui/astro'
 
 // Solid
 import { Button, Card, Input } from '@mrmartineau/zui/solid'
+
+// Svelte
+import { Button, Card, Input } from '@mrmartineau/zui/svelte'
 
 // Vue
 import { Button, Card, Input } from '@mrmartineau/zui/vue'
