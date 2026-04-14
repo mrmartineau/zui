@@ -5,7 +5,7 @@
   background-color: light-dark(
     oklch(from var(--color-background) calc(l + 0.03) c h),
     oklch(from var(--color-background) calc(l - 0.02) c h)
-    ) !important;
+  ) !important;
   font-variant-ligatures: none;
   overflow-y: auto;
   white-space: pre-wrap;

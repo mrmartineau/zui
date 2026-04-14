@@ -1,21 +1,21 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte'
-  import type { HTMLInputAttributes } from 'svelte/elements'
+import type { Snippet } from 'svelte'
+import type { HTMLInputAttributes } from 'svelte/elements'
 
-  type Props = Omit<HTMLInputAttributes, 'type'> & {
-    class?: string
-    group?: string | number | null
-    children?: Snippet
-  }
+type Props = Omit<HTMLInputAttributes, 'type'> & {
+  class?: string
+  group?: string | number | null
+  children?: Snippet
+}
 
-  let {
-    class: className,
-    group = $bindable(),
-    children,
-    ...rest
-  }: Props = $props()
+let {
+  class: className,
+  group = $bindable(),
+  children,
+  ...rest
+}: Props = $props()
 
-  const classes = $derived(['zui-radio', className].filter(Boolean).join(' '))
+const classes = $derived(['zui-radio', className].filter(Boolean).join(' '))
 </script>
 
 <label class={classes}>

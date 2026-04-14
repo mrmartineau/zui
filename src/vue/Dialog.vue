@@ -5,42 +5,57 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, onMounted } from 'vue'
 import type { VariantProps } from 'cva'
+import { computed, onMounted, ref, watch } from 'vue'
 import { dialogVariants } from '../shared/dialogVariants'
 
 defineOptions({ inheritAttrs: false })
 
 type DialogVariantProps = VariantProps<typeof dialogVariants>
 
-const props = withDefaults(defineProps<{
-  class?: string
-  open?: boolean
-  size?: DialogVariantProps['size']
-  position?: DialogVariantProps['position']
-  closedby?: 'any' | 'closerequest' | 'none'
-}>(), {
-  closedby: 'any',
-})
+const props = withDefaults(
+  defineProps<{
+    class?: string
+    open?: boolean
+    size?: DialogVariantProps['size']
+    position?: DialogVariantProps['position']
+    closedby?: 'any' | 'closerequest' | 'none'
+  }>(),
+  {
+    closedby: 'any',
+  },
+)
 
 defineEmits<{
   close: []
 }>()
 
 const dialogRef = ref<HTMLDialogElement>()
-const classes = computed(() => dialogVariants({ size: props.size, position: props.position, className: props.class }))
+const classes = computed(() =>
+  dialogVariants({
+    className: props.class,
+    position: props.position,
+    size: props.size,
+  }),
+)
 
-watch(() => props.open, (val) => {
-  if (val) {
-    dialogRef.value?.showModal()
-  } else {
-    dialogRef.value?.close()
-  }
-})
+watch(
+  () => props.open,
+  (val) => {
+    if (val) {
+      dialogRef.value?.showModal()
+    } else {
+      dialogRef.value?.close()
+    }
+  },
+)
 
-watch(() => props.closedby, (val) => {
-  dialogRef.value?.setAttribute('closedby', val ?? 'any')
-})
+watch(
+  () => props.closedby,
+  (val) => {
+    dialogRef.value?.setAttribute('closedby', val ?? 'any')
+  },
+)
 
 onMounted(() => {
   dialogRef.value?.setAttribute('closedby', props.closedby ?? 'any')

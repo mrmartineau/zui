@@ -14,10 +14,12 @@ interface PageFrontmatter {
 const allPages = import.meta.glob('../pages/**/*.mdx', { eager: true })
 
 function pathToHref(filePath: string): string {
-  return filePath
-    .replace('../pages', '')
-    .replace(/\.mdx$/, '')
-    .replace(/\/index$/, '') || '/'
+  return (
+    filePath
+      .replace('../pages', '')
+      .replace(/\.mdx$/, '')
+      .replace(/\/index$/, '') || '/'
+  )
 }
 
 const cards = Object.entries(allPages)
@@ -28,10 +30,10 @@ const cards = Object.entries(allPages)
   .map(([path, mod]) => {
     const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
     return {
-      href: pathToHref(path),
-      title: fm.title,
       description: fm.description,
+      href: pathToHref(path),
       order: fm.order,
+      title: fm.title,
     }
   })
   .sort((a, b) => {

@@ -6,5 +6,9 @@ export type CardTitleProps = HTMLAttributes<HTMLDivElement> & {
 
 export function CardTitle({ className, children, ...props }: CardTitleProps) {
   const classes = ['zui-card-title', className].filter(Boolean).join(' ')
-  return <div className={classes} {...props}>{children}</div>
+  return (
+    <div className={classes} {...props}>
+      {children}
+    </div>
+  )
 }

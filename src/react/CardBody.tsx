@@ -6,5 +6,9 @@ export type CardBodyProps = HTMLAttributes<HTMLDivElement> & {
 
 export function CardBody({ className, children, ...props }: CardBodyProps) {
   const classes = ['zui-card-body', className].filter(Boolean).join(' ')
-  return <div className={classes} {...props}>{children}</div>
+  return (
+    <div className={classes} {...props}>
+      {children}
+    </div>
+  )
 }

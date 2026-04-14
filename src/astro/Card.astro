@@ -7,7 +7,9 @@ interface Props extends HTMLAttributes<'div'> {
 }
 
 const { href, class: className, ...props } = Astro.props
-const classes = ['zui-card', href && 'zui-card-interactive', className].filter(Boolean).join(' ')
+const classes = ['zui-card', href && 'zui-card-interactive', className]
+  .filter(Boolean)
+  .join(' ')
 ---
 
 {

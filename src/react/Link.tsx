@@ -6,5 +6,9 @@ export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 
 export function Link({ className, children, ...props }: LinkProps) {
   const classes = ['zui-link', className].filter(Boolean).join(' ')
-  return <a className={classes} {...props}>{children}</a>
+  return (
+    <a className={classes} {...props}>
+      {children}
+    </a>
+  )
 }

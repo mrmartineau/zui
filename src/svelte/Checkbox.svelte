@@ -1,23 +1,21 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte'
-  import type { HTMLInputAttributes } from 'svelte/elements'
+import type { Snippet } from 'svelte'
+import type { HTMLInputAttributes } from 'svelte/elements'
 
-  type Props = Omit<HTMLInputAttributes, 'type'> & {
-    class?: string
-    checked?: boolean
-    children?: Snippet
-  }
+type Props = Omit<HTMLInputAttributes, 'type'> & {
+  class?: string
+  checked?: boolean
+  children?: Snippet
+}
 
-  let {
-    class: className,
-    checked = $bindable(false),
-    children,
-    ...rest
-  }: Props = $props()
+let {
+  class: className,
+  checked = $bindable(false),
+  children,
+  ...rest
+}: Props = $props()
 
-  const classes = $derived(
-    ['zui-checkbox', className].filter(Boolean).join(' '),
-  )
+const classes = $derived(['zui-checkbox', className].filter(Boolean).join(' '))
 </script>
 
 <label class={classes}>

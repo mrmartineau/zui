@@ -17,7 +17,7 @@
     background-color: oklch(from currentColor l c h / 10%);
   }
 
-  .zui-table-row[data-state='selected'] {
+  .zui-table-row[data-state="selected"] {
     background-color: oklch(from currentColor l c h / 25%);
   }
 

@@ -6,5 +6,9 @@ export type TableHeadProps = ThHTMLAttributes<HTMLTableCellElement> & {
 
 export function TableHead({ className, children, ...props }: TableHeadProps) {
   const classes = ['zui-table-head', className].filter(Boolean).join(' ')
-  return <th className={classes} {...props}>{children}</th>
+  return (
+    <th className={classes} {...props}>
+      {children}
+    </th>
+  )
 }

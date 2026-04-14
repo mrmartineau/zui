@@ -11,7 +11,8 @@
     --zui-btn-accent-subtle-bg: oklch(from var(--zui-btn-accent) l c h / 15%);
     --zui-btn-accent-subtle-fg: oklch(from var(--zui-btn-accent) l c h);
     --zui-btn-accent-subtle-hover-bg: oklch(
-      from var(--zui-btn-accent) l c h / 25%
+      from var(--zui-btn-accent) l c h /
+      25%
     );
     --zui-btn-radius: var(--radius-lg);
     --zui-btn-border-style: var(--border-style, solid);
@@ -24,7 +25,8 @@
     --auto-dark-text-l: 0.5;
     --auto-lightness: clamp(
       0,
-      (l / var(--auto-threshold, 0.623) - 1) * -infinity,
+      (l / var(--auto-threshold, 0.623) - 1) *
+      -infinity,
       1
     );
     --auto-color: light-dark(
@@ -33,7 +35,8 @@
           clamp(
             var(--auto-dark-text-l),
             calc(
-              ((l * alpha + 1 - alpha) / var(--auto-threshold) - 1) * -infinity
+              ((l * alpha + 1 - alpha) / var(--auto-threshold) - 1) *
+              -infinity
             ),
             var(--auto-light-text-l)
           )
@@ -169,7 +172,8 @@
     --zui-btn-fg: var(--zui-btn-accent);
     --zui-btn-hover-bg: transparent;
     --zui-btn-hover-fg: oklch(from var(--zui-btn-fg) l c h / 90%);
-    --zui-btn-text-decoration: underline 0.2ex 0.3ex oklch(from var(--zui-btn-fg) l c h / 50%);
+    --zui-btn-text-decoration: underline 0.2ex 0.3ex
+      oklch(from var(--zui-btn-fg) l c h / 50%);
     /* text-decoration-color: oklch(from var(--zui-btn-fg) l c h / 50%) !important;
     text-decoration-thickness: 0.2ex !important;
     text-underline-offset: 0.3ex; */
@@ -215,7 +219,7 @@
   /* lg */
   .zui-button.zui-button-size-lg {
     --zui-btn-height: 2.3rem;
-    --zui-btn-font-size: (--step-0);
+    --zui-btn-font-size: var(--step-0);
     --zui-btn-padding-block: var(--space-2xs);
     --zui-btn-padding-inline: var(--space-md);
 

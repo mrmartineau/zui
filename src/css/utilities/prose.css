@@ -1,11 +1,16 @@
 @layer zui.utilities {
-.prose {
+  .prose {
     --prose-accent-color: var(--color-theme);
     --prose-link-color: var(--color-text);
     --prose-link-color-decoration: oklch(from var(--color-text) l c h / 50%);
-    --prose-link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);
+    --prose-link-color-decoration-hover: oklch(
+      from var(--color-text) l c h /
+      90%
+    );
     --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
-    --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+    --prose-code-bg-color: oklch(
+      from var(--color-background) calc(l + 0.1) c h
+    );
     --prose-scroll-margin: 1.5rem;
 
     color: var(--prose-color, var(--color-text));

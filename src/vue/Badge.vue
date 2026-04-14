@@ -5,19 +5,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { VariantProps } from 'cva'
+import { computed } from 'vue'
 import { badgeVariants } from '../shared/badgeVariants'
 
 defineOptions({ inheritAttrs: false })
 
 type BadgeVariantProps = VariantProps<typeof badgeVariants>
 
-const props = withDefaults(defineProps<{
-  class?: string
-  variant?: BadgeVariantProps['variant']
-  color?: BadgeVariantProps['color']
-}>(), {})
+const props = withDefaults(
+  defineProps<{
+    class?: string
+    variant?: BadgeVariantProps['variant']
+    color?: BadgeVariantProps['color']
+  }>(),
+  {},
+)
 
-const classes = computed(() => badgeVariants({ variant: props.variant, color: props.color, className: props.class }))
+const classes = computed(() =>
+  badgeVariants({
+    className: props.class,
+    color: props.color,
+    variant: props.variant,
+  }),
+)
 </script>

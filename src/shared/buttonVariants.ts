@@ -2,25 +2,22 @@ import { cva } from 'cva'
 
 export const buttonVariants = cva({
   base: 'zui-button',
+  defaultVariants: {
+    color: 'theme',
+    icon: false,
+    shape: 'default',
+    size: 'md',
+    variant: 'fill',
+  },
   variants: {
-    variant: {
-      fill: 'zui-button-variant-fill',
-      subtle: 'zui-button-variant-subtle',
-      outline: 'zui-button-variant-outline',
-      ghost: 'zui-button-variant-ghost',
-      link: 'zui-button-variant-link',
-    },
     color: {
-      theme: 'zui-button-color-theme',
       accent: 'zui-button-color-accent',
       destructive: 'zui-button-color-destructive',
+      theme: 'zui-button-color-theme',
     },
-    size: {
-      xs: 'zui-button-size-xs',
-      sm: 'zui-button-size-sm',
-      md: '',
-      lg: 'zui-button-size-lg',
-      xl: 'zui-button-size-xl',
+    icon: {
+      false: '',
+      true: 'zui-button-icon',
     },
     shape: {
       default: '',
@@ -28,16 +25,19 @@ export const buttonVariants = cva({
       soft: 'zui-button-shape-soft',
       squircle: 'zui-button-shape-squircle',
     },
-    icon: {
-      true: 'zui-button-icon',
-      false: '',
+    size: {
+      lg: 'zui-button-size-lg',
+      md: '',
+      sm: 'zui-button-size-sm',
+      xl: 'zui-button-size-xl',
+      xs: 'zui-button-size-xs',
     },
-  },
-  defaultVariants: {
-    variant: 'fill',
-    color: 'theme',
-    size: 'md',
-    shape: 'default',
-    icon: false,
+    variant: {
+      fill: 'zui-button-variant-fill',
+      ghost: 'zui-button-variant-ghost',
+      link: 'zui-button-variant-link',
+      outline: 'zui-button-variant-outline',
+      subtle: 'zui-button-variant-subtle',
+    },
   },
 })

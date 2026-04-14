@@ -1,32 +1,32 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte'
-  import type { HTMLAttributes } from 'svelte/elements'
-  import type { VariantProps } from 'cva'
-  import { avatarVariants } from '../shared/avatarVariants'
+import type { VariantProps } from 'cva'
+import type { Snippet } from 'svelte'
+import type { HTMLAttributes } from 'svelte/elements'
+import { avatarVariants } from '../shared/avatarVariants'
 
-  type AvatarVariantProps = VariantProps<typeof avatarVariants>
+type AvatarVariantProps = VariantProps<typeof avatarVariants>
 
-  type Props = HTMLAttributes<HTMLSpanElement> & {
-    class?: string
-    src?: string
-    alt?: string
-    size?: AvatarVariantProps['size']
-    shape?: AvatarVariantProps['shape']
-    fallback?: Snippet
-  }
+type Props = HTMLAttributes<HTMLSpanElement> & {
+  class?: string
+  src?: string
+  alt?: string
+  size?: AvatarVariantProps['size']
+  shape?: AvatarVariantProps['shape']
+  fallback?: Snippet
+}
 
-  let {
-    class: className,
-    src,
-    alt,
-    size,
-    shape,
-    fallback,
-    ...rest
-  }: Props = $props()
+let {
+  class: className,
+  src,
+  alt,
+  size,
+  shape,
+  fallback,
+  ...rest
+}: Props = $props()
 
-  let imageError = $state(false)
-  const classes = $derived(avatarVariants({ size, shape, className }))
+let imageError = $state(false)
+const classes = $derived(avatarVariants({ className, shape, size }))
 </script>
 
 <span class={classes} {...rest}>

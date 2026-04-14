@@ -1,5 +1,5 @@
-import { forwardRef, useEffect, useRef, type DialogHTMLAttributes } from 'react'
 import type { VariantProps } from 'cva'
+import { type DialogHTMLAttributes, forwardRef, useEffect, useRef } from 'react'
 import { dialogVariants } from '../shared/dialogVariants'
 
 type DialogVariantProps = VariantProps<typeof dialogVariants>
@@ -13,10 +13,22 @@ export type DialogProps = DialogHTMLAttributes<HTMLDialogElement> &
   }
 
 export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
-  function Dialog({ open, onClose, className, size, position, closedby = 'any', children, ...props }, forwardedRef) {
+  function Dialog(
+    {
+      open,
+      onClose,
+      className,
+      size,
+      position,
+      closedby = 'any',
+      children,
+      ...props
+    },
+    forwardedRef,
+  ) {
     const innerRef = useRef<HTMLDialogElement>(null)
     const ref = (forwardedRef ?? innerRef) as React.RefObject<HTMLDialogElement>
-    const classes = dialogVariants({ size, position, className })
+    const classes = dialogVariants({ className, position, size })
 
     useEffect(() => {
       if (open) {

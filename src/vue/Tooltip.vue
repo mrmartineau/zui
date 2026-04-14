@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import type { VariantProps } from 'cva'
+import { computed, ref } from 'vue'
 import { tooltipVariants } from '../shared/tooltipVariants'
 
 defineOptions({ inheritAttrs: false })
@@ -43,7 +43,9 @@ const props = defineProps<{
 }>()
 
 const contentClass = computed(() => {
-  const placementClass = tooltipVariants({ placement: props.placement }).split(' ').find((c: string) => c.startsWith('zui-tooltip-placement-'))
+  const placementClass = tooltipVariants({ placement: props.placement })
+    .split(' ')
+    .find((c: string) => c.startsWith('zui-tooltip-placement-'))
   return ['zui-tooltip-content', placementClass].filter(Boolean).join(' ')
 })
 
