@@ -36,6 +36,7 @@
   },
   "description": "Autocomplete and colour preview for ZUI CSS classes and design tokens",
   "devDependencies": {
+    "@types/culori": "^4.0.1",
     "@types/node": "^22.0.0",
     "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^3.0.0",

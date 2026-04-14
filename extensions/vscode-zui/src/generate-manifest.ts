@@ -62,8 +62,7 @@ function extractZuiClasses(css: string, source: string): ClassEntry[] {
   const seen = new Set<string>()
   const entries: ClassEntry[] = []
   const re = /\.(zui-[\w-]+)/g
-  let match
-  while ((match = re.exec(css)) !== null) {
+  for (const match of css.matchAll(re)) {
     const name = match[1]
     if (seen.has(name)) continue
     seen.add(name)
@@ -75,14 +74,18 @@ function extractZuiClasses(css: string, source: string): ClassEntry[] {
 function extractUtilityClasses(css: string, source: string): ClassEntry[] {
   const seen = new Set<string>()
   const entries: ClassEntry[] = []
-  // Match class selectors that are NOT zui- prefixed, not pseudo-classes/elements
-  const re = /\.((?!zui-)[\w-]+)(?=\s*[{,\s:])/g
-  let match
-  while ((match = re.exec(css)) !== null) {
-    const name = match[1]
-    if (seen.has(name)) continue
-    seen.add(name)
-    entries.push({ name, source: `utility/${source}` })
+  // Match selector chains (e.g. `.prose.inverted`) that aren't part of a
+  // dotted identifier like `@layer zui.utilities`. The lookbehind rejects a
+  // leading `.` preceded by a word char. Each `.`-separated segment is then
+  // extracted as its own class name.
+  const re = /(?<![\w])(\.([\w-]+))+(?=[\s{,:])/g
+  for (const match of css.matchAll(re)) {
+    const chain = match[0]
+    for (const seg of chain.split('.')) {
+      if (!seg || seg.startsWith('zui-') || seen.has(seg)) continue
+      seen.add(seg)
+      entries.push({ name: seg, source: `utility/${source}` })
+    }
   }
   return entries
 }
@@ -92,8 +95,7 @@ function extractTokens(css: string, category: string): TokenEntry[] {
   const tokens: TokenEntry[] = []
   // Match --name: value; — skip lines inside selectors (component custom props)
   const re = /^\s*--([\w-]+)\s*:\s*([^;{}\n]+);/gm
-  let match
-  while ((match = re.exec(css)) !== null) {
+  for (const match of css.matchAll(re)) {
     const name = `--${match[1]}`
     if (seen.has(name)) continue
     seen.add(name)
@@ -147,17 +149,26 @@ const rootPkg = JSON.parse(
   readFileSync(join(__dirname, '../../../package.json'), 'utf-8'),
 ) as { version: string }
 
+// Dedup tokens globally — e.g. `--shadow-color` is declared in both a token
+// file and theme.css, and we want the first (token-file) definition to win.
+const tokenSeen = new Set<string>()
+const dedupedTokens = tokens.filter((t) => {
+  if (tokenSeen.has(t.name)) return false
+  tokenSeen.add(t.name)
+  return true
+})
+
 const manifest: Manifest = {
   classes,
   generatedAt: new Date().toISOString(),
-  tokens,
+  tokens: dedupedTokens,
   version: rootPkg.version,
 }
 
 const outPath = join(__dirname, 'manifest.json')
 writeFileSync(outPath, JSON.stringify(manifest, null, 2))
 
-const colorCount = tokens.filter((t) => t.color).length
+const colorCount = dedupedTokens.filter((t) => t.color).length
 console.log(
-  `✓ manifest: ${classes.length} classes, ${tokens.length} tokens (${colorCount} with colour preview) → ${outPath}`,
+  `✓ manifest: ${classes.length} classes, ${dedupedTokens.length} tokens (${colorCount} with colour preview) → ${outPath}`,
 )

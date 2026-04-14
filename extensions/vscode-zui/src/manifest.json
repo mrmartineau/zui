@@ -413,10 +413,6 @@
       "source": "tooltip"
     },
     {
-      "name": "utilities",
-      "source": "utility/flex"
-    },
-    {
       "name": "flex",
       "source": "utility/flex"
     },
@@ -565,16 +561,8 @@
       "source": "utility/flex"
     },
     {
-      "name": "utilities",
-      "source": "utility/flow"
-    },
-    {
       "name": "flow",
       "source": "utility/flow"
-    },
-    {
-      "name": "utilities",
-      "source": "utility/gap"
     },
     {
       "name": "gap-0",
@@ -697,20 +685,12 @@
       "source": "utility/gap"
     },
     {
-      "name": "utilities",
-      "source": "utility/hidden"
-    },
-    {
       "name": "sr-only",
       "source": "utility/hidden"
     },
     {
       "name": "visually-hidden",
       "source": "utility/hidden"
-    },
-    {
-      "name": "utilities",
-      "source": "utility/margin"
     },
     {
       "name": "m-0",
@@ -1021,10 +1001,6 @@
       "source": "utility/margin"
     },
     {
-      "name": "utilities",
-      "source": "utility/padding"
-    },
-    {
       "name": "p-0",
       "source": "utility/padding"
     },
@@ -1305,19 +1281,7 @@
       "source": "utility/padding"
     },
     {
-      "name": "utilities",
-      "source": "utility/prose"
-    },
-    {
       "name": "prose",
-      "source": "utility/prose"
-    },
-    {
-      "name": "15em",
-      "source": "utility/prose"
-    },
-    {
-      "name": "2s",
       "source": "utility/prose"
     },
     {
@@ -1333,19 +1297,11 @@
       "source": "utility/prose"
     },
     {
-      "name": "utilities",
-      "source": "utility/ui-typography"
-    },
-    {
       "name": "surface",
-      "source": "utility/ui-typography"
-    },
-    {
-      "name": "2s",
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-04-14T18:49:57.200Z",
+  "generatedAt": "2026-04-14T23:01:23.736Z",
   "tokens": [
     {
       "category": "animation",
@@ -1460,27 +1416,27 @@
     {
       "category": "aspect",
       "name": "--ratio-landscape",
-      "value": "4 / 3"
+      "value": "4/3"
     },
     {
       "category": "aspect",
       "name": "--ratio-portrait",
-      "value": "3 / 4"
+      "value": "3/4"
     },
     {
       "category": "aspect",
       "name": "--ratio-widescreen",
-      "value": "16 / 9"
+      "value": "16/9"
     },
     {
       "category": "aspect",
       "name": "--ratio-ultrawide",
-      "value": "18 / 5"
+      "value": "18/5"
     },
     {
       "category": "aspect",
       "name": "--ratio-golden",
-      "value": "1.618 / 1"
+      "value": "1.618/1"
     },
     {
       "category": "color",
@@ -1494,1737 +1450,1737 @@
     },
     {
       "category": "color",
-      "color": "#000000",
       "name": "--color-transparent",
-      "value": "transparent"
+      "value": "transparent",
+      "color": "#000000"
     },
     {
       "category": "color",
-      "color": "#000000",
       "name": "--color-black",
-      "value": "#000"
+      "value": "#000",
+      "color": "#000000"
     },
     {
       "category": "color",
-      "color": "#ffffff",
       "name": "--color-white",
-      "value": "#fff"
+      "value": "#fff",
+      "color": "#ffffff"
     },
     {
       "category": "color",
-      "color": "#f8fafc",
       "name": "--color-slate-50",
-      "value": "oklch(98.4% 0.003 247.858)"
+      "value": "oklch(98.4% 0.003 247.858)",
+      "color": "#f8fafc"
     },
     {
       "category": "color",
-      "color": "#f1f5f9",
       "name": "--color-slate-100",
-      "value": "oklch(96.8% 0.007 247.896)"
+      "value": "oklch(96.8% 0.007 247.896)",
+      "color": "#f1f5f9"
     },
     {
       "category": "color",
-      "color": "#e2e8f0",
       "name": "--color-slate-200",
-      "value": "oklch(92.9% 0.013 255.508)"
+      "value": "oklch(92.9% 0.013 255.508)",
+      "color": "#e2e8f0"
     },
     {
       "category": "color",
-      "color": "#cad5e2",
       "name": "--color-slate-300",
-      "value": "oklch(86.9% 0.022 252.894)"
+      "value": "oklch(86.9% 0.022 252.894)",
+      "color": "#cad5e2"
     },
     {
       "category": "color",
-      "color": "#90a1b9",
       "name": "--color-slate-400",
-      "value": "oklch(70.4% 0.04 256.788)"
+      "value": "oklch(70.4% 0.04 256.788)",
+      "color": "#90a1b9"
     },
     {
       "category": "color",
-      "color": "#62748e",
       "name": "--color-slate-500",
-      "value": "oklch(55.4% 0.046 257.417)"
+      "value": "oklch(55.4% 0.046 257.417)",
+      "color": "#62748e"
     },
     {
       "category": "color",
-      "color": "#45556c",
       "name": "--color-slate-600",
-      "value": "oklch(44.6% 0.043 257.281)"
+      "value": "oklch(44.6% 0.043 257.281)",
+      "color": "#45556c"
     },
     {
       "category": "color",
-      "color": "#314158",
       "name": "--color-slate-700",
-      "value": "oklch(37.2% 0.044 257.287)"
+      "value": "oklch(37.2% 0.044 257.287)",
+      "color": "#314158"
     },
     {
       "category": "color",
-      "color": "#1d293d",
       "name": "--color-slate-800",
-      "value": "oklch(27.9% 0.041 260.031)"
+      "value": "oklch(27.9% 0.041 260.031)",
+      "color": "#1d293d"
     },
     {
       "category": "color",
-      "color": "#0f172b",
       "name": "--color-slate-900",
-      "value": "oklch(20.8% 0.042 265.755)"
+      "value": "oklch(20.8% 0.042 265.755)",
+      "color": "#0f172b"
     },
     {
       "category": "color",
-      "color": "#020618",
       "name": "--color-slate-950",
-      "value": "oklch(12.9% 0.042 264.695)"
+      "value": "oklch(12.9% 0.042 264.695)",
+      "color": "#020618"
     },
     {
       "category": "color",
-      "color": "#f9fafb",
       "name": "--color-gray-50",
-      "value": "oklch(98.5% 0.002 247.839)"
+      "value": "oklch(98.5% 0.002 247.839)",
+      "color": "#f9fafb"
     },
     {
       "category": "color",
-      "color": "#f3f4f6",
       "name": "--color-gray-100",
-      "value": "oklch(96.7% 0.003 264.542)"
+      "value": "oklch(96.7% 0.003 264.542)",
+      "color": "#f3f4f6"
     },
     {
       "category": "color",
-      "color": "#e5e7eb",
       "name": "--color-gray-200",
-      "value": "oklch(92.8% 0.006 264.531)"
+      "value": "oklch(92.8% 0.006 264.531)",
+      "color": "#e5e7eb"
     },
     {
       "category": "color",
-      "color": "#d1d5dc",
       "name": "--color-gray-300",
-      "value": "oklch(87.2% 0.01 258.338)"
+      "value": "oklch(87.2% 0.01 258.338)",
+      "color": "#d1d5dc"
     },
     {
       "category": "color",
-      "color": "#99a1af",
       "name": "--color-gray-400",
-      "value": "oklch(70.7% 0.022 261.325)"
+      "value": "oklch(70.7% 0.022 261.325)",
+      "color": "#99a1af"
     },
     {
       "category": "color",
-      "color": "#6a7282",
       "name": "--color-gray-500",
-      "value": "oklch(55.1% 0.027 264.364)"
+      "value": "oklch(55.1% 0.027 264.364)",
+      "color": "#6a7282"
     },
     {
       "category": "color",
-      "color": "#4a5565",
       "name": "--color-gray-600",
-      "value": "oklch(44.6% 0.03 256.802)"
+      "value": "oklch(44.6% 0.03 256.802)",
+      "color": "#4a5565"
     },
     {
       "category": "color",
-      "color": "#364153",
       "name": "--color-gray-700",
-      "value": "oklch(37.3% 0.034 259.733)"
+      "value": "oklch(37.3% 0.034 259.733)",
+      "color": "#364153"
     },
     {
       "category": "color",
-      "color": "#1e2939",
       "name": "--color-gray-800",
-      "value": "oklch(27.8% 0.033 256.848)"
+      "value": "oklch(27.8% 0.033 256.848)",
+      "color": "#1e2939"
     },
     {
       "category": "color",
-      "color": "#101828",
       "name": "--color-gray-900",
-      "value": "oklch(21% 0.034 264.665)"
+      "value": "oklch(21% 0.034 264.665)",
+      "color": "#101828"
     },
     {
       "category": "color",
-      "color": "#030712",
       "name": "--color-gray-950",
-      "value": "oklch(13% 0.028 261.692)"
+      "value": "oklch(13% 0.028 261.692)",
+      "color": "#030712"
     },
     {
       "category": "color",
-      "color": "#fafafa",
       "name": "--color-zinc-50",
-      "value": "oklch(98.5% 0 0)"
+      "value": "oklch(98.5% 0 0)",
+      "color": "#fafafa"
     },
     {
       "category": "color",
-      "color": "#f4f4f5",
       "name": "--color-zinc-100",
-      "value": "oklch(96.7% 0.001 286.375)"
+      "value": "oklch(96.7% 0.001 286.375)",
+      "color": "#f4f4f5"
     },
     {
       "category": "color",
-      "color": "#e4e4e7",
       "name": "--color-zinc-200",
-      "value": "oklch(92% 0.004 286.32)"
+      "value": "oklch(92% 0.004 286.32)",
+      "color": "#e4e4e7"
     },
     {
       "category": "color",
-      "color": "#d4d4d8",
       "name": "--color-zinc-300",
-      "value": "oklch(87.1% 0.006 286.286)"
+      "value": "oklch(87.1% 0.006 286.286)",
+      "color": "#d4d4d8"
     },
     {
       "category": "color",
-      "color": "#9f9fa9",
       "name": "--color-zinc-400",
-      "value": "oklch(70.5% 0.015 286.067)"
+      "value": "oklch(70.5% 0.015 286.067)",
+      "color": "#9f9fa9"
     },
     {
       "category": "color",
-      "color": "#71717b",
       "name": "--color-zinc-500",
-      "value": "oklch(55.2% 0.016 285.938)"
+      "value": "oklch(55.2% 0.016 285.938)",
+      "color": "#71717b"
     },
     {
       "category": "color",
-      "color": "#52525c",
       "name": "--color-zinc-600",
-      "value": "oklch(44.2% 0.017 285.786)"
+      "value": "oklch(44.2% 0.017 285.786)",
+      "color": "#52525c"
     },
     {
       "category": "color",
-      "color": "#3f3f46",
       "name": "--color-zinc-700",
-      "value": "oklch(37% 0.013 285.805)"
+      "value": "oklch(37% 0.013 285.805)",
+      "color": "#3f3f46"
     },
     {
       "category": "color",
-      "color": "#27272a",
       "name": "--color-zinc-800",
-      "value": "oklch(27.4% 0.006 286.033)"
+      "value": "oklch(27.4% 0.006 286.033)",
+      "color": "#27272a"
     },
     {
       "category": "color",
-      "color": "#18181b",
       "name": "--color-zinc-900",
-      "value": "oklch(21% 0.006 285.885)"
+      "value": "oklch(21% 0.006 285.885)",
+      "color": "#18181b"
     },
     {
       "category": "color",
-      "color": "#09090b",
       "name": "--color-zinc-950",
-      "value": "oklch(14.1% 0.005 285.823)"
+      "value": "oklch(14.1% 0.005 285.823)",
+      "color": "#09090b"
     },
     {
       "category": "color",
-      "color": "#fafafa",
       "name": "--color-neutral-50",
-      "value": "oklch(98.5% 0 0)"
+      "value": "oklch(98.5% 0 0)",
+      "color": "#fafafa"
     },
     {
       "category": "color",
-      "color": "#f5f5f5",
       "name": "--color-neutral-100",
-      "value": "oklch(97% 0 0)"
+      "value": "oklch(97% 0 0)",
+      "color": "#f5f5f5"
     },
     {
       "category": "color",
-      "color": "#e5e5e5",
       "name": "--color-neutral-200",
-      "value": "oklch(92.2% 0 0)"
+      "value": "oklch(92.2% 0 0)",
+      "color": "#e5e5e5"
     },
     {
       "category": "color",
-      "color": "#d4d4d4",
       "name": "--color-neutral-300",
-      "value": "oklch(87% 0 0)"
+      "value": "oklch(87% 0 0)",
+      "color": "#d4d4d4"
     },
     {
       "category": "color",
-      "color": "#a1a1a1",
       "name": "--color-neutral-400",
-      "value": "oklch(70.8% 0 0)"
+      "value": "oklch(70.8% 0 0)",
+      "color": "#a1a1a1"
     },
     {
       "category": "color",
-      "color": "#737373",
       "name": "--color-neutral-500",
-      "value": "oklch(55.6% 0 0)"
+      "value": "oklch(55.6% 0 0)",
+      "color": "#737373"
     },
     {
       "category": "color",
-      "color": "#525252",
       "name": "--color-neutral-600",
-      "value": "oklch(43.9% 0 0)"
+      "value": "oklch(43.9% 0 0)",
+      "color": "#525252"
     },
     {
       "category": "color",
-      "color": "#404040",
       "name": "--color-neutral-700",
-      "value": "oklch(37.1% 0 0)"
+      "value": "oklch(37.1% 0 0)",
+      "color": "#404040"
     },
     {
       "category": "color",
-      "color": "#262626",
       "name": "--color-neutral-800",
-      "value": "oklch(26.9% 0 0)"
+      "value": "oklch(26.9% 0 0)",
+      "color": "#262626"
     },
     {
       "category": "color",
-      "color": "#171717",
       "name": "--color-neutral-900",
-      "value": "oklch(20.5% 0 0)"
+      "value": "oklch(20.5% 0 0)",
+      "color": "#171717"
     },
     {
       "category": "color",
-      "color": "#0a0a0a",
       "name": "--color-neutral-950",
-      "value": "oklch(14.5% 0 0)"
+      "value": "oklch(14.5% 0 0)",
+      "color": "#0a0a0a"
     },
     {
       "category": "color",
-      "color": "#fafaf9",
       "name": "--color-stone-50",
-      "value": "oklch(98.5% 0.001 106.423)"
+      "value": "oklch(98.5% 0.001 106.423)",
+      "color": "#fafaf9"
     },
     {
       "category": "color",
-      "color": "#f5f5f4",
       "name": "--color-stone-100",
-      "value": "oklch(97% 0.001 106.424)"
+      "value": "oklch(97% 0.001 106.424)",
+      "color": "#f5f5f4"
     },
     {
       "category": "color",
-      "color": "#e7e5e4",
       "name": "--color-stone-200",
-      "value": "oklch(92.3% 0.003 48.717)"
+      "value": "oklch(92.3% 0.003 48.717)",
+      "color": "#e7e5e4"
     },
     {
       "category": "color",
-      "color": "#d6d3d1",
       "name": "--color-stone-300",
-      "value": "oklch(86.9% 0.005 56.366)"
+      "value": "oklch(86.9% 0.005 56.366)",
+      "color": "#d6d3d1"
     },
     {
       "category": "color",
-      "color": "#a6a09b",
       "name": "--color-stone-400",
-      "value": "oklch(70.9% 0.01 56.259)"
+      "value": "oklch(70.9% 0.01 56.259)",
+      "color": "#a6a09b"
     },
     {
       "category": "color",
-      "color": "#79716b",
       "name": "--color-stone-500",
-      "value": "oklch(55.3% 0.013 58.071)"
+      "value": "oklch(55.3% 0.013 58.071)",
+      "color": "#79716b"
     },
     {
       "category": "color",
-      "color": "#57534d",
       "name": "--color-stone-600",
-      "value": "oklch(44.4% 0.011 73.639)"
+      "value": "oklch(44.4% 0.011 73.639)",
+      "color": "#57534d"
     },
     {
       "category": "color",
-      "color": "#44403b",
       "name": "--color-stone-700",
-      "value": "oklch(37.4% 0.01 67.558)"
+      "value": "oklch(37.4% 0.01 67.558)",
+      "color": "#44403b"
     },
     {
       "category": "color",
-      "color": "#292524",
       "name": "--color-stone-800",
-      "value": "oklch(26.8% 0.007 34.298)"
+      "value": "oklch(26.8% 0.007 34.298)",
+      "color": "#292524"
     },
     {
       "category": "color",
-      "color": "#1c1917",
       "name": "--color-stone-900",
-      "value": "oklch(21.6% 0.006 56.043)"
+      "value": "oklch(21.6% 0.006 56.043)",
+      "color": "#1c1917"
     },
     {
       "category": "color",
-      "color": "#0c0a09",
       "name": "--color-stone-950",
-      "value": "oklch(14.7% 0.004 49.25)"
+      "value": "oklch(14.7% 0.004 49.25)",
+      "color": "#0c0a09"
     },
     {
       "category": "color",
-      "color": "#fafafa",
       "name": "--color-mauve-50",
-      "value": "oklch(98.5% 0 0)"
+      "value": "oklch(98.5% 0 0)",
+      "color": "#fafafa"
     },
     {
       "category": "color",
-      "color": "#f3f1f3",
       "name": "--color-mauve-100",
-      "value": "oklch(96% 0.003 325.6)"
+      "value": "oklch(96% 0.003 325.6)",
+      "color": "#f3f1f3"
     },
     {
       "category": "color",
-      "color": "#e7e4e7",
       "name": "--color-mauve-200",
-      "value": "oklch(92.2% 0.005 325.62)"
+      "value": "oklch(92.2% 0.005 325.62)",
+      "color": "#e7e4e7"
     },
     {
       "category": "color",
-      "color": "#d7d0d7",
       "name": "--color-mauve-300",
-      "value": "oklch(86.5% 0.012 325.68)"
+      "value": "oklch(86.5% 0.012 325.68)",
+      "color": "#d7d0d7"
     },
     {
       "category": "color",
-      "color": "#a89ea9",
       "name": "--color-mauve-400",
-      "value": "oklch(71.1% 0.019 323.02)"
+      "value": "oklch(71.1% 0.019 323.02)",
+      "color": "#a89ea9"
     },
     {
       "category": "color",
-      "color": "#79697b",
       "name": "--color-mauve-500",
-      "value": "oklch(54.2% 0.034 322.5)"
+      "value": "oklch(54.2% 0.034 322.5)",
+      "color": "#79697b"
     },
     {
       "category": "color",
-      "color": "#594c5b",
       "name": "--color-mauve-600",
-      "value": "oklch(43.5% 0.029 321.78)"
+      "value": "oklch(43.5% 0.029 321.78)",
+      "color": "#594c5b"
     },
     {
       "category": "color",
-      "color": "#463947",
       "name": "--color-mauve-700",
-      "value": "oklch(36.4% 0.029 323.89)"
+      "value": "oklch(36.4% 0.029 323.89)",
+      "color": "#463947"
     },
     {
       "category": "color",
-      "color": "#2a212c",
       "name": "--color-mauve-800",
-      "value": "oklch(26.3% 0.024 320.12)"
+      "value": "oklch(26.3% 0.024 320.12)",
+      "color": "#2a212c"
     },
     {
       "category": "color",
-      "color": "#1d161e",
       "name": "--color-mauve-900",
-      "value": "oklch(21.2% 0.019 322.12)"
+      "value": "oklch(21.2% 0.019 322.12)",
+      "color": "#1d161e"
     },
     {
       "category": "color",
-      "color": "#0c090c",
       "name": "--color-mauve-950",
-      "value": "oklch(14.5% 0.008 326)"
+      "value": "oklch(14.5% 0.008 326)",
+      "color": "#0c090c"
     },
     {
       "category": "color",
-      "color": "#fbfbf9",
       "name": "--color-olive-50",
-      "value": "oklch(98.8% 0.003 106.5)"
+      "value": "oklch(98.8% 0.003 106.5)",
+      "color": "#fbfbf9"
     },
     {
       "category": "color",
-      "color": "#f4f4f0",
       "name": "--color-olive-100",
-      "value": "oklch(96.6% 0.005 106.5)"
+      "value": "oklch(96.6% 0.005 106.5)",
+      "color": "#f4f4f0"
     },
     {
       "category": "color",
-      "color": "#e8e8e3",
       "name": "--color-olive-200",
-      "value": "oklch(93% 0.007 106.5)"
+      "value": "oklch(93% 0.007 106.5)",
+      "color": "#e8e8e3"
     },
     {
       "category": "color",
-      "color": "#d8d8d0",
       "name": "--color-olive-300",
-      "value": "oklch(88% 0.011 106.6)"
+      "value": "oklch(88% 0.011 106.6)",
+      "color": "#d8d8d0"
     },
     {
       "category": "color",
-      "color": "#abab9c",
       "name": "--color-olive-400",
-      "value": "oklch(73.7% 0.021 106.9)"
+      "value": "oklch(73.7% 0.021 106.9)",
+      "color": "#abab9c"
     },
     {
       "category": "color",
-      "color": "#7c7c67",
       "name": "--color-olive-500",
-      "value": "oklch(58% 0.031 107.3)"
+      "value": "oklch(58% 0.031 107.3)",
+      "color": "#7c7c67"
     },
     {
       "category": "color",
-      "color": "#5b5b4b",
       "name": "--color-olive-600",
-      "value": "oklch(46.6% 0.025 107.3)"
+      "value": "oklch(46.6% 0.025 107.3)",
+      "color": "#5b5b4b"
     },
     {
       "category": "color",
-      "color": "#474739",
       "name": "--color-olive-700",
-      "value": "oklch(39.4% 0.023 107.4)"
+      "value": "oklch(39.4% 0.023 107.4)",
+      "color": "#474739"
     },
     {
       "category": "color",
-      "color": "#2b2b22",
       "name": "--color-olive-800",
-      "value": "oklch(28.6% 0.016 107.4)"
+      "value": "oklch(28.6% 0.016 107.4)",
+      "color": "#2b2b22"
     },
     {
       "category": "color",
-      "color": "#1d1d16",
       "name": "--color-olive-900",
-      "value": "oklch(22.8% 0.013 107.4)"
+      "value": "oklch(22.8% 0.013 107.4)",
+      "color": "#1d1d16"
     },
     {
       "category": "color",
-      "color": "#0c0c09",
       "name": "--color-olive-950",
-      "value": "oklch(15.3% 0.006 107.1)"
+      "value": "oklch(15.3% 0.006 107.1)",
+      "color": "#0c0c09"
     },
     {
       "category": "color",
-      "color": "#f9fbfb",
       "name": "--color-mist-50",
-      "value": "oklch(98.7% 0.002 197.1)"
+      "value": "oklch(98.7% 0.002 197.1)",
+      "color": "#f9fbfb"
     },
     {
       "category": "color",
-      "color": "#f1f3f3",
       "name": "--color-mist-100",
-      "value": "oklch(96.3% 0.002 197.1)"
+      "value": "oklch(96.3% 0.002 197.1)",
+      "color": "#f1f3f3"
     },
     {
       "category": "color",
-      "color": "#e3e7e8",
       "name": "--color-mist-200",
-      "value": "oklch(92.5% 0.005 214.3)"
+      "value": "oklch(92.5% 0.005 214.3)",
+      "color": "#e3e7e8"
     },
     {
       "category": "color",
-      "color": "#d0d6d8",
       "name": "--color-mist-300",
-      "value": "oklch(87.2% 0.007 219.6)"
+      "value": "oklch(87.2% 0.007 219.6)",
+      "color": "#d0d6d8"
     },
     {
       "category": "color",
-      "color": "#9ca8ab",
       "name": "--color-mist-400",
-      "value": "oklch(72.3% 0.014 214.4)"
+      "value": "oklch(72.3% 0.014 214.4)",
+      "color": "#9ca8ab"
     },
     {
       "category": "color",
-      "color": "#67787c",
       "name": "--color-mist-500",
-      "value": "oklch(56% 0.021 213.5)"
+      "value": "oklch(56% 0.021 213.5)",
+      "color": "#67787c"
     },
     {
       "category": "color",
-      "color": "#4b585b",
       "name": "--color-mist-600",
-      "value": "oklch(45% 0.017 213.2)"
+      "value": "oklch(45% 0.017 213.2)",
+      "color": "#4b585b"
     },
     {
       "category": "color",
-      "color": "#394447",
       "name": "--color-mist-700",
-      "value": "oklch(37.8% 0.015 216)"
+      "value": "oklch(37.8% 0.015 216)",
+      "color": "#394447"
     },
     {
       "category": "color",
-      "color": "#22292b",
       "name": "--color-mist-800",
-      "value": "oklch(27.5% 0.011 216.9)"
+      "value": "oklch(27.5% 0.011 216.9)",
+      "color": "#22292b"
     },
     {
       "category": "color",
-      "color": "#161b1d",
       "name": "--color-mist-900",
-      "value": "oklch(21.8% 0.008 223.9)"
+      "value": "oklch(21.8% 0.008 223.9)",
+      "color": "#161b1d"
     },
     {
       "category": "color",
-      "color": "#090b0c",
       "name": "--color-mist-950",
-      "value": "oklch(14.8% 0.004 228.8)"
+      "value": "oklch(14.8% 0.004 228.8)",
+      "color": "#090b0c"
     },
     {
       "category": "color",
-      "color": "#fbfaf9",
       "name": "--color-taupe-50",
-      "value": "oklch(98.6% 0.002 67.8)"
+      "value": "oklch(98.6% 0.002 67.8)",
+      "color": "#fbfaf9"
     },
     {
       "category": "color",
-      "color": "#f3f1f1",
       "name": "--color-taupe-100",
-      "value": "oklch(96% 0.002 17.2)"
+      "value": "oklch(96% 0.002 17.2)",
+      "color": "#f3f1f1"
     },
     {
       "category": "color",
-      "color": "#e8e4e3",
       "name": "--color-taupe-200",
-      "value": "oklch(92.2% 0.005 34.3)"
+      "value": "oklch(92.2% 0.005 34.3)",
+      "color": "#e8e4e3"
     },
     {
       "category": "color",
-      "color": "#d8d2d0",
       "name": "--color-taupe-300",
-      "value": "oklch(86.8% 0.007 39.5)"
+      "value": "oklch(86.8% 0.007 39.5)",
+      "color": "#d8d2d0"
     },
     {
       "category": "color",
-      "color": "#aba09c",
       "name": "--color-taupe-400",
-      "value": "oklch(71.4% 0.014 41.2)"
+      "value": "oklch(71.4% 0.014 41.2)",
+      "color": "#aba09c"
     },
     {
       "category": "color",
-      "color": "#7c6d67",
       "name": "--color-taupe-500",
-      "value": "oklch(54.7% 0.021 43.1)"
+      "value": "oklch(54.7% 0.021 43.1)",
+      "color": "#7c6d67"
     },
     {
       "category": "color",
-      "color": "#5b4f4b",
       "name": "--color-taupe-600",
-      "value": "oklch(43.8% 0.017 39.3)"
+      "value": "oklch(43.8% 0.017 39.3)",
+      "color": "#5b4f4b"
     },
     {
       "category": "color",
-      "color": "#473c39",
       "name": "--color-taupe-700",
-      "value": "oklch(36.7% 0.016 35.7)"
+      "value": "oklch(36.7% 0.016 35.7)",
+      "color": "#473c39"
     },
     {
       "category": "color",
-      "color": "#2b2422",
       "name": "--color-taupe-800",
-      "value": "oklch(26.8% 0.011 36.5)"
+      "value": "oklch(26.8% 0.011 36.5)",
+      "color": "#2b2422"
     },
     {
       "category": "color",
-      "color": "#1d1816",
       "name": "--color-taupe-900",
-      "value": "oklch(21.4% 0.009 43.1)"
+      "value": "oklch(21.4% 0.009 43.1)",
+      "color": "#1d1816"
     },
     {
       "category": "color",
-      "color": "#0c0a09",
       "name": "--color-taupe-950",
-      "value": "oklch(14.7% 0.004 49.3)"
+      "value": "oklch(14.7% 0.004 49.3)",
+      "color": "#0c0a09"
     },
     {
       "category": "color",
-      "color": "#fef2f2",
       "name": "--color-red-50",
-      "value": "oklch(97.1% 0.013 17.38)"
+      "value": "oklch(97.1% 0.013 17.38)",
+      "color": "#fef2f2"
     },
     {
       "category": "color",
-      "color": "#ffe2e2",
       "name": "--color-red-100",
-      "value": "oklch(93.6% 0.032 17.717)"
+      "value": "oklch(93.6% 0.032 17.717)",
+      "color": "#ffe2e2"
     },
     {
       "category": "color",
-      "color": "#ffc9c9",
       "name": "--color-red-200",
-      "value": "oklch(88.5% 0.062 18.334)"
+      "value": "oklch(88.5% 0.062 18.334)",
+      "color": "#ffc9c9"
     },
     {
       "category": "color",
-      "color": "#ffa2a2",
       "name": "--color-red-300",
-      "value": "oklch(80.8% 0.114 19.571)"
+      "value": "oklch(80.8% 0.114 19.571)",
+      "color": "#ffa2a2"
     },
     {
       "category": "color",
-      "color": "#ff6467",
       "name": "--color-red-400",
-      "value": "oklch(70.4% 0.191 22.216)"
+      "value": "oklch(70.4% 0.191 22.216)",
+      "color": "#ff6467"
     },
     {
       "category": "color",
-      "color": "#fb2c36",
       "name": "--color-red-500",
-      "value": "oklch(63.7% 0.237 25.331)"
+      "value": "oklch(63.7% 0.237 25.331)",
+      "color": "#fb2c36"
     },
     {
       "category": "color",
-      "color": "#e7000b",
       "name": "--color-red-600",
-      "value": "oklch(57.7% 0.245 27.325)"
+      "value": "oklch(57.7% 0.245 27.325)",
+      "color": "#e7000b"
     },
     {
       "category": "color",
-      "color": "#c10007",
       "name": "--color-red-700",
-      "value": "oklch(50.5% 0.213 27.518)"
+      "value": "oklch(50.5% 0.213 27.518)",
+      "color": "#c10007"
     },
     {
       "category": "color",
-      "color": "#9f0712",
       "name": "--color-red-800",
-      "value": "oklch(44.4% 0.177 26.899)"
+      "value": "oklch(44.4% 0.177 26.899)",
+      "color": "#9f0712"
     },
     {
       "category": "color",
-      "color": "#82181a",
       "name": "--color-red-900",
-      "value": "oklch(39.6% 0.141 25.723)"
+      "value": "oklch(39.6% 0.141 25.723)",
+      "color": "#82181a"
     },
     {
       "category": "color",
-      "color": "#460809",
       "name": "--color-red-950",
-      "value": "oklch(25.8% 0.092 26.042)"
+      "value": "oklch(25.8% 0.092 26.042)",
+      "color": "#460809"
     },
     {
       "category": "color",
-      "color": "#fff7ed",
       "name": "--color-orange-50",
-      "value": "oklch(98% 0.016 73.684)"
+      "value": "oklch(98% 0.016 73.684)",
+      "color": "#fff7ed"
     },
     {
       "category": "color",
-      "color": "#ffedd4",
       "name": "--color-orange-100",
-      "value": "oklch(95.4% 0.038 75.164)"
+      "value": "oklch(95.4% 0.038 75.164)",
+      "color": "#ffedd4"
     },
     {
       "category": "color",
-      "color": "#ffd6a7",
       "name": "--color-orange-200",
-      "value": "oklch(90.1% 0.076 70.697)"
+      "value": "oklch(90.1% 0.076 70.697)",
+      "color": "#ffd6a7"
     },
     {
       "category": "color",
-      "color": "#ffb86a",
       "name": "--color-orange-300",
-      "value": "oklch(83.7% 0.128 66.29)"
+      "value": "oklch(83.7% 0.128 66.29)",
+      "color": "#ffb86a"
     },
     {
       "category": "color",
-      "color": "#ff8904",
       "name": "--color-orange-400",
-      "value": "oklch(75% 0.183 55.934)"
+      "value": "oklch(75% 0.183 55.934)",
+      "color": "#ff8904"
     },
     {
       "category": "color",
-      "color": "#ff6900",
       "name": "--color-orange-500",
-      "value": "oklch(70.5% 0.213 47.604)"
+      "value": "oklch(70.5% 0.213 47.604)",
+      "color": "#ff6900"
     },
     {
       "category": "color",
-      "color": "#f54900",
       "name": "--color-orange-600",
-      "value": "oklch(64.6% 0.222 41.116)"
+      "value": "oklch(64.6% 0.222 41.116)",
+      "color": "#f54900"
     },
     {
       "category": "color",
-      "color": "#ca3500",
       "name": "--color-orange-700",
-      "value": "oklch(55.3% 0.195 38.402)"
+      "value": "oklch(55.3% 0.195 38.402)",
+      "color": "#ca3500"
     },
     {
       "category": "color",
-      "color": "#9f2d00",
       "name": "--color-orange-800",
-      "value": "oklch(47% 0.157 37.304)"
+      "value": "oklch(47% 0.157 37.304)",
+      "color": "#9f2d00"
     },
     {
       "category": "color",
-      "color": "#7e2a0c",
       "name": "--color-orange-900",
-      "value": "oklch(40.8% 0.123 38.172)"
+      "value": "oklch(40.8% 0.123 38.172)",
+      "color": "#7e2a0c"
     },
     {
       "category": "color",
-      "color": "#441306",
       "name": "--color-orange-950",
-      "value": "oklch(26.6% 0.079 36.259)"
+      "value": "oklch(26.6% 0.079 36.259)",
+      "color": "#441306"
     },
     {
       "category": "color",
-      "color": "#fffbeb",
       "name": "--color-amber-50",
-      "value": "oklch(98.7% 0.022 95.277)"
+      "value": "oklch(98.7% 0.022 95.277)",
+      "color": "#fffbeb"
     },
     {
       "category": "color",
-      "color": "#fef3c6",
       "name": "--color-amber-100",
-      "value": "oklch(96.2% 0.059 95.617)"
+      "value": "oklch(96.2% 0.059 95.617)",
+      "color": "#fef3c6"
     },
     {
       "category": "color",
-      "color": "#fee685",
       "name": "--color-amber-200",
-      "value": "oklch(92.4% 0.12 95.746)"
+      "value": "oklch(92.4% 0.12 95.746)",
+      "color": "#fee685"
     },
     {
       "category": "color",
-      "color": "#ffd230",
       "name": "--color-amber-300",
-      "value": "oklch(87.9% 0.169 91.605)"
+      "value": "oklch(87.9% 0.169 91.605)",
+      "color": "#ffd230"
     },
     {
       "category": "color",
-      "color": "#ffb900",
       "name": "--color-amber-400",
-      "value": "oklch(82.8% 0.189 84.429)"
+      "value": "oklch(82.8% 0.189 84.429)",
+      "color": "#ffb900"
     },
     {
       "category": "color",
-      "color": "#fe9a00",
       "name": "--color-amber-500",
-      "value": "oklch(76.9% 0.188 70.08)"
+      "value": "oklch(76.9% 0.188 70.08)",
+      "color": "#fe9a00"
     },
     {
       "category": "color",
-      "color": "#e17100",
       "name": "--color-amber-600",
-      "value": "oklch(66.6% 0.179 58.318)"
+      "value": "oklch(66.6% 0.179 58.318)",
+      "color": "#e17100"
     },
     {
       "category": "color",
-      "color": "#bb4d00",
       "name": "--color-amber-700",
-      "value": "oklch(55.5% 0.163 48.998)"
+      "value": "oklch(55.5% 0.163 48.998)",
+      "color": "#bb4d00"
     },
     {
       "category": "color",
-      "color": "#973c00",
       "name": "--color-amber-800",
-      "value": "oklch(47.3% 0.137 46.201)"
+      "value": "oklch(47.3% 0.137 46.201)",
+      "color": "#973c00"
     },
     {
       "category": "color",
-      "color": "#7b3306",
       "name": "--color-amber-900",
-      "value": "oklch(41.4% 0.112 45.904)"
+      "value": "oklch(41.4% 0.112 45.904)",
+      "color": "#7b3306"
     },
     {
       "category": "color",
-      "color": "#461901",
       "name": "--color-amber-950",
-      "value": "oklch(27.9% 0.077 45.635)"
+      "value": "oklch(27.9% 0.077 45.635)",
+      "color": "#461901"
     },
     {
       "category": "color",
-      "color": "#fefce8",
       "name": "--color-yellow-50",
-      "value": "oklch(98.7% 0.026 102.212)"
+      "value": "oklch(98.7% 0.026 102.212)",
+      "color": "#fefce8"
     },
     {
       "category": "color",
-      "color": "#fef9c2",
       "name": "--color-yellow-100",
-      "value": "oklch(97.3% 0.071 103.193)"
+      "value": "oklch(97.3% 0.071 103.193)",
+      "color": "#fef9c2"
     },
     {
       "category": "color",
-      "color": "#fff085",
       "name": "--color-yellow-200",
-      "value": "oklch(94.5% 0.129 101.54)"
+      "value": "oklch(94.5% 0.129 101.54)",
+      "color": "#fff085"
     },
     {
       "category": "color",
-      "color": "#ffdf20",
       "name": "--color-yellow-300",
-      "value": "oklch(90.5% 0.182 98.111)"
+      "value": "oklch(90.5% 0.182 98.111)",
+      "color": "#ffdf20"
     },
     {
       "category": "color",
-      "color": "#fdc700",
       "name": "--color-yellow-400",
-      "value": "oklch(85.2% 0.199 91.936)"
+      "value": "oklch(85.2% 0.199 91.936)",
+      "color": "#fdc700"
     },
     {
       "category": "color",
-      "color": "#f0b100",
       "name": "--color-yellow-500",
-      "value": "oklch(79.5% 0.184 86.047)"
+      "value": "oklch(79.5% 0.184 86.047)",
+      "color": "#f0b100"
     },
     {
       "category": "color",
-      "color": "#d08700",
       "name": "--color-yellow-600",
-      "value": "oklch(68.1% 0.162 75.834)"
+      "value": "oklch(68.1% 0.162 75.834)",
+      "color": "#d08700"
     },
     {
       "category": "color",
-      "color": "#a65f00",
       "name": "--color-yellow-700",
-      "value": "oklch(55.4% 0.135 66.442)"
+      "value": "oklch(55.4% 0.135 66.442)",
+      "color": "#a65f00"
     },
     {
       "category": "color",
-      "color": "#894b00",
       "name": "--color-yellow-800",
-      "value": "oklch(47.6% 0.114 61.907)"
+      "value": "oklch(47.6% 0.114 61.907)",
+      "color": "#894b00"
     },
     {
       "category": "color",
-      "color": "#733e0a",
       "name": "--color-yellow-900",
-      "value": "oklch(42.1% 0.095 57.708)"
+      "value": "oklch(42.1% 0.095 57.708)",
+      "color": "#733e0a"
     },
     {
       "category": "color",
-      "color": "#432004",
       "name": "--color-yellow-950",
-      "value": "oklch(28.6% 0.066 53.813)"
+      "value": "oklch(28.6% 0.066 53.813)",
+      "color": "#432004"
     },
     {
       "category": "color",
-      "color": "#f7fee7",
       "name": "--color-lime-50",
-      "value": "oklch(98.6% 0.031 120.757)"
+      "value": "oklch(98.6% 0.031 120.757)",
+      "color": "#f7fee7"
     },
     {
       "category": "color",
-      "color": "#ecfcca",
       "name": "--color-lime-100",
-      "value": "oklch(96.7% 0.067 122.328)"
+      "value": "oklch(96.7% 0.067 122.328)",
+      "color": "#ecfcca"
     },
     {
       "category": "color",
-      "color": "#d8f999",
       "name": "--color-lime-200",
-      "value": "oklch(93.8% 0.127 124.321)"
+      "value": "oklch(93.8% 0.127 124.321)",
+      "color": "#d8f999"
     },
     {
       "category": "color",
-      "color": "#bbf451",
       "name": "--color-lime-300",
-      "value": "oklch(89.7% 0.196 126.665)"
+      "value": "oklch(89.7% 0.196 126.665)",
+      "color": "#bbf451"
     },
     {
       "category": "color",
-      "color": "#9ae600",
       "name": "--color-lime-400",
-      "value": "oklch(84.1% 0.238 128.85)"
+      "value": "oklch(84.1% 0.238 128.85)",
+      "color": "#9ae600"
     },
     {
       "category": "color",
-      "color": "#7ccf00",
       "name": "--color-lime-500",
-      "value": "oklch(76.8% 0.233 130.85)"
+      "value": "oklch(76.8% 0.233 130.85)",
+      "color": "#7ccf00"
     },
     {
       "category": "color",
-      "color": "#5ea500",
       "name": "--color-lime-600",
-      "value": "oklch(64.8% 0.2 131.684)"
+      "value": "oklch(64.8% 0.2 131.684)",
+      "color": "#5ea500"
     },
     {
       "category": "color",
-      "color": "#497d00",
       "name": "--color-lime-700",
-      "value": "oklch(53.2% 0.157 131.589)"
+      "value": "oklch(53.2% 0.157 131.589)",
+      "color": "#497d00"
     },
     {
       "category": "color",
-      "color": "#3c6300",
       "name": "--color-lime-800",
-      "value": "oklch(45.3% 0.124 130.933)"
+      "value": "oklch(45.3% 0.124 130.933)",
+      "color": "#3c6300"
     },
     {
       "category": "color",
-      "color": "#35530e",
       "name": "--color-lime-900",
-      "value": "oklch(40.5% 0.101 131.063)"
+      "value": "oklch(40.5% 0.101 131.063)",
+      "color": "#35530e"
     },
     {
       "category": "color",
-      "color": "#192e03",
       "name": "--color-lime-950",
-      "value": "oklch(27.4% 0.072 132.109)"
+      "value": "oklch(27.4% 0.072 132.109)",
+      "color": "#192e03"
     },
     {
       "category": "color",
-      "color": "#f0fdf4",
       "name": "--color-green-50",
-      "value": "oklch(98.2% 0.018 155.826)"
+      "value": "oklch(98.2% 0.018 155.826)",
+      "color": "#f0fdf4"
     },
     {
       "category": "color",
-      "color": "#dcfce7",
       "name": "--color-green-100",
-      "value": "oklch(96.2% 0.044 156.743)"
+      "value": "oklch(96.2% 0.044 156.743)",
+      "color": "#dcfce7"
     },
     {
       "category": "color",
-      "color": "#b9f8cf",
       "name": "--color-green-200",
-      "value": "oklch(92.5% 0.084 155.995)"
+      "value": "oklch(92.5% 0.084 155.995)",
+      "color": "#b9f8cf"
     },
     {
       "category": "color",
-      "color": "#7bf1a8",
       "name": "--color-green-300",
-      "value": "oklch(87.1% 0.15 154.449)"
+      "value": "oklch(87.1% 0.15 154.449)",
+      "color": "#7bf1a8"
     },
     {
       "category": "color",
-      "color": "#05df72",
       "name": "--color-green-400",
-      "value": "oklch(79.2% 0.209 151.711)"
+      "value": "oklch(79.2% 0.209 151.711)",
+      "color": "#05df72"
     },
     {
       "category": "color",
-      "color": "#00c950",
       "name": "--color-green-500",
-      "value": "oklch(72.3% 0.219 149.579)"
+      "value": "oklch(72.3% 0.219 149.579)",
+      "color": "#00c950"
     },
     {
       "category": "color",
-      "color": "#00a63e",
       "name": "--color-green-600",
-      "value": "oklch(62.7% 0.194 149.214)"
+      "value": "oklch(62.7% 0.194 149.214)",
+      "color": "#00a63e"
     },
     {
       "category": "color",
-      "color": "#008236",
       "name": "--color-green-700",
-      "value": "oklch(52.7% 0.154 150.069)"
+      "value": "oklch(52.7% 0.154 150.069)",
+      "color": "#008236"
     },
     {
       "category": "color",
-      "color": "#016630",
       "name": "--color-green-800",
-      "value": "oklch(44.8% 0.119 151.328)"
+      "value": "oklch(44.8% 0.119 151.328)",
+      "color": "#016630"
     },
     {
       "category": "color",
-      "color": "#0d542b",
       "name": "--color-green-900",
-      "value": "oklch(39.3% 0.095 152.535)"
+      "value": "oklch(39.3% 0.095 152.535)",
+      "color": "#0d542b"
     },
     {
       "category": "color",
-      "color": "#032e15",
       "name": "--color-green-950",
-      "value": "oklch(26.6% 0.065 152.934)"
+      "value": "oklch(26.6% 0.065 152.934)",
+      "color": "#032e15"
     },
     {
       "category": "color",
-      "color": "#ecfdf5",
       "name": "--color-emerald-50",
-      "value": "oklch(97.9% 0.021 166.113)"
+      "value": "oklch(97.9% 0.021 166.113)",
+      "color": "#ecfdf5"
     },
     {
       "category": "color",
-      "color": "#d0fae5",
       "name": "--color-emerald-100",
-      "value": "oklch(95% 0.052 163.051)"
+      "value": "oklch(95% 0.052 163.051)",
+      "color": "#d0fae5"
     },
     {
       "category": "color",
-      "color": "#a4f4cf",
       "name": "--color-emerald-200",
-      "value": "oklch(90.5% 0.093 164.15)"
+      "value": "oklch(90.5% 0.093 164.15)",
+      "color": "#a4f4cf"
     },
     {
       "category": "color",
-      "color": "#5ee9b5",
       "name": "--color-emerald-300",
-      "value": "oklch(84.5% 0.143 164.978)"
+      "value": "oklch(84.5% 0.143 164.978)",
+      "color": "#5ee9b5"
     },
     {
       "category": "color",
-      "color": "#00d492",
       "name": "--color-emerald-400",
-      "value": "oklch(76.5% 0.177 163.223)"
+      "value": "oklch(76.5% 0.177 163.223)",
+      "color": "#00d492"
     },
     {
       "category": "color",
-      "color": "#00bc7d",
       "name": "--color-emerald-500",
-      "value": "oklch(69.6% 0.17 162.48)"
+      "value": "oklch(69.6% 0.17 162.48)",
+      "color": "#00bc7d"
     },
     {
       "category": "color",
-      "color": "#009966",
       "name": "--color-emerald-600",
-      "value": "oklch(59.6% 0.145 163.225)"
+      "value": "oklch(59.6% 0.145 163.225)",
+      "color": "#009966"
     },
     {
       "category": "color",
-      "color": "#007a55",
       "name": "--color-emerald-700",
-      "value": "oklch(50.8% 0.118 165.612)"
+      "value": "oklch(50.8% 0.118 165.612)",
+      "color": "#007a55"
     },
     {
       "category": "color",
-      "color": "#006045",
       "name": "--color-emerald-800",
-      "value": "oklch(43.2% 0.095 166.913)"
+      "value": "oklch(43.2% 0.095 166.913)",
+      "color": "#006045"
     },
     {
       "category": "color",
-      "color": "#004f3b",
       "name": "--color-emerald-900",
-      "value": "oklch(37.8% 0.077 168.94)"
+      "value": "oklch(37.8% 0.077 168.94)",
+      "color": "#004f3b"
     },
     {
       "category": "color",
-      "color": "#002c22",
       "name": "--color-emerald-950",
-      "value": "oklch(26.2% 0.051 172.552)"
+      "value": "oklch(26.2% 0.051 172.552)",
+      "color": "#002c22"
     },
     {
       "category": "color",
-      "color": "#f0fdfa",
       "name": "--color-teal-50",
-      "value": "oklch(98.4% 0.014 180.72)"
+      "value": "oklch(98.4% 0.014 180.72)",
+      "color": "#f0fdfa"
     },
     {
       "category": "color",
-      "color": "#cbfbf1",
       "name": "--color-teal-100",
-      "value": "oklch(95.3% 0.051 180.801)"
+      "value": "oklch(95.3% 0.051 180.801)",
+      "color": "#cbfbf1"
     },
     {
       "category": "color",
-      "color": "#96f7e4",
       "name": "--color-teal-200",
-      "value": "oklch(91% 0.096 180.426)"
+      "value": "oklch(91% 0.096 180.426)",
+      "color": "#96f7e4"
     },
     {
       "category": "color",
-      "color": "#46ecd5",
       "name": "--color-teal-300",
-      "value": "oklch(85.5% 0.138 181.071)"
+      "value": "oklch(85.5% 0.138 181.071)",
+      "color": "#46ecd5"
     },
     {
       "category": "color",
-      "color": "#00d5be",
       "name": "--color-teal-400",
-      "value": "oklch(77.7% 0.152 181.912)"
+      "value": "oklch(77.7% 0.152 181.912)",
+      "color": "#00d5be"
     },
     {
       "category": "color",
-      "color": "#00bba7",
       "name": "--color-teal-500",
-      "value": "oklch(70.4% 0.14 182.503)"
+      "value": "oklch(70.4% 0.14 182.503)",
+      "color": "#00bba7"
     },
     {
       "category": "color",
-      "color": "#009689",
       "name": "--color-teal-600",
-      "value": "oklch(60% 0.118 184.704)"
+      "value": "oklch(60% 0.118 184.704)",
+      "color": "#009689"
     },
     {
       "category": "color",
-      "color": "#00786f",
       "name": "--color-teal-700",
-      "value": "oklch(51.1% 0.096 186.391)"
+      "value": "oklch(51.1% 0.096 186.391)",
+      "color": "#00786f"
     },
     {
       "category": "color",
-      "color": "#005f5a",
       "name": "--color-teal-800",
-      "value": "oklch(43.7% 0.078 188.216)"
+      "value": "oklch(43.7% 0.078 188.216)",
+      "color": "#005f5a"
     },
     {
       "category": "color",
-      "color": "#0b4f4a",
       "name": "--color-teal-900",
-      "value": "oklch(38.6% 0.063 188.416)"
+      "value": "oklch(38.6% 0.063 188.416)",
+      "color": "#0b4f4a"
     },
     {
       "category": "color",
-      "color": "#022f2e",
       "name": "--color-teal-950",
-      "value": "oklch(27.7% 0.046 192.524)"
+      "value": "oklch(27.7% 0.046 192.524)",
+      "color": "#022f2e"
     },
     {
       "category": "color",
-      "color": "#ecfeff",
       "name": "--color-cyan-50",
-      "value": "oklch(98.4% 0.019 200.873)"
+      "value": "oklch(98.4% 0.019 200.873)",
+      "color": "#ecfeff"
     },
     {
       "category": "color",
-      "color": "#cefafe",
       "name": "--color-cyan-100",
-      "value": "oklch(95.6% 0.045 203.388)"
+      "value": "oklch(95.6% 0.045 203.388)",
+      "color": "#cefafe"
     },
     {
       "category": "color",
-      "color": "#a2f4fd",
       "name": "--color-cyan-200",
-      "value": "oklch(91.7% 0.08 205.041)"
+      "value": "oklch(91.7% 0.08 205.041)",
+      "color": "#a2f4fd"
     },
     {
       "category": "color",
-      "color": "#53eafd",
       "name": "--color-cyan-300",
-      "value": "oklch(86.5% 0.127 207.078)"
+      "value": "oklch(86.5% 0.127 207.078)",
+      "color": "#53eafd"
     },
     {
       "category": "color",
-      "color": "#00d3f2",
       "name": "--color-cyan-400",
-      "value": "oklch(78.9% 0.154 211.53)"
+      "value": "oklch(78.9% 0.154 211.53)",
+      "color": "#00d3f2"
     },
     {
       "category": "color",
-      "color": "#00b8db",
       "name": "--color-cyan-500",
-      "value": "oklch(71.5% 0.143 215.221)"
+      "value": "oklch(71.5% 0.143 215.221)",
+      "color": "#00b8db"
     },
     {
       "category": "color",
-      "color": "#0092b8",
       "name": "--color-cyan-600",
-      "value": "oklch(60.9% 0.126 221.723)"
+      "value": "oklch(60.9% 0.126 221.723)",
+      "color": "#0092b8"
     },
     {
       "category": "color",
-      "color": "#007595",
       "name": "--color-cyan-700",
-      "value": "oklch(52% 0.105 223.128)"
+      "value": "oklch(52% 0.105 223.128)",
+      "color": "#007595"
     },
     {
       "category": "color",
-      "color": "#005f78",
       "name": "--color-cyan-800",
-      "value": "oklch(45% 0.085 224.283)"
+      "value": "oklch(45% 0.085 224.283)",
+      "color": "#005f78"
     },
     {
       "category": "color",
-      "color": "#104e64",
       "name": "--color-cyan-900",
-      "value": "oklch(39.8% 0.07 227.392)"
+      "value": "oklch(39.8% 0.07 227.392)",
+      "color": "#104e64"
     },
     {
       "category": "color",
-      "color": "#053345",
       "name": "--color-cyan-950",
-      "value": "oklch(30.2% 0.056 229.695)"
+      "value": "oklch(30.2% 0.056 229.695)",
+      "color": "#053345"
     },
     {
       "category": "color",
-      "color": "#f0f9ff",
       "name": "--color-sky-50",
-      "value": "oklch(97.7% 0.013 236.62)"
+      "value": "oklch(97.7% 0.013 236.62)",
+      "color": "#f0f9ff"
     },
     {
       "category": "color",
-      "color": "#dff2fe",
       "name": "--color-sky-100",
-      "value": "oklch(95.1% 0.026 236.824)"
+      "value": "oklch(95.1% 0.026 236.824)",
+      "color": "#dff2fe"
     },
     {
       "category": "color",
-      "color": "#b8e6fe",
       "name": "--color-sky-200",
-      "value": "oklch(90.1% 0.058 230.902)"
+      "value": "oklch(90.1% 0.058 230.902)",
+      "color": "#b8e6fe"
     },
     {
       "category": "color",
-      "color": "#74d4ff",
       "name": "--color-sky-300",
-      "value": "oklch(82.8% 0.111 230.318)"
+      "value": "oklch(82.8% 0.111 230.318)",
+      "color": "#74d4ff"
     },
     {
       "category": "color",
-      "color": "#00bcff",
       "name": "--color-sky-400",
-      "value": "oklch(74.6% 0.16 232.661)"
+      "value": "oklch(74.6% 0.16 232.661)",
+      "color": "#00bcff"
     },
     {
       "category": "color",
-      "color": "#00a6f4",
       "name": "--color-sky-500",
-      "value": "oklch(68.5% 0.169 237.323)"
+      "value": "oklch(68.5% 0.169 237.323)",
+      "color": "#00a6f4"
     },
     {
       "category": "color",
-      "color": "#0084d1",
       "name": "--color-sky-600",
-      "value": "oklch(58.8% 0.158 241.966)"
+      "value": "oklch(58.8% 0.158 241.966)",
+      "color": "#0084d1"
     },
     {
       "category": "color",
-      "color": "#0069a8",
       "name": "--color-sky-700",
-      "value": "oklch(50% 0.134 242.749)"
+      "value": "oklch(50% 0.134 242.749)",
+      "color": "#0069a8"
     },
     {
       "category": "color",
-      "color": "#00598a",
       "name": "--color-sky-800",
-      "value": "oklch(44.3% 0.11 240.79)"
+      "value": "oklch(44.3% 0.11 240.79)",
+      "color": "#00598a"
     },
     {
       "category": "color",
-      "color": "#024a70",
       "name": "--color-sky-900",
-      "value": "oklch(39.1% 0.09 240.876)"
+      "value": "oklch(39.1% 0.09 240.876)",
+      "color": "#024a70"
     },
     {
       "category": "color",
-      "color": "#052f4a",
       "name": "--color-sky-950",
-      "value": "oklch(29.3% 0.066 243.157)"
+      "value": "oklch(29.3% 0.066 243.157)",
+      "color": "#052f4a"
     },
     {
       "category": "color",
-      "color": "#eff6ff",
       "name": "--color-blue-50",
-      "value": "oklch(97% 0.014 254.604)"
+      "value": "oklch(97% 0.014 254.604)",
+      "color": "#eff6ff"
     },
     {
       "category": "color",
-      "color": "#dbeafe",
       "name": "--color-blue-100",
-      "value": "oklch(93.2% 0.032 255.585)"
+      "value": "oklch(93.2% 0.032 255.585)",
+      "color": "#dbeafe"
     },
     {
       "category": "color",
-      "color": "#bedbff",
       "name": "--color-blue-200",
-      "value": "oklch(88.2% 0.059 254.128)"
+      "value": "oklch(88.2% 0.059 254.128)",
+      "color": "#bedbff"
     },
     {
       "category": "color",
-      "color": "#8ec5ff",
       "name": "--color-blue-300",
-      "value": "oklch(80.9% 0.105 251.813)"
+      "value": "oklch(80.9% 0.105 251.813)",
+      "color": "#8ec5ff"
     },
     {
       "category": "color",
-      "color": "#51a2ff",
       "name": "--color-blue-400",
-      "value": "oklch(70.7% 0.165 254.624)"
+      "value": "oklch(70.7% 0.165 254.624)",
+      "color": "#51a2ff"
     },
     {
       "category": "color",
-      "color": "#2b7fff",
       "name": "--color-blue-500",
-      "value": "oklch(62.3% 0.214 259.815)"
+      "value": "oklch(62.3% 0.214 259.815)",
+      "color": "#2b7fff"
     },
     {
       "category": "color",
-      "color": "#155dfc",
       "name": "--color-blue-600",
-      "value": "oklch(54.6% 0.245 262.881)"
+      "value": "oklch(54.6% 0.245 262.881)",
+      "color": "#155dfc"
     },
     {
       "category": "color",
-      "color": "#1447e6",
       "name": "--color-blue-700",
-      "value": "oklch(48.8% 0.243 264.376)"
+      "value": "oklch(48.8% 0.243 264.376)",
+      "color": "#1447e6"
     },
     {
       "category": "color",
-      "color": "#193cb8",
       "name": "--color-blue-800",
-      "value": "oklch(42.4% 0.199 265.638)"
+      "value": "oklch(42.4% 0.199 265.638)",
+      "color": "#193cb8"
     },
     {
       "category": "color",
-      "color": "#1c398e",
       "name": "--color-blue-900",
-      "value": "oklch(37.9% 0.146 265.522)"
+      "value": "oklch(37.9% 0.146 265.522)",
+      "color": "#1c398e"
     },
     {
       "category": "color",
-      "color": "#162456",
       "name": "--color-blue-950",
-      "value": "oklch(28.2% 0.091 267.935)"
+      "value": "oklch(28.2% 0.091 267.935)",
+      "color": "#162456"
     },
     {
       "category": "color",
-      "color": "#eef2ff",
       "name": "--color-indigo-50",
-      "value": "oklch(96.2% 0.018 272.314)"
+      "value": "oklch(96.2% 0.018 272.314)",
+      "color": "#eef2ff"
     },
     {
       "category": "color",
-      "color": "#e0e7ff",
       "name": "--color-indigo-100",
-      "value": "oklch(93% 0.034 272.788)"
+      "value": "oklch(93% 0.034 272.788)",
+      "color": "#e0e7ff"
     },
     {
       "category": "color",
-      "color": "#c6d2ff",
       "name": "--color-indigo-200",
-      "value": "oklch(87% 0.065 274.039)"
+      "value": "oklch(87% 0.065 274.039)",
+      "color": "#c6d2ff"
     },
     {
       "category": "color",
-      "color": "#a3b3ff",
       "name": "--color-indigo-300",
-      "value": "oklch(78.5% 0.115 274.713)"
+      "value": "oklch(78.5% 0.115 274.713)",
+      "color": "#a3b3ff"
     },
     {
       "category": "color",
-      "color": "#7c86ff",
       "name": "--color-indigo-400",
-      "value": "oklch(67.3% 0.182 276.935)"
+      "value": "oklch(67.3% 0.182 276.935)",
+      "color": "#7c86ff"
     },
     {
       "category": "color",
-      "color": "#615fff",
       "name": "--color-indigo-500",
-      "value": "oklch(58.5% 0.233 277.117)"
+      "value": "oklch(58.5% 0.233 277.117)",
+      "color": "#615fff"
     },
     {
       "category": "color",
-      "color": "#4f39f6",
       "name": "--color-indigo-600",
-      "value": "oklch(51.1% 0.262 276.966)"
+      "value": "oklch(51.1% 0.262 276.966)",
+      "color": "#4f39f6"
     },
     {
       "category": "color",
-      "color": "#432dd7",
       "name": "--color-indigo-700",
-      "value": "oklch(45.7% 0.24 277.023)"
+      "value": "oklch(45.7% 0.24 277.023)",
+      "color": "#432dd7"
     },
     {
       "category": "color",
-      "color": "#372aac",
       "name": "--color-indigo-800",
-      "value": "oklch(39.8% 0.195 277.366)"
+      "value": "oklch(39.8% 0.195 277.366)",
+      "color": "#372aac"
     },
     {
       "category": "color",
-      "color": "#312c85",
       "name": "--color-indigo-900",
-      "value": "oklch(35.9% 0.144 278.697)"
+      "value": "oklch(35.9% 0.144 278.697)",
+      "color": "#312c85"
     },
     {
       "category": "color",
-      "color": "#1e1a4d",
       "name": "--color-indigo-950",
-      "value": "oklch(25.7% 0.09 281.288)"
+      "value": "oklch(25.7% 0.09 281.288)",
+      "color": "#1e1a4d"
     },
     {
       "category": "color",
-      "color": "#f5f3ff",
       "name": "--color-violet-50",
-      "value": "oklch(96.9% 0.016 293.756)"
+      "value": "oklch(96.9% 0.016 293.756)",
+      "color": "#f5f3ff"
     },
     {
       "category": "color",
-      "color": "#ede9fe",
       "name": "--color-violet-100",
-      "value": "oklch(94.3% 0.029 294.588)"
+      "value": "oklch(94.3% 0.029 294.588)",
+      "color": "#ede9fe"
     },
     {
       "category": "color",
-      "color": "#ddd6ff",
       "name": "--color-violet-200",
-      "value": "oklch(89.4% 0.057 293.283)"
+      "value": "oklch(89.4% 0.057 293.283)",
+      "color": "#ddd6ff"
     },
     {
       "category": "color",
-      "color": "#c4b4ff",
       "name": "--color-violet-300",
-      "value": "oklch(81.1% 0.111 293.571)"
+      "value": "oklch(81.1% 0.111 293.571)",
+      "color": "#c4b4ff"
     },
     {
       "category": "color",
-      "color": "#a684ff",
       "name": "--color-violet-400",
-      "value": "oklch(70.2% 0.183 293.541)"
+      "value": "oklch(70.2% 0.183 293.541)",
+      "color": "#a684ff"
     },
     {
       "category": "color",
-      "color": "#8e51ff",
       "name": "--color-violet-500",
-      "value": "oklch(60.6% 0.25 292.717)"
+      "value": "oklch(60.6% 0.25 292.717)",
+      "color": "#8e51ff"
     },
     {
       "category": "color",
-      "color": "#7f22fe",
       "name": "--color-violet-600",
-      "value": "oklch(54.1% 0.281 293.009)"
+      "value": "oklch(54.1% 0.281 293.009)",
+      "color": "#7f22fe"
     },
     {
       "category": "color",
-      "color": "#7008e7",
       "name": "--color-violet-700",
-      "value": "oklch(49.1% 0.27 292.581)"
+      "value": "oklch(49.1% 0.27 292.581)",
+      "color": "#7008e7"
     },
     {
       "category": "color",
-      "color": "#5d0ec0",
       "name": "--color-violet-800",
-      "value": "oklch(43.2% 0.232 292.759)"
+      "value": "oklch(43.2% 0.232 292.759)",
+      "color": "#5d0ec0"
     },
     {
       "category": "color",
-      "color": "#4d179a",
       "name": "--color-violet-900",
-      "value": "oklch(38% 0.189 293.745)"
+      "value": "oklch(38% 0.189 293.745)",
+      "color": "#4d179a"
     },
     {
       "category": "color",
-      "color": "#2f0d68",
       "name": "--color-violet-950",
-      "value": "oklch(28.3% 0.141 291.089)"
+      "value": "oklch(28.3% 0.141 291.089)",
+      "color": "#2f0d68"
     },
     {
       "category": "color",
-      "color": "#faf5ff",
       "name": "--color-purple-50",
-      "value": "oklch(97.7% 0.014 308.299)"
+      "value": "oklch(97.7% 0.014 308.299)",
+      "color": "#faf5ff"
     },
     {
       "category": "color",
-      "color": "#f3e8ff",
       "name": "--color-purple-100",
-      "value": "oklch(94.6% 0.033 307.174)"
+      "value": "oklch(94.6% 0.033 307.174)",
+      "color": "#f3e8ff"
     },
     {
       "category": "color",
-      "color": "#e9d4ff",
       "name": "--color-purple-200",
-      "value": "oklch(90.2% 0.063 306.703)"
+      "value": "oklch(90.2% 0.063 306.703)",
+      "color": "#e9d4ff"
     },
     {
       "category": "color",
-      "color": "#dab2ff",
       "name": "--color-purple-300",
-      "value": "oklch(82.7% 0.119 306.383)"
+      "value": "oklch(82.7% 0.119 306.383)",
+      "color": "#dab2ff"
     },
     {
       "category": "color",
-      "color": "#c27aff",
       "name": "--color-purple-400",
-      "value": "oklch(71.4% 0.203 305.504)"
+      "value": "oklch(71.4% 0.203 305.504)",
+      "color": "#c27aff"
     },
     {
       "category": "color",
-      "color": "#ad46ff",
       "name": "--color-purple-500",
-      "value": "oklch(62.7% 0.265 303.9)"
+      "value": "oklch(62.7% 0.265 303.9)",
+      "color": "#ad46ff"
     },
     {
       "category": "color",
-      "color": "#9810fa",
       "name": "--color-purple-600",
-      "value": "oklch(55.8% 0.288 302.321)"
+      "value": "oklch(55.8% 0.288 302.321)",
+      "color": "#9810fa"
     },
     {
       "category": "color",
-      "color": "#8200db",
       "name": "--color-purple-700",
-      "value": "oklch(49.6% 0.265 301.924)"
+      "value": "oklch(49.6% 0.265 301.924)",
+      "color": "#8200db"
     },
     {
       "category": "color",
-      "color": "#6e11b0",
       "name": "--color-purple-800",
-      "value": "oklch(43.8% 0.218 303.724)"
+      "value": "oklch(43.8% 0.218 303.724)",
+      "color": "#6e11b0"
     },
     {
       "category": "color",
-      "color": "#59168b",
       "name": "--color-purple-900",
-      "value": "oklch(38.1% 0.176 304.987)"
+      "value": "oklch(38.1% 0.176 304.987)",
+      "color": "#59168b"
     },
     {
       "category": "color",
-      "color": "#3c0366",
       "name": "--color-purple-950",
-      "value": "oklch(29.1% 0.149 302.717)"
+      "value": "oklch(29.1% 0.149 302.717)",
+      "color": "#3c0366"
     },
     {
       "category": "color",
-      "color": "#fdf4ff",
       "name": "--color-fuchsia-50",
-      "value": "oklch(97.7% 0.017 320.058)"
+      "value": "oklch(97.7% 0.017 320.058)",
+      "color": "#fdf4ff"
     },
     {
       "category": "color",
-      "color": "#fae8ff",
       "name": "--color-fuchsia-100",
-      "value": "oklch(95.2% 0.037 318.852)"
+      "value": "oklch(95.2% 0.037 318.852)",
+      "color": "#fae8ff"
     },
     {
       "category": "color",
-      "color": "#f6cfff",
       "name": "--color-fuchsia-200",
-      "value": "oklch(90.3% 0.076 319.62)"
+      "value": "oklch(90.3% 0.076 319.62)",
+      "color": "#f6cfff"
     },
     {
       "category": "color",
-      "color": "#f4a8ff",
       "name": "--color-fuchsia-300",
-      "value": "oklch(83.3% 0.145 321.434)"
+      "value": "oklch(83.3% 0.145 321.434)",
+      "color": "#f4a8ff"
     },
     {
       "category": "color",
-      "color": "#ed6aff",
       "name": "--color-fuchsia-400",
-      "value": "oklch(74% 0.238 322.16)"
+      "value": "oklch(74% 0.238 322.16)",
+      "color": "#ed6aff"
     },
     {
       "category": "color",
-      "color": "#e12afb",
       "name": "--color-fuchsia-500",
-      "value": "oklch(66.7% 0.295 322.15)"
+      "value": "oklch(66.7% 0.295 322.15)",
+      "color": "#e12afb"
     },
     {
       "category": "color",
-      "color": "#c800de",
       "name": "--color-fuchsia-600",
-      "value": "oklch(59.1% 0.293 322.896)"
+      "value": "oklch(59.1% 0.293 322.896)",
+      "color": "#c800de"
     },
     {
       "category": "color",
-      "color": "#a800b7",
       "name": "--color-fuchsia-700",
-      "value": "oklch(51.8% 0.253 323.949)"
+      "value": "oklch(51.8% 0.253 323.949)",
+      "color": "#a800b7"
     },
     {
       "category": "color",
-      "color": "#8a0194",
       "name": "--color-fuchsia-800",
-      "value": "oklch(45.2% 0.211 324.591)"
+      "value": "oklch(45.2% 0.211 324.591)",
+      "color": "#8a0194"
     },
     {
       "category": "color",
-      "color": "#721378",
       "name": "--color-fuchsia-900",
-      "value": "oklch(40.1% 0.17 325.612)"
+      "value": "oklch(40.1% 0.17 325.612)",
+      "color": "#721378"
     },
     {
       "category": "color",
-      "color": "#4b004f",
       "name": "--color-fuchsia-950",
-      "value": "oklch(29.3% 0.136 325.661)"
+      "value": "oklch(29.3% 0.136 325.661)",
+      "color": "#4b004f"
     },
     {
       "category": "color",
-      "color": "#fdf2f8",
       "name": "--color-pink-50",
-      "value": "oklch(97.1% 0.014 343.198)"
+      "value": "oklch(97.1% 0.014 343.198)",
+      "color": "#fdf2f8"
     },
     {
       "category": "color",
-      "color": "#fce7f3",
       "name": "--color-pink-100",
-      "value": "oklch(94.8% 0.028 342.258)"
+      "value": "oklch(94.8% 0.028 342.258)",
+      "color": "#fce7f3"
     },
     {
       "category": "color",
-      "color": "#fccee8",
       "name": "--color-pink-200",
-      "value": "oklch(89.9% 0.061 343.231)"
+      "value": "oklch(89.9% 0.061 343.231)",
+      "color": "#fccee8"
     },
     {
       "category": "color",
-      "color": "#fda5d5",
       "name": "--color-pink-300",
-      "value": "oklch(82.3% 0.12 346.018)"
+      "value": "oklch(82.3% 0.12 346.018)",
+      "color": "#fda5d5"
     },
     {
       "category": "color",
-      "color": "#fb64b6",
       "name": "--color-pink-400",
-      "value": "oklch(71.8% 0.202 349.761)"
+      "value": "oklch(71.8% 0.202 349.761)",
+      "color": "#fb64b6"
     },
     {
       "category": "color",
-      "color": "#f6339a",
       "name": "--color-pink-500",
-      "value": "oklch(65.6% 0.241 354.308)"
+      "value": "oklch(65.6% 0.241 354.308)",
+      "color": "#f6339a"
     },
     {
       "category": "color",
-      "color": "#e60076",
       "name": "--color-pink-600",
-      "value": "oklch(59.2% 0.249 0.584)"
+      "value": "oklch(59.2% 0.249 0.584)",
+      "color": "#e60076"
     },
     {
       "category": "color",
-      "color": "#c6005c",
       "name": "--color-pink-700",
-      "value": "oklch(52.5% 0.223 3.958)"
+      "value": "oklch(52.5% 0.223 3.958)",
+      "color": "#c6005c"
     },
     {
       "category": "color",
-      "color": "#a3004c",
       "name": "--color-pink-800",
-      "value": "oklch(45.9% 0.187 3.815)"
+      "value": "oklch(45.9% 0.187 3.815)",
+      "color": "#a3004c"
     },
     {
       "category": "color",
-      "color": "#861043",
       "name": "--color-pink-900",
-      "value": "oklch(40.8% 0.153 2.432)"
+      "value": "oklch(40.8% 0.153 2.432)",
+      "color": "#861043"
     },
     {
       "category": "color",
-      "color": "#510424",
       "name": "--color-pink-950",
-      "value": "oklch(28.4% 0.109 3.907)"
+      "value": "oklch(28.4% 0.109 3.907)",
+      "color": "#510424"
     },
     {
       "category": "color",
-      "color": "#fff1f2",
       "name": "--color-rose-50",
-      "value": "oklch(96.9% 0.015 12.422)"
+      "value": "oklch(96.9% 0.015 12.422)",
+      "color": "#fff1f2"
     },
     {
       "category": "color",
-      "color": "#ffe4e6",
       "name": "--color-rose-100",
-      "value": "oklch(94.1% 0.03 12.58)"
+      "value": "oklch(94.1% 0.03 12.58)",
+      "color": "#ffe4e6"
     },
     {
       "category": "color",
-      "color": "#ffccd3",
       "name": "--color-rose-200",
-      "value": "oklch(89.2% 0.058 10.001)"
+      "value": "oklch(89.2% 0.058 10.001)",
+      "color": "#ffccd3"
     },
     {
       "category": "color",
-      "color": "#ffa1ad",
       "name": "--color-rose-300",
-      "value": "oklch(81% 0.117 11.638)"
+      "value": "oklch(81% 0.117 11.638)",
+      "color": "#ffa1ad"
     },
     {
       "category": "color",
-      "color": "#ff637e",
       "name": "--color-rose-400",
-      "value": "oklch(71.2% 0.194 13.428)"
+      "value": "oklch(71.2% 0.194 13.428)",
+      "color": "#ff637e"
     },
     {
       "category": "color",
-      "color": "#ff2056",
       "name": "--color-rose-500",
-      "value": "oklch(64.5% 0.246 16.439)"
+      "value": "oklch(64.5% 0.246 16.439)",
+      "color": "#ff2056"
     },
     {
       "category": "color",
-      "color": "#ec003f",
       "name": "--color-rose-600",
-      "value": "oklch(58.6% 0.253 17.585)"
+      "value": "oklch(58.6% 0.253 17.585)",
+      "color": "#ec003f"
     },
     {
       "category": "color",
-      "color": "#c70036",
       "name": "--color-rose-700",
-      "value": "oklch(51.4% 0.222 16.935)"
+      "value": "oklch(51.4% 0.222 16.935)",
+      "color": "#c70036"
     },
     {
       "category": "color",
-      "color": "#a50036",
       "name": "--color-rose-800",
-      "value": "oklch(45.5% 0.188 13.697)"
+      "value": "oklch(45.5% 0.188 13.697)",
+      "color": "#a50036"
     },
     {
       "category": "color",
-      "color": "#8b0836",
       "name": "--color-rose-900",
-      "value": "oklch(41% 0.159 10.272)"
+      "value": "oklch(41% 0.159 10.272)",
+      "color": "#8b0836"
     },
     {
       "category": "color",
-      "color": "#4d0218",
       "name": "--color-rose-950",
-      "value": "oklch(27.1% 0.105 12.094)"
+      "value": "oklch(27.1% 0.105 12.094)",
+      "color": "#4d0218"
     },
     {
       "category": "easing",
@@ -3359,85 +3315,85 @@
     {
       "category": "font-stacks",
       "name": "--font-stack-serif",
-      "value": "Charter, \"Bitstream Charter\", \"Sitka Text\", Georgia, Cambria, serif"
+      "value": "Charter, 'Bitstream Charter', 'Sitka Text', Georgia, Cambria, serif"
     },
     {
       "category": "font-weight",
-      "color": "#110000",
       "name": "--font-weight-1",
-      "value": "100"
+      "value": "100",
+      "color": "#110000"
     },
     {
       "category": "font-weight",
-      "color": "#220000",
       "name": "--font-weight-2",
-      "value": "200"
+      "value": "200",
+      "color": "#220000"
     },
     {
       "category": "font-weight",
-      "color": "#330000",
       "name": "--font-weight-3",
-      "value": "300"
+      "value": "300",
+      "color": "#330000"
     },
     {
       "category": "font-weight",
-      "color": "#440000",
       "name": "--font-weight-4",
-      "value": "400"
+      "value": "400",
+      "color": "#440000"
     },
     {
       "category": "font-weight",
-      "color": "#550000",
       "name": "--font-weight-5",
-      "value": "500"
+      "value": "500",
+      "color": "#550000"
     },
     {
       "category": "font-weight",
-      "color": "#660000",
       "name": "--font-weight-6",
-      "value": "600"
+      "value": "600",
+      "color": "#660000"
     },
     {
       "category": "font-weight",
-      "color": "#770000",
       "name": "--font-weight-7",
-      "value": "700"
+      "value": "700",
+      "color": "#770000"
     },
     {
       "category": "font-weight",
-      "color": "#880000",
       "name": "--font-weight-8",
-      "value": "800"
+      "value": "800",
+      "color": "#880000"
     },
     {
       "category": "font-weight",
-      "color": "#990000",
       "name": "--font-weight-9",
-      "value": "900"
+      "value": "900",
+      "color": "#990000"
     },
     {
       "category": "font-weight",
-      "color": "#330000",
       "name": "--font-weight-light",
-      "value": "300"
+      "value": "300",
+      "color": "#330000"
     },
     {
       "category": "font-weight",
-      "color": "#440000",
       "name": "--font-weight-regular",
-      "value": "400"
+      "value": "400",
+      "color": "#440000"
     },
     {
       "category": "font-weight",
-      "color": "#550000",
       "name": "--font-weight-medium",
-      "value": "500"
+      "value": "500",
+      "color": "#550000"
     },
     {
       "category": "font-weight",
-      "color": "#770000",
       "name": "--font-weight-bold",
-      "value": "700"
+      "value": "700",
+      "color": "#770000"
     },
     {
       "category": "letter-spacing",
@@ -3551,9 +3507,9 @@
     },
     {
       "category": "shadow",
-      "color": "#161616",
       "name": "--shadow-color",
-      "value": "oklch(0.2 0 0)"
+      "value": "oklch(0.2 0 0)",
+      "color": "#161616"
     },
     {
       "category": "shadow",
@@ -3807,57 +3763,57 @@
     },
     {
       "category": "zindex",
-      "color": "#110000",
       "name": "--z-1",
-      "value": "1000"
+      "value": "1000",
+      "color": "#110000"
     },
     {
       "category": "zindex",
-      "color": "#220000",
       "name": "--z-2",
-      "value": "2000"
+      "value": "2000",
+      "color": "#220000"
     },
     {
       "category": "zindex",
-      "color": "#330000",
       "name": "--z-3",
-      "value": "3000"
+      "value": "3000",
+      "color": "#330000"
     },
     {
       "category": "zindex",
-      "color": "#440000",
       "name": "--z-4",
-      "value": "4000"
+      "value": "4000",
+      "color": "#440000"
     },
     {
       "category": "zindex",
-      "color": "#550000",
       "name": "--z-5",
-      "value": "5000"
+      "value": "5000",
+      "color": "#550000"
     },
     {
       "category": "zindex",
-      "color": "#660000",
       "name": "--z-6",
-      "value": "6000"
+      "value": "6000",
+      "color": "#660000"
     },
     {
       "category": "zindex",
-      "color": "#770000",
       "name": "--z-7",
-      "value": "7000"
+      "value": "7000",
+      "color": "#770000"
     },
     {
       "category": "zindex",
-      "color": "#880000",
       "name": "--z-8",
-      "value": "8000"
+      "value": "8000",
+      "color": "#880000"
     },
     {
       "category": "zindex",
-      "color": "#990000",
       "name": "--z-9",
-      "value": "9000"
+      "value": "9000",
+      "color": "#990000"
     },
     {
       "category": "zindex",
@@ -3908,11 +3864,6 @@
       "category": "theme",
       "name": "--color-faint",
       "value": "oklch(from var(--color-text) l c h / 50%)"
-    },
-    {
-      "category": "theme",
-      "name": "--shadow-color",
-      "value": "oklch(from var(--color-background) calc(l - 0.3) c h)"
     },
     {
       "category": "theme",

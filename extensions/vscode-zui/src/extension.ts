@@ -71,7 +71,7 @@ function registerProviders(): vscode.Disposable {
   for (const lang of CLASS_LANGUAGES) {
     disposables.push(
       vscode.languages.registerCompletionItemProvider(
-        { language: lang, scheme: 'file' },
+        { language: lang },
         classProvider,
         '"',
         "'",
@@ -83,7 +83,7 @@ function registerProviders(): vscode.Disposable {
   for (const lang of CSS_LANGUAGES) {
     disposables.push(
       vscode.languages.registerCompletionItemProvider(
-        { language: lang, scheme: 'file' },
+        { language: lang },
         tokenProvider,
         '-',
         '(',
@@ -93,7 +93,7 @@ function registerProviders(): vscode.Disposable {
 
   disposables.push(
     vscode.languages.registerColorProvider(
-      CSS_LANGUAGES.map((lang) => ({ language: lang, scheme: 'file' })),
+      CSS_LANGUAGES.map((lang) => ({ language: lang })),
       tokenProvider,
     ),
   )

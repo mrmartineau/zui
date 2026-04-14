@@ -16,7 +16,6 @@ Works in:
 - JSX / TSX
 - Astro
 - Vue
-- Svelte templates (via HTML fallback)
 
 ### Design token autocomplete
 
