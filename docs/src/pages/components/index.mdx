@@ -2,7 +2,7 @@
 sectionOrder: 3
 layout: ../../layouts/Layout.astro
 title: Overview
-description: UI components available as plain CSS classes, React, Astro, Solid, and Vue wrappers.
+description: UI components available as plain CSS classes, React, Astro, Solid, Svelte, and Vue wrappers.
 ---
 
 import SectionCards from '../../components/SectionCards.astro'
@@ -49,6 +49,18 @@ import { Button } from '@mrmartineau/zui/solid'
 <Button variant="outline">Click me</Button>
 ```
 
+### Svelte
+
+Svelte wrappers are Svelte 5 SFCs that use runes and snippets. Import from `@mrmartineau/zui/svelte`.
+
+```svelte
+<script lang="ts">
+  import { Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<Button variant="outline">Click me</Button>
+```
+
 ### Vue
 
 Vue wrappers are SFC components. Import from `@mrmartineau/zui/vue`.
@@ -63,7 +75,7 @@ import { Button } from '@mrmartineau/zui/vue'
 </script>
 ```
 
-See [Using with React](/guides/react), [Using with Astro](/guides/astro), [Using with Solid](/guides/solid), and [Using with Vue](/guides/vue) for setup instructions.
+See [Using with React](/guides/react), [Using with Astro](/guides/astro), [Using with Solid](/guides/solid), [Using with Svelte](/guides/svelte), and [Using with Vue](/guides/vue) for setup instructions.
 
 ## CSS layer
 

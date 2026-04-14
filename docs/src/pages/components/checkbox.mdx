@@ -31,6 +31,12 @@ import { Checkbox } from '@mrmartineau/zui/astro'
 <script setup>
 import { Checkbox } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Checkbox } from '@mrmartineau/zui/svelte'
+  let accepted = $state(true)
+</script>
+
+<Checkbox bind:checked={accepted}>Accept terms</Checkbox>`}
 >
   <label class="zui-checkbox">
     <input type="checkbox" checked />
@@ -114,6 +120,23 @@ import { Checkbox, Label } from '@mrmartineau/zui/astro'
 <script setup>
 import { Checkbox, Label } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Checkbox, Label } from '@mrmartineau/zui/svelte'
+  let music = $state(true)
+  let sports = $state(false)
+  let travel = $state(true)
+  let reading = $state(false)
+</script>
+
+<fieldset>
+  <Label as="legend">Interests</Label>
+  <div class="zui-checkbox-list">
+    <Checkbox bind:checked={music}>Music</Checkbox>
+    <Checkbox bind:checked={sports}>Sports</Checkbox>
+    <Checkbox bind:checked={travel}>Travel</Checkbox>
+    <Checkbox bind:checked={reading}>Reading</Checkbox>
+  </div>
+</fieldset>`}
 >
   <fieldset style="border: none; padding: 0; width: 100%;">
     <legend class="zui-label">Interests</legend>
@@ -171,6 +194,12 @@ import { Checkbox } from '@mrmartineau/zui/astro'
 <script setup>
 import { Checkbox } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Checkbox } from '@mrmartineau/zui/svelte'
+</script>
+
+<Checkbox disabled checked>Disabled checked</Checkbox>
+<Checkbox disabled>Disabled unchecked</Checkbox>`}
 >
   <label class="zui-checkbox">
     <input type="checkbox" disabled checked />

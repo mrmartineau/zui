@@ -19,7 +19,7 @@ import Demo from '../../components/Demo.astro'
   <details class="zui-accordion-item">
     <summary class="zui-accordion-trigger">Which frameworks does ZUI support?</summary>
     <div class="zui-accordion-content">
-      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, and Vue component wrappers.</p>
+      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
     </div>
   </details>
   <details class="zui-accordion-item">
@@ -41,7 +41,7 @@ import Demo from '../../components/Demo.astro'
   <AccordionItem>
     <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
     <AccordionContent>
-      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, and Vue component wrappers.</p>
+      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
@@ -65,7 +65,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
   <AccordionItem>
     <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
     <AccordionContent>
-      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, and Vue component wrappers.</p>
+      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
@@ -87,7 +87,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
   <AccordionItem>
     <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
     <AccordionContent>
-      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, and Vue component wrappers.</p>
+      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
@@ -108,7 +108,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
   <AccordionItem>
     <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
     <AccordionContent>
-      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, and Vue component wrappers.</p>
+      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
@@ -123,6 +123,30 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
 <script setup>
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Is ZUI free to use?</AccordionTrigger>
+    <AccordionContent>
+      <p>Yes, ZUI is open source and free to use in any project.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Which frameworks does ZUI support?</AccordionTrigger>
+    <AccordionContent>
+      <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Does ZUI support dark mode?</AccordionTrigger>
+    <AccordionContent>
+      <p>Yes, all components use light-dark() and CSS custom properties for automatic theme switching.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
 >
   <div class="zui-accordion" style="width: 100%;">
     <details class="zui-accordion-item">
@@ -134,7 +158,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
     <details class="zui-accordion-item">
       <summary class="zui-accordion-trigger">Which frameworks does ZUI support?</summary>
       <div class="zui-accordion-content">
-        <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, and Vue component wrappers.</p>
+        <p>ZUI provides CSS classes for any framework, plus first-class React, Astro, Solid, Svelte, and Vue component wrappers.</p>
       </div>
     </details>
     <details class="zui-accordion-item">
@@ -265,6 +289,30 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
 <script setup>
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Accordion>
+  <AccordionItem name="faq">
+    <AccordionTrigger>First item</AccordionTrigger>
+    <AccordionContent>
+      <p>Opening another item will close this one.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem name="faq">
+    <AccordionTrigger>Second item</AccordionTrigger>
+    <AccordionContent>
+      <p>Only one item can be open at a time thanks to the shared name attribute.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem name="faq">
+    <AccordionTrigger>Third item</AccordionTrigger>
+    <AccordionContent>
+      <p>This is native browser behaviour — no JavaScript needed.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
 >
   <div class="zui-accordion" style="width: 100%;">
     <details class="zui-accordion-item" name="faq-demo">
@@ -377,6 +425,24 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
 <script setup>
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Accordion flush>
+  <AccordionItem>
+    <AccordionTrigger>First item</AccordionTrigger>
+    <AccordionContent>
+      <p>Flush accordions blend into the surrounding layout.</p>
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Second item</AccordionTrigger>
+    <AccordionContent>
+      <p>No outer border or background.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
 >
   <div class="zui-accordion zui-accordion-flush" style="width: 100%;">
     <details class="zui-accordion-item">

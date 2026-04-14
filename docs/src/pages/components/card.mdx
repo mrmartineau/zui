@@ -68,6 +68,19 @@ import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmarti
 <script setup>
 import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/svelte'
+</script>
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>A brief description of this card's content.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Card body content goes here.</p>
+  </CardBody>
+</Card>`}
 >
   <div class="zui-card" style="width: 100%;">
     <div class="zui-card-header">
@@ -147,6 +160,20 @@ import { Card, CardHeader, CardTitle, CardDescription, Button } from '@mrmartine
 <script setup>
 import { Card, CardHeader, CardTitle, CardDescription, Button } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Card, CardHeader, CardTitle, CardDescription, Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<Card>
+  <CardHeader>
+    <CardTitle>Confirm Action</CardTitle>
+    <CardDescription>Are you sure you want to proceed?</CardDescription>
+  </CardHeader>
+  <div class="zui-card-footer">
+    <Button variant="outline">Cancel</Button>
+    <Button>Confirm</Button>
+  </div>
+</Card>`}
 >
   <div class="zui-card" style="width: 100%;">
     <div class="zui-card-header">
@@ -222,6 +249,19 @@ import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmarti
 <script setup>
 import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Card, CardHeader, CardTitle, CardDescription, CardBody } from '@mrmartineau/zui/svelte'
+</script>
+
+<Card class="zui-card-elevated">
+  <CardHeader>
+    <CardTitle>Elevated Card</CardTitle>
+    <CardDescription>Uses a shadow instead of a border.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Shadow-based card style.</p>
+  </CardBody>
+</Card>`}
 >
   <div class="zui-card zui-card-elevated" style="width: 100%;">
     <div class="zui-card-header">
@@ -281,6 +321,16 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/a
 <script setup>
 import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/svelte'
+</script>
+
+<Card href="#">
+  <CardHeader>
+    <CardTitle>Clickable Card</CardTitle>
+    <CardDescription>This entire card is a link.</CardDescription>
+  </CardHeader>
+</Card>`}
 >
   <a href="#" class="zui-card zui-card-interactive" style="width: 100%;">
     <div class="zui-card-header">
