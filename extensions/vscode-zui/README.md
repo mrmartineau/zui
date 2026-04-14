@@ -32,11 +32,17 @@ Works in:
 
 ZUI colour tokens appear with inline colour swatches wherever they are used. The extension pre-resolves `oklch()` values to sRGB so swatches render correctly even in editors that don't natively support OKLCH.
 
+## Activation
+
+By default the extension only activates when it detects `@mrmartineau/zui` in a workspace `package.json` (under `dependencies`, `devDependencies`, or `peerDependencies`). If you install ZUI via a CDN or copy the CSS directly and want completions anyway, set `zui.enable` to `"always"`.
+
+The extension re-evaluates whenever any `package.json` in the workspace changes, so adding or removing ZUI as a dependency flips completions on or off without a reload.
+
 ## Configuration
 
-| Setting      | Type      | Default | Description                |
-| ------------ | --------- | ------- | -------------------------- |
-| `zui.enable` | `boolean` | `true`  | Enable or disable ZUI IntelliSense. |
+| Setting      | Type                            | Default  | Description                                                                                       |
+| ------------ | ------------------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `zui.enable` | `"auto" \| "always" \| "never"` | `"auto"` | `auto` activates only in workspaces that depend on `@mrmartineau/zui`. `always` forces IntelliSense on. `never` disables the extension. |
 
 ## How it works
 

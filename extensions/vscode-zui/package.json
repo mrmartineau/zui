@@ -31,9 +31,15 @@
       "title": "ZUI",
       "properties": {
         "zui.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable ZUI IntelliSense"
+          "type": "string",
+          "enum": ["auto", "always", "never"],
+          "enumDescriptions": [
+            "Activate only when @mrmartineau/zui is found in a workspace package.json",
+            "Always activate, even in projects that don't depend on ZUI",
+            "Never activate — disables the extension entirely"
+          ],
+          "default": "auto",
+          "description": "When to enable ZUI IntelliSense"
         }
       }
     }
