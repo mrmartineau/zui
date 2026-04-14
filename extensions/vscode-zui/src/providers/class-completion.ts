@@ -21,7 +21,7 @@ const CLASS_ATTR_RE = [
 
 function isInClassAttribute(line: string, char: number): boolean {
   const before = line.slice(0, char)
-  return CLASS_ATTR_RE.some(re => re.test(before))
+  return CLASS_ATTR_RE.some((re) => re.test(before))
 }
 
 export class ClassCompletionProvider implements vscode.CompletionItemProvider {
@@ -29,7 +29,10 @@ export class ClassCompletionProvider implements vscode.CompletionItemProvider {
 
   constructor(classes: ClassEntry[]) {
     this.items = classes.map(({ name, source }) => {
-      const item = new vscode.CompletionItem(name, vscode.CompletionItemKind.Value)
+      const item = new vscode.CompletionItem(
+        name,
+        vscode.CompletionItemKind.Value,
+      )
       item.detail = `ZUI — ${source}`
       item.documentation = new vscode.MarkdownString(`\`${name}\``)
       item.insertText = name

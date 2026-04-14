@@ -1,7 +1,8 @@
 #!/usr/bin/env tsx
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs'
-import { join, basename, dirname } from 'node:path'
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { basename, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { converter, formatHex } from 'culori'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -33,63 +34,26 @@ export interface Manifest {
   tokens: TokenEntry[]
 }
 
-// ─── oklch → hex ─────────────────────────────────────────────────────────────
+// ─── Colour resolution ───────────────────────────────────────────────────────
 
-function oklchToHex(l: number, c: number, h: number): string | null {
-  try {
-    const hRad = (h * Math.PI) / 180
-    const a = c * Math.cos(hRad)
-    const b = c * Math.sin(hRad)
-
-    const l_ = l + 0.3963377774 * a + 0.2158037573 * b
-    const m_ = l - 0.1055613458 * a - 0.0638541728 * b
-    const s_ = l - 0.0894841775 * a - 1.2914855480 * b
-
-    const lc = l_ * l_ * l_
-    const mc = m_ * m_ * m_
-    const sc = s_ * s_ * s_
-
-    const r = +4.0767416621 * lc - 3.3077115913 * mc + 0.2309699292 * sc
-    const g = -1.2684380046 * lc + 2.6097574011 * mc - 0.3413193965 * sc
-    const bv = -0.0041960863 * lc - 0.7034186147 * mc + 1.7076147010 * sc
-
-    const toSRGB = (x: number): number => {
-      const cl = Math.max(0, Math.min(1, x))
-      return cl <= 0.0031308 ? 12.92 * cl : 1.055 * cl ** (1 / 2.4) - 0.055
-    }
-
-    const toHex = (x: number): string =>
-      Math.round(x * 255).toString(16).padStart(2, '0')
-
-    return `#${toHex(toSRGB(r))}${toHex(toSRGB(g))}${toHex(toSRGB(bv))}`
-  } catch {
-    return null
-  }
-}
+const toRgb = converter('rgb')
 
 /**
  * Resolve a CSS colour value to hex where possible.
- * Handles: oklch(L% C H), #hex
- * Skips: light-dark(), relative oklch (from var(...)), var(), clamp()
+ * Handles any format culori can parse (hex, oklch, hsl, lab, etc.).
+ * Skips: light-dark(), relative oklch (from …), var(), clamp()
  */
 function resolveColor(value: string): string | null {
   const trimmed = value.trim()
-
-  // Simple hex
-  if (/^#[0-9a-fA-F]{3,8}$/.test(trimmed)) return trimmed
-
-  // Simple oklch(L% C H) — no relative syntax, no alpha, no custom props
-  const oklchMatch = trimmed.match(
-    /^oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)\s*\)$/
-  )
-  if (oklchMatch) {
-    const l = parseFloat(oklchMatch[1]) / (oklchMatch[2] === '%' ? 100 : 1)
-    const c = parseFloat(oklchMatch[3])
-    const h = parseFloat(oklchMatch[4])
-    return oklchToHex(l, c, h)
+  // Skip values culori can't meaningfully parse (CSS functions, relative syntax)
+  if (/\b(var|from|light-dark|clamp)\s*\(/.test(trimmed)) return null
+  try {
+    const rgb = toRgb(trimmed)
+    if (!rgb) return null
+    return formatHex(rgb)
+  } catch {
+    return null
   }
-
-  return null
 }
 
 // ─── CSS parsers ─────────────────────────────────────────────────────────────
@@ -134,7 +98,7 @@ function extractTokens(css: string, category: string): TokenEntry[] {
     if (seen.has(name)) continue
     seen.add(name)
     const value = match[2].trim()
-    const entry: TokenEntry = { name, value, category }
+    const entry: TokenEntry = { category, name, value }
     const color = resolveColor(value)
     if (color) entry.color = color
     tokens.push(entry)
@@ -153,12 +117,14 @@ function categoryFromFilename(file: string): string {
 const classes: ClassEntry[] = []
 const tokens: TokenEntry[] = []
 
-for (const file of readdirSync(componentsDir).filter(f => f.endsWith('.css'))) {
+for (const file of readdirSync(componentsDir).filter((f) =>
+  f.endsWith('.css'),
+)) {
   const css = readFileSync(join(componentsDir, file), 'utf-8')
   classes.push(...extractZuiClasses(css, basename(file, '.css')))
 }
 
-for (const file of readdirSync(tokensDir).filter(f => f.endsWith('.css'))) {
+for (const file of readdirSync(tokensDir).filter((f) => f.endsWith('.css'))) {
   const css = readFileSync(join(tokensDir, file), 'utf-8')
   tokens.push(...extractTokens(css, categoryFromFilename(file)))
 }
@@ -169,27 +135,29 @@ if (existsSync(themeFile)) {
 }
 
 if (existsSync(utilitiesDir)) {
-  for (const file of readdirSync(utilitiesDir).filter(f => f.endsWith('.css'))) {
+  for (const file of readdirSync(utilitiesDir).filter((f) =>
+    f.endsWith('.css'),
+  )) {
     const css = readFileSync(join(utilitiesDir, file), 'utf-8')
     classes.push(...extractUtilityClasses(css, basename(file, '.css')))
   }
 }
 
 const rootPkg = JSON.parse(
-  readFileSync(join(__dirname, '../../../package.json'), 'utf-8')
+  readFileSync(join(__dirname, '../../../package.json'), 'utf-8'),
 ) as { version: string }
 
 const manifest: Manifest = {
-  version: rootPkg.version,
-  generatedAt: new Date().toISOString(),
   classes,
+  generatedAt: new Date().toISOString(),
   tokens,
+  version: rootPkg.version,
 }
 
 const outPath = join(__dirname, 'manifest.json')
 writeFileSync(outPath, JSON.stringify(manifest, null, 2))
 
-const colorCount = tokens.filter(t => t.color).length
+const colorCount = tokens.filter((t) => t.color).length
 console.log(
-  `✓ manifest: ${classes.length} classes, ${tokens.length} tokens (${colorCount} with colour preview) → ${outPath}`
+  `✓ manifest: ${classes.length} classes, ${tokens.length} tokens (${colorCount} with colour preview) → ${outPath}`,
 )

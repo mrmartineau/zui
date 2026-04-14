@@ -1,25 +1,25 @@
+import { converter } from 'culori'
 import * as vscode from 'vscode'
 import type { TokenEntry } from '../generate-manifest.js'
 
+const toRgb = converter('rgb')
+
 // Trigger inside var(-- or at a CSS property value starting with --
-const TOKEN_CONTEXT_RE = [
-  /var\(\s*--[\w-]*$/,
-  /:\s*--[\w-]*$/,
-]
+const TOKEN_CONTEXT_RE = [/var\(\s*--[\w-]*$/, /:\s*--[\w-]*$/]
 
 function isInTokenContext(line: string, char: number): boolean {
   const before = line.slice(0, char)
-  return TOKEN_CONTEXT_RE.some(re => re.test(before))
+  return TOKEN_CONTEXT_RE.some((re) => re.test(before))
 }
 
 function hexToColor(hex: string): vscode.Color | null {
-  const m = hex.match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i)
-  if (!m) return null
+  const rgb = toRgb(hex)
+  if (!rgb) return null
   return new vscode.Color(
-    parseInt(m[1], 16) / 255,
-    parseInt(m[2], 16) / 255,
-    parseInt(m[3], 16) / 255,
-    1,
+    Math.max(0, Math.min(1, rgb.r)),
+    Math.max(0, Math.min(1, rgb.g)),
+    Math.max(0, Math.min(1, rgb.b)),
+    rgb.alpha ?? 1,
   )
 }
 
@@ -64,7 +64,9 @@ export class TokenCompletionProvider
     return this.completionItems
   }
 
-  provideDocumentColors(document: vscode.TextDocument): vscode.ColorInformation[] {
+  provideDocumentColors(
+    document: vscode.TextDocument,
+  ): vscode.ColorInformation[] {
     const results: vscode.ColorInformation[] = []
     const re = /--([\w-]+)/g
 
@@ -78,7 +80,9 @@ export class TokenCompletionProvider
         if (!color) continue
         const start = new vscode.Position(i, m.index)
         const end = new vscode.Position(i, m.index + m[0].length)
-        results.push(new vscode.ColorInformation(new vscode.Range(start, end), color))
+        results.push(
+          new vscode.ColorInformation(new vscode.Range(start, end), color),
+        )
       }
     }
 
@@ -90,6 +94,8 @@ export class TokenCompletionProvider
     context: { document: vscode.TextDocument; range: vscode.Range },
   ): vscode.ColorPresentation[] {
     // Keep the original token reference intact — don't replace with hex
-    return [new vscode.ColorPresentation(context.document.getText(context.range))]
+    return [
+      new vscode.ColorPresentation(context.document.getText(context.range)),
+    ]
   }
 }

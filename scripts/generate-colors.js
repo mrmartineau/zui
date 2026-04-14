@@ -10,7 +10,7 @@
  */
 
 import { writeFileSync } from 'node:fs'
-import { resolve, dirname } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -62,11 +62,14 @@ function generateScale({
       const t = i / (steps - 1)
       const et = ease(t)
 
-      const l = roundTo(lightnessStart - et * (lightnessStart - lightnessEnd), 2)
+      const l = roundTo(
+        lightnessStart - et * (lightnessStart - lightnessEnd),
+        2,
+      )
       const c = roundTo(chromaStart + et * (chromaEnd - chromaStart), 3)
 
       return [shade, `oklch(${l}% ${c} ${hue})`]
-    })
+    }),
   )
 }
 
@@ -83,43 +86,43 @@ function generateScale({
 // ---------------------------------------------------------------------------
 
 const palette = {
-  // Neutral grays
-  slate:   { hue: 258, chromaStart: 0.003, chromaEnd: 0.042 },
-  gray:    { hue: 264, chromaStart: 0.002, chromaEnd: 0.028 },
-  zinc:    { hue: 286, chromaStart: 0,     chromaEnd: 0.005 },
-  neutral: { hue: 0,   chromaStart: 0,     chromaEnd: 0     },
-  stone:   { hue: 67,  chromaStart: 0.001, chromaEnd: 0.004 },
-
-  // Custom neutrals (not in Tailwind core)
-  mauve:   { hue: 324, chromaStart: 0.003, chromaEnd: 0.008 },
-  olive:   { hue: 107, chromaStart: 0.003, chromaEnd: 0.006 },
-  mist:    { hue: 213, chromaStart: 0.002, chromaEnd: 0.004 },
-  taupe:   { hue: 43,  chromaStart: 0.002, chromaEnd: 0.004 },
-
-  // Warm chromas
-  red:     { hue: 25,  chromaStart: 0.013, chromaEnd: 0.092 },
-  orange:  { hue: 48,  chromaStart: 0.016, chromaEnd: 0.079 },
-  amber:   { hue: 84,  chromaStart: 0.022, chromaEnd: 0.077 },
-  yellow:  { hue: 95,  chromaStart: 0.026, chromaEnd: 0.066 },
-
-  // Cool greens
-  lime:    { hue: 130, chromaStart: 0.031, chromaEnd: 0.072 },
-  green:   { hue: 151, chromaStart: 0.018, chromaEnd: 0.065 },
-  emerald: { hue: 164, chromaStart: 0.021, chromaEnd: 0.051 },
-  teal:    { hue: 183, chromaStart: 0.014, chromaEnd: 0.046 },
+  amber: { chromaEnd: 0.077, chromaStart: 0.022, hue: 84 },
+  blue: { chromaEnd: 0.091, chromaStart: 0.014, hue: 261 },
 
   // Blues
-  cyan:    { hue: 212, chromaStart: 0.019, chromaEnd: 0.056 },
-  sky:     { hue: 237, chromaStart: 0.013, chromaEnd: 0.066 },
-  blue:    { hue: 261, chromaStart: 0.014, chromaEnd: 0.091 },
-  indigo:  { hue: 277, chromaStart: 0.018, chromaEnd: 0.09  },
+  cyan: { chromaEnd: 0.056, chromaStart: 0.019, hue: 212 },
+  emerald: { chromaEnd: 0.051, chromaStart: 0.021, hue: 164 },
+  fuchsia: { chromaEnd: 0.136, chromaStart: 0.017, hue: 322 },
+  gray: { chromaEnd: 0.028, chromaStart: 0.002, hue: 264 },
+  green: { chromaEnd: 0.065, chromaStart: 0.018, hue: 151 },
+  indigo: { chromaEnd: 0.09, chromaStart: 0.018, hue: 277 },
+
+  // Cool greens
+  lime: { chromaEnd: 0.072, chromaStart: 0.031, hue: 130 },
+
+  // Custom neutrals (not in Tailwind core)
+  mauve: { chromaEnd: 0.008, chromaStart: 0.003, hue: 324 },
+  mist: { chromaEnd: 0.004, chromaStart: 0.002, hue: 213 },
+  neutral: { chromaEnd: 0, chromaStart: 0, hue: 0 },
+  olive: { chromaEnd: 0.006, chromaStart: 0.003, hue: 107 },
+  orange: { chromaEnd: 0.079, chromaStart: 0.016, hue: 48 },
+  pink: { chromaEnd: 0.109, chromaStart: 0.014, hue: 350 },
+  purple: { chromaEnd: 0.149, chromaStart: 0.014, hue: 305 },
+
+  // Warm chromas
+  red: { chromaEnd: 0.092, chromaStart: 0.013, hue: 25 },
+  rose: { chromaEnd: 0.105, chromaStart: 0.015, hue: 13 },
+  sky: { chromaEnd: 0.066, chromaStart: 0.013, hue: 237 },
+  // Neutral grays
+  slate: { chromaEnd: 0.042, chromaStart: 0.003, hue: 258 },
+  stone: { chromaEnd: 0.004, chromaStart: 0.001, hue: 67 },
+  taupe: { chromaEnd: 0.004, chromaStart: 0.002, hue: 43 },
+  teal: { chromaEnd: 0.046, chromaStart: 0.014, hue: 183 },
 
   // Purples & pinks
-  violet:  { hue: 293, chromaStart: 0.016, chromaEnd: 0.141 },
-  purple:  { hue: 305, chromaStart: 0.014, chromaEnd: 0.149 },
-  fuchsia: { hue: 322, chromaStart: 0.017, chromaEnd: 0.136 },
-  pink:    { hue: 350, chromaStart: 0.014, chromaEnd: 0.109 },
-  rose:    { hue: 13,  chromaStart: 0.015, chromaEnd: 0.105 },
+  violet: { chromaEnd: 0.141, chromaStart: 0.016, hue: 293 },
+  yellow: { chromaEnd: 0.066, chromaStart: 0.026, hue: 95 },
+  zinc: { chromaEnd: 0.005, chromaStart: 0, hue: 286 },
 }
 
 // ---------------------------------------------------------------------------

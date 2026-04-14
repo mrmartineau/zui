@@ -73,7 +73,9 @@ function registerProviders(): vscode.Disposable {
       vscode.languages.registerCompletionItemProvider(
         { language: lang, scheme: 'file' },
         classProvider,
-        '"', "'", ' ',
+        '"',
+        "'",
+        ' ',
       ),
     )
   }
@@ -83,14 +85,15 @@ function registerProviders(): vscode.Disposable {
       vscode.languages.registerCompletionItemProvider(
         { language: lang, scheme: 'file' },
         tokenProvider,
-        '-', '(',
+        '-',
+        '(',
       ),
     )
   }
 
   disposables.push(
     vscode.languages.registerColorProvider(
-      CSS_LANGUAGES.map(lang => ({ language: lang, scheme: 'file' })),
+      CSS_LANGUAGES.map((lang) => ({ language: lang, scheme: 'file' })),
       tokenProvider,
     ),
   )
@@ -98,7 +101,9 @@ function registerProviders(): vscode.Disposable {
   return vscode.Disposable.from(...disposables)
 }
 
-export async function activate(context: vscode.ExtensionContext): Promise<void> {
+export async function activate(
+  context: vscode.ExtensionContext,
+): Promise<void> {
   let providers: vscode.Disposable | undefined
 
   const sync = async () => {
@@ -118,7 +123,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   // Re-evaluate on config changes
   context.subscriptions.push(
-    vscode.workspace.onDidChangeConfiguration(async e => {
+    vscode.workspace.onDidChangeConfiguration(async (e) => {
       if (e.affectsConfiguration('zui.enable')) await sync()
     }),
   )

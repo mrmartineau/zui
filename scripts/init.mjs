@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import { createInterface } from 'node:readline/promises'
-import { stdin as input, stdout as output } from 'node:process'
+import { execSync } from 'node:child_process'
 import {
+  cpSync,
   existsSync,
+  mkdirSync,
   readFileSync,
   writeFileSync,
-  mkdirSync,
-  cpSync,
 } from 'node:fs'
-import { join, dirname } from 'node:path'
+import { dirname, join } from 'node:path'
+import { stdin as input, stdout as output } from 'node:process'
+import { createInterface } from 'node:readline/promises'
 import { fileURLToPath } from 'node:url'
-import { execSync } from 'node:child_process'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const pkgRoot = join(__dirname, '..')
@@ -19,14 +19,14 @@ const cwd = process.cwd()
 
 // Terminal colours
 const c = {
-  reset: '\x1b[0m',
+  blue: '\x1b[34m',
   bold: '\x1b[1m',
+  cyan: '\x1b[36m',
   dim: '\x1b[2m',
   green: '\x1b[32m',
-  yellow: '\x1b[33m',
-  blue: '\x1b[34m',
   red: '\x1b[31m',
-  cyan: '\x1b[36m',
+  reset: '\x1b[0m',
+  yellow: '\x1b[33m',
 }
 
 function success(msg) {
@@ -51,7 +51,9 @@ async function prompt(rl, question, defaultVal) {
 
 async function select(rl, question, options) {
   console.log(`\n${question}`)
-  options.forEach((opt, i) => console.log(`  ${c.dim}${i + 1}.${c.reset} ${opt}`))
+  options.forEach((opt, i) =>
+    console.log(`  ${c.dim}${i + 1}.${c.reset} ${opt}`),
+  )
   const answer = await rl.question(`\nEnter number: `)
   const idx = parseInt(answer.trim(), 10) - 1
   if (idx < 0 || idx >= options.length || Number.isNaN(idx)) {
@@ -68,15 +70,16 @@ async function confirm(rl, question) {
 function detectPackageManager() {
   if (existsSync(join(cwd, 'pnpm-lock.yaml'))) return 'pnpm'
   if (existsSync(join(cwd, 'yarn.lock'))) return 'yarn'
-  if (existsSync(join(cwd, 'bun.lockb')) || existsSync(join(cwd, 'bun.lock'))) return 'bun'
+  if (existsSync(join(cwd, 'bun.lockb')) || existsSync(join(cwd, 'bun.lock')))
+    return 'bun'
   return 'npm'
 }
 
 function copyDir(src, dest) {
   mkdirSync(dest, { recursive: true })
   cpSync(src, dest, {
-    recursive: true,
     filter: (src) => !src.endsWith('.DS_Store'),
+    recursive: true,
   })
 }
 
@@ -92,7 +95,9 @@ function patchImport(filePath, from, to) {
 async function main() {
   const rl = createInterface({ input, output })
 
-  console.log(`\n${c.bold}ZUI Init${c.reset} — copy source files into your project\n`)
+  console.log(
+    `\n${c.bold}ZUI Init${c.reset} — copy source files into your project\n`,
+  )
 
   // 1. Check for existing @mrmartineau/zui in the user's project
   const userPkgPath = join(cwd, 'package.json')
@@ -104,7 +109,9 @@ async function main() {
     }
     if (allDeps['@mrmartineau/zui']) {
       warn(`@mrmartineau/zui is listed in your package.json.`)
-      warn(`Continuing will copy source files that may conflict with the installed package.`)
+      warn(
+        `Continuing will copy source files that may conflict with the installed package.`,
+      )
       const ok = await confirm(rl, 'Continue anyway?')
       if (!ok) {
         console.log('\nAborted.')
@@ -200,10 +207,10 @@ async function main() {
   if (framework !== 'CSS only') {
     const pm = detectPackageManager()
     const installCmds = {
+      bun: 'bun add cva',
       npm: 'npm install cva',
       pnpm: 'pnpm add cva',
       yarn: 'yarn add cva',
-      bun: 'bun add cva',
     }
     info(`Installing cva via ${pm}…`)
     try {
