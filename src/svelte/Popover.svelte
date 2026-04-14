@@ -20,9 +20,13 @@
   const classes = $derived(
     ['zui-popover', className].filter(Boolean).join(' '),
   )
-  const anchorStyle = $derived(`position-anchor: --${id};`)
+  const mergedStyle = $derived(
+    rest.style
+      ? `position-anchor: --${id}; ${rest.style}`
+      : `position-anchor: --${id};`,
+  )
 </script>
 
-<div {id} {popover} class={classes} style={anchorStyle} {...rest}>
+<div {id} {popover} class={classes} {...rest} style={mergedStyle}>
   {@render children?.()}
 </div>

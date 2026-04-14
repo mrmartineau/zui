@@ -1,22 +1,16 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import type { HTMLLabelAttributes } from 'svelte/elements'
+  import type { HTMLInputAttributes } from 'svelte/elements'
 
-  type Props = HTMLLabelAttributes & {
+  type Props = Omit<HTMLInputAttributes, 'type'> & {
     class?: string
-    name?: string
-    value?: string | number | null
     group?: string | number | null
-    disabled?: boolean
     children?: Snippet
   }
 
   let {
     class: className,
-    name,
-    value,
     group = $bindable(),
-    disabled,
     children,
     ...rest
   }: Props = $props()
@@ -24,7 +18,7 @@
   const classes = $derived(['zui-radio', className].filter(Boolean).join(' '))
 </script>
 
-<label class={classes} {...rest}>
-  <input type="radio" {name} {value} {disabled} bind:group />
+<label class={classes}>
+  <input type="radio" bind:group {...rest} />
   {@render children?.()}
 </label>

@@ -1,22 +1,16 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import type { HTMLLabelAttributes } from 'svelte/elements'
+  import type { HTMLInputAttributes } from 'svelte/elements'
 
-  type Props = HTMLLabelAttributes & {
+  type Props = Omit<HTMLInputAttributes, 'type'> & {
     class?: string
-    name?: string
-    value?: string | number | null
     checked?: boolean
-    disabled?: boolean
     children?: Snippet
   }
 
   let {
     class: className,
-    name,
-    value,
     checked = $bindable(false),
-    disabled,
     children,
     ...rest
   }: Props = $props()
@@ -26,7 +20,7 @@
   )
 </script>
 
-<label class={classes} {...rest}>
-  <input type="checkbox" {name} {value} {disabled} bind:checked />
+<label class={classes}>
+  <input type="checkbox" bind:checked {...rest} />
   {@render children?.()}
 </label>
