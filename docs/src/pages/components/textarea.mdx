@@ -28,6 +28,12 @@ import { Textarea } from '@mrmartineau/zui/astro'
 <script setup>
 import { Textarea } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Textarea } from '@mrmartineau/zui/svelte'
+  let value = $state('')
+</script>
+
+<Textarea placeholder="Write something..." bind:value />`}
 >
   <textarea class="zui-textarea" placeholder="Write something..."></textarea>
 </Demo>
@@ -59,6 +65,12 @@ import { Label, Textarea } from '@mrmartineau/zui/astro'
 <script setup>
 import { Label, Textarea } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Label, Textarea } from '@mrmartineau/zui/svelte'
+</script>
+
+<Label for="message">Message</Label>
+<Textarea id="message" placeholder="Your message..." />`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="message">Message</label>
@@ -88,6 +100,11 @@ import { Textarea } from '@mrmartineau/zui/astro'
 <script setup>
 import { Textarea } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Textarea } from '@mrmartineau/zui/svelte'
+</script>
+
+<Textarea aria-invalid="true" value="This field has an error" />`}
 >
   <textarea class="zui-textarea" aria-invalid="true">This field has an error</textarea>
 </Demo>
@@ -114,6 +131,11 @@ import { Textarea } from '@mrmartineau/zui/astro'
 <script setup>
 import { Textarea } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Textarea } from '@mrmartineau/zui/svelte'
+</script>
+
+<Textarea disabled value="Cannot edit this" />`}
 >
   <textarea class="zui-textarea" disabled>Cannot edit this</textarea>
 </Demo>

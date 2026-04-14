@@ -119,6 +119,7 @@ async function main() {
   const framework = await select(rl, 'Which framework are you using?', [
     'React',
     'Astro',
+    'Svelte',
     'CSS only',
   ])
 
@@ -196,6 +197,35 @@ async function main() {
     success('Astro components copied')
   }
 
+  // 7b. Copy Svelte components
+  if (framework === 'Svelte' && compDest && compDestRel) {
+    info(`Copying Svelte components → ${compDestRel}/svelte`)
+    copyDir(join(pkgRoot, 'src/svelte'), join(compDest, 'svelte'))
+
+    info(`Copying shared variants → ${compDestRel}/shared`)
+    copyDir(join(pkgRoot, 'src/shared'), join(compDest, 'shared'))
+
+    // Copy colorScheme utility into shared/
+    cpSync(
+      join(pkgRoot, 'src/utils/colorScheme.ts'),
+      join(compDest, 'shared/colorScheme.ts'),
+    )
+
+    // Patch the useColorScheme rune file to point at the local copy
+    patchImport(
+      join(compDest, 'svelte/useColorScheme.svelte.ts'),
+      `'../utils/colorScheme'`,
+      `'../shared/colorScheme'`,
+    )
+    patchImport(
+      join(compDest, 'svelte/index.ts'),
+      `'../utils/colorScheme'`,
+      `'../shared/colorScheme'`,
+    )
+
+    success('Svelte components copied')
+  }
+
   // 8. Install cva
   if (framework !== 'CSS only') {
     const pm = detectPackageManager()
@@ -232,6 +262,12 @@ async function main() {
   if (framework === 'Astro' && compDestRel) {
     console.log(
       `  2. Import components from your local copy:\n     ${c.cyan}import Button from './${compDestRel}/astro/Button.astro'${c.reset}`,
+    )
+  }
+
+  if (framework === 'Svelte' && compDestRel) {
+    console.log(
+      `  2. Import components from your local copy:\n     ${c.cyan}import { Button } from './${compDestRel}/svelte/index'${c.reset}`,
     )
   }
 

@@ -1,0 +1,225 @@
+---
+layout: ../../layouts/Layout.astro
+title: Using with Svelte
+description: ZUI ships first-party Svelte 5 components with typed props and variant support out of the box.
+---
+
+## Setup
+
+Install ZUI and import the CSS in your app's entry point:
+
+```ts
+// src/app.ts (or +layout.svelte / main.ts)
+import '@mrmartineau/zui/css'
+```
+
+Then import components from `@mrmartineau/zui/svelte`:
+
+```svelte
+<script lang="ts">
+  import { Button, Badge, Input } from '@mrmartineau/zui/svelte'
+</script>
+```
+
+> **Note:** The Svelte components use Svelte 5 syntax (runes and snippets). They require `svelte@^5.0.0`.
+
+## Available components
+
+All components are exported from `@mrmartineau/zui/svelte`:
+
+- **Button** — with `variant`, `color`, `size`, `shape`, and `icon` props
+- **Badge** — with `variant` and `color` props
+- **Avatar** — with `size` and `shape` props, and a `fallback` snippet
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
+- **Input**, **Textarea**, **Select**
+- **Label**, **Checkbox**, **Radio**
+- **Text**, **ZuiLink**, **Code**, **Pre**, **Prose**
+- **Table**, **TableHeader**, **TableBody**, **TableFooter**, **TableRow**, **TableHead**, **TableCell**, **TableCaption**
+- **Tooltip**, **Popover**, **Dialog** and sub-components
+- **Menu**, **MenuTrigger**, **MenuItem**
+- **Collapsible**, **CollapsibleTrigger**, **CollapsibleContent**
+- **Accordion**, **AccordionItem**, **AccordionTrigger**, **AccordionContent**
+- **Flex**
+
+Every component spreads remaining props onto its root element via `{...rest}`, so all standard HTML attributes are forwarded.
+
+> **Note:** The link component is exported as `ZuiLink` to avoid conflicts with framework or app-level link components.
+
+## Component examples
+
+### Button
+
+```svelte
+<script lang="ts">
+  import { Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<Button variant="fill" color="theme">Save</Button>
+<Button variant="outline" color="accent">Cancel</Button>
+<Button variant="ghost" size="sm">Settings</Button>
+<Button variant="subtle" color="destructive">Delete</Button>
+<Button href="/about">About (renders as anchor)</Button>
+```
+
+Button variants: `fill`, `subtle`, `outline`, `ghost`, `link`
+
+Colours: `theme`, `accent`, `destructive`
+
+Sizes: `xs`, `sm`, `md` (default), `lg`, `xl`
+
+Shapes: `default`, `hard`, `soft`, `squircle`
+
+### Badge
+
+```svelte
+<script lang="ts">
+  import { Badge } from '@mrmartineau/zui/svelte'
+</script>
+
+<Badge color="green">Active</Badge>
+<Badge variant="fill" color="red">Error</Badge>
+<Badge variant="outline" color="blue">Info</Badge>
+```
+
+### Card
+
+```svelte
+<script lang="ts">
+  import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardBody,
+  } from '@mrmartineau/zui/svelte'
+</script>
+
+<Card>
+  <CardHeader>
+    <CardTitle>John Doe</CardTitle>
+    <CardDescription>Software Engineer</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Card content goes here.</p>
+  </CardBody>
+</Card>
+```
+
+Pass an `href` prop to make the card an interactive link:
+
+```svelte
+<Card href="/users/1">
+  <CardBody>Clickable card</CardBody>
+</Card>
+```
+
+### Forms
+
+```svelte
+<script lang="ts">
+  import {
+    Label,
+    Input,
+    Textarea,
+    Select,
+    Checkbox,
+    Radio,
+    Button,
+  } from '@mrmartineau/zui/svelte'
+
+  let name = $state('')
+  let agreed = $state(false)
+  let plan = $state('free')
+</script>
+
+<form>
+  <Label for="name">Name</Label>
+  <Input id="name" type="text" placeholder="Your name" bind:value={name} />
+
+  <Label for="email">Email</Label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+
+  <Label for="message">Message</Label>
+  <Textarea id="message" rows={4} placeholder="Your message" />
+
+  <Label for="role">Role</Label>
+  <Select id="role">
+    <option value="dev">Developer</option>
+    <option value="design">Designer</option>
+  </Select>
+
+  <Checkbox bind:checked={agreed}>I agree to the terms</Checkbox>
+
+  <Radio name="plan" value="free" bind:group={plan}>Free</Radio>
+  <Radio name="plan" value="pro" bind:group={plan}>Pro</Radio>
+
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+### Typography
+
+```svelte
+<script lang="ts">
+  import { Text, ZuiLink, Code, Prose } from '@mrmartineau/zui/svelte'
+</script>
+
+<Prose>
+  <Text size="lg">Large text</Text>
+  <Text size="sm">Small text</Text>
+  <p>
+    Visit the <ZuiLink href="/docs">documentation</ZuiLink> for more info.
+  </p>
+  <p>
+    Run <Code>npm install @mrmartineau/zui</Code> to get started.
+  </p>
+</Prose>
+```
+
+## Using variant helpers directly
+
+ZUI exports the `buttonVariants` and `badgeVariants` functions if you need to generate class strings manually:
+
+```ts
+import { buttonVariants, badgeVariants } from '@mrmartineau/zui/svelte'
+
+const classes = buttonVariants({ variant: 'outline', size: 'sm' })
+// → "zui-button zui-button-variant-outline zui-button-size-sm …"
+```
+
+## Colour scheme rune
+
+```svelte
+<script lang="ts">
+  import { useColorScheme } from '@mrmartineau/zui/svelte'
+
+  const theme = useColorScheme()
+</script>
+
+<button onclick={() => theme.set(theme.scheme === 'dark' ? 'light' : 'dark')}>
+  {theme.scheme}
+</button>
+```
+
+## Using CSS classes directly
+
+You can always use the underlying CSS classes without the Svelte components:
+
+```svelte
+<div class="zui-card">
+  <div class="zui-card-header">
+    <h2 class="zui-card-title">Title</h2>
+  </div>
+</div>
+```
+
+## Theming
+
+ZUI themes are pure CSS — override custom properties in your stylesheet. See the [Theming](/theming) page for full details.
+
+```css
+:root {
+  --color-theme: light-dark(var(--color-violet-600), var(--color-violet-400));
+  --radius-scale: 1.5;
+}
+```

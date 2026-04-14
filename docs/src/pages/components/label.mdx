@@ -33,6 +33,12 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Label for="demo">Email address</Label>
+<Input type="email" id="demo" placeholder="you@example.com" />`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="demo">Email address</label>
@@ -67,6 +73,12 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Label for="req" class="zui-label-required">Required field</Label>
+<Input type="text" id="req" required />`}
 >
   <div style="width: 100%;">
     <label class="zui-label zui-label-required" for="req">Required field</label>
@@ -116,6 +128,15 @@ import { Label, Input } from '@mrmartineau/zui/astro'
 <script setup>
 import { Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
+  svelte={`<script lang="ts">
+  import { Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Label for="desc">
+  Username
+  <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+</Label>
+<Input type="text" id="desc" />`}
 >
   <div style="width: 100%;">
     <label class="zui-label" for="desc">

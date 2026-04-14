@@ -4,7 +4,7 @@ title: Other UI Libraries
 description: ZUI is CSS-first — use its classes directly with any framework that doesn't have a first-party wrapper.
 ---
 
-ZUI ships first-party wrappers for [React](/guides/react), [Astro](/guides/astro), [Solid](/guides/solid), and [Vue](/guides/vue). For other frameworks, use the CSS classes directly.
+ZUI ships first-party wrappers for [React](/guides/react), [Astro](/guides/astro), [Solid](/guides/solid), [Svelte](/guides/svelte), and [Vue](/guides/vue). For other frameworks, use the CSS classes directly.
 
 Install ZUI and import the stylesheet however your framework handles CSS
 
@@ -134,28 +134,6 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 
 ## Framework examples
 
-### Svelte
-
-```svelte
-<button class="zui-button zui-button-variant-fill zui-button-color-theme">
-  Save
-</button>
-<span class="zui-badge zui-badge-color-green">Active</span>
-
-<div class="zui-card">
-  <div class="zui-card-header">
-    <h2 class="zui-card-title">{title}</h2>
-    <p class="zui-card-description">{description}</p>
-  </div>
-  <div class="zui-card-body">
-    <input class="zui-input" bind:value={email} type="email" placeholder="Email" />
-    <button class="zui-button zui-button-variant-outline" on:click={submit}>
-      Submit
-    </button>
-  </div>
-</div>
-```
-
 ### Plain HTML
 
 ```html
@@ -242,32 +220,16 @@ ZUI ships utility classes you can use in any framework. Note that spacing, flex,
 
 ## Building wrapper components
 
-You can create thin wrapper components in any framework using the CSS classes. Here's a Svelte example:
+You can create thin wrapper components in any framework using the CSS classes. Here's a generic example using a hypothetical template language:
 
-```svelte
-<!-- Button.svelte -->
-<script>
-  export let variant = 'fill'
-  export let color = 'theme'
-  export let size = undefined
-  export let href = undefined
-
-  $: classes = [
-    'zui-button',
-    `zui-button-variant-${variant}`,
-    `zui-button-color-${color}`,
-    size && `zui-button-size-${size}`,
-  ].filter(Boolean).join(' ')
-</script>
-
-{#if href}
-  <a {href} class={classes}><slot /></a>
-{:else}
-  <button class={classes} on:click><slot /></button>
-{/if}
+```html
+<!-- Button.template -->
+<button class="zui-button zui-button-variant-{variant} zui-button-color-{color}">
+  {label}
+</button>
 ```
 
-> **Tip:** ZUI already ships first-party wrappers for [React](/guides/react), [Astro](/guides/astro), [Solid](/guides/solid), and [Vue](/guides/vue).
+> **Tip:** ZUI already ships first-party wrappers for [React](/guides/react), [Astro](/guides/astro), [Solid](/guides/solid), [Svelte](/guides/svelte), and [Vue](/guides/vue).
 
 ## CSS Layers
 

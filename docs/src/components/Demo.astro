@@ -6,15 +6,17 @@ interface Props {
   react?: string
   astro?: string
   solid?: string
+  svelte?: string
   vue?: string
 }
 
-const { html, react, astro: astroCode, solid, vue } = Astro.props
+const { html, react, astro: astroCode, solid, svelte, vue } = Astro.props
 const tabs = [
   html && { id: 'html', label: 'HTML', code: html, lang: 'html' as const },
   react && { id: 'react', label: 'React', code: react, lang: 'tsx' as const },
   astroCode && { id: 'astro', label: 'Astro', code: astroCode, lang: 'astro' as const },
   solid && { id: 'solid', label: 'Solid', code: solid, lang: 'tsx' as const },
+  svelte && { id: 'svelte', label: 'Svelte', code: svelte, lang: 'svelte' as const },
   vue && { id: 'vue', label: 'Vue', code: vue, lang: 'vue' as const },
 ].filter(Boolean) as { id: string; label: string; code: string; lang: string }[]
 
