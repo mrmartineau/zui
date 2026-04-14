@@ -1,19 +1,4 @@
 {
-  "name": "docs",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
-  "engines": {
-    "node": ">=22.12.0"
-  },
-  "scripts": {
-    "dev": "portless zui astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "generate-types": "wrangler types",
-    "deploy": "wrangler deploy"
-  },
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.6",
     "@astrojs/mdx": "^5.0.3",
@@ -23,5 +8,20 @@
   },
   "devDependencies": {
     "@types/node": "^25.5.0"
-  }
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "deploy": "wrangler deploy",
+    "dev": "portless zui astro dev",
+    "generate-types": "wrangler types",
+    "preview": "astro preview"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

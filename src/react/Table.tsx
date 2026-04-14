@@ -6,5 +6,9 @@ export type TableProps = TableHTMLAttributes<HTMLTableElement> & {
 
 export function Table({ className, children, ...props }: TableProps) {
   const classes = ['zui-table', className].filter(Boolean).join(' ')
-  return <table className={classes} {...props}>{children}</table>
+  return (
+    <table className={classes} {...props}>
+      {children}
+    </table>
+  )
 }

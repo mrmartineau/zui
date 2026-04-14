@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import type { VariantProps } from 'cva'
+import { computed, ref } from 'vue'
 import { avatarVariants } from '../shared/avatarVariants'
 
 defineOptions({ inheritAttrs: false })
@@ -33,5 +33,11 @@ const props = defineProps<{
 }>()
 
 const imageError = ref(false)
-const classes = computed(() => avatarVariants({ size: props.size, shape: props.shape, className: props.class }))
+const classes = computed(() =>
+  avatarVariants({
+    className: props.class,
+    shape: props.shape,
+    size: props.size,
+  }),
+)
 </script>

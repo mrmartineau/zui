@@ -13,5 +13,7 @@ const props = defineProps<{
   class?: string
 }>()
 
-const classes = computed(() => ['zui-table-body', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-table-body', props.class].filter(Boolean).join(' '),
+)
 </script>

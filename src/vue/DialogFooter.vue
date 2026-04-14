@@ -13,5 +13,7 @@ const props = defineProps<{
   class?: string
 }>()
 
-const classes = computed(() => ['zui-dialog-footer', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-dialog-footer', props.class].filter(Boolean).join(' '),
+)
 </script>

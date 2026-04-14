@@ -2,9 +2,9 @@
   :root {
     --font-stack-sans: system-ui, sans-serif;
     --font-stack-serif:
-      Charter, 'Bitstream Charter', 'Sitka Text', Georgia, Cambria, serif;
+      Charter, "Bitstream Charter", "Sitka Text", Georgia, Cambria, serif;
     --font-stack-mono:
-      ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo,
-      Consolas, 'DejaVu Sans Mono', monospace;
+      ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+      "DejaVu Sans Mono", monospace;
   }
 }

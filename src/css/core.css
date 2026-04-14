@@ -29,9 +29,10 @@
   * {
     scrollbar-width: thin;
     scrollbar-color: light-dark(
-      oklch(from var(--color-theme) calc(l - 0.1) c h),
-      oklch(from var(--color-theme) calc(l + 0.1) c h / 30%)
-    ) transparent;
+        oklch(from var(--color-theme) calc(l - 0.1) c h),
+        oklch(from var(--color-theme) calc(l + 0.1) c h / 30%)
+      )
+      transparent;
   }
 
   :focus-visible {

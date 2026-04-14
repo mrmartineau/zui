@@ -10,8 +10,24 @@ interface Props extends HTMLAttributes<'button'>, ButtonVariantProps {
   class?: string
 }
 
-const { href, class: className, variant, color, size, shape, icon, ...props } = Astro.props
-const classes = buttonVariants({ variant, color, size, shape, icon, class: className })
+const {
+  href,
+  class: className,
+  variant,
+  color,
+  size,
+  shape,
+  icon,
+  ...props
+} = Astro.props
+const classes = buttonVariants({
+  class: className,
+  color,
+  icon,
+  shape,
+  size,
+  variant,
+})
 ---
 
 {

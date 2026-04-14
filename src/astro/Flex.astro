@@ -9,8 +9,29 @@ interface Props extends HTMLAttributes<'div'>, FlexVariantProps {
   class?: string
 }
 
-const { class: className, display, direction, align, justify, wrap, gap, gapX, gapY, ...props } = Astro.props
-const classes = flexVariants({ display, direction, align, justify, wrap, gap, gapX, gapY, class: className })
+const {
+  class: className,
+  display,
+  direction,
+  align,
+  justify,
+  wrap,
+  gap,
+  gapX,
+  gapY,
+  ...props
+} = Astro.props
+const classes = flexVariants({
+  align,
+  class: className,
+  direction,
+  display,
+  gap,
+  gapX,
+  gapY,
+  justify,
+  wrap,
+})
 ---
 
 <div class={classes} {...props}><slot /></div>

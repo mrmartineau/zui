@@ -14,5 +14,9 @@ const props = defineProps<{
   flush?: boolean
 }>()
 
-const classes = computed(() => ['zui-accordion', props.flush && 'zui-accordion-flush', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-accordion', props.flush && 'zui-accordion-flush', props.class]
+    .filter(Boolean)
+    .join(' '),
+)
 </script>

@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro'
 import { Code } from 'astro:components'
 import { version } from '../../../package.json'
+import Layout from '../layouts/Layout.astro'
 
 interface PageFrontmatter {
   title: string
@@ -16,10 +16,12 @@ interface FooterLink {
 const allMdxPages = import.meta.glob('./**/*.mdx', { eager: true })
 
 function pathToHref(filePath: string): string {
-  return filePath
-    .replace(/^\./, '')
-    .replace(/\.mdx$/, '')
-    .replace(/\/index$/, '') || '/'
+  return (
+    filePath
+      .replace(/^\./, '')
+      .replace(/\.mdx$/, '')
+      .replace(/\/index$/, '') || '/'
+  )
 }
 
 function buildSectionLinks(section: string): FooterLink[] {
@@ -29,9 +31,9 @@ function buildSectionLinks(section: string): FooterLink[] {
       const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
       const isIndex = path.endsWith('/index.mdx')
       return {
+        _sort: isIndex ? -1 : (fm.order ?? Infinity),
         href: pathToHref(path),
         title: fm.title,
-        _sort: isIndex ? -1 : (fm.order ?? Infinity),
       }
     })
     .sort((a, b) => a._sort - b._sort || a.title.localeCompare(b.title))

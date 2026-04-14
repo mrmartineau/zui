@@ -6,5 +6,9 @@ export type TableBodyProps = HTMLAttributes<HTMLTableSectionElement> & {
 
 export function TableBody({ className, children, ...props }: TableBodyProps) {
   const classes = ['zui-table-body', className].filter(Boolean).join(' ')
-  return <tbody className={classes} {...props}>{children}</tbody>
+  return (
+    <tbody className={classes} {...props}>
+      {children}
+    </tbody>
+  )
 }

@@ -12,8 +12,16 @@ interface Props extends HTMLAttributes<'span'>, AvatarVariantProps {
   class?: string
 }
 
-const { src, alt, fallback, class: className, size, shape, ...props } = Astro.props
-const classes = avatarVariants({ size, shape, class: className })
+const {
+  src,
+  alt,
+  fallback,
+  class: className,
+  size,
+  shape,
+  ...props
+} = Astro.props
+const classes = avatarVariants({ class: className, shape, size })
 ---
 
 <span class={classes} {...props}>

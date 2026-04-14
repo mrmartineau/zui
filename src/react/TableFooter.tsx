@@ -4,7 +4,15 @@ export type TableFooterProps = HTMLAttributes<HTMLTableSectionElement> & {
   className?: string
 }
 
-export function TableFooter({ className, children, ...props }: TableFooterProps) {
+export function TableFooter({
+  className,
+  children,
+  ...props
+}: TableFooterProps) {
   const classes = ['zui-table-footer', className].filter(Boolean).join(' ')
-  return <tfoot className={classes} {...props}>{children}</tfoot>
+  return (
+    <tfoot className={classes} {...props}>
+      {children}
+    </tfoot>
+  )
 }

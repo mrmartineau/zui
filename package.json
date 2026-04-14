@@ -1,29 +1,59 @@
 {
-  "name": "@mrmartineau/zui",
-  "version": "1.0.0",
+  "bin": {
+    "zui": "scripts/init.mjs"
+  },
+  "dependencies": {
+    "cva": "1.0.0-beta.4"
+  },
   "description": "ZUI — a CSS UI library with React, Astro, Solid, and Vue components",
-  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
+    "@mrmartineau/kit": "^0.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@tsdown/css": "^0.21.4",
+    "@types/react": "^19.0.0",
+    "astro": "^6.0.8",
+    "chokidar-cli": "^3.0.0",
+    "lightningcss": "^1.32.0",
+    "semantic-release": "^25.0.3",
+    "solid-js": "^1.9.0",
+    "tsdown": "^0.21.4",
+    "typescript": "^5.8.0",
+    "vue": "^3.5.0"
+  },
   "exports": {
+    "./astro": {
+      "import": "./src/astro/index.ts"
+    },
+    "./astro/*": {
+      "import": "./src/astro/*"
+    },
     "./css": {
-      "types": "./dist/css/zui.css.d.ts",
+      "default": "./dist/css/zui.css",
       "style": "./dist/css/zui.css",
-      "default": "./dist/css/zui.css"
+      "types": "./dist/css/zui.css.d.ts"
     },
     "./css/min": {
-      "types": "./dist/css/zui.min.css.d.ts",
+      "default": "./dist/css/zui.min.css",
       "style": "./dist/css/zui.min.css",
-      "default": "./dist/css/zui.min.css"
+      "types": "./dist/css/zui.min.css.d.ts"
     },
     "./react": {
       "import": {
-        "types": "./dist/react/index.d.mts",
-        "default": "./dist/react/index.mjs"
+        "default": "./dist/react/index.mjs",
+        "types": "./dist/react/index.d.mts"
       }
     },
     "./solid": {
       "import": {
-        "types": "./dist/solid/index.d.mts",
-        "default": "./dist/solid/index.mjs"
+        "default": "./dist/solid/index.mjs",
+        "types": "./dist/solid/index.d.mts"
+      }
+    },
+    "./utils": {
+      "import": {
+        "default": "./dist/utils/index.mjs",
+        "types": "./dist/utils/index.d.mts"
       }
     },
     "./vue": {
@@ -31,22 +61,7 @@
     },
     "./vue/*": {
       "import": "./src/vue/*"
-    },
-    "./utils": {
-      "import": {
-        "types": "./dist/utils/index.d.mts",
-        "default": "./dist/utils/index.mjs"
-      }
-    },
-    "./astro": {
-      "import": "./src/astro/index.ts"
-    },
-    "./astro/*": {
-      "import": "./src/astro/*"
     }
-  },
-  "bin": {
-    "zui": "scripts/init.mjs"
   },
   "files": [
     "dist",
@@ -60,41 +75,17 @@
     "src/utils",
     "skills"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
-    "generate:colors": "node scripts/generate-colors.js",
-    "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial",
-    "docs:dev": "pnpm run build && pnpm --filter docs run dev",
-    "docs:build": "pnpm run build && pnpm --filter docs run build",
-    "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy"
-  },
-  "devDependencies": {
-    "@semantic-release/git": "^10.0.1",
-    "@tsdown/css": "^0.21.4",
-    "@types/react": "^19.0.0",
-    "astro": "^6.0.8",
-    "chokidar-cli": "^3.0.0",
-    "lightningcss": "^1.32.0",
-    "semantic-release": "^25.0.3",
-    "solid-js": "^1.9.0",
-    "tsdown": "^0.21.4",
-    "typescript": "^5.8.0",
-    "vue": "^3.5.0"
-  },
+  "name": "@mrmartineau/zui",
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "solid-js": "^1.7.0",
     "vue": "^3.3.0"
   },
   "peerDependenciesMeta": {
-    "react": {
+    "astro": {
       "optional": true
     },
-    "astro": {
+    "react": {
       "optional": true
     },
     "solid-js": {
@@ -104,7 +95,19 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "cva": "1.0.0-beta.4"
-  }
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "check": "biome check --write",
+    "dev": "tsdown --watch",
+    "docs:build": "pnpm run build && pnpm --filter docs run build",
+    "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
+    "docs:dev": "pnpm run build && pnpm --filter docs run dev",
+    "generate:colors": "node scripts/generate-colors.js",
+    "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }

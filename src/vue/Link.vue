@@ -7,11 +7,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-defineOptions({ name: 'ZuiLink', inheritAttrs: false })
+defineOptions({ inheritAttrs: false, name: 'ZuiLink' })
 
 const props = defineProps<{
   class?: string
 }>()
 
-const classes = computed(() => ['zui-link', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-link', props.class].filter(Boolean).join(' '),
+)
 </script>

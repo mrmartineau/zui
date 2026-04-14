@@ -1,5 +1,5 @@
-import type { HTMLAttributes } from 'react'
 import type { VariantProps } from 'cva'
+import type { HTMLAttributes } from 'react'
 import { flexVariants } from '../shared/flexVariants'
 
 type FlexVariantProps = VariantProps<typeof flexVariants>
@@ -23,15 +23,15 @@ export function Flex({
   ...props
 }: FlexProps) {
   const classes = flexVariants({
-    display,
-    direction,
     align,
-    justify,
-    wrap,
+    className,
+    direction,
+    display,
     gap,
     gapX,
     gapY,
-    className,
+    justify,
+    wrap,
   })
   return (
     <div className={classes} {...props}>

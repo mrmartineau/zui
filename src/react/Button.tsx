@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import type { VariantProps } from 'cva'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import { buttonVariants } from '../shared/buttonVariants'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
@@ -29,11 +29,28 @@ export function Button({
   icon,
   ...props
 }: ButtonProps) {
-  const classes = buttonVariants({ variant, color, size, shape, icon, className })
+  const classes = buttonVariants({
+    className,
+    color,
+    icon,
+    shape,
+    size,
+    variant,
+  })
 
   if ('href' in props && props.href) {
-    return <a className={classes} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)} />
+    return (
+      <a
+        className={classes}
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+      />
+    )
   }
 
-  return <button className={classes} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)} />
+  return (
+    <button
+      className={classes}
+      {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+    />
+  )
 }

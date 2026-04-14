@@ -1,18 +1,40 @@
 ---
 import ColorRow from './ColorRow.astro'
 
-const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 const colorNames = [
-  'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald',
-  'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple',
-  'fuchsia', 'pink', 'rose', 'slate', 'gray', 'zinc',
-  'neutral', 'stone', 'taupe', 'mauve', 'mist', 'olive'
-];
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
+  'rose',
+  'slate',
+  'gray',
+  'zinc',
+  'neutral',
+  'stone',
+  'taupe',
+  'mauve',
+  'mist',
+  'olive',
+]
 
 const colors = colorNames.map((name) => ({
   name,
   shades: shades.map((shade) => ({ shade, value: `--color-${name}-${shade}` })),
-}));
+}))
 ---
 
 <div class="color-palette">
