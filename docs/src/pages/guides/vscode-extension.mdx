@@ -1,0 +1,78 @@
+---
+layout: ../../layouts/Layout.astro
+title: VS Code Extension
+description: Autocomplete, documentation, and colour previews for ZUI classes and design tokens in VS Code.
+---
+
+## Features
+
+The **ZUI IntelliSense** extension gives you autocomplete and inline colour swatches for every ZUI class and design token directly in your editor.
+
+### Class autocomplete
+
+Type inside a `class`, `className`, or `:class` attribute and get suggestions for every ZUI component class and utility class. Works in HTML, JSX/TSX, Astro, and Vue files.
+
+### Design token autocomplete
+
+Type `var(--` or `: --` in any CSS context and get suggestions for every ZUI design token — colours, spacing, radii, shadows, font sizes, z-indexes, easing, and more. Works in CSS, SCSS, Less, inline `style` attributes, and CSS-in-JS strings.
+
+### Colour swatches
+
+ZUI colour tokens appear with inline colour swatches wherever they are used. The extension pre-resolves `oklch()` values to sRGB so swatches render correctly even in editors that don't natively support OKLCH.
+
+## Install from the VS Code Marketplace
+
+1. Open VS Code
+2. Go to the Extensions view (`Cmd+Shift+X` on macOS, `Ctrl+Shift+X` on Windows/Linux)
+3. Search for **ZUI IntelliSense** by `mrmartineau`
+4. Click **Install**
+
+Or install from the command line:
+
+```sh
+code --install-extension mrmartineau.vscode-zui
+```
+
+## Install locally (for development)
+
+If you're working on the extension itself or want to run a local build:
+
+```sh
+# Navigate to the extension directory
+cd extensions/vscode-zui
+
+# Install dependencies
+pnpm install
+
+# Build the extension (generates the manifest and bundles the code)
+pnpm run build
+
+# Package it as a .vsix file
+pnpm run package
+```
+
+This produces a `vscode-zui-*.vsix` file. Install it in VS Code:
+
+```sh
+code --install-extension vscode-zui-0.1.0.vsix
+```
+
+Or in VS Code, open the Extensions view, click the `···` menu, choose **Install from VSIX…**, and select the file.
+
+To develop with live reloading, run the watch command and use the VS Code **Run and Debug** panel (`F5`) to launch an Extension Development Host:
+
+```sh
+pnpm run dev
+```
+
+## Configuration
+
+| Setting      | Type                              | Default  | Description                                                                                                         |
+| ------------ | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
+| `zui.enable` | `"auto"` \| `"always"` \| `"never"` | `"auto"` | `auto` activates only in workspaces that depend on `@mrmartineau/zui`. `always` forces IntelliSense on. `never` disables the extension. |
+
+## Activation
+
+By default the extension only activates when it detects `@mrmartineau/zui` in a workspace `package.json` (under `dependencies`, `devDependencies`, or `peerDependencies`). If you use ZUI via a CDN or by copying the CSS directly, set `zui.enable` to `"always"` in your VS Code settings.
+
+The extension re-evaluates whenever any `package.json` in the workspace changes, so adding or removing ZUI as a dependency toggles completions without a reload.
