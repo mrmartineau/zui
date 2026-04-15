@@ -1301,7 +1301,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-04-14T23:01:23.736Z",
+  "generatedAt": "2026-04-15T00:00:56.349Z",
   "tokens": [
     {
       "category": "animation",
@@ -1416,27 +1416,27 @@
     {
       "category": "aspect",
       "name": "--ratio-landscape",
-      "value": "4/3"
+      "value": "4 / 3"
     },
     {
       "category": "aspect",
       "name": "--ratio-portrait",
-      "value": "3/4"
+      "value": "3 / 4"
     },
     {
       "category": "aspect",
       "name": "--ratio-widescreen",
-      "value": "16/9"
+      "value": "16 / 9"
     },
     {
       "category": "aspect",
       "name": "--ratio-ultrawide",
-      "value": "18/5"
+      "value": "18 / 5"
     },
     {
       "category": "aspect",
       "name": "--ratio-golden",
-      "value": "1.618/1"
+      "value": "1.618 / 1"
     },
     {
       "category": "color",
@@ -3315,7 +3315,7 @@
     {
       "category": "font-stacks",
       "name": "--font-stack-serif",
-      "value": "Charter, 'Bitstream Charter', 'Sitka Text', Georgia, Cambria, serif"
+      "value": "Charter, \"Bitstream Charter\", \"Sitka Text\", Georgia, Cambria, serif"
     },
     {
       "category": "font-weight",
