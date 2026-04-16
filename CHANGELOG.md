@@ -58,7 +58,7 @@
 * **zui:** increase the font-size scale slightly ([ca334a2](https://github.com/mrmartineau/zui/commit/ca334a2352c18407240171ea32c2350452e87b5e))
 * **zui:** simplify font vars & update/improve docs ([ac7c33a](https://github.com/mrmartineau/zui/commit/ac7c33a45b124fa5cc92fe42201001fd48eb97be))
 
-## 0.8.0
+## 0.8.0 (05-04-2026)
 
 ### Minor Changes
 
@@ -72,20 +72,81 @@
 - c7f166f: remove useless scale calc for "full" border radius
 - 3968b2a: reduce padding in code blocks
 
-## 0.7.0
+## 0.7.0 (31-03-2026)
 
 ### Minor Changes
 
 - Add Solid.js and Vue components
 
-## 0.6.0
+## 0.6.0 (31-03-2026)
 
 ### Minor Changes
 
 - add CSS vars for muted and faint colours
 
-## 0.5.0
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.5.0...@mrmartineau/zui@0.6.0
+
+## 0.5.0 (29-03-2026)
 
 ### Minor Changes
 
 - Add avatar component & more functionality to the dialog component
+
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.4.0...0.5.0
+
+## 0.4.0 (27-03-2026)
+
+## Features
+
+* feat(zui): add menu component (68016e7)
+* feat(zui): increase the font-size scale slightly (ca334a2)
+* feat(zui): add .zui-text-0 class to match .zui-text-base (250b8fd)
+* feat(zui): add .stack util class (829f04a)
+* feat(docs): infer sidebar nav from file/folder structure (b78d764)
+* feat(docs): add cloudflare analytics (c66d0c9)
+
+## Fixes
+
+* fix(zui): focus styles :shame: (2b79564)
+
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.3.1...0.4.0
+
+## 0.3.1 (26-03-2026)
+
+## Fixes
+
+- disabled input styles
+
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.3.0...0.3.1
+
+## 0.3.0 (26-03-2026)
+
+## Features
+
+- added Accordion and Collapsible components
+- simplified font variables
+
+## Fixes
+
+- incorrect t-shirt vars used for spacing vars
+
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.2.1...0.3.0
+
+## 0.2.1 (25-03-2026)
+
+- Fixed an issue with CSS types
+
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.2.0...0.2.1
+
+## 0.2.0 (25-03-2026)
+
+## What's Changed
+* docs: add utility classes overview page by @mrmartineau in https://github.com/mrmartineau/zui/pull/1
+* Reduce font size for code blocks on docs site by @mrmartineau in https://github.com/mrmartineau/zui/pull/2
+
+**Full Changelog**: https://github.com/mrmartineau/zui/compare/0.1.0...0.2.0
+
+## 0.1.0 (25-03-2026)
+
+Initial release of ZUI
+
