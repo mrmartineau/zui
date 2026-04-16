@@ -35,7 +35,7 @@ async function hasZuiDependency(): Promise<boolean> {
   const pkgFiles = await vscode.workspace.findFiles(
     '**/package.json',
     '**/node_modules/**',
-    100,
+    undefined,
   )
   for (const uri of pkgFiles) {
     try {
