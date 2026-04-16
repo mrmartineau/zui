@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions'
 import '@mrmartineau/zui/css'
 import '../index.css'
+import { version } from '../../../package.json'
 import DarkModeSwitcher from '../components/DarkModeSwitcher.astro'
 import MiniThemeSwitcher from '../components/MiniThemeSwitcher.astro'
 import Sidebar from '../components/Sidebar.astro'
@@ -9,7 +10,7 @@ import TableOfContents from '../components/TableOfContents.astro'
 import ThemeSwitcher from '../components/ThemeSwitcher.astro'
 
 interface Props {
-  title: string
+  title?: string
   description?: string
 }
 
@@ -68,7 +69,10 @@ const footerSections = Object.entries(indexPages)
   </head>
   <body>
     <header class="site-header">
-      <a href="/" class="site-logo">ZUI</a>
+      <div class="site-header-start">
+        <a href="/" class="site-logo">ZUI</a>
+        <a href="/changelog" class="zui-badge zui-badge-variant-outline site-version">v{version}</a>
+      </div>
       <div class="site-header-end">
         <a
           href="https://github.com/mrmartineau/zui"
@@ -121,10 +125,12 @@ const footerSections = Object.entries(indexPages)
         <Sidebar currentPath={currentPath} />
       </aside>
       <main class="site-main docs-prose" transition:animate="fade" data-pagefind-body>
-        <div class="page-header">
-          <h1>{title}</h1>
-          {description && <p class="page-description">{description}</p>}
-        </div>
+        {title || description ? (
+          <div class="page-header">
+            {title ? (<h1>{title}</h1>) : null}
+            {description ? <p class="page-description">{description}</p> : null}
+          </div>
+        ) : null}
         <slot />
       </main>
       <TableOfContents />
@@ -133,7 +139,7 @@ const footerSections = Object.entries(indexPages)
     <footer class="site-footer">
       <div class="site-footer-inner">
         <p class="site-footer-credit">
-          Made by <a href="https://zander.wtf">Zander Martineau</a>
+          <b>ZUI</b> (Zooey) is made by <a href="https://zander.wtf">Zander Martineau</a> &middot; <a href="/changelog">v{version}</a>
         </p>
         <nav class="site-footer-nav" aria-label="Footer">
           {footerSections.map(({ label, href }) => (
@@ -178,6 +184,17 @@ const footerSections = Object.entries(indexPages)
     top: 0;
     z-index: var(--z-1);
     height:  var(--site-header-height);
+  }
+
+  .site-header-start {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+
+  .site-version {
+    text-decoration: none;
+    font-size: var(--step--2);
   }
 
   .site-header-end {

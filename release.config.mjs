@@ -8,7 +8,11 @@ export default {
     [
       '@semantic-release/git',
       {
-        assets: ['package.json', 'CHANGELOG.md', 'extensions/vscode-zui/src/manifest.json'],
+        assets: [
+          'package.json',
+          'CHANGELOG.md',
+          'extensions/vscode-zui/src/manifest.json',
+        ],
         message:
           'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}',
       },

@@ -41,6 +41,11 @@ export default defineConfig({
         ),
       },
     },
+    server: {
+      fs: {
+        allow: ['..'],
+      },
+    },
     ssr: {
       external: ['@mrmartineau/zui/vue'],
     },

@@ -87,6 +87,12 @@ const sections = [...sectionMap.values()]
     }),
   }))
 
+// Inject Changelog into the Guides section
+const guidesSection = sections.find((s) => s.heading === 'Guides')
+if (guidesSection) {
+  guidesSection.items.push({ href: '/changelog', label: 'Changelog' })
+}
+
 function isCurrent(href: string, exact = false) {
   if (href === '/') return currentPath === '/' || currentPath === ''
   if (exact) return currentPath === href
