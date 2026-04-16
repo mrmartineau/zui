@@ -9,6 +9,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
     "@mrmartineau/kit": "^0.1.0",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@tsdown/css": "^0.21.4",
     "@types/react": "^19.0.0",
