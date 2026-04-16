@@ -118,14 +118,14 @@ The workflow requires an `NPM_TOKEN` secret set in the repository settings. `GIT
 
 | Specifier                    | Resolves to                  |
 | :--------------------------- | :--------------------------- |
-| `@mrmartineau/zui/css`       | `dist/css/zui.css`           |
-| `@mrmartineau/zui/css/min`   | `dist/css/zui.min.css`       |
-| `@mrmartineau/zui/react`     | `dist/react/index.mjs`       |
-| `@mrmartineau/zui/solid`     | `dist/solid/index.mjs`       |
-| `@mrmartineau/zui/svelte`    | `src/svelte/index.ts`        |
-| `@mrmartineau/zui/svelte/*`  | `src/svelte/*`               |
-| `@mrmartineau/zui/vue`       | `src/vue/index.ts`           |
-| `@mrmartineau/zui/vue/*`     | `src/vue/*`                  |
-| `@mrmartineau/zui/astro`     | `src/astro/index.ts`         |
-| `@mrmartineau/zui/astro/*`   | `src/astro/*`                |
-| `@mrmartineau/zui/utils`     | `dist/utils/index.mjs`       |
+| `@mrmartineau/zui/css`       | `packages/zui/dist/css/zui.css`           |
+| `@mrmartineau/zui/css/min`   | `packages/zui/dist/css/zui.min.css`       |
+| `@mrmartineau/zui/react`     | `packages/zui/dist/react/index.mjs`       |
+| `@mrmartineau/zui/solid`     | `packages/zui/dist/solid/index.mjs`       |
+| `@mrmartineau/zui/svelte`    | `packages/zui/src/svelte/index.ts`        |
+| `@mrmartineau/zui/svelte/*`  | `packages/zui/src/svelte/*`               |
+| `@mrmartineau/zui/vue`       | `packages/zui/src/vue/index.ts`           |
+| `@mrmartineau/zui/vue/*`     | `packages/zui/src/vue/*`                  |
+| `@mrmartineau/zui/astro`     | `packages/zui/src/astro/index.ts`         |
+| `@mrmartineau/zui/astro/*`   | `packages/zui/src/astro/*`                |
+| `@mrmartineau/zui/utils`     | `packages/zui/dist/utils/index.mjs`       |
