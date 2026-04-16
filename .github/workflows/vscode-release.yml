@@ -15,7 +15,7 @@ jobs:
       contents: write
     defaults:
       run:
-        working-directory: extensions/vscode-zui
+        working-directory: packages/vscode-zui
 
     steps:
       - uses: actions/checkout@v6
@@ -61,7 +61,7 @@ jobs:
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git add extensions/vscode-zui/package.json pnpm-lock.yaml
+          git add packages/vscode-zui/package.json pnpm-lock.yaml
           git commit -m "chore(vscode-zui): bump extension version [skip ci]"
           git push
         working-directory: .

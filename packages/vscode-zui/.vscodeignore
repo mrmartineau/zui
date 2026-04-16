@@ -1,6 +1,6 @@
 **/.git/**
 **/node_modules/**
-src/**
+packages/src/**
 esbuild.js
 tsconfig.json
 **/*.map

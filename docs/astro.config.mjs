@@ -29,15 +29,15 @@ export default defineConfig({
       alias: {
         '@mrmartineau/zui/astro': resolve(
           import.meta.dirname,
-          '../src/astro/index.ts',
+          '../packages/zui/src/astro/index.ts',
         ),
         '@mrmartineau/zui/css': resolve(
           import.meta.dirname,
-          '../dist/css/zui.css',
+          '../packages/zui/dist/css/zui.css',
         ),
         '@mrmartineau/zui/utils': resolve(
           import.meta.dirname,
-          '../src/utils/colorScheme.ts',
+          '../packages/zui/src/utils/colorScheme.ts',
         ),
       },
     },

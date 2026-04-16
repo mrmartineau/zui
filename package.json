@@ -1,128 +1,18 @@
 {
-  "bin": {
-    "zui": "scripts/init.mjs"
-  },
-  "dependencies": {
-    "cva": "1.0.0-beta.4"
-  },
-  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
+  "name": "zui-workspace",
+  "private": true,
+  "type": "module",
   "devDependencies": {
-    "@biomejs/biome": "^2.4.12",
-    "@mrmartineau/kit": "^0.1.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@tsdown/css": "^0.21.4",
-    "@types/react": "^19.0.0",
-    "astro": "^6.0.8",
-    "chokidar-cli": "^3.0.0",
-    "lightningcss": "^1.32.0",
-    "semantic-release": "^25.0.3",
-    "solid-js": "^1.9.0",
-    "svelte": "^5.0.0",
-    "tsdown": "^0.21.4",
-    "typescript": "^5.8.0",
-    "vue": "^3.5.0"
-  },
-  "exports": {
-    "./astro": {
-      "import": "./src/astro/index.ts"
-    },
-    "./astro/*": {
-      "import": "./src/astro/*"
-    },
-    "./css": {
-      "default": "./dist/css/zui.css",
-      "style": "./dist/css/zui.css",
-      "types": "./dist/css/zui.css.d.ts"
-    },
-    "./css/min": {
-      "default": "./dist/css/zui.min.css",
-      "style": "./dist/css/zui.min.css",
-      "types": "./dist/css/zui.min.css.d.ts"
-    },
-    "./react": {
-      "import": {
-        "default": "./dist/react/index.mjs",
-        "types": "./dist/react/index.d.mts"
-      }
-    },
-    "./solid": {
-      "import": {
-        "default": "./dist/solid/index.mjs",
-        "types": "./dist/solid/index.d.mts"
-      }
-    },
-    "./svelte": {
-      "import": "./src/svelte/index.ts",
-      "svelte": "./src/svelte/index.ts"
-    },
-    "./svelte/*": {
-      "import": "./src/svelte/*",
-      "svelte": "./src/svelte/*"
-    },
-    "./utils": {
-      "import": {
-        "default": "./dist/utils/index.mjs",
-        "types": "./dist/utils/index.d.mts"
-      }
-    },
-    "./vue": {
-      "import": "./src/vue/index.ts"
-    },
-    "./vue/*": {
-      "import": "./src/vue/*"
-    }
-  },
-  "files": [
-    "dist",
-    "scripts",
-    "src/css",
-    "src/astro",
-    "src/react",
-    "src/solid",
-    "src/svelte",
-    "src/vue",
-    "src/shared",
-    "src/utils",
-    "skills"
-  ],
-  "name": "@mrmartineau/zui",
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "solid-js": "^1.7.0",
-    "svelte": "^5.0.0",
-    "vue": "^3.3.0"
-  },
-  "peerDependenciesMeta": {
-    "astro": {
-      "optional": true
-    },
-    "react": {
-      "optional": true
-    },
-    "solid-js": {
-      "optional": true
-    },
-    "svelte": {
-      "optional": true
-    },
-    "vue": {
-      "optional": true
-    }
-  },
-  "publishConfig": {
-    "access": "public"
+    "@biomejs/biome": "^2.4.12"
   },
   "scripts": {
-    "build": "tsdown && pnpm --filter vscode-zui run build:manifest",
+    "build": "pnpm --filter @mrmartineau/zui run build",
     "check": "biome check --write",
-    "dev": "tsdown --watch",
-    "docs:build": "pnpm run build && pnpm --filter docs run build",
+    "dev": "pnpm --filter @mrmartineau/zui run dev",
+    "docs:build": "pnpm --filter @mrmartineau/zui run build && pnpm --filter docs run build",
     "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
-    "docs:dev": "pnpm run build && pnpm --filter docs run dev",
-    "generate:colors": "node scripts/generate-colors.js",
-    "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
-  },
-  "type": "module",
-  "version": "1.2.0"
+    "docs:dev": "pnpm --filter @mrmartineau/zui run build && pnpm --filter docs run dev",
+    "generate:colors": "pnpm --filter @mrmartineau/zui run generate:colors",
+    "watch": "pnpm --filter @mrmartineau/zui run watch"
+  }
 }

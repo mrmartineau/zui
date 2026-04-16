@@ -6,7 +6,7 @@ import { converter, formatHex } from 'culori'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const rootCssDir = join(__dirname, '../../../src/css')
+const rootCssDir = join(__dirname, '../../zui/src/css')
 const componentsDir = join(rootCssDir, 'components')
 const tokensDir = join(rootCssDir, 'tokens')
 const themeFile = join(rootCssDir, 'theme.css')
@@ -146,7 +146,7 @@ if (existsSync(utilitiesDir)) {
 }
 
 const rootPkg = JSON.parse(
-  readFileSync(join(__dirname, '../../../package.json'), 'utf-8'),
+  readFileSync(join(__dirname, '../../zui/package.json'), 'utf-8'),
 ) as { version: string }
 
 // Dedup tokens globally — e.g. `--shadow-color` is declared in both a token
