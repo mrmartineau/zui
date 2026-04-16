@@ -52,7 +52,7 @@ Each release of the extension mirrors the latest ZUI release so completions alwa
 ## Links
 
 - [ZUI on GitHub](https://github.com/mrmartineau/zui)
-- [ZUI documentation](https://zui.mrmartineau.com)
+- [ZUI documentation](https://zui.zander.wtf)
 - [Report an issue](https://github.com/mrmartineau/zui/issues)
 
 ## License
