@@ -1,0 +1,78 @@
+{
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:css",
+    "onLanguage:scss",
+    "onLanguage:less",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact",
+    "onLanguage:astro",
+    "onLanguage:vue"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "configuration": {
+      "properties": {
+        "zui.enable": {
+          "default": "auto",
+          "description": "When to enable ZUI IntelliSense",
+          "enum": [
+            "auto",
+            "always",
+            "never"
+          ],
+          "enumDescriptions": [
+            "Activate only when @mrmartineau/zui is found in a workspace package.json",
+            "Always activate, even in projects that don't depend on ZUI",
+            "Never activate — disables the extension entirely"
+          ],
+          "type": "string"
+        }
+      },
+      "title": "ZUI"
+    }
+  },
+  "description": "Autocomplete and colour preview for ZUI CSS classes and design tokens",
+  "devDependencies": {
+    "@types/culori": "^4.0.1",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.0.0",
+    "culori": "^4.0.2",
+    "tsdown": "^0.21.4",
+    "tsx": "^4.0.0",
+    "typescript": "^5.8.0"
+  },
+  "displayName": "ZUI IntelliSense",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "icon": "zui-icon.png",
+  "keywords": [
+    "zui",
+    "css",
+    "autocomplete",
+    "design tokens",
+    "intellisense"
+  ],
+  "main": "./dist/extension.cjs",
+  "name": "vscode-zui",
+  "publisher": "mrmartineau",
+  "repository": {
+    "directory": "extensions/vscode-zui",
+    "type": "git",
+    "url": "https://github.com/mrmartineau/zui"
+  },
+  "scripts": {
+    "build": "pnpm run build:manifest && pnpm run build:ext",
+    "build:ext": "tsdown",
+    "build:manifest": "tsx src/generate-manifest.ts",
+    "dev": "pnpm run build:manifest && tsdown --watch",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}
