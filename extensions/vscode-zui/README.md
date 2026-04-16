@@ -57,4 +57,4 @@ Each release of the extension mirrors the latest ZUI release so completions alwa
 
 ## License
 
-MIT
+ISC
