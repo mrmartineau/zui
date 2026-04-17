@@ -72,23 +72,56 @@ const hasPreview = Astro.slots.has('default')
 </div>
 
 <script>
+  const STORAGE_KEY = 'zui-demo-tab'
+
+  function getStoredTab(): string | null {
+    try {
+      return localStorage.getItem(STORAGE_KEY)
+    } catch {
+      return null
+    }
+  }
+
+  function setStoredTab(id: string) {
+    try {
+      localStorage.setItem(STORAGE_KEY, id)
+    } catch {
+      // ignore
+    }
+  }
+
+  function activateTab(container: HTMLElement, id: string) {
+    const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
+    const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
+    const hasTab = Array.from(tabs).some((t) => t.dataset.tab === id)
+    if (!hasTab) return
+
+    tabs.forEach((t) => t.setAttribute('aria-selected', t.dataset.tab === id ? 'true' : 'false'))
+    panels.forEach((p) => { p.hidden = p.dataset.panel !== id })
+  }
+
   function initCodeTabs() {
-    document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach((container) => {
+    const containers = document.querySelectorAll<HTMLElement>('[data-code-tabs]')
+    const stored = getStoredTab()
+
+    containers.forEach((container) => {
       const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
-      const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
+
+      if (stored) activateTab(container, stored)
 
       tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
-          const id = tab.dataset.tab
-
-          tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
-          tab.setAttribute('aria-selected', 'true')
-
-          panels.forEach((p) => {
-            p.hidden = p.dataset.panel !== id
-          })
+          const id = tab.dataset.tab!
+          setStoredTab(id)
+          document.dispatchEvent(new CustomEvent('zui-demo-tab-change', { detail: { id } }))
+          activateTab(container, id)
         })
       })
+    })
+
+    document.addEventListener('zui-demo-tab-change', (e) => {
+      const { id } = (e as CustomEvent<{ id: string }>).detail
+      containers.forEach((container) => activateTab(container, id))
     })
   }
 
