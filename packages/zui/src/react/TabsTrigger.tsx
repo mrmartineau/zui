@@ -1,3 +1,4 @@
+import type { VariantProps } from 'cva'
 import type { ButtonHTMLAttributes } from 'react'
 import { useEffect, useRef } from 'react'
 import { createTabsContentId, createTabsTriggerId } from '../core/tabs'
@@ -8,9 +9,12 @@ import {
   useTabsSnapshot,
 } from './tabsContext'
 
-export type TabsTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  value: string
-}
+type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
+
+export type TabsTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  TabsTriggerVariantProps & {
+    value: string
+  }
 
 export function TabsTrigger({
   children,
@@ -21,6 +25,7 @@ export function TabsTrigger({
   onFocus,
   onKeyDown,
   value,
+  variant,
   ...props
 }: TabsTriggerProps) {
   const ref = useRef<HTMLButtonElement>(null)
@@ -30,7 +35,7 @@ export function TabsTrigger({
   const rootId = snapshot.rootId
   const triggerId = createTabsTriggerId(rootId, value)
   const panelId = createTabsContentId(rootId, value)
-  const classes = tabsTriggerVariants({ className })
+  const classes = tabsTriggerVariants({ className, variant })
 
   useEffect(() => {
     return controller.registerTrigger({

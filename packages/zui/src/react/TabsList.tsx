@@ -1,12 +1,15 @@
+import type { VariantProps } from 'cva'
 import type { HTMLAttributes } from 'react'
 import { tabsListVariants } from '../shared/tabsVariants'
 import { useTabsSnapshot } from './tabsContext'
 
-export type TabsListProps = HTMLAttributes<HTMLDivElement>
+type TabsListVariantProps = VariantProps<typeof tabsListVariants>
 
-export function TabsList({ children, className, ...props }: TabsListProps) {
+export type TabsListProps = HTMLAttributes<HTMLDivElement> & TabsListVariantProps
+
+export function TabsList({ children, className, variant, ...props }: TabsListProps) {
   const snapshot = useTabsSnapshot()
-  const classes = tabsListVariants({ className })
+  const classes = tabsListVariants({ className, variant })
 
   return (
     <div

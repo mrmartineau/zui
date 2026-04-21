@@ -1,11 +1,14 @@
 <script lang="ts">
+import type { VariantProps } from 'cva'
 import type { Snippet } from 'svelte'
 import type { HTMLButtonAttributes } from 'svelte/elements'
 import { createTabsContentId, createTabsTriggerId } from '../core/tabs'
 import { tabsTriggerVariants } from '../shared/tabsVariants'
 import { getTabsContext, getTabsTriggerOrder } from './tabsContext'
 
-type Props = HTMLButtonAttributes & {
+type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
+
+type Props = HTMLButtonAttributes & TabsTriggerVariantProps & {
   value: string
   class?: string
   children?: Snippet
@@ -19,6 +22,7 @@ let {
   onfocus,
   onkeydown,
   value,
+  variant,
   children,
   ...rest
 }: Props = $props()
@@ -26,7 +30,7 @@ let {
 const { controller, getRoot, getSnapshot } = getTabsContext()
 let ref = $state<HTMLButtonElement | undefined>()
 const snapshot = $derived(getSnapshot())
-const classes = $derived(tabsTriggerVariants({ className }))
+const classes = $derived(tabsTriggerVariants({ className, variant }))
 const isActive = $derived(snapshot.selectedValue === value)
 const triggerId = $derived(createTabsTriggerId(snapshot.rootId, value))
 const panelId = $derived(createTabsContentId(snapshot.rootId, value))

@@ -1,14 +1,19 @@
+import type { VariantProps } from 'cva'
 import type { JSX } from 'solid-js'
 import { createMemo, splitProps } from 'solid-js'
 import { tabsListVariants } from '../shared/tabsVariants'
 import { useTabsContext } from './tabsContext'
 
-export type TabsListProps = JSX.HTMLAttributes<HTMLDivElement>
+type TabsListVariantProps = VariantProps<typeof tabsListVariants>
+
+export type TabsListProps = JSX.HTMLAttributes<HTMLDivElement> & TabsListVariantProps
 
 export function TabsList(props: TabsListProps) {
-  const [local, rest] = splitProps(props, ['children', 'class'])
+  const [local, rest] = splitProps(props, ['children', 'class', 'variant'])
   const { snapshot } = useTabsContext()
-  const classes = createMemo(() => tabsListVariants({ className: local.class }))
+  const classes = createMemo(() =>
+    tabsListVariants({ className: local.class, variant: local.variant }),
+  )
 
   return (
     <div

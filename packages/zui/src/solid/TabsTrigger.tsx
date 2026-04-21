@@ -1,12 +1,16 @@
+import type { VariantProps } from 'cva'
 import type { JSX } from 'solid-js'
 import { createEffect, createMemo, onCleanup, splitProps } from 'solid-js'
 import { createTabsContentId, createTabsTriggerId } from '../core/tabs'
 import { tabsTriggerVariants } from '../shared/tabsVariants'
 import { getTabsTriggerOrder, useTabsContext } from './tabsContext'
 
-export type TabsTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-  value: string
-}
+type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
+
+export type TabsTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> &
+  TabsTriggerVariantProps & {
+    value: string
+  }
 
 export function TabsTrigger(props: TabsTriggerProps) {
   const [local, rest] = splitProps(props, [
@@ -19,11 +23,14 @@ export function TabsTrigger(props: TabsTriggerProps) {
     'onKeyDown',
     'ref',
     'value',
+    'variant',
   ])
   const { controller, rootRef, snapshot } = useTabsContext()
   let ref: HTMLButtonElement | undefined
 
-  const classes = createMemo(() => tabsTriggerVariants({ className: local.class }))
+  const classes = createMemo(() =>
+    tabsTriggerVariants({ className: local.class, variant: local.variant }),
+  )
   const isActive = createMemo(() => snapshot().selectedValue === local.value)
   const triggerId = createMemo(() => createTabsTriggerId(snapshot().rootId, local.value))
   const panelId = createMemo(() => createTabsContentId(snapshot().rootId, local.value))

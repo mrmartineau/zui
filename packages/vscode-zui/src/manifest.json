@@ -393,7 +393,15 @@
       "source": "tabs"
     },
     {
+      "name": "zui-tabs-list-variant-underline",
+      "source": "tabs"
+    },
+    {
       "name": "zui-tabs-trigger",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-trigger-variant-underline",
       "source": "tabs"
     },
     {
@@ -1317,7 +1325,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-04-21T08:16:07.446Z",
+  "generatedAt": "2026-04-21T11:48:05.940Z",
   "tokens": [
     {
       "category": "animation",

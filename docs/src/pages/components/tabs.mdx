@@ -106,6 +106,98 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
   </Tabs>
 </Demo>
 
+## Underline variant
+
+Use `variant="underline"` on both `TabsList` and `TabsTrigger` when you want a simpler tab bar without the bordered container.
+
+<Demo
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="overview">
+  <TabsList variant="underline" aria-label="Project sections">
+    <TabsTrigger variant="underline" value="overview">Overview</TabsTrigger>
+    <TabsTrigger variant="underline" value="activity">Activity</TabsTrigger>
+    <TabsTrigger variant="underline" value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="overview">
+  <TabsList variant="underline" aria-label="Project sections">
+    <TabsTrigger variant="underline" value="overview">Overview</TabsTrigger>
+    <TabsTrigger variant="underline" value="activity">Activity</TabsTrigger>
+    <TabsTrigger variant="underline" value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="overview">
+  <TabsList variant="underline" aria-label="Project sections">
+    <TabsTrigger variant="underline" value="overview">Overview</TabsTrigger>
+    <TabsTrigger variant="underline" value="activity">Activity</TabsTrigger>
+    <TabsTrigger variant="underline" value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="overview">
+  <TabsList variant="underline" aria-label="Project sections">
+    <TabsTrigger variant="underline" value="overview">Overview</TabsTrigger>
+    <TabsTrigger variant="underline" value="activity">Activity</TabsTrigger>
+    <TabsTrigger variant="underline" value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="overview">
+    <TabsList variant="underline" aria-label="Project sections">
+      <TabsTrigger variant="underline" value="overview">Overview</TabsTrigger>
+      <TabsTrigger variant="underline" value="activity">Activity</TabsTrigger>
+      <TabsTrigger variant="underline" value="settings">Settings</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="overview">Overview panel</TabsContent>
+    <TabsContent value="activity">Recent activity</TabsContent>
+    <TabsContent value="settings">Project settings</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <Tabs defaultValue="overview">
+    <TabsList variant="underline" aria-label="Project sections">
+      <TabsTrigger variant="underline" value="overview">Overview</TabsTrigger>
+      <TabsTrigger variant="underline" value="activity">Activity</TabsTrigger>
+      <TabsTrigger variant="underline" value="settings">Settings</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="overview">Overview panel</TabsContent>
+    <TabsContent value="activity">Recent activity</TabsContent>
+    <TabsContent value="settings">Project settings</TabsContent>
+  </Tabs>
+</Demo>
+
 ## Vertical tabs
 
 <Demo
@@ -189,6 +281,98 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
         <TabsTrigger value="profile">Profile</TabsTrigger>
         <TabsTrigger value="notifications">Notifications</TabsTrigger>
         <TabsTrigger value="team">Team</TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="profile">Profile preferences</TabsContent>
+      <TabsContent value="notifications">Notification preferences</TabsContent>
+      <TabsContent value="team">Team settings</TabsContent>
+    </Tabs>
+  </div>
+</Demo>
+
+## Vertical underline tabs
+
+<Demo
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList variant="underline" aria-label="Settings sections">
+    <TabsTrigger variant="underline" value="profile">Profile</TabsTrigger>
+    <TabsTrigger variant="underline" value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger variant="underline" value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList variant="underline" aria-label="Settings sections">
+    <TabsTrigger variant="underline" value="profile">Profile</TabsTrigger>
+    <TabsTrigger variant="underline" value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger variant="underline" value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList variant="underline" aria-label="Settings sections">
+    <TabsTrigger variant="underline" value="profile">Profile</TabsTrigger>
+    <TabsTrigger variant="underline" value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger variant="underline" value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList variant="underline" aria-label="Settings sections">
+    <TabsTrigger variant="underline" value="profile">Profile</TabsTrigger>
+    <TabsTrigger variant="underline" value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger variant="underline" value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="profile" orientation="vertical">
+    <TabsList variant="underline" aria-label="Settings sections">
+      <TabsTrigger variant="underline" value="profile">Profile</TabsTrigger>
+      <TabsTrigger variant="underline" value="notifications">Notifications</TabsTrigger>
+      <TabsTrigger variant="underline" value="team">Team</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="profile">Profile preferences</TabsContent>
+    <TabsContent value="notifications">Notification preferences</TabsContent>
+    <TabsContent value="team">Team settings</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div style="max-width: 42rem;">
+    <Tabs defaultValue="profile" orientation="vertical">
+      <TabsList variant="underline" aria-label="Settings sections">
+        <TabsTrigger variant="underline" value="profile">Profile</TabsTrigger>
+        <TabsTrigger variant="underline" value="notifications">Notifications</TabsTrigger>
+        <TabsTrigger variant="underline" value="team">Team</TabsTrigger>
       </TabsList>
 
       <TabsContent value="profile">Profile preferences</TabsContent>
@@ -516,6 +700,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
 
 - `orientation` supports `horizontal` and `vertical`
 - `activationMode` supports `auto` and `manual`
+- `variant` supports `surface` and `underline`
+- use the same `variant` on `TabsList` and its `TabsTrigger` children
 - tabs use real button-based tab triggers, not `details/summary`
 - inactive panels stay mounted and are hidden with the `hidden` attribute
-- React, Astro, Solid, Svelte, and Vue are scaffolded on top of the shared tabs cores
+- React, Astro, Solid, Svelte, and Vue are scaffolded on top of the shared tabs core
