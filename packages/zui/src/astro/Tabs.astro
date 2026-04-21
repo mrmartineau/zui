@@ -45,19 +45,11 @@ const classes = tabsVariants({ class: className })
   <slot />
 </div>
 
-<script define:vars={{ rootId }}>
+<script>
   import { attachTabsDom } from '../core/tabs/dom'
 
-  function initTabs(id) {
-    const root = document.getElementById(id)
-
-    if (
-      !root ||
-      !root.hasAttribute('data-zui-tabs-astro-root') ||
-      root.dataset.zuiTabsInitialized === 'true'
-    ) {
-      return
-    }
+  function initTabs(root) {
+    if (!root || root.dataset.zuiTabsInitialized === 'true') return
 
     attachTabsDom(root, {
       activationMode: root.dataset.activationMode === 'manual' ? 'manual' : 'auto',
@@ -72,6 +64,12 @@ const classes = tabsVariants({ class: className })
     root.dataset.zuiTabsInitialized = 'true'
   }
 
-  initTabs(rootId)
-  document.addEventListener('astro:page-load', () => initTabs(rootId))
+  function initAstroTabs() {
+    document
+      .querySelectorAll('[data-zui-tabs-astro-root][data-zui-tabs-root]')
+      .forEach((root) => initTabs(root))
+  }
+
+  initAstroTabs()
+  document.addEventListener('astro:page-load', initAstroTabs)
 </script>
