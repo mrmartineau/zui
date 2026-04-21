@@ -3,6 +3,12 @@ export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
 export { dialogVariants } from '../shared/dialogVariants'
 export { flexVariants } from '../shared/flexVariants'
+export {
+  tabsContentVariants,
+  tabsListVariants,
+  tabsTriggerVariants,
+  tabsVariants,
+} from '../shared/tabsVariants'
 export type { TextSize } from '../shared/textSizeClass'
 export { tooltipVariants } from '../shared/tooltipVariants'
 export type { ColorScheme } from '../utils/colorScheme'
@@ -64,6 +70,10 @@ export { TableFooter, type TableFooterProps } from './TableFooter'
 export { TableHead, type TableHeadProps } from './TableHead'
 export { TableHeader, type TableHeaderProps } from './TableHeader'
 export { TableRow, type TableRowProps } from './TableRow'
+export { Tabs, type TabsProps } from './Tabs'
+export { TabsContent, type TabsContentProps } from './TabsContent'
+export { TabsList, type TabsListProps } from './TabsList'
+export { TabsTrigger, type TabsTriggerProps } from './TabsTrigger'
 export { Text, type TextProps } from './Text'
 export { Textarea, type TextareaProps } from './Textarea'
 export { Tooltip, type TooltipPlacement, type TooltipProps } from './Tooltip'

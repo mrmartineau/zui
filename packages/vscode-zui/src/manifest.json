@@ -385,6 +385,30 @@
       "source": "table"
     },
     {
+      "name": "zui-tabs",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-list",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-list-variant-underline",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-trigger",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-trigger-variant-underline",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-content",
+      "source": "tabs"
+    },
+    {
       "name": "zui-textarea",
       "source": "textarea"
     },
@@ -1301,7 +1325,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-04-16T23:26:12.965Z",
+  "generatedAt": "2026-04-21T11:48:05.940Z",
   "tokens": [
     {
       "category": "animation",

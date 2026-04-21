@@ -1,0 +1,75 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { tabsVariants } from '../shared/tabsVariants'
+
+interface Props extends HTMLAttributes<'div'> {
+  activationMode?: 'auto' | 'manual'
+  defaultValue?: string
+  dir?: 'ltr' | 'rtl'
+  disabled?: boolean
+  id?: string
+  orientation?: 'horizontal' | 'vertical'
+  value?: string
+  class?: string
+}
+
+const {
+  activationMode = 'auto',
+  class: className,
+  defaultValue,
+  dir = 'ltr',
+  disabled = false,
+  id,
+  orientation = 'horizontal',
+  value,
+  ...props
+} = Astro.props
+
+const rootId = id ?? `zui-tabs-${crypto.randomUUID()}`
+const classes = tabsVariants({ class: className })
+---
+
+<div
+  id={rootId}
+  class={classes}
+  data-activation-mode={activationMode}
+  data-default-value={defaultValue}
+  data-dir={dir}
+  data-disabled={disabled ? 'true' : undefined}
+  data-orientation={orientation}
+  data-value={value}
+  data-zui-tabs-astro-root
+  data-zui-tabs-root
+  {...props}
+>
+  <slot />
+</div>
+
+<script>
+  import { attachTabsDom } from '../core/tabs/dom'
+
+  function initTabs(root) {
+    if (!root || root.dataset.zuiTabsInitialized === 'true') return
+
+    attachTabsDom(root, {
+      activationMode: root.dataset.activationMode === 'manual' ? 'manual' : 'auto',
+      defaultValue: root.dataset.defaultValue || undefined,
+      dir: root.dataset.dir === 'rtl' ? 'rtl' : 'ltr',
+      disabled: root.dataset.disabled === 'true',
+      id: root.id,
+      orientation: root.dataset.orientation === 'vertical' ? 'vertical' : 'horizontal',
+      value: root.dataset.value || undefined,
+    })
+
+    root.dataset.zuiTabsInitialized = 'true'
+  }
+
+  function initAstroTabs() {
+    document
+      .querySelectorAll('[data-zui-tabs-astro-root][data-zui-tabs-root]')
+      .forEach((root) => initTabs(root))
+  }
+
+  initAstroTabs()
+  document.addEventListener('astro:page-load', initAstroTabs)
+</script>

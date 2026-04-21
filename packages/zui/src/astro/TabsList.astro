@@ -1,0 +1,18 @@
+---
+import type { VariantProps } from 'cva'
+import type { HTMLAttributes } from 'astro/types'
+import { tabsListVariants } from '../shared/tabsVariants'
+
+type TabsListVariantProps = VariantProps<typeof tabsListVariants>
+
+interface Props extends HTMLAttributes<'div'>, TabsListVariantProps {
+  class?: string
+}
+
+const { class: className, variant, ...props } = Astro.props
+const classes = tabsListVariants({ class: className, variant })
+---
+
+<div {...props} class={classes} data-zui-tabs-list role="tablist">
+  <slot />
+</div>

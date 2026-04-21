@@ -3,6 +3,12 @@ export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
 export { dialogVariants } from '../shared/dialogVariants'
 export { flexVariants } from '../shared/flexVariants'
+export {
+  tabsContentVariants,
+  tabsListVariants,
+  tabsTriggerVariants,
+  tabsVariants,
+} from '../shared/tabsVariants'
 export type { TextSize } from '../shared/textSizeClass'
 export { tooltipVariants } from '../shared/tooltipVariants'
 export type { ColorScheme } from '../utils/colorScheme'
@@ -49,6 +55,10 @@ export { default as TableFooter } from './TableFooter.svelte'
 export { default as TableHead } from './TableHead.svelte'
 export { default as TableHeader } from './TableHeader.svelte'
 export { default as TableRow } from './TableRow.svelte'
+export { default as Tabs } from './Tabs.svelte'
+export { default as TabsContent } from './TabsContent.svelte'
+export { default as TabsList } from './TabsList.svelte'
+export { default as TabsTrigger } from './TabsTrigger.svelte'
 export { default as Text } from './Text.svelte'
 export { default as Textarea } from './Textarea.svelte'
 export { default as Tooltip } from './Tooltip.svelte'

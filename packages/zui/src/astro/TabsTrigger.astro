@@ -1,0 +1,31 @@
+---
+import type { VariantProps } from 'cva'
+import type { HTMLAttributes } from 'astro/types'
+import { tabsTriggerVariants } from '../shared/tabsVariants'
+
+type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
+
+interface Props extends HTMLAttributes<'button'>, TabsTriggerVariantProps {
+  value: string
+  disabled?: boolean
+  class?: string
+}
+
+const { class: className, disabled = false, value, variant, ...props } = Astro.props
+const classes = tabsTriggerVariants({ class: className, variant })
+---
+
+<button
+  class={classes}
+  data-disabled={disabled ? 'true' : undefined}
+  data-state="inactive"
+  data-value={value}
+  data-zui-tabs-trigger
+  disabled={disabled}
+  role="tab"
+  tabindex="-1"
+  type="button"
+  {...props}
+>
+  <slot />
+</button>
