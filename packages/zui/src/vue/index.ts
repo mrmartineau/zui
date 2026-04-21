@@ -3,6 +3,12 @@ export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
 export { dialogVariants } from '../shared/dialogVariants'
 export { flexVariants } from '../shared/flexVariants'
+export {
+  tabsContentVariants,
+  tabsListVariants,
+  tabsTriggerVariants,
+  tabsVariants,
+} from '../shared/tabsVariants'
 export type { TextSize } from '../shared/textSizeClass'
 export { tooltipVariants } from '../shared/tooltipVariants'
 export type { ColorScheme } from '../utils/colorScheme'
@@ -49,6 +55,10 @@ export { default as TableFooter } from './TableFooter.vue'
 export { default as TableHead } from './TableHead.vue'
 export { default as TableHeader } from './TableHeader.vue'
 export { default as TableRow } from './TableRow.vue'
+export { default as Tabs } from './Tabs.vue'
+export { default as TabsContent } from './TabsContent.vue'
+export { default as TabsList } from './TabsList.vue'
+export { default as TabsTrigger } from './TabsTrigger.vue'
 export { default as Text } from './Text.vue'
 export { default as Textarea } from './Textarea.vue'
 export { default as Tooltip } from './Tooltip.vue'

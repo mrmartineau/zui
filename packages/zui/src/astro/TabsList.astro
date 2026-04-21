@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { tabsListVariants } from '../shared/tabsVariants'
+
+interface Props extends HTMLAttributes<'div'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = tabsListVariants({ class: className })
+---
+
+<div class={classes} data-zui-tabs-list role="tablist" {...props}>
+  <slot />
+</div>

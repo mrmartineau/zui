@@ -73,6 +73,7 @@ const hasPreview = Astro.slots.has('default')
 
 <script>
   const STORAGE_KEY = 'zui-demo-tab'
+  let codeTabsBroadcastBound = false
 
   function getStoredTab(): string | null {
     try {
@@ -93,38 +94,56 @@ const hasPreview = Astro.slots.has('default')
   function activateTab(container: HTMLElement, id: string) {
     const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
     const panels = container.querySelectorAll<HTMLElement>('[data-panel]')
-    const hasTab = Array.from(tabs).some((t) => t.dataset.tab === id)
+    const hasTab = Array.from(tabs).some((tab) => tab.dataset.tab === id)
     if (!hasTab) return
 
-    tabs.forEach((t) => t.setAttribute('aria-selected', t.dataset.tab === id ? 'true' : 'false'))
-    panels.forEach((p) => { p.hidden = p.dataset.panel !== id })
+    tabs.forEach((tab) => {
+      tab.setAttribute('aria-selected', tab.dataset.tab === id ? 'true' : 'false')
+    })
+    panels.forEach((panel) => {
+      panel.hidden = panel.dataset.panel !== id
+    })
   }
 
-  function initCodeTabs() {
-    const containers = document.querySelectorAll<HTMLElement>('[data-code-tabs]')
+  function bindCodeTabs(container: HTMLElement) {
+    if (container.dataset.codeTabsInitialized === 'true') return
+
+    const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
     const stored = getStoredTab()
 
-    containers.forEach((container) => {
-      const tabs = container.querySelectorAll<HTMLButtonElement>('[data-tab]')
+    if (stored) activateTab(container, stored)
 
-      if (stored) activateTab(container, stored)
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.tab
+        if (!id) return
 
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          const id = tab.dataset.tab!
-          setStoredTab(id)
-          document.dispatchEvent(new CustomEvent('zui-demo-tab-change', { detail: { id } }))
-          activateTab(container, id)
-        })
+        setStoredTab(id)
+        document.dispatchEvent(new CustomEvent('zui-demo-tab-change', { detail: { id } }))
+        activateTab(container, id)
       })
     })
 
-    document.addEventListener('zui-demo-tab-change', (e) => {
-      const { id } = (e as CustomEvent<{ id: string }>).detail
-      containers.forEach((container) => activateTab(container, id))
-    })
+    container.dataset.codeTabsInitialized = 'true'
   }
 
+  function initCodeTabs() {
+    document
+      .querySelectorAll<HTMLElement>('[data-code-tabs]')
+      .forEach(bindCodeTabs)
+
+    if (!codeTabsBroadcastBound) {
+      document.addEventListener('zui-demo-tab-change', (event) => {
+        const { id } = (event as CustomEvent<{ id: string }>).detail
+        document
+          .querySelectorAll<HTMLElement>('[data-code-tabs]')
+          .forEach((container) => activateTab(container, id))
+      })
+      codeTabsBroadcastBound = true
+    }
+  }
+
+  initCodeTabs()
   document.addEventListener('astro:page-load', initCodeTabs)
 </script>
 

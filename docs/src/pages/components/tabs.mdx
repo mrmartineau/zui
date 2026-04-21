@@ -1,0 +1,521 @@
+---
+layout: ../../layouts/Layout.astro
+title: Tabs
+description: Accessible tabs with horizontal and vertical orientations.
+---
+
+import Demo from '../../components/Demo.astro'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@mrmartineau/zui/astro'
+
+## Usage
+
+<Demo
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Profile sections">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+    <TabsTrigger value="billing">Billing</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="account">Account settings</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+  <TabsContent value="billing">Billing settings</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Profile sections">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+    <TabsTrigger value="billing">Billing</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="account">Account settings</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+  <TabsContent value="billing">Billing settings</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Profile sections">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+    <TabsTrigger value="billing">Billing</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="account">Account settings</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+  <TabsContent value="billing">Billing settings</TabsContent>
+</Tabs>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Profile sections">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+    <TabsTrigger value="billing">Billing</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="account">Account settings</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+  <TabsContent value="billing">Billing settings</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="account">
+    <TabsList aria-label="Profile sections">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="account">Account settings</TabsContent>
+    <TabsContent value="security">Security settings</TabsContent>
+    <TabsContent value="billing">Billing settings</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+  html={`<div class="zui-tabs" data-orientation="horizontal">
+  <div class="zui-tabs-list" role="tablist" aria-label="Profile sections">
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true">Account</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Billing</button>
+  </div>
+
+  <div class="zui-tabs-content" role="tabpanel">Account settings</div>
+</div>`}
+>
+  <Tabs defaultValue="account">
+    <TabsList aria-label="Profile sections">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="account">Account settings</TabsContent>
+    <TabsContent value="security">Security settings</TabsContent>
+    <TabsContent value="billing">Billing settings</TabsContent>
+  </Tabs>
+</Demo>
+
+## Vertical tabs
+
+<Demo
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList aria-label="Settings sections">
+    <TabsTrigger value="profile">Profile</TabsTrigger>
+    <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList aria-label="Settings sections">
+    <TabsTrigger value="profile">Profile</TabsTrigger>
+    <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList aria-label="Settings sections">
+    <TabsTrigger value="profile">Profile</TabsTrigger>
+    <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="profile" orientation="vertical">
+  <TabsList aria-label="Settings sections">
+    <TabsTrigger value="profile">Profile</TabsTrigger>
+    <TabsTrigger value="notifications">Notifications</TabsTrigger>
+    <TabsTrigger value="team">Team</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="profile">Profile preferences</TabsContent>
+  <TabsContent value="notifications">Notification preferences</TabsContent>
+  <TabsContent value="team">Team settings</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="profile" orientation="vertical">
+    <TabsList aria-label="Settings sections">
+      <TabsTrigger value="profile">Profile</TabsTrigger>
+      <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      <TabsTrigger value="team">Team</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="profile">Profile preferences</TabsContent>
+    <TabsContent value="notifications">Notification preferences</TabsContent>
+    <TabsContent value="team">Team settings</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div style="max-width: 42rem;">
+    <Tabs defaultValue="profile" orientation="vertical">
+      <TabsList aria-label="Settings sections">
+        <TabsTrigger value="profile">Profile</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+        <TabsTrigger value="team">Team</TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="profile">Profile preferences</TabsContent>
+      <TabsContent value="notifications">Notification preferences</TabsContent>
+      <TabsContent value="team">Team settings</TabsContent>
+    </Tabs>
+  </div>
+</Demo>
+
+## Manual activation
+
+Use `activationMode="manual"` when arrow keys should move focus without switching panels until <kbd>Enter</kbd> or
+<kbd>Space</kbd>.
+
+<Demo
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="overview" activationMode="manual">
+  <TabsList aria-label="Project sections">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="overview" activationMode="manual">
+  <TabsList aria-label="Project sections">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="overview" activationMode="manual">
+  <TabsList aria-label="Project sections">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="overview" activationMode="manual">
+  <TabsList aria-label="Project sections">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Overview panel</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="settings">Project settings</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="overview" activationMode="manual">
+    <TabsList aria-label="Project sections">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="activity">Activity</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="overview">Overview panel</TabsContent>
+    <TabsContent value="activity">Recent activity</TabsContent>
+    <TabsContent value="settings">Project settings</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <Tabs defaultValue="overview" activationMode="manual">
+    <TabsList aria-label="Project sections">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="activity">Activity</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="overview">Overview panel</TabsContent>
+    <TabsContent value="activity">Recent activity</TabsContent>
+    <TabsContent value="settings">Project settings</TabsContent>
+  </Tabs>
+</Demo>
+
+## Controlled tabs
+
+Use `value` with `onValueChange` when tab state should be controlled by application state.
+
+<Demo
+  react={`import { useState } from 'react'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+export function Example() {
+  const [tab, setTab] = useState('activity')
+
+  return (
+    <Tabs value={tab} onValueChange={setTab}>
+      <TabsList aria-label="Team sections">
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="activity">Activity</TabsTrigger>
+        <TabsTrigger value="members">Members</TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="overview">Team overview</TabsContent>
+      <TabsContent value="activity">Recent activity</TabsContent>
+      <TabsContent value="members">Member list</TabsContent>
+    </Tabs>
+  )
+}`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs value="activity">
+  <TabsList aria-label="Team sections">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="members">Members</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Team overview</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="members">Member list</TabsContent>
+</Tabs>`}
+  solid={`import { createSignal } from 'solid-js'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+export function Example() {
+  const [tab, setTab] = createSignal('activity')
+
+  return (
+    <Tabs value={tab()} onValueChange={setTab}>
+      <TabsList aria-label="Team sections">
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="activity">Activity</TabsTrigger>
+        <TabsTrigger value="members">Members</TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="overview">Team overview</TabsContent>
+      <TabsContent value="activity">Recent activity</TabsContent>
+      <TabsContent value="members">Member list</TabsContent>
+    </Tabs>
+  )
+}`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+
+  let tab = $state('activity')
+</script>
+
+<Tabs value={tab} onValueChange={(value) => (tab = value)}>
+  <TabsList aria-label="Team sections">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="activity">Activity</TabsTrigger>
+    <TabsTrigger value="members">Members</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview">Team overview</TabsContent>
+  <TabsContent value="activity">Recent activity</TabsContent>
+  <TabsContent value="members">Member list</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs :value="tab" :onValueChange="(value) => (tab = value)">
+    <TabsList aria-label="Team sections">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="activity">Activity</TabsTrigger>
+      <TabsTrigger value="members">Members</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="overview">Team overview</TabsContent>
+    <TabsContent value="activity">Recent activity</TabsContent>
+    <TabsContent value="members">Member list</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+
+const tab = ref('activity')
+</script>`}
+>
+  <Tabs value="activity">
+    <TabsList aria-label="Team sections">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="activity">Activity</TabsTrigger>
+      <TabsTrigger value="members">Members</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="overview">Team overview</TabsContent>
+    <TabsContent value="activity">Recent activity</TabsContent>
+    <TabsContent value="members">Member list</TabsContent>
+  </Tabs>
+</Demo>
+
+## Disabled tabs
+
+<Demo
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="design">
+  <TabsList aria-label="Release workflow">
+    <TabsTrigger value="design">Design</TabsTrigger>
+    <TabsTrigger value="build">Build</TabsTrigger>
+    <TabsTrigger value="ship" disabled>Ship</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="design">Design review is complete.</TabsContent>
+  <TabsContent value="build">Build is in progress.</TabsContent>
+  <TabsContent value="ship">Shipping is locked until QA passes.</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="design">
+  <TabsList aria-label="Release workflow">
+    <TabsTrigger value="design">Design</TabsTrigger>
+    <TabsTrigger value="build">Build</TabsTrigger>
+    <TabsTrigger value="ship" disabled>Ship</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="design">Design review is complete.</TabsContent>
+  <TabsContent value="build">Build is in progress.</TabsContent>
+  <TabsContent value="ship">Shipping is locked until QA passes.</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="design">
+  <TabsList aria-label="Release workflow">
+    <TabsTrigger value="design">Design</TabsTrigger>
+    <TabsTrigger value="build">Build</TabsTrigger>
+    <TabsTrigger value="ship" disabled>Ship</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="design">Design review is complete.</TabsContent>
+  <TabsContent value="build">Build is in progress.</TabsContent>
+  <TabsContent value="ship">Shipping is locked until QA passes.</TabsContent>
+</Tabs>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="design">
+  <TabsList aria-label="Release workflow">
+    <TabsTrigger value="design">Design</TabsTrigger>
+    <TabsTrigger value="build">Build</TabsTrigger>
+    <TabsTrigger value="ship" disabled>Ship</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="design">Design review is complete.</TabsContent>
+  <TabsContent value="build">Build is in progress.</TabsContent>
+  <TabsContent value="ship">Shipping is locked until QA passes.</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="design">
+    <TabsList aria-label="Release workflow">
+      <TabsTrigger value="design">Design</TabsTrigger>
+      <TabsTrigger value="build">Build</TabsTrigger>
+      <TabsTrigger value="ship" disabled>Ship</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="design">Design review is complete.</TabsContent>
+    <TabsContent value="build">Build is in progress.</TabsContent>
+    <TabsContent value="ship">Shipping is locked until QA passes.</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <Tabs defaultValue="design">
+    <TabsList aria-label="Release workflow">
+      <TabsTrigger value="design">Design</TabsTrigger>
+      <TabsTrigger value="build">Build</TabsTrigger>
+      <TabsTrigger value="ship" disabled>Ship</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="design">Design review is complete.</TabsContent>
+    <TabsContent value="build">Build is in progress.</TabsContent>
+    <TabsContent value="ship">Shipping is locked until QA passes.</TabsContent>
+  </Tabs>
+</Demo>
+
+## CSS custom properties
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-tabs-gap` | `var(--space-sm)` | Gap between the tab list and panel area |
+| `--zui-tabs-list-gap` | `var(--space-4xs)` | Gap between triggers |
+| `--zui-tabs-list-padding` | `var(--space-4xs)` | Inner padding of the tab list container |
+| `--zui-tabs-list-radius` | `var(--radius-lg)` | Border radius of the tab list |
+| `--zui-tabs-list-border` | `var(--color-border)` | Border colour of the tab list |
+| `--zui-tabs-list-bg` | `color-mix(in oklch, var(--color-text) 4%, var(--color-surface))` | Background of the tab list |
+| `--zui-tabs-trigger-radius` | `calc(var(--zui-tabs-list-radius) - var(--space-5xs))` | Border radius of each trigger |
+| `--zui-tabs-trigger-padding-inline` | `var(--space-sm)` | Horizontal padding inside each trigger |
+| `--zui-tabs-trigger-padding-block` | `var(--space-3xs)` | Vertical padding inside each trigger |
+| `--zui-tabs-trigger-color` | `color-mix(in oklch, var(--color-text) 72%, transparent)` | Default trigger text colour |
+| `--zui-tabs-trigger-active-bg` | `var(--color-surface)` | Background of the active trigger |
+| `--zui-tabs-trigger-active-color` | `var(--color-text)` | Text colour of the active trigger |
+| `--zui-tabs-trigger-active-shadow` | `var(--shadow-sm)` | Shadow applied to the active trigger |
+| `--zui-tabs-trigger-focus-ring` | `oklch(from var(--color-theme) l c h / 0.35)` | Focus ring colour |
+| `--zui-tabs-content-padding` | `var(--space-xs) 0` | Padding for the tab panel content |
+
+## Notes
+
+- `orientation` supports `horizontal` and `vertical`
+- `activationMode` supports `auto` and `manual`
+- tabs use real button-based tab triggers, not `details/summary`
+- inactive panels stay mounted and are hidden with the `hidden` attribute
+- React, Astro, Solid, Svelte, and Vue are scaffolded on top of the shared tabs cores
