@@ -17,6 +17,7 @@ export function TabsTrigger(props: TabsTriggerProps) {
     'onClick',
     'onFocus',
     'onKeyDown',
+    'ref',
     'value',
   ])
   const { controller, rootRef, snapshot } = useTabsContext()
@@ -40,10 +41,23 @@ export function TabsTrigger(props: TabsTriggerProps) {
     onCleanup(unregister)
   })
 
+  function setRefs(element: HTMLButtonElement) {
+    ref = element
+
+    if (typeof local.ref === 'function') {
+      local.ref(element)
+      return
+    }
+
+    if (local.ref && typeof local.ref === 'object') {
+      ;(local.ref as { current?: HTMLButtonElement }).current = element
+    }
+  }
+
   return (
     <button
       {...rest}
-      ref={ref}
+      ref={setRefs}
       aria-controls={panelId()}
       aria-selected={isActive()}
       class={classes()}

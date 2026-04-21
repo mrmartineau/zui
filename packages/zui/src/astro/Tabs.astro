@@ -38,33 +38,40 @@ const classes = tabsVariants({ class: className })
   data-disabled={disabled ? 'true' : undefined}
   data-orientation={orientation}
   data-value={value}
+  data-zui-tabs-astro-root
   data-zui-tabs-root
   {...props}
 >
   <slot />
 </div>
 
-<script>
+<script define:vars={{ rootId }}>
   import { attachTabsDom } from '../core/tabs/dom'
 
-  function initTabs() {
-    document.querySelectorAll<HTMLElement>('[data-zui-tabs-root]').forEach((root) => {
-      if (root.dataset.zuiTabsInitialized === 'true') return
+  function initTabs(id) {
+    const root = document.getElementById(id)
 
-      attachTabsDom(root, {
-        activationMode: root.dataset.activationMode === 'manual' ? 'manual' : 'auto',
-        defaultValue: root.dataset.defaultValue || undefined,
-        dir: root.dataset.dir === 'rtl' ? 'rtl' : 'ltr',
-        disabled: root.dataset.disabled === 'true',
-        id: root.id,
-        orientation: root.dataset.orientation === 'vertical' ? 'vertical' : 'horizontal',
-        value: root.dataset.value || undefined,
-      })
+    if (
+      !root ||
+      !root.hasAttribute('data-zui-tabs-astro-root') ||
+      root.dataset.zuiTabsInitialized === 'true'
+    ) {
+      return
+    }
 
-      root.dataset.zuiTabsInitialized = 'true'
+    attachTabsDom(root, {
+      activationMode: root.dataset.activationMode === 'manual' ? 'manual' : 'auto',
+      defaultValue: root.dataset.defaultValue || undefined,
+      dir: root.dataset.dir === 'rtl' ? 'rtl' : 'ltr',
+      disabled: root.dataset.disabled === 'true',
+      id: root.id,
+      orientation: root.dataset.orientation === 'vertical' ? 'vertical' : 'horizontal',
+      value: root.dataset.value || undefined,
     })
+
+    root.dataset.zuiTabsInitialized = 'true'
   }
 
-  initTabs()
-  document.addEventListener('astro:page-load', initTabs)
+  initTabs(rootId)
+  document.addEventListener('astro:page-load', () => initTabs(rootId))
 </script>

@@ -34,6 +34,20 @@ describe('tabs dom adapter', () => {
     root.remove()
   })
 
+  it('applies root disabled state to triggers', () => {
+    const root = createRoot()
+    const instance = attachTabsDom(root, { defaultValue: 'account', disabled: true })
+
+    const triggers = root.querySelectorAll<HTMLButtonElement>('[data-zui-tabs-trigger]')
+
+    expect(triggers[0]?.disabled).toBe(true)
+    expect(triggers[1]?.disabled).toBe(true)
+    expect(triggers[0]?.dataset.disabled).toBe('true')
+
+    instance.destroy()
+    root.remove()
+  })
+
   it('resyncs when new triggers and panels are added', async () => {
     const root = createRoot()
     const instance = attachTabsDom(root, { defaultValue: 'account' })

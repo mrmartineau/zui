@@ -10,6 +10,6 @@ const { class: className, ...props } = Astro.props
 const classes = tabsListVariants({ class: className })
 ---
 
-<div class={classes} data-zui-tabs-list role="tablist" {...props}>
+<div {...props} class={classes} data-zui-tabs-list role="tablist">
   <slot />
 </div>

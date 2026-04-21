@@ -1,5 +1,11 @@
 import type { HTMLAttributes } from 'react'
-import { useEffect, useMemo, useRef, useSyncExternalStore } from 'react'
+import {
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useSyncExternalStore,
+} from 'react'
 import {
   createTabsController,
   type TabsActivationMode,
@@ -33,6 +39,8 @@ export function Tabs({
   value,
   ...props
 }: TabsProps) {
+  const reactId = useId()
+  const rootId = id ?? `zui-tabs-${reactId.replace(/:/g, '')}`
   const rootRef = useRef<HTMLDivElement>(null)
   const controllerRef = useRef<ReturnType<typeof createTabsController> | null>(
     null,
@@ -44,7 +52,7 @@ export function Tabs({
       defaultValue,
       dir,
       disabled,
-      id,
+      id: rootId,
       onValueChange,
       orientation,
       value,
@@ -53,18 +61,28 @@ export function Tabs({
 
   const controller = controllerRef.current
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     controller.setOptions({
       activationMode,
       defaultValue,
       dir,
       disabled,
-      id,
+      id: rootId,
       onValueChange,
       orientation,
       value,
     })
-  }, [activationMode, controller, defaultValue, dir, disabled, id, onValueChange, orientation, value])
+  }, [
+    activationMode,
+    controller,
+    defaultValue,
+    dir,
+    disabled,
+    onValueChange,
+    orientation,
+    rootId,
+    value,
+  ])
 
   const contextValue = useMemo(
     () => ({

@@ -44,7 +44,7 @@ describe('tabs controller', () => {
     expect(controller.getSnapshot().selectedValue).toBe('billing')
   })
 
-  it('fires onValueChange for uncontrolled changes', () => {
+  it('fires onValueChange once for uncontrolled click changes', () => {
     const onValueChange = vi.fn()
     const controller = createTabsController({ defaultValue: 'account', onValueChange })
     registerTrigger(controller, 'account', 0)
@@ -52,6 +52,7 @@ describe('tabs controller', () => {
 
     controller.clickTrigger('security')
 
+    expect(onValueChange).toHaveBeenCalledTimes(1)
     expect(onValueChange).toHaveBeenCalledWith('security')
     expect(controller.getSnapshot().selectedValue).toBe('security')
   })
@@ -80,5 +81,26 @@ describe('tabs controller', () => {
 
     controller.handleTriggerKeydown(new KeyboardEvent('keydown', { key: 'Enter' }), 'security')
     expect(controller.getSnapshot().selectedValue).toBe('security')
+  })
+
+  it('does not move focus or emit when clicking a disabled trigger', () => {
+    const onValueChange = vi.fn()
+    const controller = createTabsController({ defaultValue: 'account', onValueChange })
+    registerTrigger(controller, 'account', 0)
+    registerTrigger(controller, 'security', 1, true)
+
+    controller.clickTrigger('security')
+
+    expect(controller.getSnapshot().selectedValue).toBe('account')
+    expect(controller.getSnapshot().focusedValue).toBe('account')
+    expect(onValueChange).not.toHaveBeenCalled()
+  })
+
+  it('ignores root id changes in setOptions', () => {
+    const controller = createTabsController({ id: 'tabs-a' })
+
+    controller.setOptions({ id: 'tabs-b' })
+
+    expect(controller.getSnapshot().rootId).toBe('tabs-a')
   })
 })

@@ -17,7 +17,11 @@ export interface TabsDomController {
 }
 
 function getTriggerValue(element: Element) {
-  return element.getAttribute('data-value') ?? ''
+  return element.getAttribute('data-value')
+}
+
+function isTriggerOwnDisabled(trigger: HTMLElement) {
+  return trigger.dataset.zuiTabsOwnDisabled === 'true'
 }
 
 function applySnapshot(root: HTMLElement, controller: TabsControllerApi) {
@@ -33,12 +37,18 @@ function applySnapshot(root: HTMLElement, controller: TabsControllerApi) {
   for (const trigger of triggers) {
     const value = getTriggerValue(trigger)
     const isActive = snapshot.selectedValue === value
-    const isDisabled = trigger.hasAttribute('disabled')
+    const isDisabled = snapshot.disabled || isTriggerOwnDisabled(trigger)
 
     trigger.dataset.orientation = snapshot.orientation
     trigger.dataset.state = isActive ? 'active' : 'inactive'
     if (isDisabled) trigger.dataset.disabled = 'true'
     else delete trigger.dataset.disabled
+
+    if (isDisabled) {
+      trigger.setAttribute('disabled', '')
+    } else {
+      trigger.removeAttribute('disabled')
+    }
 
     trigger.setAttribute('role', 'tab')
     trigger.setAttribute('aria-selected', isActive ? 'true' : 'false')
@@ -97,17 +107,23 @@ export function attachTabsDom(
 
     triggers.forEach((trigger, order) => {
       const value = getTriggerValue(trigger)
-      if (!value) return
+      if (value == null) return
 
       const triggerId = trigger.id || createTabsTriggerId(rootId, value)
       const panelId = createTabsContentId(rootId, value)
+      const ownDisabled =
+        trigger.dataset.zuiTabsDisabledByRoot === 'true'
+          ? false
+          : trigger.hasAttribute('disabled')
 
       trigger.id = triggerId
+      trigger.dataset.zuiTabsOwnDisabled = ownDisabled ? 'true' : 'false'
+      delete trigger.dataset.zuiTabsDisabledByRoot
       trigger.setAttribute('type', 'button')
       trigger.setAttribute('aria-controls', panelId)
 
       const unregister = controller.registerTrigger({
-        disabled: trigger.hasAttribute('disabled'),
+        disabled: ownDisabled,
         element: trigger,
         order,
         panelId,
@@ -127,6 +143,12 @@ export function attachTabsDom(
       trigger.addEventListener('keydown', onKeydown)
 
       cleanups.add(() => {
+        if (trigger.hasAttribute('disabled') && !isTriggerOwnDisabled(trigger)) {
+          trigger.dataset.zuiTabsDisabledByRoot = 'true'
+        } else {
+          delete trigger.dataset.zuiTabsDisabledByRoot
+        }
+
         unregister()
         trigger.removeEventListener('click', onClick)
         trigger.removeEventListener('focus', onFocus)
@@ -137,7 +159,7 @@ export function attachTabsDom(
 
     contents.forEach((content) => {
       const value = getTriggerValue(content)
-      if (!value) return
+      if (value == null) return
 
       const triggerId = createTabsTriggerId(rootId, value)
       const panelId = content.id || createTabsContentId(rootId, value)

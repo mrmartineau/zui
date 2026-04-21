@@ -53,13 +53,18 @@ export function createTabsController(
 
   let selectedValue = initialOptions.value ?? initialOptions.defaultValue ?? null
   let focusedValue = selectedValue
+  let preferredUncontrolledValue = initialOptions.defaultValue ?? null
 
   function getEnabledTriggers() {
     return registry.getEnabledTriggers()
   }
 
   function resolveSelectedValue(candidate: string | null) {
-    if (candidate && registry.getTrigger(candidate) && !registry.getTrigger(candidate)?.disabled) {
+    if (
+      candidate != null &&
+      registry.getTrigger(candidate) &&
+      !registry.getTrigger(candidate)?.disabled
+    ) {
       return candidate
     }
     return registry.getFirstEnabledValue()
@@ -88,6 +93,7 @@ export function createTabsController(
 
     if (!isControlled()) {
       selectedValue = resolved
+      preferredUncontrolledValue = nextValue
     }
 
     if (resolved && previous !== resolved) {
@@ -136,7 +142,9 @@ export function createTabsController(
 
     const unregister = registry.registerTrigger(registration)
     const currentSelected = getCurrentSelectedValue()
-    const nextSelected = resolveSelectedValue(currentSelected)
+    const nextSelected = resolveSelectedValue(
+      !isControlled() ? preferredUncontrolledValue ?? currentSelected : currentSelected,
+    )
 
     if (!isControlled()) {
       selectedValue = nextSelected
@@ -176,10 +184,11 @@ export function createTabsController(
   }
 
   function selectValue(value: string) {
-    if (options.disabled) return
+    if (options.disabled) return false
     const trigger = registry.getTrigger(value)
-    if (!trigger || trigger.disabled) return
+    if (!trigger || trigger.disabled) return false
     setSelectedValue(value)
+    return true
   }
 
   function handleTriggerKeydown(event: KeyboardEvent, value: string) {
@@ -239,9 +248,24 @@ export function createTabsController(
   }
 
   function clickTrigger(value: string) {
-    selectValue(value)
+    if (options.disabled) return
+
+    const trigger = registry.getTrigger(value)
+    if (!trigger || trigger.disabled) return
+
+    const previousFocusedValue = focusedValue
+    const previousSelectedValue = getCurrentSelectedValue()
+
     setFocusedValue(value)
-    emit()
+
+    if (previousSelectedValue !== value) {
+      setSelectedValue(value)
+      return
+    }
+
+    if (previousFocusedValue !== value) {
+      emit()
+    }
   }
 
   function setOptions(nextOptions: TabsRootOptions) {
@@ -251,15 +275,16 @@ export function createTabsController(
     options = {
       ...options,
       ...nextOptions,
-      id: nextOptions.id ?? options.id,
+      id: options.id,
     }
 
-    if (!isControlled() && nextOptions.defaultValue && !selectedValue) {
+    if (!isControlled() && nextOptions.defaultValue !== undefined && !selectedValue) {
+      preferredUncontrolledValue = nextOptions.defaultValue
       selectedValue = resolveSelectedValue(nextOptions.defaultValue)
     }
 
     const resolved = resolveSelectedValue(getCurrentSelectedValue())
-    if ((options.value ?? null) && !registry.getTrigger(options.value ?? '')) {
+    if (options.value != null && !registry.getTrigger(options.value)) {
       warn(`Controlled Tabs value "${options.value}" has no matching trigger in root "${rootId}".`)
     }
     if (!isControlled()) {

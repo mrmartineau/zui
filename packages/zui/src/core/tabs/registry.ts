@@ -48,12 +48,12 @@ export class TabsRegistry {
   }
 
   hasTrigger(value: string | null | undefined) {
-    if (!value) return false
+    if (value == null) return false
     return this.triggers.has(value)
   }
 
   hasContent(value: string | null | undefined) {
-    if (!value) return false
+    if (value == null) return false
     return this.contents.has(value)
   }
 }
