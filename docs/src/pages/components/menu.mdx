@@ -175,6 +175,100 @@ import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
   </Menu>
 </Demo>
 
+## Anatomy
+
+- `Menu` — root state container
+- `MenuTrigger` — button that opens and closes the menu
+- `MenuContent` — popup surface with `role="menu"`
+- `MenuItem` — actionable row rendered as a `button` or `a`
+
+## Common props
+
+### `Menu`
+
+- `defaultOpen` — uncontrolled initial open state
+- `open` — controlled open state
+- `disabled` — disables the whole menu
+- `side` — `top | right | bottom | left`
+- `align` — `start | center | end`
+- `dir` — `ltr | rtl`
+
+### `MenuTrigger`
+
+`MenuTrigger` accepts the same visual props as a ZUI button:
+
+- `variant`
+- `color`
+- `size`
+- `shape`
+- `icon`
+
+### `MenuItem`
+
+- `href` — render as a link item
+- `disabled` — prevent focus/activation
+- `textValue` — explicit label used for typeahead matching
+
+## Positioning
+
+Use `side` and `align` on `Menu` to change where the menu surface appears.
+
+<Demo
+  astro={`---
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu side="top" align="end">
+  <MenuTrigger variant="outline">More <i class="ph ph-dots-three" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Rename</MenuItem>
+    <MenuItem>Duplicate</MenuItem>
+    <MenuItem>Archive</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu side="top" align="end">
+    <MenuTrigger variant="outline">
+      More <i class="ph ph-dots-three"></i>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem>Rename</MenuItem>
+      <MenuItem>Duplicate</MenuItem>
+      <MenuItem>Archive</MenuItem>
+    </MenuContent>
+  </Menu>
+</Demo>
+
+## Typeahead
+
+When the menu is open, typing letters moves focus to the next matching enabled item.
+
+By default, matching uses each item's text content. Pass `textValue` when the visible label includes icons, extra formatting, or text that should not drive matching.
+
+<Demo
+  astro={`---
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger variant="outline">Jump to item</MenuTrigger>
+  <MenuContent>
+    <MenuItem textValue="profile"><i class="ph ph-user" /> Profile</MenuItem>
+    <MenuItem textValue="settings"><i class="ph ph-gear" /> Settings</MenuItem>
+    <MenuItem textValue="sign out"><i class="ph ph-sign-out" /> Sign out</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu>
+    <MenuTrigger variant="outline">Jump to item</MenuTrigger>
+    <MenuContent>
+      <MenuItem textValue="profile"><i class="ph ph-user"></i> Profile</MenuItem>
+      <MenuItem textValue="settings"><i class="ph ph-gear"></i> Settings</MenuItem>
+      <MenuItem textValue="sign out"><i class="ph ph-sign-out"></i> Sign out</MenuItem>
+    </MenuContent>
+  </Menu>
+</Demo>
+
 ## Keyboard behavior
 
 - `Enter`, `Space`, `ArrowDown` on the trigger open the menu and focus the first enabled item.
@@ -188,6 +282,12 @@ import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
 ## Dismissal behavior
 
 The menu closes on outside click, trigger toggle, `Escape`, `Tab`, and item activation.
+
+## Controlled and uncontrolled state
+
+Use `defaultOpen` for uncontrolled menus. Use `open` when the open state comes from your app.
+
+In Astro docs examples, `open` is best used as a static initial state example. Interactive controlled behavior is most useful in framework wrappers like React, Solid, Svelte, and Vue.
 
 ## Disabled items
 
@@ -272,6 +372,14 @@ import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
     </MenuContent>
   </Menu>
 </Demo>
+
+## Notes
+
+- Menu is a strict action-menu primitive, not a generic popover panel.
+- `MenuTrigger` is always button-based.
+- `MenuItem` renders as a button by default, or as a link when `href` is provided.
+- Disabled items are skipped by keyboard navigation and typeahead.
+- Menu content stays mounted and is hidden with the `hidden` attribute when closed.
 
 ## CSS custom properties
 
