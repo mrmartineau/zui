@@ -1,15 +1,94 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-interface Props extends HTMLAttributes<'details'> {
+interface Props extends HTMLAttributes<'div'> {
+  align?: 'start' | 'center' | 'end'
+  defaultOpen?: boolean
+  dir?: 'ltr' | 'rtl'
+  disabled?: boolean
+  id?: string
+  modal?: boolean
   open?: boolean
+  side?: 'top' | 'right' | 'bottom' | 'left'
   class?: string
 }
 
-const { class: className, open, ...props } = Astro.props
+const {
+  align = 'start',
+  class: className,
+  defaultOpen,
+  dir = 'ltr',
+  disabled = false,
+  id,
+  modal = false,
+  open,
+  side = 'bottom',
+  ...props
+} = Astro.props
+
+const rootId = id ?? `zui-menu-${crypto.randomUUID()}`
 const classes = ['zui-menu', className].filter(Boolean).join(' ')
 ---
 
-<details class={classes} open={open} {...props}>
+<div
+  id={rootId}
+  class={classes}
+  data-align={align}
+  data-default-open={defaultOpen === undefined ? undefined : String(defaultOpen)}
+  data-dir={dir}
+  data-disabled={disabled ? 'true' : undefined}
+  data-modal={modal ? 'true' : undefined}
+  data-open={open === undefined ? undefined : String(open)}
+  data-side={side}
+  data-state={open ? 'open' : 'closed'}
+  data-zui-menu-astro-root
+  data-zui-menu-root
+  {...props}
+>
   <slot />
-</details>
+</div>
+
+<script>
+  import { attachMenuDom } from '../core/menu/dom'
+
+  function initMenu(root: HTMLElement) {
+    if (!root || root.dataset.zuiMenuInitialized === 'true') return
+
+    attachMenuDom(root, {
+      align: root.dataset.align === 'center' || root.dataset.align === 'end' ? root.dataset.align : 'start',
+      defaultOpen:
+        root.dataset.defaultOpen === 'true'
+          ? true
+          : root.dataset.defaultOpen === 'false'
+            ? false
+            : undefined,
+      dir: root.dataset.dir === 'rtl' ? 'rtl' : 'ltr',
+      disabled: root.dataset.disabled === 'true',
+      id: root.id,
+      modal: root.dataset.modal === 'true',
+      open:
+        root.dataset.open === 'true'
+          ? true
+          : root.dataset.open === 'false'
+            ? false
+            : undefined,
+      side:
+        root.dataset.side === 'top' ||
+        root.dataset.side === 'right' ||
+        root.dataset.side === 'left'
+          ? root.dataset.side
+          : 'bottom',
+    })
+
+    root.dataset.zuiMenuInitialized = 'true'
+  }
+
+  function initAstroMenus() {
+    document
+      .querySelectorAll('[data-zui-menu-astro-root][data-zui-menu-root]')
+      .forEach((root) => initMenu(root as HTMLElement))
+  }
+
+  initAstroMenus()
+  document.addEventListener('astro:page-load', initAstroMenus)
+</script>
