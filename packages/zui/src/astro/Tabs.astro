@@ -48,7 +48,7 @@ const classes = tabsVariants({ class: className })
 <script>
   import { attachTabsDom } from '../core/tabs/dom'
 
-  function initTabs(root) {
+  function initTabs(root: HTMLElement) {
     if (!root || root.dataset.zuiTabsInitialized === 'true') return
 
     attachTabsDom(root, {
@@ -67,7 +67,7 @@ const classes = tabsVariants({ class: className })
   function initAstroTabs() {
     document
       .querySelectorAll('[data-zui-tabs-astro-root][data-zui-tabs-root]')
-      .forEach((root) => initTabs(root))
+      .forEach((root) => initTabs(root as HTMLElement))
   }
 
   initAstroTabs()
