@@ -47,7 +47,11 @@ function readRootOptions(root: HTMLElement, options: MenuRootOptions, rootId: st
           : options.defaultOpen,
     dir: (root.dataset.dir as MenuRootOptions['dir']) ?? options.dir,
     disabled:
-      root.dataset.disabled === 'true' ? true : (options.disabled ?? false),
+      root.dataset.disabled === 'true'
+        ? true
+        : root.dataset.disabled === 'false'
+          ? false
+          : (options.disabled ?? false),
     id: rootId,
     open:
       root.dataset.open === 'true'
@@ -262,10 +266,15 @@ export function attachMenuDom(
         const ownDisabled =
           item.dataset.zuiMenuDisabledByRoot === 'true'
             ? false
-            : item.hasAttribute('disabled')
+            : item.hasAttribute('disabled') ||
+              item.dataset.disabled === 'true' ||
+              item.getAttribute('aria-disabled') === 'true'
         item.dataset.zuiMenuOwnDisabled = ownDisabled ? 'true' : 'false'
         delete item.dataset.zuiMenuDisabledByRoot
         item.id = item.id || createMenuItemId(rootId)
+        if (item instanceof HTMLButtonElement && !item.getAttribute('type')) {
+          item.setAttribute('type', 'button')
+        }
 
         const unregister = controller.registerItem({
           disabled: ownDisabled,

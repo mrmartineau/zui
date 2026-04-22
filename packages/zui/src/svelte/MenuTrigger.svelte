@@ -27,15 +27,22 @@ let {
   shape,
   icon,
   children,
-  onClick,
-  onKeyDown,
+  onclick,
+  onkeydown,
   ...rest
 }: Props = $props()
 
 const { controller, getSnapshot } = getMenuContext()
+const triggerId = controller.getSnapshot().triggerId
 let ref = $state<HTMLButtonElement | undefined>()
 
-$effect(() => controller.registerTrigger({ disabled, element: ref ?? null, triggerId: getSnapshot().triggerId }))
+$effect(() =>
+  controller.registerTrigger({
+    disabled,
+    element: ref ?? null,
+    triggerId,
+  }),
+)
 
 const classes = $derived(
   buttonVariants({
@@ -62,11 +69,11 @@ const classes = $derived(
   disabled={getSnapshot().disabled || disabled}
   id={getSnapshot().triggerId}
   on:click={(event) => {
-    onClick?.(event)
+    onclick?.(event)
     if (!event.defaultPrevented) controller.handleTriggerClick()
   }}
   on:keydown={(event) => {
-    onKeyDown?.(event)
+    onkeydown?.(event)
     if (!event.defaultPrevented) controller.handleTriggerKeydown(event)
   }}
   type="button"

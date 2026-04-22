@@ -1,6 +1,18 @@
 import type { JSX } from 'solid-js'
-import { createEffect, createSignal, onCleanup, splitProps } from 'solid-js'
-import { createMenuController, type MenuAlign, type MenuDirection, type MenuSide } from '../core/menu'
+import {
+  createEffect,
+  createSignal,
+  createUniqueId,
+  onCleanup,
+  onMount,
+  splitProps,
+} from 'solid-js'
+import {
+  createMenuController,
+  type MenuAlign,
+  type MenuDirection,
+  type MenuSide,
+} from '../core/menu'
 import { MenuContext } from './menuContext'
 
 export type MenuProps = JSX.HTMLAttributes<HTMLDivElement> & {
@@ -29,13 +41,15 @@ export function Menu(props: MenuProps) {
     'open',
     'side',
   ])
+  const generatedId = createUniqueId()
+  const rootId = () => local.id ?? `zui-menu-${generatedId}`
 
   const controller = createMenuController({
     align: local.align,
     defaultOpen: local.defaultOpen,
     dir: local.dir,
     disabled: local.disabled,
-    id: local.id,
+    id: rootId(),
     modal: local.modal,
     onOpenChange: local.onOpenChange,
     open: local.open,
@@ -52,7 +66,7 @@ export function Menu(props: MenuProps) {
       defaultOpen: local.defaultOpen,
       dir: local.dir,
       disabled: local.disabled,
-      id: local.id,
+      id: rootId(),
       modal: local.modal,
       onOpenChange: local.onOpenChange,
       open: local.open,
@@ -60,12 +74,17 @@ export function Menu(props: MenuProps) {
     })
   })
 
-  const onPointerDown = (event: PointerEvent) => controller.handleDocumentPointerDown(event.target)
-  document.addEventListener('pointerdown', onPointerDown)
+  onMount(() => {
+    const onPointerDown = (event: PointerEvent) =>
+      controller.handleDocumentPointerDown(event.target)
+    document.addEventListener('pointerdown', onPointerDown)
+    onCleanup(() => {
+      document.removeEventListener('pointerdown', onPointerDown)
+    })
+  })
 
   onCleanup(() => {
     unsubscribe()
-    document.removeEventListener('pointerdown', onPointerDown)
   })
 
   return (

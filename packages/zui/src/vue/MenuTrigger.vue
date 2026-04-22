@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import type { VariantProps } from 'cva'
-import { computed, onUnmounted, ref, watchEffect } from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
 import { buttonVariants } from '../shared/buttonVariants'
 import { useMenuContext } from './menuContext'
 
@@ -47,16 +47,21 @@ const props = withDefaults(
 
 const { controller, snapshot } = useMenuContext()
 const triggerRef = ref<HTMLButtonElement>()
+const triggerId = controller.getSnapshot().triggerId
 let unregister = () => {}
 
-watchEffect(() => {
-  unregister()
-  unregister = controller.registerTrigger({
-    disabled: props.disabled,
-    element: triggerRef.value ?? null,
-    triggerId: snapshot.value.triggerId,
-  })
-})
+watch(
+  [() => props.disabled, triggerRef],
+  () => {
+    unregister()
+    unregister = controller.registerTrigger({
+      disabled: props.disabled,
+      element: triggerRef.value ?? null,
+      triggerId,
+    })
+  },
+  { immediate: true },
+)
 
 onUnmounted(() => unregister())
 

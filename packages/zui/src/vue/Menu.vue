@@ -15,8 +15,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted, ref, watchEffect } from 'vue'
-import { createMenuController, type MenuAlign, type MenuDirection, type MenuSide } from '../core/menu'
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+  useId,
+  watchEffect,
+} from 'vue'
+import {
+  createMenuController,
+  type MenuAlign,
+  type MenuDirection,
+  type MenuSide,
+} from '../core/menu'
 import { provideMenuContext } from './menuContext'
 
 defineOptions({ inheritAttrs: false })
@@ -34,12 +46,14 @@ const props = defineProps<{
   side?: MenuSide
 }>()
 
+const generatedId = useId()
+const rootId = computed(() => props.id ?? `zui-menu-${generatedId}`)
 const controller = createMenuController({
   align: props.align,
   defaultOpen: props.defaultOpen,
   dir: props.dir,
   disabled: props.disabled,
-  id: props.id,
+  id: rootId.value,
   modal: props.modal,
   onOpenChange: props.onOpenChange,
   open: props.open,
@@ -58,7 +72,7 @@ watchEffect(() => {
     defaultOpen: props.defaultOpen,
     dir: props.dir,
     disabled: props.disabled,
-    id: props.id,
+    id: rootId.value,
     modal: props.modal,
     onOpenChange: props.onOpenChange,
     open: props.open,
@@ -66,12 +80,18 @@ watchEffect(() => {
   })
 })
 
-const onPointerDown = (event: PointerEvent) => controller.handleDocumentPointerDown(event.target)
-document.addEventListener('pointerdown', onPointerDown)
+let removePointerDown = () => {}
+
+onMounted(() => {
+  const onPointerDown = (event: PointerEvent) =>
+    controller.handleDocumentPointerDown(event.target)
+  document.addEventListener('pointerdown', onPointerDown)
+  removePointerDown = () => document.removeEventListener('pointerdown', onPointerDown)
+})
 
 onUnmounted(() => {
   unsubscribe()
-  document.removeEventListener('pointerdown', onPointerDown)
+  removePointerDown()
 })
 
 provideMenuContext({ controller, rootRef, snapshot })

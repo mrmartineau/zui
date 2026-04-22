@@ -51,10 +51,29 @@ const classes = ['zui-menu', className].filter(Boolean).join(' ')
 <script>
   import { attachMenuDom } from '../core/menu/dom'
 
-  function initMenu(root: HTMLElement) {
-    if (!root || root.dataset.zuiMenuInitialized === 'true') return
+  const MENU_INSTANCES_KEY = '__zuiMenuAstroInstances'
+  const MENU_EVENTS_BOUND_KEY = '__zuiMenuAstroEventsBound'
 
-    attachMenuDom(root, {
+  function getInstances() {
+    const globalWindow = window as typeof window & {
+      [MENU_INSTANCES_KEY]?: Map<HTMLElement, ReturnType<typeof attachMenuDom>>
+      [MENU_EVENTS_BOUND_KEY]?: boolean
+    }
+
+    if (!globalWindow[MENU_INSTANCES_KEY]) {
+      globalWindow[MENU_INSTANCES_KEY] = new Map()
+    }
+
+    return globalWindow[MENU_INSTANCES_KEY]
+  }
+
+  function initMenu(root: HTMLElement) {
+    if (!root) return
+
+    const instances = getInstances()
+    if (instances.has(root)) return
+
+    const instance = attachMenuDom(root, {
       align: root.dataset.align === 'center' || root.dataset.align === 'end' ? root.dataset.align : 'start',
       defaultOpen:
         root.dataset.defaultOpen === 'true'
@@ -80,7 +99,18 @@ const classes = ['zui-menu', className].filter(Boolean).join(' ')
           : 'bottom',
     })
 
+    instances.set(root, instance)
     root.dataset.zuiMenuInitialized = 'true'
+  }
+
+  function destroyMenu(root: HTMLElement) {
+    const instances = getInstances()
+    const instance = instances.get(root)
+    if (!instance) return
+
+    instance.destroy()
+    instances.delete(root)
+    delete root.dataset.zuiMenuInitialized
   }
 
   function initAstroMenus() {
@@ -89,6 +119,21 @@ const classes = ['zui-menu', className].filter(Boolean).join(' ')
       .forEach((root) => initMenu(root as HTMLElement))
   }
 
+  function destroyAstroMenus() {
+    document
+      .querySelectorAll('[data-zui-menu-astro-root][data-zui-menu-root]')
+      .forEach((root) => destroyMenu(root as HTMLElement))
+  }
+
+  const globalWindow = window as typeof window & {
+    [MENU_EVENTS_BOUND_KEY]?: boolean
+  }
+
+  if (!globalWindow[MENU_EVENTS_BOUND_KEY]) {
+    document.addEventListener('astro:before-swap', destroyAstroMenus)
+    document.addEventListener('astro:page-load', initAstroMenus)
+    globalWindow[MENU_EVENTS_BOUND_KEY] = true
+  }
+
   initAstroMenus()
-  document.addEventListener('astro:page-load', initAstroMenus)
 </script>

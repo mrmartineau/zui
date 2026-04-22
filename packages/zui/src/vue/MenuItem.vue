@@ -104,6 +104,7 @@ const classes = computed(() =>
 )
 
 function handleClick(event: MouseEvent) {
+  if (event.defaultPrevented) return
   const accepted = controller.selectItem(itemId.value)
   if (!accepted && (snapshot.value.disabled || props.disabled)) event.preventDefault()
 }

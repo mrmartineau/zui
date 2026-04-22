@@ -37,9 +37,9 @@ let {
   shape,
   icon,
   children,
-  onClick,
-  onFocus,
-  onPointerEnter,
+  onclick,
+  onfocus,
+  onpointerenter,
   ...rest
 }: Props = $props()
 
@@ -84,18 +84,18 @@ $effect(() =>
     {href}
     id={itemId}
     on:click={(event) => {
-      onClick?.(event)
+      onclick?.(event)
       if (!event.defaultPrevented) {
         const accepted = controller.selectItem(itemId)
         if (!accepted && (getSnapshot().disabled || disabled)) event.preventDefault()
       }
     }}
     on:focus={(event) => {
-      onFocus?.(event)
+      onfocus?.(event)
       if (!event.defaultPrevented) controller.focusItem(itemId)
     }}
     on:pointerenter={(event) => {
-      onPointerEnter?.(event)
+      onpointerenter?.(event)
       if (!event.defaultPrevented) controller.handleItemPointerEnter(itemId)
     }}
     role="menuitem"
@@ -115,15 +115,15 @@ $effect(() =>
     disabled={getSnapshot().disabled || disabled}
     id={itemId}
     on:click={(event) => {
-      onClick?.(event)
+      onclick?.(event)
       if (!event.defaultPrevented) controller.selectItem(itemId)
     }}
     on:focus={(event) => {
-      onFocus?.(event)
+      onfocus?.(event)
       if (!event.defaultPrevented) controller.focusItem(itemId)
     }}
     on:pointerenter={(event) => {
-      onPointerEnter?.(event)
+      onpointerenter?.(event)
       if (!event.defaultPrevented) controller.handleItemPointerEnter(itemId)
     }}
     role="menuitem"

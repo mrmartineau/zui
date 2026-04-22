@@ -22,13 +22,14 @@ export function MenuTrigger(props: MenuTriggerProps) {
     'icon',
   ])
   const { controller, snapshot } = useMenuContext()
+  const triggerId = controller.getSnapshot().triggerId
   let ref: HTMLButtonElement | undefined
 
   createEffect(() => {
     const unregister = controller.registerTrigger({
       disabled: local.disabled ?? false,
       element: ref ?? null,
-      triggerId: snapshot().triggerId,
+      triggerId,
     })
     onCleanup(unregister)
   })

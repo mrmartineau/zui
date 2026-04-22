@@ -173,7 +173,7 @@ export function createMenuController(
 
   function focusItem(id: string) {
     const item = registry.getItem(id)
-    if (!item || item.disabled || !getCurrentOpen()) return false
+    if (options.disabled || !item || item.disabled || !getCurrentOpen()) return false
     const changed = setHighlightedItemId(id)
     focusItemElement(item)
     return changed || true
@@ -196,7 +196,7 @@ export function createMenuController(
   }
 
   function selectItem(id: string) {
-    if (!getCurrentOpen()) return false
+    if (options.disabled || !getCurrentOpen()) return false
     const item = registry.getItem(id)
     if (!item || item.disabled) return false
     closeMenu({ restoreFocus: true })
@@ -279,13 +279,14 @@ export function createMenuController(
   }
 
   function handleItemPointerEnter(id: string) {
-    if (!getCurrentOpen()) return
+    if (options.disabled || !getCurrentOpen()) return
     const item = registry.getItem(id)
     if (!item || item.disabled) return
     setHighlightedItemId(id)
   }
 
   function handleItemTextInput(character: string) {
+    if (options.disabled) return false
     typeaheadState = appendTypeaheadCharacter(typeaheadState, character)
     const match = findTypeaheadMatch(getEnabledItems(), typeaheadState.buffer, highlightedItemId)
     if (!match) return false
@@ -348,8 +349,8 @@ export function createMenuController(
       id: rootId,
     }
 
-    if (!isControlled() && nextOptions.defaultOpen !== undefined && open === false) {
-      open = nextOptions.defaultOpen
+    if (!getCurrentOpen()) {
+      typeaheadState = { buffer: '', timestamp: 0 }
     }
 
     if (!getCurrentOpen()) {

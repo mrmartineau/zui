@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted, ref, watchEffect } from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
 import { useMenuContext } from './menuContext'
 
 defineOptions({ inheritAttrs: false })
@@ -26,15 +26,20 @@ defineOptions({ inheritAttrs: false })
 const props = defineProps<{ class?: string }>()
 const { controller, snapshot } = useMenuContext()
 const contentRef = ref<HTMLDivElement>()
+const contentId = controller.getSnapshot().contentId
 let unregister = () => {}
 
-watchEffect(() => {
-  unregister()
-  unregister = controller.registerContent({
-    contentId: snapshot.value.contentId,
-    element: contentRef.value ?? null,
-  })
-})
+watch(
+  contentRef,
+  () => {
+    unregister()
+    unregister = controller.registerContent({
+      contentId,
+      element: contentRef.value ?? null,
+    })
+  },
+  { immediate: true },
+)
 
 onUnmounted(() => unregister())
 

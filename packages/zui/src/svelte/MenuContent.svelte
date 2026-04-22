@@ -8,11 +8,12 @@ type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet
 }
 
-let { class: className, children, onKeyDown, ...rest }: Props = $props()
+let { class: className, children, onkeydown, ...rest }: Props = $props()
 const { controller, getSnapshot } = getMenuContext()
+const contentId = controller.getSnapshot().contentId
 let ref = $state<HTMLDivElement | undefined>()
 
-$effect(() => controller.registerContent({ contentId: getSnapshot().contentId, element: ref ?? null }))
+$effect(() => controller.registerContent({ contentId, element: ref ?? null }))
 </script>
 
 <div
@@ -27,7 +28,7 @@ $effect(() => controller.registerContent({ contentId: getSnapshot().contentId, e
   hidden={!getSnapshot().open}
   id={getSnapshot().contentId}
   on:keydown={(event) => {
-    onKeyDown?.(event)
+    onkeydown?.(event)
     if (!event.defaultPrevented) controller.handleContentKeydown(event)
   }}
   role="menu"

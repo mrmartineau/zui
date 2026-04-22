@@ -1,9 +1,14 @@
-let menuIdCount = 0
+function randomId() {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+
+  return Math.random().toString(36).slice(2, 10)
+}
 
 export function createMenuRootId(explicitId?: string) {
   if (explicitId) return explicitId
-  menuIdCount += 1
-  return `zui-menu-${menuIdCount}`
+  return `zui-menu-${randomId()}`
 }
 
 export function createMenuTriggerId(rootId: string) {
@@ -16,6 +21,5 @@ export function createMenuContentId(rootId: string) {
 
 export function createMenuItemId(rootId: string, explicitId?: string) {
   if (explicitId) return explicitId
-  menuIdCount += 1
-  return `${rootId}-item-${menuIdCount}`
+  return `${rootId}-item-${randomId()}`
 }

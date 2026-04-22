@@ -7,11 +7,12 @@ export type MenuContentProps = JSX.HTMLAttributes<HTMLDivElement>
 export function MenuContent(props: MenuContentProps) {
   const [local, rest] = splitProps(props, ['class', 'onKeyDown'])
   const { controller, snapshot } = useMenuContext()
+  const contentId = controller.getSnapshot().contentId
   let ref: HTMLDivElement | undefined
 
   createEffect(() => {
     const unregister = controller.registerContent({
-      contentId: snapshot().contentId,
+      contentId,
       element: ref ?? null,
     })
     onCleanup(unregister)

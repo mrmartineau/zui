@@ -20,7 +20,7 @@
     gap: var(--space-4xs);
     min-width: 12.5rem;
     padding: var(--zui-menu-padding);
-    border: 1px var(--border-style) var(--zui-menu-border);
+    border: 1px var(--border-style, solid) var(--zui-menu-border);
     border-radius: var(--zui-menu-radius);
     background-color: var(--zui-menu-bg);
     box-shadow: var(--shadow-md);
