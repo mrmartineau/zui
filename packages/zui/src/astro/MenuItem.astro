@@ -6,13 +6,17 @@ import { buttonVariants } from '../shared/buttonVariants'
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
 interface Props extends HTMLAttributes<'button'>, ButtonVariantProps {
+  disabled?: boolean
   href?: string
+  textValue?: string
   class?: string
 }
 
 const {
   href,
   class: className,
+  disabled = false,
+  textValue,
   variant = 'ghost',
   color,
   size,
@@ -32,11 +36,33 @@ const classes = buttonVariants({
 
 {
   href ? (
-    <a class={classes} href={href} {...props}>
+    <a
+      aria-disabled={disabled ? 'true' : undefined}
+      class={classes}
+      data-disabled={disabled ? 'true' : undefined}
+      data-state="closed"
+      data-text-value={textValue}
+      data-zui-menu-item
+      href={href}
+      role="menuitem"
+      tabindex="-1"
+      {...props}
+    >
       <slot />
     </a>
   ) : (
-    <button class={classes} {...props}>
+    <button
+      class={classes}
+      data-disabled={disabled ? 'true' : undefined}
+      data-state="closed"
+      data-text-value={textValue}
+      data-zui-menu-item
+      disabled={disabled}
+      role="menuitem"
+      tabindex="-1"
+      type="button"
+      {...props}
+    >
       <slot />
     </button>
   )

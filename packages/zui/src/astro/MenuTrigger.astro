@@ -5,12 +5,14 @@ import { buttonVariants } from '../shared/buttonVariants'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-interface Props extends HTMLAttributes<'summary'>, ButtonVariantProps {
+interface Props extends HTMLAttributes<'button'>, ButtonVariantProps {
   class?: string
+  disabled?: boolean
 }
 
 const {
   class: className,
+  disabled = false,
   variant = 'outline',
   color,
   size,
@@ -19,7 +21,7 @@ const {
   ...props
 } = Astro.props
 const classes = buttonVariants({
-  class: className,
+  class: ['zui-menu-trigger', className].filter(Boolean).join(' '),
   color,
   icon,
   shape,
@@ -28,6 +30,16 @@ const classes = buttonVariants({
 })
 ---
 
-<summary class={classes} {...props}>
+<button
+  aria-expanded="false"
+  aria-haspopup="menu"
+  class={classes}
+  data-disabled={disabled ? 'true' : undefined}
+  data-state="closed"
+  data-zui-menu-trigger
+  disabled={disabled}
+  type="button"
+  {...props}
+>
   <slot />
-</summary>
+</button>

@@ -1,232 +1,393 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Menu
-description: A dropdown menu built on the native details/summary elements. No JavaScript required.
+description: A strict action menu with managed focus, keyboard navigation, and menu button semantics.
 ---
 
 import Demo from '../../components/Demo.astro'
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
 
 ## Usage
 
-Menu items inherit all styles from the [Button](/components/button) component. Always combine `.zui-menu-item` with `.zui-button` and a variant class (typically `.zui-button-variant-ghost`). The summary trigger similarly uses `.zui-button` classes.
+Menu is a strict action menu primitive. Use `Menu`, `MenuTrigger`, `MenuContent`, and `MenuItem` together.
 
 <Demo
-  html={`<details class="zui-menu">
-  <summary class="zui-button zui-button-variant-outline">
+  html={`<div class="zui-menu" data-state="open">
+  <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="true">
     Open menu <i class="ph ph-caret-down"></i>
-  </summary>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
-</details>`}
-  react={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/react'
+  </button>
+  <div class="zui-menu-content" role="menu" data-state="open">
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Logout</button>
+  </div>
+</div>`}
+  react={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/react'
 
 <Menu>
   <MenuTrigger>Open menu <i className="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem>Profile</MenuItem>
-  <MenuItem>Settings</MenuItem>
-  <MenuItem>Logout</MenuItem>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+    <MenuItem>Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
   astro={`---
-import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
 ---
 
 <Menu>
   <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem>Profile</MenuItem>
-  <MenuItem>Settings</MenuItem>
-  <MenuItem>Logout</MenuItem>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+    <MenuItem>Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
-  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
+  solid={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/solid'
 
 <Menu>
   <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem>Profile</MenuItem>
-  <MenuItem>Settings</MenuItem>
-  <MenuItem>Logout</MenuItem>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+    <MenuItem>Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
   vue={`<template>
   <Menu>
-  <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem>Profile</MenuItem>
-  <MenuItem>Settings</MenuItem>
-  <MenuItem>Logout</MenuItem>
-</Menu>
+    <MenuTrigger>Open menu <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuContent>
+      <MenuItem>Profile</MenuItem>
+      <MenuItem>Settings</MenuItem>
+      <MenuItem>Logout</MenuItem>
+    </MenuContent>
+  </Menu>
 </template>
 
 <script setup>
-import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/svelte'
+  import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/svelte'
 </script>
 
 <Menu>
   <MenuTrigger>Open menu <i class="ph ph-caret-down"></i></MenuTrigger>
-  <MenuItem>Profile</MenuItem>
-  <MenuItem>Settings</MenuItem>
-  <MenuItem>Logout</MenuItem>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+    <MenuItem>Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
 >
-  <details class="zui-menu">
-    <summary class="zui-button zui-button-variant-outline">
+  <Menu>
+    <MenuTrigger>
       Open menu <i class="ph ph-caret-down"></i>
-    </summary>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost">Profile</button>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost">Settings</button>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost">Logout</button>
-  </details>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem>Profile</MenuItem>
+      <MenuItem>Settings</MenuItem>
+      <MenuItem>Logout</MenuItem>
+    </MenuContent>
+  </Menu>
 </Demo>
 
-## With icons
+## With icons and links
 
 <Demo
-  html={`<details class="zui-menu">
-  <summary class="zui-button">
-    Account <i class="ph ph-caret-down"></i>
-  </summary>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-user"></i> Profile</button>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-gear"></i> Settings</button>
-  <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-sign-out"></i> Logout</button>
-</details>`}
-  react={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/react'
+  html={`<div class="zui-menu" data-state="open">
+  <button class="zui-button zui-menu-trigger" aria-haspopup="menu" aria-expanded="true">Account <i class="ph ph-caret-down"></i></button>
+  <div class="zui-menu-content" role="menu" data-state="open">
+    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem"><i class="ph ph-user"></i> Profile</a>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem"><i class="ph ph-gear"></i> Settings</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem"><i class="ph ph-sign-out"></i> Logout</button>
+  </div>
+</div>`}
+  react={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/react'
 
 <Menu>
   <MenuTrigger>Account <i className="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem><i className="ph ph-user" /> Profile</MenuItem>
-  <MenuItem><i className="ph ph-gear" /> Settings</MenuItem>
-  <MenuItem><i className="ph ph-sign-out" /> Logout</MenuItem>
+  <MenuContent>
+    <MenuItem href="#"><i className="ph ph-user" /> Profile</MenuItem>
+    <MenuItem><i className="ph ph-gear" /> Settings</MenuItem>
+    <MenuItem><i className="ph ph-sign-out" /> Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
   astro={`---
-import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
 ---
 
 <Menu>
   <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem><i class="ph ph-user" /> Profile</MenuItem>
-  <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
-  <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+  <MenuContent>
+    <MenuItem href="#"><i class="ph ph-user" /> Profile</MenuItem>
+    <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
+    <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
-  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
+  solid={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/solid'
 
 <Menu>
   <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem><i class="ph ph-user" /> Profile</MenuItem>
-  <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
-  <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+  <MenuContent>
+    <MenuItem href="#"><i class="ph ph-user" /> Profile</MenuItem>
+    <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
+    <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
-  vue={`<template>
-  <Menu>
-  <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem><i class="ph ph-user" /> Profile</MenuItem>
-  <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
-  <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
-</Menu>
-</template>
-
-<script setup>
-import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
-</script>`}
   svelte={`<script lang="ts">
-  import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/svelte'
+  import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/svelte'
 </script>
 
 <Menu>
   <MenuTrigger>Account <i class="ph ph-caret-down"></i></MenuTrigger>
-  <MenuItem><i class="ph ph-user"></i> Profile</MenuItem>
-  <MenuItem><i class="ph ph-gear"></i> Settings</MenuItem>
-  <MenuItem><i class="ph ph-sign-out"></i> Logout</MenuItem>
-</Menu>`}
->
-  <details class="zui-menu">
-    <summary class="zui-button">
-      Account <i class="ph ph-caret-down"></i>
-    </summary>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-user"></i> Profile</button>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-gear"></i> Settings</button>
-    <button class="zui-menu-item zui-button zui-button-variant-ghost"><i class="ph ph-sign-out"></i> Logout</button>
-  </details>
-</Demo>
-
-## As links
-
-Use an `<a>` element (or pass `href` to `MenuItem`) when items navigate to a page.
-
-<Demo
-  html={`<details class="zui-menu">
-  <summary class="zui-button zui-button-variant-outline">
-    Navigate <i class="ph ph-caret-down"></i>
-  </summary>
-  <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Home</a>
-  <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">About</a>
-  <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Contact</a>
-</details>`}
-  react={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/react'
-
-<Menu>
-  <MenuTrigger variant="outline">Navigate <i className="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem href="#">Home</MenuItem>
-  <MenuItem href="#">About</MenuItem>
-  <MenuItem href="#">Contact</MenuItem>
-</Menu>`}
-  astro={`---
-import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/astro'
----
-
-<Menu>
-  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem href="#">Home</MenuItem>
-  <MenuItem href="#">About</MenuItem>
-  <MenuItem href="#">Contact</MenuItem>
-</Menu>`}
-  solid={`import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/solid'
-
-<Menu>
-  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem href="#">Home</MenuItem>
-  <MenuItem href="#">About</MenuItem>
-  <MenuItem href="#">Contact</MenuItem>
+  <MenuContent>
+    <MenuItem href="#"><i class="ph ph-user"></i> Profile</MenuItem>
+    <MenuItem><i class="ph ph-gear"></i> Settings</MenuItem>
+    <MenuItem><i class="ph ph-sign-out"></i> Logout</MenuItem>
+  </MenuContent>
 </Menu>`}
   vue={`<template>
   <Menu>
-  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down" /></MenuTrigger>
-  <MenuItem href="#">Home</MenuItem>
-  <MenuItem href="#">About</MenuItem>
-  <MenuItem href="#">Contact</MenuItem>
-</Menu>
+    <MenuTrigger>Account <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuContent>
+      <MenuItem href="#"><i class="ph ph-user" /> Profile</MenuItem>
+      <MenuItem><i class="ph ph-gear" /> Settings</MenuItem>
+      <MenuItem><i class="ph ph-sign-out" /> Logout</MenuItem>
+    </MenuContent>
+  </Menu>
 </template>
 
 <script setup>
-import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/vue'
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
 </script>`}
+>
+  <Menu>
+    <MenuTrigger>
+      Account <i class="ph ph-caret-down"></i>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem href="#"><i class="ph ph-user"></i> Profile</MenuItem>
+      <MenuItem><i class="ph ph-gear"></i> Settings</MenuItem>
+      <MenuItem><i class="ph ph-sign-out"></i> Logout</MenuItem>
+    </MenuContent>
+  </Menu>
+</Demo>
+
+## Anatomy
+
+- `Menu` — root state container
+- `MenuTrigger` — button that opens and closes the menu
+- `MenuContent` — popup surface with `role="menu"`
+- `MenuItem` — actionable row rendered as a `button` or `a`
+
+## Common props
+
+### `Menu`
+
+- `defaultOpen` — uncontrolled initial open state
+- `open` — controlled open state
+- `disabled` — disables the whole menu
+- `side` — `top | right | bottom | left`
+- `align` — `start | center | end`
+- `dir` — `ltr | rtl`
+
+### `MenuTrigger`
+
+`MenuTrigger` accepts the same visual props as a ZUI button:
+
+- `variant`
+- `color`
+- `size`
+- `shape`
+- `icon`
+
+### `MenuItem`
+
+- `href` — render as a link item
+- `disabled` — prevent focus/activation
+- `textValue` — explicit label used for typeahead matching
+
+## Positioning
+
+Use `side` and `align` on `Menu` to change where the menu surface appears.
+
+<Demo
+  astro={`---
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu side="top" align="end">
+  <MenuTrigger variant="outline">More <i class="ph ph-dots-three" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Rename</MenuItem>
+    <MenuItem>Duplicate</MenuItem>
+    <MenuItem>Archive</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu side="top" align="end">
+    <MenuTrigger variant="outline">
+      More <i class="ph ph-dots-three"></i>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem>Rename</MenuItem>
+      <MenuItem>Duplicate</MenuItem>
+      <MenuItem>Archive</MenuItem>
+    </MenuContent>
+  </Menu>
+</Demo>
+
+## Typeahead
+
+When the menu is open, typing letters moves focus to the next matching enabled item.
+
+By default, matching uses each item's text content. Pass `textValue` when the visible label includes icons, extra formatting, or text that should not drive matching.
+
+<Demo
+  astro={`---
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger variant="outline">Jump to item</MenuTrigger>
+  <MenuContent>
+    <MenuItem textValue="profile"><i class="ph ph-user" /> Profile</MenuItem>
+    <MenuItem textValue="settings"><i class="ph ph-gear" /> Settings</MenuItem>
+    <MenuItem textValue="sign out"><i class="ph ph-sign-out" /> Sign out</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu>
+    <MenuTrigger variant="outline">Jump to item</MenuTrigger>
+    <MenuContent>
+      <MenuItem textValue="profile"><i class="ph ph-user"></i> Profile</MenuItem>
+      <MenuItem textValue="settings"><i class="ph ph-gear"></i> Settings</MenuItem>
+      <MenuItem textValue="sign out"><i class="ph ph-sign-out"></i> Sign out</MenuItem>
+    </MenuContent>
+  </Menu>
+</Demo>
+
+## Keyboard behavior
+
+- `Enter`, `Space`, `ArrowDown` on the trigger open the menu and focus the first enabled item.
+- `ArrowUp` on the trigger opens the menu and focuses the last enabled item.
+- Inside the menu, use `ArrowDown`, `ArrowUp`, `Home`, and `End` to move focus.
+- `Enter` and `Space` activate the focused item.
+- `Escape` closes the menu and returns focus to the trigger.
+- `Tab` closes the menu and continues normal tab order.
+- Typeahead is supported for enabled items.
+
+## Dismissal behavior
+
+The menu closes on outside click, trigger toggle, `Escape`, `Tab`, and item activation.
+
+## Controlled and uncontrolled state
+
+Use `defaultOpen` for uncontrolled menus. Use `open` when the open state comes from your app.
+
+In Astro docs examples, `open` is best used as a static initial state example. Interactive controlled behavior is most useful in framework wrappers like React, Solid, Svelte, and Vue.
+
+## Disabled items
+
+Pass `disabled` to `Menu` to disable the whole primitive, or to individual `MenuItem`s to keep them in the list but prevent activation.
+
+<Demo
+  html={`<div class="zui-menu" data-state="open">
+  <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="true">Actions <i class="ph ph-caret-down"></i></button>
+  <div class="zui-menu-content" role="menu" data-state="open">
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Edit</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem" disabled>Archive</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Delete</button>
+  </div>
+</div>`}
+  react={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/react'
+
+<Menu>
+  <MenuTrigger variant="outline">Actions <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem disabled>Archive</MenuItem>
+    <MenuItem>Delete</MenuItem>
+  </MenuContent>
+</Menu>`}
+  astro={`---
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger variant="outline">Actions <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem disabled>Archive</MenuItem>
+    <MenuItem>Delete</MenuItem>
+  </MenuContent>
+</Menu>`}
+  solid={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/solid'
+
+<Menu>
+  <MenuTrigger variant="outline">Actions <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem disabled>Archive</MenuItem>
+    <MenuItem>Delete</MenuItem>
+  </MenuContent>
+</Menu>`}
   svelte={`<script lang="ts">
-  import { Menu, MenuTrigger, MenuItem } from '@mrmartineau/zui/svelte'
+  import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/svelte'
 </script>
 
 <Menu>
-  <MenuTrigger variant="outline">Navigate <i class="ph ph-caret-down"></i></MenuTrigger>
-  <MenuItem href="#">Home</MenuItem>
-  <MenuItem href="#">About</MenuItem>
-  <MenuItem href="#">Contact</MenuItem>
+  <MenuTrigger variant="outline">Actions <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem disabled>Archive</MenuItem>
+    <MenuItem>Delete</MenuItem>
+  </MenuContent>
 </Menu>`}
+  vue={`<template>
+  <Menu>
+    <MenuTrigger variant="outline">Actions <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuContent>
+      <MenuItem>Edit</MenuItem>
+      <MenuItem disabled>Archive</MenuItem>
+      <MenuItem>Delete</MenuItem>
+    </MenuContent>
+  </Menu>
+</template>
+
+<script setup>
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
+</script>`}
 >
-  <details class="zui-menu">
-    <summary class="zui-button zui-button-variant-outline">
-      Navigate <i class="ph ph-caret-down"></i>
-    </summary>
-    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Home</a>
-    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">About</a>
-    <a href="#" class="zui-menu-item zui-button zui-button-variant-ghost">Contact</a>
-  </details>
+  <Menu>
+    <MenuTrigger variant="outline">
+      Actions <i class="ph ph-caret-down"></i>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem>Edit</MenuItem>
+      <MenuItem disabled>Archive</MenuItem>
+      <MenuItem>Delete</MenuItem>
+    </MenuContent>
+  </Menu>
 </Demo>
+
+## Notes
+
+- Menu is a strict action-menu primitive, not a generic popover panel.
+- `MenuTrigger` is always button-based.
+- `MenuItem` renders as a button by default, or as a link when `href` is provided.
+- Disabled items are skipped by keyboard navigation and typeahead.
+- Menu content stays mounted and is hidden with the `hidden` attribute when closed.
 
 ## CSS custom properties
 
-These custom properties are set on `.zui-menu[open]::details-content` and can be overridden inline or in your own CSS.
+These custom properties are exposed on `.zui-menu-content`.
 
 | Property | Default | Description |
 |---|---|---|
-| `--zui-menu-radius` | `var(--radius-xl)` | Border radius of the dropdown panel |
-| `--zui-menu-border` | `var(--color-border)` | Border colour |
-| `--zui-menu-bg` | `var(--color-surface)` | Background colour |
-| `--zui-menu-padding` | `var(--space-2xs)` | Padding inside the panel |
+| `--zui-menu-radius` | `var(--radius-xl)` | Panel border radius |
+| `--zui-menu-border` | `var(--color-border)` | Panel border colour |
+| `--zui-menu-bg` | `var(--color-surface)` | Panel background |
+| `--zui-menu-padding` | `var(--space-2xs)` | Panel padding |

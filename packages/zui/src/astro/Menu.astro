@@ -1,15 +1,139 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-interface Props extends HTMLAttributes<'details'> {
+interface Props extends HTMLAttributes<'div'> {
+  align?: 'start' | 'center' | 'end'
+  defaultOpen?: boolean
+  dir?: 'ltr' | 'rtl'
+  disabled?: boolean
+  id?: string
+  modal?: boolean
   open?: boolean
+  side?: 'top' | 'right' | 'bottom' | 'left'
   class?: string
 }
 
-const { class: className, open, ...props } = Astro.props
+const {
+  align = 'start',
+  class: className,
+  defaultOpen,
+  dir = 'ltr',
+  disabled = false,
+  id,
+  modal = false,
+  open,
+  side = 'bottom',
+  ...props
+} = Astro.props
+
+const rootId = id ?? `zui-menu-${crypto.randomUUID()}`
 const classes = ['zui-menu', className].filter(Boolean).join(' ')
 ---
 
-<details class={classes} open={open} {...props}>
+<div
+  id={rootId}
+  class={classes}
+  data-align={align}
+  data-default-open={defaultOpen === undefined ? undefined : String(defaultOpen)}
+  data-dir={dir}
+  data-disabled={disabled ? 'true' : undefined}
+  data-modal={modal ? 'true' : undefined}
+  data-open={open === undefined ? undefined : String(open)}
+  data-side={side}
+  data-state={open ? 'open' : 'closed'}
+  data-zui-menu-astro-root
+  data-zui-menu-root
+  {...props}
+>
   <slot />
-</details>
+</div>
+
+<script>
+  import { attachMenuDom } from '../core/menu/dom'
+
+  const MENU_INSTANCES_KEY = '__zuiMenuAstroInstances'
+  const MENU_EVENTS_BOUND_KEY = '__zuiMenuAstroEventsBound'
+
+  function getInstances() {
+    const globalWindow = window as typeof window & {
+      [MENU_INSTANCES_KEY]?: Map<HTMLElement, ReturnType<typeof attachMenuDom>>
+      [MENU_EVENTS_BOUND_KEY]?: boolean
+    }
+
+    if (!globalWindow[MENU_INSTANCES_KEY]) {
+      globalWindow[MENU_INSTANCES_KEY] = new Map()
+    }
+
+    return globalWindow[MENU_INSTANCES_KEY]
+  }
+
+  function initMenu(root: HTMLElement) {
+    if (!root) return
+
+    const instances = getInstances()
+    if (instances.has(root)) return
+
+    const instance = attachMenuDom(root, {
+      align: root.dataset.align === 'center' || root.dataset.align === 'end' ? root.dataset.align : 'start',
+      defaultOpen:
+        root.dataset.defaultOpen === 'true'
+          ? true
+          : root.dataset.defaultOpen === 'false'
+            ? false
+            : undefined,
+      dir: root.dataset.dir === 'rtl' ? 'rtl' : 'ltr',
+      disabled: root.dataset.disabled === 'true',
+      id: root.id,
+      modal: root.dataset.modal === 'true',
+      open:
+        root.dataset.open === 'true'
+          ? true
+          : root.dataset.open === 'false'
+            ? false
+            : undefined,
+      side:
+        root.dataset.side === 'top' ||
+        root.dataset.side === 'right' ||
+        root.dataset.side === 'left'
+          ? root.dataset.side
+          : 'bottom',
+    })
+
+    instances.set(root, instance)
+    root.dataset.zuiMenuInitialized = 'true'
+  }
+
+  function destroyMenu(root: HTMLElement) {
+    const instances = getInstances()
+    const instance = instances.get(root)
+    if (!instance) return
+
+    instance.destroy()
+    instances.delete(root)
+    delete root.dataset.zuiMenuInitialized
+  }
+
+  function initAstroMenus() {
+    document
+      .querySelectorAll('[data-zui-menu-astro-root][data-zui-menu-root]')
+      .forEach((root) => initMenu(root as HTMLElement))
+  }
+
+  function destroyAstroMenus() {
+    document
+      .querySelectorAll('[data-zui-menu-astro-root][data-zui-menu-root]')
+      .forEach((root) => destroyMenu(root as HTMLElement))
+  }
+
+  const globalWindow = window as typeof window & {
+    [MENU_EVENTS_BOUND_KEY]?: boolean
+  }
+
+  if (!globalWindow[MENU_EVENTS_BOUND_KEY]) {
+    document.addEventListener('astro:before-swap', destroyAstroMenus)
+    document.addEventListener('astro:page-load', initAstroMenus)
+    globalWindow[MENU_EVENTS_BOUND_KEY] = true
+  }
+
+  initAstroMenus()
+</script>

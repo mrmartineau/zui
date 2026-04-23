@@ -503,27 +503,75 @@ Single disclosure widget with animated open/close. Uses native `<details>`/`<sum
 </Collapsible>
 ```
 
-### Menu
+### Tabs
 
-**CSS classes:** `zui-menu` (`<details>`), `zui-menu-item`
+**CSS classes:** `zui-tabs` (root), `zui-tabs-list`, `zui-tabs-trigger`, `zui-tabs-content`
 
-Dropdown menu using native `<details>`/`<summary>`. `MenuTrigger` renders as a `<summary>` styled like a button (accepts all button variant props, defaults to `variant="outline"`). `MenuItem` renders as a `<button>` or `<a>` styled like a ghost button; pass `href` to get an anchor.
+Accessible tabs primitive with managed state, keyboard navigation, and horizontal or vertical orientation.
+
+| Variant axis | Options | Class pattern |
+|---|---|---|
+| list variant | `surface` (default), `underline` | `zui-tabs-list-variant-{name}` |
+| trigger variant | `surface` (default), `underline` | `zui-tabs-trigger-variant-{name}` |
+| orientation | `horizontal` (default), `vertical` | `data-orientation={name}` |
+| activationMode | `auto` (default), `manual` | prop only |
 
 ```html
-<details class="zui-menu">
-  <summary class="zui-button zui-button-variant-outline">Open menu</summary>
-  <button class="zui-button zui-button-variant-ghost zui-menu-item">Action</button>
-  <a class="zui-button zui-button-variant-ghost zui-menu-item" href="/page">Link</a>
-</details>
+<div class="zui-tabs" data-orientation="horizontal">
+  <div class="zui-tabs-list" role="tablist" aria-label="Profile sections">
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true">Account</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Billing</button>
+  </div>
+  <div class="zui-tabs-content" role="tabpanel">Account settings</div>
+</div>
+```
+
+```tsx
+<Tabs defaultValue="account">
+  <TabsList aria-label="Profile sections">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+    <TabsTrigger value="billing">Billing</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="account">Account settings</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+  <TabsContent value="billing">Billing settings</TabsContent>
+</Tabs>
+```
+
+Use `variant="underline"` on both `TabsList` and `TabsTrigger` for the underline style. Use `orientation="vertical"` for vertical tabs.
+
+### Menu
+
+**CSS classes:** `zui-menu` (root), `zui-menu-trigger`, `zui-menu-content`, `zui-menu-item`
+
+Strict action menu primitive with managed focus, keyboard navigation, dismissal behavior, and typeahead. `MenuTrigger` is a real button styled with the ZUI button variants. `MenuItem` renders as a `<button>` by default or an `<a>` when `href` is provided.
+
+```html
+<div class="zui-menu">
+  <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
+    Open menu
+  </button>
+  <div class="zui-menu-content" role="menu" hidden>
+    <button class="zui-button zui-button-variant-ghost zui-menu-item" role="menuitem">Action</button>
+    <a class="zui-button zui-button-variant-ghost zui-menu-item" href="/page" role="menuitem">Link</a>
+  </div>
+</div>
 ```
 
 ```tsx
 <Menu>
   <MenuTrigger>Open menu</MenuTrigger>
-  <MenuItem>Action</MenuItem>
-  <MenuItem href="/page">Link</MenuItem>
+  <MenuContent>
+    <MenuItem>Action</MenuItem>
+    <MenuItem href="/page">Link</MenuItem>
+  </MenuContent>
 </Menu>
 ```
+
+`Menu` props include `defaultOpen`, `open`, `disabled`, `side`, `align`, and `dir`. `MenuItem` supports `disabled`, `href`, and `textValue` for typeahead matching.
 
 ### Flex
 

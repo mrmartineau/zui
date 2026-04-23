@@ -337,6 +337,10 @@
       "source": "menu"
     },
     {
+      "name": "zui-menu-content",
+      "source": "menu"
+    },
+    {
       "name": "zui-menu-item",
       "source": "menu"
     },
@@ -1325,7 +1329,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-04-22T11:05:31.996Z",
+  "generatedAt": "2026-04-22T10:59:31.610Z",
   "tokens": [
     {
       "category": "animation",
