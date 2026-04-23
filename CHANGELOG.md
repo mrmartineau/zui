@@ -1,3 +1,18 @@
+# [1.3.0](https://github.com/mrmartineau/zui/compare/v1.2.0...v1.3.0) (2026-04-22)
+
+
+### Bug Fixes
+
+* **docs:** get correct version ([f87940f](https://github.com/mrmartineau/zui/commit/f87940fc4d6fd734f219276593f9b4f51c5b042f))
+* **vscode-zui:** node types ([30c1130](https://github.com/mrmartineau/zui/commit/30c1130e4b9b135906a2473a5e2592776f4d071a))
+
+
+### Features
+
+* **docs:** add changelog page to docs ([d10a127](https://github.com/mrmartineau/zui/commit/d10a127f75b801b4538c78cd110e41fdb6a9de0b))
+* **docs:** persist demo tab selection across pages via localStorage ([bf4658b](https://github.com/mrmartineau/zui/commit/bf4658bb35e1f9cac19683dda88f9d338821369b))
+* **zui:** add tabs component ([#8](https://github.com/mrmartineau/zui/issues/8)) ([ba845cd](https://github.com/mrmartineau/zui/commit/ba845cdb43d176bcbb7ddd00d4ec4d813ee9b75b))
+
 # [1.2.0](https://github.com/mrmartineau/zui/compare/v1.1.0...v1.2.0) (2026-04-16)
 
 ### Bug Fixes
@@ -149,4 +164,3 @@
 ## 0.1.0 (25-03-2026)
 
 Initial release of ZUI
-
