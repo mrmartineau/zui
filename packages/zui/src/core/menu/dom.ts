@@ -36,6 +36,14 @@ function isItemOwnDisabled(item: HTMLElement) {
   return item.dataset.zuiMenuOwnDisabled === 'true'
 }
 
+function isItemDataDisabledByRoot(item: HTMLElement) {
+  return item.dataset.zuiMenuDataDisabledByRoot === 'true'
+}
+
+function isItemAriaDisabledByRoot(item: HTMLElement) {
+  return item.dataset.zuiMenuAriaDisabledByRoot === 'true'
+}
+
 function readRootOptions(root: HTMLElement, options: MenuRootOptions, rootId: string) {
   return {
     align: (root.dataset.align as MenuRootOptions['align']) ?? options.align,
@@ -104,8 +112,14 @@ function applySnapshot(root: HTMLElement, controller: MenuControllerApi) {
     else delete item.dataset.highlighted
     const ownDisabled = isItemOwnDisabled(item)
     const disabled = snapshot.disabled || ownDisabled
-    if (disabled) item.dataset.disabled = 'true'
-    else delete item.dataset.disabled
+    if (disabled) {
+      item.dataset.disabled = 'true'
+      if (snapshot.disabled && !ownDisabled) item.dataset.zuiMenuDataDisabledByRoot = 'true'
+      else delete item.dataset.zuiMenuDataDisabledByRoot
+    } else {
+      if (isItemDataDisabledByRoot(item)) delete item.dataset.disabled
+      delete item.dataset.zuiMenuDataDisabledByRoot
+    }
     item.setAttribute('role', 'menuitem')
     item.tabIndex = snapshot.open && highlighted ? 0 : -1
     if (item.tagName === 'BUTTON') {
@@ -113,8 +127,11 @@ function applySnapshot(root: HTMLElement, controller: MenuControllerApi) {
       else if (!ownDisabled) item.removeAttribute('disabled')
     } else if (disabled) {
       item.setAttribute('aria-disabled', 'true')
+      if (snapshot.disabled && !ownDisabled) item.dataset.zuiMenuAriaDisabledByRoot = 'true'
+      else delete item.dataset.zuiMenuAriaDisabledByRoot
     } else {
-      item.removeAttribute('aria-disabled')
+      if (isItemAriaDisabledByRoot(item)) item.removeAttribute('aria-disabled')
+      delete item.dataset.zuiMenuAriaDisabledByRoot
     }
   }
 }
@@ -267,8 +284,9 @@ export function attachMenuDom(
           item.dataset.zuiMenuDisabledByRoot === 'true'
             ? false
             : item.hasAttribute('disabled') ||
-              item.dataset.disabled === 'true' ||
-              item.getAttribute('aria-disabled') === 'true'
+              (item.dataset.disabled === 'true' && !isItemDataDisabledByRoot(item)) ||
+              (item.getAttribute('aria-disabled') === 'true' &&
+                !isItemAriaDisabledByRoot(item))
         item.dataset.zuiMenuOwnDisabled = ownDisabled ? 'true' : 'false'
         delete item.dataset.zuiMenuDisabledByRoot
         item.id = item.id || createMenuItemId(rootId)

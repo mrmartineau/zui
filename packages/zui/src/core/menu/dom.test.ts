@@ -82,6 +82,29 @@ describe('menu dom adapter', () => {
     root.remove()
   })
 
+  it('does not persist root-disabled state as item-owned disabled state', async () => {
+    const root = createRoot()
+    const instance = attachMenuDom(root)
+    const items = root.querySelectorAll<HTMLElement>('[data-zui-menu-item]')
+
+    root.dataset.disabled = 'true'
+    await Promise.resolve()
+    instance.sync()
+
+    root.dataset.disabled = 'false'
+    await Promise.resolve()
+    instance.sync()
+
+    expect(items[0]?.dataset.disabled).toBeUndefined()
+    expect(items[0]?.getAttribute('aria-disabled')).toBeNull()
+    expect((items[1] as HTMLButtonElement | undefined)?.disabled).toBe(true)
+    expect(items[2]?.dataset.disabled).toBeUndefined()
+    expect(items[2]?.getAttribute('aria-disabled')).toBeNull()
+
+    instance.destroy()
+    root.remove()
+  })
+
   it('resyncs dynamically inserted items', async () => {
     const root = createRoot()
     const instance = attachMenuDom(root, { defaultOpen: true })
