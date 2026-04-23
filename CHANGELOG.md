@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/mrmartineau/zui/compare/v1.3.0...v1.4.0) (2026-04-23)
+
+
+### Features
+
+* **menu:** implement cross-framework menu primitive ([#9](https://github.com/mrmartineau/zui/issues/9)) ([6f08e09](https://github.com/mrmartineau/zui/commit/6f08e0998328cd7b29c815bdb1c88e8d6802b9cb))
+
 # [1.3.0](https://github.com/mrmartineau/zui/compare/v1.2.0...v1.3.0) (2026-04-22)
 
 
