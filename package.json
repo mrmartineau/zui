@@ -15,5 +15,6 @@
     "docs:dev": "pnpm --filter @mrmartineau/zui run build && pnpm --filter docs run dev",
     "generate:colors": "pnpm --filter @mrmartineau/zui run generate:colors",
     "watch": "pnpm --filter @mrmartineau/zui run watch"
-  }
+  },
+  "packageManager": "pnpm@11.1.1"
 }

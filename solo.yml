@@ -1,0 +1,31 @@
+name: zui
+icon: null
+processes:
+  lazygit:
+    command: lg
+    working_dir: null
+    auto_start: true
+    auto_restart: false
+    restart_when_changed: []
+    env: {}
+  watch:
+    command: nr watch
+    working_dir: null
+    auto_start: true
+    auto_restart: false
+    restart_when_changed: []
+    env: {}
+  hunk diff:
+    command: hunk diff --watch
+    working_dir: null
+    auto_start: true
+    auto_restart: false
+    restart_when_changed: []
+    env: {}
+  docs:dev:
+    command: nr docs:dev
+    working_dir: null
+    auto_start: true
+    auto_restart: true
+    restart_when_changed: []
+    env: {}
