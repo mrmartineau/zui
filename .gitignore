@@ -5,3 +5,5 @@ demo/node_modules
 demo/dist
 demo/.astro
 demo/.wrangler
+
+.wrangler
