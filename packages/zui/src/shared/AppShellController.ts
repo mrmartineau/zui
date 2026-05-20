@@ -8,6 +8,7 @@
  * - mobile drawer open/close via the HTML popover API
  * - desktop collapse state via the `data-collapsed` attribute
  * - localStorage persistence of collapse state (when uncontrolled)
+ * - Escape-to-close on desktop (mobile drawer handles Escape natively)
  * - optional Cmd/Ctrl+B keyboard shortcut
  *
  * See docs/adr/0001-shared-js-controllers.md for the rationale.
@@ -51,6 +52,7 @@ export class AppShellController {
   private mediaQuery?: MediaQueryList
   private mediaHandler?: (e: MediaQueryListEvent) => void
   private keyboardHandler?: (e: KeyboardEvent) => void
+  private escapeHandler?: (e: KeyboardEvent) => void
   private modeListeners = new Set<(mode: AppShellMode) => void>()
 
   constructor(options: AppShellControllerOptions) {
@@ -110,6 +112,23 @@ export class AppShellController {
       }
       window.addEventListener('keydown', this.keyboardHandler)
     }
+
+    // Escape closes the sidebar on desktop. Mobile drawer already handles
+    // Escape natively via the popover API, so we skip it there to avoid a
+    // redundant collapsed-state write.
+    this.escapeHandler = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      if (e.defaultPrevented) return
+      if (this.mode !== 'desktop') return
+      if (this.collapsed) return
+      // Don't steal Escape from text inputs or other Escape-consuming UI
+      const target = e.target as Element | null
+      if (target?.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) {
+        return
+      }
+      this.setCollapsed(true)
+    }
+    window.addEventListener('keydown', this.escapeHandler)
   }
 
   /** Stop observing and clean up. */
@@ -122,6 +141,10 @@ export class AppShellController {
     if (this.keyboardHandler) {
       window.removeEventListener('keydown', this.keyboardHandler)
       this.keyboardHandler = undefined
+    }
+    if (this.escapeHandler) {
+      window.removeEventListener('keydown', this.escapeHandler)
+      this.escapeHandler = undefined
     }
     this.modeListeners.clear()
   }

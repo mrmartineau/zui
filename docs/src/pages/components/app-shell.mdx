@@ -295,6 +295,11 @@ All sizing tokens are scoped to the `.zui-app-shell` root and prefixed `--zui-ap
 
 To change the mobile breakpoint, re-author the `@media (max-width: ...)` rule in your own stylesheet — `@media` cannot read CSS custom properties.
 
+## Keyboard
+
+- <kbd>Esc</kbd> closes the sidebar. On desktop it sets `data-collapsed="true"`. On mobile the popover API handles dismissal natively. Escape is ignored when focus is inside an `input`, `textarea`, `select`, or `contenteditable` element.
+- <kbd>Cmd/Ctrl + B</kbd> toggles the sidebar when `shortcut` is enabled on `AppShell`.
+
 ## Accessibility
 
 - Sidebar element is a `<aside>` (or `<nav>` in your own composition) with `aria-label`.
