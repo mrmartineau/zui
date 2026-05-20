@@ -41,7 +41,7 @@ The desktop sidebar mode transition between expanded and rail. State stored on t
 _Avoid_: Minimise, fold, shrink.
 
 **Mobile mode**:
-The presentation below the configured breakpoint, where the sidebar becomes a popover-driven drawer and the header auto-injects a hamburger toggle. Determined by container query plus JS `ResizeObserver` on the AppShell root.
+The presentation below the configured breakpoint, where the sidebar becomes a popover-driven drawer and the header auto-injects a hamburger toggle. Determined by a viewport `@media` query in CSS plus a `matchMedia` listener in the JS controller, kept in sync via the same breakpoint value.
 _Avoid_: Small screen mode, responsive mode, mobile view.
 
 **AppShellController**:

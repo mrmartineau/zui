@@ -170,7 +170,7 @@ Below the configured `mobileBreakpoint` (default `768px`):
 - The header's auto-injected toggle calls `showPopover()` / `hidePopover()` on the sidebar.
 - The drawer dismisses on backdrop click and on <kbd>Esc</kbd> via the native popover API.
 
-The mobile breakpoint is enforced by a container query, so AppShell works correctly even when embedded inside a narrower parent (split views, iframes, etc.).
+The mobile breakpoint is enforced by a viewport `@media` query. AppShell is designed to occupy the full viewport — embedding it inside a narrower parent will not switch to mobile mode unless the viewport itself is below the breakpoint.
 
 ## Persistence and no-flash hydration
 

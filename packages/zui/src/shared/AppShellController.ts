@@ -4,7 +4,7 @@
  * Vanilla TypeScript controller shared across all framework wrappers (Astro,
  * React, Solid, Svelte, Vue). Owns:
  *
- * - mode detection (desktop vs mobile) via ResizeObserver on the root
+ * - mode detection (desktop vs mobile) via matchMedia on the viewport
  * - mobile drawer open/close via the HTML popover API
  * - desktop collapse state via the `data-collapsed` attribute
  * - localStorage persistence of collapse state (when uncontrolled)
@@ -48,7 +48,8 @@ export class AppShellController {
 
   private collapsed: boolean
   private mode: AppShellMode = 'desktop'
-  private resizeObserver?: ResizeObserver
+  private mediaQuery?: MediaQueryList
+  private mediaHandler?: (e: MediaQueryListEvent) => void
   private keyboardHandler?: (e: KeyboardEvent) => void
   private modeListeners = new Set<(mode: AppShellMode) => void>()
 
@@ -90,17 +91,15 @@ export class AppShellController {
   mount(): void {
     if (typeof window === 'undefined') return
 
-    this.resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const width = entry.contentRect.width
-        const nextMode: AppShellMode =
-          width < this.mobileBreakpoint ? 'mobile' : 'desktop'
-        if (nextMode !== this.mode) {
-          this.setMode(nextMode)
-        }
-      }
-    })
-    this.resizeObserver.observe(this.root)
+    this.mediaQuery = window.matchMedia(
+      `(max-width: ${this.mobileBreakpoint - 1}px)`,
+    )
+    this.mediaHandler = (e: MediaQueryListEvent) => {
+      this.setMode(e.matches ? 'mobile' : 'desktop')
+    }
+    // Initial sync
+    this.mode = this.mediaQuery.matches ? 'mobile' : 'desktop'
+    this.mediaQuery.addEventListener('change', this.mediaHandler)
 
     if (this.bindKeyboard) {
       this.keyboardHandler = (e: KeyboardEvent) => {
@@ -115,8 +114,11 @@ export class AppShellController {
 
   /** Stop observing and clean up. */
   destroy(): void {
-    this.resizeObserver?.disconnect()
-    this.resizeObserver = undefined
+    if (this.mediaQuery && this.mediaHandler) {
+      this.mediaQuery.removeEventListener('change', this.mediaHandler)
+    }
+    this.mediaQuery = undefined
+    this.mediaHandler = undefined
     if (this.keyboardHandler) {
       window.removeEventListener('keydown', this.keyboardHandler)
       this.keyboardHandler = undefined

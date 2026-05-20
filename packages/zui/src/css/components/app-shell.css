@@ -8,9 +8,10 @@
    * mode switch; an accompanying JS controller handles popover state and
    * persistence (see shared/AppShellController.ts).
    *
-   * NOTE: container queries can't read CSS custom properties. The mobile
-   * breakpoint is hard-coded at 768px below. To override, re-author the
-   * `@container` rules in your own CSS or fork this file.
+   * NOTE: mobile-mode rules are gated on a viewport `@media` query at 768px.
+   * (Container queries only style descendants of the container, not the
+   * container element itself — and the grid lives on the root.) To override
+   * the breakpoint, re-author the `@media` rules in your own CSS.
    */
 
   .zui-app-shell {
@@ -32,9 +33,6 @@
     block-size: 100dvh;
     inline-size: 100%;
     overflow: hidden;
-
-    container-type: inline-size;
-    container-name: zui-app-shell;
 
     background-color: var(--color-background);
     color: var(--color-text);
@@ -234,9 +232,9 @@
     outline-offset: 2px;
   }
 
-  /* ---------- Mobile mode (container query) ---------- */
+  /* ---------- Mobile mode (viewport media query) ---------- */
 
-  @container zui-app-shell (max-width: 768px) {
+  @media (max-width: 768px) {
     .zui-app-shell,
     .zui-app-shell-position-right {
       grid-template-columns: 1fr;
