@@ -1,3 +1,18 @@
+export {
+  AppShellController,
+  appShellNoFlashScript,
+  type AppShellControllerOptions,
+  type AppShellMode,
+} from '../shared/AppShellController'
+export {
+  appShellHeaderVariants,
+  appShellMainVariants,
+  appShellSidebarBodyVariants,
+  appShellSidebarFooterVariants,
+  appShellSidebarHeaderVariants,
+  appShellSidebarVariants,
+  appShellVariants,
+} from '../shared/appShellVariants'
 export { avatarVariants } from '../shared/avatarVariants'
 export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
@@ -16,6 +31,13 @@ export { default as Accordion } from './Accordion.vue'
 export { default as AccordionContent } from './AccordionContent.vue'
 export { default as AccordionItem } from './AccordionItem.vue'
 export { default as AccordionTrigger } from './AccordionTrigger.vue'
+export { default as AppShell } from './AppShell.vue'
+export { default as AppShellHeader } from './AppShellHeader.vue'
+export { default as AppShellMain } from './AppShellMain.vue'
+export { default as AppShellSidebar } from './AppShellSidebar.vue'
+export { default as AppShellSidebarBody } from './AppShellSidebarBody.vue'
+export { default as AppShellSidebarFooter } from './AppShellSidebarFooter.vue'
+export { default as AppShellSidebarHeader } from './AppShellSidebarHeader.vue'
 export { default as Avatar } from './Avatar.vue'
 export { default as Badge } from './Badge.vue'
 export { default as Button } from './Button.vue'

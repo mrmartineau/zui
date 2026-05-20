@@ -1,3 +1,18 @@
+export {
+  AppShellController,
+  appShellNoFlashScript,
+  type AppShellControllerOptions,
+  type AppShellMode,
+} from '../shared/AppShellController'
+export {
+  appShellHeaderVariants,
+  appShellMainVariants,
+  appShellSidebarBodyVariants,
+  appShellSidebarFooterVariants,
+  appShellSidebarHeaderVariants,
+  appShellSidebarVariants,
+  appShellVariants,
+} from '../shared/appShellVariants'
 export { avatarVariants } from '../shared/avatarVariants'
 export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
@@ -22,6 +37,19 @@ export {
   AccordionTrigger,
   type AccordionTriggerProps,
 } from './AccordionTrigger'
+export {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+  type AppShellHeaderProps,
+  type AppShellMainProps,
+  type AppShellProps,
+  type AppShellSidebarProps,
+} from './AppShell'
 export { Avatar, type AvatarProps } from './Avatar'
 export { Badge, type BadgeProps } from './Badge'
 export { Button, type ButtonProps } from './Button'

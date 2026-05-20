@@ -137,16 +137,24 @@
     }
   }
 
-  /* left — full-height drawer sliding in from the left edge */
-  .zui-dialog-position-left {
+  /*
+   * left/right — full-height drawer sliding in from the edge.
+   * Slide animation is owned by `zui-drawer-slide-left|right` (see drawer-slide.css)
+   * and composed here via @extend-like duplication of the relevant rules.
+   */
+  .zui-dialog-position-left,
+  .zui-dialog-position-right {
     margin-block: 0;
-    margin-inline-start: 0;
-    margin-inline-end: auto;
     width: var(--zui-dialog-max-width);
     height: 100dvh;
     max-height: 100dvh;
     border-radius: 0;
     border: none;
+  }
+
+  .zui-dialog-position-left {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
     border-inline-end: 1px var(--border-style, solid) var(--zui-dialog-border);
     translate: -100% 0;
     transition:
@@ -167,16 +175,9 @@
     }
   }
 
-  /* right — full-height drawer sliding in from the right edge */
   .zui-dialog-position-right {
-    margin-block: 0;
     margin-inline-end: 0;
     margin-inline-start: auto;
-    width: var(--zui-dialog-max-width);
-    height: 100dvh;
-    max-height: 100dvh;
-    border-radius: 0;
-    border: none;
     border-inline-start: 1px var(--border-style, solid) var(--zui-dialog-border);
     translate: 100% 0;
     transition:

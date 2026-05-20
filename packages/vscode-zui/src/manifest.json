@@ -21,6 +21,46 @@
       "source": "accordion"
     },
     {
+      "name": "zui-app-shell",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-position-right",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-sidebar",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-sidebar-header",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-sidebar-body",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-sidebar-footer",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-header",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-toggle",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-main",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-skip-link",
+      "source": "app-shell"
+    },
+    {
       "name": "zui-avatar",
       "source": "avatar"
     },
@@ -315,6 +355,14 @@
     {
       "name": "zui-dialog-position-bottom",
       "source": "dialog"
+    },
+    {
+      "name": "zui-drawer-slide-left",
+      "source": "drawer-slide"
+    },
+    {
+      "name": "zui-drawer-slide-right",
+      "source": "drawer-slide"
     },
     {
       "name": "zui-input",
@@ -1329,7 +1377,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-04-23T13:38:41.833Z",
+  "generatedAt": "2026-05-20T17:59:53.837Z",
   "tokens": [
     {
       "category": "animation",

@@ -1,3 +1,18 @@
+export {
+  AppShellController,
+  appShellNoFlashScript,
+  type AppShellControllerOptions,
+  type AppShellMode,
+} from '../shared/AppShellController'
+export {
+  appShellHeaderVariants,
+  appShellMainVariants,
+  appShellSidebarBodyVariants,
+  appShellSidebarFooterVariants,
+  appShellSidebarHeaderVariants,
+  appShellSidebarVariants,
+  appShellVariants,
+} from '../shared/appShellVariants'
 export { avatarVariants } from '../shared/avatarVariants'
 export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
@@ -16,6 +31,13 @@ export { default as Accordion } from './Accordion.svelte'
 export { default as AccordionContent } from './AccordionContent.svelte'
 export { default as AccordionItem } from './AccordionItem.svelte'
 export { default as AccordionTrigger } from './AccordionTrigger.svelte'
+export { default as AppShell } from './AppShell.svelte'
+export { default as AppShellHeader } from './AppShellHeader.svelte'
+export { default as AppShellMain } from './AppShellMain.svelte'
+export { default as AppShellSidebar } from './AppShellSidebar.svelte'
+export { default as AppShellSidebarBody } from './AppShellSidebarBody.svelte'
+export { default as AppShellSidebarFooter } from './AppShellSidebarFooter.svelte'
+export { default as AppShellSidebarHeader } from './AppShellSidebarHeader.svelte'
 export { default as Avatar } from './Avatar.svelte'
 export { default as Badge } from './Badge.svelte'
 export { default as Button } from './Button.svelte'

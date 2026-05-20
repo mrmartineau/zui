@@ -1,0 +1,314 @@
+@layer zui.components {
+  /*
+   * AppShell — application layout primitive.
+   *
+   * Composes: sidebar (full-height) + header (over main only) + main.
+   * Sidebar collapses to an icon rail on desktop and becomes a popover-driven
+   * off-canvas drawer below the mobile breakpoint. Container queries drive the
+   * mode switch; an accompanying JS controller handles popover state and
+   * persistence (see shared/AppShellController.ts).
+   *
+   * NOTE: container queries can't read CSS custom properties. The mobile
+   * breakpoint is hard-coded at 768px below. To override, re-author the
+   * `@container` rules in your own CSS or fork this file.
+   */
+
+  .zui-app-shell {
+    --zui-app-shell-sidebar-width: 15rem;
+    --zui-app-shell-sidebar-rail-width: 3.5rem;
+    --zui-app-shell-header-height: 3rem;
+    --zui-app-shell-main-padding: var(--space-md);
+    --zui-app-shell-transition-duration: 200ms;
+    --zui-app-shell-surface: var(--color-surface);
+    --zui-app-shell-border: var(--color-border);
+
+    display: grid;
+    grid-template-columns: var(--zui-app-shell-sidebar-width) 1fr;
+    grid-template-rows: var(--zui-app-shell-header-height) 1fr;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar main";
+
+    block-size: 100dvh;
+    inline-size: 100%;
+    overflow: hidden;
+
+    container-type: inline-size;
+    container-name: zui-app-shell;
+
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    transition: grid-template-columns var(--zui-app-shell-transition-duration)
+      var(--ease-3, ease);
+  }
+
+  /* Right-positioned sidebar swaps grid areas */
+  .zui-app-shell-position-right {
+    grid-template-columns: 1fr var(--zui-app-shell-sidebar-width);
+    grid-template-areas:
+      "header sidebar"
+      "main sidebar";
+  }
+
+  /* Collapsed (rail) state on desktop */
+  .zui-app-shell[data-collapsed="true"] {
+    grid-template-columns: var(--zui-app-shell-sidebar-rail-width) 1fr;
+  }
+  .zui-app-shell-position-right[data-collapsed="true"] {
+    grid-template-columns: 1fr var(--zui-app-shell-sidebar-rail-width);
+  }
+
+  /* ---------- Sidebar ---------- */
+
+  .zui-app-shell-sidebar {
+    grid-area: sidebar;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    min-inline-size: 0;
+
+    /* Neutralise popover UA defaults so it sits in the grid on desktop */
+    position: static;
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    inline-size: auto;
+    max-inline-size: none;
+    block-size: auto;
+    max-block-size: none;
+    border: 0;
+    color: inherit;
+    background-color: var(--zui-app-shell-surface);
+    border-inline-end: 1px var(--border-style, solid) var(--zui-app-shell-border);
+  }
+
+  .zui-app-shell-position-right .zui-app-shell-sidebar {
+    border-inline-end: 0;
+    border-inline-start: 1px var(--border-style, solid) var(--zui-app-shell-border);
+  }
+
+  .zui-app-shell-sidebar::backdrop {
+    background-color: oklch(0% 0 0 / 50%);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition:
+      opacity 250ms ease,
+      display 250ms ease allow-discrete,
+      overlay 250ms ease allow-discrete;
+  }
+  .zui-app-shell-sidebar:popover-open::backdrop {
+    opacity: 1;
+  }
+  @starting-style {
+    .zui-app-shell-sidebar:popover-open::backdrop {
+      opacity: 0;
+    }
+  }
+
+  /* ---------- Sidebar regions ---------- */
+
+  .zui-app-shell-sidebar-header {
+    block-size: var(--zui-app-shell-header-height);
+    padding-inline: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border-block-end: 1px var(--border-style, solid) var(--zui-app-shell-border);
+    min-inline-size: 0;
+  }
+
+  .zui-app-shell-sidebar-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--space-xs);
+    min-inline-size: 0;
+  }
+
+  .zui-app-shell-sidebar-footer {
+    padding-inline: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-block-start: 1px var(--border-style, solid) var(--zui-app-shell-border);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    min-inline-size: 0;
+  }
+
+  /* ---------- Collapse-aware hiding ---------- */
+
+  .zui-app-shell[data-collapsed="true"] [data-collapsed-hide] {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 100ms ease,
+      visibility 0s linear 100ms;
+    pointer-events: none;
+  }
+
+  .zui-app-shell:not([data-collapsed="true"]) [data-collapsed-hide] {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 200ms ease 100ms,
+      visibility 0s linear;
+  }
+
+  /* When sidebar is rail-collapsed, centre icon-only items */
+  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar-header,
+  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar-footer {
+    justify-content: center;
+    padding-inline: 0;
+  }
+  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar-body {
+    padding-inline: var(--space-3xs);
+  }
+
+  /* ---------- Header ---------- */
+
+  .zui-app-shell-header {
+    grid-area: header;
+    block-size: var(--zui-app-shell-header-height);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-inline: var(--space-sm);
+    border-block-end: 1px var(--border-style, solid) var(--zui-app-shell-border);
+    background-color: var(--zui-app-shell-surface);
+    min-inline-size: 0;
+  }
+
+  /* Header toggle button — used for both desktop collapse + mobile drawer trigger */
+  .zui-app-shell-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: var(--step-1);
+  }
+  .zui-app-shell-toggle:hover {
+    background-color: oklch(from var(--color-text) l c h / 8%);
+  }
+  .zui-app-shell-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Main ---------- */
+
+  .zui-app-shell-main {
+    grid-area: main;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--zui-app-shell-main-padding);
+    min-inline-size: 0;
+    min-block-size: 0;
+  }
+
+  /* ---------- Skip link ---------- */
+
+  .zui-app-shell-skip-link {
+    position: absolute;
+    inset-block-start: var(--space-xs);
+    inset-inline-start: var(--space-xs);
+    padding: var(--space-2xs) var(--space-sm);
+    background: var(--color-accent);
+    color: var(--color-background);
+    border-radius: var(--radius-sm);
+    font-size: var(--step--1);
+    text-decoration: none;
+    z-index: var(--z-modal, 100);
+    transform: translateY(-200%);
+    transition: transform 150ms ease;
+  }
+  .zui-app-shell-skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--color-background);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Mobile mode (container query) ---------- */
+
+  @container zui-app-shell (max-width: 768px) {
+    .zui-app-shell,
+    .zui-app-shell-position-right {
+      grid-template-columns: 1fr;
+      grid-template-rows: var(--zui-app-shell-header-height) 1fr;
+      grid-template-areas:
+        "header"
+        "main";
+    }
+
+    /* Sidebar exits grid, becomes a popover drawer */
+    .zui-app-shell-sidebar {
+      position: fixed;
+      inset-block: 0;
+      inset-inline-start: 0;
+      inset-inline-end: auto;
+      inline-size: min(20rem, 85vw);
+      max-inline-size: 85vw;
+      block-size: 100dvh;
+      border-inline-end: 1px var(--border-style, solid) var(--zui-app-shell-border);
+      border-inline-start: 0;
+      box-shadow: var(--shadow-2xl);
+
+      /* slide-in animation */
+      translate: -100% 0;
+      transition:
+        translate 250ms ease,
+        display 250ms ease allow-discrete,
+        overlay 250ms ease allow-discrete;
+    }
+    .zui-app-shell-sidebar:popover-open {
+      translate: 0 0;
+    }
+    @starting-style {
+      .zui-app-shell-sidebar:popover-open {
+        translate: -100% 0;
+      }
+    }
+
+    .zui-app-shell-position-right .zui-app-shell-sidebar {
+      inset-inline-start: auto;
+      inset-inline-end: 0;
+      border-inline-end: 0;
+      border-inline-start: 1px var(--border-style, solid) var(--zui-app-shell-border);
+      translate: 100% 0;
+    }
+    .zui-app-shell-position-right .zui-app-shell-sidebar:popover-open {
+      translate: 0 0;
+    }
+    @starting-style {
+      .zui-app-shell-position-right .zui-app-shell-sidebar:popover-open {
+        translate: 100% 0;
+      }
+    }
+
+    /* In mobile mode the `data-collapsed-hide` attr is irrelevant —
+       the sidebar is either fully open (popover) or fully closed */
+    .zui-app-shell [data-collapsed-hide] {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  /* ---------- Reduced motion ---------- */
+
+  @media (prefers-reduced-motion: reduce) {
+    .zui-app-shell,
+    .zui-app-shell-sidebar,
+    .zui-app-shell [data-collapsed-hide],
+    .zui-app-shell-sidebar::backdrop,
+    .zui-app-shell-skip-link {
+      transition-duration: 0s !important;
+    }
+  }
+}
