@@ -263,6 +263,22 @@
       }
     }
 
+    /*
+     * Hide the closed mobile drawer from the a11y tree and tab order.
+     * The element is kept in layout (position: fixed, translated off-screen)
+     * for the slide animation; visibility: hidden removes it from focus and
+     * AT navigation when the popover is not open.
+     */
+    .zui-app-shell-sidebar:not(:popover-open) {
+      visibility: hidden;
+      transition:
+        translate 250ms ease,
+        visibility 0s linear 250ms;
+    }
+    .zui-app-shell-sidebar:popover-open {
+      visibility: visible;
+    }
+
     .zui-app-shell-position-right .zui-app-shell-sidebar {
       inset-inline-start: auto;
       inset-inline-end: 0;

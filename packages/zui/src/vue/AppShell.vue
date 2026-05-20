@@ -1,12 +1,12 @@
 <template>
-  <div :id="rootId" ref="rootRef" :class="classes" v-bind="$attrs">
+  <div ref="rootRef" v-bind="$attrs" :id="rootId" :class="classes">
     <a class="zui-app-shell-skip-link" :href="`#${mainId}`">Skip to main content</a>
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
 import {
   AppShellController,
   type AppShellMode,
@@ -38,7 +38,7 @@ const emit = defineEmits<{
   (e: 'collapsedChange', collapsed: boolean): void
 }>()
 
-const uid = Math.random().toString(36).slice(2, 9)
+const uid = useId()
 const rootId = props.id ?? `zui-app-shell-${uid}`
 const sidebarId = `${rootId}-sidebar`
 const mainId = `${rootId}-main`

@@ -1,5 +1,5 @@
 <template>
-  <main :id="id ?? ctx.mainId" :class="classes" v-bind="$attrs">
+  <main v-bind="$attrs" :id="id ?? ctx.mainId" :class="classes">
     <slot />
   </main>
 </template>

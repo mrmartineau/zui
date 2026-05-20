@@ -9,6 +9,15 @@ import {
 import { appShellVariants } from '../shared/appShellVariants'
 import { provideAppShellContext } from './appShellContext'
 
+// Module-level counter — SSR-safe because Svelte renders the same component
+// tree on server and client in the same order, so the same id is assigned to
+// the same component instance on both sides.
+let _idCounter = 0
+function nextId() {
+  _idCounter += 1
+  return `zui-app-shell-${_idCounter}`
+}
+
 type Props = HTMLAttributes<HTMLDivElement> & {
   position?: 'left' | 'right'
   defaultCollapsed?: boolean
@@ -35,8 +44,7 @@ let {
   ...rest
 }: Props = $props()
 
-const uid = Math.random().toString(36).slice(2, 9)
-const rootId = id ?? `zui-app-shell-${uid}`
+const rootId = id ?? nextId()
 const sidebarId = `${rootId}-sidebar`
 const mainId = `${rootId}-main`
 
@@ -86,7 +94,7 @@ $effect(() => {
 const classes = $derived(appShellVariants({ class: className, position }))
 </script>
 
-<div bind:this={rootEl} {id} class={classes} {...rest}>
+<div bind:this={rootEl} id={rootId} class={classes} {...rest}>
   <a class="zui-app-shell-skip-link" href={`#${mainId}`}>Skip to main content</a>
   {@render children?.()}
 </div>

@@ -20,7 +20,7 @@ interface Props extends HTMLAttributes<'div'>, AppShellVariantProps {
 }
 
 const {
-  id = 'zui-app-shell',
+  id: providedId,
   position,
   defaultCollapsed = false,
   mobileBreakpoint = 768,
@@ -29,6 +29,12 @@ const {
   class: className,
   ...props
 } = Astro.props
+
+// Generate a stable per-instance id so multiple AppShells on a page don't
+// collide. The id is serialised into the HTML, so the no-flash script and
+// runtime controller can both target this exact root.
+const id =
+  providedId ?? `zui-app-shell-${crypto.randomUUID().slice(0, 8)}`
 
 const resolvedKey =
   storageKey === null ? '' : (storageKey ?? 'zui-app-shell-collapsed')

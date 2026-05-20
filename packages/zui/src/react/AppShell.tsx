@@ -82,7 +82,14 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     const rootRef = useRef<HTMLDivElement | null>(null)
     const sidebarRef = useRef<HTMLElement | null>(null)
     const controllerRef = useRef<AppShellController | null>(null)
+    const onCollapsedChangeRef = useRef(onCollapsedChange)
     const [mode, setMode] = useState<AppShellMode>('desktop')
+
+    // Always call the latest `onCollapsedChange` reference so callback closures
+    // captured by the controller don't go stale across renders.
+    useEffect(() => {
+      onCollapsedChangeRef.current = onCollapsedChange
+    }, [onCollapsedChange])
 
     const classes = appShellVariants({ className, position })
 
@@ -100,6 +107,10 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
       sidebarRef.current = el
     }, [])
 
+    // Re-instantiate the controller when any init-time option changes
+    // (breakpoint, storage key, shortcut binding). Callback reference changes
+    // are handled separately via the ref above, so prop-level onCollapsedChange
+    // updates do NOT trigger a teardown.
     useEffect(() => {
       if (!rootRef.current || !sidebarRef.current) return
       const controller = new AppShellController({
@@ -110,7 +121,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
         mobileBreakpoint,
         storageKey: storageKey === undefined ? undefined : storageKey,
         bindKeyboardShortcut: shortcut,
-        onCollapsedChange,
+        onCollapsedChange: (v) => onCollapsedChangeRef.current?.(v),
       })
       controller.mount()
       const off = controller.onModeChange((m) => setMode(m))
@@ -120,8 +131,10 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
         controller.destroy()
         controllerRef.current = null
       }
+      // `defaultCollapsed` and `collapsed` are read once at controller boot;
+      // subsequent changes are handled by `syncCollapsed` in the next effect.
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [mobileBreakpoint, storageKey, shortcut])
 
     // Sync controlled prop changes
     useEffect(() => {

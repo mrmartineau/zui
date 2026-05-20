@@ -216,6 +216,9 @@ export class AppShellController {
 
   onModeChange(listener: (mode: AppShellMode) => void): () => void {
     this.modeListeners.add(listener)
+    // Fire immediately so subscribers receive the current mode without
+    // waiting for the first viewport crossing.
+    listener(this.mode)
     return () => this.modeListeners.delete(listener)
   }
 

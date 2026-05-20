@@ -1,11 +1,11 @@
 <template>
   <aside
     ref="el"
+    v-bind="$attrs"
     :id="ctx.sidebarId"
     :class="classes"
     :aria-label="label"
     popover="auto"
-    v-bind="$attrs"
   >
     <slot />
   </aside>

@@ -1,5 +1,5 @@
 <template>
-  <header :class="classes" v-bind="$attrs">
+  <header v-bind="$attrs" :class="classes">
     <button
       v-if="toggle"
       type="button"
