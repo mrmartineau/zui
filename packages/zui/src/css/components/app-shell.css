@@ -48,17 +48,32 @@
       "main sidebar";
   }
 
-  /* Collapsed state on desktop — sidebar fully hidden */
-  .zui-app-shell[data-collapsed="true"] {
-    grid-template-columns: 0 1fr;
-  }
-  .zui-app-shell-position-right[data-collapsed="true"] {
-    grid-template-columns: 1fr 0;
-  }
-  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar {
-    visibility: hidden;
-    transition:
-      visibility 0s linear var(--zui-app-shell-transition-duration);
+  /*
+   * Collapsed state on desktop — sidebar fully hidden.
+   * Gated on `min-width: 769px` so it doesn't fight the mobile single-column
+   * grid rule below the breakpoint (where data-collapsed is irrelevant; the
+   * sidebar's visibility is driven by popover open/close instead).
+   */
+  @media (min-width: 769px) {
+    .zui-app-shell[data-collapsed="true"] {
+      grid-template-columns: 0 1fr;
+    }
+    .zui-app-shell-position-right[data-collapsed="true"] {
+      grid-template-columns: 1fr 0;
+    }
+    .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity var(--zui-app-shell-transition-duration) ease,
+        visibility 0s linear var(--zui-app-shell-transition-duration);
+    }
+    .zui-app-shell .zui-app-shell-sidebar {
+      transition:
+        opacity var(--zui-app-shell-transition-duration) ease,
+        visibility 0s linear;
+    }
   }
 
   /* ---------- Sidebar ---------- */

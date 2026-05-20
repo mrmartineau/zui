@@ -11,26 +11,6 @@ import IframeDemo from '../../components/IframeDemo.astro'
 
 Below the configured mobile breakpoint the sidebar transforms into a popover-driven off-canvas drawer, and the header auto-injects a hamburger toggle. The same `<aside>` element serves both modes — no duplicate DOM trees.
 
-<IframeDemo
-  src="/components/app-shell-demo"
-  title="AppShell demo"
-  height="520px"
-/>
-
-For a richer standalone example with real content, see [`/app-shell-example`](/app-shell-example).
-
-## Anatomy
-
-```
-AppShell
-├── AppShellSidebar
-│   ├── AppShellSidebarHeader   (pinned, height = header)
-│   ├── AppShellSidebarBody     (scrolls)
-│   └── AppShellSidebarFooter   (pinned)
-├── AppShellHeader              (over main only — sidebar is full height)
-└── AppShellMain                (scrolls)
-```
-
 ## Usage
 
 On desktop the sidebar toggles between fully visible and fully hidden — there is no icon-rail intermediate state. Below the mobile breakpoint it slides in as an off-canvas drawer.
@@ -235,7 +215,27 @@ import {
     </AppShellMain>
   </AppShell>
 </template>`}
-/>
+>
+  <IframeDemo
+    src="/components/app-shell-demo"
+    title="AppShell demo"
+    height="520px"
+  />
+</Demo>
+
+For a richer standalone example with real content, see [`/app-shell-example`](/app-shell-example).
+
+## Anatomy
+
+```
+AppShell
+├── AppShellSidebar
+│   ├── AppShellSidebarHeader   (pinned, height = header)
+│   ├── AppShellSidebarBody     (scrolls)
+│   └── AppShellSidebarFooter   (pinned)
+├── AppShellHeader              (over main only — sidebar is full height)
+└── AppShellMain                (scrolls)
+```
 
 ## Props — AppShell
 
