@@ -6,13 +6,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   AppShellController,
   type AppShellMode,
 } from '../shared/AppShellController'
 import { appShellVariants } from '../shared/appShellVariants'
 import { provideAppShellContext } from './appShellContext'
+
+// Module-level counter — SSR-safe because Vue renders the same component
+// tree in the same order on server and client. Keeps compatibility with
+// the package's `vue: ^3.3.0` peerDep (Vue's own `useId()` only landed in 3.5).
+let _idCounter = 0
+function nextId() {
+  _idCounter += 1
+  return `zui-app-shell-${_idCounter}`
+}
 
 defineOptions({ inheritAttrs: false })
 
@@ -38,8 +47,7 @@ const emit = defineEmits<{
   (e: 'collapsedChange', collapsed: boolean): void
 }>()
 
-const uid = useId()
-const rootId = props.id ?? `zui-app-shell-${uid}`
+const rootId = props.id ?? nextId()
 const sidebarId = `${rootId}-sidebar`
 const mainId = `${rootId}-main`
 
