@@ -3,10 +3,10 @@
    * AppShell — application layout primitive.
    *
    * Composes: sidebar (full-height) + header (over main only) + main.
-   * Sidebar collapses to an icon rail on desktop and becomes a popover-driven
-   * off-canvas drawer below the mobile breakpoint. Container queries drive the
-   * mode switch; an accompanying JS controller handles popover state and
-   * persistence (see shared/AppShellController.ts).
+   * On desktop the sidebar is either fully shown or fully hidden — there is
+   * no icon-rail intermediate state. Below the mobile breakpoint the sidebar
+   * becomes a popover-driven off-canvas drawer. An accompanying JS controller
+   * handles popover state and persistence (see shared/AppShellController.ts).
    *
    * NOTE: mobile-mode rules are gated on a viewport `@media` query at 768px.
    * (Container queries only style descendants of the container, not the
@@ -16,7 +16,6 @@
 
   .zui-app-shell {
     --zui-app-shell-sidebar-width: 15rem;
-    --zui-app-shell-sidebar-rail-width: 3.5rem;
     --zui-app-shell-header-height: 3rem;
     --zui-app-shell-main-padding: var(--space-md);
     --zui-app-shell-transition-duration: 200ms;
@@ -49,12 +48,17 @@
       "main sidebar";
   }
 
-  /* Collapsed (rail) state on desktop */
+  /* Collapsed state on desktop — sidebar fully hidden */
   .zui-app-shell[data-collapsed="true"] {
-    grid-template-columns: var(--zui-app-shell-sidebar-rail-width) 1fr;
+    grid-template-columns: 0 1fr;
   }
   .zui-app-shell-position-right[data-collapsed="true"] {
-    grid-template-columns: 1fr var(--zui-app-shell-sidebar-rail-width);
+    grid-template-columns: 1fr 0;
+  }
+  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar {
+    visibility: hidden;
+    transition:
+      visibility 0s linear var(--zui-app-shell-transition-duration);
   }
 
   /* ---------- Sidebar ---------- */
@@ -131,35 +135,6 @@
     align-items: center;
     gap: var(--space-xs);
     min-inline-size: 0;
-  }
-
-  /* ---------- Collapse-aware hiding ---------- */
-
-  .zui-app-shell[data-collapsed="true"] [data-collapsed-hide] {
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 100ms ease,
-      visibility 0s linear 100ms;
-    pointer-events: none;
-  }
-
-  .zui-app-shell:not([data-collapsed="true"]) [data-collapsed-hide] {
-    opacity: 1;
-    visibility: visible;
-    transition:
-      opacity 200ms ease 100ms,
-      visibility 0s linear;
-  }
-
-  /* When sidebar is rail-collapsed, centre icon-only items */
-  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar-header,
-  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar-footer {
-    justify-content: center;
-    padding-inline: 0;
-  }
-  .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar-body {
-    padding-inline: var(--space-3xs);
   }
 
   /* ---------- Header ---------- */
@@ -289,13 +264,6 @@
       }
     }
 
-    /* In mobile mode the `data-collapsed-hide` attr is irrelevant —
-       the sidebar is either fully open (popover) or fully closed */
-    .zui-app-shell [data-collapsed-hide] {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
   }
 
   /* ---------- Reduced motion ---------- */
@@ -303,7 +271,6 @@
   @media (prefers-reduced-motion: reduce) {
     .zui-app-shell,
     .zui-app-shell-sidebar,
-    .zui-app-shell [data-collapsed-hide],
     .zui-app-shell-sidebar::backdrop,
     .zui-app-shell-skip-link {
       transition-duration: 0s !important;

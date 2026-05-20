@@ -28,16 +28,12 @@ _Avoid_: Variable, custom property (when referring to design values).
 The top-level layout component owning the grid, collapse state, and breakpoint mode for an application-style UI. Composes `AppShellSidebar`, `AppShellHeader`, `AppShellMain`.
 _Avoid_: Layout, frame, chrome, app layout.
 
-**Rail**:
-The collapsed-but-visible state of an `AppShellSidebar` on desktop. Shows icons only, hides labels via the `[data-collapsed-hide]` attribute on descendant elements. Width controlled by `--zui-app-shell-sidebar-rail-width`.
-_Avoid_: Mini sidebar, icon bar, narrow sidebar.
-
 **Drawer**:
 The off-canvas presentation of `AppShellSidebar` below the mobile breakpoint. Same DOM element as desktop sidebar, presented via the native `popover` API with extracted `zui-drawer-slide-left|right` animation.
 _Avoid_: Off-canvas, modal sidebar, mobile menu.
 
 **Collapse**:
-The desktop sidebar mode transition between expanded and rail. State stored on the root as `data-collapsed`. Distinct from **hide**, which removes the sidebar entirely.
+The desktop sidebar transition between fully visible and fully hidden. State stored on the root as `data-collapsed="true"`. When collapsed the sidebar grid track shrinks to `0`, the sidebar receives `visibility: hidden`, and main content expands.
 _Avoid_: Minimise, fold, shrink.
 
 **Mobile mode**:
@@ -58,12 +54,12 @@ _Avoid_: Manager, store, state.
 
 ## Flagged ambiguities
 
-- "Sidebar collapse" was initially used to mean both *rail* (desktop, narrow but visible) and *hide* (mobile, fully off-canvas). Resolved: collapse = rail; the mobile presentation is **drawer**.
+- "Sidebar collapse" briefly meant "icon rail" (narrow but visible). Resolved: rail was removed; **collapse** now means fully hidden on desktop and is distinct only from the mobile **drawer** presentation.
 - "Toolbar" was initially used by the requester to mean what is now **AppShellHeader**. Resolved: header is the canonical term; "toolbar" reserved for any future in-content action bar component.
 
 ## Example dialogue
 
 > **Dev:** "What happens to the **AppShellSidebar** at 600px?"
 > **Maintainer:** "It switches to **mobile mode** — the **AppShellController** calls `showPopover()` and the sidebar becomes a **drawer**. The header auto-injects the toggle. `data-collapsed` is irrelevant in mobile mode."
-> **Dev:** "And the **rail** state?"
-> **Maintainer:** "Desktop-only. Rail is what *collapsed* looks like above the breakpoint."
+> **Dev:** "And when collapsed on desktop?"
+> **Maintainer:** "Sidebar grid track goes to `0` and the sidebar gets `visibility: hidden`. Fully gone — no icon rail."

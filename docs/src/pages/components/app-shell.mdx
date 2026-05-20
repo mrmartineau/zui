@@ -7,7 +7,7 @@ description: Application layout primitive — collapsible sidebar, top header, s
 import Demo from '../../components/Demo.astro'
 import IframeDemo from '../../components/IframeDemo.astro'
 
-`AppShell` is the top-level layout for application-style UIs. It owns the grid (sidebar + header over main), the collapse/expand state, and the desktop/mobile mode switch. Children compose the sidebar regions, header, and main content area.
+`AppShell` is the top-level layout for application-style UIs. It owns the grid (sidebar + header over main), the show/hide state for the sidebar, and the desktop/mobile mode switch. Children compose the sidebar regions, header, and main content area.
 
 Below the configured mobile breakpoint the sidebar transforms into a popover-driven off-canvas drawer, and the header auto-injects a hamburger toggle. The same `<aside>` element serves both modes — no duplicate DOM trees.
 
@@ -33,7 +33,7 @@ AppShell
 
 ## Usage
 
-The sidebar collapses to an icon rail on desktop. Mark elements inside the sidebar that should disappear when collapsed with the `data-collapsed-hide` attribute — typically labels next to icons.
+On desktop the sidebar toggles between fully visible and fully hidden — there is no icon-rail intermediate state. Below the mobile breakpoint it slides in as an off-canvas drawer.
 
 <Demo
   html={`<div class="zui-app-shell" data-zui-app-shell>
@@ -42,14 +42,14 @@ The sidebar collapses to an icon rail on desktop. Mark elements inside the sideb
   <aside class="zui-app-shell-sidebar" popover="auto" aria-label="Sidebar">
     <div class="zui-app-shell-sidebar-header">
       <i class="ph ph-sparkle" aria-hidden="true"></i>
-      <span data-collapsed-hide>Acme</span>
+      <span>Acme</span>
     </div>
     <div class="zui-app-shell-sidebar-body">
-      <a href="#"><i class="ph ph-house"></i><span data-collapsed-hide>Home</span></a>
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
     </div>
     <div class="zui-app-shell-sidebar-footer">
       <i class="ph ph-user-circle"></i>
-      <span data-collapsed-hide>Account</span>
+      <span>Account</span>
     </div>
   </aside>
 
@@ -80,14 +80,14 @@ import {
   <AppShellSidebar>
     <AppShellSidebarHeader>
       <i class="ph ph-sparkle"></i>
-      <span data-collapsed-hide>Acme</span>
+      <span>Acme</span>
     </AppShellSidebarHeader>
     <AppShellSidebarBody>
-      <a href="#"><i class="ph ph-house"></i><span data-collapsed-hide>Home</span></a>
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
     </AppShellSidebarBody>
     <AppShellSidebarFooter>
       <i class="ph ph-user-circle"></i>
-      <span data-collapsed-hide>Account</span>
+      <span>Account</span>
     </AppShellSidebarFooter>
   </AppShellSidebar>
   <AppShellHeader>
@@ -113,14 +113,14 @@ export function MyApp() {
       <AppShellSidebar>
         <AppShellSidebarHeader>
           <i className="ph ph-sparkle" />
-          <span data-collapsed-hide>Acme</span>
+          <span>Acme</span>
         </AppShellSidebarHeader>
         <AppShellSidebarBody>
-          <a href="#"><i className="ph ph-house" /><span data-collapsed-hide>Home</span></a>
+          <a href="#"><i className="ph ph-house" /><span>Home</span></a>
         </AppShellSidebarBody>
         <AppShellSidebarFooter>
           <i className="ph ph-user-circle" />
-          <span data-collapsed-hide>Account</span>
+          <span>Account</span>
         </AppShellSidebarFooter>
       </AppShellSidebar>
       <AppShellHeader>
@@ -159,10 +159,6 @@ export function MyApp() {
 | --- | --- | --- | --- |
 | `label` | `string` | `'Sidebar'` | aria-label for the navigation landmark. |
 
-## Collapse-aware hiding
-
-Wrap any element inside the sidebar with `data-collapsed-hide` to hide it (with a sequenced fade) when the sidebar is in its collapsed rail state. The attribute has no effect in mobile drawer mode — there the sidebar is either fully open or closed.
-
 ## Mobile mode
 
 Below the configured `mobileBreakpoint` (default `768px`):
@@ -189,13 +185,12 @@ All sizing tokens are scoped to the `.zui-app-shell` root and prefixed `--zui-ap
 ```css
 .my-app .zui-app-shell {
   --zui-app-shell-sidebar-width: 17rem;
-  --zui-app-shell-sidebar-rail-width: 4rem;
   --zui-app-shell-header-height: 3.5rem;
   --zui-app-shell-main-padding: var(--space-lg);
 }
 ```
 
-To change the mobile breakpoint, re-author the `@container zui-app-shell (max-width: ...)` rule in your own stylesheet — container queries cannot read CSS custom properties.
+To change the mobile breakpoint, re-author the `@media (max-width: ...)` rule in your own stylesheet — `@media` cannot read CSS custom properties.
 
 ## Accessibility
 
