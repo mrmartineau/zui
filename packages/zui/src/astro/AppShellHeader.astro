@@ -1,0 +1,55 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { appShellHeaderVariants } from '../shared/appShellVariants'
+
+interface Props extends HTMLAttributes<'header'> {
+  /** When true, auto-inject a sidebar-toggle button as the first child. Defaults to true. */
+  toggle?: boolean
+  /** Aria label for the auto-injected toggle. */
+  toggleLabel?: string
+  /** id of the sidebar element this header controls. Must match the AppShellSidebar id. */
+  sidebarId?: string
+  class?: string
+}
+
+const {
+  toggle = true,
+  toggleLabel = 'Toggle sidebar',
+  sidebarId = 'zui-app-shell-sidebar',
+  class: className,
+  ...props
+} = Astro.props
+
+const classes = appShellHeaderVariants({ class: className })
+---
+
+<header class={classes} {...props}>
+  {toggle && (
+    <button
+      type="button"
+      class="zui-app-shell-toggle"
+      data-zui-app-shell-toggle
+      aria-label={toggleLabel}
+      aria-controls={sidebarId}
+    >
+      <i class="ph ph-list" aria-hidden="true"></i>
+    </button>
+  )}
+  <slot />
+</header>
+
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-zui-app-shell-toggle]')
+    .forEach((btn) => {
+      if (btn.dataset.zuiAppShellToggleBound) return
+      btn.dataset.zuiAppShellToggleBound = 'true'
+      btn.addEventListener('click', () => {
+        const root = btn.closest<HTMLElement>('[data-zui-app-shell]')
+        const controller = (
+          root as unknown as { __zuiAppShellController?: { toggle: () => void } } | null
+        )?.__zuiAppShellController
+        controller?.toggle()
+      })
+    })
+</script>

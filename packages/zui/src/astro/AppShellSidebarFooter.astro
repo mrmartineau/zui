@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { appShellSidebarFooterVariants } from '../shared/appShellVariants'
+
+interface Props extends HTMLAttributes<'div'> {
+  class?: string
+}
+
+const { class: className, ...props } = Astro.props
+const classes = appShellSidebarFooterVariants({ class: className })
+---
+
+<div class={classes} {...props}>
+  <slot />
+</div>

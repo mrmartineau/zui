@@ -1,0 +1,308 @@
+---
+layout: ../../layouts/Layout.astro
+title: App Shell
+description: Application layout primitive — collapsible sidebar, top header, scrollable main content.
+---
+
+import Demo from '../../components/Demo.astro'
+import IframeDemo from '../../components/IframeDemo.astro'
+
+`AppShell` is the top-level layout for application-style UIs. It owns the grid (sidebar + header over main), the show/hide state for the sidebar, and the desktop/mobile mode switch. Children compose the sidebar regions, header, and main content area.
+
+Below the configured mobile breakpoint the sidebar transforms into a popover-driven off-canvas drawer, and the header auto-injects a hamburger toggle. The same `<aside>` element serves both modes — no duplicate DOM trees.
+
+## Usage
+
+On desktop the sidebar toggles between fully visible and fully hidden — there is no icon-rail intermediate state. Below the mobile breakpoint it slides in as an off-canvas drawer.
+
+<Demo
+  html={`<div class="zui-app-shell" data-zui-app-shell>
+  <a class="zui-app-shell-skip-link" href="#main">Skip to main content</a>
+
+  <aside class="zui-app-shell-sidebar" popover="auto" aria-label="Sidebar">
+    <div class="zui-app-shell-sidebar-header">
+      <i class="ph ph-sparkle" aria-hidden="true"></i>
+      <span>Acme</span>
+    </div>
+    <div class="zui-app-shell-sidebar-body">
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+    </div>
+    <div class="zui-app-shell-sidebar-footer">
+      <i class="ph ph-user-circle"></i>
+      <span>Account</span>
+    </div>
+  </aside>
+
+  <header class="zui-app-shell-header">
+    <button type="button" class="zui-app-shell-toggle" aria-label="Toggle sidebar">
+      <i class="ph ph-list" aria-hidden="true"></i>
+    </button>
+    <strong>Dashboard</strong>
+  </header>
+
+  <main id="main" class="zui-app-shell-main">
+    <h1>Welcome</h1>
+  </main>
+</div>`}
+  astro={`---
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/astro'
+---
+
+<AppShell shortcut>
+  <AppShellSidebar>
+    <AppShellSidebarHeader>
+      <i class="ph ph-sparkle"></i>
+      <span>Acme</span>
+    </AppShellSidebarHeader>
+    <AppShellSidebarBody>
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+    </AppShellSidebarBody>
+    <AppShellSidebarFooter>
+      <i class="ph ph-user-circle"></i>
+      <span>Account</span>
+    </AppShellSidebarFooter>
+  </AppShellSidebar>
+  <AppShellHeader>
+    <strong>Dashboard</strong>
+  </AppShellHeader>
+  <AppShellMain>
+    <h1>Welcome</h1>
+  </AppShellMain>
+</AppShell>`}
+  react={`import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/react'
+
+export function MyApp() {
+  return (
+    <AppShell shortcut>
+      <AppShellSidebar>
+        <AppShellSidebarHeader>
+          <i className="ph ph-sparkle" />
+          <span>Acme</span>
+        </AppShellSidebarHeader>
+        <AppShellSidebarBody>
+          <a href="#"><i className="ph ph-house" /><span>Home</span></a>
+        </AppShellSidebarBody>
+        <AppShellSidebarFooter>
+          <i className="ph ph-user-circle" />
+          <span>Account</span>
+        </AppShellSidebarFooter>
+      </AppShellSidebar>
+      <AppShellHeader>
+        <strong>Dashboard</strong>
+      </AppShellHeader>
+      <AppShellMain>
+        <h1>Welcome</h1>
+      </AppShellMain>
+    </AppShell>
+  )
+}`}
+  solid={`import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/solid'
+
+export function MyApp() {
+  return (
+    <AppShell shortcut>
+      <AppShellSidebar>
+        <AppShellSidebarHeader>
+          <i class="ph ph-sparkle" />
+          <span>Acme</span>
+        </AppShellSidebarHeader>
+        <AppShellSidebarBody>
+          <a href="#"><i class="ph ph-house" /><span>Home</span></a>
+        </AppShellSidebarBody>
+        <AppShellSidebarFooter>
+          <i class="ph ph-user-circle" />
+          <span>Account</span>
+        </AppShellSidebarFooter>
+      </AppShellSidebar>
+      <AppShellHeader>
+        <strong>Dashboard</strong>
+      </AppShellHeader>
+      <AppShellMain>
+        <h1>Welcome</h1>
+      </AppShellMain>
+    </AppShell>
+  )
+}`}
+  svelte={`<script lang="ts">
+  import {
+    AppShell,
+    AppShellHeader,
+    AppShellMain,
+    AppShellSidebar,
+    AppShellSidebarBody,
+    AppShellSidebarFooter,
+    AppShellSidebarHeader,
+  } from '@mrmartineau/zui/svelte'
+</script>
+
+<AppShell shortcut>
+  <AppShellSidebar>
+    <AppShellSidebarHeader>
+      <i class="ph ph-sparkle"></i>
+      <span>Acme</span>
+    </AppShellSidebarHeader>
+    <AppShellSidebarBody>
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+    </AppShellSidebarBody>
+    <AppShellSidebarFooter>
+      <i class="ph ph-user-circle"></i>
+      <span>Account</span>
+    </AppShellSidebarFooter>
+  </AppShellSidebar>
+  <AppShellHeader>
+    <strong>Dashboard</strong>
+  </AppShellHeader>
+  <AppShellMain>
+    <h1>Welcome</h1>
+  </AppShellMain>
+</AppShell>`}
+  vue={`<script setup lang="ts">
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/vue'
+</script>
+
+<template>
+  <AppShell shortcut>
+    <AppShellSidebar>
+      <AppShellSidebarHeader>
+        <i class="ph ph-sparkle"></i>
+        <span>Acme</span>
+      </AppShellSidebarHeader>
+      <AppShellSidebarBody>
+        <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+      </AppShellSidebarBody>
+      <AppShellSidebarFooter>
+        <i class="ph ph-user-circle"></i>
+        <span>Account</span>
+      </AppShellSidebarFooter>
+    </AppShellSidebar>
+    <AppShellHeader>
+      <strong>Dashboard</strong>
+    </AppShellHeader>
+    <AppShellMain>
+      <h1>Welcome</h1>
+    </AppShellMain>
+  </AppShell>
+</template>`}
+>
+  <IframeDemo
+    src="/components/app-shell-demo"
+    title="AppShell demo"
+    height="520px"
+  />
+</Demo>
+
+For a richer standalone example with real content, see [`/app-shell-example`](/app-shell-example).
+
+## Anatomy
+
+```
+AppShell
+├── AppShellSidebar
+│   ├── AppShellSidebarHeader   (pinned, height = header)
+│   ├── AppShellSidebarBody     (scrolls)
+│   └── AppShellSidebarFooter   (pinned)
+├── AppShellHeader              (over main only — sidebar is full height)
+└── AppShellMain                (scrolls)
+```
+
+## Props — AppShell
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `position` | `'left' \| 'right'` | `'left'` | Side the sidebar appears on. |
+| `defaultCollapsed` | `boolean` | `false` | Initial collapsed state (uncontrolled). |
+| `collapsed` | `boolean` | — | Controlled collapsed state. |
+| `onCollapsedChange` | `(collapsed: boolean) => void` | — | Fired when collapse changes. |
+| `mobileBreakpoint` | `number` | `768` | Container width (px) below which mobile/drawer mode activates. |
+| `storageKey` | `string \| null` | `'zui-app-shell-collapsed'` | localStorage key. Pass `null` to disable persistence. |
+| `shortcut` | `boolean` | `false` | When true, binds <kbd>Cmd/Ctrl + B</kbd> to toggle the sidebar. |
+
+## Props — AppShellHeader
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `toggle` | `boolean` | `true` | Auto-inject the sidebar toggle button. |
+| `toggleLabel` | `string` | `'Toggle sidebar'` | aria-label for the toggle button. |
+
+## Props — AppShellSidebar
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `'Sidebar'` | aria-label for the navigation landmark. |
+
+## Mobile mode
+
+Below the configured `mobileBreakpoint` (default `768px`):
+
+- The grid collapses to a single column (header + main only).
+- The sidebar exits the grid and is presented as a popover-driven off-canvas drawer.
+- The header's auto-injected toggle calls `showPopover()` / `hidePopover()` on the sidebar.
+- The drawer dismisses on backdrop click and on <kbd>Esc</kbd> via the native popover API.
+
+The mobile breakpoint is enforced by a viewport `@media` query. AppShell is designed to occupy the full viewport — embedding it inside a narrower parent will not switch to mobile mode unless the viewport itself is below the breakpoint.
+
+## Persistence and no-flash hydration
+
+When `storageKey` is set (default), the collapse state is persisted to `localStorage`. The Astro wrapper ships an inline no-flash script that applies `data-collapsed` before the controller boots, preventing layout flicker on first paint. For other frameworks, import and inline `appShellNoFlashScript(storageKey?)` from `@mrmartineau/zui/<framework>`:
+
+```html
+<script>{appShellNoFlashScript()}</script>
+```
+
+## Tokens
+
+All sizing tokens are scoped to the `.zui-app-shell` root and prefixed `--zui-app-shell-*`. Override at the call site:
+
+```css
+.my-app .zui-app-shell {
+  --zui-app-shell-sidebar-width: 17rem;
+  --zui-app-shell-header-height: 3.5rem;
+  --zui-app-shell-main-padding: var(--space-lg);
+}
+```
+
+To change the mobile breakpoint, re-author the `@media (max-width: ...)` rule in your own stylesheet — `@media` cannot read CSS custom properties.
+
+## Keyboard
+
+- <kbd>Esc</kbd> closes the sidebar. On desktop it sets `data-collapsed="true"`. On mobile the popover API handles dismissal natively. Escape is ignored when focus is inside an `input`, `textarea`, `select`, or `contenteditable` element.
+- <kbd>Cmd/Ctrl + B</kbd> toggles the sidebar when `shortcut` is enabled on `AppShell`.
+
+## Accessibility
+
+- Sidebar element is a `<aside>` (or `<nav>` in your own composition) with `aria-label`.
+- Header is `<header>`; main is `<main>` and is the target of the auto-injected skip link.
+- The toggle button carries `aria-controls` referencing the sidebar id.
+- All transitions honour `prefers-reduced-motion`.

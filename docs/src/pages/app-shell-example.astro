@@ -1,0 +1,152 @@
+---
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/astro'
+import '@mrmartineau/zui/css'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AppShell example — ZUI</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2/src/regular/style.css"
+    />
+    <style>
+      html, body { margin: 0; padding: 0; height: 100%; }
+      a.nav-link {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        padding: var(--space-2xs) var(--space-xs);
+        border-radius: var(--radius-md);
+        color: inherit;
+        text-decoration: none;
+        font-size: var(--step--1);
+      }
+      a.nav-link:hover {
+        background-color: oklch(from var(--color-text) l c h / 8%);
+      }
+      a.nav-link.is-active {
+        background-color: oklch(from var(--color-accent) l c h / 15%);
+        color: var(--color-accent);
+      }
+      a.nav-link i { font-size: var(--step-0); flex: none; }
+      .brand {
+        font-weight: 700;
+        font-size: var(--step-1);
+      }
+      .nav-group-label {
+        font-size: var(--step--2);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: oklch(from var(--color-text) l c h / 55%);
+        padding: var(--space-sm) var(--space-xs) var(--space-2xs);
+      }
+      .content {
+        max-width: 60ch;
+      }
+      .content h1 { margin-top: 0; }
+      .header-spacer { flex: 1; }
+    </style>
+  </head>
+  <body>
+    <AppShell shortcut>
+      <AppShellSidebar>
+        <AppShellSidebarHeader>
+          <i class="ph ph-sparkle" aria-hidden="true" style="font-size:var(--step-2)"></i>
+          <span class="brand">Acme</span>
+        </AppShellSidebarHeader>
+
+        <AppShellSidebarBody>
+          <div class="nav-group-label">Workspace</div>
+          <a class="nav-link is-active" href="#">
+            <i class="ph ph-house" aria-hidden="true"></i>
+            <span>Home</span>
+          </a>
+          <a class="nav-link" href="#">
+            <i class="ph ph-folder" aria-hidden="true"></i>
+            <span>Projects</span>
+          </a>
+          <a class="nav-link" href="#">
+            <i class="ph ph-chat-circle" aria-hidden="true"></i>
+            <span>Inbox</span>
+          </a>
+
+          <div class="nav-group-label">Insights</div>
+          <a class="nav-link" href="#">
+            <i class="ph ph-chart-bar" aria-hidden="true"></i>
+            <span>Reports</span>
+          </a>
+          <a class="nav-link" href="#">
+            <i class="ph ph-activity" aria-hidden="true"></i>
+            <span>Activity</span>
+          </a>
+          <a class="nav-link" href="#">
+            <i class="ph ph-gear" aria-hidden="true"></i>
+            <span>Settings</span>
+          </a>
+        </AppShellSidebarBody>
+
+        <AppShellSidebarFooter>
+          <i class="ph ph-user-circle" aria-hidden="true" style="font-size:var(--step-1)"></i>
+          <span>Account</span>
+        </AppShellSidebarFooter>
+      </AppShellSidebar>
+
+      <AppShellHeader>
+        <strong style="margin-inline-start:var(--space-xs)">Home</strong>
+        <span class="header-spacer"></span>
+        <button class="zui-button zui-button-variant-outline zui-button-size-sm" type="button" aria-label="Notifications">
+          <i class="ph ph-bell" aria-hidden="true"></i>
+        </button>
+        <button class="zui-button zui-button-size-sm" type="button">
+          <i class="ph ph-plus" aria-hidden="true"></i>
+          New
+        </button>
+      </AppShellHeader>
+
+      <AppShellMain>
+        <article class="zui-prose content">
+          <h1>Welcome back</h1>
+          <p>
+            This page is a real example of the <code>AppShell</code> layout
+            wrapping ordinary content. The sidebar toggles between fully
+            visible and fully hidden on desktop, and slides in as an
+            off-canvas drawer below 768px.
+          </p>
+
+          <h2>What you can do</h2>
+          <ul>
+            <li>Press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>B</kbd> to toggle the sidebar.</li>
+            <li>Resize the browser to below 768px to switch to the mobile drawer.</li>
+            <li>Reload — the collapse state persists via <code>localStorage</code>.</li>
+          </ul>
+
+          <h2>Composition</h2>
+          <p>
+            The shell is built from seven components: <code>AppShell</code>,
+            <code>AppShellSidebar</code> with three regions
+            (<code>Header</code>, <code>Body</code>, <code>Footer</code>),
+            <code>AppShellHeader</code>, and <code>AppShellMain</code>.
+          </p>
+
+          <h2>Next</h2>
+          <p>
+            See the <a href="/components/app-shell">AppShell docs</a> for the
+            full prop and token reference, accessibility notes, and the
+            no-flash hydration pattern.
+          </p>
+        </article>
+      </AppShellMain>
+    </AppShell>
+  </body>
+</html>

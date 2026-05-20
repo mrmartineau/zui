@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { appShellMainVariants } from '../shared/appShellVariants'
+
+interface Props extends HTMLAttributes<'main'> {
+  id?: string
+  class?: string
+}
+
+const { id = 'zui-app-shell-main', class: className, ...props } = Astro.props
+const classes = appShellMainVariants({ class: className })
+---
+
+<main id={id} class={classes} {...props}>
+  <slot />
+</main>

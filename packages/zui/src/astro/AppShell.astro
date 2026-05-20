@@ -1,0 +1,102 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { appShellVariants } from '../shared/appShellVariants'
+
+type AppShellVariantProps = VariantProps<typeof appShellVariants>
+
+interface Props extends HTMLAttributes<'div'>, AppShellVariantProps {
+  /** Stable id used by toggles for aria-controls. */
+  id?: string
+  /** When true, sidebar starts in the collapsed rail state. */
+  defaultCollapsed?: boolean
+  /** Breakpoint in px below which the layout switches to mobile mode. */
+  mobileBreakpoint?: number
+  /** localStorage key for persistence. Pass `null` to disable. */
+  storageKey?: string | null
+  /** Bind Cmd/Ctrl+B to toggle the sidebar. */
+  shortcut?: boolean
+  class?: string
+}
+
+const {
+  id: providedId,
+  position,
+  defaultCollapsed = false,
+  mobileBreakpoint = 768,
+  storageKey,
+  shortcut = false,
+  class: className,
+  ...props
+} = Astro.props
+
+// Generate a stable per-instance id so multiple AppShells on a page don't
+// collide. The id is serialised into the HTML, so the no-flash script and
+// runtime controller can both target this exact root.
+const id =
+  providedId ?? `zui-app-shell-${crypto.randomUUID().slice(0, 8)}`
+
+const resolvedKey =
+  storageKey === null ? '' : (storageKey ?? 'zui-app-shell-collapsed')
+const classes = appShellVariants({ class: className, position })
+---
+
+<div
+  id={id}
+  class={classes}
+  data-zui-app-shell
+  data-default-collapsed={defaultCollapsed ? 'true' : 'false'}
+  data-mobile-breakpoint={String(mobileBreakpoint)}
+  data-storage-key={resolvedKey}
+  data-shortcut={shortcut ? 'true' : 'false'}
+  {...props}
+>
+  <a class="zui-app-shell-skip-link" href="#zui-app-shell-main">Skip to main content</a>
+  <slot />
+</div>
+
+<script is:inline define:vars={{ id, defaultCollapsed, storageKey: resolvedKey }}>
+  // No-flash hydration: apply data-collapsed before the controller script boots.
+  try {
+    const root = document.getElementById(id)
+    if (!root) {
+      /* noop */
+    } else if (storageKey) {
+      const stored = localStorage.getItem(storageKey)
+      if (stored === 'true' || (stored === null && defaultCollapsed)) {
+        root.setAttribute('data-collapsed', 'true')
+      }
+    } else if (defaultCollapsed) {
+      root.setAttribute('data-collapsed', 'true')
+    }
+  } catch (e) { /* noop */ }
+</script>
+
+<script>
+  import { AppShellController } from '../shared/AppShellController'
+
+  const mounted = new WeakMap<HTMLElement, AppShellController>()
+
+  function boot(root: HTMLElement) {
+    if (mounted.has(root)) return
+    const sidebar = root.querySelector<HTMLElement>('.zui-app-shell-sidebar')
+    if (!sidebar) return
+    const storageKey = root.dataset.storageKey || null
+    const controller = new AppShellController({
+      root,
+      sidebar,
+      defaultCollapsed: root.dataset.defaultCollapsed === 'true',
+      mobileBreakpoint: Number(root.dataset.mobileBreakpoint) || 768,
+      storageKey: storageKey === '' ? null : storageKey,
+      bindKeyboardShortcut: root.dataset.shortcut === 'true',
+    })
+    controller.mount()
+    mounted.set(root, controller)
+    ;(root as unknown as { __zuiAppShellController?: AppShellController }).__zuiAppShellController =
+      controller
+  }
+
+  document
+    .querySelectorAll<HTMLElement>('[data-zui-app-shell]')
+    .forEach(boot)
+</script>

@@ -460,6 +460,91 @@ Uses native `<details>`/`<summary>` elements with CSS animated open/close. Add `
 <Accordion flush>…</Accordion>
 ```
 
+### AppShell
+
+Top-level application layout — full-height sidebar, header over main, scrollable main content. On desktop the sidebar toggles between fully visible and fully hidden (no icon rail). Below 768px the sidebar becomes a popover-driven off-canvas drawer and the header auto-injects a hamburger toggle. Persists collapse state to `localStorage`.
+
+**CSS classes:** `zui-app-shell` (root), `zui-app-shell-sidebar` (full-height aside, must carry `popover="auto"`), `zui-app-shell-sidebar-header`, `zui-app-shell-sidebar-body` (scrolls), `zui-app-shell-sidebar-footer`, `zui-app-shell-header`, `zui-app-shell-toggle` (header button), `zui-app-shell-main` (scrolls), `zui-app-shell-skip-link`
+
+| Variant axis | Options | Class pattern |
+|---|---|---|
+| position | `left` (default), `right` | `zui-app-shell-position-{name}` |
+
+State on root: `data-collapsed="true"` flips desktop layout to hide the sidebar; the JS controller toggles this attribute.
+
+**Local tokens** (scoped to `.zui-app-shell` root): `--zui-app-shell-sidebar-width` (15rem), `--zui-app-shell-header-height` (3rem), `--zui-app-shell-main-padding` (`var(--space-md)`), `--zui-app-shell-transition-duration` (200ms), `--zui-app-shell-surface`, `--zui-app-shell-border`.
+
+```html
+<div class="zui-app-shell" data-zui-app-shell>
+  <a class="zui-app-shell-skip-link" href="#main">Skip to main content</a>
+
+  <aside class="zui-app-shell-sidebar" popover="auto" aria-label="Sidebar">
+    <div class="zui-app-shell-sidebar-header">
+      <i class="ph ph-sparkle"></i><span>Acme</span>
+    </div>
+    <div class="zui-app-shell-sidebar-body">
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+    </div>
+    <div class="zui-app-shell-sidebar-footer">
+      <i class="ph ph-user-circle"></i><span>Account</span>
+    </div>
+  </aside>
+
+  <header class="zui-app-shell-header">
+    <button type="button" class="zui-app-shell-toggle" aria-label="Toggle sidebar">
+      <i class="ph ph-list"></i>
+    </button>
+    <strong>Dashboard</strong>
+  </header>
+
+  <main id="main" class="zui-app-shell-main">…</main>
+</div>
+```
+
+```tsx
+// React — wrappers manage the controller automatically
+<AppShell shortcut>
+  <AppShellSidebar>
+    <AppShellSidebarHeader>
+      <i className="ph ph-sparkle" /><span>Acme</span>
+    </AppShellSidebarHeader>
+    <AppShellSidebarBody>
+      <a href="#"><i className="ph ph-house" /><span>Home</span></a>
+    </AppShellSidebarBody>
+    <AppShellSidebarFooter>
+      <i className="ph ph-user-circle" /><span>Account</span>
+    </AppShellSidebarFooter>
+  </AppShellSidebar>
+
+  <AppShellHeader>
+    <strong>Dashboard</strong>
+  </AppShellHeader>
+
+  <AppShellMain>…</AppShellMain>
+</AppShell>
+```
+
+```astro
+<!-- Astro — same component tree; controller wired via inline scripts -->
+<AppShell shortcut>
+  <AppShellSidebar>
+    <AppShellSidebarHeader>…</AppShellSidebarHeader>
+    <AppShellSidebarBody>…</AppShellSidebarBody>
+    <AppShellSidebarFooter>…</AppShellSidebarFooter>
+  </AppShellSidebar>
+  <AppShellHeader><strong>Dashboard</strong></AppShellHeader>
+  <AppShellMain>…</AppShellMain>
+</AppShell>
+```
+
+**`AppShell` props:** `position` (`'left' | 'right'`), `defaultCollapsed`, `collapsed` (controlled), `onCollapsedChange`, `mobileBreakpoint` (default 768), `storageKey` (default `'zui-app-shell-collapsed'`, pass `null` to disable), `shortcut` (binds <kbd>Cmd/Ctrl+B</kbd>).
+
+**`AppShellHeader` props:** `toggle` (default `true`, auto-injects the hamburger toggle button), `toggleLabel`.
+
+**`AppShellSidebar` props:** `label` (default `'Sidebar'`, used as `aria-label`).
+
+The `AppShellHeader` toggle calls `controller.toggle()` — on desktop it flips `data-collapsed`; below the mobile breakpoint it opens/closes the popover drawer.
+
 ### Avatar
 
 **CSS classes:** `zui-avatar` (base), `zui-avatar-image` (`<img>`), `zui-avatar-fallback`

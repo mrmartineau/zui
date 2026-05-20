@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { appShellSidebarVariants } from '../shared/appShellVariants'
+
+interface Props extends HTMLAttributes<'aside'> {
+  /** Stable id used by AppShellHeader's toggle (aria-controls). */
+  id?: string
+  /** Accessible label for the navigation landmark. */
+  label?: string
+  class?: string
+}
+
+const {
+  id = 'zui-app-shell-sidebar',
+  label = 'Sidebar',
+  class: className,
+  ...props
+} = Astro.props
+
+const classes = appShellSidebarVariants({ class: className })
+---
+
+<aside id={id} class={classes} popover="auto" aria-label={label} {...props}>
+  <slot />
+</aside>
