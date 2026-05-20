@@ -132,6 +132,109 @@ export function MyApp() {
     </AppShell>
   )
 }`}
+  solid={`import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/solid'
+
+export function MyApp() {
+  return (
+    <AppShell shortcut>
+      <AppShellSidebar>
+        <AppShellSidebarHeader>
+          <i class="ph ph-sparkle" />
+          <span>Acme</span>
+        </AppShellSidebarHeader>
+        <AppShellSidebarBody>
+          <a href="#"><i class="ph ph-house" /><span>Home</span></a>
+        </AppShellSidebarBody>
+        <AppShellSidebarFooter>
+          <i class="ph ph-user-circle" />
+          <span>Account</span>
+        </AppShellSidebarFooter>
+      </AppShellSidebar>
+      <AppShellHeader>
+        <strong>Dashboard</strong>
+      </AppShellHeader>
+      <AppShellMain>
+        <h1>Welcome</h1>
+      </AppShellMain>
+    </AppShell>
+  )
+}`}
+  svelte={`<script lang="ts">
+  import {
+    AppShell,
+    AppShellHeader,
+    AppShellMain,
+    AppShellSidebar,
+    AppShellSidebarBody,
+    AppShellSidebarFooter,
+    AppShellSidebarHeader,
+  } from '@mrmartineau/zui/svelte'
+</script>
+
+<AppShell shortcut>
+  <AppShellSidebar>
+    <AppShellSidebarHeader>
+      <i class="ph ph-sparkle"></i>
+      <span>Acme</span>
+    </AppShellSidebarHeader>
+    <AppShellSidebarBody>
+      <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+    </AppShellSidebarBody>
+    <AppShellSidebarFooter>
+      <i class="ph ph-user-circle"></i>
+      <span>Account</span>
+    </AppShellSidebarFooter>
+  </AppShellSidebar>
+  <AppShellHeader>
+    <strong>Dashboard</strong>
+  </AppShellHeader>
+  <AppShellMain>
+    <h1>Welcome</h1>
+  </AppShellMain>
+</AppShell>`}
+  vue={`<script setup lang="ts">
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+} from '@mrmartineau/zui/vue'
+</script>
+
+<template>
+  <AppShell shortcut>
+    <AppShellSidebar>
+      <AppShellSidebarHeader>
+        <i class="ph ph-sparkle"></i>
+        <span>Acme</span>
+      </AppShellSidebarHeader>
+      <AppShellSidebarBody>
+        <a href="#"><i class="ph ph-house"></i><span>Home</span></a>
+      </AppShellSidebarBody>
+      <AppShellSidebarFooter>
+        <i class="ph ph-user-circle"></i>
+        <span>Account</span>
+      </AppShellSidebarFooter>
+    </AppShellSidebar>
+    <AppShellHeader>
+      <strong>Dashboard</strong>
+    </AppShellHeader>
+    <AppShellMain>
+      <h1>Welcome</h1>
+    </AppShellMain>
+  </AppShell>
+</template>`}
 />
 
 ## Props — AppShell
