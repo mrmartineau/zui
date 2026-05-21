@@ -19,12 +19,11 @@ jobs:
         with:
           fetch-depth: 0          # semantic-release needs full history
       - uses: pnpm/action-setup@v6
-        with:
-          version: latest
       - uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
           cache: 'pnpm'
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
       - run: pnpm exec semantic-release
