@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/mrmartineau/zui/compare/v1.4.0...v1.5.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* security action ([c3059cd](https://github.com/mrmartineau/zui/commit/c3059cd9855a7431bd1337714f7570398e73122b))
+
+
+### Features
+
+* add AppShell layout component ([#10](https://github.com/mrmartineau/zui/issues/10)) ([fd9274e](https://github.com/mrmartineau/zui/commit/fd9274eb7538ac38d23bf10013a2cfc7ef800ef1))
+
 # [1.4.0](https://github.com/mrmartineau/zui/compare/v1.3.0...v1.4.0) (2026-04-23)
 
 
