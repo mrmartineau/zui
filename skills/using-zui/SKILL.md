@@ -34,6 +34,20 @@ import { Button, Card, Input } from '@mrmartineau/zui/vue'
 
 Icons use [Phosphor Icons](https://phosphoricons.com/) — HTML: `<i class="ph ph-icon-name"></i>`, React: `import { IconName } from '@phosphor-icons/react'`.
 
+## Match the Project's Framework
+
+**Always use the framework-native ZUI components when the project uses a supported framework — don't write raw HTML elements with `zui-` classes.**
+
+- **React** project → use the React components from `@mrmartineau/zui/react` (`<Button>`, `<Card>`, …).
+- **Astro** project → use the Astro components from `@mrmartineau/zui/astro` (`<Button>`, `<Card>`, …).
+- **Solid** project → use the Solid components from `@mrmartineau/zui/solid`.
+- **Svelte** project → use the Svelte components from `@mrmartineau/zui/svelte`.
+- **Vue** project → use the Vue components from `@mrmartineau/zui/vue`.
+
+The components are typed wrappers that map props (`variant`, `color`, `size`, …) to the underlying `zui-` classes and wire up behaviour (state, focus management, anchor positioning) for you. Only fall back to plain HTML with `zui-` classes when the project has no supported framework (e.g. a static HTML page or a framework without a ZUI wrapper).
+
+The HTML examples below are provided to show the underlying markup and class names — prefer the framework component example when one exists for your project's framework.
+
 ## CSS Layers
 
 All styles are organised into cascading layers. When writing custom CSS that interacts with ZUI, place it in the correct layer:
@@ -732,11 +746,12 @@ Padding: `p-{size}`, `px-{size}`, `py-{size}`, `pt-{size}`, `pb-{size}`, `pl-{si
 
 ## Key Rules
 
-1. **Always use design tokens** — never hard-code colours, spacing, radii, shadows, or font sizes.
-2. **Use `light-dark()`** for colour values that differ between themes.
-3. **Use `oklch(from …)`** relative colour syntax to derive tints, shades, and transparency.
-4. **Component classes use `zui-` prefix** — e.g. `zui-button`, `zui-card`.
-5. **Utility classes have no prefix** — e.g. `flex`, `gap-m`, `p-xs`.
-6. **Icons use Phosphor Icons** — never inline SVG. HTML: `<i class="ph ph-icon-name"></i>`, React: `import { Icon } from '@phosphor-icons/react'`.
-7. **Border style** uses `var(--border-style)`.
-8. **Focus ring** uses `var(--focus-ring)` and `var(--focus-ring-offset)`.
+1. **Use framework-native components** — in a React/Astro/Solid/Svelte/Vue project, use the framework's ZUI components, not raw HTML elements with `zui-` classes. Only hand-write `zui-` class markup when no ZUI wrapper exists for the project's framework.
+2. **Always use design tokens** — never hard-code colours, spacing, radii, shadows, or font sizes.
+3. **Use `light-dark()`** for colour values that differ between themes.
+4. **Use `oklch(from …)`** relative colour syntax to derive tints, shades, and transparency.
+5. **Component classes use `zui-` prefix** — e.g. `zui-button`, `zui-card`.
+6. **Utility classes have no prefix** — e.g. `flex`, `gap-m`, `p-xs`.
+7. **Icons use Phosphor Icons** — never inline SVG. HTML: `<i class="ph ph-icon-name"></i>`, React: `import { Icon } from '@phosphor-icons/react'`.
+8. **Border style** uses `var(--border-style)`.
+9. **Focus ring** uses `var(--focus-ring)` and `var(--focus-ring-offset)`.
