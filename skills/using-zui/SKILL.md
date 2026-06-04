@@ -38,14 +38,17 @@ Icons use [Phosphor Icons](https://phosphoricons.com/) — HTML: `<i class="ph p
 
 When introducing ZUI to a project that doesn't already use it, **audit the project's main/global stylesheet and remove styles that ZUI already provides.** ZUI ships its own reset and base layer (`zui.reset`, `zui.base`), so keeping the project's old equivalents is redundant and can fight with ZUI's cascade.
 
-Look for and remove things ZUI already defines, such as:
+Remove only the things ZUI actually defines (from `zui.reset` and `zui.base`):
 
-- **Box sizing** — e.g. `*, *::before, *::after { box-sizing: border-box; }`.
-- **Margin/padding resets** — e.g. `body { margin: 0; }`, blanket `* { margin: 0; padding: 0; }`.
-- **Base typography** — `font-family`, base `font-size`, `line-height`, and heading/paragraph resets on `body`/`html`.
-- **Other reset boilerplate** — list resets, `img { display: block; max-width: 100% }`, default link styling, etc.
+- **Box sizing** — `*, *::before, *::after { box-sizing: border-box; }`.
+- **Margin reset** — ZUI applies `* { margin: 0; }`, so a project's global margin reset is redundant.
+- **Base typography on `html`/`body`** — `font-family` (from `--font-body`) and `line-height`. ZUI sets these, so drop project-level `body { font-family: … }` / `line-height: …` declarations.
+- **Media element defaults** — `img, picture, video, canvas, svg { display: block; max-width: 100%; }`.
+- **Misc base styles** — font smoothing, `color-scheme`, `:focus-visible` outline, custom scrollbar styling, and reduced-motion handling.
 
-After removing these, **don't re-add hard-coded values to override ZUI.** Instead, update the relevant ZUI variables (design tokens / component custom properties) in the project's stylesheet. For example, to change the project font or base colours, override the tokens rather than re-declaring `body { font-family: … }`:
+**Don't remove styles ZUI doesn't replace.** ZUI's reset is intentionally minimal — it does **not** reset list styles (`ul`/`ol`), style base links (links are styled via the `.zui-link` class / `Link` component, not a global `a` rule), set a base `font-size`, or restyle headings beyond the blanket margin reset. Keep the project's own rules for those, or migrate them to the relevant ZUI utilities (e.g. `prose` for long-form content, `.zui-link` for links).
+
+After removing the redundant resets, **don't re-add hard-coded values to override ZUI.** Instead, update the relevant ZUI variables (design tokens / component custom properties) in the project's stylesheet. For example, to change the project font or base colours, override the tokens rather than re-declaring `body { font-family: … }`:
 
 ```css
 :root {
@@ -54,7 +57,7 @@ After removing these, **don't re-add hard-coded values to override ZUI.** Instea
 }
 ```
 
-See **Design Tokens** and **Overriding Component Styles** below for the full set of variables available. The goal: let ZUI own the reset/base/typography, and customise only by overriding its variables.
+See **Design Tokens** and **Overriding Component Styles** below for the full set of variables available. The goal: let ZUI own the reset and base layer, and customise only by overriding its variables.
 
 ## Match the Project's Framework
 
