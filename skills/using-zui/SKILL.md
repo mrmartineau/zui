@@ -34,6 +34,28 @@ import { Button, Card, Input } from '@mrmartineau/zui/vue'
 
 Icons use [Phosphor Icons](https://phosphoricons.com/) — HTML: `<i class="ph ph-icon-name"></i>`, React: `import { IconName } from '@phosphor-icons/react'`.
 
+## Adding ZUI to an Existing Project
+
+When introducing ZUI to a project that doesn't already use it, **audit the project's main/global stylesheet and remove styles that ZUI already provides.** ZUI ships its own reset and base layer (`zui.reset`, `zui.base`), so keeping the project's old equivalents is redundant and can fight with ZUI's cascade.
+
+Look for and remove things ZUI already defines, such as:
+
+- **Box sizing** — e.g. `*, *::before, *::after { box-sizing: border-box; }`.
+- **Margin/padding resets** — e.g. `body { margin: 0; }`, blanket `* { margin: 0; padding: 0; }`.
+- **Base typography** — `font-family`, base `font-size`, `line-height`, and heading/paragraph resets on `body`/`html`.
+- **Other reset boilerplate** — list resets, `img { display: block; max-width: 100% }`, default link styling, etc.
+
+After removing these, **don't re-add hard-coded values to override ZUI.** Instead, update the relevant ZUI variables (design tokens / component custom properties) in the project's stylesheet. For example, to change the project font or base colours, override the tokens rather than re-declaring `body { font-family: … }`:
+
+```css
+:root {
+  --font-body: 'Inter', var(--font-stack-sans); /* override ZUI's body font token */
+  --color-theme: oklch(0.6 0.2 250); /* override the brand colour token */
+}
+```
+
+See **Design Tokens** and **Overriding Component Styles** below for the full set of variables available. The goal: let ZUI own the reset/base/typography, and customise only by overriding its variables.
+
 ## Match the Project's Framework
 
 **Always use the framework-native ZUI components when the project uses a supported framework — don't write raw HTML elements with `zui-` classes.**
