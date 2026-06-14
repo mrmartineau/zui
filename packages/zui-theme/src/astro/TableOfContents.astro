@@ -14,6 +14,8 @@
     const list = document.getElementById('toc-list')
     if (!main || !list) return
 
+    list.innerHTML = ''
+
     const headings = Array.from(main.querySelectorAll('h1, h2, h3')).filter(
       (h) => !h.closest('.demo')
     )

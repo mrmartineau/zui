@@ -1,0 +1,21 @@
+{
+  "name": "zui-docs",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.3",
+    "@mrmartineau/zui": "^1.2.0",
+    "@mrmartineau/zui-theme": "^0.1.0",
+    "astro": "^6.1.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "bin": {
+    "create-zui-docs": "scripts/create.mjs"
+  },
+  "description": "Astro docs theme built on ZUI — layouts, components, and helpers for generating documentation sites",
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
+    "@mrmartineau/zui": "workspace:*",
+    "astro": "^6.0.8"
+  },
+  "exports": {
+    "./astro": {
+      "import": "./src/astro/index.ts"
+    },
+    "./astro/*": {
+      "import": "./src/astro/*"
+    },
+    "./css": {
+      "default": "./src/css/theme.css",
+      "style": "./src/css/theme.css"
+    },
+    "./nav": {
+      "import": "./src/nav.ts",
+      "types": "./src/nav.ts"
+    }
+  },
+  "files": [
+    "src",
+    "scripts",
+    "template",
+    "README.md"
+  ],
+  "keywords": [
+    "astro",
+    "docs",
+    "documentation",
+    "theme",
+    "zui",
+    "css"
+  ],
+  "license": "MIT",
+  "name": "@mrmartineau/zui-theme",
+  "peerDependencies": {
+    "@mrmartineau/zui": "^1.0.0",
+    "astro": "^6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "check": "biome check --write"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}

@@ -1,0 +1,24 @@
+---
+layout: ../../layouts/Layout.astro
+title: Guides
+sectionOrder: 1
+description: Learn how to install and use the package.
+---
+
+import SectionCards from '../../components/SectionCards.astro'
+
+Welcome to the docs. This site is generated with
+[`@mrmartineau/zui-theme`](https://github.com/mrmartineau/zui) — an Astro docs
+theme built on [ZUI](https://github.com/mrmartineau/zui).
+
+## How this site works
+
+- Every `.mdx` file under `src/pages/<section>/` becomes a sidebar entry.
+- Each section's `index.mdx` sets the section's `sectionOrder` (and appears at
+  the top of its sidebar group).
+- Set `order` in a page's frontmatter to control its position in the sidebar.
+- Edit `src/site.config.ts` to change the site name, links, and version.
+
+## In this section
+
+<SectionCards section="guides" />

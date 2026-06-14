@@ -24,8 +24,9 @@ packages/
       svelte/               → Svelte 5 components (.svelte SFCs)
       vue/                  → Vue components (.vue SFCs)
       shared/               → Shared variant definitions using `cva` (consumed by Astro, React, Solid, Svelte & Vue)
+  zui-theme/            → @mrmartineau/zui-theme — reusable Astro docs theme (see "Docs theme" below)
   vscode-zui/           → VS Code extension
-docs/                   → Astro docs site (see "Documentation" below)
+docs/                   → Astro docs site, built on @mrmartineau/zui-theme (see "Documentation" below)
 ```
 
 ## Key Conventions
@@ -62,6 +63,32 @@ docs/                   → Astro docs site (see "Documentation" below)
 - `pnpm run build` — builds CSS bundle and React components via tsdown.
 - `pnpm run dev` — watches and rebuilds.
 - The docs site links to the zui package via `"@mrmartineau/zui": "file:../packages/zui"`.
+
+## Docs theme (`packages/zui-theme`)
+
+`@mrmartineau/zui-theme` is a publishable Astro docs theme extracted from the
+docs site so other packages can generate a matching docs site. It is
+source-only (ships `.astro`/`.ts`/`.css`, no build step) and consumes
+`@mrmartineau/zui`.
+
+- **Components** (`src/astro/`): `DocsLayout` (configurable shell), `Sidebar`,
+  `TableOfContents`, `Demo`, `DemoPreview`, `CopyCode`, `TokenGrid`, `TokenRow`,
+  `Section`, `Subtitle`, `DarkModeSwitcher`, `MiniThemeSwitcher`,
+  `ThemeSwitcher`. Re-exported from `src/astro/index.ts`.
+- **Helpers** (`src/nav.ts`): `buildSidebarSections`, `buildFooterSections`, and
+  the `SiteConfig`/`NavSection`/… types. These turn an `import.meta.glob` of the
+  consumer's `src/pages` into nav data (the glob must run in the consumer so
+  paths resolve correctly).
+- **Styles** (`src/css/theme.css`): global documentation prose + Shiki styles.
+- **Starter** (`template/`): a minimal standalone docs site. Scaffold it with
+  `npx @mrmartineau/zui-theme create-zui-docs <dir>` (`scripts/create.mjs`).
+
+The docs site (`docs/`) is the reference consumer: `docs/src/layouts/Layout.astro`
+is a thin wrapper that runs the page globs and forwards them to `DocsLayout`,
+configured via `docs/src/site.config.ts`. ZUI-specific demo helpers (e.g.
+`ColorPalette`, `ShadowGrid`, `SpaceBar`) stay in `docs/src/components/`. When
+adding a generic, reusable docs primitive, put it in `zui-theme`; when it only
+documents ZUI itself, keep it in `docs/`.
 
 ## Documentation (Docs Site)
 
