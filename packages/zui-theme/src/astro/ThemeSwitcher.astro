@@ -1,10 +1,18 @@
 ---
+interface RadiusScale {
+  label: string
+  value: string
+}
+
 interface Props {
   inline?: boolean
+  themeColors?: string[]
+  accentColors?: string[]
+  fonts?: string[]
+  radiusScales?: RadiusScale[]
 }
-const { inline = false } = Astro.props
 
-const themeColorNames = [
+const defaultThemeColors = [
   'slate',
   'gray',
   'zinc',
@@ -15,7 +23,7 @@ const themeColorNames = [
   'mist',
   'taupe',
 ]
-const accentColorNames = [
+const defaultAccentColors = [
   'slate',
   'gray',
   'zinc',
@@ -44,7 +52,7 @@ const accentColorNames = [
   'rose',
 ]
 
-const fonts = [
+const defaultFonts = [
   'Geist',
   'Inter',
   'system-ui',
@@ -54,7 +62,7 @@ const fonts = [
   'Source Code Pro, monospace',
 ]
 
-const radiusScales = [
+const defaultRadiusScales: RadiusScale[] = [
   { label: 'None', value: '0' },
   { label: 'Small', value: '0.5' },
   { label: 'Default', value: '1' },
@@ -62,6 +70,14 @@ const radiusScales = [
   { label: 'XL', value: '2' },
   { label: 'Full', value: '6' },
 ]
+
+const {
+  inline = false,
+  themeColors: themeColorNames = defaultThemeColors,
+  accentColors: accentColorNames = defaultAccentColors,
+  fonts = defaultFonts,
+  radiusScales = defaultRadiusScales,
+} = Astro.props
 ---
 
 {!inline && (

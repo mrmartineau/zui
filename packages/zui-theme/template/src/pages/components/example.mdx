@@ -1,0 +1,32 @@
+---
+layout: ../../layouts/Layout.astro
+title: Example
+order: 1
+description: A live demo with tabbed source code.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+The `Demo` component renders a live preview (its children) and a set of code
+tabs. Pass any of `html`, `react`, `astro`, `solid`, `svelte`, or `vue` — only
+the ones you provide are shown.
+
+<Demo
+  html={`<button class="zui-button">Primary</button>
+<button class="zui-button zui-button-variant-outline">Outline</button>`}
+  react={`import { Button } from '@mrmartineau/zui/react'
+
+<Button>Primary</Button>
+<Button variant="outline">Outline</Button>`}
+>
+  <button class="zui-button">Primary</button>
+  <button class="zui-button zui-button-variant-outline">Outline</button>
+</Demo>
+
+## Code-only
+
+Omit the children to render just the code block (no preview):
+
+<Demo
+  html={`<span class="zui-badge">Badge</span>`}
+/>

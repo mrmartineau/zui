@@ -1,0 +1,195 @@
+---
+layout: ../../layouts/Layout.astro
+title: Docs theme
+description: Generate a documentation site for your own package with @mrmartineau/zui-theme — the Astro theme that powers these docs.
+---
+
+This very site is built with **`@mrmartineau/zui-theme`**, a source-only Astro docs theme built on ZUI. It ships the layout, file-based navigation, content components (live demos, code tabs, token tables), and theme switchers — so you can stand up a matching docs site for any of your packages.
+
+- No build step — it ships `.astro`/`.ts`/`.css` and resolves through package `exports`.
+- The sidebar and footer build themselves from your `src/pages` directory; there's no navigation config to maintain.
+- Requires [`@mrmartineau/zui`](/guides) (peer dependency) and `astro@^6`.
+
+## Scaffold a new site
+
+The fastest way to start is the bundled generator, which copies a working starter project:
+
+```sh
+npx @mrmartineau/zui-theme create-zui-docs my-docs
+cd my-docs
+npm install
+npm run dev
+```
+
+Then edit `src/site.config.ts` and add pages under `src/pages/`.
+
+## Add to an existing Astro project
+
+### 1. Install
+
+```sh
+npm install @mrmartineau/zui-theme @mrmartineau/zui
+npx astro add mdx
+```
+
+Add Shiki themes to `astro.config.mjs` so code blocks match the theme:
+
+```js
+import mdx from '@astrojs/mdx'
+import { defineConfig } from 'astro/config'
+
+export default defineConfig({
+  integrations: [mdx()],
+  markdown: {
+    shikiConfig: {
+      defaultColor: 'light-dark()',
+      themes: { dark: 'rose-pine', light: 'rose-pine-dawn' },
+    },
+  },
+})
+```
+
+### 2. Configure your site
+
+Create `src/site.config.ts`:
+
+```ts
+import type { SiteConfig } from '@mrmartineau/zui-theme/nav'
+
+export const site: SiteConfig = {
+  title: 'My Package',
+  description: 'Documentation for My Package.',
+  version: '0.1.0',
+  author: 'Your Name',
+  authorHref: 'https://example.com',
+  social: [
+    { href: 'https://github.com/you/my-package', icon: 'github-logo', label: 'Repo' },
+    { href: 'https://www.npmjs.com/package/my-package', icon: 'package', ariaLabel: 'npm' },
+  ],
+}
+```
+
+### 3. Add a thin layout
+
+This file is required and must live in your project. `import.meta.glob` resolves relative to the file that calls it, so the page globs have to run here — not inside the theme package. Keeping the layout at `src/layouts/Layout.astro` also lets every `.mdx` page reference it via `layout:` frontmatter.
+
+```astro
+---
+import {
+  DocsLayout,
+  buildSidebarSections,
+  buildFooterSections,
+} from '@mrmartineau/zui-theme/astro'
+import { site } from '../site.config'
+
+interface Props { title?: string; description?: string }
+// @ts-expect-error frontmatter passthrough
+const { title, description } = (Astro.props.frontmatter ?? Astro.props) as Props
+
+const pages = import.meta.glob('../pages/**/*.mdx', { eager: true })
+const indexPages = import.meta.glob('../pages/*/index.mdx', { eager: true })
+
+const sections = buildSidebarSections(pages)
+const footerSections = buildFooterSections(indexPages)
+---
+
+<DocsLayout
+  title={title}
+  description={description}
+  currentPath={Astro.url.pathname}
+  site={site}
+  sections={sections}
+  footerSections={footerSections}
+>
+  <slot />
+</DocsLayout>
+```
+
+`DocsLayout` imports `@mrmartineau/zui/css` and the theme's global styles itself — don't import them again. Add a `public/favicon.svg`; Phosphor Icons load from the CDN by default.
+
+### 4. Write pages
+
+Every `.mdx` file under `src/pages/<section>/` becomes a sidebar entry, grouped by its top-level folder. Use the `Demo` component for live examples with tabbed source:
+
+````mdx
+---
+layout: ../../layouts/Layout.astro
+title: Getting started
+order: 1
+description: Install and use the package.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+## Usage
+
+<Demo
+  html={`<button class="zui-button">Click me</button>`}
+  react={`import { Button } from '@mrmartineau/zui/react'
+
+<Button>Click me</Button>`}
+>
+  <button class="zui-button">Click me</button>
+</Demo>
+````
+
+Children of `<Demo>` are the live preview; pass `html`, `react`, `astro`, `solid`, `svelte`, or `vue` for code tabs (only the ones you pass appear). Omit the children for a code-only block.
+
+## Page frontmatter
+
+| Key            | Where         | Effect                                                |
+|----------------|---------------|-------------------------------------------------------|
+| `layout`       | every page    | `../../layouts/Layout.astro`                          |
+| `title`        | every page    | Sidebar label, page heading, and `<title>`            |
+| `description`  | every page    | Sub-heading under the title + `<meta description>`    |
+| `order`        | any page      | Position within a section's sidebar list (ascending)  |
+| `sectionOrder` | `index.mdx`   | Position of the whole section in the sidebar + footer |
+
+## Components & helpers
+
+Import everything (named) from the `@mrmartineau/zui-theme/astro` barrel:
+
+| Export | Purpose |
+|---|---|
+| `DocsLayout` | The configurable page shell (header, sidebar, TOC, footer, switchers) |
+| `Sidebar`, `TableOfContents` | Navigation pieces (composed by `DocsLayout`) |
+| `Demo` | Live preview + tabbed source code |
+| `DemoPreview` | A bordered preview box on its own |
+| `CopyCode` | Click-to-copy inline code |
+| `TokenGrid`, `TokenRow` | Design-token tables |
+| `Section`, `Subtitle` | Small layout helpers |
+| `DarkModeSwitcher`, `MiniThemeSwitcher`, `ThemeSwitcher` | Theme controls |
+| `buildSidebarSections`, `buildFooterSections` | Turn a `pages` glob into nav data |
+
+`buildSidebarSections` accepts an `append` option to add non-page links to a section — for example, a hand-written changelog (exactly how this site adds the [Changelog](/changelog) entry):
+
+```ts
+buildSidebarSections(pages, {
+  append: [{ heading: 'Guides', items: [{ href: '/changelog', label: 'Changelog' }] }],
+})
+```
+
+## `SiteConfig` reference
+
+| Field | Default | Description |
+|---|---|---|
+| `title` | — | Brand name; logo + `<title>` prefix |
+| `logo` | `title` | Logo text override |
+| `description` | — | Default meta description |
+| `version` | — | Header badge + footer |
+| `versionHref` | `/changelog` | Where the version badge links |
+| `author` | — | Footer credit |
+| `authorHref` | — | Author credit link |
+| `social` | `[]` | Header + footer links (`{ href, icon?, label?, ariaLabel? }`; `icon` is a Phosphor name) |
+| `phosphor` | `true` | Load Phosphor Icons from the CDN |
+| `phosphorVersion` | `2.1.2` | Phosphor web package version for the CDN |
+| `themeSwitcher` | `true` | Floating theme builder |
+| `miniThemeSwitcher` | `true` | Header colour-theme dots |
+| `miniThemes` | ZUI palette | Colours for the mini switcher |
+| `colorSchemeToggle` | `true` | Light/dark/system toggle |
+
+## Notes
+
+- The theme intentionally doesn't ship a `SectionCards` component — it depends on a glob of your own pages. The scaffold template includes a ready-made local copy you can drop in.
+- Configure branding and behaviour through `site.config.ts`, and restyle by overriding ZUI tokens (`--color-theme`, `--font-body`, `--radius-scale`, …) rather than editing the theme. See [Theming](/guides/theming).
+- An AI agent skill for the theme ships at [`skills/zui-theme/SKILL.md`](https://github.com/mrmartineau/zui/blob/main/skills/zui-theme/SKILL.md) — see [AI Agent Skills](/guides/skills).

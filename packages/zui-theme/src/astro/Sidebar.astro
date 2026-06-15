@@ -1,97 +1,12 @@
 ---
-/** biome-ignore-all lint/style/noNonNullAssertion: ignore in this file */
+import type { NavSection } from '../nav'
+
 interface Props {
   currentPath: string
+  sections: NavSection[]
 }
 
-const { currentPath } = Astro.props
-
-interface PageFrontmatter {
-  title: string
-  order?: number
-  sectionOrder?: number
-}
-
-interface NavItem {
-  href: string
-  label: string
-  exact?: boolean
-  order?: number
-}
-
-const allPages = import.meta.glob('../pages/**/*.mdx', { eager: true })
-
-function pathToHref(filePath: string): string {
-  return (
-    filePath
-      .replace('../pages', '')
-      .replace(/\.mdx$/, '')
-      .replace(/\/index$/, '') || '/'
-  )
-}
-
-function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
-// Group pages by top-level directory (section)
-const sectionMap = new Map<
-  string,
-  { sectionOrder: number; heading: string; items: NavItem[] }
->()
-
-for (const [path, mod] of Object.entries(allPages)) {
-  const match = path.match(/^\.\.\/pages\/([^/]+)\//)
-  if (!match) continue
-  const key = match[1]
-  const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
-  const isIndex = path.endsWith('/index.mdx')
-  const href = pathToHref(path)
-
-  if (!sectionMap.has(key)) {
-    sectionMap.set(key, {
-      heading: capitalize(key),
-      items: [],
-      sectionOrder: Infinity,
-    })
-  }
-
-  const section = sectionMap.get(key)!
-
-  if (isIndex) {
-    section.sectionOrder = fm.sectionOrder ?? Infinity
-  }
-
-  section.items.push({
-    exact: isIndex || undefined,
-    href,
-    label: fm.title,
-    order: isIndex ? (fm.order ?? 0) : fm.order,
-  })
-}
-
-const sections = [...sectionMap.values()]
-  .sort(
-    (a, b) =>
-      a.sectionOrder - b.sectionOrder || a.heading.localeCompare(b.heading),
-  )
-  .map(({ heading, items }) => ({
-    heading,
-    items: items.sort((a, b) => {
-      const aOrdered = a.order !== undefined
-      const bOrdered = b.order !== undefined
-      if (aOrdered && bOrdered) return a.order! - b.order!
-      if (aOrdered) return -1
-      if (bOrdered) return 1
-      return a.label.localeCompare(b.label)
-    }),
-  }))
-
-// Inject Changelog into the Guides section
-const guidesSection = sections.find((s) => s.heading === 'Guides')
-if (guidesSection) {
-  guidesSection.items.push({ href: '/changelog', label: 'Changelog' })
-}
+const { currentPath, sections } = Astro.props
 
 function isCurrent(href: string, exact = false) {
   if (href === '/') return currentPath === '/' || currentPath === ''

@@ -39,6 +39,18 @@ export default defineConfig({
           import.meta.dirname,
           '../packages/zui/src/utils/colorScheme.ts',
         ),
+        '@mrmartineau/zui-theme/astro': resolve(
+          import.meta.dirname,
+          '../packages/zui-theme/src/astro/index.ts',
+        ),
+        '@mrmartineau/zui-theme/nav': resolve(
+          import.meta.dirname,
+          '../packages/zui-theme/src/nav.ts',
+        ),
+        '@mrmartineau/zui-theme/css': resolve(
+          import.meta.dirname,
+          '../packages/zui-theme/src/css/theme.css',
+        ),
       },
     },
     server: {
