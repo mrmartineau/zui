@@ -29,7 +29,13 @@ function abort(msg) {
   process.exit(1)
 }
 
-const targetRel = process.argv[2] ?? 'zui-docs'
+// Depending on the npm version, `npx @mrmartineau/zui-theme create-zui-docs <dir>`
+// may forward the bin name itself as the first argument. Drop a leading
+// `create-zui-docs` token so the target directory is parsed correctly whether
+// invoked via npx or directly with `node create.mjs <dir>`.
+const args = process.argv.slice(2)
+if (args[0] === 'create-zui-docs') args.shift()
+const targetRel = args[0] ?? 'zui-docs'
 const target = join(process.cwd(), targetRel)
 
 if (existsSync(target)) {
