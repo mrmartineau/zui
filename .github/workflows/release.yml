@@ -3,12 +3,20 @@ name: NPM Release
 on:
   workflow_dispatch:
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 jobs:
   release:
-    name: Release to NPM
+    name: Release ${{ matrix.package }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      # Serialise: each package's release commit + tag is pushed to main before the next
+      # job checks out, avoiding non-fast-forward push races between the two releases.
+      max-parallel: 1
+      matrix:
+        package: [zui, zui-theme]
+    # Scope concurrency per package so re-runs of the same package queue, but the two
+    # packages don't block each other across separate dispatches.
+    concurrency: ${{ github.workflow }}-${{ matrix.package }}-${{ github.ref }}
     permissions:
       contents: write
       issues: write
@@ -26,8 +34,15 @@ jobs:
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
-      - run: pnpm exec semantic-release
+      - name: Configure npm auth
+        # Placeholder is written literally; pnpm substitutes ${NPM_TOKEN} from the env at publish time.
+        run: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
+      - name: Build @mrmartineau/zui
+        if: matrix.package == 'zui'
+        run: pnpm --filter @mrmartineau/zui run build
+      - name: Release
+        working-directory: packages/${{ matrix.package }}
+        run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
