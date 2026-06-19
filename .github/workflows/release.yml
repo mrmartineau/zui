@@ -21,7 +21,9 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-      id-token: write
+      # No id-token: granting it makes pnpm attempt npm OIDC trusted publishing, which
+      # 404s for packages without a configured trusted publisher and then fails to publish.
+      # Without it, pnpm uses the NPM_TOKEN from .npmrc directly.
     steps:
       - uses: actions/checkout@v6
         with:
