@@ -1,5 +1,7 @@
 # @mrmartineau/zui-theme
 
+[![npm](https://img.shields.io/npm/v/@mrmartineau/zui-theme)](https://www.npmjs.com/package/@mrmartineau/zui-theme)
+
 An Astro documentation theme built on [ZUI](https://github.com/mrmartineau/zui).
 It ships the layout, navigation, and content components that power the ZUI docs
 site, so you can spin up a matching docs site for any of your own packages.
