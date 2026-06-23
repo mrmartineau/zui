@@ -2,6 +2,8 @@
 dist/
 # generated types
 .astro/
+# wrangler / cloudflare deploy state
+.wrangler/
 
 # dependencies
 node_modules/
