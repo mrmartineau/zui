@@ -1,0 +1,270 @@
+---
+order: 2
+layout: ../../layouts/Layout.astro
+title: TanStack Table
+description: Turn ZUI's Table into a sortable, filterable, selectable data grid with TanStack Table's headless row models.
+---
+
+import DemoPreview from '../../components/DemoPreview.astro'
+import TanStackTableDemo from '../../components/demos/TanStackTableDemo.tsx'
+
+[TanStack Table](https://tanstack.com/table) is a headless data-grid engine. It
+computes sorting, filtering, pagination and row selection; you render the result.
+ZUI's [Table](/components/table) provides the styled `Table`, `TableRow`,
+`TableHead` and `TableCell` elements — and already ships a
+`data-state="selected"` row style, so selection lights up for free.
+
+Click a column header to sort, type in the filter, page through the rows, or
+tick a row to select it — the demo below is live.
+
+<DemoPreview>
+  <TanStackTableDemo client:only="react" />
+</DemoPreview>
+
+## Install
+
+```sh
+npm install @tanstack/react-table
+```
+
+## Define data and columns
+
+Describe your row shape and build columns with `createColumnHelper`. A `display`
+column with no accessor is the idiomatic way to add a selection checkbox; an
+accessor column with a custom `cell` renders a ZUI [Badge](/components/badge).
+
+```tsx
+import { createColumnHelper } from '@tanstack/react-table'
+import { Badge, Checkbox } from '@mrmartineau/zui/react'
+
+interface Person {
+  id: number
+  name: string
+  email: string
+  role: string
+  status: 'Active' | 'Away' | 'Inactive'
+  amount: number
+}
+
+const STATUS_COLOR = { Active: 'green', Away: 'amber', Inactive: 'gray' } as const
+
+const columnHelper = createColumnHelper<Person>()
+
+const columns = [
+  columnHelper.display({
+    id: 'select',
+    header: ({ table }) => (
+      <Checkbox
+        aria-label="Select all rows"
+        checked={table.getIsAllPageRowsSelected()}
+        onChange={table.getToggleAllPageRowsSelectedHandler()}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        aria-label={`Select ${row.original.name}`}
+        checked={row.getIsSelected()}
+        onChange={row.getToggleSelectedHandler()}
+      />
+    ),
+    enableSorting: false,
+  }),
+  columnHelper.accessor('name', { header: 'Name' }),
+  columnHelper.accessor('email', { header: 'Email' }),
+  columnHelper.accessor('role', { header: 'Role' }),
+  columnHelper.accessor('status', {
+    header: 'Status',
+    cell: (info) => {
+      const status = info.getValue()
+      return <Badge color={STATUS_COLOR[status]}>{status}</Badge>
+    },
+  }),
+  columnHelper.accessor('amount', {
+    header: 'Amount',
+    cell: (info) =>
+      info.getValue().toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+  }),
+]
+```
+
+## Create the table instance
+
+Enable the row models for the features you want. Holding `sorting`,
+`globalFilter` and `rowSelection` in React state keeps the grid fully controlled.
+
+```tsx
+import { useState } from 'react'
+import {
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
+
+const [sorting, setSorting] = useState([])
+const [globalFilter, setGlobalFilter] = useState('')
+const [rowSelection, setRowSelection] = useState({})
+
+const table = useReactTable({
+  data,
+  columns,
+  state: { sorting, globalFilter, rowSelection },
+  onSortingChange: setSorting,
+  onGlobalFilterChange: setGlobalFilter,
+  onRowSelectionChange: setRowSelection,
+  enableRowSelection: true,
+  getCoreRowModel: getCoreRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  initialState: { pagination: { pageSize: 5 } },
+})
+```
+
+## Render the header with sorting
+
+Map over the header groups into ZUI's `TableHead`. Wrap sortable headers in a
+button calling `getToggleSortingHandler()`, set `aria-sort` for assistive tech,
+and show a [Phosphor](https://phosphoricons.com/) caret for the current direction.
+
+```tsx
+import { flexRender } from '@tanstack/react-table'
+import { TableHead, TableHeader, TableRow } from '@mrmartineau/zui/react'
+
+const SORT_ICON = {
+  asc: 'ph ph-arrow-up',
+  desc: 'ph ph-arrow-down',
+  false: 'ph ph-arrows-down-up',
+}
+
+<TableHeader>
+  {table.getHeaderGroups().map((headerGroup) => (
+    <TableRow key={headerGroup.id}>
+      {headerGroup.headers.map((header) => {
+        const sorted = header.column.getIsSorted()
+        return (
+          <TableHead
+            key={header.id}
+            aria-sort={
+              sorted === 'asc'
+                ? 'ascending'
+                : sorted === 'desc'
+                  ? 'descending'
+                  : undefined
+            }
+          >
+            {header.column.getCanSort() ? (
+              <button
+                type="button"
+                className="zui-table-sort"
+                onClick={header.column.getToggleSortingHandler()}
+              >
+                {flexRender(header.column.columnDef.header, header.getContext())}
+                <i className={SORT_ICON[String(sorted)]} aria-hidden="true" />
+              </button>
+            ) : (
+              flexRender(header.column.columnDef.header, header.getContext())
+            )}
+          </TableHead>
+        )
+      })}
+    </TableRow>
+  ))}
+</TableHeader>
+```
+
+`zui-table-sort` is your own class — the trigger is a plain button, so style it
+however suits your design. The demo uses a borderless inline button:
+
+```css
+.zui-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.zui-table-sort i {
+  opacity: 0.4;
+}
+
+[aria-sort] .zui-table-sort i {
+  opacity: 1;
+}
+```
+
+## Render the body with selection
+
+Set `data-state="selected"` on the `TableRow` and ZUI's existing selected-row
+style applies — no extra CSS.
+
+```tsx
+import { flexRender } from '@tanstack/react-table'
+import { TableBody, TableCell, TableRow } from '@mrmartineau/zui/react'
+
+<TableBody>
+  {table.getRowModel().rows.map((row) => (
+    <TableRow
+      key={row.id}
+      data-state={row.getIsSelected() ? 'selected' : undefined}
+    >
+      {row.getVisibleCells().map((cell) => (
+        <TableCell key={cell.id}>
+          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        </TableCell>
+      ))}
+    </TableRow>
+  ))}
+</TableBody>
+```
+
+## Filtering and pagination
+
+The `globalFilter` state binds to a ZUI [Input](/components/input); pagination
+uses the table's helpers with ZUI [Buttons](/components/button).
+
+```tsx
+import { Button, Input } from '@mrmartineau/zui/react'
+
+<Input
+  type="search"
+  placeholder="Filter people…"
+  value={globalFilter}
+  onChange={(event) => setGlobalFilter(event.target.value)}
+/>
+
+<Button
+  variant="outline"
+  size="sm"
+  disabled={!table.getCanPreviousPage()}
+  onClick={() => table.previousPage()}
+>
+  Previous
+</Button>
+<Button
+  variant="outline"
+  size="sm"
+  disabled={!table.getCanNextPage()}
+  onClick={() => table.nextPage()}
+>
+  Next
+</Button>
+```
+
+## Notes
+
+- **`flexRender` does the rendering.** It lets a column's `header` / `cell` be a
+  string or a React component — return ZUI components from `cell` to style values.
+- **Selection styling is built in.** The `data-state="selected"` attribute is all
+  ZUI's `Table` needs; you don't write any selection CSS.
+- **Headers are buttons, not styled cells.** Putting the sort trigger in a real
+  `<button>` keeps it keyboard-accessible — style it however you like (the demo
+  uses a borderless inline button).
+- TanStack Table is headless, so virtualization, column resizing, grouping and
+  server-side data all layer on without changing how ZUI renders the markup.

@@ -1,0 +1,178 @@
+---
+order: 3
+layout: ../../layouts/Layout.astro
+title: Sonner
+description: Add toast notifications to a React app and theme them to match ZUI's tokens and colour scheme.
+---
+
+import DemoPreview from '../../components/DemoPreview.astro'
+import SonnerDemo from '../../components/demos/SonnerDemo.tsx'
+
+[Sonner](https://sonner.emilkowal.ski/) is an opinionated toast component for
+React. It owns the notification stack, animations and accessibility; you trigger
+toasts imperatively with `toast()` from anywhere in your tree. ZUI has no toast
+component of its own, so Sonner slots in neatly — render it from a ZUI
+[Button](/components/button) and theme it with ZUI's tokens.
+
+> **React only.** Sonner ships a single React component. In Astro, Solid, Svelte
+> or Vue projects, mount it inside a React island (as the live demo below does).
+
+Trigger a few toasts — they follow this site's light/dark toggle:
+
+<DemoPreview>
+  <SonnerDemo client:only="react" />
+</DemoPreview>
+
+## Install
+
+```sh
+npm install sonner
+```
+
+## Mount the Toaster once
+
+`<Toaster />` renders the stack and portals it to the document. Mount it a
+**single time** near the root of your app — every `toast()` call anywhere feeds
+the same instance.
+
+```tsx
+import { Toaster } from 'sonner'
+
+export function App() {
+  return (
+    <>
+      <YourRoutes />
+      <Toaster closeButton />
+    </>
+  )
+}
+```
+
+In an Astro project, render the `Toaster` as a client island in your layout so
+it persists across the page:
+
+```astro
+---
+import { Toaster } from 'sonner'
+---
+
+<Toaster client:load closeButton />
+```
+
+## Trigger toasts
+
+`toast` is a function with variants for the common cases. Wire them to ZUI
+buttons (or anything else):
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+import { toast } from 'sonner'
+
+// Default
+<Button onClick={() => toast('Settings saved')}>Save</Button>
+
+// Success / error, with an optional description
+toast.success('Profile updated', { description: 'Your changes are live.' })
+toast.error('Could not save', { description: 'Check your connection.' })
+
+// With an action button
+toast('New message from Alice', {
+  action: { label: 'Reply', onClick: () => openReply() },
+})
+
+// Bind to a promise — shows loading, then resolves to success/error
+toast.promise(saveSettings(), {
+  loading: 'Saving…',
+  success: 'Saved!',
+  error: 'Save failed',
+})
+```
+
+## Sync the theme with ZUI
+
+ZUI exposes the current colour scheme through the `useColorScheme` hook. Pass its
+`scheme` straight to the `Toaster`'s `theme` prop so toasts flip with the rest of
+the site — including the `system` setting.
+
+```tsx
+import { useColorScheme } from '@mrmartineau/zui/react'
+import { Toaster } from 'sonner'
+
+function AppToaster() {
+  const { scheme } = useColorScheme() // 'light' | 'dark' | 'system'
+  return <Toaster theme={scheme} closeButton />
+}
+```
+
+## Use ZUI colours
+
+Sonner ships a `richColors` prop for coloured success/error/warning/info toasts,
+but its palette is fixed. To tint toasts with **ZUI's** colours instead, leave
+`richColors` off and style the toasts yourself with CSS.
+
+Each toast reads `--normal-bg / -text / -border` (Sonner only *inherits* these
+from the toaster, so setting them directly on the toast wins) and carries a
+`data-type` attribute. Map the neutral toast onto ZUI's surface, then tint each
+variant from ZUI's [colour scale](/tokens) — `light-dark()` covers both schemes
+in one declaration. This is exactly what the demo above does:
+
+```css
+[data-sonner-toaster] {
+  --width: 22rem;
+  --border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+}
+
+/* Neutral toast → ZUI surface */
+[data-sonner-toast] {
+  --normal-bg: var(--color-surface);
+  --normal-text: var(--color-text);
+  --normal-border: var(--color-border);
+}
+
+/* Per-type tints from ZUI's colour ramps */
+[data-sonner-toast][data-type='success'] {
+  --normal-bg: light-dark(var(--color-green-50), var(--color-green-950));
+  --normal-text: light-dark(var(--color-green-700), var(--color-green-200));
+  --normal-border: light-dark(var(--color-green-200), var(--color-green-800));
+}
+
+[data-sonner-toast][data-type='error'] {
+  --normal-bg: light-dark(var(--color-red-50), var(--color-red-950));
+  --normal-text: light-dark(var(--color-red-700), var(--color-red-200));
+  --normal-border: light-dark(var(--color-red-200), var(--color-red-800));
+}
+
+[data-sonner-toast][data-type='warning'] {
+  --normal-bg: light-dark(var(--color-amber-50), var(--color-amber-950));
+  --normal-text: light-dark(var(--color-amber-800), var(--color-amber-200));
+  --normal-border: light-dark(var(--color-amber-200), var(--color-amber-800));
+}
+
+[data-sonner-toast][data-type='info'] {
+  --normal-bg: light-dark(var(--color-blue-50), var(--color-blue-950));
+  --normal-text: light-dark(var(--color-blue-700), var(--color-blue-200));
+  --normal-border: light-dark(var(--color-blue-200), var(--color-blue-800));
+}
+```
+
+Swap the hue tokens for any of ZUI's [colour ramps](/tokens) to re-tint a
+variant. For finer control, hand specific elements a ZUI class with
+`toastOptions`:
+
+```tsx
+<Toaster
+  toastOptions={{
+    classNames: { toast: 'zui-card', description: 'zui-field-description' },
+  }}
+/>
+```
+
+## Notes
+
+- **One `Toaster`, many `toast()` calls.** The component is the renderer; the
+  `toast` function is the API. Don't mount more than one `Toaster`.
+- **`toast()` works outside React.** Because it's imperative, you can fire toasts
+  from event handlers, data-layer code or anywhere — no hook required.
+- See the [Sonner docs](https://sonner.emilkowal.ski/) for positioning, custom
+  JSX toasts, duration and dismissal options.

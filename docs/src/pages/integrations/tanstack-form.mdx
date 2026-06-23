@@ -1,0 +1,234 @@
+---
+order: 1
+layout: ../../layouts/Layout.astro
+title: TanStack Form
+description: Build fully-controlled, validated forms by wiring TanStack Form to ZUI's Field, Input, Textarea, Radio and Checkbox components.
+---
+
+import DemoPreview from '../../components/DemoPreview.astro'
+import TanStackFormDemo from '../../components/demos/TanStackFormDemo.tsx'
+
+[TanStack Form](https://tanstack.com/form) is a headless, type-safe form library.
+It owns the state, validation and submission lifecycle; ZUI's [Field](/components/field)
+family owns the markup, spacing and validation styling. Because every ZUI control
+is a thin wrapper over a native element, the controlled-component props
+(`value`, `checked`, `onChange`, `onBlur`) pass straight through.
+
+The demo below is live — type an invalid email, clear the username, or submit
+without accepting the terms to see ZUI's `invalid` styling and `FieldError`
+react to TanStack Form's validation state.
+
+<DemoPreview>
+  <TanStackFormDemo client:only="react" />
+</DemoPreview>
+
+## Install
+
+```sh
+npm install @tanstack/react-form
+```
+
+## Create the form
+
+`useForm` holds the state and runs your `onSubmit`. Give it typed
+`defaultValues` and let the controls drive everything else.
+
+```tsx
+import { useForm } from '@tanstack/react-form'
+
+interface SignupValues {
+  email: string
+  username: string
+  bio: string
+  plan: 'free' | 'pro' | 'team'
+  newsletter: boolean
+  terms: boolean
+}
+
+const form = useForm({
+  defaultValues: {
+    email: '',
+    username: '',
+    bio: '',
+    plan: 'free',
+    newsletter: true,
+    terms: false,
+  } as SignupValues,
+  onSubmit: ({ value }) => {
+    console.log(value)
+  },
+})
+
+return (
+  <form
+    onSubmit={(event) => {
+      event.preventDefault()
+      event.stopPropagation()
+      form.handleSubmit()
+    }}
+  >
+    <FieldGroup>{/* fields go here */}</FieldGroup>
+  </form>
+)
+```
+
+`FieldGroup` stacks each `Field` with consistent spacing — see the
+[Field docs](/components/field) for the full family.
+
+## A text field
+
+Each control lives inside a `form.Field`. The render prop hands you `field`,
+whose `state` and handlers map cleanly onto ZUI's `Field` + `Input`. Surface
+errors with `FieldError` and mirror the state with `invalid` / `aria-invalid`.
+
+```tsx
+import { Field, FieldDescription, FieldError, Input, Label } from '@mrmartineau/zui/react'
+
+<form.Field
+  name="email"
+  validators={{
+    onChange: ({ value }) =>
+      !value
+        ? 'Email is required'
+        : !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)
+          ? 'Enter a valid email address'
+          : undefined,
+  }}
+>
+  {(field) => {
+    // Only show the error once the field has been touched.
+    const error = field.state.meta.isTouched
+      ? field.state.meta.errors.find(Boolean)
+      : undefined
+
+    return (
+      <Field invalid={Boolean(error)}>
+        <Label htmlFor={field.name}>Email</Label>
+        <Input
+          id={field.name}
+          name={field.name}
+          type="email"
+          value={field.state.value}
+          aria-invalid={Boolean(error)}
+          onBlur={field.handleBlur}
+          onChange={(event) => field.handleChange(event.target.value)}
+        />
+        {error ? (
+          <FieldError>{String(error)}</FieldError>
+        ) : (
+          <FieldDescription>We&rsquo;ll only use this to sign you in.</FieldDescription>
+        )}
+      </Field>
+    )
+  }}
+</form.Field>
+```
+
+[Textarea](/components/textarea) works identically — swap `Input` for
+`Textarea` and bind the same `value` / `onChange` pair.
+
+## A radio group
+
+Group related radios in a `FieldSet` with a `FieldLegend`. Drive the selection
+off `field.state.value` and write back on change. ZUI's `zui-radio-list` lays
+the options out.
+
+```tsx
+import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/react'
+
+const PLANS = [
+  { value: 'free', label: 'Free' },
+  { value: 'pro', label: 'Pro' },
+  { value: 'team', label: 'Team' },
+] as const
+
+<form.Field name="plan">
+  {(field) => (
+    <FieldSet>
+      <FieldLegend variant="label">Plan</FieldLegend>
+      <div className="zui-radio-list">
+        {PLANS.map((plan) => (
+          <Radio
+            key={plan.value}
+            name={field.name}
+            value={plan.value}
+            checked={field.state.value === plan.value}
+            onChange={(event) => field.handleChange(event.target.value)}
+          >
+            {plan.label}
+          </Radio>
+        ))}
+      </div>
+    </FieldSet>
+  )}
+</form.Field>
+```
+
+## A checkbox
+
+Checkboxes bind to `checked` and read `event.target.checked`. Add a validator
+to require it — the `FieldError` appears the moment the field is touched.
+
+```tsx
+import { Checkbox, Field, FieldError } from '@mrmartineau/zui/react'
+
+<form.Field
+  name="terms"
+  validators={{
+    onChange: ({ value }) =>
+      value ? undefined : 'You must accept the terms to continue',
+  }}
+>
+  {(field) => {
+    const error = field.state.meta.isTouched
+      ? field.state.meta.errors.find(Boolean)
+      : undefined
+
+    return (
+      <Field invalid={Boolean(error)}>
+        <Checkbox
+          name={field.name}
+          checked={field.state.value}
+          aria-invalid={Boolean(error)}
+          onChange={(event) => field.handleChange(event.target.checked)}
+        >
+          I accept the terms and conditions
+        </Checkbox>
+        {error && <FieldError>{String(error)}</FieldError>}
+      </Field>
+    )
+  }}
+</form.Field>
+```
+
+## The submit button
+
+`form.Subscribe` re-renders only its children when the selected slice of state
+changes — use it to disable the [Button](/components/button) until the form is
+valid.
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+
+<form.Subscribe
+  selector={(state) => ({
+    canSubmit: state.canSubmit,
+    isSubmitting: state.isSubmitting,
+  })}
+>
+  {({ canSubmit, isSubmitting }) => (
+    <Button type="submit" disabled={!canSubmit}>
+      {isSubmitting ? 'Creating account…' : 'Create account'}
+    </Button>
+  )}
+</form.Subscribe>
+```
+
+## Notes
+
+- **ZUI is presentational.** Wire up `id` / `htmlFor` and `aria-describedby`
+  yourself — the components don't generate them.
+- **`invalid` is styling only.** Pass it to `Field` to tint the control and
+  message; pass `aria-invalid` to the control for assistive tech.
+- The [Field guide](/components/field) covers orientation, descriptions,
+  separators and disabled groups, all of which compose with the wiring above.

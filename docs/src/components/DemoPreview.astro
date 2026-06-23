@@ -1,0 +1,32 @@
+---
+/**
+ * Standalone bordered preview box for live, interactive demos (framework
+ * islands). Unlike `Demo`, it has no code tabs — pair it with fenced code
+ * blocks in the surrounding MDX.
+ */
+interface Props {
+  align?: 'start' | 'center'
+}
+
+const { align = 'start' } = Astro.props
+---
+
+<div class="demo-preview-standalone" data-align={align}>
+  <slot />
+</div>
+
+<style>
+  .demo-preview-standalone {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .demo-preview-standalone[data-align='center'] {
+    align-items: center;
+  }
+</style>

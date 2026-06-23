@@ -1,14 +1,23 @@
 {
   "dependencies": {
-    "@astrojs/cloudflare": "^13.1.6",
-    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/cloudflare": "^14.0.0",
+    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/react": "^6.0.0",
     "@mrmartineau/zui": "file:../packages/zui",
     "@mrmartineau/zui-theme": "file:../packages/zui-theme",
-    "astro": "^6.1.2",
-    "wrangler": "^4.77.0"
+    "@tanstack/react-form": "^1.33.0",
+    "@tanstack/react-table": "^8.21.3",
+    "astro": "^7.0.0",
+    "cmdk": "^1.1.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sonner": "^2.0.7",
+    "wrangler": "^4.103.0"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0"
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3"
   },
   "engines": {
     "node": ">=22.12.0"

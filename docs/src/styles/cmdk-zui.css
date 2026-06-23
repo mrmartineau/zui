@@ -1,0 +1,86 @@
+/**
+ * Style cmdk (an unstyled command menu) with ZUI's design tokens.
+ *
+ * cmdk renders semantic `[cmdk-*]` parts and flags the active item with
+ * `[data-selected='true']`; this points them at ZUI's surface, border, radius,
+ * spacing, type-scale and theme colour.
+ */
+[cmdk-root] {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+[cmdk-input] {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  padding: var(--space-xs) var(--space-sm);
+  font: inherit;
+  font-size: var(--step-0);
+  color: var(--color-text);
+  outline: none;
+}
+
+[cmdk-input]::placeholder {
+  color: oklch(from var(--color-text) l c h / 50%);
+}
+
+[cmdk-list] {
+  max-height: 320px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-3xs);
+}
+
+[cmdk-group-heading] {
+  padding: var(--space-3xs) var(--space-2xs);
+  font-size: var(--step--2);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: oklch(from var(--color-text) l c h / 55%);
+}
+
+[cmdk-item] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs);
+  border-radius: var(--radius-md);
+  font-size: var(--step-0);
+  color: var(--color-text);
+  cursor: pointer;
+  user-select: none;
+}
+
+[cmdk-item] i {
+  color: oklch(from currentColor l c h / 70%);
+}
+
+[cmdk-item][data-selected='true'] {
+  background: oklch(from var(--color-theme) l c h / 12%);
+  color: var(--color-theme);
+}
+
+[cmdk-item][data-disabled='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+[cmdk-empty] {
+  padding: var(--space-md);
+  text-align: center;
+  font-size: var(--step--1);
+  color: oklch(from var(--color-text) l c h / 60%);
+}
+
+[cmdk-separator] {
+  height: 1px;
+  margin: var(--space-3xs) 0;
+  background: var(--color-border);
+}

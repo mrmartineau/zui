@@ -1,0 +1,197 @@
+---
+order: 4
+layout: ../../layouts/Layout.astro
+title: cmdk
+description: Build a command menu (⌘K palette) and style its unstyled parts with ZUI's tokens.
+---
+
+import DemoPreview from '../../components/DemoPreview.astro'
+import CmdkDemo from '../../components/demos/CmdkDemo.tsx'
+
+[cmdk](https://github.com/pacocoursey/cmdk) is a composable command-menu for
+React — the ⌘K palette you see in Linear, Vercel and Raycast. It handles
+filtering, keyboard navigation and accessibility, and renders **unstyled**
+`[cmdk-*]` parts. ZUI has no command-menu component, so cmdk fills the gap: bring
+the behaviour, dress it with ZUI's [tokens](/tokens).
+
+> **React only.** Like [Sonner](/integrations/sonner), cmdk is a React component.
+> In other frameworks, mount it inside a React island (as the demo does).
+
+Type to filter, use the arrow keys to move, and press Enter to run an item:
+
+<DemoPreview>
+  <CmdkDemo client:only="react" />
+</DemoPreview>
+
+## Install
+
+```sh
+npm install cmdk
+```
+
+## Basic usage
+
+`Command` composes from a handful of parts. Filtering is built in — each
+`Command.Item` is matched against the input by its text (or an explicit `value`),
+and the active item gets `data-selected="true"`.
+
+```tsx
+import { Command } from 'cmdk'
+
+export function CommandMenu() {
+  return (
+    <Command label="Command menu">
+      <Command.Input placeholder="Type a command or search…" />
+      <Command.List>
+        <Command.Empty>No results found.</Command.Empty>
+
+        <Command.Group heading="Suggestions">
+          <Command.Item onSelect={() => runNewFile()}>
+            <i className="ph ph-file-plus" />
+            New file
+          </Command.Item>
+          <Command.Item onSelect={() => runSearch()}>
+            <i className="ph ph-magnifying-glass" />
+            Search the docs
+          </Command.Item>
+        </Command.Group>
+
+        <Command.Separator />
+
+        <Command.Group heading="Settings">
+          <Command.Item onSelect={() => openProfile()}>
+            <i className="ph ph-user" />
+            Profile
+          </Command.Item>
+        </Command.Group>
+      </Command.List>
+    </Command>
+  )
+}
+```
+
+Icons use [Phosphor](https://phosphoricons.com/), the same set ZUI uses
+throughout.
+
+## Style it with ZUI
+
+cmdk ships no styles. Target its `[cmdk-*]` parts and the `[data-selected]`
+state, mapping each onto ZUI's surface, border, radius, spacing, type scale and
+theme colour. Drop this in a global stylesheet:
+
+```css
+[cmdk-root] {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+[cmdk-input] {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  padding: var(--space-xs) var(--space-sm);
+  font: inherit;
+  color: var(--color-text);
+  outline: none;
+}
+
+[cmdk-group-heading] {
+  padding: var(--space-3xs) var(--space-2xs);
+  font-size: var(--step--2);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: oklch(from var(--color-text) l c h / 55%);
+}
+
+[cmdk-item] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* Active item — keyboard or pointer */
+[cmdk-item][data-selected='true'] {
+  background: oklch(from var(--color-theme) l c h / 12%);
+  color: var(--color-theme);
+}
+
+[cmdk-separator] {
+  height: 1px;
+  margin: var(--space-3xs) 0;
+  background: var(--color-border);
+}
+```
+
+`oklch(from var(--color-theme) l c h / 12%)` tints the theme colour for the
+selected row — no extra token needed. See [Colours](/guides/colors) for the
+relative-colour pattern.
+
+## Open it as a ⌘K dialog
+
+`Command.Dialog` renders the palette in an overlay. Toggle it from a global
+keyboard shortcut, and reuse ZUI's [Kbd](/components/kbd) component to hint at it.
+
+```tsx
+import { Command } from 'cmdk'
+import { useEffect, useState } from 'react'
+
+export function CommandMenu() {
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen((prev) => !prev)
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
+  return (
+    <Command.Dialog open={open} onOpenChange={setOpen} label="Command menu">
+      <Command.Input placeholder="Type a command…" />
+      <Command.List>{/* groups + items */}</Command.List>
+    </Command.Dialog>
+  )
+}
+```
+
+Style the overlay and positioned dialog alongside the parts above:
+
+```css
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-9);
+  background: oklch(from var(--color-text) l c h / 40%);
+}
+
+[cmdk-dialog] {
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  z-index: var(--z-9);
+  width: min(640px, 92vw);
+  transform: translateX(-50%);
+}
+```
+
+## Notes
+
+- **Filtering is built in.** cmdk matches items as you type; pass `shouldFilter={false}`
+  to drive results yourself (e.g. from a server).
+- **`onSelect` per item.** Wire it to navigation, a [Sonner](/integrations/sonner)
+  toast, or any action — it fires on click and on Enter.
+- **Accessible by default.** cmdk manages roles, focus and `aria-selected`; the
+  styling above only reacts to the state it already sets.

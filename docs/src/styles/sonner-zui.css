@@ -1,0 +1,47 @@
+/**
+ * Theme Sonner with ZUI's design tokens — without Sonner's built-in
+ * `richColors` palette.
+ *
+ * Sonner reads `--normal-bg/-text/-border` (via `var()`) on each toast but only
+ * ever *inherits* their values from the toaster element. Setting them directly
+ * on the toast — keyed by `data-type` — therefore wins, and lets us tint each
+ * variant from ZUI's colour scale. `light-dark()` covers both schemes from one
+ * declaration and follows ZUI's `color-scheme`.
+ */
+[data-sonner-toaster] {
+  --width: 22rem;
+  --border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+}
+
+/* Neutral toast → ZUI surface */
+[data-sonner-toast] {
+  --normal-bg: var(--color-surface);
+  --normal-text: var(--color-text);
+  --normal-border: var(--color-border);
+}
+
+/* Per-type tints from ZUI's colour ramps */
+[data-sonner-toast][data-type='success'] {
+  --normal-bg: light-dark(var(--color-green-50), var(--color-green-950));
+  --normal-text: light-dark(var(--color-green-700), var(--color-green-200));
+  --normal-border: light-dark(var(--color-green-200), var(--color-green-800));
+}
+
+[data-sonner-toast][data-type='error'] {
+  --normal-bg: light-dark(var(--color-red-50), var(--color-red-950));
+  --normal-text: light-dark(var(--color-red-700), var(--color-red-200));
+  --normal-border: light-dark(var(--color-red-200), var(--color-red-800));
+}
+
+[data-sonner-toast][data-type='warning'] {
+  --normal-bg: light-dark(var(--color-amber-50), var(--color-amber-950));
+  --normal-text: light-dark(var(--color-amber-800), var(--color-amber-200));
+  --normal-border: light-dark(var(--color-amber-200), var(--color-amber-800));
+}
+
+[data-sonner-toast][data-type='info'] {
+  --normal-bg: light-dark(var(--color-blue-50), var(--color-blue-950));
+  --normal-text: light-dark(var(--color-blue-700), var(--color-blue-200));
+  --normal-border: light-dark(var(--color-blue-200), var(--color-blue-800));
+}
