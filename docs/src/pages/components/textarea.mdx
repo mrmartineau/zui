@@ -41,38 +41,50 @@ import { Textarea } from '@mrmartineau/zui/vue'
 ## With Label
 
 <Demo
-  html={`<label class="zui-label" for="message">Message</label>
-<textarea class="zui-textarea" id="message" placeholder="Your message..."></textarea>`}
-  react={`import { Label, Textarea } from '@mrmartineau/zui/react'
+  html={`<div class="zui-field">
+  <label class="zui-label" for="message">Message</label>
+  <textarea class="zui-textarea" id="message" placeholder="Your message..."></textarea>
+</div>`}
+  react={`import { Field, Label, Textarea } from '@mrmartineau/zui/react'
 
-<Label htmlFor="message">Message</Label>
-<Textarea id="message" placeholder="Your message..." />`}
+<Field>
+  <Label htmlFor="message">Message</Label>
+  <Textarea id="message" placeholder="Your message..." />
+</Field>`}
   astro={`---
-import { Label, Textarea } from '@mrmartineau/zui/astro'
+import { Field, Label, Textarea } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="message">Message</Label>
-<Textarea id="message" placeholder="Your message..." />`}
-  solid={`import { Label, Textarea } from '@mrmartineau/zui/solid'
+<Field>
+  <Label for="message">Message</Label>
+  <Textarea id="message" placeholder="Your message..." />
+</Field>`}
+  solid={`import { Field, Label, Textarea } from '@mrmartineau/zui/solid'
 
-<Label htmlFor="message">Message</Label>
-<Textarea id="message" placeholder="Your message..." />`}
+<Field>
+  <Label htmlFor="message">Message</Label>
+  <Textarea id="message" placeholder="Your message..." />
+</Field>`}
   vue={`<template>
+  <Field>
   <Label for="message">Message</Label>
 <Textarea id="message" placeholder="Your message..." />
+</Field>
 </template>
 
 <script setup>
-import { Label, Textarea } from '@mrmartineau/zui/vue'
+import { Field, Label, Textarea } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Label, Textarea } from '@mrmartineau/zui/svelte'
+  import { Field, Label, Textarea } from '@mrmartineau/zui/svelte'
 </script>
 
-<Label for="message">Message</Label>
-<Textarea id="message" placeholder="Your message..." />`}
+<Field>
+  <Label for="message">Message</Label>
+  <Textarea id="message" placeholder="Your message..." />
+</Field>`}
 >
-  <div style="width: 100%;">
+  <div class="zui-field" style="width: 100%;">
     <label class="zui-label" for="message">Message</label>
     <textarea class="zui-textarea" id="message" placeholder="Your message..."></textarea>
   </div>

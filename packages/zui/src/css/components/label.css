@@ -5,7 +5,6 @@
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-sm);
     color: var(--color-text);
-    margin-block-end: var(--space-3xs);
   }
 
   .zui-label-required::after {

@@ -9,38 +9,50 @@ import { Demo } from '@mrmartineau/zui-theme/astro'
 ## Usage
 
 <Demo
-  html={`<label class="zui-label" for="demo">Email address</label>
-<input class="zui-input" type="email" id="demo" placeholder="you@example.com" />`}
-  react={`import { Label, Input } from '@mrmartineau/zui/react'
+  html={`<div class="zui-field">
+  <label class="zui-label" for="demo">Email address</label>
+  <input class="zui-input" type="email" id="demo" placeholder="you@example.com" />
+</div>`}
+  react={`import { Field, Label, Input } from '@mrmartineau/zui/react'
 
-<Label htmlFor="demo">Email address</Label>
-<Input type="email" id="demo" placeholder="you@example.com" />`}
+<Field>
+  <Label htmlFor="demo">Email address</Label>
+  <Input type="email" id="demo" placeholder="you@example.com" />
+</Field>`}
   astro={`---
-import { Label, Input } from '@mrmartineau/zui/astro'
+import { Field, Label, Input } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="demo">Email address</Label>
-<Input type="email" id="demo" placeholder="you@example.com" />`}
-  solid={`import { Label, Input } from '@mrmartineau/zui/solid'
+<Field>
+  <Label for="demo">Email address</Label>
+  <Input type="email" id="demo" placeholder="you@example.com" />
+</Field>`}
+  solid={`import { Field, Label, Input } from '@mrmartineau/zui/solid'
 
-<Label htmlFor="demo">Email address</Label>
-<Input type="email" id="demo" placeholder="you@example.com" />`}
+<Field>
+  <Label htmlFor="demo">Email address</Label>
+  <Input type="email" id="demo" placeholder="you@example.com" />
+</Field>`}
   vue={`<template>
+  <Field>
   <Label for="demo">Email address</Label>
 <Input type="email" id="demo" placeholder="you@example.com" />
+</Field>
 </template>
 
 <script setup>
-import { Label, Input } from '@mrmartineau/zui/vue'
+import { Field, Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Label, Input } from '@mrmartineau/zui/svelte'
+  import { Field, Label, Input } from '@mrmartineau/zui/svelte'
 </script>
 
-<Label for="demo">Email address</Label>
-<Input type="email" id="demo" placeholder="you@example.com" />`}
+<Field>
+  <Label for="demo">Email address</Label>
+  <Input type="email" id="demo" placeholder="you@example.com" />
+</Field>`}
 >
-  <div style="width: 100%;">
+  <div class="zui-field" style="width: 100%;">
     <label class="zui-label" for="demo">Email address</label>
     <input class="zui-input" type="email" id="demo" placeholder="you@example.com" />
   </div>
@@ -49,38 +61,50 @@ import { Label, Input } from '@mrmartineau/zui/vue'
 ## Required
 
 <Demo
-  html={`<label class="zui-label zui-label-required" for="req">Required field</label>
-<input class="zui-input" type="text" id="req" required />`}
-  react={`import { Label, Input } from '@mrmartineau/zui/react'
+  html={`<div class="zui-field">
+  <label class="zui-label zui-label-required" for="req">Required field</label>
+  <input class="zui-input" type="text" id="req" required />
+</div>`}
+  react={`import { Field, Label, Input } from '@mrmartineau/zui/react'
 
-<Label htmlFor="req" className="zui-label-required">Required field</Label>
-<Input type="text" id="req" required />`}
+<Field>
+  <Label htmlFor="req" className="zui-label-required">Required field</Label>
+  <Input type="text" id="req" required />
+</Field>`}
   astro={`---
-import { Label, Input } from '@mrmartineau/zui/astro'
+import { Field, Label, Input } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="req" class="zui-label-required">Required field</Label>
-<Input type="text" id="req" required />`}
-  solid={`import { Label, Input } from '@mrmartineau/zui/solid'
+<Field>
+  <Label for="req" class="zui-label-required">Required field</Label>
+  <Input type="text" id="req" required />
+</Field>`}
+  solid={`import { Field, Label, Input } from '@mrmartineau/zui/solid'
 
-<Label htmlFor="req" class="zui-label-required">Required field</Label>
-<Input type="text" id="req" required />`}
+<Field>
+  <Label htmlFor="req" class="zui-label-required">Required field</Label>
+  <Input type="text" id="req" required />
+</Field>`}
   vue={`<template>
+  <Field>
   <Label for="req" class="zui-label-required">Required field</Label>
 <Input type="text" id="req" required />
+</Field>
 </template>
 
 <script setup>
-import { Label, Input } from '@mrmartineau/zui/vue'
+import { Field, Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Label, Input } from '@mrmartineau/zui/svelte'
+  import { Field, Label, Input } from '@mrmartineau/zui/svelte'
 </script>
 
-<Label for="req" class="zui-label-required">Required field</Label>
-<Input type="text" id="req" required />`}
+<Field>
+  <Label for="req" class="zui-label-required">Required field</Label>
+  <Input type="text" id="req" required />
+</Field>`}
 >
-  <div style="width: 100%;">
+  <div class="zui-field" style="width: 100%;">
     <label class="zui-label zui-label-required" for="req">Required field</label>
     <input class="zui-input" type="text" id="req" required />
   </div>
@@ -89,56 +113,68 @@ import { Label, Input } from '@mrmartineau/zui/vue'
 ## With Description
 
 <Demo
-  html={`<label class="zui-label" for="desc">
-  Username
-  <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
-</label>
-<input class="zui-input" type="text" id="desc" />`}
-  react={`import { Label, Input } from '@mrmartineau/zui/react'
+  html={`<div class="zui-field">
+  <label class="zui-label" for="desc">
+    Username
+    <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+  </label>
+  <input class="zui-input" type="text" id="desc" />
+</div>`}
+  react={`import { Field, Label, Input } from '@mrmartineau/zui/react'
 
-<Label htmlFor="desc">
-  Username
-  <span className="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
-</Label>
-<Input type="text" id="desc" />`}
+<Field>
+  <Label htmlFor="desc">
+    Username
+    <span className="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+  </Label>
+  <Input type="text" id="desc" />
+</Field>`}
   astro={`---
-import { Label, Input } from '@mrmartineau/zui/astro'
+import { Field, Label, Input } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="desc">
-  Username
-  <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
-</Label>
-<Input type="text" id="desc" />`}
-  solid={`import { Label, Input } from '@mrmartineau/zui/solid'
+<Field>
+  <Label for="desc">
+    Username
+    <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+  </Label>
+  <Input type="text" id="desc" />
+</Field>`}
+  solid={`import { Field, Label, Input } from '@mrmartineau/zui/solid'
 
-<Label htmlFor="desc">
-  Username
-  <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
-</Label>
-<Input type="text" id="desc" />`}
+<Field>
+  <Label htmlFor="desc">
+    Username
+    <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+  </Label>
+  <Input type="text" id="desc" />
+</Field>`}
   vue={`<template>
+  <Field>
   <Label for="desc">
   Username
   <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
 </Label>
 <Input type="text" id="desc" />
+</Field>
 </template>
 
 <script setup>
-import { Label, Input } from '@mrmartineau/zui/vue'
+import { Field, Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Label, Input } from '@mrmartineau/zui/svelte'
+  import { Field, Label, Input } from '@mrmartineau/zui/svelte'
 </script>
 
-<Label for="desc">
-  Username
-  <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
-</Label>
-<Input type="text" id="desc" />`}
+<Field>
+  <Label for="desc">
+    Username
+    <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>
+  </Label>
+  <Input type="text" id="desc" />
+</Field>`}
 >
-  <div style="width: 100%;">
+  <div class="zui-field" style="width: 100%;">
     <label class="zui-label" for="desc">
       Username
       <span class="zui-label-description">Must be 3-20 characters, letters and numbers only.</span>

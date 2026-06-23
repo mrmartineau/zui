@@ -1,0 +1,149 @@
+@layer zui.components {
+  /* Group: stacks fields with consistent spacing and establishes a query
+     container so `zui-field-responsive` can react to the available width. */
+  .zui-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    container-type: inline-size;
+  }
+
+  /* Single field wrapper. Owns all internal spacing via gap — controls and
+     labels inside a field must not carry their own block margins. */
+  .zui-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .zui-field > .zui-label {
+    margin-block-end: 0;
+  }
+
+  /* Helper text + validation message */
+  .zui-field-description {
+    font-size: var(--step--1);
+    line-height: var(--line-height-sm);
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+    text-wrap: pretty;
+  }
+
+  .zui-field-error {
+    font-size: var(--step--1);
+    line-height: var(--line-height-sm);
+    color: var(--color-error);
+    text-wrap: pretty;
+  }
+
+  /* Invalid state — tint the control border, label and messages */
+  .zui-field-invalid > .zui-label {
+    color: var(--color-error);
+  }
+
+  .zui-field-invalid :is(.zui-input, .zui-textarea, .zui-select) {
+    border-color: var(--color-error);
+  }
+
+  /* Horizontal: label sits beside the control, with description and error
+     stacked underneath the control in the second column. */
+  .zui-field-horizontal {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: var(--space-sm);
+    row-gap: var(--space-3xs);
+  }
+
+  .zui-field-horizontal > .zui-label {
+    grid-column: 1;
+    grid-row: 1;
+    margin-block-end: 0;
+  }
+
+  .zui-field-horizontal
+    > :not(.zui-label):not(.zui-field-description):not(.zui-field-error) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .zui-field-horizontal > .zui-field-description,
+  .zui-field-horizontal > .zui-field-error {
+    grid-column: 2;
+  }
+
+  /* Responsive: vertical until the containing FieldGroup is wide enough,
+     then adopts the horizontal grid. Container query conditions can't read
+     custom properties, so the threshold is a fixed 32rem. */
+  @container (min-width: 32rem) {
+    .zui-field-responsive {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      column-gap: var(--space-sm);
+      row-gap: var(--space-3xs);
+    }
+
+    .zui-field-responsive > .zui-label {
+      grid-column: 1;
+      grid-row: 1;
+      margin-block-end: 0;
+    }
+
+    .zui-field-responsive
+      > :not(.zui-label):not(.zui-field-description):not(.zui-field-error) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .zui-field-responsive > .zui-field-description,
+    .zui-field-responsive > .zui-field-error {
+      grid-column: 2;
+    }
+  }
+
+  /* Fieldset grouping — for related controls such as radio or checkbox sets */
+  .zui-field-set {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .zui-field-legend {
+    font-size: var(--step-0);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-sm);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+  }
+
+  .zui-field-legend-label {
+    font-size: var(--step--1);
+  }
+
+  /* Divider between field sections, with optional centered inline content */
+  .zui-field-separator {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 55%, transparent);
+    border: 0;
+  }
+
+  .zui-field-separator::before,
+  .zui-field-separator::after {
+    content: "";
+    flex: 1;
+    block-size: 1px;
+    background-color: var(--color-border);
+  }
+
+  .zui-field-separator:empty::after {
+    content: none;
+  }
+}

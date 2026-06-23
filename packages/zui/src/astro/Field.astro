@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { fieldVariants } from '../shared/fieldVariants'
+
+type FieldVariantProps = VariantProps<typeof fieldVariants>
+
+interface Props extends HTMLAttributes<'div'>, FieldVariantProps {
+  class?: string
+}
+
+const { class: className, orientation, invalid, ...props } = Astro.props
+const classes = fieldVariants({
+  class: className,
+  invalid,
+  orientation,
+})
+---
+
+<div role="group" class={classes} {...props}><slot /></div>

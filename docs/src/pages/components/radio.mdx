@@ -75,8 +75,8 @@ import { Radio } from '@mrmartineau/zui/vue'
 Use `.zui-radio-list` for vertical grouping.
 
 <Demo
-  html={`<fieldset>
-  <legend class="zui-label">Favourite colour</legend>
+  html={`<fieldset class="zui-field-set">
+  <legend class="zui-field-legend">Favourite colour</legend>
   <div class="zui-radio-list">
     <label class="zui-radio">
       <input type="radio" name="colour" value="red" />
@@ -92,68 +92,68 @@ Use `.zui-radio-list` for vertical grouping.
     </label>
   </div>
 </fieldset>`}
-  react={`import { Radio, Label } from '@mrmartineau/zui/react'
+  react={`import { Radio, FieldSet, FieldLegend } from '@mrmartineau/zui/react'
 
-<fieldset>
-  <Label as="legend">Favourite colour</Label>
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
   <div className="zui-radio-list">
     <Radio name="colour" value="red">Red</Radio>
     <Radio name="colour" value="blue" defaultChecked>Blue</Radio>
     <Radio name="colour" value="green">Green</Radio>
   </div>
-</fieldset>`}
+</FieldSet>`}
   astro={`---
-import { Radio, Label } from '@mrmartineau/zui/astro'
+import { Radio, FieldSet, FieldLegend } from '@mrmartineau/zui/astro'
 ---
 
-<fieldset>
-  <Label>Favourite colour</Label>
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
   <div class="zui-radio-list">
     <Radio name="colour" value="red">Red</Radio>
     <Radio name="colour" value="blue" checked>Blue</Radio>
     <Radio name="colour" value="green">Green</Radio>
   </div>
-</fieldset>`}
-  solid={`import { Radio, Label } from '@mrmartineau/zui/solid'
+</FieldSet>`}
+  solid={`import { Radio, FieldSet, FieldLegend } from '@mrmartineau/zui/solid'
 
-<fieldset>
-  <Label as="legend">Favourite colour</Label>
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
   <div class="zui-radio-list">
     <Radio name="colour" value="red">Red</Radio>
     <Radio name="colour" value="blue" defaultChecked>Blue</Radio>
     <Radio name="colour" value="green">Green</Radio>
   </div>
-</fieldset>`}
+</FieldSet>`}
   vue={`<template>
-  <fieldset>
-  <Label as="legend">Favourite colour</Label>
+  <FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
   <div class="zui-radio-list">
     <Radio name="colour" value="red">Red</Radio>
     <Radio name="colour" value="blue" checked>Blue</Radio>
     <Radio name="colour" value="green">Green</Radio>
   </div>
-</fieldset>
+</FieldSet>
 </template>
 
 <script setup>
-import { Radio, Label } from '@mrmartineau/zui/vue'
+import { Radio, FieldSet, FieldLegend } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Radio, Label } from '@mrmartineau/zui/svelte'
+  import { Radio, FieldSet, FieldLegend } from '@mrmartineau/zui/svelte'
   let colour = $state('blue')
 </script>
 
-<fieldset>
-  <Label>Favourite colour</Label>
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
   <div class="zui-radio-list">
     <Radio name="colour" value="red" bind:group={colour}>Red</Radio>
     <Radio name="colour" value="blue" bind:group={colour}>Blue</Radio>
     <Radio name="colour" value="green" bind:group={colour}>Green</Radio>
   </div>
-</fieldset>`}
+</FieldSet>`}
 >
-  <fieldset style="border: none; padding: 0; width: 100%;">
-    <legend class="zui-label">Favourite colour</legend>
+  <fieldset class="zui-field-set" style="width: 100%;">
+    <legend class="zui-field-legend">Favourite colour</legend>
     <div class="zui-radio-list">
       <label class="zui-radio">
         <input type="radio" name="colour" value="red" />

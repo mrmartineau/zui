@@ -107,38 +107,50 @@ import { Input } from '@mrmartineau/zui/vue'
 ## With Label
 
 <Demo
-  html={`<label class="zui-label" for="name">Full name</label>
-<input class="zui-input" type="text" id="name" placeholder="Jane Doe" />`}
-  react={`import { Label, Input } from '@mrmartineau/zui/react'
+  html={`<div class="zui-field">
+  <label class="zui-label" for="name">Full name</label>
+  <input class="zui-input" type="text" id="name" placeholder="Jane Doe" />
+</div>`}
+  react={`import { Field, Label, Input } from '@mrmartineau/zui/react'
 
-<Label htmlFor="name">Full name</Label>
-<Input type="text" id="name" placeholder="Jane Doe" />`}
+<Field>
+  <Label htmlFor="name">Full name</Label>
+  <Input type="text" id="name" placeholder="Jane Doe" />
+</Field>`}
   astro={`---
-import { Label, Input } from '@mrmartineau/zui/astro'
+import { Field, Label, Input } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="name">Full name</Label>
-<Input type="text" id="name" placeholder="Jane Doe" />`}
-  solid={`import { Label, Input } from '@mrmartineau/zui/solid'
+<Field>
+  <Label for="name">Full name</Label>
+  <Input type="text" id="name" placeholder="Jane Doe" />
+</Field>`}
+  solid={`import { Field, Label, Input } from '@mrmartineau/zui/solid'
 
-<Label htmlFor="name">Full name</Label>
-<Input type="text" id="name" placeholder="Jane Doe" />`}
+<Field>
+  <Label htmlFor="name">Full name</Label>
+  <Input type="text" id="name" placeholder="Jane Doe" />
+</Field>`}
   vue={`<template>
+  <Field>
   <Label for="name">Full name</Label>
 <Input type="text" id="name" placeholder="Jane Doe" />
+</Field>
 </template>
 
 <script setup>
-import { Label, Input } from '@mrmartineau/zui/vue'
+import { Field, Label, Input } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Label, Input } from '@mrmartineau/zui/svelte'
+  import { Field, Label, Input } from '@mrmartineau/zui/svelte'
 </script>
 
-<Label for="name">Full name</Label>
-<Input type="text" id="name" placeholder="Jane Doe" />`}
+<Field>
+  <Label for="name">Full name</Label>
+  <Input type="text" id="name" placeholder="Jane Doe" />
+</Field>`}
 >
-  <div style="width: 100%;">
+  <div class="zui-field" style="width: 100%;">
     <label class="zui-label" for="name">Full name</label>
     <input class="zui-input" type="text" id="name" placeholder="Jane Doe" />
   </div>

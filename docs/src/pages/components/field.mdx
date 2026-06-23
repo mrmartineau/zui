@@ -1,0 +1,938 @@
+---
+layout: ../../layouts/Layout.astro
+title: Field
+description: Composable form-field primitives for consistent spacing, descriptions, errors, legends and orientation.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+The `Field` family wraps ZUI's existing form controls — [Input](/components/input), [Textarea](/components/textarea), [Select](/components/select), [Checkbox](/components/checkbox), [Radio](/components/radio) and [Label](/components/label) — to give every form consistent spacing, helper text, validation messaging and layout.
+
+> **Forms should always use `Field`.** `Label` and the form controls carry no built-in margins; `Field`, `FieldGroup` and `FieldSet` own all spacing. Place a label + control on their own and they will sit flush together.
+
+## Usage
+
+A `Field` stacks a label, a control and an optional description. Wire up `id`/`for` and `aria-describedby` yourself — the components are presentational.
+
+<Demo
+  html={`<div class="zui-field">
+  <label class="zui-label" for="email">Email</label>
+  <input class="zui-input" type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+  <div class="zui-field-description" id="email-desc">We'll never share your email.</div>
+</div>`}
+  react={`import { Field, Label, Input, FieldDescription } from '@mrmartineau/zui/react'
+
+<Field>
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+  <FieldDescription id="email-desc">We'll never share your email.</FieldDescription>
+</Field>`}
+  astro={`---
+import { Field, Label, Input, FieldDescription } from '@mrmartineau/zui/astro'
+---
+
+<Field>
+  <Label for="email">Email</Label>
+  <Input type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+  <FieldDescription id="email-desc">We'll never share your email.</FieldDescription>
+</Field>`}
+  solid={`import { Field, Label, Input, FieldDescription } from '@mrmartineau/zui/solid'
+
+<Field>
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+  <FieldDescription id="email-desc">We'll never share your email.</FieldDescription>
+</Field>`}
+  vue={`<template>
+  <Field>
+    <Label for="email">Email</Label>
+    <Input type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+    <FieldDescription id="email-desc">We'll never share your email.</FieldDescription>
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, Input, FieldDescription } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, Input, FieldDescription } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field>
+  <Label for="email">Email</Label>
+  <Input type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+  <FieldDescription id="email-desc">We'll never share your email.</FieldDescription>
+</Field>`}
+>
+  <div class="zui-field" style="width: 100%;">
+    <label class="zui-label" for="email">Email</label>
+    <input class="zui-input" type="email" id="email" placeholder="you@example.com" aria-describedby="email-desc" />
+    <div class="zui-field-description" id="email-desc">We'll never share your email.</div>
+  </div>
+</Demo>
+
+## Validation
+
+Set `invalid` on the `Field` to tint the control and messaging, and add a `FieldError` (renders `role="alert"`). Mirror the state on the control with `aria-invalid`.
+
+<Demo
+  html={`<div class="zui-field zui-field-invalid">
+  <label class="zui-label" for="pw">Password</label>
+  <input class="zui-input" type="password" id="pw" value="123" aria-invalid="true" aria-describedby="pw-error" />
+  <div class="zui-field-error" role="alert" id="pw-error">Password must be at least 8 characters.</div>
+</div>`}
+  react={`import { Field, Label, Input, FieldError } from '@mrmartineau/zui/react'
+
+<Field invalid>
+  <Label htmlFor="pw">Password</Label>
+  <Input type="password" id="pw" defaultValue="123" aria-invalid aria-describedby="pw-error" />
+  <FieldError id="pw-error">Password must be at least 8 characters.</FieldError>
+</Field>`}
+  astro={`---
+import { Field, Label, Input, FieldError } from '@mrmartineau/zui/astro'
+---
+
+<Field invalid>
+  <Label for="pw">Password</Label>
+  <Input type="password" id="pw" value="123" aria-invalid="true" aria-describedby="pw-error" />
+  <FieldError id="pw-error">Password must be at least 8 characters.</FieldError>
+</Field>`}
+  solid={`import { Field, Label, Input, FieldError } from '@mrmartineau/zui/solid'
+
+<Field invalid>
+  <Label htmlFor="pw">Password</Label>
+  <Input type="password" id="pw" value="123" aria-invalid="true" aria-describedby="pw-error" />
+  <FieldError id="pw-error">Password must be at least 8 characters.</FieldError>
+</Field>`}
+  vue={`<template>
+  <Field invalid>
+    <Label for="pw">Password</Label>
+    <Input type="password" id="pw" value="123" aria-invalid="true" aria-describedby="pw-error" />
+    <FieldError id="pw-error">Password must be at least 8 characters.</FieldError>
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, Input, FieldError } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, Input, FieldError } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field invalid>
+  <Label for="pw">Password</Label>
+  <Input type="password" id="pw" value="123" aria-invalid="true" aria-describedby="pw-error" />
+  <FieldError id="pw-error">Password must be at least 8 characters.</FieldError>
+</Field>`}
+>
+  <div class="zui-field zui-field-invalid" style="width: 100%;">
+    <label class="zui-label" for="pw">Password</label>
+    <input class="zui-input" type="password" id="pw" value="123" aria-invalid="true" aria-describedby="pw-error" />
+    <div class="zui-field-error" role="alert" id="pw-error">Password must be at least 8 characters.</div>
+  </div>
+</Demo>
+
+## Field group
+
+`FieldGroup` stacks multiple `Field`s with consistent spacing. It also establishes a query container, which the responsive orientation relies on.
+
+<Demo
+  html={`<div class="zui-field-group">
+  <div class="zui-field">
+    <label class="zui-label" for="first">First name</label>
+    <input class="zui-input" id="first" type="text" />
+  </div>
+  <div class="zui-field">
+    <label class="zui-label" for="last">Last name</label>
+    <input class="zui-input" id="last" type="text" />
+  </div>
+</div>`}
+  react={`import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/react'
+
+<FieldGroup>
+  <Field>
+    <Label htmlFor="first">First name</Label>
+    <Input id="first" type="text" />
+  </Field>
+  <Field>
+    <Label htmlFor="last">Last name</Label>
+    <Input id="last" type="text" />
+  </Field>
+</FieldGroup>`}
+  astro={`---
+import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<FieldGroup>
+  <Field>
+    <Label for="first">First name</Label>
+    <Input id="first" type="text" />
+  </Field>
+  <Field>
+    <Label for="last">Last name</Label>
+    <Input id="last" type="text" />
+  </Field>
+</FieldGroup>`}
+  solid={`import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/solid'
+
+<FieldGroup>
+  <Field>
+    <Label htmlFor="first">First name</Label>
+    <Input id="first" type="text" />
+  </Field>
+  <Field>
+    <Label htmlFor="last">Last name</Label>
+    <Input id="last" type="text" />
+  </Field>
+</FieldGroup>`}
+  vue={`<template>
+  <FieldGroup>
+    <Field>
+      <Label for="first">First name</Label>
+      <Input id="first" type="text" />
+    </Field>
+    <Field>
+      <Label for="last">Last name</Label>
+      <Input id="last" type="text" />
+    </Field>
+  </FieldGroup>
+</template>
+
+<script setup>
+import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<FieldGroup>
+  <Field>
+    <Label for="first">First name</Label>
+    <Input id="first" type="text" />
+  </Field>
+  <Field>
+    <Label for="last">Last name</Label>
+    <Input id="last" type="text" />
+  </Field>
+</FieldGroup>`}
+>
+  <div class="zui-field-group" style="width: 100%;">
+    <div class="zui-field">
+      <label class="zui-label" for="first">First name</label>
+      <input class="zui-input" id="first" type="text" />
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="last">Last name</label>
+      <input class="zui-input" id="last" type="text" />
+    </div>
+  </div>
+</Demo>
+
+## Horizontal
+
+Set `orientation="horizontal"` to place the label beside the control. Descriptions and errors line up under the control.
+
+<Demo
+  html={`<div class="zui-field zui-field-horizontal">
+  <label class="zui-label" for="nick">Nickname</label>
+  <input class="zui-input" id="nick" type="text" />
+</div>`}
+  react={`import { Field, Label, Input } from '@mrmartineau/zui/react'
+
+<Field orientation="horizontal">
+  <Label htmlFor="nick">Nickname</Label>
+  <Input id="nick" type="text" />
+</Field>`}
+  astro={`---
+import { Field, Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<Field orientation="horizontal">
+  <Label for="nick">Nickname</Label>
+  <Input id="nick" type="text" />
+</Field>`}
+  solid={`import { Field, Label, Input } from '@mrmartineau/zui/solid'
+
+<Field orientation="horizontal">
+  <Label htmlFor="nick">Nickname</Label>
+  <Input id="nick" type="text" />
+</Field>`}
+  vue={`<template>
+  <Field orientation="horizontal">
+    <Label for="nick">Nickname</Label>
+    <Input id="nick" type="text" />
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, Input } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field orientation="horizontal">
+  <Label for="nick">Nickname</Label>
+  <Input id="nick" type="text" />
+</Field>`}
+>
+  <div class="zui-field zui-field-horizontal" style="width: 100%;">
+    <label class="zui-label" for="nick">Nickname</label>
+    <input class="zui-input" id="nick" type="text" />
+  </div>
+</Demo>
+
+## Responsive
+
+`orientation="responsive"` starts vertical and switches to horizontal once the containing `FieldGroup` is at least `32rem` wide. It **must** be inside a `FieldGroup` (that's what establishes the query container). Resize the preview to see it flip.
+
+<Demo
+  html={`<div class="zui-field-group">
+  <div class="zui-field zui-field-responsive">
+    <label class="zui-label" for="disp">Display name</label>
+    <input class="zui-input" id="disp" type="text" />
+  </div>
+</div>`}
+  react={`import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/react'
+
+<FieldGroup>
+  <Field orientation="responsive">
+    <Label htmlFor="disp">Display name</Label>
+    <Input id="disp" type="text" />
+  </Field>
+</FieldGroup>`}
+  astro={`---
+import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<FieldGroup>
+  <Field orientation="responsive">
+    <Label for="disp">Display name</Label>
+    <Input id="disp" type="text" />
+  </Field>
+</FieldGroup>`}
+  solid={`import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/solid'
+
+<FieldGroup>
+  <Field orientation="responsive">
+    <Label htmlFor="disp">Display name</Label>
+    <Input id="disp" type="text" />
+  </Field>
+</FieldGroup>`}
+  vue={`<template>
+  <FieldGroup>
+    <Field orientation="responsive">
+      <Label for="disp">Display name</Label>
+      <Input id="disp" type="text" />
+    </Field>
+  </FieldGroup>
+</template>
+
+<script setup>
+import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldGroup, Field, Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<FieldGroup>
+  <Field orientation="responsive">
+    <Label for="disp">Display name</Label>
+    <Input id="disp" type="text" />
+  </Field>
+</FieldGroup>`}
+>
+  <div class="zui-field-group" style="width: 100%;">
+    <div class="zui-field zui-field-responsive">
+      <label class="zui-label" for="disp">Display name</label>
+      <input class="zui-input" id="disp" type="text" />
+    </div>
+  </div>
+</Demo>
+
+## Fieldset and legend
+
+Group related controls — such as a set of radios or checkboxes — with `FieldSet` and `FieldLegend`. The legend's `variant="label"` matches label sizing for nested fieldsets.
+
+<Demo
+  html={`<fieldset class="zui-field-set">
+  <legend class="zui-field-legend">Favourite colour</legend>
+  <div class="zui-radio-list">
+    <label class="zui-radio"><input type="radio" name="colour" value="red" /> Red</label>
+    <label class="zui-radio"><input type="radio" name="colour" value="blue" checked /> Blue</label>
+    <label class="zui-radio"><input type="radio" name="colour" value="green" /> Green</label>
+  </div>
+</fieldset>`}
+  react={`import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/react'
+
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
+  <div className="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" defaultChecked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</FieldSet>`}
+  astro={`---
+import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/astro'
+---
+
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" checked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</FieldSet>`}
+  solid={`import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/solid'
+
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red">Red</Radio>
+    <Radio name="colour" value="blue" defaultChecked>Blue</Radio>
+    <Radio name="colour" value="green">Green</Radio>
+  </div>
+</FieldSet>`}
+  vue={`<template>
+  <FieldSet>
+    <FieldLegend>Favourite colour</FieldLegend>
+    <div class="zui-radio-list">
+      <Radio name="colour" value="red">Red</Radio>
+      <Radio name="colour" value="blue" checked>Blue</Radio>
+      <Radio name="colour" value="green">Green</Radio>
+    </div>
+  </FieldSet>
+</template>
+
+<script setup>
+import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/svelte'
+  let colour = $state('blue')
+</script>
+
+<FieldSet>
+  <FieldLegend>Favourite colour</FieldLegend>
+  <div class="zui-radio-list">
+    <Radio name="colour" value="red" bind:group={colour}>Red</Radio>
+    <Radio name="colour" value="blue" bind:group={colour}>Blue</Radio>
+    <Radio name="colour" value="green" bind:group={colour}>Green</Radio>
+  </div>
+</FieldSet>`}
+>
+  <fieldset class="zui-field-set" style="width: 100%;">
+    <legend class="zui-field-legend">Favourite colour</legend>
+    <div class="zui-radio-list">
+      <label class="zui-radio"><input type="radio" name="colour" value="red" /> Red</label>
+      <label class="zui-radio"><input type="radio" name="colour" value="blue" checked /> Blue</label>
+      <label class="zui-radio"><input type="radio" name="colour" value="green" /> Green</label>
+    </div>
+  </fieldset>
+</Demo>
+
+### Checkbox group
+
+The same pattern groups a set of checkboxes — swap the radios for a `zui-checkbox-list`.
+
+<Demo
+  html={`<fieldset class="zui-field-set">
+  <legend class="zui-field-legend">Interests</legend>
+  <div class="zui-checkbox-list">
+    <label class="zui-checkbox"><input type="checkbox" checked /> Music</label>
+    <label class="zui-checkbox"><input type="checkbox" /> Sports</label>
+    <label class="zui-checkbox"><input type="checkbox" checked /> Travel</label>
+  </div>
+</fieldset>`}
+  react={`import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/react'
+
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
+  <div className="zui-checkbox-list">
+    <Checkbox defaultChecked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox defaultChecked>Travel</Checkbox>
+  </div>
+</FieldSet>`}
+  astro={`---
+import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/astro'
+---
+
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
+  <div class="zui-checkbox-list">
+    <Checkbox checked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox checked>Travel</Checkbox>
+  </div>
+</FieldSet>`}
+  solid={`import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/solid'
+
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
+  <div class="zui-checkbox-list">
+    <Checkbox defaultChecked>Music</Checkbox>
+    <Checkbox>Sports</Checkbox>
+    <Checkbox defaultChecked>Travel</Checkbox>
+  </div>
+</FieldSet>`}
+  vue={`<template>
+  <FieldSet>
+    <FieldLegend>Interests</FieldLegend>
+    <div class="zui-checkbox-list">
+      <Checkbox checked>Music</Checkbox>
+      <Checkbox>Sports</Checkbox>
+      <Checkbox checked>Travel</Checkbox>
+    </div>
+  </FieldSet>
+</template>
+
+<script setup>
+import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/svelte'
+  let music = $state(true)
+  let sports = $state(false)
+  let travel = $state(true)
+</script>
+
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
+  <div class="zui-checkbox-list">
+    <Checkbox bind:checked={music}>Music</Checkbox>
+    <Checkbox bind:checked={sports}>Sports</Checkbox>
+    <Checkbox bind:checked={travel}>Travel</Checkbox>
+  </div>
+</FieldSet>`}
+>
+  <fieldset class="zui-field-set" style="width: 100%;">
+    <legend class="zui-field-legend">Interests</legend>
+    <div class="zui-checkbox-list">
+      <label class="zui-checkbox"><input type="checkbox" checked /> Music</label>
+      <label class="zui-checkbox"><input type="checkbox" /> Sports</label>
+      <label class="zui-checkbox"><input type="checkbox" checked /> Travel</label>
+    </div>
+  </fieldset>
+</Demo>
+
+### Grouping fields
+
+`FieldSet` isn't only for radios and checkboxes — use it to group several related `Field`s under one legend, with an optional group-level `FieldDescription`.
+
+<Demo
+  html={`<fieldset class="zui-field-set">
+  <legend class="zui-field-legend">Shipping address</legend>
+  <div class="zui-field-description">Where should we send your order?</div>
+  <div class="zui-field-group">
+    <div class="zui-field">
+      <label class="zui-label" for="street">Street</label>
+      <input class="zui-input" id="street" type="text" />
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="city">City</label>
+      <input class="zui-input" id="city" type="text" />
+    </div>
+  </div>
+</fieldset>`}
+  react={`import { FieldSet, FieldLegend, FieldDescription, FieldGroup, Field, Label, Input } from '@mrmartineau/zui/react'
+
+<FieldSet>
+  <FieldLegend>Shipping address</FieldLegend>
+  <FieldDescription>Where should we send your order?</FieldDescription>
+  <FieldGroup>
+    <Field>
+      <Label htmlFor="street">Street</Label>
+      <Input id="street" type="text" />
+    </Field>
+    <Field>
+      <Label htmlFor="city">City</Label>
+      <Input id="city" type="text" />
+    </Field>
+  </FieldGroup>
+</FieldSet>`}
+  astro={`---
+import { FieldSet, FieldLegend, FieldDescription, FieldGroup, Field, Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<FieldSet>
+  <FieldLegend>Shipping address</FieldLegend>
+  <FieldDescription>Where should we send your order?</FieldDescription>
+  <FieldGroup>
+    <Field>
+      <Label for="street">Street</Label>
+      <Input id="street" type="text" />
+    </Field>
+    <Field>
+      <Label for="city">City</Label>
+      <Input id="city" type="text" />
+    </Field>
+  </FieldGroup>
+</FieldSet>`}
+  solid={`import { FieldSet, FieldLegend, FieldDescription, FieldGroup, Field, Label, Input } from '@mrmartineau/zui/solid'
+
+<FieldSet>
+  <FieldLegend>Shipping address</FieldLegend>
+  <FieldDescription>Where should we send your order?</FieldDescription>
+  <FieldGroup>
+    <Field>
+      <Label htmlFor="street">Street</Label>
+      <Input id="street" type="text" />
+    </Field>
+    <Field>
+      <Label htmlFor="city">City</Label>
+      <Input id="city" type="text" />
+    </Field>
+  </FieldGroup>
+</FieldSet>`}
+  vue={`<template>
+  <FieldSet>
+    <FieldLegend>Shipping address</FieldLegend>
+    <FieldDescription>Where should we send your order?</FieldDescription>
+    <FieldGroup>
+      <Field>
+        <Label for="street">Street</Label>
+        <Input id="street" type="text" />
+      </Field>
+      <Field>
+        <Label for="city">City</Label>
+        <Input id="city" type="text" />
+      </Field>
+    </FieldGroup>
+  </FieldSet>
+</template>
+
+<script setup>
+import { FieldSet, FieldLegend, FieldDescription, FieldGroup, Field, Label, Input } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldSet, FieldLegend, FieldDescription, FieldGroup, Field, Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<FieldSet>
+  <FieldLegend>Shipping address</FieldLegend>
+  <FieldDescription>Where should we send your order?</FieldDescription>
+  <FieldGroup>
+    <Field>
+      <Label for="street">Street</Label>
+      <Input id="street" type="text" />
+    </Field>
+    <Field>
+      <Label for="city">City</Label>
+      <Input id="city" type="text" />
+    </Field>
+  </FieldGroup>
+</FieldSet>`}
+>
+  <fieldset class="zui-field-set" style="width: 100%;">
+    <legend class="zui-field-legend">Shipping address</legend>
+    <div class="zui-field-description">Where should we send your order?</div>
+    <div class="zui-field-group">
+      <div class="zui-field">
+        <label class="zui-label" for="street">Street</label>
+        <input class="zui-input" id="street" type="text" />
+      </div>
+      <div class="zui-field">
+        <label class="zui-label" for="city">City</label>
+        <input class="zui-input" id="city" type="text" />
+      </div>
+    </div>
+  </fieldset>
+</Demo>
+
+### Label-sized legend
+
+Set `variant="label"` on the `FieldLegend` so it matches label sizing — handy when a `FieldSet` is nested inside another field.
+
+<Demo
+  html={`<fieldset class="zui-field-set">
+  <legend class="zui-field-legend zui-field-legend-label">Contact method</legend>
+  <div class="zui-radio-list">
+    <label class="zui-radio"><input type="radio" name="contact" value="email" checked /> Email</label>
+    <label class="zui-radio"><input type="radio" name="contact" value="sms" /> SMS</label>
+  </div>
+</fieldset>`}
+  react={`import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/react'
+
+<FieldSet>
+  <FieldLegend variant="label">Contact method</FieldLegend>
+  <div className="zui-radio-list">
+    <Radio name="contact" value="email" defaultChecked>Email</Radio>
+    <Radio name="contact" value="sms">SMS</Radio>
+  </div>
+</FieldSet>`}
+  astro={`---
+import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/astro'
+---
+
+<FieldSet>
+  <FieldLegend variant="label">Contact method</FieldLegend>
+  <div class="zui-radio-list">
+    <Radio name="contact" value="email" checked>Email</Radio>
+    <Radio name="contact" value="sms">SMS</Radio>
+  </div>
+</FieldSet>`}
+  solid={`import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/solid'
+
+<FieldSet>
+  <FieldLegend variant="label">Contact method</FieldLegend>
+  <div class="zui-radio-list">
+    <Radio name="contact" value="email" defaultChecked>Email</Radio>
+    <Radio name="contact" value="sms">SMS</Radio>
+  </div>
+</FieldSet>`}
+  vue={`<template>
+  <FieldSet>
+    <FieldLegend variant="label">Contact method</FieldLegend>
+    <div class="zui-radio-list">
+      <Radio name="contact" value="email" checked>Email</Radio>
+      <Radio name="contact" value="sms">SMS</Radio>
+    </div>
+  </FieldSet>
+</template>
+
+<script setup>
+import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldSet, FieldLegend, Radio } from '@mrmartineau/zui/svelte'
+  let contact = $state('email')
+</script>
+
+<FieldSet>
+  <FieldLegend variant="label">Contact method</FieldLegend>
+  <div class="zui-radio-list">
+    <Radio name="contact" value="email" bind:group={contact}>Email</Radio>
+    <Radio name="contact" value="sms" bind:group={contact}>SMS</Radio>
+  </div>
+</FieldSet>`}
+>
+  <fieldset class="zui-field-set" style="width: 100%;">
+    <legend class="zui-field-legend zui-field-legend-label">Contact method</legend>
+    <div class="zui-radio-list">
+      <label class="zui-radio"><input type="radio" name="contact" value="email" checked /> Email</label>
+      <label class="zui-radio"><input type="radio" name="contact" value="sms" /> SMS</label>
+    </div>
+  </fieldset>
+</Demo>
+
+### Disabled group
+
+A native `disabled` attribute on the `FieldSet` disables every control inside it.
+
+<Demo
+  html={`<fieldset class="zui-field-set" disabled>
+  <legend class="zui-field-legend">Notifications</legend>
+  <div class="zui-checkbox-list">
+    <label class="zui-checkbox"><input type="checkbox" checked /> Email</label>
+    <label class="zui-checkbox"><input type="checkbox" /> Push</label>
+  </div>
+</fieldset>`}
+  react={`import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/react'
+
+<FieldSet disabled>
+  <FieldLegend>Notifications</FieldLegend>
+  <div className="zui-checkbox-list">
+    <Checkbox defaultChecked>Email</Checkbox>
+    <Checkbox>Push</Checkbox>
+  </div>
+</FieldSet>`}
+  astro={`---
+import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/astro'
+---
+
+<FieldSet disabled>
+  <FieldLegend>Notifications</FieldLegend>
+  <div class="zui-checkbox-list">
+    <Checkbox checked>Email</Checkbox>
+    <Checkbox>Push</Checkbox>
+  </div>
+</FieldSet>`}
+  solid={`import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/solid'
+
+<FieldSet disabled>
+  <FieldLegend>Notifications</FieldLegend>
+  <div class="zui-checkbox-list">
+    <Checkbox defaultChecked>Email</Checkbox>
+    <Checkbox>Push</Checkbox>
+  </div>
+</FieldSet>`}
+  vue={`<template>
+  <FieldSet disabled>
+    <FieldLegend>Notifications</FieldLegend>
+    <div class="zui-checkbox-list">
+      <Checkbox checked>Email</Checkbox>
+      <Checkbox>Push</Checkbox>
+    </div>
+  </FieldSet>
+</template>
+
+<script setup>
+import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldSet, FieldLegend, Checkbox } from '@mrmartineau/zui/svelte'
+</script>
+
+<FieldSet disabled>
+  <FieldLegend>Notifications</FieldLegend>
+  <div class="zui-checkbox-list">
+    <Checkbox checked>Email</Checkbox>
+    <Checkbox>Push</Checkbox>
+  </div>
+</FieldSet>`}
+>
+  <fieldset class="zui-field-set" style="width: 100%;" disabled>
+    <legend class="zui-field-legend">Notifications</legend>
+    <div class="zui-checkbox-list">
+      <label class="zui-checkbox"><input type="checkbox" checked /> Email</label>
+      <label class="zui-checkbox"><input type="checkbox" /> Push</label>
+    </div>
+  </fieldset>
+</Demo>
+
+## Separator
+
+`FieldSeparator` draws a divider between sections of a `FieldGroup`. Pass inline content to centre a label on the line.
+
+<Demo
+  html={`<div class="zui-field-group">
+  <div class="zui-field">
+    <label class="zui-label" for="sep-email">Email</label>
+    <input class="zui-input" id="sep-email" type="email" />
+  </div>
+  <div class="zui-field-separator">or</div>
+  <div class="zui-field">
+    <label class="zui-label" for="sep-phone">Phone</label>
+    <input class="zui-input" id="sep-phone" type="tel" />
+  </div>
+</div>`}
+  react={`import { FieldGroup, Field, Label, Input, FieldSeparator } from '@mrmartineau/zui/react'
+
+<FieldGroup>
+  <Field>
+    <Label htmlFor="sep-email">Email</Label>
+    <Input id="sep-email" type="email" />
+  </Field>
+  <FieldSeparator>or</FieldSeparator>
+  <Field>
+    <Label htmlFor="sep-phone">Phone</Label>
+    <Input id="sep-phone" type="tel" />
+  </Field>
+</FieldGroup>`}
+  astro={`---
+import { FieldGroup, Field, Label, Input, FieldSeparator } from '@mrmartineau/zui/astro'
+---
+
+<FieldGroup>
+  <Field>
+    <Label for="sep-email">Email</Label>
+    <Input id="sep-email" type="email" />
+  </Field>
+  <FieldSeparator>or</FieldSeparator>
+  <Field>
+    <Label for="sep-phone">Phone</Label>
+    <Input id="sep-phone" type="tel" />
+  </Field>
+</FieldGroup>`}
+  solid={`import { FieldGroup, Field, Label, Input, FieldSeparator } from '@mrmartineau/zui/solid'
+
+<FieldGroup>
+  <Field>
+    <Label htmlFor="sep-email">Email</Label>
+    <Input id="sep-email" type="email" />
+  </Field>
+  <FieldSeparator>or</FieldSeparator>
+  <Field>
+    <Label htmlFor="sep-phone">Phone</Label>
+    <Input id="sep-phone" type="tel" />
+  </Field>
+</FieldGroup>`}
+  vue={`<template>
+  <FieldGroup>
+    <Field>
+      <Label for="sep-email">Email</Label>
+      <Input id="sep-email" type="email" />
+    </Field>
+    <FieldSeparator>or</FieldSeparator>
+    <Field>
+      <Label for="sep-phone">Phone</Label>
+      <Input id="sep-phone" type="tel" />
+    </Field>
+  </FieldGroup>
+</template>
+
+<script setup>
+import { FieldGroup, Field, Label, Input, FieldSeparator } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { FieldGroup, Field, Label, Input, FieldSeparator } from '@mrmartineau/zui/svelte'
+</script>
+
+<FieldGroup>
+  <Field>
+    <Label for="sep-email">Email</Label>
+    <Input id="sep-email" type="email" />
+  </Field>
+  <FieldSeparator>or</FieldSeparator>
+  <Field>
+    <Label for="sep-phone">Phone</Label>
+    <Input id="sep-phone" type="tel" />
+  </Field>
+</FieldGroup>`}
+>
+  <div class="zui-field-group" style="width: 100%;">
+    <div class="zui-field">
+      <label class="zui-label" for="sep-email">Email</label>
+      <input class="zui-input" id="sep-email" type="email" />
+    </div>
+    <div class="zui-field-separator">or</div>
+    <div class="zui-field">
+      <label class="zui-label" for="sep-phone">Phone</label>
+      <input class="zui-input" id="sep-phone" type="tel" />
+    </div>
+  </div>
+</Demo>
+
+## Components
+
+| Component | Element | Description |
+|---|---|---|
+| `Field` | `div[role="group"]` | Wraps a label, control and optional description/error. Owns spacing. |
+| `FieldGroup` | `div` | Stacks multiple `Field`s and establishes the container for responsive orientation. |
+| `FieldDescription` | `div` | Helper text for a field. |
+| `FieldError` | `div[role="alert"]` | Validation message. |
+| `FieldSet` | `fieldset` | Groups related controls (e.g. radios, checkboxes). |
+| `FieldLegend` | `legend` | Caption for a `FieldSet`. |
+| `FieldSeparator` | `div[role="separator"]` | Divider with optional inline content. |
+
+## Field props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `'vertical' \| 'horizontal' \| 'responsive'` | `'vertical'` | Layout direction. `responsive` requires a `FieldGroup` ancestor. |
+| `invalid` | `boolean` | `false` | Applies invalid styling to the field, control border and messaging. |
+
+## FieldLegend props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'legend' \| 'label'` | `'legend'` | `label` matches label sizing — useful for nested fieldsets. |
+
+## CSS classes
+
+| Class | Description |
+|---|---|
+| `.zui-field` | Field wrapper (vertical). |
+| `.zui-field-horizontal` | Label beside control. |
+| `.zui-field-responsive` | Vertical until the container reaches `32rem`, then horizontal. |
+| `.zui-field-invalid` | Invalid state styling. |
+| `.zui-field-group` | Stacks fields; query container. |
+| `.zui-field-description` | Helper text. |
+| `.zui-field-error` | Validation message. |
+| `.zui-field-set` | Fieldset reset + spacing. |
+| `.zui-field-legend` | Legend styling. |
+| `.zui-field-legend-label` | Smaller, label-sized legend. |
+| `.zui-field-separator` | Divider with optional inline content. |

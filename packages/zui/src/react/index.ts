@@ -17,6 +17,8 @@ export { avatarVariants } from '../shared/avatarVariants'
 export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
 export { dialogVariants } from '../shared/dialogVariants'
+export { fieldLegendVariants } from '../shared/fieldLegendVariants'
+export { fieldVariants } from '../shared/fieldVariants'
 export { flexVariants } from '../shared/flexVariants'
 export {
   tabsContentVariants,
@@ -81,6 +83,16 @@ export {
 export { DialogFooter, type DialogFooterProps } from './DialogFooter'
 export { DialogHeader, type DialogHeaderProps } from './DialogHeader'
 export { DialogTitle, type DialogTitleProps } from './DialogTitle'
+export { Field, type FieldProps } from './Field'
+export {
+  FieldDescription,
+  type FieldDescriptionProps,
+} from './FieldDescription'
+export { FieldError, type FieldErrorProps } from './FieldError'
+export { FieldGroup, type FieldGroupProps } from './FieldGroup'
+export { FieldLegend, type FieldLegendProps } from './FieldLegend'
+export { FieldSeparator, type FieldSeparatorProps } from './FieldSeparator'
+export { FieldSet, type FieldSetProps } from './FieldSet'
 export { Flex, type FlexProps } from './Flex'
 export { Input, type InputProps } from './Input'
 export { Label, type LabelProps } from './Label'

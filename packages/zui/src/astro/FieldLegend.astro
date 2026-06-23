@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { fieldLegendVariants } from '../shared/fieldLegendVariants'
+
+type FieldLegendVariantProps = VariantProps<typeof fieldLegendVariants>
+
+interface Props extends HTMLAttributes<'legend'>, FieldLegendVariantProps {
+  class?: string
+}
+
+const { class: className, variant, ...props } = Astro.props
+const classes = fieldLegendVariants({
+  class: className,
+  variant,
+})
+---
+
+<legend class={classes} {...props}><slot /></legend>

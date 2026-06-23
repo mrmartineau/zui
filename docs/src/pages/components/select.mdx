@@ -76,47 +76,56 @@ import { Select } from '@mrmartineau/zui/vue'
 ## With Label
 
 <Demo
-  html={`<label class="zui-label" for="country">Country</label>
-<select class="zui-select" id="country">
+  html={`<div class="zui-field">
+  <label class="zui-label" for="country">Country</label>
+  <select class="zui-select" id="country">
   <option value="">Select a country</option>
   <option value="uk">United Kingdom</option>
   <option value="us">United States</option>
   <option value="de">Germany</option>
   <option value="fr">France</option>
-</select>`}
-  react={`import { Label, Select } from '@mrmartineau/zui/react'
+</select>
+</div>`}
+  react={`import { Field, Label, Select } from '@mrmartineau/zui/react'
 
-<Label htmlFor="country">Country</Label>
-<Select id="country">
+<Field>
+  <Label htmlFor="country">Country</Label>
+  <Select id="country">
   <option value="">Select a country</option>
   <option value="uk">United Kingdom</option>
   <option value="us">United States</option>
   <option value="de">Germany</option>
   <option value="fr">France</option>
-</Select>`}
+</Select>
+</Field>`}
   astro={`---
-import { Label, Select } from '@mrmartineau/zui/astro'
+import { Field, Label, Select } from '@mrmartineau/zui/astro'
 ---
 
-<Label for="country">Country</Label>
-<Select id="country">
+<Field>
+  <Label for="country">Country</Label>
+  <Select id="country">
   <option value="">Select a country</option>
   <option value="uk">United Kingdom</option>
   <option value="us">United States</option>
   <option value="de">Germany</option>
   <option value="fr">France</option>
-</Select>`}
-  solid={`import { Label, Select } from '@mrmartineau/zui/solid'
+</Select>
+</Field>`}
+  solid={`import { Field, Label, Select } from '@mrmartineau/zui/solid'
 
-<Label htmlFor="country">Country</Label>
-<Select id="country">
+<Field>
+  <Label htmlFor="country">Country</Label>
+  <Select id="country">
   <option value="">Select a country</option>
   <option value="uk">United Kingdom</option>
   <option value="us">United States</option>
   <option value="de">Germany</option>
   <option value="fr">France</option>
-</Select>`}
+</Select>
+</Field>`}
   vue={`<template>
+  <Field>
   <Label for="country">Country</Label>
 <Select id="country">
   <option value="">Select a country</option>
@@ -125,26 +134,29 @@ import { Label, Select } from '@mrmartineau/zui/astro'
   <option value="de">Germany</option>
   <option value="fr">France</option>
 </Select>
+</Field>
 </template>
 
 <script setup>
-import { Label, Select } from '@mrmartineau/zui/vue'
+import { Field, Label, Select } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Label, Select } from '@mrmartineau/zui/svelte'
+  import { Field, Label, Select } from '@mrmartineau/zui/svelte'
   let country = $state('')
 </script>
 
-<Label for="country">Country</Label>
-<Select id="country" bind:value={country}>
+<Field>
+  <Label for="country">Country</Label>
+  <Select id="country" bind:value={country}>
   <option value="">Select a country</option>
   <option value="uk">United Kingdom</option>
   <option value="us">United States</option>
   <option value="de">Germany</option>
   <option value="fr">France</option>
-</Select>`}
+</Select>
+</Field>`}
 >
-  <div style="width: 100%;">
+  <div class="zui-field" style="width: 100%;">
     <label class="zui-label" for="country">Country</label>
     <select class="zui-select" id="country">
       <option value="">Select a country</option>

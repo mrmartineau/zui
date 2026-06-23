@@ -274,6 +274,8 @@ Handles `:focus`, `:disabled`, `[aria-invalid="true"]`, and `:user-invalid` stat
 
 **CSS class:** `zui-label`
 
+Carries no margin — always wrap a label + control in a [Field](#field) for spacing.
+
 ### Checkbox
 
 **CSS class:** `zui-checkbox` — renders a `<label>` wrapping a styled `<input type="checkbox">`. Children become the label text. Use `zui-checkbox-list` on a `<ul>` to stack multiple checkboxes.
@@ -305,6 +307,40 @@ Handles `:focus`, `:disabled`, `[aria-invalid="true"]`, and `:user-invalid` stat
 ```tsx
 <Radio name="choice" value="a">Option A</Radio>
 ```
+
+### Field
+
+Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.
+
+| Component | CSS class | Element | Purpose |
+|---|---|---|---|
+| `Field` | `zui-field` | `div[role=group]` | Wraps a label + control + description/error. Props: `orientation` (`vertical`\|`horizontal`\|`responsive`), `invalid`. |
+| `FieldGroup` | `zui-field-group` | `div` | Stacks multiple fields; establishes the container for `responsive` orientation. |
+| `FieldDescription` | `zui-field-description` | `div` | Helper text. |
+| `FieldError` | `zui-field-error` | `div[role=alert]` | Validation message. |
+| `FieldSet` | `zui-field-set` | `fieldset` | Groups related controls (radios/checkboxes). |
+| `FieldLegend` | `zui-field-legend` | `legend` | Caption for a `FieldSet` (`variant`: `legend`\|`label`). |
+| `FieldSeparator` | `zui-field-separator` | `div[role=separator]` | Divider with optional inline content. |
+
+Modifier classes: `zui-field-horizontal`, `zui-field-responsive` (needs a `FieldGroup` ancestor; flips to horizontal at `32rem`), `zui-field-invalid`.
+
+```html
+<div class="zui-field">
+  <label class="zui-label" for="email">Email</label>
+  <input class="zui-input" type="email" id="email" aria-describedby="email-desc" />
+  <div class="zui-field-description" id="email-desc">We'll never share it.</div>
+</div>
+```
+
+```tsx
+<Field>
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" aria-describedby="email-desc" />
+  <FieldDescription id="email-desc">We'll never share it.</FieldDescription>
+</Field>
+```
+
+Field components are presentational — wire `id`/`for`/`aria-describedby`/`aria-invalid` yourself. Group radios/checkboxes with `FieldSet` + `FieldLegend`.
 
 ### Dialog
 
@@ -780,3 +816,4 @@ Padding: `p-{size}`, `px-{size}`, `py-{size}`, `pt-{size}`, `pb-{size}`, `pl-{si
 7. **Icons use Phosphor Icons** — never inline SVG. HTML: `<i class="ph ph-icon-name"></i>`, React: `import { Icon } from '@phosphor-icons/react'`.
 8. **Border style** uses `var(--border-style)`.
 9. **Focus ring** uses `var(--focus-ring)` and `var(--focus-ring-offset)`.
+10. **Forms always use Field components** — wrap every label + control in a `Field` (and groups in `FieldSet`/`FieldLegend`). `zui-label` and the controls carry no margins; the Field family owns all form spacing.

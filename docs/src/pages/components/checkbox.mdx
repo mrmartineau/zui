@@ -49,8 +49,8 @@ import { Checkbox } from '@mrmartineau/zui/vue'
 Use `.zui-checkbox-list` for vertical grouping.
 
 <Demo
-  html={`<fieldset>
-  <legend class="zui-label">Interests</legend>
+  html={`<fieldset class="zui-field-set">
+  <legend class="zui-field-legend">Interests</legend>
   <div class="zui-checkbox-list">
     <label class="zui-checkbox">
       <input type="checkbox" checked />
@@ -70,76 +70,76 @@ Use `.zui-checkbox-list` for vertical grouping.
     </label>
   </div>
 </fieldset>`}
-  react={`import { Checkbox, Label } from '@mrmartineau/zui/react'
+  react={`import { Checkbox, FieldSet, FieldLegend } from '@mrmartineau/zui/react'
 
-<fieldset>
-  <Label as="legend">Interests</Label>
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
   <div className="zui-checkbox-list">
     <Checkbox defaultChecked>Music</Checkbox>
     <Checkbox>Sports</Checkbox>
     <Checkbox defaultChecked>Travel</Checkbox>
     <Checkbox>Reading</Checkbox>
   </div>
-</fieldset>`}
+</FieldSet>`}
   astro={`---
-import { Checkbox, Label } from '@mrmartineau/zui/astro'
+import { Checkbox, FieldSet, FieldLegend } from '@mrmartineau/zui/astro'
 ---
 
-<fieldset>
-  <Label>Interests</Label>
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
   <div class="zui-checkbox-list">
     <Checkbox checked>Music</Checkbox>
     <Checkbox>Sports</Checkbox>
     <Checkbox checked>Travel</Checkbox>
     <Checkbox>Reading</Checkbox>
   </div>
-</fieldset>`}
-  solid={`import { Checkbox, Label } from '@mrmartineau/zui/solid'
+</FieldSet>`}
+  solid={`import { Checkbox, FieldSet, FieldLegend } from '@mrmartineau/zui/solid'
 
-<fieldset>
-  <Label as="legend">Interests</Label>
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
   <div class="zui-checkbox-list">
     <Checkbox defaultChecked>Music</Checkbox>
     <Checkbox>Sports</Checkbox>
     <Checkbox defaultChecked>Travel</Checkbox>
     <Checkbox>Reading</Checkbox>
   </div>
-</fieldset>`}
+</FieldSet>`}
   vue={`<template>
-  <fieldset>
-  <Label as="legend">Interests</Label>
+  <FieldSet>
+  <FieldLegend>Interests</FieldLegend>
   <div class="zui-checkbox-list">
     <Checkbox checked>Music</Checkbox>
     <Checkbox>Sports</Checkbox>
     <Checkbox checked>Travel</Checkbox>
     <Checkbox>Reading</Checkbox>
   </div>
-</fieldset>
+</FieldSet>
 </template>
 
 <script setup>
-import { Checkbox, Label } from '@mrmartineau/zui/vue'
+import { Checkbox, FieldSet, FieldLegend } from '@mrmartineau/zui/vue'
 </script>`}
   svelte={`<script lang="ts">
-  import { Checkbox, Label } from '@mrmartineau/zui/svelte'
+  import { Checkbox, FieldSet, FieldLegend } from '@mrmartineau/zui/svelte'
   let music = $state(true)
   let sports = $state(false)
   let travel = $state(true)
   let reading = $state(false)
 </script>
 
-<fieldset>
-  <Label as="legend">Interests</Label>
+<FieldSet>
+  <FieldLegend>Interests</FieldLegend>
   <div class="zui-checkbox-list">
     <Checkbox bind:checked={music}>Music</Checkbox>
     <Checkbox bind:checked={sports}>Sports</Checkbox>
     <Checkbox bind:checked={travel}>Travel</Checkbox>
     <Checkbox bind:checked={reading}>Reading</Checkbox>
   </div>
-</fieldset>`}
+</FieldSet>`}
 >
-  <fieldset style="border: none; padding: 0; width: 100%;">
-    <legend class="zui-label">Interests</legend>
+  <fieldset class="zui-field-set" style="width: 100%;">
+    <legend class="zui-field-legend">Interests</legend>
     <div class="zui-checkbox-list">
       <label class="zui-checkbox">
         <input type="checkbox" checked />
