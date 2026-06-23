@@ -44,3 +44,34 @@ All radii (except <code class="zui-code">--radius-round</code>) are multiplied b
   border-radius: var(--radius-round);
 }
 ```
+
+## Squircles
+
+If you want softer, Apple-style corners, pair any radius token with the
+CSS <code class="zui-code">corner-shape</code> property. A
+<code class="zui-code">superellipse()</code> produces a smoother curve than a
+plain circular arc, and <code class="zui-code">squircle</code> is shorthand for
+the most common value.
+
+Wrap it in an <code class="zui-code">@supports</code> query so browsers without
+<code class="zui-code">corner-shape</code> fall back to the normal rounded
+corner from <code class="zui-code">border-radius</code>.
+
+```css
+.card {
+  border-radius: var(--radius-xl);
+}
+
+@supports (corner-shape: squircle) {
+  .card {
+    corner-shape: superellipse(1.25);
+    border-radius: 20px;
+  }
+}
+```
+
+The <code class="zui-code">superellipse()</code> argument controls the curve:
+higher values are squarer, lower values are rounder, and
+<code class="zui-code">superellipse(1)</code> equals a normal circular corner.
+The <code class="zui-code">squircle</code> keyword is equivalent to
+<code class="zui-code">superellipse(2)</code>.
