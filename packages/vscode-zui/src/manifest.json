@@ -429,6 +429,14 @@
       "source": "input"
     },
     {
+      "name": "zui-kbd",
+      "source": "kbd"
+    },
+    {
+      "name": "zui-kbd-group",
+      "source": "kbd"
+    },
+    {
       "name": "zui-label",
       "source": "label"
     },
@@ -1437,7 +1445,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-06-23T11:47:12.654Z",
+  "generatedAt": "2026-06-23T12:58:51.178Z",
   "tokens": [
     {
       "category": "animation",

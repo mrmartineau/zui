@@ -1,0 +1,48 @@
+@layer zui.components {
+  .zui-kbd {
+    --zui-kbd-bg: var(--color-border);
+    --zui-kbd-color: var(--color-text);
+    --zui-kbd-radius: var(--radius-md);
+    --zui-kbd-font-size: var(--step--2);
+    --zui-kbd-font-family: var(--font-body);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4xs);
+    min-width: 1.7em;
+    height: 1.7em;
+    padding-inline: var(--space-3xs);
+    border-radius: var(--zui-kbd-radius);
+    background-color: var(--zui-kbd-bg);
+    font-family: var(--zui-kbd-font-family);
+    font-size: var(--zui-kbd-font-size);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    color: var(--zui-kbd-color);
+    white-space: nowrap;
+  }
+
+  /* Icons / symbols sit flush with the key label */
+  .zui-kbd :where(svg, i, .ph) {
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+  }
+
+  /* -------------------------------------------------------------------------
+   * KbdGroup — combines multiple keys for a shortcut, e.g. ⌘ + K
+   * ---------------------------------------------------------------------- */
+  .zui-kbd-group {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4xs);
+    font-size: var(--step--2);
+  }
+
+  /* Connector text between keys ("+", "then", …) */
+  .zui-kbd-group :where(span) {
+    color: var(--color-muted);
+    font-family: var(--font-code);
+  }
+}

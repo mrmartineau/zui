@@ -1,0 +1,359 @@
+---
+layout: ../../layouts/Layout.astro
+title: Kbd
+description: Keyboard key hints. Render a single key with Kbd, or combine keys into a shortcut with KbdGroup.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+`Kbd` renders a single keyboard key. Wrap several in `KbdGroup` to show a shortcut such as <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>. Both render a `<kbd>` element — nesting keys inside a group `<kbd>` is valid HTML and conveys "composite input".
+
+## Usage
+
+<Demo
+  html={`<kbd class="zui-kbd">Esc</kbd>`}
+  react={`import { Kbd } from '@mrmartineau/zui/react'
+
+<Kbd>Esc</Kbd>`}
+  astro={`---
+import { Kbd } from '@mrmartineau/zui/astro'
+---
+
+<Kbd>Esc</Kbd>`}
+  solid={`import { Kbd } from '@mrmartineau/zui/solid'
+
+<Kbd>Esc</Kbd>`}
+  vue={`<template>
+  <Kbd>Esc</Kbd>
+</template>
+
+<script setup>
+import { Kbd } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Kbd } from '@mrmartineau/zui/svelte'
+</script>
+
+<Kbd>Esc</Kbd>`}
+>
+  <kbd class="zui-kbd">Esc</kbd>
+</Demo>
+
+## Single keys
+
+Use text labels or symbols (⌘, ⇧, ⌥, ⌃, ⏎, ⌫, ↑).
+
+<Demo
+  html={`<kbd class="zui-kbd">⌘</kbd>
+<kbd class="zui-kbd">⇧</kbd>
+<kbd class="zui-kbd">⌥</kbd>
+<kbd class="zui-kbd">⏎</kbd>
+<kbd class="zui-kbd">Tab</kbd>
+<kbd class="zui-kbd">Esc</kbd>
+<kbd class="zui-kbd">F</kbd>`}
+  react={`import { Kbd } from '@mrmartineau/zui/react'
+
+<Kbd>⌘</Kbd>
+<Kbd>⇧</Kbd>
+<Kbd>⌥</Kbd>
+<Kbd>⏎</Kbd>
+<Kbd>Tab</Kbd>
+<Kbd>Esc</Kbd>
+<Kbd>F</Kbd>`}
+  astro={`---
+import { Kbd } from '@mrmartineau/zui/astro'
+---
+
+<Kbd>⌘</Kbd>
+<Kbd>⇧</Kbd>
+<Kbd>⌥</Kbd>
+<Kbd>⏎</Kbd>
+<Kbd>Tab</Kbd>
+<Kbd>Esc</Kbd>
+<Kbd>F</Kbd>`}
+  solid={`import { Kbd } from '@mrmartineau/zui/solid'
+
+<Kbd>⌘</Kbd>
+<Kbd>⇧</Kbd>
+<Kbd>⌥</Kbd>
+<Kbd>⏎</Kbd>
+<Kbd>Tab</Kbd>
+<Kbd>Esc</Kbd>
+<Kbd>F</Kbd>`}
+  vue={`<template>
+  <Kbd>⌘</Kbd>
+  <Kbd>⇧</Kbd>
+  <Kbd>⌥</Kbd>
+  <Kbd>⏎</Kbd>
+  <Kbd>Tab</Kbd>
+  <Kbd>Esc</Kbd>
+  <Kbd>F</Kbd>
+</template>
+
+<script setup>
+import { Kbd } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Kbd } from '@mrmartineau/zui/svelte'
+</script>
+
+<Kbd>⌘</Kbd>
+<Kbd>⇧</Kbd>
+<Kbd>⌥</Kbd>
+<Kbd>⏎</Kbd>
+<Kbd>Tab</Kbd>
+<Kbd>Esc</Kbd>
+<Kbd>F</Kbd>`}
+>
+  <kbd class="zui-kbd">⌘</kbd>
+  <kbd class="zui-kbd">⇧</kbd>
+  <kbd class="zui-kbd">⌥</kbd>
+  <kbd class="zui-kbd">⏎</kbd>
+  <kbd class="zui-kbd">Tab</kbd>
+  <kbd class="zui-kbd">Esc</kbd>
+  <kbd class="zui-kbd">F</kbd>
+</Demo>
+
+## Shortcuts
+
+Wrap keys in `KbdGroup`. Add a plain `<span>` between keys for a connector like `+` or `then`.
+
+<Demo
+  html={`<kbd class="zui-kbd-group">
+  <kbd class="zui-kbd">⌘</kbd>
+  <kbd class="zui-kbd">K</kbd>
+</kbd>
+
+<kbd class="zui-kbd-group">
+  <kbd class="zui-kbd">⌘</kbd>
+  <span>+</span>
+  <kbd class="zui-kbd">⇧</kbd>
+  <span>+</span>
+  <kbd class="zui-kbd">P</kbd>
+</kbd>
+
+<kbd class="zui-kbd-group">
+  <kbd class="zui-kbd">G</kbd>
+  <span>then</span>
+  <kbd class="zui-kbd">H</kbd>
+</kbd>`}
+  react={`import { Kbd, KbdGroup } from '@mrmartineau/zui/react'
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <span>+</span>
+  <Kbd>⇧</Kbd>
+  <span>+</span>
+  <Kbd>P</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>G</Kbd>
+  <span>then</span>
+  <Kbd>H</Kbd>
+</KbdGroup>`}
+  astro={`---
+import { Kbd, KbdGroup } from '@mrmartineau/zui/astro'
+---
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <span>+</span>
+  <Kbd>⇧</Kbd>
+  <span>+</span>
+  <Kbd>P</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>G</Kbd>
+  <span>then</span>
+  <Kbd>H</Kbd>
+</KbdGroup>`}
+  solid={`import { Kbd, KbdGroup } from '@mrmartineau/zui/solid'
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <span>+</span>
+  <Kbd>⇧</Kbd>
+  <span>+</span>
+  <Kbd>P</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>G</Kbd>
+  <span>then</span>
+  <Kbd>H</Kbd>
+</KbdGroup>`}
+  vue={`<template>
+  <KbdGroup>
+    <Kbd>⌘</Kbd>
+    <Kbd>K</Kbd>
+  </KbdGroup>
+
+  <KbdGroup>
+    <Kbd>⌘</Kbd>
+    <span>+</span>
+    <Kbd>⇧</Kbd>
+    <span>+</span>
+    <Kbd>P</Kbd>
+  </KbdGroup>
+
+  <KbdGroup>
+    <Kbd>G</Kbd>
+    <span>then</span>
+    <Kbd>H</Kbd>
+  </KbdGroup>
+</template>
+
+<script setup>
+import { Kbd, KbdGroup } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Kbd, KbdGroup } from '@mrmartineau/zui/svelte'
+</script>
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <span>+</span>
+  <Kbd>⇧</Kbd>
+  <span>+</span>
+  <Kbd>P</Kbd>
+</KbdGroup>
+
+<KbdGroup>
+  <Kbd>G</Kbd>
+  <span>then</span>
+  <Kbd>H</Kbd>
+</KbdGroup>`}
+>
+  <kbd class="zui-kbd-group">
+    <kbd class="zui-kbd">⌘</kbd>
+    <kbd class="zui-kbd">K</kbd>
+  </kbd>
+  <kbd class="zui-kbd-group">
+    <kbd class="zui-kbd">⌘</kbd>
+    <span>+</span>
+    <kbd class="zui-kbd">⇧</kbd>
+    <span>+</span>
+    <kbd class="zui-kbd">P</kbd>
+  </kbd>
+  <kbd class="zui-kbd-group">
+    <kbd class="zui-kbd">G</kbd>
+    <span>then</span>
+    <kbd class="zui-kbd">H</kbd>
+  </kbd>
+</Demo>
+
+## In context
+
+Keys scale to the surrounding font size, so they sit naturally inside text, buttons, and tooltips.
+
+<Demo
+  html={`<p>Press <kbd class="zui-kbd">/</kbd> to focus search, or <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd> to open the command palette.</p>
+
+<button class="zui-button zui-button-variant-outline">
+  Search
+  <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>
+</button>`}
+  react={`import { Kbd, KbdGroup, Button } from '@mrmartineau/zui/react'
+
+<p>
+  Press <Kbd>/</Kbd> to focus search, or{' '}
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+</p>
+
+<Button variant="outline">
+  Search
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>
+</Button>`}
+  astro={`---
+import { Kbd, KbdGroup, Button } from '@mrmartineau/zui/astro'
+---
+
+<p>
+  Press <Kbd>/</Kbd> to focus search, or
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+</p>
+
+<Button variant="outline">
+  Search
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>
+</Button>`}
+  solid={`import { Kbd, KbdGroup, Button } from '@mrmartineau/zui/solid'
+
+<p>
+  Press <Kbd>/</Kbd> to focus search, or{' '}
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+</p>
+
+<Button variant="outline">
+  Search
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>
+</Button>`}
+  vue={`<template>
+  <p>
+    Press <Kbd>/</Kbd> to focus search, or
+    <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+  </p>
+
+  <Button variant="outline">
+    Search
+    <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>
+  </Button>
+</template>
+
+<script setup>
+import { Kbd, KbdGroup, Button } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Kbd, KbdGroup, Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<p>
+  Press <Kbd>/</Kbd> to focus search, or
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup> to open the command palette.
+</p>
+
+<Button variant="outline">
+  Search
+  <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>
+</Button>`}
+>
+  <p>Press <kbd class="zui-kbd">/</kbd> to focus search, or <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd> to open the command palette.</p>
+  <button class="zui-button zui-button-variant-outline">
+    Search
+    <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>
+  </button>
+</Demo>
+
+## CSS custom properties
+
+Set on `.zui-kbd`.
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-kbd-bg` | `var(--color-surface)` | Key background |
+| `--zui-kbd-color` | `var(--color-text)` | Key label colour |
+| `--zui-kbd-border-color` | `var(--color-border)` | Border + drop-shadow colour |
+| `--zui-kbd-radius` | `var(--radius-md)` | Border radius |
+| `--zui-kbd-font-size` | `var(--step--2)` | Label font size |

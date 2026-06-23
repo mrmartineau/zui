@@ -478,6 +478,28 @@ Uses CSS Anchor Positioning and Popover API. Positioned below the trigger by def
 <Pre><code>block code</code></Pre>
 ```
 
+### Kbd / KbdGroup
+
+**CSS classes:** `zui-kbd` (single key), `zui-kbd-group` (shortcut wrapper). Both render a `<kbd>`. Keys scale to the surrounding font size, so they work inline in text, buttons, and tooltips. Use plain `<span>` children inside a group as connectors (`+`, `then`).
+
+```html
+<kbd class="zui-kbd">Esc</kbd>
+
+<kbd class="zui-kbd-group">
+  <kbd class="zui-kbd">⌘</kbd>
+  <kbd class="zui-kbd">K</kbd>
+</kbd>
+```
+
+```tsx
+<Kbd>Esc</Kbd>
+
+<KbdGroup>
+  <Kbd>⌘</Kbd>
+  <Kbd>K</Kbd>
+</KbdGroup>
+```
+
 ### Link
 
 **CSS class:** `zui-link`
