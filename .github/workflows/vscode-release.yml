@@ -4,6 +4,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      skip_package_age:
+        description: 'Bypass Aikido safe-chain minimum package age check'
+        type: boolean
+        default: false
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -35,8 +40,9 @@ jobs:
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
 
+      # inputs.skip_package_age is only set on manual dispatch; on release events it's empty so the flag is omitted.
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile ${{ inputs.skip_package_age && '--safe-chain-skip-minimum-package-age' || '' }}
         working-directory: .
 
       - name: Bump extension patch version
