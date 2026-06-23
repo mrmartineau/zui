@@ -48,36 +48,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  deploy-docs:
-    name: Deploy docs to Cloudflare
-    # Runs after both package releases land, so the docs site ships the just-published versions.
-    needs: release
-    runs-on: ubuntu-latest
-    concurrency: ${{ github.workflow }}-deploy-docs-${{ github.ref }}
-    permissions:
-      contents: read
-      deployments: write
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 'latest'
-          cache: 'pnpm'
-      - name: Install safe-chain
-        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
-      - run: pnpm install --frozen-lockfile
-      # docs:build compiles @mrmartineau/zui first, then runs `astro build` (Cloudflare adapter)
-      # into docs/dist, which wrangler.jsonc deploys as the Worker + static assets.
-      - name: Build docs
-        run: pnpm run docs:build
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # The Worker (wrangler.jsonc) lives in docs/, not the repo root.
-          workingDirectory: docs
-          packageManager: pnpm
-          command: deploy
