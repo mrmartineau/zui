@@ -1,10 +1,35 @@
 ---
-import { Content as Changelog } from '../../../CHANGELOG.md'
+import { Content as ZuiChangelog } from '../../../packages/zui/CHANGELOG.md'
+import { Content as ZuiThemeChangelog } from '../../../packages/zui-theme/CHANGELOG.md'
+import { Content as VscodeZuiChangelog } from '../../../packages/vscode-zui/CHANGELOG.md'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@mrmartineau/zui/astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Changelog" description="Release history for @mrmartineau/zui">
-  <div class="flow">
-    <Changelog />
-  </div>
+<Layout title="Changelog" description="Release history for ZUI packages">
+  <Tabs defaultValue="zui">
+    <TabsList aria-label="Package changelogs">
+      <TabsTrigger value="zui">@mrmartineau/zui</TabsTrigger>
+      <TabsTrigger value="zui-theme">@mrmartineau/zui-theme</TabsTrigger>
+      <TabsTrigger value="vscode-zui">vscode-zui</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="zui">
+      <div class="flow">
+        <ZuiChangelog />
+      </div>
+    </TabsContent>
+
+    <TabsContent value="zui-theme">
+      <div class="flow">
+        <ZuiThemeChangelog />
+      </div>
+    </TabsContent>
+
+    <TabsContent value="vscode-zui">
+      <div class="flow">
+        <VscodeZuiChangelog />
+      </div>
+    </TabsContent>
+  </Tabs>
 </Layout>

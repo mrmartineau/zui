@@ -16,8 +16,13 @@ jobs:
   publish:
     name: Build and publish to VS Code Marketplace
     runs-on: ubuntu-latest
+    # Skip when this workflow's own semantic-release created the triggering GitHub release
+    # (its tag starts with `vscode-zui-`), otherwise it would re-trigger itself in a loop.
+    if: github.event_name == 'workflow_dispatch' || !startsWith(github.event.release.tag_name, 'vscode-zui-')
     permissions:
       contents: write
+      issues: write
+      pull-requests: write
     defaults:
       run:
         working-directory: packages/vscode-zui
@@ -25,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          fetch-depth: 0          # semantic-release needs full history + tags
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: pnpm/action-setup@v6
@@ -45,32 +50,14 @@ jobs:
         run: pnpm install --frozen-lockfile ${{ inputs.skip_package_age && '--safe-chain-skip-minimum-package-age' || '' }}
         working-directory: .
 
-      - name: Bump extension patch version
-        run: npm version patch --no-git-tag-version
-
-      - name: Update lockfile for new version
-        run: pnpm install --lockfile-only --no-frozen-lockfile
-        working-directory: .
-
-      - name: Generate manifest
-        run: pnpm run build:manifest
-
+      # Build the extension artifacts (manifest + bundle) up front. semantic-release then
+      # bumps package.json, writes CHANGELOG.md, and runs `vsce package` + `vsce publish`
+      # against the freshly-bumped version (see release.config.mjs).
       - name: Build extension
-        run: pnpm run build:ext
+        run: pnpm run build
 
-      - name: Package .vsix
-        run: pnpm run package
-
-      - name: Publish to VS Code Marketplace
-        run: pnpm run publish
+      - name: Release
+        run: pnpm exec semantic-release
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-
-      - name: Commit version bump
-        run: |
-          git config user.email "action@github.com"
-          git config user.name "GitHub Action"
-          git add packages/vscode-zui/package.json pnpm-lock.yaml
-          git commit -m "chore(vscode-zui): bump extension version [skip ci]"
-          git push
-        working-directory: .
