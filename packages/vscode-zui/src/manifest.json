@@ -1445,7 +1445,7 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-06-23T15:11:49.785Z",
+  "generatedAt": "2026-06-24T14:43:21.750Z",
   "tokens": [
     {
       "category": "animation",
@@ -4050,5 +4050,5 @@
       "value": "4px"
     }
   ],
-  "version": "1.2.0"
+  "version": "1.6.0"
 }
