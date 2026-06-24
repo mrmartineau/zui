@@ -5,7 +5,7 @@
     "directory": "./dist"
   },
   "compatibility_date": "2026-01-20",
-  "compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
+  "compatibility_flags": ["global_fetch_strictly_public"],
   "main": "@astrojs/cloudflare/entrypoints/server",
   "name": "zui",
   "observability": {
