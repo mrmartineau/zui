@@ -1,0 +1,56 @@
+---
+layout: ../../layouts/Layout.astro
+title: Theming showcase
+description: Five live CodePen demos — identical ZUI markup, radically different looks. Only the :root custom properties change.
+order: 2
+---
+
+import ThemingShowcase from '../../components/ThemingShowcase.astro'
+
+Every demo below loads the **same ZUI markup** and the **same published stylesheet** straight from the CDN. The only thing that changes between them is a single block of CSS custom properties on `:root`. No component overrides, no extra classes — just tokens.
+
+That block is the whole theming surface. Override any of these and every component follows automatically, because muted/faint text, shadows and the focus ring are all _derived_ from the ones you set:
+
+```css
+:root {
+  /* Colours */
+  --color-theme: light-dark(var(--color-mist-600), var(--color-mist-400));
+  --color-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
+  --color-background: light-dark(var(--color-mist-200), var(--color-mist-800));
+  --color-surface: light-dark(var(--color-mist-100), var(--color-mist-900));
+  --color-border: light-dark(var(--color-mist-300), var(--color-mist-700));
+  --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
+  --color-success: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+  --color-error: light-dark(var(--color-red-600), var(--color-red-400));
+  --color-warning: light-dark(var(--color-amber-600), var(--color-amber-400));
+  --color-muted: oklch(from var(--color-text) l c h / 70%);
+  --color-faint: oklch(from var(--color-text) l c h / 50%);
+  --shadow-color: oklch(from var(--color-background) calc(l - 0.3) c h);
+
+  /* Typography */
+  --font-body: var(--font-stack-sans);
+  --font-display: var(--font-body);
+  --font-code: Geist Mono, var(--font-stack-mono);
+
+  /* Shape */
+  --line-height: var(--line-height-md);
+  --radius-scale: 1;
+  --border-style: solid;
+  --focus-ring: oklch(from var(--color-accent) l c h / 80%) auto 2px;
+  --focus-ring-offset: 4px;
+}
+```
+
+Each embed below is **live and editable** — flip to the `CSS` tab to see that theme's overrides, tweak a value, and watch the result update. For the full reference on every token, see the [Theming guide](/guides/theming).
+
+<ThemingShowcase />
+
+## Takeaways
+
+- **One file does the heavy lifting.** The markup never changed — swapping the `:root` block took each demo from warm editorial to dark terminal to bubblegum-round.
+- **Overrides cascade.** Setting `--color-text` and `--color-accent` reshapes muted text, the focus ring and shadows for free via `oklch(from …)`.
+- **Radius is a single scalar.** `--radius-scale` multiplies every corner at once — `0` for brutalist squares, `2.5` for pill shapes.
+- **`light-dark()` keeps both modes.** Each theme still adapts to the OS colour scheme (the Terminal demo is pinned to dark via the `zui-dark` class).
+- **Contrast is automatic.** In the Brutalist theme the button text flips to black against the yellow accent — ZUI computes a readable foreground for any accent colour in pure CSS.
+
+Copy any theme's `CSS` panel into a stylesheet imported **after** `@mrmartineau/zui/css` and you have that look in your own app.

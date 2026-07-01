@@ -1,0 +1,116 @@
+---
+/**
+ * ThemingShowcase.astro
+ *
+ * Renders a set of live, editable CodePen "Prefill" embeds. Every pen loads the
+ * exact same ZUI markup and the exact same published stylesheet from the CDN —
+ * only the `:root` custom-property block changes between them. This demonstrates
+ * how far the appearance can be pushed by overriding the semantic theme tokens
+ * documented in /guides/theming, without touching a single component.
+ *
+ * Prefill embeds need no pre-existing pen: CodePen's `ei.js` reads the markup,
+ * CSS and external stylesheets straight from the DOM. See:
+ * https://blog.codepen.io/documentation/prefill-embeds/
+ */
+
+interface Theme {
+  id: string
+  name: string
+  blurb: string
+  htmlClass: 'zui-light' | 'zui-dark'
+}
+
+const themes: Theme[] = [
+  {
+    id: 'YPNrjrZ',
+    name: 'Golden Hour',
+    blurb:
+      'Warm editorial. A serif display face, generous line-height, softly rounded corners and a rose/amber palette on a paper-cream background.',
+    htmlClass: 'zui-light',
+  },
+  {
+    id: 'BypwPmr',
+    name: 'Terminal',
+    blurb:
+      'Dark, monospace, zero radius. Phosphor-green text on near-black, tight line-height and hard corners — a coding-console aesthetic built from the same components.',
+    htmlClass: 'zui-dark',
+  },
+  {
+    id: 'emgGjew',
+    name: 'Bubblegum',
+    blurb:
+      'Playful and pill-shaped. A rounded display face, a fuchsia/pink palette and a huge radius scale (2.5×) turn every corner into a soft curve.',
+    htmlClass: 'zui-light',
+  },
+  {
+    id: 'ZYLXjvd',
+    name: 'Nordic',
+    blurb:
+      'Cool and professional. Inter throughout, an indigo/blue palette on slate greys, tight line-height and a subtle 0.5× radius scale for a crisp, corporate feel.',
+    htmlClass: 'zui-light',
+  },
+  {
+    id: 'ogBGMEY',
+    name: 'Brutalist',
+    blurb:
+      'Maximum contrast. Black borders and text, a single yellow accent, square corners and Space Grotesk. Notice the button label flips to black automatically — ZUI computes readable text against any accent.',
+    htmlClass: 'zui-light',
+  },
+]
+
+const embeds = themes.map((theme) => ({
+  ...theme,
+  prefill: JSON.stringify({
+    title: `ZUI theming — ${theme.name}`,
+    description:
+      'Same ZUI components, a different theme. Edit the :root block to reshape everything.',
+    tags: ['zui', 'theming', 'css'],
+    html_classes: theme.htmlClass,
+  }),
+}))
+---
+
+<div class="theming-showcase">
+  {
+    embeds.map((embed) => (
+      <section class="theming-showcase-item flow" id={embed.id}>
+        <h3>{embed.name}</h3>
+        <p class="theming-showcase-blurb">{embed.blurb}</p>
+        <p class="codepen"
+           data-height="630"
+           data-pen-title={embed.name}
+           data-default-tab="result"
+           data-slug-hash={embed.id}
+           data-user="mrmartineau"
+        >
+        </p>
+      </section>
+    ))
+  }
+</div>
+
+<script is:inline async src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+></script>
+
+<style>
+  .theming-showcase-item {
+    margin-block: var(--space-xl, 2.5rem);
+  }
+
+  .theming-showcase-blurb {
+    color: var(--color-muted);
+  }
+
+  /* The bare .codepen paragraph is replaced by an iframe once ei.js loads.
+     Give it a sensible placeholder so there is no layout jump beforehand. */
+  .theming-showcase .codepen {
+    min-height: 560px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-sm);
+    margin: 0;
+    color: var(--color-faint);
+    font-family: var(--font-code);
+    font-size: var(--step--1);
+  }
+</style>

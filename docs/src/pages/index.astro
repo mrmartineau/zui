@@ -40,10 +40,72 @@ function buildSectionLinks(section: string): FooterLink[] {
     .map(({ href, title }) => ({ href, title }))
 }
 
-const guideLinks = buildSectionLinks('guides')
-const tokenLinks = buildSectionLinks('tokens')
-const componentLinks = buildSectionLinks('components')
-const utilityLinks = buildSectionLinks('utilities')
+// Teaser for /guides/theming-showcase — each card is a mini live preview that
+// mirrors its demo theme. Colours use the same light-dark() pairs as the real
+// theme so the cards follow the docs' colour scheme. Terminal is pinned dark
+// (its pen forces zui-dark); Brutalist inverts to black-on-dark.
+const themePreviews = [
+  {
+    name: 'Golden Hour',
+    note: 'Warm serif editorial',
+    bg: 'light-dark(oklch(0.98 0.02 70), var(--color-stone-900))',
+    surface: 'light-dark(oklch(1 0.008 80), var(--color-stone-800))',
+    border: 'light-dark(oklch(0.9 0.03 60), var(--color-stone-700))',
+    text: 'light-dark(var(--color-stone-800), var(--color-stone-100))',
+    accent: 'light-dark(var(--color-rose-600), var(--color-rose-400))',
+    onAccent: 'light-dark(#ffffff, oklch(0.2 0.05 20))',
+    radius: '10px',
+    font: 'var(--font-stack-serif)',
+  },
+  {
+    name: 'Terminal',
+    note: 'Mono, dark, zero radius',
+    bg: 'oklch(0.17 0.02 150)',
+    surface: 'oklch(0.21 0.02 150)',
+    border: 'oklch(0.34 0.04 150)',
+    text: 'oklch(0.9 0.07 150)',
+    accent: 'oklch(0.86 0.21 150)',
+    onAccent: '#0a0e0a',
+    radius: '0',
+    font: 'var(--font-stack-mono)',
+  },
+  {
+    name: 'Bubblegum',
+    note: 'Round & playful',
+    bg: 'light-dark(oklch(0.97 0.03 340), oklch(0.2 0.05 330))',
+    surface: 'light-dark(#ffffff, oklch(0.25 0.05 330))',
+    border: 'light-dark(oklch(0.9 0.06 335), oklch(0.35 0.06 330))',
+    text: 'light-dark(oklch(0.36 0.11 340), oklch(0.94 0.03 340))',
+    accent: 'light-dark(var(--color-fuchsia-600), var(--color-fuchsia-400))',
+    onAccent: 'light-dark(#ffffff, oklch(0.2 0.08 330))',
+    radius: '18px',
+    font: 'var(--font-stack-sans)',
+  },
+  {
+    name: 'Nordic',
+    note: 'Crisp & corporate',
+    bg: 'light-dark(var(--color-slate-100), var(--color-slate-900))',
+    surface: 'light-dark(#ffffff, var(--color-slate-800))',
+    border: 'light-dark(var(--color-slate-300), var(--color-slate-700))',
+    text: 'light-dark(var(--color-slate-800), var(--color-slate-200))',
+    accent: 'light-dark(var(--color-blue-600), var(--color-blue-400))',
+    onAccent: 'light-dark(#ffffff, oklch(0.2 0.06 250))',
+    radius: '3px',
+    font: 'var(--font-stack-sans)',
+  },
+  {
+    name: 'Brutalist',
+    note: 'High-contrast, square',
+    bg: 'light-dark(#faf9f0, #111111)',
+    surface: 'light-dark(#ffffff, #1a1a1a)',
+    border: 'light-dark(#111111, #fafafa)',
+    text: 'light-dark(#111111, #fafafa)',
+    accent: 'var(--color-yellow-400)',
+    onAccent: '#111111',
+    radius: '0',
+    font: 'var(--font-stack-sans)',
+  },
+]
 ---
 
 <Layout>
@@ -60,6 +122,27 @@ const utilityLinks = buildSectionLinks('utilities')
       <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost"><i class="ph ph-github-logo"></i> View source</a>
       <a href="https://codepen.io/mrmartineau/pen/gbwoRZj?editors=1100" class="zui-button zui-button-variant-ghost mt-sm"><i class="ph ph-codepen-logo"></i> Try it on CodePen</a>
     </div>
+  </section>
+
+  <section class="theming">
+    <h2 class="section-label">One theme file, infinite looks</h2>
+    <p class="theming-lede">Every ZUI component reads from a small set of semantic custom properties. Override that <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and borders all follow. Same markup, five very different personalities:</p>
+    <ul class="theming-swatches">
+      {themePreviews.map((theme) => (
+        <li
+          class="theming-swatch"
+          style={`--sw-bg:${theme.bg};--sw-surface:${theme.surface};--sw-border:${theme.border};--sw-text:${theme.text};--sw-accent:${theme.accent};--sw-on-accent:${theme.onAccent};--sw-radius:${theme.radius};--sw-font:${theme.font}`}
+        >
+          <div class="theming-swatch-preview">
+            <span class="theming-swatch-tag">Aa</span>
+            <span class="theming-swatch-btn">Button</span>
+          </div>
+          <span class="theming-swatch-name">{theme.name}</span>
+          <span class="theming-swatch-note">{theme.note}</span>
+        </li>
+      ))}
+    </ul>
+    <a href="/guides/theming-showcase" class="zui-button zui-button-variant-outline"><i class="ph ph-swatches"></i> Explore the theming showcase</a>
   </section>
 
   <section class="showcase">
@@ -149,6 +232,7 @@ const utilityLinks = buildSectionLinks('utilities')
       <div class="feature">
         <h3>Themeable in seconds</h3>
         <p>Override semantic colours, fonts, and border radii through one <code>theme.css</code> file. Supports <code>light-dark()</code> colour schemes natively.</p>
+        <a href="/guides/theming-showcase" class="feature-link">See it in action</a>
       </div>
 
       <div class="feature">
@@ -206,27 +290,6 @@ const utilityLinks = buildSectionLinks('utilities')
       </div>
     </div>
   </section>
-
-  <footer class="site-footer">
-    <div class="footer-links">
-      <div class="footer-col">
-        <h4>Guides</h4>
-        {guideLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
-      </div>
-      <div class="footer-col">
-        <h4>Tokens</h4>
-        {tokenLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
-      </div>
-      <div class="footer-col">
-        <h4>Components</h4>
-        {componentLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
-      </div>
-      <div class="footer-col">
-        <h4>Utilities</h4>
-        {utilityLinks.map(({ href, title }) => <a href={href}>{title}</a>)}
-      </div>
-    </div>
-  </footer>
 </Layout>
 
 <style>
@@ -321,6 +384,91 @@ const utilityLinks = buildSectionLinks('utilities')
     display: flex;
     flex-direction: column;
     gap: var(--space-2xs);
+  }
+
+  /* Theming teaser -------------------------------------------------------- */
+  .theming {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .theming-lede {
+    font-size: var(--step-0);
+    line-height: var(--line-height-md);
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+    max-width: 60ch;
+    margin-block-end: var(--space-lg);
+  }
+
+  .theming-lede code {
+    font-size: 0.875em;
+    font-family: var(--font-code);
+    background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .theming-swatches {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: var(--space-sm);
+  }
+
+  /* Each card renders in its own theme's colours, radius and font. */
+  .theming-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-sm);
+    border: 1px solid var(--sw-border);
+    border-radius: max(var(--sw-radius), var(--radius-sm));
+    background: var(--sw-bg);
+    color: var(--sw-text);
+    font-family: var(--sw-font);
+  }
+
+  .theming-swatch-preview {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin-block-end: var(--space-2xs);
+  }
+
+  .theming-swatch-tag {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    background: var(--sw-surface);
+    border: 1px solid var(--sw-border);
+    border-radius: var(--sw-radius);
+    font-weight: 700;
+    font-size: var(--step-0);
+  }
+
+  .theming-swatch-btn {
+    padding: var(--space-3xs) var(--space-xs);
+    background: var(--sw-accent);
+    color: var(--sw-on-accent);
+    border-radius: var(--sw-radius);
+    font-size: var(--step--2);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .theming-swatch-name {
+    font-weight: 700;
+    font-size: var(--step--1);
+    margin-block-start: var(--space-3xs);
+  }
+
+  .theming-swatch-note {
+    font-size: var(--step--2);
+    color: color-mix(in oklch, var(--sw-text) 60%, transparent);
   }
 
   /* Features -------------------------------------------------------------- */
