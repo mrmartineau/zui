@@ -80,7 +80,7 @@ const metaDescription = description ?? site.description ?? ''
         {social.map((link) => (
           <a
             href={link.href}
-            class="zui-button zui-button-variant-ghost"
+            class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
             aria-label={link.ariaLabel ?? link.label}
             target="_blank"
             rel="noopener noreferrer"
@@ -92,7 +92,7 @@ const metaDescription = description ?? site.description ?? ''
         {showMiniThemeSwitcher && <MiniThemeSwitcher themes={site.miniThemes} />}
         {showColorSchemeToggle && <DarkModeSwitcher />}
         <button
-          class="mobile-menu-btn zui-button zui-button-variant-ghost"
+          class="mobile-menu-btn zui-button zui-button-variant-ghost zui-button-shape-squircle"
           type="button"
           aria-label="Open navigation"
           onclick="document.getElementById('mobile-nav').showModal()"
