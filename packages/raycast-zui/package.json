@@ -1,11 +1,19 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "author": "mrmartineau",
-  "categories": ["Developer Tools", "Documentation", "Design Tools"],
+  "categories": [
+    "Developer Tools",
+    "Documentation",
+    "Design Tools"
+  ],
   "commands": [
     {
       "description": "Search the ZUI documentation and open pages in your browser",
-      "keywords": ["zui", "docs", "documentation"],
+      "keywords": [
+        "zui",
+        "docs",
+        "documentation"
+      ],
       "mode": "view",
       "name": "search-docs",
       "subtitle": "ZUI",
@@ -13,7 +21,12 @@
     },
     {
       "description": "Search ZUI CSS classes and copy or paste the class name",
-      "keywords": ["zui", "css", "class", "classes"],
+      "keywords": [
+        "zui",
+        "css",
+        "class",
+        "classes"
+      ],
       "mode": "view",
       "name": "search-classes",
       "subtitle": "ZUI",
@@ -21,7 +34,13 @@
     },
     {
       "description": "Search ZUI design tokens and copy or paste the CSS custom property",
-      "keywords": ["zui", "tokens", "css", "variables", "custom properties"],
+      "keywords": [
+        "zui",
+        "tokens",
+        "css",
+        "variables",
+        "custom properties"
+      ],
       "mode": "view",
       "name": "search-tokens",
       "subtitle": "ZUI",
@@ -29,7 +48,17 @@
     },
     {
       "description": "Search ZUI component examples and copy or paste the snippet for your framework — HTML, React, Astro, Solid, Svelte, or Vue",
-      "keywords": ["zui", "snippets", "examples", "react", "astro", "solid", "svelte", "vue", "html"],
+      "keywords": [
+        "zui",
+        "snippets",
+        "examples",
+        "react",
+        "astro",
+        "solid",
+        "svelte",
+        "vue",
+        "html"
+      ],
       "mode": "view",
       "name": "search-snippets",
       "subtitle": "ZUI",
@@ -37,7 +66,7 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.104.21",
+    "@raycast/api": "^1.104.20",
     "@raycast/utils": "^2.2.7"
   },
   "description": "Search ZUI documentation, CSS classes, design tokens, and framework snippets",

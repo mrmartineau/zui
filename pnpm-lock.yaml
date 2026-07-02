@@ -67,11 +67,11 @@ importers:
   packages/raycast-zui:
     dependencies:
       '@raycast/api':
-        specifier: ^1.104.21
-        version: 1.104.21(@types/node@22.19.17)(@types/react@19.2.17)
+        specifier: ^1.104.20
+        version: 1.104.20(@types/node@22.19.17)(@types/react@19.2.17)
       '@raycast/utils':
         specifier: ^2.2.7
-        version: 2.2.7(@raycast/api@1.104.21(@types/node@22.19.17)(@types/react@19.2.17))(react@19.2.7)
+        version: 2.2.7(@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.2.17))(react@19.2.7)
     devDependencies:
       '@types/node':
         specifier: ^22.0.0
@@ -1689,8 +1689,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@raycast/api@1.104.21':
-    resolution: {integrity: sha512-0s6OLx/cIgAIhZPQp3dmMCCZoWFbtgnQUTbnpTzhitwKuPVy20DpnyKJPwqsODHBLmNlhO3FgzpzkkoIrRkjjQ==}
+  '@raycast/api@1.104.20':
+    resolution: {integrity: sha512-Hcvt0OVjdjBFLtb9rNQjRBL7FAZBF3mlU17y2TgCdNolkeGixfJdMb7idfiILfgoNa94gj4C+M/MZn1tf/q4Dg==}
     engines: {node: '>=22.22.2'}
     hasBin: true
     peerDependencies:
@@ -8149,7 +8149,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@raycast/api@1.104.21(@types/node@22.19.17)(@types/react@19.2.17)':
+  '@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.2.17)':
     dependencies:
       '@oclif/core': 4.11.11
       '@oclif/plugin-autocomplete': 3.2.53
@@ -8163,9 +8163,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@raycast/utils@2.2.7(@raycast/api@1.104.21(@types/node@22.19.17)(@types/react@19.2.17))(react@19.2.7)':
+  '@raycast/utils@2.2.7(@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.2.17))(react@19.2.7)':
     dependencies:
-      '@raycast/api': 1.104.21(@types/node@22.19.17)(@types/react@19.2.17)
+      '@raycast/api': 1.104.20(@types/node@22.19.17)(@types/react@19.2.17)
       dequal: 2.0.3
     optionalDependencies:
       react: 19.2.7
@@ -10807,7 +10807,7 @@ snapshots:
       lodash.isstring: 4.0.1
       lodash.once: 4.1.1
       ms: 2.1.3
-      semver: 7.7.4
+      semver: 7.8.5
 
   jwa@2.0.1:
     dependencies:
@@ -11552,7 +11552,7 @@ snapshots:
 
   node-abi@3.89.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.5
     optional: true
 
   node-addon-api@4.3.0:
@@ -11586,13 +11586,13 @@ snapshots:
   normalize-package-data@6.0.2:
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.7.4
+      semver: 7.8.5
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.2
-      semver: 7.7.4
+      semver: 7.8.5
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}
