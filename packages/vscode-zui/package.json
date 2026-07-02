@@ -62,6 +62,7 @@
     "design tokens",
     "intellisense"
   ],
+  "license": "MIT",
   "main": "./dist/extension.cjs",
   "name": "vscode-zui",
   "publisher": "mrmartineau",

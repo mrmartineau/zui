@@ -72,9 +72,7 @@ export class TokenCompletionProvider
 
     for (let i = 0; i < document.lineCount; i++) {
       const line = document.lineAt(i)
-      let m
-      re.lastIndex = 0
-      while ((m = re.exec(line.text)) !== null) {
+      for (const m of line.text.matchAll(re)) {
         const tokenName = `--${m[1]}`
         const color = this.colorMap.get(tokenName)
         if (!color) continue

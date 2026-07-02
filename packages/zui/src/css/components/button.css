@@ -23,12 +23,6 @@
     --auto-threshold: 0.6;
     --auto-light-text-l: 1;
     --auto-dark-text-l: 0.5;
-    --auto-lightness: clamp(
-      0,
-      (l / var(--auto-threshold, 0.623) - 1) *
-      -infinity,
-      1
-    );
     --auto-color: light-dark(
       oklch(
         from var(--zui-btn-bg)
@@ -269,7 +263,7 @@
    * Icon button — 1:1 aspect ratio, for a single icon
    * ---------------------------------------------------------------------- */
   .zui-button.zui-button-icon {
-    min-width: var(--zui-btn-height, 2.25rem);
+    min-width: var(--zui-btn-height, 2rem);
     padding: 0;
   }
 }

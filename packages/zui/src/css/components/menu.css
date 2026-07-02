@@ -31,17 +31,17 @@
     display: none;
   }
 
-  .zui-menu-content[data-side='top'] {
+  .zui-menu-content[data-side="top"] {
     top: auto;
     bottom: calc(100% + var(--space-2xs));
   }
 
-  .zui-menu-content[data-align='center'] {
+  .zui-menu-content[data-align="center"] {
     inset-inline-start: 50%;
     translate: -50% 0;
   }
 
-  .zui-menu-content[data-align='end'] {
+  .zui-menu-content[data-align="end"] {
     inset-inline-start: auto;
     inset-inline-end: 0;
   }
@@ -51,11 +51,11 @@
     width: 100%;
   }
 
-  .zui-menu-item[data-highlighted='true'] {
+  .zui-menu-item[data-highlighted="true"] {
     background: oklch(from var(--color-text) l c h / 0.08);
   }
 
-  .zui-menu-item[data-disabled='true'] {
+  .zui-menu-item[data-disabled="true"] {
     opacity: 0.5;
   }
 }

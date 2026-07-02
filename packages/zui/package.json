@@ -3,7 +3,7 @@
     "zui": "scripts/init.mjs"
   },
   "dependencies": {
-    "cva": "1.0.0-beta.4"
+    "cva": "^1.0.0-beta.4"
   },
   "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
   "devDependencies": {
@@ -35,25 +35,23 @@
       "import": "./src/astro/*"
     },
     "./css": {
-      "default": "./dist/css/zui.css",
       "style": "./dist/css/zui.css",
-      "types": "./dist/css/zui.css.d.ts"
+      "default": "./dist/css/zui.css"
     },
     "./css/min": {
-      "default": "./dist/css/zui.min.css",
       "style": "./dist/css/zui.min.css",
-      "types": "./dist/css/zui.min.css.d.ts"
+      "default": "./dist/css/zui.min.css"
     },
     "./react": {
       "import": {
-        "default": "./dist/react/index.mjs",
-        "types": "./dist/react/index.d.mts"
+        "types": "./dist/react/index.d.mts",
+        "default": "./dist/react/index.mjs"
       }
     },
     "./solid": {
       "import": {
-        "default": "./dist/solid/index.mjs",
-        "types": "./dist/solid/index.d.mts"
+        "types": "./dist/solid/index.d.mts",
+        "default": "./dist/solid/index.mjs"
       }
     },
     "./svelte": {
@@ -66,8 +64,8 @@
     },
     "./utils": {
       "import": {
-        "default": "./dist/utils/index.mjs",
-        "types": "./dist/utils/index.d.mts"
+        "types": "./dist/utils/index.d.mts",
+        "default": "./dist/utils/index.mjs"
       }
     },
     "./vue": {
@@ -87,11 +85,12 @@
     "src/svelte",
     "src/vue",
     "src/shared",
-    "src/utils",
-    "skills"
+    "src/utils"
   ],
   "name": "@mrmartineau/zui",
+  "license": "MIT",
   "peerDependencies": {
+    "astro": "^6.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "solid-js": "^1.7.0",
     "svelte": "^5.0.0",

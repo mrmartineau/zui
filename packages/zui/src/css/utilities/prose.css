@@ -163,7 +163,7 @@
     iframe,
     video {
       border-radius: var(--radius-xl);
-      border: 3px solid var(--black-a3);
+      border: 3px solid var(--color-border);
 
       &.no-border {
         border: none;
@@ -171,21 +171,29 @@
     }
 
     hr {
-      margin: calc(var(--flow-space) * 2);
+      margin-block: calc(var(--flow-space, 1em) * 2);
       height: 1px;
       border: 0;
-      background-color: var(--border-color);
+      background-color: var(--color-border);
     }
   }
 
+  /* Inverted prose mirrors the base mapping with text/background swapped,
+     for use on surfaces filled with --color-text or similar */
   .prose.inverted {
-    --prose-color: var(--text-color-inverted);
-    --prose-accent-color: var(--accent-6);
-    --prose-link-color: var(--accent-7);
-    --prose-link-color-decoration: var(--accent-7);
-    --prose-link-color-decoration-hover: var(--accent-6);
-    --prose-code-color: var(--violet-6);
-    --prose-code-bg-color: var(--violet-12);
+    --prose-color: var(--color-background);
+    --prose-accent-color: var(--color-accent);
+    --prose-link-color: var(--color-background);
+    --prose-link-color-decoration: oklch(
+      from var(--color-background) l c h /
+      50%
+    );
+    --prose-link-color-decoration-hover: oklch(
+      from var(--color-background) l c h /
+      90%
+    );
+    --prose-code-color: oklch(from var(--color-background) calc(l - 0.1) c h);
+    --prose-code-bg-color: oklch(from var(--color-text) calc(l + 0.1) c h);
   }
 
   .prose.max-width-p > p {

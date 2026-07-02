@@ -5,6 +5,7 @@ import {
   existsSync,
   mkdirSync,
   readFileSync,
+  renameSync,
   writeFileSync,
 } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
@@ -55,6 +56,13 @@ cpSync(templateDir, target, {
   filter: (src) => !src.endsWith('.DS_Store'),
   recursive: true,
 })
+
+// npm never packs files named .gitignore, so the template ships it as
+// `gitignore` and we restore the real name here.
+const gitignorePath = join(target, 'gitignore')
+if (existsSync(gitignorePath)) {
+  renameSync(gitignorePath, join(target, '.gitignore'))
+}
 
 // Set the project name in the copied package.json to the target folder name.
 const pkgJsonPath = join(target, 'package.json')

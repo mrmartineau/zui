@@ -30,16 +30,19 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          # Release events check out the tag ref by default, but semantic-release
+          # only publishes from a configured branch — check out main explicitly.
+          ref: main
           fetch-depth: 0          # semantic-release needs full history + tags
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # No `version` input: it would conflict with the root packageManager field,
+      # which pnpm/action-setup reads on its own.
       - uses: pnpm/action-setup@v6
-        with:
-          version: latest
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 'latest'
+          node-version: 24
           cache: 'pnpm'
 
       - name: Install safe-chain

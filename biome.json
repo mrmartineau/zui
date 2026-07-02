@@ -1,7 +1,58 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
   "extends": ["./node_modules/@mrmartineau/kit/src/biome/biome.json"],
+  "files": {
+    "includes": ["**", "!packages/vscode-zui/src/manifest.json"]
+  },
   "overrides": [
+    {
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      },
+      "includes": ["**/package.json"]
+    },
+    {
+      "includes": ["**/*.css"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          },
+          "style": {
+            "noDescendingSpecificity": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "**/components/avatar.css",
+        "**/components/button.css",
+        "packages/zui-theme/src/css/theme.css"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnknownFunction": "off",
+            "noUnknownProperty": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/release.config.mjs"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noTemplateCurlyInString": "off"
+          }
+        }
+      }
+    },
     {
       "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
       "linter": {
@@ -13,6 +64,17 @@
           "style": {
             "useConst": "off",
             "useImportType": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.vue", "**/src/solid/**", "**/src/svelte/**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useExhaustiveDependencies": "off",
+            "useHookAtTopLevel": "off"
           }
         }
       }

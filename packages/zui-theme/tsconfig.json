@@ -1,5 +1,5 @@
 {
+  "exclude": ["node_modules"],
   "extends": "astro/tsconfigs/strict",
-  "include": ["src", "template"],
-  "exclude": ["node_modules"]
+  "include": ["src", "template"]
 }

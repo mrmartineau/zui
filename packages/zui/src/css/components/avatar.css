@@ -72,9 +72,9 @@
     --zui-avatar-radius: 0;
   }
 
-  /* soft */
+  /* soft — rounded square, distinct from the circular default */
   .zui-avatar.zui-avatar-shape-soft {
-    --zui-avatar-radius: var(--radius-full);
+    --zui-avatar-radius: var(--radius-xl);
   }
 
   /* squircle - limited browser support */

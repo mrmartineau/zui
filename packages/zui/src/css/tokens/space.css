@@ -27,6 +27,8 @@
     --space-2xl: clamp(4rem, 3.6893rem + 1.5534vw, 5rem);
     /* Space 3xl: 96px → 120px */
     --space-3xl: clamp(6rem, 5.534rem + 2.3301vw, 7.5rem);
+    /* Space 4xl: 128px → 160px */
+    --space-4xl: clamp(8rem, 7.3786rem + 3.1068vw, 10rem);
 
     /* One-up pairs */
     /* Space 5xs-4xs: 3px → 5px */

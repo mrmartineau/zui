@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
     "@mrmartineau/zui": "^1.2.0",
-    "@mrmartineau/zui-theme": "^0.1.0",
+    "@mrmartineau/zui-theme": "^1.1.0",
     "astro": "^6.1.2"
   },
   "engines": {
