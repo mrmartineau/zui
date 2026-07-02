@@ -112,11 +112,13 @@ function handleClick(event: MouseEvent) {
     event.preventDefault()
 }
 
-function handleFocus() {
+function handleFocus(event: FocusEvent) {
+  if (event.defaultPrevented) return
   controller.focusItem(itemId.value)
 }
 
-function handlePointerEnter() {
+function handlePointerEnter(event: PointerEvent) {
+  if (event.defaultPrevented) return
   controller.handleItemPointerEnter(itemId.value)
 }
 </script>

@@ -29,20 +29,23 @@ export function Tooltip(props: TooltipProps) {
     return ['zui-tooltip-content', placementClass].filter(Boolean).join(' ')
   }
 
-  const show = () => (popoverEl as any)?.showPopover()
-  const hide = () => (popoverEl as any)?.hidePopover()
+  const show = () => popoverEl?.showPopover()
+  const hide = () => popoverEl?.hidePopover()
 
   return (
     <span
       class={['zui-tooltip', local.class].filter(Boolean).join(' ')}
       {...rest}
     >
+      {/* focusin/focusout: native focus does not bubble, so focus events
+          from the wrapped child never reach this non-focusable span */}
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}
       <span
         style={{ 'anchor-name': anchorName }}
         onMouseEnter={show}
         onMouseLeave={hide}
-        onFocus={show}
-        onBlur={hide}
+        onFocusIn={show}
+        onFocusOut={hide}
       >
         {local.children}
       </span>

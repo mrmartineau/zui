@@ -6,9 +6,14 @@ const LIGHT_CLASS = 'zui-light'
 const EVENT = 'zui-color-scheme-change'
 const CYCLE: ColorScheme[] = ['light', 'dark', 'system']
 
+function isColorScheme(value: string | null): value is ColorScheme {
+  return value === 'dark' || value === 'light' || value === 'system'
+}
+
 export function getColorScheme(): ColorScheme {
   if (typeof localStorage === 'undefined') return 'system'
-  return (localStorage.getItem(STORAGE_KEY) as ColorScheme) ?? 'system'
+  const stored = localStorage.getItem(STORAGE_KEY)
+  return isColorScheme(stored) ? stored : 'system'
 }
 
 export function setColorScheme(scheme: ColorScheme): void {

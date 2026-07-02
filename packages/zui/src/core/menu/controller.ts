@@ -72,7 +72,12 @@ export function createMenuController(
     return options.disabled || registry.getTrigger()?.disabled || false
   }
 
-  function getSnapshot(): MenuSnapshot {
+  // Cached so getSnapshot() returns a stable reference between emits —
+  // React's useSyncExternalStore compares snapshots with Object.is and
+  // enters an infinite render loop if each call allocates a new object.
+  let cachedSnapshot: MenuSnapshot | null = null
+
+  function computeSnapshot(): MenuSnapshot {
     return {
       align: options.align ?? DEFAULTS.align,
       contentId,
@@ -88,9 +93,14 @@ export function createMenuController(
     }
   }
 
+  function getSnapshot(): MenuSnapshot {
+    cachedSnapshot ??= computeSnapshot()
+    return cachedSnapshot
+  }
+
   function emit() {
-    const snapshot = getSnapshot()
-    for (const listener of listeners) listener(snapshot)
+    cachedSnapshot = computeSnapshot()
+    for (const listener of listeners) listener(cachedSnapshot)
   }
 
   function getEnabledItems() {
@@ -388,9 +398,6 @@ export function createMenuController(
 
     if (!getCurrentOpen()) {
       typeaheadState = { buffer: '', timestamp: 0 }
-    }
-
-    if (!getCurrentOpen()) {
       highlightedItemId = null
     } else if (
       highlightedItemId != null &&

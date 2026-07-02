@@ -111,6 +111,7 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     // (breakpoint, storage key, shortcut binding). Callback reference changes
     // are handled separately via the ref above, so prop-level onCollapsedChange
     // updates do NOT trigger a teardown.
+    // biome-ignore lint/correctness/useExhaustiveDependencies: collapsed/defaultCollapsed are read once at controller boot; changes are synced by the next effect without a teardown
     useEffect(() => {
       if (!rootRef.current || !sidebarRef.current) return
       const controller = new AppShellController({

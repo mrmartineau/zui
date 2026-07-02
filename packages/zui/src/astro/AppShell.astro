@@ -74,6 +74,8 @@ const classes = appShellVariants({ class: className, position })
 <script>
   import { AppShellController } from '../shared/AppShellController'
 
+  const APP_SHELL_EVENTS_BOUND_KEY = '__zuiAppShellEventsBound'
+
   const mounted = new WeakMap<HTMLElement, AppShellController>()
 
   function boot(root: HTMLElement) {
@@ -95,7 +97,33 @@ const classes = appShellVariants({ class: className, position })
       controller
   }
 
-  document
-    .querySelectorAll<HTMLElement>('[data-zui-app-shell]')
-    .forEach(boot)
+  function initAppShells() {
+    document.querySelectorAll<HTMLElement>('[data-zui-app-shell]').forEach(boot)
+  }
+
+  function destroyAppShells() {
+    document
+      .querySelectorAll<HTMLElement>('[data-zui-app-shell]')
+      .forEach((root) => {
+        const controller = mounted.get(root)
+        if (!controller) return
+        controller.destroy()
+        mounted.delete(root)
+      })
+  }
+
+  // Re-init after view-transition navigations (scripts don't re-run) and tear
+  // down before the swap so the old page's window listeners don't leak —
+  // mirrors Menu.astro's lifecycle handling.
+  const globalWindow = window as typeof window & {
+    [APP_SHELL_EVENTS_BOUND_KEY]?: boolean
+  }
+
+  if (!globalWindow[APP_SHELL_EVENTS_BOUND_KEY]) {
+    document.addEventListener('astro:before-swap', destroyAppShells)
+    document.addEventListener('astro:page-load', initAppShells)
+    globalWindow[APP_SHELL_EVENTS_BOUND_KEY] = true
+  }
+
+  initAppShells()
 </script>

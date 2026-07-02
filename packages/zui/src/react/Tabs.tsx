@@ -1,11 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import {
-  useId,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useSyncExternalStore,
-} from 'react'
+import { useId, useMemo, useRef, useSyncExternalStore } from 'react'
 import {
   createTabsController,
   type TabsActivationMode,
@@ -14,6 +8,7 @@ import {
 } from '../core/tabs'
 import { tabsVariants } from '../shared/tabsVariants'
 import { TabsContext } from './tabsContext'
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
 
 export type TabsProps = HTMLAttributes<HTMLDivElement> & {
   activationMode?: TabsActivationMode
@@ -61,7 +56,7 @@ export function Tabs({
 
   const controller = controllerRef.current
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     controller.setOptions({
       activationMode,
       defaultValue,

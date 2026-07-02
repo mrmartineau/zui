@@ -59,5 +59,8 @@ watch(
 
 onMounted(() => {
   dialogRef.value?.setAttribute('closedby', props.closedby ?? 'any')
+  // Apply an initially-true `open` — the watch only fires on changes,
+  // matching the mount-time behavior of the React/Solid/Svelte wrappers.
+  if (props.open) dialogRef.value?.showModal()
 })
 </script>

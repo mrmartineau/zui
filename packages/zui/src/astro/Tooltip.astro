@@ -51,10 +51,15 @@ const contentClasses = [
       if (!popover) return
       trigger.addEventListener('mouseenter', () => popover.showPopover())
       trigger.addEventListener('mouseleave', () => popover.hidePopover())
-      trigger.addEventListener('focus', () => popover.showPopover())
-      trigger.addEventListener('blur', () => popover.hidePopover())
+      // focusin/focusout: native focus does not bubble, so focus events from
+      // the wrapped child never reach this non-focusable span
+      trigger.addEventListener('focusin', () => popover.showPopover())
+      trigger.addEventListener('focusout', () => popover.hidePopover())
     })
   }
 
+  // Bind immediately for plain MPA pages; astro:page-load only fires when
+  // the site uses the <ClientRouter /> view-transitions router.
+  initTooltips()
   document.addEventListener('astro:page-load', initTooltips)
 </script>

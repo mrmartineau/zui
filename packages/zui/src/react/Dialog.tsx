@@ -1,5 +1,11 @@
 import type { VariantProps } from 'cva'
-import { type DialogHTMLAttributes, forwardRef, useEffect, useRef } from 'react'
+import {
+  type DialogHTMLAttributes,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react'
 import { dialogVariants } from '../shared/dialogVariants'
 
 type DialogVariantProps = VariantProps<typeof dialogVariants>
@@ -26,24 +32,38 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     },
     forwardedRef,
   ) {
+    // Always drive the element via innerRef; a consumer's callback ref has no
+    // .current to read, so it is merged in rather than used directly.
     const innerRef = useRef<HTMLDialogElement>(null)
-    const ref = (forwardedRef ?? innerRef) as React.RefObject<HTMLDialogElement>
+    const registerDialog = useCallback(
+      (el: HTMLDialogElement | null) => {
+        innerRef.current = el
+        if (typeof forwardedRef === 'function') forwardedRef(el)
+        else if (forwardedRef) forwardedRef.current = el
+      },
+      [forwardedRef],
+    )
     const classes = dialogVariants({ className, position, size })
 
     useEffect(() => {
       if (open) {
-        ref.current?.showModal()
+        innerRef.current?.showModal()
       } else {
-        ref.current?.close()
+        innerRef.current?.close()
       }
     }, [open])
 
     useEffect(() => {
-      ref.current?.setAttribute('closedby', closedby)
+      innerRef.current?.setAttribute('closedby', closedby)
     }, [closedby])
 
     return (
-      <dialog ref={ref} className={classes} onClose={onClose} {...props}>
+      <dialog
+        ref={registerDialog}
+        className={classes}
+        onClose={onClose}
+        {...props}
+      >
         {children}
       </dialog>
     )

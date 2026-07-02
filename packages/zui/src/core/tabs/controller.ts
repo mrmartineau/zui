@@ -77,8 +77,8 @@ export function createTabsController(
   }
 
   function emit() {
-    const snapshot = getSnapshot()
-    for (const listener of listeners) listener(snapshot)
+    cachedSnapshot = computeSnapshot()
+    for (const listener of listeners) listener(cachedSnapshot)
   }
 
   function isControlled() {
@@ -112,7 +112,12 @@ export function createTabsController(
     }
   }
 
-  function getSnapshot(): TabsSnapshot {
+  // Cached so getSnapshot() returns a stable reference between emits —
+  // React's useSyncExternalStore compares snapshots with Object.is and
+  // enters an infinite render loop if each call allocates a new object.
+  let cachedSnapshot: TabsSnapshot | null = null
+
+  function computeSnapshot(): TabsSnapshot {
     return {
       activationMode: options.activationMode ?? DEFAULTS.activationMode,
       dir: options.dir ?? DEFAULTS.dir,
@@ -122,6 +127,11 @@ export function createTabsController(
       rootId,
       selectedValue: getCurrentSelectedValue(),
     }
+  }
+
+  function getSnapshot(): TabsSnapshot {
+    cachedSnapshot ??= computeSnapshot()
+    return cachedSnapshot
   }
 
   function focusTriggerElement(value: string | null) {

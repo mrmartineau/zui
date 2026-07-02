@@ -35,7 +35,16 @@ function warn(message: string) {
 }
 
 function isItemOwnDisabled(item: HTMLElement) {
-  return item.dataset.zuiMenuOwnDisabled === 'true'
+  const stamped = item.dataset.zuiMenuOwnDisabled
+  if (stamped !== undefined) return stamped === 'true'
+  // Not yet stamped by sync() — derive from the author-supplied attributes
+  // so an applySnapshot that runs first can't strip them.
+  return (
+    item.hasAttribute('disabled') ||
+    (item.dataset.disabled === 'true' && !isItemDataDisabledByRoot(item)) ||
+    (item.getAttribute('aria-disabled') === 'true' &&
+      !isItemAriaDisabledByRoot(item))
+  )
 }
 
 function isItemDataDisabledByRoot(item: HTMLElement) {
@@ -372,11 +381,14 @@ export function attachMenuDom(
     controller.handleDocumentPointerDown(event.target)
   document.addEventListener('pointerdown', onPointerDown)
 
+  // Subscribe only after the first sync() has stamped item-owned disabled
+  // state — subscribe invokes the listener synchronously, and applySnapshot
+  // on unstamped items would strip author-supplied disabled attributes.
+  sync()
+
   const unsubscribe = controller.subscribe(() => {
     withObserverPaused(() => applySnapshot(root, controller))
   })
-
-  sync()
 
   const instance: MenuDomController = {
     controller,

@@ -1,12 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import {
-  useEffect,
-  useId,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useSyncExternalStore,
-} from 'react'
+import { useEffect, useId, useMemo, useRef, useSyncExternalStore } from 'react'
 import {
   createMenuController,
   type MenuAlign,
@@ -14,6 +7,7 @@ import {
   type MenuSide,
 } from '../core/menu'
 import { MenuContext } from './menuContext'
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
 
 export type MenuProps = HTMLAttributes<HTMLDivElement> & {
   align?: MenuAlign
@@ -64,7 +58,7 @@ export function Menu({
 
   const controller = controllerRef.current
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     controller.setOptions({
       align,
       defaultOpen,
