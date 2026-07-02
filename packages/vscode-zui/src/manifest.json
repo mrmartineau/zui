@@ -3844,7 +3844,7 @@
     {
       "category": "space",
       "name": "--space-4xl",
-      "value": "clamp(8rem, 7.3786rem + 3.1068vw, 10rem)"
+      "value": "clamp(7rem, 6.4563rem + 2.7184vw, 8.75rem)"
     },
     {
       "category": "space",

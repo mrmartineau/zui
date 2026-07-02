@@ -18,8 +18,9 @@
     width: 0.8em;
     height: 0.8em;
     padding: 3px;
-    border: 3px var(--border-style, solid) var(--color-border, currentColor);
-    background-clip: content-box;
+    outline: 3px var(--border-style, solid) var(--color-border, currentColor);
+    /* background-clip: content-box; */
+    outline-offset: 3px;
     border-radius: var(--radius-full);
     cursor: pointer;
     transition-property: border-color, background-color;

@@ -33,6 +33,13 @@
       content: "";
     }
 
+    @starting-style {
+      details[open]::details-content {
+        opacity: 0;
+        block-size: 0;
+      }
+    }
+
     &::after {
       content: "";
       display: inline-block;

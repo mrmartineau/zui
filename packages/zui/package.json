@@ -3,12 +3,12 @@
     "zui": "scripts/init.mjs"
   },
   "dependencies": {
-    "cva": "^1.0.0-beta.4"
+    "cva": "1.0.0-beta.4"
   },
   "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
-    "@mrmartineau/kit": "^0.1.0",
+    "@mrmartineau/kit": "^1.0.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",

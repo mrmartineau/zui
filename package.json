@@ -4,7 +4,7 @@
   "type": "module",
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
-    "@mrmartineau/kit": "^0.1.0"
+    "@mrmartineau/kit": "^1.0.0"
   },
   "scripts": {
     "build": "pnpm --filter @mrmartineau/zui run build",
