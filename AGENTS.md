@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers. CSS is authored as modular source files in `packages/zui/src/css/` using `@import` and `@layer`, then bundled with [tsdown](https://tsdown.dev/) (Lightning CSS) into `packages/zui/dist/css/zui.css`.
+ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers, plus framework-free Web Components. CSS is authored as modular source files in `packages/zui/src/css/` using `@import` and `@layer`, then bundled with [tsdown](https://tsdown.dev/) (Lightning CSS) into `packages/zui/dist/css/zui.css`.
 
 ## Architecture
 
@@ -23,6 +23,7 @@ packages/
       solid/                → Solid components (.tsx files)
       svelte/               → Svelte 5 components (.svelte SFCs)
       vue/                  → Vue components (.vue SFCs)
+      wc/                   → Web Components (light-DOM custom elements, .ts)
       shared/               → Shared variant definitions using `cva` (consumed by Astro, React, Solid, Svelte & Vue)
   zui-theme/            → @mrmartineau/zui-theme — reusable Astro docs theme (see "Docs theme" below)
   vscode-zui/           → VS Code extension
@@ -42,14 +43,15 @@ docs/                   → Astro docs site, built on @mrmartineau/zui-theme (se
 
 ### Components
 
-- Every component has six layers: CSS class in `packages/zui/src/css/components/`, an Astro wrapper in `packages/zui/src/astro/`, a React wrapper in `packages/zui/src/react/`, a Solid wrapper in `packages/zui/src/solid/`, a Svelte wrapper in `packages/zui/src/svelte/`, and a Vue wrapper in `packages/zui/src/vue/`.
+- Every component has seven layers: CSS class in `packages/zui/src/css/components/`, an Astro wrapper in `packages/zui/src/astro/`, a React wrapper in `packages/zui/src/react/`, a Solid wrapper in `packages/zui/src/solid/`, a Svelte wrapper in `packages/zui/src/svelte/`, a Vue wrapper in `packages/zui/src/vue/`, and a web component in `packages/zui/src/wc/`.
 - Shared variant logic (using `cva`) lives in `packages/zui/src/shared/` and is imported by Astro, React, Solid, Svelte, and Vue components.
 - Astro components use `HTMLAttributes` from `astro/types` and `VariantProps` from `cva`.
 - React components use standard React types and `VariantProps` from `cva`.
 - Solid components use `JSX` types from `solid-js`, `splitProps`, and `VariantProps` from `cva`.
 - Svelte components use Svelte 5 syntax — `<script lang="ts">` with `$props()`, `$state`, `$derived`, snippets (`Snippet` from `svelte`), and `VariantProps` from `cva`.
 - Vue components use `<script setup lang="ts">` with `defineProps`, `defineOptions({ inheritAttrs: false })`, and `VariantProps` from `cva`.
-- Export new components from `packages/zui/src/astro/index.ts`, `packages/zui/src/react/index.ts`, `packages/zui/src/solid/index.ts`, `packages/zui/src/svelte/index.ts`, and `packages/zui/src/vue/index.ts`.
+- Web components are light-DOM custom elements (`<zui-*>` tags) built on the helpers in `packages/zui/src/wc/element.ts`. Simple components are class hosts (`classHostElement`); components that need a native tag render it internally and forward attributes. Interactive composites reuse the shared controllers in `packages/zui/src/core/` and `packages/zui/src/shared/`. Register new tags in `ZUI_ELEMENTS` in `packages/zui/src/wc/index.ts`.
+- Export new components from `packages/zui/src/astro/index.ts`, `packages/zui/src/react/index.ts`, `packages/zui/src/solid/index.ts`, `packages/zui/src/svelte/index.ts`, `packages/zui/src/vue/index.ts`, and `packages/zui/src/wc/index.ts`.
 
 ### Icons
 

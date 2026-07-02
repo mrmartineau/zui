@@ -5,7 +5,7 @@ export const site: SiteConfig = {
   author: 'Zander Martineau',
   authorHref: 'https://zander.wtf',
   description:
-    'A CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue components.',
+    'A CSS-first UI library with optional React, Astro, Solid, Svelte, Vue, and Web Components.',
   social: [
     {
       ariaLabel: 'View on GitHub',

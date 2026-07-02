@@ -26,6 +26,14 @@ export default defineConfig([
   },
 
   {
+    clean: ['dist/wc'],
+    dts: true,
+    entry: {
+      'wc/index': 'src/wc/index.ts',
+    },
+    format: 'esm',
+  },
+  {
     clean: ['dist/utils'],
     dts: true,
     entry: {

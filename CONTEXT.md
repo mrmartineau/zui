@@ -1,13 +1,13 @@
 # ZUI
 
-A CSS-first UI library with thin Astro, React, Solid, Svelte, and Vue wrappers. Components are authored as modular CSS in cascade layers, with framework wrappers that share `cva` variant definitions.
+A CSS-first UI library with thin Astro, React, Solid, Svelte, and Vue wrappers, plus framework-free Web Components. Components are authored as modular CSS in cascade layers, with framework wrappers that share `cva` variant definitions.
 
 ## Language
 
 ### Component layers
 
 **Component**:
-A UI primitive with six layers: CSS class, Astro wrapper, React wrapper, Solid wrapper, Svelte wrapper, Vue wrapper. Optionally shares `cva` variants from `packages/zui/src/shared/`.
+A UI primitive with seven layers: CSS class, Astro wrapper, React wrapper, Solid wrapper, Svelte wrapper, Vue wrapper, web component. Optionally shares `cva` variants from `packages/zui/src/shared/`.
 _Avoid_: Widget, element, control.
 
 **Wrapper**:

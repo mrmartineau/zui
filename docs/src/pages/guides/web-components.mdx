@@ -1,0 +1,360 @@
+---
+layout: ../../layouts/Layout.astro
+title: Using Web Components
+description: ZUI ships framework-free custom elements — every component as a <zui-*> tag that works in plain HTML or any framework.
+---
+
+ZUI's web components are **light-DOM custom elements** built directly on the
+ZUI stylesheet. There is no shadow DOM: each element applies the same `zui-*`
+classes the other wrappers use, so theming, tokens and cascade layers all keep
+working, and you can inspect and override everything with plain CSS.
+
+They work in plain HTML with no build step, and in any framework that renders
+real DOM.
+
+## Setup
+
+Install ZUI, import the CSS, and import the elements once in your app's entry
+point:
+
+```ts
+import '@mrmartineau/zui/css'
+import '@mrmartineau/zui/wc'
+```
+
+Importing `@mrmartineau/zui/wc` registers every `<zui-*>` element. In a plain
+HTML page, load it as a module from your bundle (the import is side-effectful
+and safe to repeat — elements are only registered once, and the import is a
+no-op during SSR).
+
+Then write HTML:
+
+```html
+<zui-button variant="outline" size="lg">Click me</zui-button>
+```
+
+> **Tip:** to avoid a flash of unstyled content before the script loads, you
+> can hide undefined elements: `zui-button:not(:defined) { visibility: hidden }`.
+
+## How the elements work
+
+Two patterns are used, and knowing which is which tells you exactly what DOM
+to expect:
+
+1. **Class hosts** — the element itself carries the component classes.
+   `<zui-badge color="blue">` becomes
+   `<zui-badge class="zui-badge zui-badge-color-blue">`. Cards, badges, flex,
+   fields, dialog/card sections and similar containers work this way.
+2. **Native-inner elements** — where the platform needs a real native tag,
+   the custom element renders it inside itself and forwards your attributes
+   to it. `<zui-button disabled>` renders
+   `<button class="zui-button" disabled>` inside the host, so focus, forms,
+   and keyboard behaviour stay native. Buttons, inputs, selects, textareas,
+   checkboxes, radios, dialogs, tabs triggers and menu items work this way.
+   The rendered native element is exposed as a `control` property (or
+   `dialog` on `<zui-dialog>`).
+
+Attributes you set on the host (like `name`, `placeholder`, `aria-*`) are
+forwarded to the inner native element automatically. On form controls the
+`id` is *moved* to the native control, so `<label for>` targets the real
+input and ids stay unique.
+
+## Available components
+
+Every ZUI component is available:
+
+- **`<zui-button>`** — `variant`, `color`, `size`, `shape`, `icon`, `href`
+- **`<zui-badge>`** — `variant`, `color`
+- **`<zui-avatar>`** — `src`, `alt`, `fallback`, `size`, `shape`
+- **`<zui-card>`** (+ `<zui-card-header>`, `<zui-card-title>`, `<zui-card-description>`, `<zui-card-body>`) — `href` for interactive cards
+- **`<zui-input>`**, **`<zui-textarea>`**, **`<zui-select>`**
+- **`<zui-label>`**, **`<zui-checkbox>`**, **`<zui-radio>`**
+- **`<zui-field>`** family — `<zui-field-group>`, `<zui-field-description>`, `<zui-field-error>`, `<zui-field-set>`, `<zui-field-legend>`, `<zui-field-separator>`
+- **`<zui-text>`**, **`<zui-link>`**, **`<zui-code>`**, **`<zui-pre>`**, **`<zui-prose>`**, **`<zui-kbd>`**, **`<zui-kbd-group>`**
+- **`<zui-table>`** — wraps a native `<table>`
+- **`<zui-tooltip>`**, **`<zui-popover>`**, **`<zui-dialog>`** and sub-components
+- **`<zui-menu>`**, **`<zui-menu-trigger>`**, **`<zui-menu-content>`**, **`<zui-menu-item>`**
+- **`<zui-collapsible>`**, **`<zui-accordion>`** — enhance native `<details>`
+- **`<zui-tabs>`**, **`<zui-tabs-list>`**, **`<zui-tabs-trigger>`**, **`<zui-tabs-content>`**
+- **`<zui-flex>`**
+- **`<zui-app-shell>`** family
+
+Boolean attributes follow HTML conventions: presence means true
+(`<zui-button icon>`), and `attribute="false"` opts out where a default is on
+(`<zui-app-shell-header toggle="false">`).
+
+## Component examples
+
+### Button
+
+```html
+<zui-button>Save</zui-button>
+<zui-button variant="outline" color="accent">Cancel</zui-button>
+<zui-button variant="ghost" size="sm">Settings</zui-button>
+<zui-button variant="subtle" color="destructive">Delete</zui-button>
+<zui-button href="/docs">Link as button</zui-button>
+<zui-button icon aria-label="Search"><i class="ph ph-magnifying-glass"></i></zui-button>
+```
+
+### Badge
+
+```html
+<zui-badge>Default</zui-badge>
+<zui-badge color="green">Success</zui-badge>
+<zui-badge color="red" variant="fill">Error</zui-badge>
+```
+
+### Card
+
+```html
+<zui-card>
+  <zui-card-header>
+    <zui-card-title>Card title</zui-card-title>
+    <zui-card-description>Supporting description</zui-card-description>
+  </zui-card-header>
+  <zui-card-body>Content goes here.</zui-card-body>
+</zui-card>
+
+<!-- Whole card as a link -->
+<zui-card href="/post">
+  <zui-card-body>Read the post</zui-card-body>
+</zui-card>
+```
+
+### Forms
+
+```html
+<zui-field-group>
+  <zui-field>
+    <zui-label for="name">Name</zui-label>
+    <zui-input id="name" placeholder="Ada Lovelace"></zui-input>
+    <zui-field-description>Shown on your profile.</zui-field-description>
+  </zui-field>
+
+  <zui-field orientation="horizontal">
+    <zui-label for="plan">Plan</zui-label>
+    <zui-select id="plan">
+      <option value="free">Free</option>
+      <option value="pro">Pro</option>
+    </zui-select>
+  </zui-field>
+
+  <zui-field invalid>
+    <zui-label for="email">Email</zui-label>
+    <zui-input id="email" type="email"></zui-input>
+    <zui-field-error>Enter a valid email address.</zui-field-error>
+  </zui-field>
+
+  <zui-checkbox name="tos">Accept the terms</zui-checkbox>
+  <zui-radio name="theme" value="light" checked>Light</zui-radio>
+  <zui-radio name="theme" value="dark">Dark</zui-radio>
+</zui-field-group>
+```
+
+The native control inside participates in surrounding `<form>`s as usual, and
+the host exposes `value` (and `checked` for checkbox/radio) properties:
+
+```js
+document.querySelector('zui-input').value = 'hello'
+document.querySelector('zui-checkbox').checked
+```
+
+### Dialog
+
+```html
+<zui-button onclick="document.getElementById('confirm').showModal()">
+  Open dialog
+</zui-button>
+
+<zui-dialog id="confirm" size="sm">
+  <zui-dialog-header>
+    <zui-dialog-title>Delete file?</zui-dialog-title>
+    <zui-dialog-description>This cannot be undone.</zui-dialog-description>
+  </zui-dialog-header>
+  <zui-dialog-body>The file will be permanently removed.</zui-dialog-body>
+  <zui-dialog-footer>
+    <zui-button variant="ghost" onclick="document.getElementById('confirm').close()">Cancel</zui-button>
+    <zui-button color="destructive">Delete</zui-button>
+  </zui-dialog-footer>
+</zui-dialog>
+```
+
+`<zui-dialog>` renders a real `<dialog>` inside (so `::backdrop` and light
+dismiss work) and exposes `showModal()`, `show()` and `close()` on the host.
+Adding the `open` attribute opens it modally; a `close` event fires on the
+host when it closes.
+
+### Tooltip & Popover
+
+```html
+<zui-tooltip text="Save your work" placement="bottom">
+  <zui-button>Hover me</zui-button>
+</zui-tooltip>
+
+<button popovertarget="info" class="zui-button" style="anchor-name: --info">
+  Toggle popover
+</button>
+<zui-popover id="info">Anchored popover content</zui-popover>
+```
+
+`<zui-popover>` is itself the popover element — native
+`popovertarget` buttons and CSS anchor positioning (`--<id>` as the anchor
+name) work directly against it.
+
+### Tabs
+
+```html
+<zui-tabs default-value="account">
+  <zui-tabs-list>
+    <zui-tabs-trigger value="account">Account</zui-tabs-trigger>
+    <zui-tabs-trigger value="password">Password</zui-tabs-trigger>
+  </zui-tabs-list>
+  <zui-tabs-content value="account">Account settings…</zui-tabs-content>
+  <zui-tabs-content value="password">Password settings…</zui-tabs-content>
+</zui-tabs>
+```
+
+Keyboard navigation, ARIA wiring and activation modes come from the same
+shared controller the other frameworks use. Listen for changes via the
+bubbling `zui-tabs-change` event:
+
+```js
+document.querySelector('zui-tabs').addEventListener('zui-tabs-change', (e) => {
+  console.log(e.detail.value)
+})
+```
+
+### Menu
+
+```html
+<zui-menu>
+  <zui-menu-trigger>Options</zui-menu-trigger>
+  <zui-menu-content>
+    <zui-menu-item>Profile</zui-menu-item>
+    <zui-menu-item>Billing</zui-menu-item>
+    <zui-menu-item href="/settings">Settings</zui-menu-item>
+  </zui-menu-content>
+</zui-menu>
+```
+
+Open/close state, keyboard navigation, typeahead and outside-click dismissal
+are handled by the shared menu controller. A bubbling `zui-menu-toggle` event
+fires with `{ open }`.
+
+### Accordion & Collapsible
+
+The accordion and collapsible styles animate `::details-content`, which only
+exists on real `<details>` elements — so the items stay native markup and the
+custom element applies all the classes for you:
+
+```html
+<zui-accordion>
+  <details name="faq">
+    <summary>What is ZUI?</summary>
+    <div>A CSS-first UI library.</div>
+  </details>
+  <details name="faq">
+    <summary>Do I need JavaScript?</summary>
+    <div>Not for this accordion.</div>
+  </details>
+</zui-accordion>
+
+<zui-collapsible>
+  <details>
+    <summary>Show more</summary>
+    <div>Hidden content</div>
+  </details>
+</zui-collapsible>
+```
+
+### Table
+
+The HTML parser doesn't allow custom elements inside `<table>`, so
+`<zui-table>` wraps a native table and decorates every part — including rows
+added later by scripts or frameworks:
+
+```html
+<zui-table>
+  <table>
+    <caption>People</caption>
+    <thead>
+      <tr><th>Name</th><th>Role</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ada</td><td>Engineer</td></tr>
+    </tbody>
+  </table>
+</zui-table>
+```
+
+### App shell
+
+```html
+<zui-app-shell shortcut>
+  <zui-app-shell-sidebar label="Main navigation">
+    <zui-app-shell-sidebar-header>Logo</zui-app-shell-sidebar-header>
+    <zui-app-shell-sidebar-body>…nav…</zui-app-shell-sidebar-body>
+    <zui-app-shell-sidebar-footer>…user…</zui-app-shell-sidebar-footer>
+  </zui-app-shell-sidebar>
+  <zui-app-shell-header>My app</zui-app-shell-header>
+  <zui-app-shell-main>…content…</zui-app-shell-main>
+</zui-app-shell>
+```
+
+The same `AppShellController` as the other frameworks drives collapse, the
+mobile drawer, persistence and the Cmd/Ctrl+B shortcut. Options map
+to attributes: `position`, `default-collapsed`, `mobile-breakpoint`,
+`storage-key` (set `storage-key="none"` to disable persistence) and
+`shortcut`. The header injects a sidebar toggle automatically — opt out with
+`toggle="false"`.
+
+## Using in frameworks
+
+Custom elements work in any framework that renders real DOM — including ones
+ZUI has no first-party wrapper for (Angular, Lit, HTMX, Rails/Laravel
+server-rendered apps, …):
+
+```html
+<!-- Angular (add CUSTOM_ELEMENTS_SCHEMA) -->
+<zui-button variant="outline" (click)="save()">Save</zui-button>
+```
+
+If you're using React, Astro, Solid, Svelte or Vue, prefer the
+[first-party wrappers](/guides) — they give you typed props and better
+SSR output. The web components are the escape hatch for everything else.
+
+## Caveats
+
+- **No SSR of internals.** Native-inner elements build their DOM in the
+  browser. Server-rendered HTML contains your `<zui-*>` markup as-authored;
+  the inner native elements appear once the script runs. For fully static,
+  JS-free output, use the [CSS classes directly](/guides/other-frameworks).
+- **Light DOM by design.** There is no style encapsulation — that's the
+  point. Your global CSS can style everything, and ZUI's theming applies
+  unchanged.
+- **`<zui-field-set>` is not a `<fieldset>`.** It carries `role="group"`;
+  use a native `<fieldset class="zui-field-set">` when you need native
+  fieldset semantics like `disabled`.
+
+## Advanced: classes and registration
+
+Element classes are exported if you want to extend or register them yourself:
+
+```ts
+import { ZuiButton, ZUI_ELEMENTS, defineZuiElements } from '@mrmartineau/zui/wc'
+```
+
+`defineZuiElements()` is idempotent and skipped automatically in non-DOM
+environments.
+
+## Theming
+
+Theming works exactly like everywhere else in ZUI — see the
+[theming guide](/guides/theming). Because everything is light DOM, component
+tokens can be overridden from any stylesheet:
+
+```css
+zui-card {
+  --zui-card-radius: var(--radius-sm);
+}
+```
