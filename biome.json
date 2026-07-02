@@ -2,7 +2,11 @@
   "$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
   "extends": ["./node_modules/@mrmartineau/kit/src/biome/biome.json"],
   "files": {
-    "includes": ["**", "!packages/vscode-zui/src/manifest.json"]
+    "includes": [
+      "**",
+      "!packages/vscode-zui/src/manifest.json",
+      "!packages/raycast-zui/src/data"
+    ]
   },
   "overrides": [
     {

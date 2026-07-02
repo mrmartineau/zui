@@ -20,7 +20,8 @@ const CATEGORY_LABELS: Record<string, string> = {
   zindex: 'Z-Index',
 }
 
-const categoryLabel = (category: string) => CATEGORY_LABELS[category] ?? category
+const categoryLabel = (category: string) =>
+  CATEGORY_LABELS[category] ?? category
 
 const categories = [...new Set(tokens.map((token) => token.category))]
 
@@ -28,7 +29,9 @@ function tokenIcon(token: TokenEntry) {
   if (token.color) {
     return { source: Icon.CircleFilled, tintColor: token.color }
   }
-  return token.category === 'color' || token.category === 'theme' ? Icon.EyeDropper : Icon.Ruler
+  return token.category === 'color' || token.category === 'theme'
+    ? Icon.EyeDropper
+    : Icon.Ruler
 }
 
 function TokenItem({ token }: { token: TokenEntry }) {
@@ -74,10 +77,18 @@ export default function SearchTokens() {
     <List
       searchBarPlaceholder="Search ZUI design tokens…"
       searchBarAccessory={
-        <List.Dropdown tooltip="Filter by Category" storeValue onChange={setCategory}>
+        <List.Dropdown
+          tooltip="Filter by Category"
+          storeValue
+          onChange={setCategory}
+        >
           <List.Dropdown.Item title="All Categories" value="all" />
           {categories.map((value) => (
-            <List.Dropdown.Item key={value} title={categoryLabel(value)} value={value} />
+            <List.Dropdown.Item
+              key={value}
+              title={categoryLabel(value)}
+              value={value}
+            />
           ))}
         </List.Dropdown>
       }
@@ -85,7 +96,9 @@ export default function SearchTokens() {
       {categories
         .filter((value) => showAll || value === category)
         .map((value) => {
-          const categoryTokens = tokens.filter((token) => token.category === value)
+          const categoryTokens = tokens.filter(
+            (token) => token.category === value,
+          )
           return (
             <List.Section
               key={value}

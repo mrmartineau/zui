@@ -1,8 +1,21 @@
 #!/usr/bin/env tsx
-import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from 'node:fs'
 import { dirname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { ClassEntry, DocEntry, Framework, SnippetEntry, TokenEntry } from '../src/types.js'
+import type {
+  ClassEntry,
+  DocEntry,
+  Framework,
+  SnippetEntry,
+  TokenEntry,
+} from '../src/types.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -57,8 +70,14 @@ function parseFrontmatter(source: string): Record<string, string> {
 }
 
 function urlPathFor(file: string): string {
-  const rel = relative(docsPagesDir, file).split(sep).join('/').replace(/\.mdx$/, '')
-  const path = rel.endsWith('/index') || rel === 'index' ? rel.replace(/\/?index$/, '') : rel
+  const rel = relative(docsPagesDir, file)
+    .split(sep)
+    .join('/')
+    .replace(/\.mdx$/, '')
+  const path =
+    rel.endsWith('/index') || rel === 'index'
+      ? rel.replace(/\/?index$/, '')
+      : rel
   return `/${path}`.replace(/\/$/, '') || '/'
 }
 
@@ -130,7 +149,7 @@ function buildClasses(manifest: Manifest): ClassEntry[] {
   for (const entry of manifest.classes) {
     const existing = byName.get(entry.name)
     if (existing && !entry.name.startsWith(`zui-${entry.source}`)) continue
-    if (!existing || !existing.name.startsWith(`zui-${existing.source}`)) {
+    if (!existing?.name.startsWith(`zui-${existing.source}`)) {
       byName.set(entry.name, entry)
     }
   }
@@ -149,7 +168,14 @@ function buildTokens(manifest: Manifest): TokenEntry[] {
 
 // ─── Snippets (from <Demo> blocks in the docs MDX) ───────────────────────────
 
-const FRAMEWORK_PROPS = new Set<Framework>(['html', 'react', 'astro', 'solid', 'svelte', 'vue'])
+const FRAMEWORK_PROPS = new Set<Framework>([
+  'html',
+  'react',
+  'astro',
+  'solid',
+  'svelte',
+  'vue',
+])
 
 interface ParsedDemo {
   index: number
@@ -199,7 +225,9 @@ function parseDemos(source: string): ParsedDemo[] {
   return demos
 }
 
-function headingsWithIndices(source: string): { index: number; text: string }[] {
+function headingsWithIndices(
+  source: string,
+): { index: number; text: string }[] {
   const headings: { index: number; text: string }[] = []
   const re = /^#{2,3}\s+(.+)$/gm
   for (const match of source.matchAll(re)) {
@@ -215,7 +243,8 @@ function buildSnippets(files: string[]): SnippetEntry[] {
     if (!source.includes('<Demo')) continue
     const frontmatter = parseFrontmatter(source)
     const path = urlPathFor(file)
-    const page = frontmatter.title ?? path.split('/').filter(Boolean).pop() ?? 'Untitled'
+    const page =
+      frontmatter.title ?? path.split('/').filter(Boolean).pop() ?? 'Untitled'
     const headings = headingsWithIndices(source)
     const slug = path.split('/').filter(Boolean).join('-')
     parseDemos(source).forEach((demo, demoIndex) => {
@@ -258,7 +287,10 @@ write('classes.json', classes)
 write('tokens.json', tokens)
 write('snippets.json', snippets)
 
-const snippetCount = snippets.reduce((n, s) => n + Object.keys(s.frameworks).length, 0)
+const snippetCount = snippets.reduce(
+  (n, s) => n + Object.keys(s.frameworks).length,
+  0,
+)
 console.log(
   `✓ data (zui v${manifest.version}): ${docs.length} docs pages, ${classes.length} classes, ${tokens.length} tokens, ${snippets.length} demos (${snippetCount} snippets) → ${outDir}`,
 )
