@@ -1,0 +1,91 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "author": "mrmartineau",
+  "categories": [
+    "Developer Tools",
+    "Documentation",
+    "Design Tools"
+  ],
+  "commands": [
+    {
+      "description": "Search the ZUI documentation and open pages in your browser",
+      "keywords": [
+        "zui",
+        "docs",
+        "documentation"
+      ],
+      "mode": "view",
+      "name": "search-docs",
+      "subtitle": "ZUI",
+      "title": "Search Documentation"
+    },
+    {
+      "description": "Search ZUI CSS classes and copy or paste the class name",
+      "keywords": [
+        "zui",
+        "css",
+        "class",
+        "classes"
+      ],
+      "mode": "view",
+      "name": "search-classes",
+      "subtitle": "ZUI",
+      "title": "Search CSS Classes"
+    },
+    {
+      "description": "Search ZUI design tokens and copy or paste the CSS custom property",
+      "keywords": [
+        "zui",
+        "tokens",
+        "css",
+        "variables",
+        "custom properties"
+      ],
+      "mode": "view",
+      "name": "search-tokens",
+      "subtitle": "ZUI",
+      "title": "Search Design Tokens"
+    },
+    {
+      "description": "Search ZUI component examples and copy or paste the snippet for your framework — HTML, React, Astro, Solid, Svelte, or Vue",
+      "keywords": [
+        "zui",
+        "snippets",
+        "examples",
+        "react",
+        "astro",
+        "solid",
+        "svelte",
+        "vue",
+        "html"
+      ],
+      "mode": "view",
+      "name": "search-snippets",
+      "subtitle": "ZUI",
+      "title": "Search Snippets"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.20",
+    "@raycast/utils": "^2.2.7"
+  },
+  "description": "Search ZUI documentation, CSS classes, design tokens, and framework snippets",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.8.0"
+  },
+  "icon": "zui-icon.png",
+  "license": "MIT",
+  "name": "zui",
+  "scripts": {
+    "build": "pnpm run generate:data && ray build -e dist",
+    "dev": "pnpm run generate:data && ray develop",
+    "generate:data": "tsx scripts/generate-data.ts",
+    "publish": "pnpm run generate:data && npx @raycast/api@latest publish",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts"
+  },
+  "title": "ZUI",
+  "type": "module"
+}

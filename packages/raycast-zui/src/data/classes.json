@@ -1,0 +1,1785 @@
+[
+  {
+    "name": "zui-accordion",
+    "source": "accordion",
+    "docsUrl": "https://zui.zander.wtf/components/accordion"
+  },
+  {
+    "name": "zui-accordion-item",
+    "source": "accordion",
+    "docsUrl": "https://zui.zander.wtf/components/accordion"
+  },
+  {
+    "name": "zui-accordion-trigger",
+    "source": "accordion",
+    "docsUrl": "https://zui.zander.wtf/components/accordion"
+  },
+  {
+    "name": "zui-accordion-content",
+    "source": "accordion",
+    "docsUrl": "https://zui.zander.wtf/components/accordion"
+  },
+  {
+    "name": "zui-accordion-flush",
+    "source": "accordion",
+    "docsUrl": "https://zui.zander.wtf/components/accordion"
+  },
+  {
+    "name": "zui-app-shell",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-position-right",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-sidebar",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-sidebar-header",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-sidebar-body",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-sidebar-footer",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-header",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-toggle",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-main",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-app-shell-skip-link",
+    "source": "app-shell",
+    "docsUrl": "https://zui.zander.wtf/components/app-shell"
+  },
+  {
+    "name": "zui-avatar",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-image",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-fallback",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-size-sm",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-size-lg",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-shape-hard",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-shape-soft",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-avatar-shape-squircle",
+    "source": "avatar",
+    "docsUrl": "https://zui.zander.wtf/components/avatar"
+  },
+  {
+    "name": "zui-badge",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-variant-fill",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-variant-outline",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-red",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-orange",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-amber",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-yellow",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-lime",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-green",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-emerald",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-teal",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-cyan",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-sky",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-blue",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-indigo",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-violet",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-purple",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-fuchsia",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-pink",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-rose",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-badge-color-gray",
+    "source": "badge",
+    "docsUrl": "https://zui.zander.wtf/components/badge"
+  },
+  {
+    "name": "zui-button",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-color-theme",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-color-accent",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-color-destructive",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-variant-fill",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-variant-subtle",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-variant-outline",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-variant-ghost",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-variant-link",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-size-xs",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-size-sm",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-size-lg",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-size-xl",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-shape-hard",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-shape-soft",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-shape-squircle",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-button-icon",
+    "source": "button",
+    "docsUrl": "https://zui.zander.wtf/components/button"
+  },
+  {
+    "name": "zui-card",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-header",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-title",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-description",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-body",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-footer",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-elevated",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-card-interactive",
+    "source": "card",
+    "docsUrl": "https://zui.zander.wtf/components/card"
+  },
+  {
+    "name": "zui-checkbox",
+    "source": "checkbox",
+    "docsUrl": "https://zui.zander.wtf/components/checkbox"
+  },
+  {
+    "name": "zui-checkbox-list",
+    "source": "checkbox",
+    "docsUrl": "https://zui.zander.wtf/components/checkbox"
+  },
+  {
+    "name": "zui-collapsible",
+    "source": "collapsible",
+    "docsUrl": "https://zui.zander.wtf/components/collapsible"
+  },
+  {
+    "name": "zui-collapsible-trigger",
+    "source": "collapsible",
+    "docsUrl": "https://zui.zander.wtf/components/collapsible"
+  },
+  {
+    "name": "zui-collapsible-content",
+    "source": "collapsible",
+    "docsUrl": "https://zui.zander.wtf/components/collapsible"
+  },
+  {
+    "name": "zui-dialog",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-header",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-title",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-description",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-body",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-footer",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-close",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-size-sm",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-size-lg",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-size-full",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-position-central",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-position-left",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-position-right",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-position-top",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-dialog-position-bottom",
+    "source": "dialog",
+    "docsUrl": "https://zui.zander.wtf/components/dialog"
+  },
+  {
+    "name": "zui-drawer-slide-left",
+    "source": "drawer-slide"
+  },
+  {
+    "name": "zui-drawer-slide-right",
+    "source": "drawer-slide"
+  },
+  {
+    "name": "zui-field-group",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-label",
+    "source": "label",
+    "docsUrl": "https://zui.zander.wtf/components/label"
+  },
+  {
+    "name": "zui-field-description",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-error",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-invalid",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-input",
+    "source": "input",
+    "docsUrl": "https://zui.zander.wtf/components/input"
+  },
+  {
+    "name": "zui-textarea",
+    "source": "textarea",
+    "docsUrl": "https://zui.zander.wtf/components/textarea"
+  },
+  {
+    "name": "zui-select",
+    "source": "select",
+    "docsUrl": "https://zui.zander.wtf/components/select"
+  },
+  {
+    "name": "zui-field-horizontal",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-responsive",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-set",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-legend",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-legend-label",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-field-separator",
+    "source": "field",
+    "docsUrl": "https://zui.zander.wtf/components/field"
+  },
+  {
+    "name": "zui-kbd",
+    "source": "kbd",
+    "docsUrl": "https://zui.zander.wtf/components/kbd"
+  },
+  {
+    "name": "zui-kbd-group",
+    "source": "kbd",
+    "docsUrl": "https://zui.zander.wtf/components/kbd"
+  },
+  {
+    "name": "zui-label-required",
+    "source": "label",
+    "docsUrl": "https://zui.zander.wtf/components/label"
+  },
+  {
+    "name": "zui-label-description",
+    "source": "label",
+    "docsUrl": "https://zui.zander.wtf/components/label"
+  },
+  {
+    "name": "zui-menu",
+    "source": "menu",
+    "docsUrl": "https://zui.zander.wtf/components/menu"
+  },
+  {
+    "name": "zui-menu-content",
+    "source": "menu",
+    "docsUrl": "https://zui.zander.wtf/components/menu"
+  },
+  {
+    "name": "zui-menu-item",
+    "source": "menu",
+    "docsUrl": "https://zui.zander.wtf/components/menu"
+  },
+  {
+    "name": "zui-popover",
+    "source": "popover",
+    "docsUrl": "https://zui.zander.wtf/components/popover"
+  },
+  {
+    "name": "zui-radio",
+    "source": "radio",
+    "docsUrl": "https://zui.zander.wtf/components/radio"
+  },
+  {
+    "name": "zui-radio-list",
+    "source": "radio",
+    "docsUrl": "https://zui.zander.wtf/components/radio"
+  },
+  {
+    "name": "zui-table",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-table-row",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-table-body",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-table-head",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-table-cell",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-table-footer",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-table-caption",
+    "source": "table",
+    "docsUrl": "https://zui.zander.wtf/components/table"
+  },
+  {
+    "name": "zui-tabs",
+    "source": "tabs",
+    "docsUrl": "https://zui.zander.wtf/components/tabs"
+  },
+  {
+    "name": "zui-tabs-list",
+    "source": "tabs",
+    "docsUrl": "https://zui.zander.wtf/components/tabs"
+  },
+  {
+    "name": "zui-tabs-list-variant-underline",
+    "source": "tabs",
+    "docsUrl": "https://zui.zander.wtf/components/tabs"
+  },
+  {
+    "name": "zui-tabs-trigger",
+    "source": "tabs",
+    "docsUrl": "https://zui.zander.wtf/components/tabs"
+  },
+  {
+    "name": "zui-tabs-trigger-variant-underline",
+    "source": "tabs",
+    "docsUrl": "https://zui.zander.wtf/components/tabs"
+  },
+  {
+    "name": "zui-tabs-content",
+    "source": "tabs",
+    "docsUrl": "https://zui.zander.wtf/components/tabs"
+  },
+  {
+    "name": "zui-tooltip",
+    "source": "tooltip",
+    "docsUrl": "https://zui.zander.wtf/components/tooltip"
+  },
+  {
+    "name": "zui-tooltip-content",
+    "source": "tooltip",
+    "docsUrl": "https://zui.zander.wtf/components/tooltip"
+  },
+  {
+    "name": "zui-tooltip-placement-top",
+    "source": "tooltip",
+    "docsUrl": "https://zui.zander.wtf/components/tooltip"
+  },
+  {
+    "name": "zui-tooltip-placement-bottom",
+    "source": "tooltip",
+    "docsUrl": "https://zui.zander.wtf/components/tooltip"
+  },
+  {
+    "name": "zui-tooltip-placement-left",
+    "source": "tooltip",
+    "docsUrl": "https://zui.zander.wtf/components/tooltip"
+  },
+  {
+    "name": "zui-tooltip-placement-right",
+    "source": "tooltip",
+    "docsUrl": "https://zui.zander.wtf/components/tooltip"
+  },
+  {
+    "name": "flex",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "inline-flex",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-center",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "inline-flex-center",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "stack",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-auto",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-none",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-row",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-row-reverse",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-column",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-column-reverse",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-wrap",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-nowrap",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-wrap-reverse",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "items-start",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "items-end",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "items-center",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "items-baseline",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "items-stretch",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "self-start",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "self-end",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "self-center",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "self-baseline",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "self-stretch",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "justify-start",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "justify-end",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "justify-center",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "justify-between",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "justify-around",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "content-start",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "content-end",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "content-center",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "content-between",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "content-around",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "content-stretch",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-shrink",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flex-grow",
+    "source": "utility/flex",
+    "docsUrl": "https://zui.zander.wtf/utilities/flex"
+  },
+  {
+    "name": "flow",
+    "source": "utility/flow",
+    "docsUrl": "https://zui.zander.wtf/utilities/flow"
+  },
+  {
+    "name": "gap-0",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-2xs",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-xs",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-sm",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-md",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-lg",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-2xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-3xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gap-4xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-0",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-2xs",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-xs",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-sm",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-md",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-lg",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-2xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-3xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapx-4xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-0",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-2xs",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-xs",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-sm",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-md",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-lg",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-2xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-3xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "gapy-4xl",
+    "source": "utility/gap",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "sr-only",
+    "source": "utility/hidden",
+    "docsUrl": "https://zui.zander.wtf/utilities/visibility"
+  },
+  {
+    "name": "visually-hidden",
+    "source": "utility/hidden",
+    "docsUrl": "https://zui.zander.wtf/utilities/visibility"
+  },
+  {
+    "name": "m-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "m-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mx-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "ml-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "my-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mr-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mt-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-0",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-auto",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-2xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-xs",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-sm",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-md",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-lg",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-2xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-3xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "mb-4xl",
+    "source": "utility/margin",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "p-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "px-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pl-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pr-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "py-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pt-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-0",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-2xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-xs",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-sm",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-md",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-lg",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-2xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-3xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "pb-4xl",
+    "source": "utility/padding",
+    "docsUrl": "https://zui.zander.wtf/utilities/spacing"
+  },
+  {
+    "name": "prose",
+    "source": "utility/prose",
+    "docsUrl": "https://zui.zander.wtf/utilities/prose"
+  },
+  {
+    "name": "no-border",
+    "source": "utility/prose",
+    "docsUrl": "https://zui.zander.wtf/utilities/prose"
+  },
+  {
+    "name": "inverted",
+    "source": "utility/prose",
+    "docsUrl": "https://zui.zander.wtf/utilities/prose"
+  },
+  {
+    "name": "max-width-p",
+    "source": "utility/prose",
+    "docsUrl": "https://zui.zander.wtf/utilities/prose"
+  },
+  {
+    "name": "surface",
+    "source": "utility/ui-typography",
+    "docsUrl": "https://zui.zander.wtf/utilities/ui-typography"
+  }
+]
