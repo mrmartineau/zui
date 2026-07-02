@@ -43,9 +43,7 @@ const props = withDefaults(
   },
 )
 
-const emit = defineEmits<{
-  (e: 'collapsedChange', collapsed: boolean): void
-}>()
+const emit = defineEmits<(e: 'collapsedChange', collapsed: boolean) => void>()
 
 const rootId = props.id ?? nextId()
 const sidebarId = `${rootId}-sidebar`
@@ -57,28 +55,28 @@ let controller: AppShellController | undefined
 const mode = ref<AppShellMode>('desktop')
 
 provideAppShellContext({
-  rootId,
-  sidebarId,
+  getController: () => controller,
+  getMode: () => mode.value,
   mainId,
+  rootId,
   setSidebar: (el) => {
     sidebarRef.value = el
   },
-  getController: () => controller,
+  sidebarId,
   toggle: () => controller?.toggle(),
-  getMode: () => mode.value,
 })
 
 onMounted(() => {
   if (!rootRef.value || !sidebarRef.value) return
   controller = new AppShellController({
+    bindKeyboardShortcut: props.shortcut,
+    collapsed: props.collapsed,
+    defaultCollapsed: props.defaultCollapsed,
+    mobileBreakpoint: props.mobileBreakpoint,
+    onCollapsedChange: (v) => emit('collapsedChange', v),
     root: rootRef.value,
     sidebar: sidebarRef.value,
-    defaultCollapsed: props.defaultCollapsed,
-    collapsed: props.collapsed,
-    mobileBreakpoint: props.mobileBreakpoint,
     storageKey: props.storageKey === undefined ? undefined : props.storageKey,
-    bindKeyboardShortcut: props.shortcut,
-    onCollapsedChange: (v) => emit('collapsedChange', v),
   })
   controller.mount()
   controller.onModeChange((m) => (mode.value = m))

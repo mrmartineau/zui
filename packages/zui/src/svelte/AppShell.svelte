@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { Snippet } from 'svelte'
-import type { HTMLAttributes } from 'svelte/elements'
 import { onMount } from 'svelte'
+import type { HTMLAttributes } from 'svelte/elements'
 import {
   AppShellController,
   type AppShellMode,
@@ -54,28 +54,28 @@ let controller: AppShellController | undefined
 let mode = $state<AppShellMode>('desktop')
 
 provideAppShellContext({
-  rootId,
-  sidebarId,
+  getController: () => controller,
   mainId,
+  mode: () => mode,
+  rootId,
   setSidebar: (el) => {
     sidebarEl = el
   },
-  getController: () => controller,
+  sidebarId,
   toggle: () => controller?.toggle(),
-  mode: () => mode,
 })
 
 onMount(() => {
   if (!sidebarEl) return
   controller = new AppShellController({
+    bindKeyboardShortcut: shortcut,
+    collapsed,
+    defaultCollapsed,
+    mobileBreakpoint,
+    onCollapsedChange,
     root: rootEl,
     sidebar: sidebarEl,
-    defaultCollapsed,
-    collapsed,
-    mobileBreakpoint,
     storageKey: storageKey === undefined ? undefined : storageKey,
-    bindKeyboardShortcut: shortcut,
-    onCollapsedChange,
   })
   controller.mount()
   const off = controller.onModeChange((m) => (mode = m))

@@ -6,12 +6,12 @@ import {
   onCleanup,
   splitProps,
 } from 'solid-js'
-import { createTabsController } from '../core/tabs'
 import type {
   TabsActivationMode,
   TabsDirection,
   TabsOrientation,
 } from '../core/tabs'
+import { createTabsController } from '../core/tabs'
 import { tabsVariants } from '../shared/tabsVariants'
 import { TabsContext } from './tabsContext'
 

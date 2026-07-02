@@ -43,7 +43,9 @@ watch(
 
 onUnmounted(() => unregister())
 
-const classes = computed(() => ['zui-menu-content', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-menu-content', props.class].filter(Boolean).join(' '),
+)
 
 function handleKeydown(event: KeyboardEvent) {
   if (!event.defaultPrevented) controller.handleContentKeydown(event)

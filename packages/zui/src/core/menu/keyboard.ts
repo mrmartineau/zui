@@ -17,7 +17,10 @@ export function getTriggerKeyboardIntent(key: string) {
   return 'none' as const
 }
 
-export function getContentKeyboardIntent(key: string, dir: MenuDirection): MenuKeyboardIntent {
+export function getContentKeyboardIntent(
+  key: string,
+  dir: MenuDirection,
+): MenuKeyboardIntent {
   if (key === 'Escape') return 'close'
   if (key === 'Tab') return 'tab'
   if (key === 'Home') return 'first'

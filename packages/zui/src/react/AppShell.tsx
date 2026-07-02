@@ -114,14 +114,14 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     useEffect(() => {
       if (!rootRef.current || !sidebarRef.current) return
       const controller = new AppShellController({
+        bindKeyboardShortcut: shortcut,
+        collapsed,
+        defaultCollapsed,
+        mobileBreakpoint,
+        onCollapsedChange: (v) => onCollapsedChangeRef.current?.(v),
         root: rootRef.current,
         sidebar: sidebarRef.current,
-        defaultCollapsed,
-        collapsed,
-        mobileBreakpoint,
         storageKey: storageKey === undefined ? undefined : storageKey,
-        bindKeyboardShortcut: shortcut,
-        onCollapsedChange: (v) => onCollapsedChangeRef.current?.(v),
       })
       controller.mount()
       const off = controller.onModeChange((m) => setMode(m))
@@ -148,7 +148,15 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     }, [])
 
     const ctx = useMemo<AppShellContextValue>(
-      () => ({ rootId, sidebarId, mainId, registerRoot, registerSidebar, toggle, mode }),
+      () => ({
+        mainId,
+        mode,
+        registerRoot,
+        registerSidebar,
+        rootId,
+        sidebarId,
+        toggle,
+      }),
       [rootId, sidebarId, mainId, registerRoot, registerSidebar, toggle, mode],
     )
 
@@ -230,10 +238,7 @@ export function AppShellSidebarHeader({
   ...props
 }: AppShellSidebarHeaderProps) {
   return (
-    <div
-      className={appShellSidebarHeaderVariants({ className })}
-      {...props}
-    />
+    <div className={appShellSidebarHeaderVariants({ className })} {...props} />
   )
 }
 
@@ -253,10 +258,7 @@ export function AppShellSidebarFooter({
   ...props
 }: AppShellSidebarFooterProps) {
   return (
-    <div
-      className={appShellSidebarFooterVariants({ className })}
-      {...props}
-    />
+    <div className={appShellSidebarFooterVariants({ className })} {...props} />
   )
 }
 

@@ -7,10 +7,11 @@ import { getTabsContext } from './tabsContext'
 
 type TabsListVariantProps = VariantProps<typeof tabsListVariants>
 
-type Props = HTMLAttributes<HTMLDivElement> & TabsListVariantProps & {
-  class?: string
-  children?: Snippet
-}
+type Props = HTMLAttributes<HTMLDivElement> &
+  TabsListVariantProps & {
+    class?: string
+    children?: Snippet
+  }
 
 let { class: className, children, variant, ...rest }: Props = $props()
 const { getSnapshot } = getTabsContext()

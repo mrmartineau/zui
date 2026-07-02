@@ -1,5 +1,8 @@
 import { getContext, setContext } from 'svelte'
-import type { AppShellController, AppShellMode } from '../shared/AppShellController'
+import type {
+  AppShellController,
+  AppShellMode,
+} from '../shared/AppShellController'
 
 const KEY = Symbol('zui-app-shell')
 

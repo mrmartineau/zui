@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'solid-js'
 import type { Accessor } from 'solid-js'
+import { createContext, useContext } from 'solid-js'
 import type { TabsControllerApi, TabsSnapshot } from '../core/tabs'
 
 export interface TabsContextValue {
@@ -26,7 +26,7 @@ export function getTabsTriggerOrder(
 ) {
   if (!root || !element) return 0
 
-  return [...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]')].indexOf(
-    element,
-  )
+  return [
+    ...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]'),
+  ].indexOf(element)
 }

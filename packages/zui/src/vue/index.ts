@@ -1,8 +1,8 @@
 export {
   AppShellController,
-  appShellNoFlashScript,
   type AppShellControllerOptions,
   type AppShellMode,
+  appShellNoFlashScript,
 } from '../shared/AppShellController'
 export {
   appShellHeaderVariants,

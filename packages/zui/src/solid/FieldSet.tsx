@@ -7,8 +7,7 @@ export type FieldSetProps = JSX.HTMLAttributes<HTMLFieldSetElement> & {
 
 export function FieldSet(props: FieldSetProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-field-set', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-field-set', local.class].filter(Boolean).join(' ')
   return (
     <fieldset class={classes()} {...rest}>
       {local.children}

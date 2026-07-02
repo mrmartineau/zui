@@ -60,7 +60,9 @@ export class AppShellController {
     this.sidebar = options.sidebar
     this.mobileBreakpoint = options.mobileBreakpoint ?? DEFAULT_BREAKPOINT
     this.storageKey =
-      options.storageKey === undefined ? DEFAULT_STORAGE_KEY : options.storageKey
+      options.storageKey === undefined
+        ? DEFAULT_STORAGE_KEY
+        : options.storageKey
     this.bindKeyboard = options.bindKeyboardShortcut ?? false
     this.controlled = options.collapsed !== undefined
     this.onCollapsedChange = options.onCollapsedChange
@@ -123,7 +125,11 @@ export class AppShellController {
       if (this.collapsed) return
       // Don't steal Escape from text inputs or other Escape-consuming UI
       const target = e.target as Element | null
-      if (target?.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) {
+      if (
+        target?.closest(
+          'input, textarea, select, [contenteditable=""], [contenteditable="true"]',
+        )
+      ) {
         return
       }
       this.setCollapsed(true)

@@ -10,8 +10,7 @@ type Props = HTMLAttributes<HTMLElement> & {
   children?: Snippet
 }
 
-let { label = 'Sidebar', class: className, children, ...rest }: Props =
-  $props()
+let { label = 'Sidebar', class: className, children, ...rest }: Props = $props()
 
 const ctx = useAppShellContext('AppShellSidebar')
 const classes = $derived(appShellSidebarVariants({ class: className }))

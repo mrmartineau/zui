@@ -3,10 +3,6 @@
 // release is only cut when commits actually touch packages/zui.
 export default {
   branches: ['main'],
-  // Keep the historical `v${version}` tag format (e.g. v1.5.0) so semantic-release recognises
-  // the last release. `semantic-release-monorepo` would otherwise rewrite it to
-  // `@mrmartineau/zui-v${version}` and treat this as a first release (1.0.0), which npm rejects.
-  tagFormat: 'v${version}',
   extends: 'semantic-release-monorepo',
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -26,4 +22,8 @@ export default {
     ],
     ['@semantic-release/github', { failComment: false, failTitle: false }],
   ],
+  // Keep the historical `v${version}` tag format (e.g. v1.5.0) so semantic-release recognises
+  // the last release. `semantic-release-monorepo` would otherwise rewrite it to
+  // `@mrmartineau/zui-v${version}` and treat this as a first release (1.0.0), which npm rejects.
+  tagFormat: 'v${version}',
 }

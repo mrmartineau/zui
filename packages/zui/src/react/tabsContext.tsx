@@ -39,7 +39,7 @@ export function getTabsTriggerOrder(
 ) {
   if (!root || !element) return 0
 
-  return [...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]')].indexOf(
-    element,
-  )
+  return [
+    ...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]'),
+  ].indexOf(element)
 }

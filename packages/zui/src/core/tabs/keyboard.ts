@@ -47,7 +47,9 @@ export function getNextEnabledValue(
   currentValue: string,
 ) {
   if (triggers.length === 0) return null
-  const currentIndex = triggers.findIndex((trigger) => trigger.value === currentValue)
+  const currentIndex = triggers.findIndex(
+    (trigger) => trigger.value === currentValue,
+  )
   if (currentIndex === -1) return triggers[0]?.value ?? null
   return triggers[(currentIndex + 1) % triggers.length]?.value ?? null
 }
@@ -57,7 +59,12 @@ export function getPreviousEnabledValue(
   currentValue: string,
 ) {
   if (triggers.length === 0) return null
-  const currentIndex = triggers.findIndex((trigger) => trigger.value === currentValue)
+  const currentIndex = triggers.findIndex(
+    (trigger) => trigger.value === currentValue,
+  )
   if (currentIndex === -1) return triggers[triggers.length - 1]?.value ?? null
-  return triggers[(currentIndex - 1 + triggers.length) % triggers.length]?.value ?? null
+  return (
+    triggers[(currentIndex - 1 + triggers.length) % triggers.length]?.value ??
+    null
+  )
 }

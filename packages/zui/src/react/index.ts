@@ -1,8 +1,8 @@
 export {
   AppShellController,
-  appShellNoFlashScript,
   type AppShellControllerOptions,
   type AppShellMode,
+  appShellNoFlashScript,
 } from '../shared/AppShellController'
 export {
   appShellHeaderVariants,
@@ -42,16 +42,16 @@ export {
 export {
   AppShell,
   AppShellHeader,
-  AppShellMain,
-  AppShellSidebar,
-  AppShellSidebarBody,
-  AppShellSidebarFooter,
-  AppShellSidebarHeader,
   type AppShellHeaderProps,
+  AppShellMain,
   type AppShellMainProps,
   type AppShellProps,
+  AppShellSidebar,
+  AppShellSidebarBody,
   type AppShellSidebarBodyProps,
+  AppShellSidebarFooter,
   type AppShellSidebarFooterProps,
+  AppShellSidebarHeader,
   type AppShellSidebarHeaderProps,
   type AppShellSidebarProps,
 } from './AppShell'

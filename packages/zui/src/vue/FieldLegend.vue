@@ -20,8 +20,8 @@ const props = defineProps<{
 
 const classes = computed(() =>
   fieldLegendVariants({
-    variant: props.variant,
     className: props.class,
+    variant: props.variant,
   }),
 )
 </script>

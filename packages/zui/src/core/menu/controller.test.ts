@@ -1,7 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { createMenuController } from './controller'
 
-function registerTrigger(controller: ReturnType<typeof createMenuController>, disabled = false) {
+function registerTrigger(
+  controller: ReturnType<typeof createMenuController>,
+  disabled = false,
+) {
   return controller.registerTrigger({
     disabled,
     element: document.createElement('button'),
@@ -10,7 +13,12 @@ function registerTrigger(controller: ReturnType<typeof createMenuController>, di
 }
 
 function registerItems(controller: ReturnType<typeof createMenuController>) {
-  const createItem = (id: string, order: number, disabled = false, textValue?: string) => {
+  const createItem = (
+    id: string,
+    order: number,
+    disabled = false,
+    textValue?: string,
+  ) => {
     const element = document.createElement('button')
     element.textContent = textValue ?? id
     return controller.registerItem({
@@ -44,7 +52,7 @@ describe('menu controller', () => {
 
   it('respects controlled open state', () => {
     const onOpenChange = vi.fn()
-    const controller = createMenuController({ open: false, onOpenChange })
+    const controller = createMenuController({ onOpenChange, open: false })
     registerTrigger(controller)
     registerItems(controller)
 

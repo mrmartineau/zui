@@ -57,9 +57,9 @@ export default function SonnerDemo() {
         variant="outline"
         onClick={() =>
           toast.promise(fakeSave(), {
+            error: 'Save failed',
             loading: 'Saving…',
             success: 'Saved!',
-            error: 'Save failed',
           })
         }
       >

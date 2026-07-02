@@ -1,15 +1,5 @@
 /** @jsxImportSource react */
-import {
-  type ColumnDef,
-  type SortingState,
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
+
 import {
   Badge,
   Button,
@@ -22,6 +12,17 @@ import {
   TableHeader,
   TableRow,
 } from '@mrmartineau/zui/react'
+import {
+  type ColumnDef,
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  type SortingState,
+  useReactTable,
+} from '@tanstack/react-table'
 import { useState } from 'react'
 
 interface Person {
@@ -34,14 +35,70 @@ interface Person {
 }
 
 const DATA: Person[] = [
-  { id: 1, name: 'Alice Johnson', email: 'alice@acme.co', role: 'Designer', status: 'Active', amount: 1280 },
-  { id: 2, name: 'Bob Smith', email: 'bob@acme.co', role: 'Engineer', status: 'Away', amount: 940 },
-  { id: 3, name: 'Carol Davis', email: 'carol@acme.co', role: 'Product Manager', status: 'Active', amount: 2310 },
-  { id: 4, name: 'Dan Lee', email: 'dan@acme.co', role: 'Engineer', status: 'Inactive', amount: 0 },
-  { id: 5, name: 'Erin Park', email: 'erin@acme.co', role: 'Designer', status: 'Active', amount: 1750 },
-  { id: 6, name: 'Frank Moore', email: 'frank@acme.co', role: 'Support', status: 'Away', amount: 620 },
-  { id: 7, name: 'Grace Kim', email: 'grace@acme.co', role: 'Engineer', status: 'Active', amount: 3100 },
-  { id: 8, name: 'Henry Ford', email: 'henry@acme.co', role: 'Sales', status: 'Inactive', amount: 480 },
+  {
+    amount: 1280,
+    email: 'alice@acme.co',
+    id: 1,
+    name: 'Alice Johnson',
+    role: 'Designer',
+    status: 'Active',
+  },
+  {
+    amount: 940,
+    email: 'bob@acme.co',
+    id: 2,
+    name: 'Bob Smith',
+    role: 'Engineer',
+    status: 'Away',
+  },
+  {
+    amount: 2310,
+    email: 'carol@acme.co',
+    id: 3,
+    name: 'Carol Davis',
+    role: 'Product Manager',
+    status: 'Active',
+  },
+  {
+    amount: 0,
+    email: 'dan@acme.co',
+    id: 4,
+    name: 'Dan Lee',
+    role: 'Engineer',
+    status: 'Inactive',
+  },
+  {
+    amount: 1750,
+    email: 'erin@acme.co',
+    id: 5,
+    name: 'Erin Park',
+    role: 'Designer',
+    status: 'Active',
+  },
+  {
+    amount: 620,
+    email: 'frank@acme.co',
+    id: 6,
+    name: 'Frank Moore',
+    role: 'Support',
+    status: 'Away',
+  },
+  {
+    amount: 3100,
+    email: 'grace@acme.co',
+    id: 7,
+    name: 'Grace Kim',
+    role: 'Engineer',
+    status: 'Active',
+  },
+  {
+    amount: 480,
+    email: 'henry@acme.co',
+    id: 8,
+    name: 'Henry Ford',
+    role: 'Sales',
+    status: 'Inactive',
+  },
 ]
 
 const STATUS_COLOR = {
@@ -51,20 +108,12 @@ const STATUS_COLOR = {
 } as const
 
 const currency = (value: number) =>
-  value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+  value.toLocaleString('en-US', { currency: 'USD', style: 'currency' })
 
 const columnHelper = createColumnHelper<Person>()
 
 const columns = [
   columnHelper.display({
-    id: 'select',
-    header: ({ table }) => (
-      <Checkbox
-        aria-label="Select all rows"
-        checked={table.getIsAllPageRowsSelected()}
-        onChange={table.getToggleAllPageRowsSelectedHandler()}
-      />
-    ),
     cell: ({ row }) => (
       <Checkbox
         aria-label={`Select ${row.original.name}`}
@@ -74,20 +123,28 @@ const columns = [
       />
     ),
     enableSorting: false,
+    header: ({ table }) => (
+      <Checkbox
+        aria-label="Select all rows"
+        checked={table.getIsAllPageRowsSelected()}
+        onChange={table.getToggleAllPageRowsSelectedHandler()}
+      />
+    ),
+    id: 'select',
   }),
   columnHelper.accessor('name', { header: 'Name' }),
   columnHelper.accessor('email', { header: 'Email' }),
   columnHelper.accessor('role', { header: 'Role' }),
   columnHelper.accessor('status', {
-    header: 'Status',
     cell: (info) => {
       const status = info.getValue()
       return <Badge color={STATUS_COLOR[status]}>{status}</Badge>
     },
+    header: 'Status',
   }),
   columnHelper.accessor('amount', {
-    header: 'Amount',
     cell: (info) => currency(info.getValue()),
+    header: 'Amount',
   }),
 ] as ColumnDef<Person>[]
 
@@ -103,30 +160,30 @@ export default function TanStackTableDemo() {
   const [rowSelection, setRowSelection] = useState({})
 
   const table = useReactTable({
-    data: DATA,
     columns,
-    state: { sorting, globalFilter, rowSelection },
-    onSortingChange: setSorting,
-    onGlobalFilterChange: setGlobalFilter,
-    onRowSelectionChange: setRowSelection,
+    data: DATA,
     enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     initialState: { pagination: { pageSize: 5 } },
+    onGlobalFilterChange: setGlobalFilter,
+    onRowSelectionChange: setRowSelection,
+    onSortingChange: setSorting,
+    state: { globalFilter, rowSelection, sorting },
   })
 
   const selectedCount = table.getSelectedRowModel().rows.length
 
   return (
-    <div style={{ width: '100%', display: 'grid', gap: 'var(--space-xs)' }}>
+    <div style={{ display: 'grid', gap: 'var(--space-xs)', width: '100%' }}>
       <div
         style={{
-          display: 'flex',
-          gap: 'var(--space-2xs)',
           alignItems: 'center',
+          display: 'flex',
           flexWrap: 'wrap',
+          gap: 'var(--space-2xs)',
         }}
       >
         <Input
@@ -137,7 +194,13 @@ export default function TanStackTableDemo() {
           style={{ maxWidth: '16rem' }}
           onChange={(event) => setGlobalFilter(event.target.value)}
         />
-        <span style={{ fontSize: 'var(--step--1)', color: 'var(--color-text-muted, inherit)', opacity: 0.7 }}>
+        <span
+          style={{
+            color: 'var(--color-text-muted, inherit)',
+            fontSize: 'var(--step--1)',
+            opacity: 0.7,
+          }}
+        >
           {selectedCount} of {table.getFilteredRowModel().rows.length} selected
         </span>
       </div>
@@ -159,22 +222,25 @@ export default function TanStackTableDemo() {
                           ? 'descending'
                           : undefined
                     }
-                    style={{ width: header.column.id === 'select' ? '2.5rem' : undefined }}
+                    style={{
+                      width:
+                        header.column.id === 'select' ? '2.5rem' : undefined,
+                    }}
                   >
                     {header.isPlaceholder ? null : canSort ? (
                       <button
                         type="button"
                         onClick={header.column.getToggleSortingHandler()}
                         style={{
-                          display: 'inline-flex',
                           alignItems: 'center',
-                          gap: 'var(--space-3xs)',
                           background: 'none',
                           border: 0,
-                          padding: 0,
-                          font: 'inherit',
                           color: 'inherit',
                           cursor: 'pointer',
+                          display: 'inline-flex',
+                          font: 'inherit',
+                          gap: 'var(--space-3xs)',
+                          padding: 0,
                         }}
                       >
                         {flexRender(
@@ -182,7 +248,9 @@ export default function TanStackTableDemo() {
                           header.getContext(),
                         )}
                         <i
-                          className={SORT_ICON[String(sorted) as keyof typeof SORT_ICON]}
+                          className={
+                            SORT_ICON[String(sorted) as keyof typeof SORT_ICON]
+                          }
                           style={{ opacity: sorted ? 1 : 0.4 }}
                           aria-hidden="true"
                         />
@@ -216,7 +284,7 @@ export default function TanStackTableDemo() {
             <TableRow>
               <TableCell
                 colSpan={columns.length}
-                style={{ textAlign: 'center', opacity: 0.7 }}
+                style={{ opacity: 0.7, textAlign: 'center' }}
               >
                 No people match your filter.
               </TableCell>
@@ -227,11 +295,11 @@ export default function TanStackTableDemo() {
 
       <div
         style={{
-          display: 'flex',
-          gap: 'var(--space-2xs)',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          display: 'flex',
           flexWrap: 'wrap',
+          gap: 'var(--space-2xs)',
+          justifyContent: 'space-between',
         }}
       >
         <span style={{ fontSize: 'var(--step--1)', opacity: 0.7 }}>

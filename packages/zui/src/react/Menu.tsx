@@ -7,7 +7,12 @@ import {
   useRef,
   useSyncExternalStore,
 } from 'react'
-import { createMenuController, type MenuAlign, type MenuDirection, type MenuSide } from '../core/menu'
+import {
+  createMenuController,
+  type MenuAlign,
+  type MenuDirection,
+  type MenuSide,
+} from '../core/menu'
 import { MenuContext } from './menuContext'
 
 export type MenuProps = HTMLAttributes<HTMLDivElement> & {
@@ -39,7 +44,9 @@ export function Menu({
   const reactId = useId()
   const rootId = id ?? `zui-menu-${reactId.replace(/:/g, '')}`
   const rootRef = useRef<HTMLDivElement>(null)
-  const controllerRef = useRef<ReturnType<typeof createMenuController> | null>(null)
+  const controllerRef = useRef<ReturnType<typeof createMenuController> | null>(
+    null,
+  )
 
   if (!controllerRef.current) {
     controllerRef.current = createMenuController({
@@ -69,7 +76,18 @@ export function Menu({
       open,
       side,
     })
-  }, [align, controller, defaultOpen, dir, disabled, modal, onOpenChange, open, rootId, side])
+  }, [
+    align,
+    controller,
+    defaultOpen,
+    dir,
+    disabled,
+    modal,
+    onOpenChange,
+    open,
+    rootId,
+    side,
+  ])
 
   useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {

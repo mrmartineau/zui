@@ -1,4 +1,4 @@
-import { inject, provide, type InjectionKey, type Ref } from 'vue'
+import { type InjectionKey, inject, provide, type Ref } from 'vue'
 import type { TabsControllerApi, TabsSnapshot } from '../core/tabs'
 
 export interface TabsContextValue {
@@ -29,7 +29,7 @@ export function getTabsTriggerOrder(
 ) {
   if (!root || !element) return 0
 
-  return [...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]')].indexOf(
-    element,
-  )
+  return [
+    ...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]'),
+  ].indexOf(element)
 }

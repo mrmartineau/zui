@@ -9,7 +9,11 @@ import type {
 import { useEffect, useId, useRef } from 'react'
 import { createMenuItemId } from '../core/menu'
 import { buttonVariants } from '../shared/buttonVariants'
-import { getMenuItemOrder, useMenuContext, useMenuSnapshot } from './menuContext'
+import {
+  getMenuItemOrder,
+  useMenuContext,
+  useMenuSnapshot,
+} from './menuContext'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
@@ -73,10 +77,14 @@ export function MenuItem({
     })
   }, [controller, disabled, isLink, itemId, rootRef, textValue])
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ) => {
     ;(
       props as {
-        onClick?: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
+        onClick?: (
+          event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+        ) => void
       }
     ).onClick?.(event)
 
@@ -88,10 +96,14 @@ export function MenuItem({
     }
   }
 
-  const handleFocus = (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+  const handleFocus = (
+    event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ) => {
     ;(
       props as {
-        onFocus?: (event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>) => void
+        onFocus?: (
+          event: FocusEvent<HTMLButtonElement | HTMLAnchorElement>,
+        ) => void
       }
     ).onFocus?.(event)
 
@@ -128,7 +140,8 @@ export function MenuItem({
   }
 
   if (isLink) {
-    const { href, ...anchorProps } = props as AnchorHTMLAttributes<HTMLAnchorElement>
+    const { href, ...anchorProps } =
+      props as AnchorHTMLAttributes<HTMLAnchorElement>
     return (
       <a
         {...anchorProps}

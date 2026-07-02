@@ -8,11 +8,12 @@ import { getTabsContext, getTabsTriggerOrder } from './tabsContext'
 
 type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
 
-type Props = HTMLButtonAttributes & TabsTriggerVariantProps & {
-  value: string
-  class?: string
-  children?: Snippet
-}
+type Props = HTMLButtonAttributes &
+  TabsTriggerVariantProps & {
+    value: string
+    class?: string
+    children?: Snippet
+  }
 
 let {
   class: className,

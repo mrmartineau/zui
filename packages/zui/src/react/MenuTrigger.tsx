@@ -60,7 +60,8 @@ export function MenuTrigger({
       }}
       onKeyDown={(event) => {
         onKeyDown?.(event)
-        if (!event.defaultPrevented) controller.handleTriggerKeydown(event.nativeEvent)
+        if (!event.defaultPrevented)
+          controller.handleTriggerKeydown(event.nativeEvent)
       }}
       type="button"
     />
