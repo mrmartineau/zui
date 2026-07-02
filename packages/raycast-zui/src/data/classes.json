@@ -464,8 +464,8 @@
   },
   {
     "name": "zui-label",
-    "source": "field",
-    "docsUrl": "https://zui.zander.wtf/components/field"
+    "source": "label",
+    "docsUrl": "https://zui.zander.wtf/components/label"
   },
   {
     "name": "zui-field-description",
@@ -484,18 +484,18 @@
   },
   {
     "name": "zui-input",
-    "source": "field",
-    "docsUrl": "https://zui.zander.wtf/components/field"
+    "source": "input",
+    "docsUrl": "https://zui.zander.wtf/components/input"
   },
   {
     "name": "zui-textarea",
-    "source": "field",
-    "docsUrl": "https://zui.zander.wtf/components/field"
+    "source": "textarea",
+    "docsUrl": "https://zui.zander.wtf/components/textarea"
   },
   {
     "name": "zui-select",
-    "source": "field",
-    "docsUrl": "https://zui.zander.wtf/components/field"
+    "source": "select",
+    "docsUrl": "https://zui.zander.wtf/components/select"
   },
   {
     "name": "zui-field-horizontal",
@@ -528,11 +528,6 @@
     "docsUrl": "https://zui.zander.wtf/components/field"
   },
   {
-    "name": "zui-input",
-    "source": "input",
-    "docsUrl": "https://zui.zander.wtf/components/input"
-  },
-  {
     "name": "zui-kbd",
     "source": "kbd",
     "docsUrl": "https://zui.zander.wtf/components/kbd"
@@ -541,11 +536,6 @@
     "name": "zui-kbd-group",
     "source": "kbd",
     "docsUrl": "https://zui.zander.wtf/components/kbd"
-  },
-  {
-    "name": "zui-label",
-    "source": "label",
-    "docsUrl": "https://zui.zander.wtf/components/label"
   },
   {
     "name": "zui-label-required",
@@ -586,11 +576,6 @@
     "name": "zui-radio-list",
     "source": "radio",
     "docsUrl": "https://zui.zander.wtf/components/radio"
-  },
-  {
-    "name": "zui-select",
-    "source": "select",
-    "docsUrl": "https://zui.zander.wtf/components/select"
   },
   {
     "name": "zui-table",
@@ -656,11 +641,6 @@
     "name": "zui-tabs-content",
     "source": "tabs",
     "docsUrl": "https://zui.zander.wtf/components/tabs"
-  },
-  {
-    "name": "zui-textarea",
-    "source": "textarea",
-    "docsUrl": "https://zui.zander.wtf/components/textarea"
   },
   {
     "name": "zui-tooltip",

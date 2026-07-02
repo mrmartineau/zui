@@ -38,12 +38,12 @@ export default function SearchClasses() {
     <List searchBarPlaceholder="Search ZUI CSS classes…">
       <List.Section title="Components" subtitle={`${componentClasses.length}`}>
         {componentClasses.map((entry) => (
-          <ClassItem key={entry.name} entry={entry} />
+          <ClassItem key={`${entry.source}/${entry.name}`} entry={entry} />
         ))}
       </List.Section>
       <List.Section title="Utilities" subtitle={`${utilityClasses.length}`}>
         {utilityClasses.map((entry) => (
-          <ClassItem key={entry.name} entry={entry} />
+          <ClassItem key={`${entry.source}/${entry.name}`} entry={entry} />
         ))}
       </List.Section>
     </List>

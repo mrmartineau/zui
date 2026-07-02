@@ -31,7 +31,7 @@ function tokenIcon(token: TokenEntry) {
   return token.category === 'color' || token.category === 'theme' ? Icon.EyeDropper : Icon.Ruler
 }
 
-function TokenItem({ token, showCategory }: { token: TokenEntry; showCategory: boolean }) {
+function TokenItem({ token }: { token: TokenEntry }) {
   const cssVar = `var(${token.name})`
   return (
     <List.Item
@@ -39,7 +39,6 @@ function TokenItem({ token, showCategory }: { token: TokenEntry; showCategory: b
       title={token.name}
       subtitle={token.value}
       keywords={token.name.split('-').filter(Boolean)}
-      accessories={showCategory ? [{ tag: categoryLabel(token.category) }] : undefined}
       actions={
         <ActionPanel>
           <Action.CopyToClipboard title={`Copy ${cssVar}`} content={cssVar} />
@@ -94,7 +93,7 @@ export default function SearchTokens() {
               subtitle={`${categoryTokens.length}`}
             >
               {categoryTokens.map((token) => (
-                <TokenItem key={token.name} token={token} showCategory={false} />
+                <TokenItem key={token.name} token={token} />
               ))}
             </List.Section>
           )

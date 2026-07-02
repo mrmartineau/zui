@@ -1,7 +1,8 @@
 #!/usr/bin/env tsx
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
-import { dirname, join, relative } from 'node:path'
+import { dirname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import type { ClassEntry, DocEntry, Framework, SnippetEntry, TokenEntry } from '../src/types.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -13,38 +14,6 @@ const outDir = join(__dirname, '../src/data')
 const DOCS_BASE_URL = 'https://zui.zander.wtf'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
-
-interface DocEntry {
-  title: string
-  description?: string
-  section: string
-  slug: string
-  url: string
-}
-
-interface ClassEntry {
-  name: string
-  source: string
-  docsUrl?: string
-}
-
-interface TokenEntry {
-  name: string
-  value: string
-  category: string
-  color?: string
-  docsUrl?: string
-}
-
-type Framework = 'html' | 'react' | 'astro' | 'solid' | 'svelte' | 'vue'
-
-interface SnippetEntry {
-  id: string
-  page: string
-  pageUrl: string
-  title: string
-  frameworks: Partial<Record<Framework, string>>
-}
 
 interface Manifest {
   version: string
@@ -88,7 +57,7 @@ function parseFrontmatter(source: string): Record<string, string> {
 }
 
 function urlPathFor(file: string): string {
-  const rel = relative(docsPagesDir, file).replace(/\.mdx$/, '')
+  const rel = relative(docsPagesDir, file).split(sep).join('/').replace(/\.mdx$/, '')
   const path = rel.endsWith('/index') || rel === 'index' ? rel.replace(/\/?index$/, '') : rel
   return `/${path}`.replace(/\/$/, '') || '/'
 }
@@ -154,7 +123,18 @@ function classDocsUrl(source: string): string | undefined {
 }
 
 function buildClasses(manifest: Manifest): ClassEntry[] {
-  return manifest.classes.map((entry) => {
+  // A class can be picked up from several CSS files (e.g. field.css also
+  // references .zui-input). Keep one entry per name, preferring the source
+  // the class is named after.
+  const byName = new Map<string, ClassEntry>()
+  for (const entry of manifest.classes) {
+    const existing = byName.get(entry.name)
+    if (existing && !entry.name.startsWith(`zui-${entry.source}`)) continue
+    if (!existing || !existing.name.startsWith(`zui-${existing.source}`)) {
+      byName.set(entry.name, entry)
+    }
+  }
+  return [...byName.values()].map((entry) => {
     const docsUrl = classDocsUrl(entry.source)
     return docsUrl ? { ...entry, docsUrl } : entry
   })
