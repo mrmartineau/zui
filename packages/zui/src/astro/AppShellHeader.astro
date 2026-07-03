@@ -39,17 +39,27 @@ const classes = appShellHeaderVariants({ class: className })
 </header>
 
 <script>
-  document
-    .querySelectorAll<HTMLButtonElement>('[data-zui-app-shell-toggle]')
-    .forEach((btn) => {
-      if (btn.dataset.zuiAppShellToggleBound) return
-      btn.dataset.zuiAppShellToggleBound = 'true'
-      btn.addEventListener('click', () => {
-        const root = btn.closest<HTMLElement>('[data-zui-app-shell]')
-        const controller = (
-          root as unknown as { __zuiAppShellController?: { toggle: () => void } } | null
-        )?.__zuiAppShellController
-        controller?.toggle()
-      })
+  // A single delegated listener instead of per-button bindings, so toggles
+  // rendered after a view-transition navigation keep working without re-init.
+  const TOGGLE_BOUND_KEY = '__zuiAppShellToggleBound'
+  const globalWindow = window as typeof window & {
+    [TOGGLE_BOUND_KEY]?: boolean
+  }
+
+  if (!globalWindow[TOGGLE_BOUND_KEY]) {
+    document.addEventListener('click', (event) => {
+      const btn = (event.target as Element | null)?.closest<HTMLButtonElement>(
+        '[data-zui-app-shell-toggle]',
+      )
+      if (!btn) return
+      const root = btn.closest<HTMLElement>('[data-zui-app-shell]')
+      const controller = (
+        root as unknown as {
+          __zuiAppShellController?: { toggle: () => void }
+        } | null
+      )?.__zuiAppShellController
+      controller?.toggle()
     })
+    globalWindow[TOGGLE_BOUND_KEY] = true
+  }
 </script>

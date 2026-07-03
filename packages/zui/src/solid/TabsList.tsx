@@ -6,7 +6,8 @@ import { useTabsContext } from './tabsContext'
 
 type TabsListVariantProps = VariantProps<typeof tabsListVariants>
 
-export type TabsListProps = JSX.HTMLAttributes<HTMLDivElement> & TabsListVariantProps
+export type TabsListProps = JSX.HTMLAttributes<HTMLDivElement> &
+  TabsListVariantProps
 
 export function TabsList(props: TabsListProps) {
   const [local, rest] = splitProps(props, ['children', 'class', 'variant'])

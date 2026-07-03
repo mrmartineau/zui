@@ -1,11 +1,13 @@
 <template>
   <span :class="['zui-tooltip', props.class].filter(Boolean).join(' ')" v-bind="$attrs">
+    <!-- focusin/focusout: native focus does not bubble, so focus events
+         from the wrapped child never reach this non-focusable span -->
     <span
       :style="{ 'anchor-name': anchorName }"
       @mouseenter="show"
       @mouseleave="hide"
-      @focus="show"
-      @blur="hide"
+      @focusin="show"
+      @focusout="hide"
     >
       <slot />
     </span>
@@ -29,8 +31,7 @@ import { tooltipVariants } from '../shared/tooltipVariants'
 
 defineOptions({ inheritAttrs: false })
 
-let counter = 0
-const id = `tooltip-${++counter}-${Math.random().toString(36).slice(2, 7)}`
+const id = `tooltip-${Math.random().toString(36).slice(2, 7)}`
 const anchorName = `--${id}`
 const popoverEl = ref<HTMLElement | null>(null)
 
@@ -49,6 +50,6 @@ const contentClass = computed(() => {
   return ['zui-tooltip-content', placementClass].filter(Boolean).join(' ')
 })
 
-const show = () => (popoverEl.value as any)?.showPopover()
-const hide = () => (popoverEl.value as any)?.hidePopover()
+const show = () => popoverEl.value?.showPopover()
+const hide = () => popoverEl.value?.hidePopover()
 </script>

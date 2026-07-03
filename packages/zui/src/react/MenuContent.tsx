@@ -4,7 +4,11 @@ import { useMenuContext, useMenuSnapshot } from './menuContext'
 
 export type MenuContentProps = HTMLAttributes<HTMLDivElement>
 
-export function MenuContent({ className, onKeyDown, ...props }: MenuContentProps) {
+export function MenuContent({
+  className,
+  onKeyDown,
+  ...props
+}: MenuContentProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { controller } = useMenuContext()
   const snapshot = useMenuSnapshot()
@@ -30,7 +34,8 @@ export function MenuContent({ className, onKeyDown, ...props }: MenuContentProps
       id={snapshot.contentId}
       onKeyDown={(event) => {
         onKeyDown?.(event)
-        if (!event.defaultPrevented) controller.handleContentKeydown(event.nativeEvent)
+        if (!event.defaultPrevented)
+          controller.handleContentKeydown(event.nativeEvent)
       }}
       role="menu"
     />

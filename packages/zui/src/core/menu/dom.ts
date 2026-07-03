@@ -1,10 +1,10 @@
+import { createMenuController } from './controller'
 import {
   createMenuContentId,
   createMenuItemId,
   createMenuRootId,
   createMenuTriggerId,
 } from './ids'
-import { createMenuController } from './controller'
 import type { MenuControllerApi, MenuRootOptions } from './types'
 
 const MENU_DOM_INSTANCE = Symbol('zui.menu.dom.instance')
@@ -20,9 +20,11 @@ export interface MenuDomController {
 
 function isDevelopment() {
   return (
-    (globalThis as typeof globalThis & {
-      process?: { env?: { NODE_ENV?: string } }
-    }).process?.env?.NODE_ENV !== 'production'
+    (
+      globalThis as typeof globalThis & {
+        process?: { env?: { NODE_ENV?: string } }
+      }
+    ).process?.env?.NODE_ENV !== 'production'
   )
 }
 
@@ -33,7 +35,16 @@ function warn(message: string) {
 }
 
 function isItemOwnDisabled(item: HTMLElement) {
-  return item.dataset.zuiMenuOwnDisabled === 'true'
+  const stamped = item.dataset.zuiMenuOwnDisabled
+  if (stamped !== undefined) return stamped === 'true'
+  // Not yet stamped by sync() — derive from the author-supplied attributes
+  // so an applySnapshot that runs first can't strip them.
+  return (
+    item.hasAttribute('disabled') ||
+    (item.dataset.disabled === 'true' && !isItemDataDisabledByRoot(item)) ||
+    (item.getAttribute('aria-disabled') === 'true' &&
+      !isItemAriaDisabledByRoot(item))
+  )
 }
 
 function isItemDataDisabledByRoot(item: HTMLElement) {
@@ -44,7 +55,11 @@ function isItemAriaDisabledByRoot(item: HTMLElement) {
   return item.dataset.zuiMenuAriaDisabledByRoot === 'true'
 }
 
-function readRootOptions(root: HTMLElement, options: MenuRootOptions, rootId: string) {
+function readRootOptions(
+  root: HTMLElement,
+  options: MenuRootOptions,
+  rootId: string,
+) {
   return {
     align: (root.dataset.align as MenuRootOptions['align']) ?? options.align,
     defaultOpen:
@@ -114,7 +129,8 @@ function applySnapshot(root: HTMLElement, controller: MenuControllerApi) {
     const disabled = snapshot.disabled || ownDisabled
     if (disabled) {
       item.dataset.disabled = 'true'
-      if (snapshot.disabled && !ownDisabled) item.dataset.zuiMenuDataDisabledByRoot = 'true'
+      if (snapshot.disabled && !ownDisabled)
+        item.dataset.zuiMenuDataDisabledByRoot = 'true'
       else delete item.dataset.zuiMenuDataDisabledByRoot
     } else {
       if (isItemDataDisabledByRoot(item)) delete item.dataset.disabled
@@ -127,7 +143,8 @@ function applySnapshot(root: HTMLElement, controller: MenuControllerApi) {
       else if (!ownDisabled) item.removeAttribute('disabled')
     } else if (disabled) {
       item.setAttribute('aria-disabled', 'true')
-      if (snapshot.disabled && !ownDisabled) item.dataset.zuiMenuAriaDisabledByRoot = 'true'
+      if (snapshot.disabled && !ownDisabled)
+        item.dataset.zuiMenuAriaDisabledByRoot = 'true'
       else delete item.dataset.zuiMenuAriaDisabledByRoot
     } else {
       if (isItemAriaDisabledByRoot(item)) item.removeAttribute('aria-disabled')
@@ -152,7 +169,9 @@ export function attachMenuDom(
   }
 
   const rootId = createMenuRootId(options.id ?? root.id ?? undefined)
-  const controller = createMenuController(readRootOptions(root, options, rootId))
+  const controller = createMenuController(
+    readRootOptions(root, options, rootId),
+  )
 
   root.id = rootId
   root.dataset.zuiMenuRoot = ''
@@ -234,7 +253,10 @@ export function attachMenuDom(
         trigger.dataset.zuiMenuOwnDisabled = ownDisabled ? 'true' : 'false'
         delete trigger.dataset.zuiMenuDisabledByRoot
         trigger.id = trigger.id || createMenuTriggerId(rootId)
-        if (trigger instanceof HTMLButtonElement && !trigger.getAttribute('type')) {
+        if (
+          trigger instanceof HTMLButtonElement &&
+          !trigger.getAttribute('type')
+        ) {
           trigger.setAttribute('type', 'button')
         }
 
@@ -284,7 +306,8 @@ export function attachMenuDom(
           item.dataset.zuiMenuDisabledByRoot === 'true'
             ? false
             : item.hasAttribute('disabled') ||
-              (item.dataset.disabled === 'true' && !isItemDataDisabledByRoot(item)) ||
+              (item.dataset.disabled === 'true' &&
+                !isItemDataDisabledByRoot(item)) ||
               (item.getAttribute('aria-disabled') === 'true' &&
                 !isItemAriaDisabledByRoot(item))
         item.dataset.zuiMenuOwnDisabled = ownDisabled ? 'true' : 'false'
@@ -358,11 +381,14 @@ export function attachMenuDom(
     controller.handleDocumentPointerDown(event.target)
   document.addEventListener('pointerdown', onPointerDown)
 
+  // Subscribe only after the first sync() has stamped item-owned disabled
+  // state — subscribe invokes the listener synchronously, and applySnapshot
+  // on unstamped items would strip author-supplied disabled attributes.
+  sync()
+
   const unsubscribe = controller.subscribe(() => {
     withObserverPaused(() => applySnapshot(root, controller))
   })
-
-  sync()
 
   const instance: MenuDomController = {
     controller,
@@ -372,9 +398,9 @@ export function attachMenuDom(
       document.removeEventListener('pointerdown', onPointerDown)
       for (const cleanup of cleanups) cleanup()
       cleanups.clear()
-      delete (root as HTMLElement & { [MENU_DOM_INSTANCE]?: MenuDomController })[
-        MENU_DOM_INSTANCE
-      ]
+      delete (
+        root as HTMLElement & { [MENU_DOM_INSTANCE]?: MenuDomController }
+      )[MENU_DOM_INSTANCE]
     },
     sync,
   }

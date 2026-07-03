@@ -29,7 +29,7 @@ export function getMenuItemOrder(
 ) {
   if (!root || !element) return 0
 
-  return [...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]')].indexOf(
-    element,
-  )
+  return [
+    ...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]'),
+  ].indexOf(element)
 }

@@ -477,6 +477,14 @@
       "source": "select"
     },
     {
+      "name": "zui-dark",
+      "source": "select"
+    },
+    {
+      "name": "zui-light",
+      "source": "select"
+    },
+    {
       "name": "zui-table",
       "source": "table"
     },
@@ -1445,7 +1453,6 @@
       "source": "utility/ui-typography"
     }
   ],
-  "generatedAt": "2026-06-24T14:43:21.750Z",
   "tokens": [
     {
       "category": "animation",
@@ -3602,7 +3609,7 @@
     {
       "category": "line-height",
       "name": "--line-height-2xl",
-      "value": "1.625"
+      "value": "2.25"
     },
     {
       "category": "line-height",
@@ -3648,12 +3655,6 @@
       "category": "radii",
       "name": "--radius-round",
       "value": "50%"
-    },
-    {
-      "category": "shadow",
-      "name": "--shadow-color",
-      "value": "oklch(0.2 0 0)",
-      "color": "#161616"
     },
     {
       "category": "shadow",
@@ -3842,6 +3843,11 @@
     },
     {
       "category": "space",
+      "name": "--space-4xl",
+      "value": "clamp(7rem, 6.4563rem + 2.7184vw, 8.75rem)"
+    },
+    {
+      "category": "space",
       "name": "--space-5xs-4xs",
       "value": "clamp(0.1875rem, 0.1487rem + 0.1942vw, 0.3125rem)"
     },
@@ -4008,6 +4014,11 @@
       "category": "theme",
       "name": "--color-faint",
       "value": "oklch(from var(--color-text) l c h / 50%)"
+    },
+    {
+      "category": "theme",
+      "name": "--shadow-color",
+      "value": "oklch(from var(--color-background) calc(l - 0.3) c h)"
     },
     {
       "category": "theme",

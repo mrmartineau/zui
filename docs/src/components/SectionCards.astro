@@ -37,11 +37,11 @@ const cards = Object.entries(allPages)
     }
   })
   .sort((a, b) => {
-    const aOrdered = a.order !== undefined
-    const bOrdered = b.order !== undefined
-    if (aOrdered && bOrdered) return a.order! - b.order!
-    if (aOrdered) return -1
-    if (bOrdered) return 1
+    if (a.order !== undefined && b.order !== undefined) {
+      return a.order - b.order
+    }
+    if (a.order !== undefined) return -1
+    if (b.order !== undefined) return 1
     return a.title.localeCompare(b.title)
   })
 ---

@@ -1,4 +1,8 @@
-import { createMenuContentId, createMenuRootId, createMenuTriggerId } from './ids'
+import {
+  createMenuContentId,
+  createMenuRootId,
+  createMenuTriggerId,
+} from './ids'
 import { getContentKeyboardIntent, getTriggerKeyboardIntent } from './keyboard'
 import { MenuRegistry } from './registry'
 import { appendTypeaheadCharacter, findTypeaheadMatch } from './typeahead'
@@ -12,9 +16,11 @@ import type {
 
 function isDevelopment() {
   return (
-    (globalThis as typeof globalThis & {
-      process?: { env?: { NODE_ENV?: string } }
-    }).process?.env?.NODE_ENV !== 'production'
+    (
+      globalThis as typeof globalThis & {
+        process?: { env?: { NODE_ENV?: string } }
+      }
+    ).process?.env?.NODE_ENV !== 'production'
   )
 }
 
@@ -59,14 +65,19 @@ export function createMenuController(
   }
 
   function getCurrentOpen() {
-    return isControlled() ? options.open ?? false : open
+    return isControlled() ? (options.open ?? false) : open
   }
 
   function getTriggerDisabled() {
     return options.disabled || registry.getTrigger()?.disabled || false
   }
 
-  function getSnapshot(): MenuSnapshot {
+  // Cached so getSnapshot() returns a stable reference between emits —
+  // React's useSyncExternalStore compares snapshots with Object.is and
+  // enters an infinite render loop if each call allocates a new object.
+  let cachedSnapshot: MenuSnapshot | null = null
+
+  function computeSnapshot(): MenuSnapshot {
     return {
       align: options.align ?? DEFAULTS.align,
       contentId,
@@ -82,23 +93,32 @@ export function createMenuController(
     }
   }
 
+  function getSnapshot(): MenuSnapshot {
+    cachedSnapshot ??= computeSnapshot()
+    return cachedSnapshot
+  }
+
   function emit() {
-    const snapshot = getSnapshot()
-    for (const listener of listeners) listener(snapshot)
+    cachedSnapshot = computeSnapshot()
+    for (const listener of listeners) listener(cachedSnapshot)
   }
 
   function getEnabledItems() {
     return registry.getEnabledItems()
   }
 
-  function resolveFocusableItem(target: MenuFocusTarget, currentId = highlightedItemId) {
+  function resolveFocusableItem(
+    target: MenuFocusTarget,
+    currentId = highlightedItemId,
+  ) {
     const items = getEnabledItems()
     if (items.length === 0) return null
 
     if (target === 'first' || target == null) return items[0] ?? null
     if (target === 'last') return items.at(-1) ?? null
 
-    const currentIndex = currentId == null ? -1 : items.findIndex((item) => item.id === currentId)
+    const currentIndex =
+      currentId == null ? -1 : items.findIndex((item) => item.id === currentId)
     if (target === 'next') {
       return items[(currentIndex + 1 + items.length) % items.length] ?? null
     }
@@ -119,7 +139,10 @@ export function createMenuController(
     item?.element?.focus()
   }
 
-  function focusResolvedItem(target: MenuFocusTarget, currentId = highlightedItemId) {
+  function focusResolvedItem(
+    target: MenuFocusTarget,
+    currentId = highlightedItemId,
+  ) {
     const item = resolveFocusableItem(target, currentId)
     if (!item) return false
     const changed = setHighlightedItemId(item.id)
@@ -173,7 +196,8 @@ export function createMenuController(
 
   function focusItem(id: string) {
     const item = registry.getItem(id)
-    if (options.disabled || !item || item.disabled || !getCurrentOpen()) return false
+    if (options.disabled || !item || item.disabled || !getCurrentOpen())
+      return false
     const changed = setHighlightedItemId(id)
     focusItemElement(item)
     return changed || true
@@ -219,7 +243,10 @@ export function createMenuController(
   function handleContentKeydown(event: KeyboardEvent) {
     if (!getCurrentOpen()) return
 
-    const intent = getContentKeyboardIntent(event.key, options.dir ?? DEFAULTS.dir)
+    const intent = getContentKeyboardIntent(
+      event.key,
+      options.dir ?? DEFAULTS.dir,
+    )
     if (intent !== 'none') {
       if (intent === 'close') {
         event.preventDefault()
@@ -260,7 +287,12 @@ export function createMenuController(
       }
     }
 
-    if (event.key.length === 1 && !event.altKey && !event.ctrlKey && !event.metaKey) {
+    if (
+      event.key.length === 1 &&
+      !event.altKey &&
+      !event.ctrlKey &&
+      !event.metaKey
+    ) {
       const matched = handleItemTextInput(event.key)
       if (matched) {
         event.preventDefault()
@@ -288,14 +320,22 @@ export function createMenuController(
   function handleItemTextInput(character: string) {
     if (options.disabled) return false
     typeaheadState = appendTypeaheadCharacter(typeaheadState, character)
-    const match = findTypeaheadMatch(getEnabledItems(), typeaheadState.buffer, highlightedItemId)
+    const match = findTypeaheadMatch(
+      getEnabledItems(),
+      typeaheadState.buffer,
+      highlightedItemId,
+    )
     if (!match) return false
     const changed = setHighlightedItemId(match.id)
     focusItemElement(match)
     return changed || true
   }
 
-  function registerTrigger(registration: { disabled: boolean; element: HTMLElement | null; triggerId: string }) {
+  function registerTrigger(registration: {
+    disabled: boolean
+    element: HTMLElement | null
+    triggerId: string
+  }) {
     if (registry.getTrigger() && registry.getTrigger() !== registration) {
       warn(`Duplicate MenuTrigger detected in root "${rootId}".`)
     }
@@ -307,7 +347,10 @@ export function createMenuController(
     }
   }
 
-  function registerContent(registration: { contentId: string; element: HTMLElement | null }) {
+  function registerContent(registration: {
+    contentId: string
+    element: HTMLElement | null
+  }) {
     if (registry.getContent() && registry.getContent() !== registration) {
       warn(`Duplicate MenuContent detected in root "${rootId}".`)
     }
@@ -322,7 +365,9 @@ export function createMenuController(
   function registerItem(registration: MenuItemRegistration) {
     const existingItem = registry.getItem(registration.id)
     if (existingItem && existingItem !== registration) {
-      warn(`Duplicate MenuItem id "${registration.id}" detected in root "${rootId}".`)
+      warn(
+        `Duplicate MenuItem id "${registration.id}" detected in root "${rootId}".`,
+      )
     }
     const unregister = registry.registerItem(registration)
     if (highlightedItemId != null && !registry.getItem(highlightedItemId)) {
@@ -340,7 +385,9 @@ export function createMenuController(
 
   function setOptions(nextOptions: MenuRootOptions) {
     if (nextOptions.id && nextOptions.id !== rootId) {
-      warn(`Menu root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`)
+      warn(
+        `Menu root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`,
+      )
     }
 
     options = {
@@ -351,11 +398,11 @@ export function createMenuController(
 
     if (!getCurrentOpen()) {
       typeaheadState = { buffer: '', timestamp: 0 }
-    }
-
-    if (!getCurrentOpen()) {
       highlightedItemId = null
-    } else if (highlightedItemId != null && !registry.getItem(highlightedItemId)) {
+    } else if (
+      highlightedItemId != null &&
+      !registry.getItem(highlightedItemId)
+    ) {
       highlightedItemId = null
     }
 

@@ -38,9 +38,12 @@ export function findTypeaheadMatch(
   const enabledItems = items.filter((item) => !item.disabled)
   if (enabledItems.length === 0 || !buffer) return null
 
-  const matches = enabledItems.filter((item) => getMenuItemText(item).startsWith(buffer))
+  const matches = enabledItems.filter((item) =>
+    getMenuItemText(item).startsWith(buffer),
+  )
   if (matches.length === 0) return null
 
-  const startIndex = currentId == null ? -1 : matches.findIndex((item) => item.id === currentId)
+  const startIndex =
+    currentId == null ? -1 : matches.findIndex((item) => item.id === currentId)
   return matches[(startIndex + 1) % matches.length] ?? null
 }

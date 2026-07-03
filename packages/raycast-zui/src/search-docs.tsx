@@ -1,7 +1,14 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
 import { docs } from './data'
 
-const SECTION_ORDER = ['Components', 'Tokens', 'Utilities', 'Guides', 'Integrations', 'Other']
+const SECTION_ORDER = [
+  'Components',
+  'Tokens',
+  'Utilities',
+  'Guides',
+  'Integrations',
+  'Other',
+]
 
 const SECTION_ICONS: Record<string, Icon> = {
   Components: Icon.AppWindowGrid2x2,
@@ -33,7 +40,10 @@ export default function SearchDocs() {
                 actions={
                   <ActionPanel>
                     <Action.OpenInBrowser url={doc.url} />
-                    <Action.CopyToClipboard title="Copy URL" content={doc.url} />
+                    <Action.CopyToClipboard
+                      title="Copy URL"
+                      content={doc.url}
+                    />
                   </ActionPanel>
                 }
               />

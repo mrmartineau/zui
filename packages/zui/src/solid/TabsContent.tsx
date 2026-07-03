@@ -9,14 +9,25 @@ export type TabsContentProps = JSX.HTMLAttributes<HTMLDivElement> & {
 }
 
 export function TabsContent(props: TabsContentProps) {
-  const [local, rest] = splitProps(props, ['children', 'class', 'hidden', 'value'])
+  const [local, rest] = splitProps(props, [
+    'children',
+    'class',
+    'hidden',
+    'value',
+  ])
   const { controller, snapshot } = useTabsContext()
   let ref: HTMLDivElement | undefined
 
-  const classes = createMemo(() => tabsContentVariants({ className: local.class }))
+  const classes = createMemo(() =>
+    tabsContentVariants({ className: local.class }),
+  )
   const isActive = createMemo(() => snapshot().selectedValue === local.value)
-  const triggerId = createMemo(() => createTabsTriggerId(snapshot().rootId, local.value))
-  const panelId = createMemo(() => createTabsContentId(snapshot().rootId, local.value))
+  const triggerId = createMemo(() =>
+    createTabsTriggerId(snapshot().rootId, local.value),
+  )
+  const panelId = createMemo(() =>
+    createTabsContentId(snapshot().rootId, local.value),
+  )
 
   createEffect(() => {
     const unregister = controller.registerContent({

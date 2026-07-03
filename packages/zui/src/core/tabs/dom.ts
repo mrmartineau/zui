@@ -1,9 +1,9 @@
+import { createTabsController } from './controller'
 import {
   createTabsContentId,
   createTabsRootId,
   createTabsTriggerId,
 } from './ids'
-import { createTabsController } from './controller'
 import type { TabsControllerApi, TabsRootOptions } from './types'
 
 const ROOT_SELECTOR = '[data-zui-tabs-root]'
@@ -21,7 +21,11 @@ function getTriggerValue(element: Element) {
 }
 
 function isTriggerOwnDisabled(trigger: HTMLElement) {
-  return trigger.dataset.zuiTabsOwnDisabled === 'true'
+  const stamped = trigger.dataset.zuiTabsOwnDisabled
+  if (stamped !== undefined) return stamped === 'true'
+  // Not yet stamped by sync() — derive from the author-supplied attribute
+  // so an applySnapshot that runs first can't strip it.
+  return trigger.hasAttribute('disabled')
 }
 
 function applySnapshot(root: HTMLElement, controller: TabsControllerApi) {
@@ -95,93 +99,128 @@ export function attachTabsDom(
 
   const cleanups = new Set<() => void>()
   let syncing = false
+  let observer: MutationObserver | undefined
+  let observerPauseDepth = 0
+
+  function observeMutations() {
+    if (observerPauseDepth > 0) return
+    observer?.observe(root, {
+      attributeFilter: ['data-value', 'disabled'],
+      attributes: true,
+      childList: true,
+      subtree: true,
+    })
+  }
+
+  // Pause the observer while we write attributes ourselves — otherwise every
+  // applySnapshot queues mutation records for its own `disabled` writes and
+  // the observer→sync→applySnapshot loop runs forever.
+  function withObserverPaused(callback: () => void) {
+    observerPauseDepth += 1
+    observer?.disconnect()
+    try {
+      callback()
+    } finally {
+      observerPauseDepth -= 1
+      if (observerPauseDepth === 0) {
+        observeMutations()
+      }
+    }
+  }
 
   function sync() {
     if (syncing) return
     syncing = true
-    for (const cleanup of cleanups) cleanup()
-    cleanups.clear()
 
-    const triggers = [...root.querySelectorAll<HTMLElement>(TRIGGER_SELECTOR)]
-    const contents = [...root.querySelectorAll<HTMLElement>(CONTENT_SELECTOR)]
+    withObserverPaused(() => {
+      for (const cleanup of cleanups) cleanup()
+      cleanups.clear()
 
-    triggers.forEach((trigger, order) => {
-      const value = getTriggerValue(trigger)
-      if (value == null) return
+      const triggers = [...root.querySelectorAll<HTMLElement>(TRIGGER_SELECTOR)]
+      const contents = [...root.querySelectorAll<HTMLElement>(CONTENT_SELECTOR)]
 
-      const triggerId = trigger.id || createTabsTriggerId(rootId, value)
-      const panelId = createTabsContentId(rootId, value)
-      const ownDisabled =
-        trigger.dataset.zuiTabsDisabledByRoot === 'true'
-          ? false
-          : trigger.hasAttribute('disabled')
+      triggers.forEach((trigger, order) => {
+        const value = getTriggerValue(trigger)
+        if (value == null) return
 
-      trigger.id = triggerId
-      trigger.dataset.zuiTabsOwnDisabled = ownDisabled ? 'true' : 'false'
-      delete trigger.dataset.zuiTabsDisabledByRoot
-      trigger.setAttribute('type', 'button')
-      trigger.setAttribute('aria-controls', panelId)
+        const triggerId = trigger.id || createTabsTriggerId(rootId, value)
+        const panelId = createTabsContentId(rootId, value)
+        const ownDisabled =
+          trigger.dataset.zuiTabsDisabledByRoot === 'true'
+            ? false
+            : trigger.hasAttribute('disabled')
 
-      const unregister = controller.registerTrigger({
-        disabled: ownDisabled,
-        element: trigger,
-        order,
-        panelId,
-        triggerId,
-        value,
+        trigger.id = triggerId
+        trigger.dataset.zuiTabsOwnDisabled = ownDisabled ? 'true' : 'false'
+        delete trigger.dataset.zuiTabsDisabledByRoot
+        trigger.setAttribute('type', 'button')
+        trigger.setAttribute('aria-controls', panelId)
+
+        const unregister = controller.registerTrigger({
+          disabled: ownDisabled,
+          element: trigger,
+          order,
+          panelId,
+          triggerId,
+          value,
+        })
+
+        const onClick = () => controller.clickTrigger(value)
+        const onFocus = () => controller.focusTrigger(value)
+        const onBlur = () => controller.blurTrigger(value)
+        const onKeydown = (event: KeyboardEvent) =>
+          controller.handleTriggerKeydown(event, value)
+
+        trigger.addEventListener('click', onClick)
+        trigger.addEventListener('focus', onFocus)
+        trigger.addEventListener('blur', onBlur)
+        trigger.addEventListener('keydown', onKeydown)
+
+        cleanups.add(() => {
+          if (
+            trigger.hasAttribute('disabled') &&
+            !isTriggerOwnDisabled(trigger)
+          ) {
+            trigger.dataset.zuiTabsDisabledByRoot = 'true'
+          } else {
+            delete trigger.dataset.zuiTabsDisabledByRoot
+          }
+
+          unregister()
+          trigger.removeEventListener('click', onClick)
+          trigger.removeEventListener('focus', onFocus)
+          trigger.removeEventListener('blur', onBlur)
+          trigger.removeEventListener('keydown', onKeydown)
+        })
       })
 
-      const onClick = () => controller.clickTrigger(value)
-      const onFocus = () => controller.focusTrigger(value)
-      const onBlur = () => controller.blurTrigger(value)
-      const onKeydown = (event: KeyboardEvent) =>
-        controller.handleTriggerKeydown(event, value)
+      contents.forEach((content) => {
+        const value = getTriggerValue(content)
+        if (value == null) return
 
-      trigger.addEventListener('click', onClick)
-      trigger.addEventListener('focus', onFocus)
-      trigger.addEventListener('blur', onBlur)
-      trigger.addEventListener('keydown', onKeydown)
+        const triggerId = createTabsTriggerId(rootId, value)
+        const panelId = content.id || createTabsContentId(rootId, value)
 
-      cleanups.add(() => {
-        if (trigger.hasAttribute('disabled') && !isTriggerOwnDisabled(trigger)) {
-          trigger.dataset.zuiTabsDisabledByRoot = 'true'
-        } else {
-          delete trigger.dataset.zuiTabsDisabledByRoot
-        }
+        content.id = panelId
+        content.setAttribute('aria-labelledby', triggerId)
 
-        unregister()
-        trigger.removeEventListener('click', onClick)
-        trigger.removeEventListener('focus', onFocus)
-        trigger.removeEventListener('blur', onBlur)
-        trigger.removeEventListener('keydown', onKeydown)
+        const unregister = controller.registerContent({
+          element: content,
+          panelId,
+          triggerId,
+          value,
+        })
+
+        cleanups.add(unregister)
       })
+
+      applySnapshot(root, controller)
     })
 
-    contents.forEach((content) => {
-      const value = getTriggerValue(content)
-      if (value == null) return
-
-      const triggerId = createTabsTriggerId(rootId, value)
-      const panelId = content.id || createTabsContentId(rootId, value)
-
-      content.id = panelId
-      content.setAttribute('aria-labelledby', triggerId)
-
-      const unregister = controller.registerContent({
-        element: content,
-        panelId,
-        triggerId,
-        value,
-      })
-
-      cleanups.add(unregister)
-    })
-
-    applySnapshot(root, controller)
     syncing = false
   }
 
-  const observer = new MutationObserver((mutations) => {
+  observer = new MutationObserver((mutations) => {
     const shouldSync = mutations.some((mutation) => {
       if (mutation.type === 'childList') return true
       if (mutation.type !== 'attributes') return false
@@ -194,16 +233,16 @@ export function attachTabsDom(
     if (shouldSync) sync()
   })
 
-  observer.observe(root, {
-    attributeFilter: ['data-value', 'disabled'],
-    attributes: true,
-    childList: true,
-    subtree: true,
-  })
+  observeMutations()
 
-  const unsubscribe = controller.subscribe(() => applySnapshot(root, controller))
-
+  // Subscribe only after the first sync() has stamped trigger-owned disabled
+  // state — subscribe invokes the listener synchronously, and applySnapshot
+  // on unstamped triggers would strip author-supplied disabled attributes.
   sync()
+
+  const unsubscribe = controller.subscribe(() => {
+    withObserverPaused(() => applySnapshot(root, controller))
+  })
 
   return {
     controller,
@@ -218,9 +257,9 @@ export function attachTabsDom(
 }
 
 export function autoAttachTabsDom(options: TabsRootOptions = {}) {
-  const instances = [...document.querySelectorAll<HTMLElement>(ROOT_SELECTOR)].map(
-    (root) => attachTabsDom(root, options),
-  )
+  const instances = [
+    ...document.querySelectorAll<HTMLElement>(ROOT_SELECTOR),
+  ].map((root) => attachTabsDom(root, options))
 
   return () => {
     for (const instance of instances) instance.destroy()

@@ -1,7 +1,8 @@
+import { createTabsRootId } from './ids'
 import {
-  getTabsKeyboardIntent,
   getNextEnabledValue,
   getPreviousEnabledValue,
+  getTabsKeyboardIntent,
 } from './keyboard'
 import { TabsRegistry } from './registry'
 import type {
@@ -11,13 +12,14 @@ import type {
   TabsSnapshot,
   TabsTriggerRegistration,
 } from './types'
-import { createTabsRootId } from './ids'
 
 function isDevelopment() {
   return (
-    (globalThis as typeof globalThis & {
-      process?: { env?: { NODE_ENV?: string } }
-    }).process?.env?.NODE_ENV !== 'production'
+    (
+      globalThis as typeof globalThis & {
+        process?: { env?: { NODE_ENV?: string } }
+      }
+    ).process?.env?.NODE_ENV !== 'production'
   )
 }
 
@@ -45,13 +47,17 @@ export function createTabsController(
   let options: Required<
     Pick<TabsRootOptions, 'activationMode' | 'dir' | 'disabled' | 'orientation'>
   > &
-    Omit<TabsRootOptions, 'activationMode' | 'dir' | 'disabled' | 'orientation'> = {
+    Omit<
+      TabsRootOptions,
+      'activationMode' | 'dir' | 'disabled' | 'orientation'
+    > = {
     ...DEFAULTS,
     ...initialOptions,
     id: rootId,
   }
 
-  let selectedValue = initialOptions.value ?? initialOptions.defaultValue ?? null
+  let selectedValue =
+    initialOptions.value ?? initialOptions.defaultValue ?? null
   let focusedValue = selectedValue
   let preferredUncontrolledValue = initialOptions.defaultValue ?? null
 
@@ -71,8 +77,8 @@ export function createTabsController(
   }
 
   function emit() {
-    const snapshot = getSnapshot()
-    for (const listener of listeners) listener(snapshot)
+    cachedSnapshot = computeSnapshot()
+    for (const listener of listeners) listener(cachedSnapshot)
   }
 
   function isControlled() {
@@ -80,7 +86,7 @@ export function createTabsController(
   }
 
   function getCurrentSelectedValue() {
-    return isControlled() ? options.value ?? null : selectedValue
+    return isControlled() ? (options.value ?? null) : selectedValue
   }
 
   function setFocusedValue(value: string | null) {
@@ -106,7 +112,12 @@ export function createTabsController(
     }
   }
 
-  function getSnapshot(): TabsSnapshot {
+  // Cached so getSnapshot() returns a stable reference between emits —
+  // React's useSyncExternalStore compares snapshots with Object.is and
+  // enters an infinite render loop if each call allocates a new object.
+  let cachedSnapshot: TabsSnapshot | null = null
+
+  function computeSnapshot(): TabsSnapshot {
     return {
       activationMode: options.activationMode ?? DEFAULTS.activationMode,
       dir: options.dir ?? DEFAULTS.dir,
@@ -116,6 +127,11 @@ export function createTabsController(
       rootId,
       selectedValue: getCurrentSelectedValue(),
     }
+  }
+
+  function getSnapshot(): TabsSnapshot {
+    cachedSnapshot ??= computeSnapshot()
+    return cachedSnapshot
   }
 
   function focusTriggerElement(value: string | null) {
@@ -137,13 +153,17 @@ export function createTabsController(
   function registerTrigger(registration: TabsTriggerRegistration) {
     const existingTrigger = registry.getTrigger(registration.value)
     if (existingTrigger && existingTrigger !== registration) {
-      warn(`Duplicate TabsTrigger value "${registration.value}" detected in root "${rootId}".`)
+      warn(
+        `Duplicate TabsTrigger value "${registration.value}" detected in root "${rootId}".`,
+      )
     }
 
     const unregister = registry.registerTrigger(registration)
     const currentSelected = getCurrentSelectedValue()
     const nextSelected = resolveSelectedValue(
-      !isControlled() ? preferredUncontrolledValue ?? currentSelected : currentSelected,
+      !isControlled()
+        ? (preferredUncontrolledValue ?? currentSelected)
+        : currentSelected,
     )
 
     if (!isControlled()) {
@@ -172,7 +192,9 @@ export function createTabsController(
   function registerContent(registration: TabsContentRegistration) {
     const existingContent = registry.getContent(registration.value)
     if (existingContent && existingContent !== registration) {
-      warn(`Duplicate TabsContent value "${registration.value}" detected in root "${rootId}".`)
+      warn(
+        `Duplicate TabsContent value "${registration.value}" detected in root "${rootId}".`,
+      )
     }
 
     const unregister = registry.registerContent(registration)
@@ -270,7 +292,9 @@ export function createTabsController(
 
   function setOptions(nextOptions: TabsRootOptions) {
     if (nextOptions.id && nextOptions.id !== rootId) {
-      warn(`Tabs root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`)
+      warn(
+        `Tabs root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`,
+      )
     }
     options = {
       ...options,
@@ -278,14 +302,20 @@ export function createTabsController(
       id: options.id,
     }
 
-    if (!isControlled() && nextOptions.defaultValue !== undefined && !selectedValue) {
+    if (
+      !isControlled() &&
+      nextOptions.defaultValue !== undefined &&
+      !selectedValue
+    ) {
       preferredUncontrolledValue = nextOptions.defaultValue
       selectedValue = resolveSelectedValue(nextOptions.defaultValue)
     }
 
     const resolved = resolveSelectedValue(getCurrentSelectedValue())
     if (options.value != null && !registry.getTrigger(options.value)) {
-      warn(`Controlled Tabs value "${options.value}" has no matching trigger in root "${rootId}".`)
+      warn(
+        `Controlled Tabs value "${options.value}" has no matching trigger in root "${rootId}".`,
+      )
     }
     if (!isControlled()) {
       selectedValue = resolved

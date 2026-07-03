@@ -78,7 +78,8 @@ export function MenuItem(props: MenuItemProps) {
         local.onClick?.(event)
         if (!event.defaultPrevented) {
           const accepted = controller.selectItem(itemId())
-          if (!accepted && (snapshot().disabled || local.disabled)) event.preventDefault()
+          if (!accepted && (snapshot().disabled || local.disabled))
+            event.preventDefault()
         }
       }}
       onFocus={(event) => {

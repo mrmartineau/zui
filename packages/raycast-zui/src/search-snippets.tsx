@@ -13,8 +13,11 @@ const FRAMEWORKS: { id: Framework; label: string; lang: string }[] = [
 
 export default function SearchSnippets() {
   const [frameworkId, setFrameworkId] = useState<Framework>('html')
-  const framework = FRAMEWORKS.find((f) => f.id === frameworkId) ?? FRAMEWORKS[0]
-  const available = snippets.filter((snippet) => snippet.frameworks[framework.id])
+  const framework =
+    FRAMEWORKS.find((f) => f.id === frameworkId) ?? FRAMEWORKS[0]
+  const available = snippets.filter(
+    (snippet) => snippet.frameworks[framework.id],
+  )
   const pages = [...new Set(available.map((snippet) => snippet.page))]
 
   return (
@@ -52,7 +55,10 @@ export default function SearchSnippets() {
                   }
                   actions={
                     <ActionPanel>
-                      <Action.CopyToClipboard title="Copy Snippet" content={code} />
+                      <Action.CopyToClipboard
+                        title="Copy Snippet"
+                        content={code}
+                      />
                       <Action.Paste title="Paste Snippet" content={code} />
                       <Action.OpenInBrowser
                         title="Open Documentation"

@@ -20,7 +20,9 @@ describe('tabs dom adapter', () => {
     const root = createRoot()
     const instance = attachTabsDom(root, { defaultValue: 'security' })
 
-    const triggers = root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]')
+    const triggers = root.querySelectorAll<HTMLElement>(
+      '[data-zui-tabs-trigger]',
+    )
     const panels = root.querySelectorAll<HTMLElement>('[data-zui-tabs-content]')
 
     expect(root.classList.contains('zui-tabs')).toBe(true)
@@ -36,9 +38,14 @@ describe('tabs dom adapter', () => {
 
   it('applies root disabled state to triggers', () => {
     const root = createRoot()
-    const instance = attachTabsDom(root, { defaultValue: 'account', disabled: true })
+    const instance = attachTabsDom(root, {
+      defaultValue: 'account',
+      disabled: true,
+    })
 
-    const triggers = root.querySelectorAll<HTMLButtonElement>('[data-zui-tabs-trigger]')
+    const triggers = root.querySelectorAll<HTMLButtonElement>(
+      '[data-zui-tabs-trigger]',
+    )
 
     expect(triggers[0]?.disabled).toBe(true)
     expect(triggers[1]?.disabled).toBe(true)
@@ -68,8 +75,12 @@ describe('tabs dom adapter', () => {
     await Promise.resolve()
     instance.sync()
 
-    const addedTrigger = root.querySelector<HTMLElement>('[data-zui-tabs-trigger][data-value="billing"]')
-    const addedPanel = root.querySelector<HTMLElement>('[data-zui-tabs-content][data-value="billing"]')
+    const addedTrigger = root.querySelector<HTMLElement>(
+      '[data-zui-tabs-trigger][data-value="billing"]',
+    )
+    const addedPanel = root.querySelector<HTMLElement>(
+      '[data-zui-tabs-content][data-value="billing"]',
+    )
 
     expect(addedTrigger?.id).toContain('billing')
     expect(addedPanel?.getAttribute('aria-labelledby')).toBe(addedTrigger?.id)

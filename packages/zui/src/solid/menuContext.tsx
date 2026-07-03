@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'solid-js'
 import type { Accessor } from 'solid-js'
+import { createContext, useContext } from 'solid-js'
 import type { MenuControllerApi, MenuSnapshot } from '../core/menu'
 
 export interface MenuContextValue {
@@ -26,7 +26,7 @@ export function getMenuItemOrder(
 ) {
   if (!root || !element) return 0
 
-  return [...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]')].indexOf(
-    element,
-  )
+  return [
+    ...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]'),
+  ].indexOf(element)
 }

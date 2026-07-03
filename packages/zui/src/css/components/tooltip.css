@@ -71,6 +71,7 @@
   .zui-tooltip-placement-bottom {
     position-area: block-end center;
     margin-block-start: var(--space-xs);
+    translate: 0 -4px;
 
     @starting-style {
       &:popover-open {
@@ -84,6 +85,7 @@
     position-area: center inline-start;
     margin-block-end: unset;
     margin-inline-end: var(--space-2xs);
+    translate: 4px 0;
 
     @starting-style {
       &:popover-open {
@@ -97,6 +99,7 @@
     position-area: center inline-end;
     margin-block-end: unset;
     margin-inline-start: var(--space-2xs);
+    translate: -4px 0;
 
     @starting-style {
       &:popover-open {

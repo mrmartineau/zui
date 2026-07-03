@@ -129,6 +129,7 @@ import { Prose } from '@mrmartineau/zui/vue'
   console.log(greeting)</code></pre>
     <hr />
     <p>Content after a horizontal rule.</p>
+
   </article>`}
   react={`import { Prose } from '@mrmartineau/zui/react'
 
@@ -225,7 +226,71 @@ import { Prose } from '@mrmartineau/zui/astro'
 import { Prose } from '@mrmartineau/zui/vue'
 {'</script>'}`}
 >
-  <article class="prose"><h1>Heading 1</h1><p>Paragraph text with <a href="#">a link</a>, <strong>bold</strong>, <em>italic</em>, and <code>inline code</code>.</p><h2>Heading 2</h2><p>Another paragraph to show flow spacing between elements. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><h3>Heading 3</h3><h4>Heading 4</h4><ul><li>Unordered list item one</li><li>Item two<ul><li>Nested item</li><li>Another nested item<ul><li>Deeply nested</li></ul></li></ul></li><li>Item three</li></ul><ol><li>Ordered list item one</li><li>Item two<ol><li>Nested ordered</li><li>Another nested<ol><li>Deeply nested</li></ol></li></ol></li><li>Item three</li></ol><blockquote>A blockquote for emphasis or attribution. Styled with a left border and italic text.</blockquote><pre><code>{"// Code block\nconst greeting = 'Hello, world!'\nconsole.log(greeting)"}</code></pre><hr /><p>Content after a horizontal rule.</p></article>
+  <article class="prose"><h1>Heading 1</h1><p>Paragraph text with <a href="#">a link</a>, <strong>bold</strong>, <em>italic</em>, and <code>inline code</code>.</p><h2>Heading 2</h2><p>Another paragraph to show flow spacing between elements. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><h3>Heading 3</h3><h4>Heading 4</h4><ul><li>Unordered list item one</li><li>Item two<ul><li>Nested item</li><li>Another nested item<ul><li>Deeply nested</li></ul></li></ul></li><li>Item three</li></ul><ol><li>Ordered list item one</li><li>Item two<ol><li>Nested ordered</li><li>Another nested<ol><li>Deeply nested</li></ol></li></ol></li><li>Item three</li></ol><blockquote>A blockquote for emphasis or attribution. Styled with a left border and italic text.</blockquote><pre><code>{"// Code block\nconst greeting = 'Hello, world!'\nconsole.log(greeting)"}</code></pre><hr /><p>Content after a horizontal rule.</p><img src="https://placehold.co/600x400" alt="Placeholder image" /><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_v4CpSsHpZQ?si=GRdd906T5TeX2D3g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></article>
+</Demo>
+
+## Inverted
+
+Add `.inverted` when prose sits on a dark surface — such as one filled with `--color-text`. It swaps the text/background colour mapping so links, code, and body copy stay readable.
+
+<Demo
+  html={`<div style="background: var(--color-text); padding: var(--space-md); border-radius: var(--radius-lg);">
+  <article class="prose inverted">
+    <h2>Inverted prose</h2>
+    <p>Body text with <a href="#">links</a> and <code>inline code</code> on a dark surface.</p>
+    <blockquote>Blockquotes stay legible too.</blockquote>
+  </article>
+</div>`}
+  react={`import { Prose } from '@mrmartineau/zui/react'
+
+<div style={{ background: 'var(--color-text)', padding: 'var(--space-md)', borderRadius: 'var(--radius-lg)' }}>
+  <Prose className="inverted">
+    <h2>Inverted prose</h2>
+    <p>Body text with <a href="#">links</a> and <code>inline code</code> on a dark surface.</p>
+    <blockquote>Blockquotes stay legible too.</blockquote>
+  </Prose>
+</div>`}
+  astro={`---
+import { Prose } from '@mrmartineau/zui/astro'
+---
+
+<div style="background: var(--color-text); padding: var(--space-md); border-radius: var(--radius-lg);">
+  <Prose class="inverted">
+    <h2>Inverted prose</h2>
+    <p>Body text with <a href="#">links</a> and <code>inline code</code> on a dark surface.</p>
+    <blockquote>Blockquotes stay legible too.</blockquote>
+  </Prose>
+</div>`}
+  solid={`import { Prose } from '@mrmartineau/zui/solid'
+
+<div style={{ background: 'var(--color-text)', padding: 'var(--space-md)', 'border-radius': 'var(--radius-lg)' }}>
+  <Prose class="inverted">
+    <h2>Inverted prose</h2>
+    <p>Body text with <a href="#">links</a> and <code>inline code</code> on a dark surface.</p>
+    <blockquote>Blockquotes stay legible too.</blockquote>
+  </Prose>
+</div>`}
+  vue={`<template>
+  <div style="background: var(--color-text); padding: var(--space-md); border-radius: var(--radius-lg);">
+    <Prose class="inverted">
+      <h2>Inverted prose</h2>
+      <p>Body text with <a href="#">links</a> and <code>inline code</code> on a dark surface.</p>
+      <blockquote>Blockquotes stay legible too.</blockquote>
+    </Prose>
+  </div>
+</template>
+
+<script setup>
+import { Prose } from '@mrmartineau/zui/vue'
+</script>`}
+>
+  <div style="background: var(--color-text); padding: var(--space-md); border-radius: var(--radius-lg); flex: 1;">
+    <article class="prose inverted">
+      <h2>Inverted prose</h2>
+      <p>Body text with <a href="#">links</a> and <code>inline code</code> on a dark surface.</p>
+      <blockquote>Blockquotes stay legible too.</blockquote>
+    </article>
+  </div>
 </Demo>
 
 ## What it styles

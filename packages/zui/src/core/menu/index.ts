@@ -1,11 +1,11 @@
 export { createMenuController } from './controller'
+export { attachMenuDom } from './dom'
 export {
   createMenuContentId,
   createMenuItemId,
   createMenuRootId,
   createMenuTriggerId,
 } from './ids'
-export { attachMenuDom } from './dom'
 export type {
   MenuAlign,
   MenuControllerApi,

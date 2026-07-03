@@ -29,7 +29,6 @@ export interface TokenEntry {
 
 export interface Manifest {
   version: string
-  generatedAt: string
   classes: ClassEntry[]
   tokens: TokenEntry[]
 }
@@ -160,7 +159,6 @@ const dedupedTokens = tokens.filter((t) => {
 
 const manifest: Manifest = {
   classes,
-  generatedAt: new Date().toISOString(),
   tokens: dedupedTokens,
   version: rootPkg.version,
 }

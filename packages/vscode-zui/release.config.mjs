@@ -14,14 +14,16 @@
 //     marketplace gets the version semantic-release just computed.
 export default {
   branches: ['main'],
-  tagFormat: 'vscode-zui-v${version}',
   extends: 'semantic-release-monorepo',
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     ['@semantic-release/npm', { npmPublish: false }],
-    ['@semantic-release/exec', { publishCmd: 'pnpm run package && pnpm run publish' }],
+    [
+      '@semantic-release/exec',
+      { publishCmd: 'pnpm run package && pnpm run publish' },
+    ],
     [
       '@semantic-release/git',
       {
@@ -32,4 +34,5 @@ export default {
     ],
     ['@semantic-release/github', { failComment: false, failTitle: false }],
   ],
+  tagFormat: 'vscode-zui-v${version}',
 }

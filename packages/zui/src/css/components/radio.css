@@ -10,11 +10,16 @@
     color: var(--color-text);
   }
 
+  /* The ring is drawn with border (padding forms the gap) rather than
+     outline, so the focus ring doesn't replace the control's own ring */
   .zui-radio input[type="radio"] {
     appearance: none;
+    box-sizing: content-box;
     width: 0.8em;
     height: 0.8em;
+    padding: 3px;
     outline: 3px var(--border-style, solid) var(--color-border, currentColor);
+    /* background-clip: content-box; */
     outline-offset: 3px;
     border-radius: var(--radius-full);
     cursor: pointer;

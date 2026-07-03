@@ -111,17 +111,18 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     // (breakpoint, storage key, shortcut binding). Callback reference changes
     // are handled separately via the ref above, so prop-level onCollapsedChange
     // updates do NOT trigger a teardown.
+    // biome-ignore lint/correctness/useExhaustiveDependencies: collapsed/defaultCollapsed are read once at controller boot; changes are synced by the next effect without a teardown
     useEffect(() => {
       if (!rootRef.current || !sidebarRef.current) return
       const controller = new AppShellController({
+        bindKeyboardShortcut: shortcut,
+        collapsed,
+        defaultCollapsed,
+        mobileBreakpoint,
+        onCollapsedChange: (v) => onCollapsedChangeRef.current?.(v),
         root: rootRef.current,
         sidebar: sidebarRef.current,
-        defaultCollapsed,
-        collapsed,
-        mobileBreakpoint,
         storageKey: storageKey === undefined ? undefined : storageKey,
-        bindKeyboardShortcut: shortcut,
-        onCollapsedChange: (v) => onCollapsedChangeRef.current?.(v),
       })
       controller.mount()
       const off = controller.onModeChange((m) => setMode(m))
@@ -148,7 +149,15 @@ export const AppShell = forwardRef<HTMLDivElement, AppShellProps>(
     }, [])
 
     const ctx = useMemo<AppShellContextValue>(
-      () => ({ rootId, sidebarId, mainId, registerRoot, registerSidebar, toggle, mode }),
+      () => ({
+        mainId,
+        mode,
+        registerRoot,
+        registerSidebar,
+        rootId,
+        sidebarId,
+        toggle,
+      }),
       [rootId, sidebarId, mainId, registerRoot, registerSidebar, toggle, mode],
     )
 
@@ -230,10 +239,7 @@ export function AppShellSidebarHeader({
   ...props
 }: AppShellSidebarHeaderProps) {
   return (
-    <div
-      className={appShellSidebarHeaderVariants({ className })}
-      {...props}
-    />
+    <div className={appShellSidebarHeaderVariants({ className })} {...props} />
   )
 }
 
@@ -253,10 +259,7 @@ export function AppShellSidebarFooter({
   ...props
 }: AppShellSidebarFooterProps) {
   return (
-    <div
-      className={appShellSidebarFooterVariants({ className })}
-      {...props}
-    />
+    <div className={appShellSidebarFooterVariants({ className })} {...props} />
   )
 }
 

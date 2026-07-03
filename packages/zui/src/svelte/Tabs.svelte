@@ -1,7 +1,12 @@
 <script lang="ts">
 import type { Snippet } from 'svelte'
 import type { HTMLAttributes } from 'svelte/elements'
-import { createTabsController, type TabsActivationMode, type TabsDirection, type TabsOrientation } from '../core/tabs'
+import {
+  createTabsController,
+  type TabsActivationMode,
+  type TabsDirection,
+  type TabsOrientation,
+} from '../core/tabs'
 import { tabsVariants } from '../shared/tabsVariants'
 import { setTabsContext } from './tabsContext'
 

@@ -106,8 +106,8 @@
 
   .zui-dialog-size-full {
     --zui-dialog-max-width: none;
-    width: calc(100vw - var(--space-lg));
-    height: calc(100vh - var(--space-lg));
+    width: calc(100dvw - var(--space-lg));
+    height: calc(100dvh - var(--space-lg));
   }
 
   /* Position variants */

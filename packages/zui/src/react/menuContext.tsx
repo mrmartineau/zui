@@ -1,4 +1,9 @@
-import { createContext, useContext, useSyncExternalStore, type RefObject } from 'react'
+import {
+  createContext,
+  type RefObject,
+  useContext,
+  useSyncExternalStore,
+} from 'react'
 import type { MenuControllerApi, MenuSnapshot } from '../core/menu'
 
 export interface MenuContextValue {
@@ -33,7 +38,7 @@ export function getMenuItemOrder(
 ) {
   if (!root || !element) return 0
 
-  return [...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]')].indexOf(
-    element,
-  )
+  return [
+    ...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]'),
+  ].indexOf(element)
 }

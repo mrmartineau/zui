@@ -75,5 +75,7 @@ export interface MenuControllerApi {
   selectItem(id: string): boolean
   setOptions(options: MenuRootOptions): void
   subscribe(listener: (snapshot: MenuSnapshot) => void): () => void
-  toggleMenu(options?: { focus?: Exclude<MenuFocusTarget, 'next' | 'previous'> | null }): boolean
+  toggleMenu(options?: {
+    focus?: Exclude<MenuFocusTarget, 'next' | 'previous'> | null
+  }): boolean
 }

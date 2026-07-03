@@ -15,14 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  ref,
-  useId,
-  watchEffect,
-} from 'vue'
+import { computed, onMounted, onUnmounted, ref, useId, watchEffect } from 'vue'
 import {
   createMenuController,
   type MenuAlign,
@@ -86,7 +79,8 @@ onMounted(() => {
   const onPointerDown = (event: PointerEvent) =>
     controller.handleDocumentPointerDown(event.target)
   document.addEventListener('pointerdown', onPointerDown)
-  removePointerDown = () => document.removeEventListener('pointerdown', onPointerDown)
+  removePointerDown = () =>
+    document.removeEventListener('pointerdown', onPointerDown)
 })
 
 onUnmounted(() => {
@@ -96,5 +90,7 @@ onUnmounted(() => {
 
 provideMenuContext({ controller, rootRef, snapshot })
 
-const classes = computed(() => ['zui-menu', props.class].filter(Boolean).join(' '))
+const classes = computed(() =>
+  ['zui-menu', props.class].filter(Boolean).join(' '),
+)
 </script>

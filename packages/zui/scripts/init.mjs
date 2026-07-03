@@ -236,11 +236,14 @@ async function main() {
   // 8. Install cva
   if (framework !== 'CSS only') {
     const pm = detectPackageManager()
+    // cva's npm `latest` dist-tag points at a 0.0.0 placeholder — pin the
+    // beta the copied components are written against.
+    const cvaSpec = 'cva@1.0.0-beta.4'
     const installCmds = {
-      bun: 'bun add cva',
-      npm: 'npm install cva',
-      pnpm: 'pnpm add cva',
-      yarn: 'yarn add cva',
+      bun: `bun add ${cvaSpec}`,
+      npm: `npm install ${cvaSpec}`,
+      pnpm: `pnpm add ${cvaSpec}`,
+      yarn: `yarn add ${cvaSpec}`,
     }
     info(`Installing cva via ${pm}…`)
     try {

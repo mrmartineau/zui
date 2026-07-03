@@ -1,6 +1,6 @@
 ---
-import type { VariantProps } from 'cva'
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
 import { tabsTriggerVariants } from '../shared/tabsVariants'
 
 type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
@@ -11,7 +11,13 @@ interface Props extends HTMLAttributes<'button'>, TabsTriggerVariantProps {
   class?: string
 }
 
-const { class: className, disabled = false, value, variant, ...props } = Astro.props
+const {
+  class: className,
+  disabled = false,
+  value,
+  variant,
+  ...props
+} = Astro.props
 const classes = tabsTriggerVariants({ class: className, variant })
 ---
 

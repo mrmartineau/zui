@@ -21,4 +21,8 @@ jobs:
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm exec biome ci .
       - run: pnpm run build
+      - name: Test
+        run: pnpm --filter @mrmartineau/zui test

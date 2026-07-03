@@ -1,7 +1,12 @@
 let tabsIdCount = 0
 
 function sanitizeValue(value: string) {
-  return value.trim().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9_-]/g, '') || 'item'
+  return (
+    value
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-zA-Z0-9_-]/g, '') || 'item'
+  )
 }
 
 export function createTabsRootId(explicitId?: string) {

@@ -22,50 +22,50 @@ interface Theme {
 
 const themes: Theme[] = [
   {
-    id: 'YPNrjrZ',
-    name: 'Golden Hour',
     blurb:
       'Warm editorial. A serif display face, generous line-height, softly rounded corners and a rose/amber palette on a paper-cream background.',
     htmlClass: 'zui-light',
+    id: 'YPNrjrZ',
+    name: 'Golden Hour',
   },
   {
-    id: 'BypwPmr',
-    name: 'Terminal',
     blurb:
       'Dark, monospace, zero radius. Phosphor-green text on near-black, tight line-height and hard corners — a coding-console aesthetic built from the same components.',
     htmlClass: 'zui-dark',
+    id: 'BypwPmr',
+    name: 'Terminal',
   },
   {
-    id: 'emgGjew',
-    name: 'Bubblegum',
     blurb:
       'Playful and pill-shaped. A rounded display face, a fuchsia/pink palette and a huge radius scale (2.5×) turn every corner into a soft curve.',
     htmlClass: 'zui-light',
+    id: 'emgGjew',
+    name: 'Bubblegum',
   },
   {
-    id: 'ZYLXjvd',
-    name: 'Nordic',
     blurb:
       'Cool and professional. Inter throughout, an indigo/blue palette on slate greys, tight line-height and a subtle 0.5× radius scale for a crisp, corporate feel.',
     htmlClass: 'zui-light',
+    id: 'ZYLXjvd',
+    name: 'Nordic',
   },
   {
-    id: 'ogBGMEY',
-    name: 'Brutalist',
     blurb:
       'Maximum contrast. Black borders and text, a single yellow accent, square corners and Space Grotesk. Notice the button label flips to black automatically — ZUI computes readable text against any accent.',
     htmlClass: 'zui-light',
+    id: 'ogBGMEY',
+    name: 'Brutalist',
   },
 ]
 
 const embeds = themes.map((theme) => ({
   ...theme,
   prefill: JSON.stringify({
-    title: `ZUI theming — ${theme.name}`,
     description:
       'Same ZUI components, a different theme. Edit the :root block to reshape everything.',
-    tags: ['zui', 'theming', 'css'],
     html_classes: theme.htmlClass,
+    tags: ['zui', 'theming', 'css'],
+    title: `ZUI theming — ${theme.name}`,
   }),
 }))
 ---

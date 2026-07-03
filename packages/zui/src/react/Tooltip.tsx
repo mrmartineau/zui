@@ -41,6 +41,7 @@ export function Tooltip({
       className={['zui-tooltip', className].filter(Boolean).join(' ')}
       {...props}
     >
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}
       <span
         style={{ anchorName } as React.CSSProperties}
         onMouseEnter={show}

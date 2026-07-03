@@ -21,9 +21,9 @@ const props = defineProps<{
 
 const classes = computed(() =>
   fieldVariants({
-    orientation: props.orientation,
-    invalid: props.invalid,
     className: props.class,
+    invalid: props.invalid,
+    orientation: props.orientation,
   }),
 )
 </script>

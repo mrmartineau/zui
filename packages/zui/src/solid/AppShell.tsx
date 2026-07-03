@@ -1,9 +1,9 @@
 import {
-  type JSX,
   createContext,
   createEffect,
   createSignal,
   createUniqueId,
+  type JSX,
   onCleanup,
   onMount,
   splitProps,
@@ -82,14 +82,14 @@ export function AppShell(props: AppShellProps) {
   onMount(() => {
     if (!sidebarEl) return
     controller = new AppShellController({
+      bindKeyboardShortcut: local.shortcut ?? false,
+      collapsed: local.collapsed,
+      defaultCollapsed: local.defaultCollapsed ?? false,
+      mobileBreakpoint: local.mobileBreakpoint ?? 768,
+      onCollapsedChange: local.onCollapsedChange,
       root: rootEl,
       sidebar: sidebarEl,
-      defaultCollapsed: local.defaultCollapsed ?? false,
-      collapsed: local.collapsed,
-      mobileBreakpoint: local.mobileBreakpoint ?? 768,
       storageKey: local.storageKey === undefined ? undefined : local.storageKey,
-      bindKeyboardShortcut: local.shortcut ?? false,
-      onCollapsedChange: local.onCollapsedChange,
     })
     controller.mount()
     const off = controller.onModeChange((m) => setMode(m))
@@ -108,12 +108,12 @@ export function AppShell(props: AppShellProps) {
   const toggle = () => controller?.toggle()
 
   const ctx: AppShellContextValue = {
-    rootId,
-    sidebarId,
     mainId,
-    setSidebar,
-    toggle,
     mode,
+    rootId,
+    setSidebar,
+    sidebarId,
+    toggle,
   }
 
   return (
@@ -123,7 +123,10 @@ export function AppShell(props: AppShellProps) {
           rootEl = el
         }}
         id={rootId}
-        class={appShellVariants({ class: local.class, position: local.position })}
+        class={appShellVariants({
+          class: local.class,
+          position: local.position,
+        })}
         {...rest}
       >
         <a class="zui-app-shell-skip-link" href={`#${mainId}`}>
@@ -151,10 +154,7 @@ export function AppShellHeader(props: AppShellHeaderProps) {
   ])
   const showToggle = () => local.toggle !== false
   return (
-    <header
-      class={appShellHeaderVariants({ class: local.class })}
-      {...rest}
-    >
+    <header class={appShellHeaderVariants({ class: local.class })} {...rest}>
       {showToggle() && (
         <button
           type="button"

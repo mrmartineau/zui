@@ -1,6 +1,6 @@
 @layer zui.utilities {
   [class*="zui-text-"] {
-    line-height: var(--line-height-tight);
+    line-height: var(--line-height-xs);
     margin: 0;
     font-weight: var(--font-weight-regular);
   }

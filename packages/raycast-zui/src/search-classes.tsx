@@ -15,7 +15,10 @@ function ClassItem({ entry }: { entry: ClassEntry }) {
       accessories={[{ tag: sourceLabel(entry) }]}
       actions={
         <ActionPanel>
-          <Action.CopyToClipboard title="Copy Class Name" content={entry.name} />
+          <Action.CopyToClipboard
+            title="Copy Class Name"
+            content={entry.name}
+          />
           <Action.Paste title="Paste Class Name" content={entry.name} />
           {entry.docsUrl && (
             <Action.OpenInBrowser

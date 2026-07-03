@@ -1,7 +1,12 @@
 <script lang="ts">
 import type { Snippet } from 'svelte'
 import type { HTMLAttributes } from 'svelte/elements'
-import { createMenuController, type MenuAlign, type MenuDirection, type MenuSide } from '../core/menu'
+import {
+  createMenuController,
+  type MenuAlign,
+  type MenuDirection,
+  type MenuSide,
+} from '../core/menu'
 import { setMenuContext } from './menuContext'
 
 type Props = HTMLAttributes<HTMLDivElement> & {
@@ -34,7 +39,17 @@ let {
 }: Props = $props()
 
 let root = $state<HTMLDivElement | undefined>()
-const controller = createMenuController({ align, defaultOpen, dir, disabled, id, modal, onOpenChange, open, side })
+const controller = createMenuController({
+  align,
+  defaultOpen,
+  dir,
+  disabled,
+  id,
+  modal,
+  onOpenChange,
+  open,
+  side,
+})
 let snapshot = $state(controller.getSnapshot())
 
 const unsubscribe = controller.subscribe((next) => {
@@ -42,11 +57,22 @@ const unsubscribe = controller.subscribe((next) => {
 })
 
 $effect(() => {
-  controller.setOptions({ align, defaultOpen, dir, disabled, id, modal, onOpenChange, open, side })
+  controller.setOptions({
+    align,
+    defaultOpen,
+    dir,
+    disabled,
+    id,
+    modal,
+    onOpenChange,
+    open,
+    side,
+  })
 })
 
 $effect(() => {
-  const onPointerDown = (event: PointerEvent) => controller.handleDocumentPointerDown(event.target)
+  const onPointerDown = (event: PointerEvent) =>
+    controller.handleDocumentPointerDown(event.target)
   document.addEventListener('pointerdown', onPointerDown)
   return () => document.removeEventListener('pointerdown', onPointerDown)
 })

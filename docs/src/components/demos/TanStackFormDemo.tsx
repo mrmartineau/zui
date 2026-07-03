@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { useForm } from '@tanstack/react-form'
+
 import {
   Button,
   Checkbox,
@@ -14,6 +14,7 @@ import {
   Radio,
   Textarea,
 } from '@mrmartineau/zui/react'
+import { useForm } from '@tanstack/react-form'
 import { useState } from 'react'
 
 interface SignupValues {
@@ -26,9 +27,9 @@ interface SignupValues {
 }
 
 const PLANS: { value: SignupValues['plan']; label: string }[] = [
-  { value: 'free', label: 'Free' },
-  { value: 'pro', label: 'Pro' },
-  { value: 'team', label: 'Team' },
+  { label: 'Free', value: 'free' },
+  { label: 'Pro', value: 'pro' },
+  { label: 'Team', value: 'team' },
 ]
 
 /** First validation message for a field, only once it has been touched. */
@@ -43,12 +44,12 @@ export default function TanStackFormDemo() {
 
   const form = useForm({
     defaultValues: {
-      email: '',
-      username: '',
       bio: '',
-      plan: 'free',
+      email: '',
       newsletter: true,
+      plan: 'free',
       terms: false,
+      username: '',
     } as SignupValues,
     onSubmit: ({ value }) => {
       setSubmitted(value)
@@ -139,7 +140,9 @@ export default function TanStackFormDemo() {
           name="bio"
           validators={{
             onChange: ({ value }) =>
-              value.length > 160 ? 'Keep your bio under 160 characters' : undefined,
+              value.length > 160
+                ? 'Keep your bio under 160 characters'
+                : undefined,
           }}
         >
           {(field) => {
@@ -263,13 +266,13 @@ export default function TanStackFormDemo() {
       {submitted && (
         <pre
           style={{
-            marginTop: 'var(--space-sm)',
-            padding: 'var(--space-xs)',
-            borderRadius: 'var(--radius-md)',
             background: 'var(--color-surface)',
             border: '1px solid var(--color-border)',
-            overflowX: 'auto',
+            borderRadius: 'var(--radius-md)',
             fontSize: 'var(--step--1)',
+            marginTop: 'var(--space-sm)',
+            overflowX: 'auto',
+            padding: 'var(--space-xs)',
           }}
         >
           {JSON.stringify(submitted, null, 2)}

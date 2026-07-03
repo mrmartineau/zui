@@ -1,7 +1,4 @@
-import type {
-  TabsContentRegistration,
-  TabsTriggerRegistration,
-} from './types'
+import type { TabsContentRegistration, TabsTriggerRegistration } from './types'
 
 export class TabsRegistry {
   private contents = new Map<string, TabsContentRegistration>()

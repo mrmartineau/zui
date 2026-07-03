@@ -30,6 +30,18 @@
     transition-timing-function: ease-in-out;
   }
 
+  /* Light chevron for dark scheme — the data-URI stroke can't use
+     currentColor or light-dark(), so swap the image per scheme */
+  :root.zui-dark .zui-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23aaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not(.zui-light) .zui-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23aaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    }
+  }
+
   .zui-select:focus-visible {
     border-color: var(--color-theme);
   }

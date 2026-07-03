@@ -32,6 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          # Resolve main at job start rather than pinning github.sha, so the
+          # second serialised matrix job sees the first job's release commit.
+          ref: main
           fetch-depth: 0          # semantic-release needs full history
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6

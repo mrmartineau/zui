@@ -53,7 +53,9 @@ describe('menu dom adapter', () => {
     const root = createRoot()
     const instance = attachMenuDom(root, { defaultOpen: true })
 
-    document.body.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true }))
+    document.body.dispatchEvent(
+      new MouseEvent('pointerdown', { bubbles: true }),
+    )
 
     expect(root.dataset.state).toBe('closed')
 
@@ -71,7 +73,9 @@ describe('menu dom adapter', () => {
     await Promise.resolve()
     instance.sync()
 
-    const trigger = root.querySelector<HTMLButtonElement>('[data-zui-menu-trigger]')
+    const trigger = root.querySelector<HTMLButtonElement>(
+      '[data-zui-menu-trigger]',
+    )
     const content = root.querySelector<HTMLElement>('[data-zui-menu-content]')
 
     expect(root.dataset.state).toBe('open')

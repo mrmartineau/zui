@@ -25,8 +25,8 @@
       "style": "./src/css/theme.css"
     },
     "./nav": {
-      "import": "./src/nav.ts",
-      "types": "./src/nav.ts"
+      "types": "./src/nav.ts",
+      "import": "./src/nav.ts"
     }
   },
   "files": [

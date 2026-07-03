@@ -1,8 +1,8 @@
 export {
   AppShellController,
-  appShellNoFlashScript,
   type AppShellControllerOptions,
   type AppShellMode,
+  appShellNoFlashScript,
 } from '../shared/AppShellController'
 export {
   appShellHeaderVariants,
@@ -42,14 +42,14 @@ export {
 export {
   AppShell,
   AppShellHeader,
+  type AppShellHeaderProps,
   AppShellMain,
+  type AppShellMainProps,
+  type AppShellProps,
   AppShellSidebar,
   AppShellSidebarBody,
   AppShellSidebarFooter,
   AppShellSidebarHeader,
-  type AppShellHeaderProps,
-  type AppShellMainProps,
-  type AppShellProps,
   type AppShellSidebarProps,
 } from './AppShell'
 export { Avatar, type AvatarProps } from './Avatar'
