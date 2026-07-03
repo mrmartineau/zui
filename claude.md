@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, Solid, Svelte, and Vue component wrappers. See `AGENTS.md` for full architecture and conventions — everything there applies here too.
+ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, Solid, Svelte, and Vue component wrappers, plus framework-free Web Components. See `AGENTS.md` for full architecture and conventions — everything there applies here too.
 
 ## Critical Rules
 
@@ -21,7 +21,7 @@ ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, S
 
 5. **Use the `zui-` class prefix** for all component CSS classes.
 
-6. **Multi-layer components.** New components need: CSS in `packages/zui/src/css/components/`, Astro wrapper in `packages/zui/src/astro/`, React wrapper in `packages/zui/src/react/`, Solid wrapper in `packages/zui/src/solid/`, Svelte wrapper in `packages/zui/src/svelte/`, Vue wrapper in `packages/zui/src/vue/`, shared variants in `packages/zui/src/shared/` (using `cva`), and exports added to every `index.ts` file.
+6. **Multi-layer components.** New components need: CSS in `packages/zui/src/css/components/`, Astro wrapper in `packages/zui/src/astro/`, React wrapper in `packages/zui/src/react/`, Solid wrapper in `packages/zui/src/solid/`, Svelte wrapper in `packages/zui/src/svelte/`, Vue wrapper in `packages/zui/src/vue/`, web component in `packages/zui/src/wc/` (registered in `ZUI_ELEMENTS`), shared variants in `packages/zui/src/shared/` (using `cva`), and exports added to every `index.ts` file.
 
 7. **Colour handling.** Use `light-dark()` for theme-aware colours. Use `oklch(from …)` relative colour syntax for transparency or tint variations — don't create new tokens for every shade.
 

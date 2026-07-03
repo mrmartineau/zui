@@ -5,7 +5,7 @@
   "dependencies": {
     "cva": "1.0.0-beta.4"
   },
-  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
+  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, Vue, and Web Components",
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
     "@mrmartineau/kit": "^1.0.0",
@@ -73,6 +73,12 @@
     },
     "./vue/*": {
       "import": "./src/vue/*"
+    },
+    "./wc": {
+      "import": {
+        "default": "./dist/wc/index.mjs",
+        "types": "./dist/wc/index.d.mts"
+      }
     }
   },
   "files": [
@@ -84,6 +90,7 @@
     "src/solid",
     "src/svelte",
     "src/vue",
+    "src/wc",
     "src/shared",
     "src/utils"
   ],

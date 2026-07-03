@@ -8,9 +8,10 @@ interface Props {
   solid?: string
   svelte?: string
   vue?: string
+  wc?: string
 }
 
-const { html, react, astro: astroCode, solid, svelte, vue } = Astro.props
+const { html, react, astro: astroCode, solid, svelte, vue, wc } = Astro.props
 const tabs = [
   html && { code: html, id: 'html', label: 'HTML', lang: 'html' as const },
   react && { code: react, id: 'react', label: 'React', lang: 'tsx' as const },
@@ -28,6 +29,7 @@ const tabs = [
     lang: 'svelte' as const,
   },
   vue && { code: vue, id: 'vue', label: 'Vue', lang: 'vue' as const },
+  wc && { code: wc, id: 'wc', label: 'Web Components', lang: 'html' as const },
 ].filter(Boolean) as { id: string; label: string; code: string; lang: string }[]
 
 const hasCode = tabs.length > 0
