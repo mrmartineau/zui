@@ -22,6 +22,7 @@ export default defineConfig([
       'solid/index': 'src/solid/index.ts',
     },
     format: 'esm',
+    outExtensions: () => ({ js: '.jsx' }),
     tsconfig: 'src/solid/tsconfig.json',
   },
 

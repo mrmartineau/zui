@@ -36,3 +36,26 @@ The `.sr-only` (aliased as `.visually-hidden`) class hides an element visually b
 <a href="#main" class="sr-only">Skip to main content</a>
 ```
 
+## The `hidden` attribute
+
+ZUI's reset makes the native `hidden` attribute work on every element, including ZUI components that set their own `display` (like `.zui-button`'s `inline-flex`, which would otherwise override the browser's built-in `[hidden]` rule):
+
+```css
+[hidden]:not([hidden='until-found']) {
+  display: none !important;
+}
+```
+
+Toggle visibility from JavaScript with the `hidden` property — no class juggling or inline styles needed:
+
+```html
+<button class="zui-button" hidden>Reset</button>
+```
+
+```js
+button.hidden = false // show
+button.hidden = true // hide
+```
+
+`hidden="until-found"` is excluded from the rule, so browsers can still reveal that content via find-in-page and fragment navigation.
+

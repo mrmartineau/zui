@@ -49,10 +49,9 @@
       }
     },
     "./solid": {
-      "import": {
-        "types": "./dist/solid/index.d.mts",
-        "default": "./dist/solid/index.mjs"
-      }
+      "types": "./dist/solid/index.d.ts",
+      "solid": "./dist/solid/index.jsx",
+      "import": "./dist/solid/index.jsx"
     },
     "./svelte": {
       "import": "./src/svelte/index.ts",
@@ -79,6 +78,7 @@
     "dist",
     "scripts",
     "src/css",
+    "src/core",
     "src/astro",
     "src/react",
     "src/solid",
@@ -90,7 +90,7 @@
   "name": "@mrmartineau/zui",
   "license": "MIT",
   "peerDependencies": {
-    "astro": "^6.0.0",
+    "astro": "^6.0.0 || ^7.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "solid-js": "^1.7.0",
     "svelte": "^5.0.0",
