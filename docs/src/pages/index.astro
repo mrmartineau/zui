@@ -8,7 +8,7 @@ import {
   Tooltip,
 } from '@mrmartineau/zui/astro'
 import { version } from '../../../packages/zui/package.json'
-import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/HomeLayout.astro'
 
 const allMdxPages = import.meta.glob('./**/*.mdx', { eager: true })
 
@@ -102,16 +102,17 @@ const tokenColors = [
 
 <Layout>
   <section class="hero">
-    <div class="hero-badges">
-      <span class="zui-badge zui-badge-variant-outline"><abbr title="Zooey">ZUI</abbr> v{version}</span>
+    <div class="hero-name">ZUI</div>
+    <!-- <div class="hero-badges">
+      <span class="zui-badge zui-badge-variant-outline">v{version}</span>
       <span class="zui-badge">CSS-first &middot; No build step</span>
-    </div>
+    </div> -->
     <h1 class="hero-title">A CSS-first UI library that's fully themeable and agent&nbsp;ready</h1>
     <p class="hero-subtitle">Browse {componentCount} accessible components, tune every token to match your brand, and ship with zero JS runtime &mdash; pick a starting point and go. Optional <a href="/guides/react">React</a>, <a href="/guides/astro">Astro</a>, <a href="/guides/solid">Solid</a>, <a href="/guides/svelte">Svelte</a> &amp; <a href="/guides/vue">Vue</a> wrappers included.</p>
     <div class="hero-actions">
-      <a href="/guides" class="zui-button">Get started</a>
-      <a href="/components" class="zui-button zui-button-variant-outline">Browse components</a>
-      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost"><i class="ph ph-github-logo"></i> GitHub</a>
+      <a href="/guides" class="zui-button zui-button-shape-squircle">Get started</a>
+      <a href="/components" class="zui-button zui-button-variant-outline zui-button-shape-squircle">Browse components</a>
+      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost zui-button-shape-squircle"><i class="ph ph-github-logo"></i> GitHub</a>
     </div>
     <div class="hero-install">
       <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
@@ -420,12 +421,24 @@ const tokenColors = [
     align-items: center;
     text-align: center;
     padding-block: var(--space-xl) var(--space-2xl);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #A0286C;
+      background: linear-gradient(180deg, var(--color-theme), var(--color-background));
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: -1;
+    }
   }
 
   .hero-badges {
     display: flex;
     gap: var(--space-2xs);
-    margin-block-end: var(--space-md);
+    margin-block: var(--space-md);
   }
 
   .hero-badges abbr {
@@ -434,10 +447,17 @@ const tokenColors = [
     text-decoration-color: oklch(from currentColor l c h / 30%);
   }
 
+  .hero-name {
+    font-size: clamp(4rem, 13vw, 13rem);
+    font-family: "Bagel Fat One", var(--font-display);
+    line-height: 1;
+    margin-block-end: var(--space-sm);
+  }
+
   .hero-title {
     font-size: var(--step-5);
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: var(--font-weight-regular);
     line-height: var(--line-height-xs);
     letter-spacing: -0.025em;
     text-wrap: balance;
@@ -453,6 +473,19 @@ const tokenColors = [
     text-wrap: balance;
     max-width: 55ch;
     margin-block-start: var(--space-md);
+  }
+
+  .hero-subtitle a {
+    color: var(--color-text);
+    text-decoration-line: underline;
+    text-decoration-color: oklch(from var(--color-text) l c h / 50%);
+    text-decoration-thickness: 0.2ex;
+    text-underline-offset: 0.3ex;
+    transition: text-decoration-color 0.2s var(--ease-in-out);
+  }
+
+  .hero-subtitle a:hover {
+    text-decoration-color: oklch(from var(--color-text) l c h / 90%);
   }
 
   .hero-actions {

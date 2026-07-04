@@ -152,6 +152,7 @@ Import everything (named) from the `@mrmartineau/zui-theme/astro` barrel:
 | Export | Purpose |
 |---|---|
 | `DocsLayout` | The configurable page shell (header, sidebar, TOC, footer, switchers) |
+| `BaseLayout` | Header + footer only — no sidebar or TOC. For homepages and landing pages |
 | `Sidebar`, `TableOfContents` | Navigation pieces (composed by `DocsLayout`) |
 | `Demo` | Live preview + tabbed source code |
 | `DemoPreview` | A bordered preview box on its own |
@@ -160,6 +161,23 @@ Import everything (named) from the `@mrmartineau/zui-theme/astro` barrel:
 | `Section`, `Subtitle` | Small layout helpers |
 | `DarkModeSwitcher`, `MiniThemeSwitcher`, `ThemeSwitcher` | Theme controls |
 | `buildSidebarSections`, `buildFooterSections` | Turn a `pages` glob into nav data |
+
+### `BaseLayout` — pages without the docs chrome
+
+`BaseLayout` renders the same header and footer as `DocsLayout` but no sidebar or table of contents, so a page's content spans the full width between them. Use it for a homepage or landing page. It takes the same props as `DocsLayout`; `sections` only feeds the mobile nav dialog (omit it to drop the mobile menu button entirely), and `currentPath` defaults to the current URL. Provide your own `<main>` wrapper:
+
+```astro
+---
+import { BaseLayout } from '@mrmartineau/zui-theme/astro'
+import { site } from '../site.config'
+---
+
+<BaseLayout site={site}>
+  <main class="home">
+    <slot />
+  </main>
+</BaseLayout>
+```
 
 `buildSidebarSections` accepts an `append` option to add non-page links to a section — for example, a hand-written changelog (exactly how this site adds the [Changelog](/changelog) entry):
 

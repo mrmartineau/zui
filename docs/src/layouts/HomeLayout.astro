@@ -1,8 +1,8 @@
 ---
 import {
+  BaseLayout,
   buildFooterSections,
   buildSidebarSections,
-  DocsLayout,
 } from '@mrmartineau/zui-theme/astro'
 import { site } from '../site.config'
 
@@ -11,8 +11,7 @@ interface Props {
   description?: string
 }
 
-// @ts-expect-error ignore
-const { title, description } = (Astro.props.frontmatter ?? Astro.props) as Props
+const { title, description } = Astro.props
 const currentPath = Astro.url.pathname
 
 const pages = import.meta.glob('../pages/**/*.mdx', { eager: true })
@@ -26,7 +25,7 @@ const sections = buildSidebarSections(pages, {
 const footerSections = buildFooterSections(indexPages)
 ---
 
-<DocsLayout
+<BaseLayout
   title={title}
   description={description}
   currentPath={currentPath}
@@ -39,8 +38,25 @@ const footerSections = buildFooterSections(indexPages)
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
   </Fragment>
-  <slot />
+  <main class="home-main" transition:animate="fade">
+    <slot />
+  </main>
   <Fragment slot="body-end">
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88182718a8c6437783661af812d8c2fc"}'></script>
   </Fragment>
-</DocsLayout>
+</BaseLayout>
+
+<style>
+  .home-main {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  @media (max-width: 767px) {
+    .home-main {
+      padding: var(--space-md);
+    }
+  }
+</style>
