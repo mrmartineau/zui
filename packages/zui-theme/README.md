@@ -137,8 +137,9 @@ import { Demo } from '@mrmartineau/zui-theme/astro'
 
 `BaseLayout` is the header + footer shell without the sidebar or table of
 contents — use it for homepages and landing pages. It takes the same props as
-`DocsLayout` (`sections` is optional and only feeds the mobile nav dialog), and
-you provide your own `<main>` wrapper.
+`DocsLayout` (`sections` is optional and only feeds the mobile nav dialog, and
+`currentPath` is optional, defaulting to `Astro.url.pathname`), and you provide
+your own `<main>` wrapper.
 
 ### Helpers
 

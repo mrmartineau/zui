@@ -1,10 +1,7 @@
 ---
-import {
-  buildFooterSections,
-  buildSidebarSections,
-  DocsLayout,
-} from '@mrmartineau/zui-theme/astro'
+import { DocsLayout } from '@mrmartineau/zui-theme/astro'
 import { site } from '../site.config'
+import { footerSections, sections } from './nav'
 
 interface Props {
   title?: string
@@ -14,16 +11,6 @@ interface Props {
 // @ts-expect-error ignore
 const { title, description } = (Astro.props.frontmatter ?? Astro.props) as Props
 const currentPath = Astro.url.pathname
-
-const pages = import.meta.glob('../pages/**/*.mdx', { eager: true })
-const indexPages = import.meta.glob('../pages/*/index.mdx', { eager: true })
-
-const sections = buildSidebarSections(pages, {
-  append: [
-    { heading: 'Guides', items: [{ href: '/changelog', label: 'Changelog' }] },
-  ],
-})
-const footerSections = buildFooterSections(indexPages)
 ---
 
 <DocsLayout
