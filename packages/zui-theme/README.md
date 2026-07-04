@@ -131,9 +131,14 @@ import { Demo } from '@mrmartineau/zui-theme/astro'
 
 ### Components
 
-`DocsLayout`, `Sidebar`, `TableOfContents`, `Demo`, `DemoPreview`, `CopyCode`,
-`TokenGrid`, `TokenRow`, `Section`, `Subtitle`, `DarkModeSwitcher`,
+`DocsLayout`, `BaseLayout`, `Sidebar`, `TableOfContents`, `Demo`, `DemoPreview`,
+`CopyCode`, `TokenGrid`, `TokenRow`, `Section`, `Subtitle`, `DarkModeSwitcher`,
 `MiniThemeSwitcher`, `ThemeSwitcher`.
+
+`BaseLayout` is the header + footer shell without the sidebar or table of
+contents — use it for homepages and landing pages. It takes the same props as
+`DocsLayout` (`sections` is optional and only feeds the mobile nav dialog), and
+you provide your own `<main>` wrapper.
 
 ### Helpers
 

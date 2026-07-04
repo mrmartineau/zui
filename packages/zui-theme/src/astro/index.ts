@@ -18,6 +18,8 @@ export {
   pageHref,
   sectionKey,
 } from '../nav'
+// Layouts
+export { default as BaseLayout } from './BaseLayout.astro'
 export { default as CopyCode } from './CopyCode.astro'
 // Theme controls
 export { default as DarkModeSwitcher } from './DarkModeSwitcher.astro'

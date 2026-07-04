@@ -1,49 +1,32 @@
 ---
 import { Code } from 'astro:components'
-import { version } from '../../../package.json'
-import Layout from '../layouts/Layout.astro'
-
-interface PageFrontmatter {
-  title: string
-  order?: number
-}
-
-interface FooterLink {
-  href: string
-  title: string
-}
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Tooltip,
+} from '@mrmartineau/zui/astro'
+import { version } from '../../../packages/zui/package.json'
+import Layout from '../layouts/HomeLayout.astro'
 
 const allMdxPages = import.meta.glob('./**/*.mdx', { eager: true })
 
-function pathToHref(filePath: string): string {
-  return (
-    filePath
-      .replace(/^\./, '')
-      .replace(/\.mdx$/, '')
-      .replace(/\/index$/, '') || '/'
-  )
-}
+const componentCount = Object.keys(allMdxPages).filter(
+  (path) => path.startsWith('./components/') && !path.endsWith('/index.mdx'),
+).length
 
-function buildSectionLinks(section: string): FooterLink[] {
-  return Object.entries(allMdxPages)
-    .filter(([path]) => path.match(/^\.\/([^/]+)\//)?.[1] === section)
-    .map(([path, mod]) => {
-      const fm = (mod as { frontmatter: PageFrontmatter }).frontmatter
-      const isIndex = path.endsWith('/index.mdx')
-      return {
-        _sort: isIndex ? -1 : (fm.order ?? Infinity),
-        href: pathToHref(path),
-        title: fm.title,
-      }
-    })
-    .sort((a, b) => a._sort - b._sort || a.title.localeCompare(b.title))
-    .map(({ href, title }) => ({ href, title }))
-}
+const stats = [
+  { label: 'Components', value: String(componentCount) },
+  { label: 'Framework wrappers', value: '5' },
+  { label: 'JS runtime', value: '0kB' },
+  { label: 'Theme file', value: '1' },
+]
 
-// Teaser for /guides/theming-showcase — each card is a mini live preview that
-// mirrors its demo theme. Colours use the same light-dark() pairs as the real
-// theme so the cards follow the docs' colour scheme. Terminal is pinned dark
-// (its pen forces zui-dark); Brutalist inverts to black-on-dark.
+// Mini live previews that mirror the demo themes from /guides/theming-showcase.
+// Colours use the same light-dark() pairs as the real themes so the tiles
+// follow the docs' colour scheme. Terminal is pinned dark (its pen forces
+// zui-dark); Brutalist inverts to black-on-dark.
 const themePreviews = [
   {
     accent: 'light-dark(var(--color-rose-600), var(--color-rose-400))',
@@ -106,47 +89,112 @@ const themePreviews = [
     text: 'light-dark(#111111, #fafafa)',
   },
 ]
+
+const tokenColors = [
+  'var(--color-rose-500)',
+  'var(--color-orange-500)',
+  'var(--color-amber-400)',
+  'var(--color-emerald-500)',
+  'var(--color-sky-500)',
+  'var(--color-violet-500)',
+]
 ---
 
 <Layout>
   <section class="hero">
-    <h1 class="hero-title"><abbr title="Zooey">ZUI</abbr> – Build interfaces with intention</h1>
-    <p class="hero-subtitle">A CSS-first UI library with design tokens, layered architecture, and optional <a href="/guides/react">React</a>, <a href="/guides/astro">Astro</a>, <a href="/guides/solid">Solid</a>, <a href="/guides/svelte">Svelte</a> &amp; <a href="/guides/vue">Vue</a> components. No build step required.</p>
+    <div class="hero-name">ZUI</div>
+    <!-- <div class="hero-badges">
+      <span class="zui-badge zui-badge-variant-outline">v{version}</span>
+      <span class="zui-badge">CSS-first &middot; No build step</span>
+    </div> -->
+    <h1 class="hero-title">A CSS-first UI library that's fully themeable and agent&nbsp;ready</h1>
+    <p class="hero-subtitle">Browse {componentCount} accessible components, tune every token to match your brand, and ship with zero JS runtime &mdash; pick a starting point and go. Optional <a href="/guides/react">React</a>, <a href="/guides/astro">Astro</a>, <a href="/guides/solid">Solid</a>, <a href="/guides/svelte">Svelte</a> &amp; <a href="/guides/vue">Vue</a> wrappers included.</p>
     <div class="hero-actions">
-      <a href="/guides" class="zui-button">Get started</a>
-      <a href="/components" class="zui-button zui-button-variant-outline">Browse components</a>
+      <a href="/guides" class="zui-button zui-button-shape-squircle">Get started</a>
+      <a href="/components" class="zui-button zui-button-variant-outline zui-button-shape-squircle">Browse components</a>
+      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost zui-button-shape-squircle"><i class="ph ph-github-logo"></i> GitHub</a>
     </div>
-
     <div class="hero-install">
       <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
-      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost"><i class="ph ph-github-logo"></i> View source</a>
-      <a href="https://codepen.io/mrmartineau/pen/gbwoRZj?editors=1100" class="zui-button zui-button-variant-ghost mt-sm"><i class="ph ph-codepen-logo"></i> Try it on CodePen</a>
+      <a href="https://codepen.io/mrmartineau/pen/gbwoRZj?editors=1100" class="hero-install-alt"><i class="ph ph-codepen-logo"></i> or try it on CodePen</a>
     </div>
   </section>
 
-  <section class="theming">
-    <h2 class="section-label">One theme file, infinite looks</h2>
-    <p class="theming-lede">Every ZUI component reads from a small set of semantic custom properties. Override that <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and borders all follow. Same markup, five very different personalities:</p>
-    <ul class="theming-swatches">
-      {themePreviews.map((theme) => (
-        <li
-          class="theming-swatch"
-          style={`--sw-bg:${theme.bg};--sw-surface:${theme.surface};--sw-border:${theme.border};--sw-text:${theme.text};--sw-accent:${theme.accent};--sw-on-accent:${theme.onAccent};--sw-radius:${theme.radius};--sw-font:${theme.font}`}
-        >
-          <div class="theming-swatch-preview">
-            <span class="theming-swatch-tag">Aa</span>
-            <span class="theming-swatch-btn">Button</span>
-          </div>
-          <span class="theming-swatch-name">{theme.name}</span>
-          <span class="theming-swatch-note">{theme.note}</span>
+  <section class="stats" aria-label="ZUI at a glance">
+    <ul class="stats-grid">
+      {stats.map(({ label, value }) => (
+        <li class="stat">
+          <span class="stat-value">{value}</span>
+          <span class="stat-label">{label}</span>
         </li>
       ))}
     </ul>
-    <a href="/guides/theming-showcase" class="zui-button zui-button-variant-outline"><i class="ph ph-swatches"></i> Explore the theming showcase</a>
+  </section>
+
+  <section class="starting-points">
+    <header class="section-header">
+      <p class="section-eyebrow">Explore</p>
+      <h2 class="section-title">Pick a starting point</h2>
+      <p class="section-lede">Everything in ZUI is built from the same three ingredients: components, a theme, and the tokens beneath them. Start wherever suits your project.</p>
+    </header>
+    <div class="start-grid">
+      <a href="/components" class="start-card">
+        <div class="start-card-preview" aria-hidden="true">
+          <span class="zui-button">Button</span>
+          <span class="zui-badge zui-badge-color-green">Badge</span>
+          <span class="zui-avatar"><span class="zui-avatar-fallback">ZM</span></span>
+          <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>
+          <span class="zui-button zui-button-variant-outline">Outline</span>
+          <span class="zui-badge zui-badge-variant-fill">Fill</span>
+        </div>
+        <div class="start-card-body">
+          <h3 class="start-card-title">Components <i class="ph ph-arrow-right"></i></h3>
+          <p class="start-card-description">{componentCount} accessible, themeable building blocks &mdash; from buttons and forms to dialogs, menus, and a full app shell.</p>
+        </div>
+      </a>
+
+      <a href="/guides/theming" class="start-card">
+        <div class="start-card-preview" aria-hidden="true">
+          {themePreviews.map((theme) => (
+            <span
+              class="start-theme-chip"
+              style={`--tc-bg:${theme.surface};--tc-border:${theme.border};--tc-text:${theme.text};--tc-radius:${theme.radius};--tc-font:${theme.font}`}
+            >Aa</span>
+          ))}
+        </div>
+        <div class="start-card-body">
+          <h3 class="start-card-title">Theming <i class="ph ph-arrow-right"></i></h3>
+          <p class="start-card-description">Override one <code>theme.css</code> file and every component follows &mdash; colours, fonts, radii, and light/dark schemes.</p>
+        </div>
+      </a>
+
+      <a href="/tokens" class="start-card">
+        <div class="start-card-preview" aria-hidden="true">
+          <span class="start-token-row">
+            {tokenColors.map((color) => (
+              <span class="start-token-dot" style={`--td-color:${color}`}></span>
+            ))}
+          </span>
+          <span class="start-token-row">
+            <span class="start-token-bar" style="width:14%"></span>
+            <span class="start-token-bar" style="width:24%"></span>
+            <span class="start-token-bar" style="width:38%"></span>
+          </span>
+        </div>
+        <div class="start-card-body">
+          <h3 class="start-card-title">Tokens <i class="ph ph-arrow-right"></i></h3>
+          <p class="start-card-description">Colours, spacing, type scale, shadows, radii, easing, and z-index &mdash; all exposed as CSS custom properties.</p>
+        </div>
+      </a>
+    </div>
   </section>
 
   <section class="showcase">
-    <h2 class="section-label">Live components</h2>
+    <header class="section-header">
+      <p class="section-eyebrow">Component library</p>
+      <h2 class="section-title">Real components, rendered live</h2>
+      <p class="section-lede">Nothing on this page is a screenshot. Every control below is the shipped CSS, running in your colour scheme &mdash; try the tabs.</p>
+    </header>
     <div class="showcase-grid">
       <div class="showcase-panel">
         <span class="showcase-label">Buttons</span>
@@ -169,6 +217,20 @@ const themePreviews = [
           <span class="zui-badge zui-badge-color-red">Red</span>
           <span class="zui-badge zui-badge-color-amber">Amber</span>
         </div>
+      </div>
+
+      <div class="showcase-panel showcase-panel-wide">
+        <span class="showcase-label">Tabs</span>
+        <Tabs defaultValue="preview">
+          <TabsList aria-label="Tabs demo">
+            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="code">Code</TabsTrigger>
+            <TabsTrigger value="tokens">Tokens</TabsTrigger>
+          </TabsList>
+          <TabsContent value="preview">Fully keyboard-accessible tabs, styled with plain CSS.</TabsContent>
+          <TabsContent value="code">Use plain classes, or the React, Astro, Solid, Svelte &amp; Vue wrappers.</TabsContent>
+          <TabsContent value="tokens">Every colour and radius here comes from a design token.</TabsContent>
+        </Tabs>
       </div>
 
       <div class="showcase-panel">
@@ -206,11 +268,79 @@ const themePreviews = [
           </div>
         </div>
       </div>
+
+      <div class="showcase-panel showcase-panel-wide">
+        <span class="showcase-label">Inline pieces</span>
+        <div class="showcase-row">
+          <span class="zui-avatar"><span class="zui-avatar-fallback">ZM</span></span>
+          <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>
+          <kbd class="zui-kbd">Esc</kbd>
+          <span class="zui-badge zui-badge-color-blue">v{version}</span>
+          <Tooltip text="Popover API + CSS anchor positioning">
+            <button class="zui-button zui-button-variant-outline">Hover me</button>
+          </Tooltip>
+        </div>
+      </div>
+    </div>
+    <a href="/components" class="section-more">Browse all {componentCount} components <i class="ph ph-arrow-right"></i></a>
+  </section>
+
+  <section class="theming">
+    <header class="section-header">
+      <p class="section-eyebrow">Theming</p>
+      <h2 class="section-title">One theme file, infinite looks</h2>
+      <p class="section-lede">Every ZUI component reads from a small set of semantic custom properties. Override that <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and borders all follow. Same markup, five very different personalities:</p>
+    </header>
+    <ul class="theming-swatches">
+      {themePreviews.map((theme) => (
+        <li
+          class="theming-swatch"
+          style={`--sw-bg:${theme.bg};--sw-surface:${theme.surface};--sw-border:${theme.border};--sw-text:${theme.text};--sw-accent:${theme.accent};--sw-on-accent:${theme.onAccent};--sw-radius:${theme.radius};--sw-font:${theme.font}`}
+        >
+          <div class="theming-swatch-preview">
+            <span class="theming-swatch-tag">Aa</span>
+            <span class="theming-swatch-btn">Button</span>
+          </div>
+          <span class="theming-swatch-name">{theme.name}</span>
+          <span class="theming-swatch-note">{theme.note}</span>
+        </li>
+      ))}
+    </ul>
+    <a href="/guides/theming-showcase" class="section-more">Explore the theming showcase <i class="ph ph-arrow-right"></i></a>
+  </section>
+
+  <section class="agents">
+    <header class="section-header">
+      <p class="section-eyebrow">AI tooling</p>
+      <h2 class="section-title">Built for people &mdash; and their agents</h2>
+      <p class="section-lede">Design systems are increasingly consumed by coding agents, not just humans. ZUI ships the tooling both need: a skill that teaches assistants the real class names and tokens, and a CLI that copies the source straight into your project.</p>
+    </header>
+    <div class="agents-grid">
+      <a href="/guides/skills" class="agent-card">
+        <i class="ph-duotone ph-robot agent-card-icon"></i>
+        <h3 class="agent-card-title">Agent skill</h3>
+        <p class="agent-card-description">Install the ZUI skill for Claude Code, Cursor, and other assistants. The model learns ZUI's classes, tokens, and conventions &mdash; no hallucinated class names.</p>
+        <Code code="npx skills add mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+      </a>
+      <a href="/guides/copy-source" class="agent-card">
+        <i class="ph-duotone ph-copy agent-card-icon"></i>
+        <h3 class="agent-card-title">Copy the source</h3>
+        <p class="agent-card-description">Want full control? Copy every component, token, and stylesheet directly into your project &mdash; no package dependency required.</p>
+        <Code code="npx @mrmartineau/zui init" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+      </a>
+      <a href="/guides/vscode-extension" class="agent-card">
+        <i class="ph-duotone ph-code agent-card-icon"></i>
+        <h3 class="agent-card-title">Editor tooling</h3>
+        <p class="agent-card-description">The VS Code extension autocompletes ZUI class names and design tokens as you type, with hover docs for every custom property.</p>
+      </a>
     </div>
   </section>
 
   <section class="features">
-    <h2 class="section-label">Why ZUI</h2>
+    <header class="section-header">
+      <p class="section-eyebrow">Principles</p>
+      <h2 class="section-title">Why ZUI</h2>
+    </header>
     <div class="features-grid">
       <div class="feature">
         <h3>CSS-first</h3>
@@ -249,23 +379,14 @@ const themePreviews = [
         <h3>Modern CSS</h3>
         <p>Built on <code>oklch()</code>, relative colour syntax, <code>light-dark()</code>, and container queries. Designed for how CSS works today.</p>
       </div>
-
-      <div class="feature">
-        <h3>Copy source into your project</h3>
-        <p>Want full control? Run <code>npx @mrmartineau/zui init</code> to copy all components, CSS, and tokens directly into your project — no package dependency required.</p>
-        <a href="/guides/copy-source" class="feature-link">Learn more</a>
-      </div>
-
-      <div class="feature">
-        <h3>AI-ready</h3>
-        <p>Ships an agent skill for Claude Code, Cursor, and other AI assistants. The model learns ZUI's class names, tokens, and conventions — no hallucinated classes.</p>
-        <a href="/guides/skills" class="feature-link">Install the skill</a>
-      </div>
     </div>
   </section>
 
   <section class="quickstart">
-    <h2 class="section-label">Quick start</h2>
+    <header class="section-header">
+      <p class="section-eyebrow">Quick start</p>
+      <h2 class="section-title">Up and running in three steps</h2>
+    </header>
     <div class="quickstart-steps">
       <div class="step">
         <span class="step-number">1</span>
@@ -295,16 +416,53 @@ const themePreviews = [
 <style>
   /* Hero ------------------------------------------------------------------ */
   .hero {
-    padding-block: 2vw;
-    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: var(--space-xl) var(--space-2xl);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #A0286C;
+      background: linear-gradient(180deg, var(--color-theme), var(--color-background));
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: -1;
+    }
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: var(--space-2xs);
+    margin-block: var(--space-md);
+  }
+
+  .hero-badges abbr {
+    font-family: var(--font-code);
+    text-decoration-style: wavy;
+    text-decoration-color: oklch(from currentColor l c h / 30%);
+  }
+
+  .hero-name {
+    font-size: clamp(4rem, 13vw, 13rem);
+    font-family: "Bagel Fat One", var(--font-display);
+    line-height: 1;
+    margin-block-end: var(--space-sm);
   }
 
   .hero-title {
     font-size: var(--step-5);
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-regular);
     line-height: var(--line-height-xs);
     letter-spacing: -0.025em;
-    margin-block: var(--space-sm) var(--space-md);
+    text-wrap: balance;
+    max-width: 22ch;
+    margin: 0;
     color: var(--color-text);
   }
 
@@ -312,44 +470,282 @@ const themePreviews = [
     font-size: var(--step-1);
     line-height: var(--line-height-md);
     color: color-mix(in oklch, var(--color-text) 70%, transparent);
-    max-width: 50ch;
+    text-wrap: balance;
+    max-width: 55ch;
+    margin-block-start: var(--space-md);
+  }
+
+  .hero-subtitle a {
+    color: var(--color-text);
+    text-decoration-line: underline;
+    text-decoration-color: oklch(from var(--color-text) l c h / 50%);
+    text-decoration-thickness: 0.2ex;
+    text-underline-offset: 0.3ex;
+    transition: text-decoration-color 0.2s var(--ease-in-out);
+  }
+
+  .hero-subtitle a:hover {
+    text-decoration-color: oklch(from var(--color-text) l c h / 90%);
   }
 
   .hero-actions {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-xs);
     margin-block-start: var(--space-lg);
   }
 
   .hero-install {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2xs);
     margin-block-start: var(--space-lg);
   }
 
   .hero-install :global(pre) {
     margin: 0;
-  }
-  abbr {
-    font-family: var(--font-code);
-    text-decoration-style: wavy;
-    text-decoration-color: oklch(from currentColor l c h / 30%);
+    min-width: 32ch;
+    text-align: left;
   }
 
-  /* Section label --------------------------------------------------------- */
-  .section-label {
+  .hero-install-alt {
+    font-size: var(--step--1);
+    color: color-mix(in oklch, var(--color-text) 60%, transparent);
+    text-decoration: none;
+  }
+
+  .hero-install-alt:hover {
+    color: var(--color-theme);
+  }
+
+  /* Stats ------------------------------------------------------------------ */
+  .stats {
+    border-block: 1px solid var(--color-border);
+    padding-block: var(--space-md);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4xs);
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: var(--step-3);
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-theme);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-label {
+    font-size: var(--step--2);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: color-mix(in oklch, var(--color-text) 55%, transparent);
+  }
+
+  /* Section headers --------------------------------------------------------- */
+  section {
+    padding-block: var(--space-xl);
+  }
+
+  section + section {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stats + .starting-points {
+    border-top: 0;
+  }
+
+  .section-header {
+    margin-block-end: var(--space-lg);
+  }
+
+  .section-eyebrow {
     font-size: var(--step--2);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-theme);
-    margin-block-end: var(--space-md);
+    margin: 0 0 var(--space-2xs);
+  }
+
+  .section-title {
+    font-size: var(--step-3);
+    font-family: var(--font-display);
+    font-weight: 750;
+    line-height: var(--line-height-xs);
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .section-lede {
+    font-size: var(--step-0);
+    line-height: var(--line-height-md);
+    color: color-mix(in oklch, var(--color-text) 70%, transparent);
+    max-width: 60ch;
+    margin: var(--space-xs) 0 0;
+  }
+
+  .section-lede code,
+  .start-card-description code,
+  .feature code {
+    font-size: 0.875em;
+    font-family: var(--font-code);
+    background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+
+  .section-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    margin-block-start: var(--space-lg);
+    font-size: var(--step-0);
+    font-weight: 600;
+    color: var(--color-theme);
+    text-decoration: none;
+  }
+
+  .section-more:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.3ex;
+  }
+
+  /* Starting points ---------------------------------------------------------- */
+  .start-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .start-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, translate 0.15s var(--ease-out);
+  }
+
+  .start-card:hover {
+    border-color: var(--color-theme);
+    box-shadow: var(--shadow-md);
+    translate: 0 -2px;
+  }
+
+  .start-card-preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    min-height: 7.5rem;
+    padding: var(--space-sm);
+    background:
+      radial-gradient(
+        circle at 50% 120%,
+        color-mix(in oklch, var(--color-theme) 12%, transparent),
+        transparent 70%
+      ),
+      light-dark(
+        oklch(from var(--color-background) calc(l + 0.015) c h),
+        oklch(from var(--color-background) calc(l - 0.015) c h)
+      );
+    border-bottom: 1px solid var(--color-border);
+    pointer-events: none;
+  }
+
+  .start-card-body {
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+  }
+
+  .start-card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    font-size: var(--step-1);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin: 0 0 var(--space-3xs);
+  }
+
+  .start-card-title i {
+    font-size: 0.85em;
+    color: var(--color-theme);
+    transition: translate 0.15s var(--ease-out);
+  }
+
+  .start-card:hover .start-card-title i {
+    translate: 4px 0;
+  }
+
+  .start-card-description {
+    font-size: var(--step--1);
+    line-height: var(--line-height-md);
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+    margin: 0;
+  }
+
+  .start-theme-chip {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    background: var(--tc-bg);
+    color: var(--tc-text);
+    border: 1px solid var(--tc-border);
+    border-radius: var(--tc-radius);
+    font-family: var(--tc-font);
+    font-weight: 700;
+    font-size: var(--step-0);
+  }
+
+  .start-token-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xs);
+    width: 100%;
+  }
+
+  .start-token-dot {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: var(--radius-full);
+    background: var(--td-color);
+  }
+
+  .start-token-bar {
+    height: 0.6rem;
+    border-radius: var(--radius-full);
+    background: color-mix(in oklch, var(--color-theme) 55%, transparent);
   }
 
   /* Showcase -------------------------------------------------------------- */
-  .showcase {
-    padding-block: 2vw;
-    border-top: 1px solid var(--color-border);
-  }
-
   .showcase-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -360,9 +756,14 @@ const themePreviews = [
     padding: var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
+    background-color: var(--color-surface);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+  }
+
+  .showcase-panel-wide {
+    grid-column: 1 / -1;
   }
 
   .showcase-label {
@@ -387,31 +788,10 @@ const themePreviews = [
   }
 
   /* Theming teaser -------------------------------------------------------- */
-  .theming {
-    padding-block: var(--space-xl);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .theming-lede {
-    font-size: var(--step-0);
-    line-height: var(--line-height-md);
-    color: color-mix(in oklch, var(--color-text) 70%, transparent);
-    max-width: 60ch;
-    margin-block-end: var(--space-lg);
-  }
-
-  .theming-lede code {
-    font-size: 0.875em;
-    font-family: var(--font-code);
-    background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
-    padding: 0.1em 0.35em;
-    border-radius: var(--radius-sm);
-  }
-
   .theming-swatches {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-lg);
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     gap: var(--space-sm);
@@ -471,12 +851,56 @@ const themePreviews = [
     color: color-mix(in oklch, var(--sw-text) 60%, transparent);
   }
 
-  /* Features -------------------------------------------------------------- */
-  .features {
-    padding-block: var(--space-xl);
-    border-top: 1px solid var(--color-border);
+  /* Agents ------------------------------------------------------------------ */
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
   }
 
+  .agent-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .agent-card:hover {
+    border-color: var(--color-theme);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .agent-card-icon {
+    font-size: var(--step-3);
+    color: var(--color-theme);
+  }
+
+  .agent-card-title {
+    font-size: var(--step-0);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .agent-card-description {
+    font-size: var(--step--1);
+    line-height: var(--line-height-md);
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+    margin: 0;
+    flex: 1;
+  }
+
+  .agent-card :global(pre) {
+    margin: 0;
+  }
+
+  /* Features -------------------------------------------------------------- */
   .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -513,30 +937,25 @@ const themePreviews = [
     text-decoration: underline;
   }
 
-  .feature code {
-    font-size: 0.875em;
-    font-family: var(--font-code);
-    background-color: color-mix(in oklch, var(--color-text) 8%, transparent);
-    padding: 0.1em 0.35em;
-    border-radius: var(--radius-sm);
-  }
-
   /* Quick start ----------------------------------------------------------- */
   .quickstart {
-    padding-block: var(--space-xl) var(--space-2xl);
-    border-top: 1px solid var(--color-border);
+    padding-block-end: var(--space-2xl);
   }
 
   .quickstart-steps {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
   }
 
   .step {
     display: flex;
-    gap: var(--space-md);
-    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background-color: var(--color-surface);
   }
 
   .step-number {
@@ -551,7 +970,6 @@ const themePreviews = [
     color: light-dark(var(--color-white), oklch(from var(--color-theme) 0.15 c h));
     font-size: var(--step--1);
     font-weight: 700;
-    margin-block-start: 2px;
   }
 
   .step-content {
@@ -569,68 +987,32 @@ const themePreviews = [
     margin: 0;
   }
 
-  /* Footer ---------------------------------------------------------------- */
-  .site-footer {
-    padding-block: var(--space-xl);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .footer-links {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
-  }
-
-  .footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-  }
-
-  .footer-col h4 {
-    font-size: var(--step--2);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: color-mix(in oklch, var(--color-text) 50%, transparent);
-    margin-block-end: var(--space-3xs);
-  }
-
-  .footer-col a {
-    font-size: var(--step--1);
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-
-  .footer-col a:hover {
-    color: var(--color-theme);
-  }
-
   /* Responsive ------------------------------------------------------------ */
-  @media (max-width: 767px) {
-    .showcase-grid {
+  @media (max-width: 1023px) {
+    .start-grid,
+    .agents-grid,
+    .quickstart-steps {
       grid-template-columns: 1fr;
     }
 
     .features-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
+  @media (max-width: 767px) {
     .hero-title {
       font-size: var(--step-4);
     }
 
-    .footer-links {
+    .stats-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-md);
+      gap: var(--space-md) var(--space-sm);
     }
-  }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
+    .showcase-grid,
     .features-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
     }
   }
 </style>
