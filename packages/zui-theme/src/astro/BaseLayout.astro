@@ -48,8 +48,8 @@ const metaDescription = description ?? site.description ?? ''
     {metaDescription ? <meta name="description" content={metaDescription} /> : null}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {site.author ? <meta name="author" content={site.author} /> : null}
-    <meta name="og:type" content="website" />
-    <meta name="og:url" content={Astro.url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
     <meta name="generator" content={Astro.generator} />
     {phosphor && (
       <>
@@ -97,7 +97,7 @@ const metaDescription = description ?? site.description ?? ''
             class="mobile-menu-btn zui-button zui-button-variant-ghost zui-button-shape-squircle"
             type="button"
             aria-label="Open navigation"
-            onclick="document.getElementById('mobile-nav').showModal()"
+            data-mobile-nav-open
           >
             <i class="ph ph-list"></i>
           </button>
@@ -113,7 +113,7 @@ const metaDescription = description ?? site.description ?? ''
             class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
             type="button"
             aria-label="Close navigation"
-            onclick="document.getElementById('mobile-nav').close()"
+            data-mobile-nav-close
           >
             <i class="ph ph-x"></i>
           </button>
@@ -123,6 +123,21 @@ const metaDescription = description ?? site.description ?? ''
         </div>
       </dialog>
     )}
+
+    <script>
+      function wireMobileNav() {
+        const dialog = document.getElementById('mobile-nav') as HTMLDialogElement | null
+        if (!dialog) return
+        document
+          .querySelector('[data-mobile-nav-open]')
+          ?.addEventListener('click', () => dialog.showModal())
+        document
+          .querySelector('[data-mobile-nav-close]')
+          ?.addEventListener('click', () => dialog.close())
+      }
+      wireMobileNav()
+      document.addEventListener('astro:page-load', wireMobileNav)
+    </script>
 
     <slot />
 
