@@ -83,6 +83,26 @@ All styles are organised into cascading layers. When writing custom CSS that int
 
 ## Overriding Component Styles
 
+**Prefer the component's CSS variables over raw CSS properties.** When you need to restyle a component for an isolated, one-off case (not a global theme change), change the component's custom property rather than setting `color`, `background-color`, `border`, etc. directly. The variables are the component's intended API — they flow through the component's internal states (hover, focus, disabled, variants) so overriding one value stays consistent, whereas a raw property override only patches the single declaration it targets and can be out-sync or need `!important` to win.
+
+For example, to change a button's foreground colour, set `--zui-btn-fg` — don't set `color`:
+
+```css
+/* ✅ Do — override the variable */
+.checkout .zui-button {
+  --zui-btn-fg: var(--color-background);
+  --zui-btn-bg: var(--color-success);
+}
+
+/* ❌ Avoid — raw property override */
+.checkout .zui-button {
+  color: var(--color-background);
+  background-color: var(--color-success);
+}
+```
+
+(Component variables use the abbreviated prefix — `--zui-btn-*` for the button, not `--zui-button-*`.) Only fall back to raw CSS properties when no variable exists for the thing you need to change. If you find yourself reaching for a raw property often, check the component's docs page for a variable that covers it first.
+
 ### CSS custom properties
 
 Every component exposes CSS custom properties that control its appearance — colours, border radius, padding, shadow, and more. Override these without touching source CSS.
@@ -839,3 +859,4 @@ Padding: `p-{size}`, `px-{size}`, `py-{size}`, `pt-{size}`, `pb-{size}`, `pl-{si
 8. **Border style** uses `var(--border-style)`.
 9. **Focus ring** uses `var(--focus-ring)` and `var(--focus-ring-offset)`.
 10. **Forms always use Field components** — wrap every label + control in a `Field` (and groups in `FieldSet`/`FieldLegend`). `zui-label` and the controls carry no margins; the Field family owns all form spacing.
+11. **Override variables, not properties** — for isolated component restyles, change the component's custom property (e.g. `--zui-btn-fg`) rather than raw `color`/`background-color`. Fall back to raw CSS properties only when no variable exists.
