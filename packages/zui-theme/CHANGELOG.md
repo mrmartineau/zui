@@ -1,3 +1,10 @@
+# [@mrmartineau/zui-theme-v1.1.1](https://github.com/mrmartineau/zui/compare/@mrmartineau/zui-theme-v1.1.0...@mrmartineau/zui-theme-v1.1.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* **zui-theme:** layout issues ([5c4180c](https://github.com/mrmartineau/zui/commit/5c4180c7b41a652899333924304f7a8f8bf67af9))
+
 # [@mrmartineau/zui-theme-v1.1.0](https://github.com/mrmartineau/zui/compare/@mrmartineau/zui-theme-v1.0.0...@mrmartineau/zui-theme-v1.1.0) (2026-07-01)
 
 
