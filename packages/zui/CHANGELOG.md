@@ -1,3 +1,10 @@
+# [@mrmartineau/zui-v1.6.1](https://github.com/mrmartineau/zui/compare/v1.6.0...v1.6.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* **zui:** repair framework barrels for npm consumers + global [hidden] support ([#17](https://github.com/mrmartineau/zui/issues/17)) ([e0cf95a](https://github.com/mrmartineau/zui/commit/e0cf95a899bfaffdccb9cedb590352b9900c4c8c))
+
 # [@mrmartineau/zui-v1.6.0](https://github.com/mrmartineau/zui/compare/v1.5.0...v1.6.0) (2026-06-24)
 
 
