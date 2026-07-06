@@ -26,4 +26,11 @@
     isolation: isolate;
     min-height: 100dvh;
   }
+
+  /* Components set their own display (e.g. .zui-button { display: inline-flex }),
+     which beats the UA [hidden] rule. !important in this early layer wins over
+     normal declarations in every later layer and over inline styles. */
+  [hidden]:not([hidden="until-found"]) {
+    display: none !important;
+  }
 }
