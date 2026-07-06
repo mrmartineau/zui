@@ -1,7 +1,7 @@
 import type { JSX } from 'solid-js'
 import { splitProps } from 'solid-js'
 
-export type TableProps = JSX.TableHTMLAttributes<HTMLTableElement> & {
+export type TableProps = JSX.HTMLAttributes<HTMLTableElement> & {
   class?: string
 }
 
