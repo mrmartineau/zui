@@ -1,5 +1,5 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
-import { docs } from './data'
+import { RefreshDataAction, useReferenceData } from './reference'
 
 const SECTION_ORDER = [
   'Components',
@@ -20,12 +20,17 @@ const SECTION_ICONS: Record<string, Icon> = {
 }
 
 export default function SearchDocs() {
+  const { data, isLoading, refresh } = useReferenceData()
+  const docs = data.docs
   const sections = SECTION_ORDER.filter((section) =>
     docs.some((doc) => doc.section === section),
   )
 
   return (
-    <List searchBarPlaceholder="Search the ZUI documentation…">
+    <List
+      isLoading={isLoading}
+      searchBarPlaceholder="Search the ZUI documentation…"
+    >
       {sections.map((section) => (
         <List.Section key={section} title={section}>
           {docs
@@ -44,6 +49,7 @@ export default function SearchDocs() {
                       title="Copy URL"
                       content={doc.url}
                     />
+                    <RefreshDataAction refresh={refresh} />
                   </ActionPanel>
                 }
               />

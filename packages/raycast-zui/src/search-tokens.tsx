@@ -1,6 +1,10 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
 import { useState } from 'react'
-import { type TokenEntry, tokens } from './data'
+import {
+  RefreshDataAction,
+  type TokenEntry,
+  useReferenceData,
+} from './reference'
 
 const CATEGORY_LABELS: Record<string, string> = {
   animation: 'Animation',
@@ -23,8 +27,6 @@ const CATEGORY_LABELS: Record<string, string> = {
 const categoryLabel = (category: string) =>
   CATEGORY_LABELS[category] ?? category
 
-const categories = [...new Set(tokens.map((token) => token.category))]
-
 function tokenIcon(token: TokenEntry) {
   if (token.color) {
     return { source: Icon.CircleFilled, tintColor: token.color }
@@ -34,7 +36,13 @@ function tokenIcon(token: TokenEntry) {
     : Icon.Ruler
 }
 
-function TokenItem({ token }: { token: TokenEntry }) {
+function TokenItem({
+  token,
+  refresh,
+}: {
+  token: TokenEntry
+  refresh: () => void
+}) {
   const cssVar = `var(${token.name})`
   return (
     <List.Item
@@ -63,6 +71,7 @@ function TokenItem({ token }: { token: TokenEntry }) {
               shortcut={{ key: 'd', modifiers: ['cmd'] }}
             />
           )}
+          <RefreshDataAction refresh={refresh} />
         </ActionPanel>
       }
     />
@@ -70,11 +79,15 @@ function TokenItem({ token }: { token: TokenEntry }) {
 }
 
 export default function SearchTokens() {
+  const { data, isLoading, refresh } = useReferenceData()
+  const tokens = data.tokens
   const [category, setCategory] = useState('all')
   const showAll = category === 'all'
+  const categories = [...new Set(tokens.map((token) => token.category))]
 
   return (
     <List
+      isLoading={isLoading}
       searchBarPlaceholder="Search ZUI design tokens…"
       searchBarAccessory={
         <List.Dropdown
@@ -106,7 +119,7 @@ export default function SearchTokens() {
               subtitle={`${categoryTokens.length}`}
             >
               {categoryTokens.map((token) => (
-                <TokenItem key={token.name} token={token} />
+                <TokenItem key={token.name} token={token} refresh={refresh} />
               ))}
             </List.Section>
           )

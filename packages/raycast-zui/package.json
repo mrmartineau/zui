@@ -63,6 +63,19 @@
       "name": "search-snippets",
       "subtitle": "ZUI",
       "title": "Search Snippets"
+    },
+    {
+      "description": "Fetch the latest ZUI reference data (docs, classes, tokens, snippets) from the ZUI website",
+      "keywords": [
+        "zui",
+        "update",
+        "refresh",
+        "data"
+      ],
+      "mode": "no-view",
+      "name": "update-data",
+      "subtitle": "ZUI",
+      "title": "Update ZUI Data"
     }
   ],
   "dependencies": {

@@ -29,3 +29,18 @@ export interface SnippetEntry {
   title: string
   frameworks: Partial<Record<Framework, string>>
 }
+
+/**
+ * Payload served by https://zui.zander.wtf/api/reference.json and snapshotted
+ * into `data/reference.json`. Keep in sync with
+ * `docs/src/lib/reference-data.ts`.
+ */
+export interface ReferenceData {
+  schemaVersion: 1
+  zuiVersion: string
+  generatedAt: string
+  docs: DocEntry[]
+  classes: ClassEntry[]
+  tokens: TokenEntry[]
+  snippets: SnippetEntry[]
+}

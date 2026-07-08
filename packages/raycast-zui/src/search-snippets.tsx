@@ -1,6 +1,10 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
 import { useState } from 'react'
-import { type Framework, snippets } from './data'
+import {
+  type Framework,
+  RefreshDataAction,
+  useReferenceData,
+} from './reference'
 
 const FRAMEWORKS: { id: Framework; label: string; lang: string }[] = [
   { id: 'html', label: 'HTML', lang: 'html' },
@@ -12,16 +16,18 @@ const FRAMEWORKS: { id: Framework; label: string; lang: string }[] = [
 ]
 
 export default function SearchSnippets() {
+  const { data, isLoading, refresh } = useReferenceData()
   const [frameworkId, setFrameworkId] = useState<Framework>('html')
   const framework =
     FRAMEWORKS.find((f) => f.id === frameworkId) ?? FRAMEWORKS[0]
-  const available = snippets.filter(
+  const available = data.snippets.filter(
     (snippet) => snippet.frameworks[framework.id],
   )
   const pages = [...new Set(available.map((snippet) => snippet.page))]
 
   return (
     <List
+      isLoading={isLoading}
       isShowingDetail
       searchBarPlaceholder={`Search ZUI ${framework.label} snippets…`}
       searchBarAccessory={
@@ -65,6 +71,7 @@ export default function SearchSnippets() {
                         url={snippet.pageUrl}
                         shortcut={{ key: 'd', modifiers: ['cmd'] }}
                       />
+                      <RefreshDataAction refresh={refresh} />
                     </ActionPanel>
                   }
                 />

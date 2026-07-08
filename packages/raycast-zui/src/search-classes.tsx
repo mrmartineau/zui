@@ -1,12 +1,22 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
-import { type ClassEntry, classes } from './data'
+import {
+  type ClassEntry,
+  RefreshDataAction,
+  useReferenceData,
+} from './reference'
 
 const isUtility = (entry: ClassEntry) => entry.source.startsWith('utility/')
 
 const sourceLabel = (entry: ClassEntry) =>
   isUtility(entry) ? entry.source.slice('utility/'.length) : entry.source
 
-function ClassItem({ entry }: { entry: ClassEntry }) {
+function ClassItem({
+  entry,
+  refresh,
+}: {
+  entry: ClassEntry
+  refresh: () => void
+}) {
   return (
     <List.Item
       icon={Icon.Code}
@@ -27,6 +37,7 @@ function ClassItem({ entry }: { entry: ClassEntry }) {
               shortcut={{ key: 'd', modifiers: ['cmd'] }}
             />
           )}
+          <RefreshDataAction refresh={refresh} />
         </ActionPanel>
       }
     />
@@ -34,19 +45,28 @@ function ClassItem({ entry }: { entry: ClassEntry }) {
 }
 
 export default function SearchClasses() {
-  const componentClasses = classes.filter((entry) => !isUtility(entry))
-  const utilityClasses = classes.filter(isUtility)
+  const { data, isLoading, refresh } = useReferenceData()
+  const componentClasses = data.classes.filter((entry) => !isUtility(entry))
+  const utilityClasses = data.classes.filter(isUtility)
 
   return (
-    <List searchBarPlaceholder="Search ZUI CSS classes…">
+    <List isLoading={isLoading} searchBarPlaceholder="Search ZUI CSS classes…">
       <List.Section title="Components" subtitle={`${componentClasses.length}`}>
         {componentClasses.map((entry) => (
-          <ClassItem key={`${entry.source}/${entry.name}`} entry={entry} />
+          <ClassItem
+            key={`${entry.source}/${entry.name}`}
+            entry={entry}
+            refresh={refresh}
+          />
         ))}
       </List.Section>
       <List.Section title="Utilities" subtitle={`${utilityClasses.length}`}>
         {utilityClasses.map((entry) => (
-          <ClassItem key={`${entry.source}/${entry.name}`} entry={entry} />
+          <ClassItem
+            key={`${entry.source}/${entry.name}`}
+            entry={entry}
+            refresh={refresh}
+          />
         ))}
       </List.Section>
     </List>
