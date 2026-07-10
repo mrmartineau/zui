@@ -21,24 +21,134 @@
 
   :where(.docs-prose) {
     color: var(--color-text);
+
+    & > * + * {
+      margin-block-start: var(--flow-space, 1em);
+    }
+
+    :is(h1, h2, h3, blockquote) {
+      --flow-space: 2rem;
+    }
+
+    :is(h1, h2, h3) + * {
+      --flow-space: 1rem;
+    }
+
+    h1 {
+      font-size: var(--step-3);
+      line-height: 1.1;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: var(--font-weight-7);
+    }
+
+    h2 {
+      font-size: var(--step-2);
+      line-height: 1.1;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: var(--font-weight-7);
+      color: var(--color-theme);
+    }
+
+    h3 {
+      font-size: var(--step-1);
+      line-height: 1.1;
+      text-wrap: balance;
+      font-family: var(--font-display);
+      font-weight: var(--font-weight-7);
+    }
+
+    > p,
+    > li {
+      font-size: var(--step-0);
+    }
+
+    a:not(.zui-button):not(.zui-card) {
+      color: var(--color-text);
+      text-decoration-line: underline;
+      text-decoration-color: oklch(from var(--color-text) l c h / 50%);
+      text-decoration-thickness: 0.2ex;
+      text-underline-offset: 0.3ex;
+      border-radius: var(--radius-md);
+      transition: text-decoration-color 0.2s var(--ease-in-out);
+    }
+
+    a:not(.zui-button):hover {
+      text-decoration-color: oklch(from var(--color-text) l c h / 90%);
+    }
+
+    :not(pre) > code {
+      font-family: var(--font-code);
+      font-size: var(--step--2);
+      background-color: oklch(from var(--color-background) calc(l + 0.1) c h);
+      color: oklch(from var(--color-text) calc(l + 0.1) c h);
+      padding: 2px 4px;
+      border-radius: var(--radius-md);
+      line-height: var(--line-height-xs);
+    }
+
+    ul,
+    ol {
+      padding-inline-start: 0;
+      list-style-position: inside;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+    ol {
+      list-style-type: decimal;
+    }
+
+    ul ul,
+    ol ol {
+      padding-inline-start: 1rem;
+    }
+
+    hr {
+      margin: 2em 0;
+      height: 1px;
+      border: 0;
+      background-color: var(--color-border);
+    }
+
+    table {
+      width: 100%;
+      caption-side: bottom;
+      font-variant-numeric: tabular-nums;
+      table-layout: fixed;
+      border-collapse: collapse;
+      border: 0;
+    }
+
+    tr {
+      border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+      transition: background-color 150ms ease-in-out;
+    }
+
+    tbody tr:hover {
+      background-color: oklch(from currentColor l c h / 10%);
+    }
+
+    th {
+      line-height: var(--line-height-xl);
+      padding-inline: var(--space-2xs);
+      text-align: left;
+      vertical-align: middle;
+      font-weight: var(--font-weight-bold);
+      border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+    }
+
+    td {
+      padding: var(--space-2xs);
+      vertical-align: middle;
+    }
   }
 
   [id] {
     scroll-margin-top: var(--scroll-margin);
   }
-
-  :where(.docs-prose) > * + * {
-    margin-block-start: var(--flow-space, 1em);
-  }
-
-  :where(.docs-prose) :is(h1, h2, h3, blockquote) {
-    --flow-space: 2rem;
-  }
-
-  :where(.docs-prose) :is(h1, h2, h3) + * {
-    --flow-space: 1rem;
-  }
-
   .page-header {
     margin-block-end: var(--space-lg);
   }
@@ -49,117 +159,6 @@
     margin-block-start: var(--space-2xs) !important;
     line-height: var(--line-height-md);
     text-wrap: balance;
-  }
-
-  .docs-prose h1 {
-    font-size: var(--step-3);
-    line-height: 1.1;
-    text-wrap: balance;
-    font-family: var(--font-display);
-    font-weight: var(--font-weight-7);
-  }
-
-  .docs-prose h2 {
-    font-size: var(--step-2);
-    line-height: 1.1;
-    text-wrap: balance;
-    font-family: var(--font-display);
-    font-weight: var(--font-weight-7);
-    color: var(--color-theme);
-  }
-
-  .docs-prose h3 {
-    font-size: var(--step-1);
-    line-height: 1.1;
-    text-wrap: balance;
-    font-family: var(--font-display);
-    font-weight: var(--font-weight-7);
-  }
-
-  .docs-prose > p,
-  .docs-prose > li {
-    font-size: var(--step-0);
-  }
-
-  .docs-prose a:not(.zui-button):not(.zui-card) {
-    color: var(--color-text);
-    text-decoration-line: underline;
-    text-decoration-color: oklch(from var(--color-text) l c h / 50%);
-    text-decoration-thickness: 0.2ex;
-    text-underline-offset: 0.3ex;
-    border-radius: var(--radius-md);
-    transition: text-decoration-color 0.2s var(--ease-in-out);
-  }
-
-  .docs-prose a:not(.zui-button):hover {
-    text-decoration-color: oklch(from var(--color-text) l c h / 90%);
-  }
-
-  .docs-prose :not(pre) > code {
-    font-family: var(--font-code);
-    font-size: var(--step--2);
-    background-color: oklch(from var(--color-background) calc(l + 0.1) c h);
-    color: oklch(from var(--color-text) calc(l + 0.1) c h);
-    padding: 2px 4px;
-    border-radius: var(--radius-md);
-    line-height: var(--line-height-xs);
-  }
-
-  .docs-prose ul,
-  .docs-prose ol {
-    padding-inline-start: 0;
-    list-style-position: inside;
-  }
-
-  .docs-prose ul {
-    list-style-type: disc;
-  }
-  .docs-prose ol {
-    list-style-type: decimal;
-  }
-
-  .docs-prose ul ul,
-  .docs-prose ol ol {
-    padding-inline-start: 1rem;
-  }
-
-  .docs-prose hr {
-    margin: 2em 0;
-    height: 1px;
-    border: 0;
-    background-color: var(--color-border);
-  }
-
-  .docs-prose table {
-    width: 100%;
-    caption-side: bottom;
-    font-variant-numeric: tabular-nums;
-    table-layout: fixed;
-    border-collapse: collapse;
-    border: 0;
-  }
-
-  .docs-prose tr {
-    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
-    transition: background-color 150ms ease-in-out;
-  }
-
-  .docs-prose tbody tr:hover {
-    background-color: oklch(from currentColor l c h / 10%);
-  }
-
-  .docs-prose th {
-    line-height: var(--line-height-xl);
-    padding-inline: var(--space-2xs);
-    text-align: left;
-    vertical-align: middle;
-    font-weight: var(--font-weight-bold);
-    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
-  }
-
-  .docs-prose td {
-    padding: var(--space-2xs);
-    vertical-align: middle;
   }
 
   /* Shiki / Astro <Code> blocks ------------------------------------------------ */
