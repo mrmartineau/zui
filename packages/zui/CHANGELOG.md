@@ -1,3 +1,10 @@
+# [@mrmartineau/zui-v1.6.2](https://github.com/mrmartineau/zui/compare/v1.6.1...v1.6.2) (2026-07-10)
+
+
+### Bug Fixes
+
+* **zui:** let utility classes override text, prose, and flow defaults ([018078c](https://github.com/mrmartineau/zui/commit/018078c88392e0ef871a9febeda6af276e72fb40))
+
 # [@mrmartineau/zui-v1.6.1](https://github.com/mrmartineau/zui/compare/v1.6.0...v1.6.1) (2026-07-06)
 
 
