@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/mrmartineau/zui/raw/main/zui-readme.png" alt="ZUI" width="400" />
+</div>
+
 # ZUI — VS Code Extension
 
 IntelliSense for [ZUI](https://github.com/mrmartineau/zui), the CSS-first UI library.

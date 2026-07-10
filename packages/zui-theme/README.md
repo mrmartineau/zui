@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/mrmartineau/zui/raw/main/zui-readme.png" alt="ZUI" width="400" />
+</div>
+
 # @mrmartineau/zui-theme
 
 [![npm](https://img.shields.io/npm/v/@mrmartineau/zui-theme)](https://www.npmjs.com/package/@mrmartineau/zui-theme)

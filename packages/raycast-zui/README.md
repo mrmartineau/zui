@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/mrmartineau/zui/raw/main/zui-readme.png" alt="ZUI" width="400" />
+</div>
+
 # ZUI for Raycast
 
 A [Raycast](https://www.raycast.com) extension for [ZUI](https://zui.zander.wtf) — search the docs, CSS classes, design tokens, and per-framework component snippets without leaving your keyboard.
