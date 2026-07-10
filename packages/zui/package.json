@@ -127,5 +127,5 @@
     "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
   },
   "type": "module",
-  "version": "1.6.1"
+  "version": "1.6.2"
 }
