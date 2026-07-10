@@ -1,3 +1,15 @@
+# [vscode-zui-v0.2.0](https://github.com/mrmartineau/zui/compare/vscode-zui-v0.1.0...vscode-zui-v0.2.0) (2026-07-10)
+
+
+### Bug Fixes
+
+* **zui:** let utility classes override text, prose, and flow defaults ([018078c](https://github.com/mrmartineau/zui/commit/018078c88392e0ef871a9febeda6af276e72fb40))
+
+
+### Features
+
+* **vscode-zui:** version-accurate completions ([9e20337](https://github.com/mrmartineau/zui/commit/9e2033724630f692d4aebdca41c7e14bb3cc65ee))
+
 # vscode-zui-v0.1.0 (2026-04-22)
 
 
