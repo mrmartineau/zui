@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
   <img src="zui-readme.png" alt="ZUI" width="400" />
 </div>
 
