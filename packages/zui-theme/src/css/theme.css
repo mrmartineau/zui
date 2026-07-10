@@ -19,7 +19,7 @@
     background-color: var(--color-background);
   }
 
-  .docs-prose {
+  :where(.docs-prose) {
     color: var(--color-text);
   }
 
@@ -27,15 +27,15 @@
     scroll-margin-top: var(--scroll-margin);
   }
 
-  .docs-prose > * + * {
+  :where(.docs-prose) > * + * {
     margin-block-start: var(--flow-space, 1em);
   }
 
-  .docs-prose :is(h1, h2, h3, blockquote) {
+  :where(.docs-prose) :is(h1, h2, h3, blockquote) {
     --flow-space: 2rem;
   }
 
-  .docs-prose :is(h1, h2, h3) + * {
+  :where(.docs-prose) :is(h1, h2, h3) + * {
     --flow-space: 1rem;
   }
 
