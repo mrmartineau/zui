@@ -1,7 +1,12 @@
 import * as vscode from 'vscode'
-import manifest from './manifest.json' with { type: 'json' }
+import type { Manifest } from './manifest.js'
+import bundledJson from './manifest.json' with { type: 'json' }
 import { ClassCompletionProvider } from './providers/class-completion.js'
 import { TokenCompletionProvider } from './providers/token-completion.js'
+import {
+  findZuiDependents,
+  loadWorkspaceManifest,
+} from './workspace-manifest.js'
 
 const CLASS_LANGUAGES = [
   'html',
@@ -22,48 +27,15 @@ const CSS_LANGUAGES = [
   'vue',
 ]
 
-const ZUI_PKG_NAME = '@mrmartineau/zui'
+/**
+ * Snapshot of the ZUI release the extension was built against — the fallback
+ * when no installed @mrmartineau/zui can be read from the workspace.
+ */
+const bundledManifest = bundledJson as Manifest
 
 type EnableMode = 'auto' | 'always' | 'never'
 
-/**
- * Scan workspace package.json files for a @mrmartineau/zui dependency.
- * Mirrors the Tailwind IntelliSense activation strategy so the extension
- * stays silent in non-ZUI projects.
- */
-async function hasZuiDependency(): Promise<boolean> {
-  const pkgFiles = await vscode.workspace.findFiles(
-    '**/package.json',
-    '**/node_modules/**',
-    undefined,
-  )
-  for (const uri of pkgFiles) {
-    try {
-      const raw = await vscode.workspace.fs.readFile(uri)
-      const pkg = JSON.parse(Buffer.from(raw).toString('utf-8'))
-      const deps = {
-        ...(pkg.dependencies ?? {}),
-        ...(pkg.devDependencies ?? {}),
-        ...(pkg.peerDependencies ?? {}),
-      }
-      if (ZUI_PKG_NAME in deps) return true
-    } catch {
-      // Ignore unreadable or malformed package.json
-    }
-  }
-  return false
-}
-
-async function shouldActivate(): Promise<boolean> {
-  const mode = vscode.workspace
-    .getConfiguration('zui')
-    .get<EnableMode>('enable', 'auto')
-  if (mode === 'never') return false
-  if (mode === 'always') return true
-  return hasZuiDependency()
-}
-
-function registerProviders(): vscode.Disposable {
+function registerProviders(manifest: Manifest): vscode.Disposable {
   const classProvider = new ClassCompletionProvider(manifest.classes)
   const tokenProvider = new TokenCompletionProvider(manifest.tokens)
   const disposables: vscode.Disposable[] = []
@@ -105,15 +77,36 @@ export async function activate(
   context: vscode.ExtensionContext,
 ): Promise<void> {
   let providers: vscode.Disposable | undefined
+  /** Serialized form of the manifest the current providers were built from */
+  let providersKey: string | undefined
 
   const sync = async () => {
-    const active = await shouldActivate()
-    if (active && !providers) {
-      providers = registerProviders()
-    } else if (!active && providers) {
-      providers.dispose()
+    const mode = vscode.workspace
+      .getConfiguration('zui')
+      .get<EnableMode>('enable', 'auto')
+    const dependents = mode === 'never' ? [] : await findZuiDependents()
+    const active =
+      mode === 'always' || (mode === 'auto' && dependents.length > 0)
+
+    if (!active) {
+      providers?.dispose()
       providers = undefined
+      providersKey = undefined
+      return
     }
+
+    // Prefer the ZUI version installed in the workspace so completions match
+    // the user's dependency exactly; fall back to the bundled snapshot.
+    const manifest =
+      (await loadWorkspaceManifest(dependents)) ?? bundledManifest
+
+    // Re-registering (rather than mutating providers in place) is the only
+    // way to make VS Code refresh already-rendered colour swatches.
+    const key = JSON.stringify(manifest)
+    if (providers && key === providersKey) return
+    providers?.dispose()
+    providers = registerProviders(manifest)
+    providersKey = key
   }
 
   // Ensure providers are torn down on extension unload
@@ -128,8 +121,8 @@ export async function activate(
     }),
   )
 
-  // Re-evaluate when any workspace package.json changes — a user adding or
-  // removing @mrmartineau/zui should flip the extension on/off live.
+  // Re-evaluate when any workspace package.json changes — a user adding,
+  // removing, or upgrading @mrmartineau/zui should update completions live.
   const watcher = vscode.workspace.createFileSystemWatcher('**/package.json')
   context.subscriptions.push(
     watcher,

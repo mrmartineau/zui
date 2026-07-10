@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import type { ClassEntry } from '../generate-manifest.js'
+import type { ClassEntry } from '../manifest.js'
 
 /**
  * How many lines back from the cursor we scan for a class-attribute opener.

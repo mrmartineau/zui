@@ -1,6 +1,6 @@
 import { converter } from 'culori'
 import * as vscode from 'vscode'
-import type { TokenEntry } from '../generate-manifest.js'
+import type { TokenEntry } from '../manifest.js'
 
 const toRgb = converter('rgb')
 

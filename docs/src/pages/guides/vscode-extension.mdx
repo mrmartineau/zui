@@ -20,6 +20,10 @@ Type `var(--` or `: --` in any CSS context and get suggestions for every ZUI des
 
 ZUI colour tokens appear with inline colour swatches wherever they are used. The extension pre-resolves `oklch()` values to sRGB so swatches render correctly even in editors that don't natively support OKLCH.
 
+### Version-accurate completions
+
+The extension reads the copy of `@mrmartineau/zui` installed in your workspace's `node_modules` and builds its class and token lists from that package's CSS. Completions always match the ZUI version your project actually depends on — no stale suggestions after you pin an older release, and new classes appear as soon as you upgrade. When no installed copy can be found (for example with `zui.enable: "always"` in a project that uses ZUI via CDN), the extension falls back to a bundled snapshot of the latest release.
+
 ## Install from the VS Code Marketplace
 
 1. Open VS Code
@@ -75,4 +79,4 @@ pnpm run dev
 
 By default the extension only activates when it detects `@mrmartineau/zui` in a workspace `package.json` (under `dependencies`, `devDependencies`, or `peerDependencies`). If you use ZUI via a CDN or by copying the CSS directly, set `zui.enable` to `"always"` in your VS Code settings.
 
-The extension re-evaluates whenever any `package.json` in the workspace changes, so adding or removing ZUI as a dependency toggles completions without a reload.
+The extension re-evaluates whenever any `package.json` in the workspace changes, so adding, removing, or upgrading ZUI as a dependency toggles and refreshes completions without a reload.

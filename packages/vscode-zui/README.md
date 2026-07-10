@@ -35,7 +35,7 @@ ZUI colour tokens appear with inline colour swatches wherever they are used. The
 
 By default the extension only activates when it detects `@mrmartineau/zui` in a workspace `package.json` (under `dependencies`, `devDependencies`, or `peerDependencies`). If you install ZUI via a CDN or copy the CSS directly and want completions anyway, set `zui.enable` to `"always"`.
 
-The extension re-evaluates whenever any `package.json` in the workspace changes, so adding or removing ZUI as a dependency flips completions on or off without a reload.
+The extension re-evaluates whenever any `package.json` in the workspace changes, so adding, removing, or upgrading ZUI as a dependency flips or refreshes completions without a reload.
 
 ## Configuration
 
@@ -45,9 +45,9 @@ The extension re-evaluates whenever any `package.json` in the workspace changes,
 
 ## How it works
 
-The extension ships with a pre-built manifest (`manifest.json`) generated from the ZUI source CSS at release time. The manifest contains every class and token name, so completions are instant and don't require any runtime CSS parsing.
+The extension reads the copy of `@mrmartineau/zui` installed in the workspace's `node_modules` (the published package ships its source CSS) and parses every class and token name from it, so completions always match the ZUI version the project actually depends on. It re-parses whenever a workspace `package.json` changes, so upgrading ZUI refreshes completions without a reload.
 
-Each release of the extension mirrors the latest ZUI release so completions always match the installed ZUI version.
+When no installed copy can be found — e.g. `zui.enable: "always"` in a project that uses ZUI via CDN — it falls back to a bundled manifest snapshot generated from the latest ZUI release at extension build time.
 
 ## Links
 
@@ -57,4 +57,4 @@ Each release of the extension mirrors the latest ZUI release so completions alwa
 
 ## License
 
-ISC
+MIT
