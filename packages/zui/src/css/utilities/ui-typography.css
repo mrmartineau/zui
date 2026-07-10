@@ -1,5 +1,7 @@
 @layer zui.utilities {
-  [class*="zui-text-"] {
+  /* :where() keeps this reset at zero specificity so margin/other
+     utilities (mt-sm, etc.) can override it regardless of source order */
+  :where([class*="zui-text-"]) {
     line-height: var(--line-height-xs);
     margin: 0;
     font-weight: var(--font-weight-regular);
@@ -47,6 +49,32 @@
 
   .zui-text-6 {
     font-size: var(--step-6);
+  }
+
+  .zui-text-7 {
+    font-size: var(--step-7);
+  }
+
+  .zui-text-8 {
+    font-size: var(--step-8);
+  }
+
+  .zui-text-9 {
+    font-size: var(--step-9);
+  }
+  .zui-text-10 {
+    font-size: var(--step-10);
+  }
+
+  .zui-text-left {
+    text-align: left;
+  }
+
+  .zui-text-center {
+    text-align: center;
+  }
+  .zui-text-right {
+    text-align: right;
   }
 
   /* Muted text utilities */

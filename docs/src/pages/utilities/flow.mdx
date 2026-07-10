@@ -9,7 +9,7 @@ description: Automatic vertical spacing between child elements using the lobotom
 The `.flow` class adds vertical margin between consecutive child elements using `> * + *`. It uses a `--flow-space` custom property (defaulting to `1em`) that headings and blockquotes automatically increase.
 
 ```css
-.flow {
+:where(.flow) {
   & > * + * {
     margin-block-start: var(--flow-space, 1em);
   }
@@ -23,6 +23,8 @@ The `.flow` class adds vertical margin between consecutive child elements using 
   }
 }
 ```
+
+The selector is wrapped in `:where()`, so flow spacing has zero specificity — any margin utility (e.g. `.mt-lg`) or your own class on a child element overrides it.
 
 ## Usage
 

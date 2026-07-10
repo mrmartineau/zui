@@ -304,6 +304,17 @@ import { Prose } from '@mrmartineau/zui/vue'
 - **Media** — images, iframes, and videos get border-radius and a subtle border
 - **Horizontal rules** — styled as a thin background-colour line
 
+## Overriding styles
+
+All prose styles are wrapped in `:where(.prose)`, giving them zero specificity. Any single class — a ZUI utility like `.mt-lg` or `.zui-text-2`, or one of your own — overrides the prose defaults on that element, no `!important` needed. Prose still overrides component styles (`zui.components`) because layer order takes precedence over specificity.
+
+```html
+<article class="prose">
+  <h2>Default prose heading</h2>
+  <h2 class="zui-text-6 mt-2xl">Bigger, with extra space above</h2>
+</article>
+```
+
 ## Custom properties
 
 ```css

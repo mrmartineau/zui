@@ -1,5 +1,7 @@
 @layer zui.utilities {
-  .flow {
+  /* :where() keeps flow spacing at zero specificity so margin
+     utilities (mt-sm, etc.) on children win regardless of source order */
+  :where(.flow) {
     & > * + * {
       margin-block-start: var(--flow-space, 1em);
     }

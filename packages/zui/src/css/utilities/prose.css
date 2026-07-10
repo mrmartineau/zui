@@ -1,5 +1,8 @@
 @layer zui.utilities {
-  .prose {
+  /* :where() keeps all prose defaults at zero specificity so any single
+     class — ZUI utilities or user classes — overrides them. Prose still
+     beats zui.components styles because layer order trumps specificity. */
+  :where(.prose) {
     --prose-accent-color: var(--color-theme);
     --prose-link-color: var(--color-text);
     --prose-link-color-decoration: oklch(from var(--color-text) l c h / 50%);
@@ -15,7 +18,7 @@
 
     color: var(--prose-color, var(--color-text));
 
-    [id] {
+    :where([id]) {
       scroll-margin-top: var(--prose-scroll-margin);
     }
 
@@ -112,7 +115,7 @@
       font-family: var(--font-display);
     }
 
-    a:not(.zui-button) {
+    a:where(:not(.zui-button)) {
       color: var(--prose-link-color);
       text-decoration-color: var(--prose-link-color-decoration);
       text-decoration-thickness: 0.2ex;

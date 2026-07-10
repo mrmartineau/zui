@@ -713,10 +713,6 @@
       "source": "utility/flex"
     },
     {
-      "name": "flow",
-      "source": "utility/flow"
-    },
-    {
       "name": "gap-0",
       "source": "utility/gap"
     },
@@ -1433,11 +1429,11 @@
       "source": "utility/padding"
     },
     {
-      "name": "prose",
+      "name": "no-border",
       "source": "utility/prose"
     },
     {
-      "name": "no-border",
+      "name": "prose",
       "source": "utility/prose"
     },
     {

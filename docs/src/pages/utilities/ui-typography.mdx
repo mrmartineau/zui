@@ -12,7 +12,7 @@ import { Demo } from '@mrmartineau/zui-theme/astro'
 
 ## Text Size
 
-Map directly to the fluid type scale tokens. All classes reset `line-height` to tight and `margin` to 0, making them ideal for UI labels and headings.
+Map directly to the fluid type scale tokens. All classes reset `line-height` to tight and `margin` to 0, making them ideal for UI labels and headings. The reset is applied via `:where()` at zero specificity, so margin utilities like `.mt-sm` (or any of your own classes) override it.
 
 <TokenGrid>
   <TokenRow><CopyCode>.zui-text--4</CopyCode><span class="zui-text--4">The quick brown fox</span></TokenRow>
