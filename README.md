@@ -1,3 +1,7 @@
+<div style="text-align: center;">
+  <img src="zui-readme.png" alt="ZUI" width="400" />
+</div>
+
 # ZUI
 
 A CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue components.
