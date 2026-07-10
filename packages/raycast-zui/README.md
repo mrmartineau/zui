@@ -29,7 +29,8 @@ command or the **Update ZUI Data** command forces a refresh.
 
 A snapshot in `src/data/reference.json` (built by `scripts/generate-data.ts`
 from the same shared builder) ships with the extension as the offline/first-run
-fallback. Regenerate it after changing the CSS or docs:
+fallback. It isn't committed — it's generated on demand (along with the
+vscode-zui manifest it depends on):
 
 ```sh
 pnpm --filter zui run generate:data
@@ -56,4 +57,15 @@ To publish to the [Raycast Store](https://www.raycast.com/store):
 pnpm --filter zui run publish
 ```
 
+This regenerates the bundled data snapshot, then opens a pull request in the
+[`raycast/extensions`](https://github.com/raycast/extensions) repository — the
+extension goes live in the store once the Raycast team merges it. (Direct
+uploads without a PR are only for private organisation extensions.)
+
 The `author` field in `package.json` must match your Raycast account handle.
+
+> **Note:** the ignore rule for the generated `src/data/reference.json` lives in
+> the repo-root `.gitignore` on purpose. `ray publish` copies this directory —
+> including any `.gitignore` in it — into the `raycast/extensions` fork and runs
+> a plain `git add`, so a package-level ignore would silently drop the snapshot
+> from the store submission.

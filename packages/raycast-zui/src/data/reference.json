@@ -869,11 +869,6 @@
       "docsUrl": "https://zui.zander.wtf/utilities/flex"
     },
     {
-      "name": "flow",
-      "source": "utility/flow",
-      "docsUrl": "https://zui.zander.wtf/utilities/flow"
-    },
-    {
       "name": "gap-0",
       "source": "utility/gap",
       "docsUrl": "https://zui.zander.wtf/utilities/spacing"
@@ -1769,12 +1764,12 @@
       "docsUrl": "https://zui.zander.wtf/utilities/spacing"
     },
     {
-      "name": "prose",
+      "name": "no-border",
       "source": "utility/prose",
       "docsUrl": "https://zui.zander.wtf/utilities/prose"
     },
     {
-      "name": "no-border",
+      "name": "prose",
       "source": "utility/prose",
       "docsUrl": "https://zui.zander.wtf/utilities/prose"
     },
@@ -2223,7 +2218,7 @@
       "url": "https://zui.zander.wtf/utilities/visibility"
     }
   ],
-  "generatedAt": "2026-07-08T15:56:13.242Z",
+  "generatedAt": "2026-07-10T11:39:28.255Z",
   "schemaVersion": 1,
   "snippets": [
     {

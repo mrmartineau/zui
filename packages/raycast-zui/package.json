@@ -95,9 +95,9 @@
   "scripts": {
     "build": "pnpm run generate:data && ray build -e dist",
     "dev": "pnpm run generate:data && ray develop",
-    "generate:data": "tsx scripts/generate-data.ts",
+    "generate:data": "pnpm --filter vscode-zui run build:manifest && tsx scripts/generate-data.ts",
     "publish": "pnpm run generate:data && npx @raycast/api@latest publish",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p scripts"
+    "typecheck": "pnpm run generate:data && tsc --noEmit && tsc --noEmit -p scripts"
   },
   "title": "ZUI",
   "type": "module"
