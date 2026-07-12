@@ -2218,7 +2218,7 @@
       "url": "https://zui.zander.wtf/utilities/visibility"
     }
   ],
-  "generatedAt": "2026-07-10T11:39:28.255Z",
+  "generatedAt": "2026-07-12T16:53:36.431Z",
   "schemaVersion": 1,
   "snippets": [
     {
@@ -6755,5 +6755,5 @@
       "docsUrl": "https://zui.zander.wtf/guides/theming"
     }
   ],
-  "zuiVersion": "1.6.1"
+  "zuiVersion": "1.6.2"
 }
