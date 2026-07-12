@@ -7,6 +7,12 @@
  *   import '@mrmartineau/zui-theme/css'
  */
 
+/* Declare the full ZUI layer order before registering any layer.
+   Bundlers can load this file before zui.css; without this, zui.components
+   would be registered first and zui.reset would end up above it in layer
+   order, letting the reset's `* { margin: 0 }` cancel all docs spacing. */
+@layer zui.reset, zui.base, zui.components, zui.utilities;
+
 @layer zui.components {
   :root {
     --site-header-height: 3.5rem;
