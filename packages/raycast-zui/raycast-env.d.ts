@@ -37,4 +37,3 @@ declare namespace Arguments {
   /** Arguments passed to the `update-data` command */
   export type UpdateData = {}
 }
-
