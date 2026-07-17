@@ -526,9 +526,9 @@ const description =
           <tbody class="zui-table-body">${rows}</tbody>
         </table>`
     },
-    faq(rng: Rng) {
-      // exclusive-open groups are scoped per section via a generated name
-      const group = `pg-faq-${int(rng, 1000, 999999)}`
+    faq(rng: Rng, _b: Biome, i: number) {
+      // exclusive-open groups are scoped per section via its unique index
+      const group = `pg-faq-${i}`
       const items = Array.from({ length: int(rng, 3, 5) }, (_, qi) =>
         `<details class="zui-accordion-item" name="${group}"${qi === 0 ? ' open' : ''}>
           <summary class="zui-accordion-trigger">${question(rng)}</summary>
@@ -540,10 +540,10 @@ const description =
         <div class="zui-accordion">${items}</div>
       </div>`
     },
-    form(rng: Rng, b: Biome) {
+    form(rng: Rng, _b: Biome, i: number) {
       const noun = pick(rng, NOUNS)
-      // ids must be unique per generated section — derive them from the rng
-      const uid = `pg-f-${int(rng, 1000, 999999)}`
+      // ids must be unique per generated section — derive them from its index
+      const uid = `pg-f-${i}`
       return `<div class="pg-narrow">
         <div class="zui-card zui-card-elevated">
           <div class="zui-card-header">
@@ -873,7 +873,10 @@ const description =
       const content = document.createElement('div')
       content.className = 'pg-sec-content'
       content.dataset.content = ''
-      content.innerHTML = archetypes[kind](rng, biome)
+      // widened call: archetypes that don't need the index simply ignore it
+      content.innerHTML = (
+        archetypes[kind] as (rng: Rng, b: Biome, i: number) => string
+      )(rng, biome, i)
       el.append(content, metaBar(i, kind, biome))
       return el
     }
@@ -932,7 +935,8 @@ const description =
     // A sentinel below the world triggers generation just-in-time: whenever it
     // comes within two viewports, a few more sections are built, which pushes
     // it back down. Deep links (?s=N) build straight down to the target.
-    const targetParam = Number(params.get('s'))
+    // floor() rejects fractional values that could never match a section id
+    const targetParam = Math.floor(Number(params.get('s')))
     buildNext(Number.isFinite(targetParam) && targetParam > 0
       ? Math.min(targetParam, 500) + 2
       : 4)
