@@ -1,0 +1,1437 @@
+---
+import { Badge, Flex, Kbd } from '@mrmartineau/zui/astro'
+import { BaseLayout } from '@mrmartineau/zui-theme/astro'
+import { footerSections, sidebarSections } from '../nav'
+import { site } from '../site.config'
+
+const title = 'Procedural playground'
+const description =
+  'An endless page that invents new layouts from ZUI components as you scroll. Every section lists the components it uses and lets you copy its code.'
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  currentPath={Astro.url.pathname}
+  site={site}
+  sections={sidebarSections}
+  footerSections={footerSections}
+>
+  <div class="pg-page">
+    <header class="pg-intro flow">
+      <Flex align="center" gap="sm" wrap="wrap">
+        <h1>Procedural playground</h1>
+        <Badge variant="fill" color="violet">experiment</Badge>
+      </Flex>
+      <p class="pg-lede">
+        This page has no end and no author. Every section below is <strong
+        >procedurally generated</strong> from a seed — the layout it
+        picks, the palette, the type, even the copy. But unlike most generative
+        toys, everything is built from real <strong>ZUI components</strong> and
+        design tokens: cards, tables, forms, accordions, badges, avatars — all
+        re-themed per section by overriding ZUI's semantic custom properties.
+      </p>
+      <p>
+        <strong>Scroll to generate.</strong> New sections come into existence as
+        you approach them, and every few sections the page drifts into a new <em
+        >biome</em> — a colour family, accent, radius scale and typeface of
+        its own. The generator is deterministic: the same seed always produces
+        the same page, so a link is a reproducible design. Hit <strong
+        >reroll</strong> for a different universe.
+      </p>
+      <p>
+        Each section's footer tells you exactly <strong>which components it
+        uses</strong> (linked to their docs) and lets you <strong>view or copy
+        its HTML</strong> — clean markup whose <code>zui-*</code> classes map
+        1:1 to the React, Astro, Solid, Svelte and Vue wrappers (the few <code
+        >pg-*</code> classes are just local grid scaffolding). The copied code
+        carries no palette, so it takes on <em>your</em> theme when pasted.
+        See a layout worth keeping? <strong>Save it</strong> and it's kept (with
+        its seed) in your browser so you can come back to the idea later.
+      </p>
+      <p class="pg-keys">
+        Shortcuts: <Kbd>r</Kbd> reroll · <Kbd>j</Kbd> jump ahead ×10 ·
+        <Kbd>.</Kbd> saved ideas
+      </p>
+    </header>
+
+    <!-- The generated world. Everything inside is injected at runtime. -->
+    <div id="pg-world" aria-label="Procedurally generated sections"></div>
+
+    <!-- When this sentinel nears the viewport, more page is generated. -->
+    <div id="pg-sentinel" aria-hidden="true"></div>
+
+    <!-- Fixed HUD: where you are, and controls for the seed. -->
+    <aside class="pg-hud" aria-label="Generator controls">
+      <div class="pg-hud-row">
+        <i class="ph ph-planet" aria-hidden="true"></i>
+        <span class="pg-hud-biome" data-pg-biome>—</span>
+      </div>
+      <div class="pg-hud-row pg-hud-meta">
+        <span
+          >seed <code data-pg-seed>—</code> · <span data-pg-count>0</span> sections</span
+        >
+      </div>
+      <div class="pg-hud-row pg-hud-actions">
+        <button class="zui-button zui-button-size-sm" data-pg-reroll>
+          <i class="ph ph-dice-five" aria-hidden="true"></i> Reroll
+        </button>
+        <button
+          class="zui-button zui-button-size-sm zui-button-variant-ghost"
+          data-pg-jump
+          title="Generate 10 sections and jump down"
+        >
+          <i class="ph ph-fast-forward" aria-hidden="true"></i> Jump
+        </button>
+        <button
+          class="zui-button zui-button-size-sm zui-button-variant-ghost"
+          data-pg-copy-seed
+          title="Copy a link to this exact page"
+        >
+          <i class="ph ph-link" aria-hidden="true"></i>
+        </button>
+        <button
+          class="zui-button zui-button-size-sm zui-button-variant-ghost"
+          data-pg-open-saved
+          title="Saved ideas"
+        >
+          <i class="ph ph-bookmarks-simple" aria-hidden="true"></i>
+          <span data-pg-saved-count>0</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Saved ideas -->
+    <dialog class="zui-dialog" id="pg-saved-dialog">
+      <div class="zui-dialog-header">
+        <h2 class="zui-dialog-title">Saved ideas</h2>
+        <p class="zui-dialog-description">
+          Sections you bookmarked, pinned to their seed. Links reopen the exact
+          section so you can copy its code or keep exploring from there.
+        </p>
+      </div>
+      <div class="zui-dialog-body" data-pg-saved-list></div>
+      <div class="zui-dialog-footer">
+        <button
+          class="zui-button zui-button-variant-ghost zui-button-size-sm"
+          data-pg-clear-saved
+        >
+          Clear all
+        </button>
+        <button
+          class="zui-button zui-button-size-sm"
+          data-pg-close-saved
+          autofocus
+        >
+          Close
+        </button>
+      </div>
+    </dialog>
+  </div>
+</BaseLayout>
+
+<script>
+  // ── Seeded randomness ──────────────────────────────────────────────────────
+  // xmur3 hashes a string into a 32-bit int; mulberry32 turns that into a fast
+  // deterministic PRNG. Every section derives its own PRNG from
+  // `seed + kind + index`, so generation is chunked like game terrain: section
+  // 41 is identical whether you scrolled there slowly or deep-linked to it.
+  const xmur3 = (str: string) => {
+    let h = 1779033703 ^ str.length
+    for (let i = 0; i < str.length; i++) {
+      h = Math.imul(h ^ str.charCodeAt(i), 3432918353)
+      h = (h << 13) | (h >>> 19)
+    }
+    return () => {
+      h = Math.imul(h ^ (h >>> 16), 2246822507)
+      h = Math.imul(h ^ (h >>> 13), 3266489909)
+      return (h ^= h >>> 16) >>> 0
+    }
+  }
+  const mulberry32 = (a: number) => () => {
+    a |= 0
+    a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+
+  type Rng = () => number
+  const pick = <T,>(rng: Rng, arr: readonly T[]): T =>
+    arr[Math.floor(rng() * arr.length)]
+  const int = (rng: Rng, min: number, max: number) =>
+    min + Math.floor(rng() * (max - min + 1))
+  const chance = (rng: Rng, p: number) => rng() < p
+
+  // ── Word banks + grammar ───────────────────────────────────────────────────
+  // Procedural copy without AI: templates filled from small word banks, all of
+  // it design-system flavoured. The point isn't meaning — it's that copy can be
+  // generated the same way as layout, and none of it needs escaping.
+  const NOUNS = [
+    'token', 'cascade', 'layer', 'variant', 'primitive', 'grid', 'baseline',
+    'contrast', 'viewport', 'gradient', 'keyframe', 'breakpoint', 'stylesheet',
+    'component', 'palette', 'glyph', 'swatch', 'modifier', 'container',
+    'fallback', 'outline', 'canvas', 'ratio', 'specificity',
+  ] as const
+  const ADJS = [
+    'fluid', 'recursive', 'quiet', 'composable', 'weightless', 'unstyled',
+    'adaptive', 'declarative', 'optical', 'modular', 'semantic', 'invisible',
+    'stubborn', 'elastic', 'patient', 'portable', 'nested', 'harmonious',
+  ] as const
+  const VERBS = [
+    'composes', 'inherits', 'cascades', 'aligns', 'overflows', 'adapts',
+    'renders', 'wraps', 'scales', 'settles', 'resolves', 'snaps',
+  ] as const
+  const PLACES = [
+    'below the fold', 'between breakpoints', 'in the margins',
+    'at the baseline', 'behind the z-index', 'after the reflow',
+    'inside the stacking context', 'past the viewport edge',
+  ] as const
+  const FIRST = ['Ada', 'Wren', 'Ivo', 'Sable', 'Juno', 'Kit', 'Mara', 'Otis', 'Vera', 'Ezra'] as const
+  const LAST = ['Marlow', 'Vega', 'Ossian', 'Ferrier', 'Quill', 'Ashby', 'Larkspur', 'Vance', 'Holloway', 'Bell'] as const
+  const ROLES = [
+    'Design Engineer', 'Token Gardener', 'Cascade Wrangler', 'Grid Surveyor',
+    'Contrast Auditor', 'Type Setter', 'Breakpoint Cartographer',
+    'Specificity Referee',
+  ] as const
+  const ICONS = [
+    'ph-planet', 'ph-cube', 'ph-stack', 'ph-flask', 'ph-anchor', 'ph-atom',
+    'ph-feather', 'ph-compass', 'ph-lightbulb', 'ph-shooting-star', 'ph-waves',
+    'ph-plant', 'ph-magnet', 'ph-key', 'ph-bird', 'ph-moon', 'ph-palette',
+    'ph-ruler', 'ph-grid-four', 'ph-swatches',
+  ] as const
+
+  const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
+  const titleCase = (s: string) => s.split(' ').map(cap).join(' ')
+
+  const makeTitle = (rng: Rng) =>
+    pick(rng, [
+      () => `The ${cap(pick(rng, ADJS))} ${cap(pick(rng, NOUNS))}`,
+      () => `${cap(pick(rng, NOUNS))}s & ${cap(pick(rng, NOUNS))}s`,
+      () => `On ${cap(pick(rng, ADJS))} ${cap(pick(rng, NOUNS))}s`,
+      () => `A Field Guide to the ${cap(pick(rng, NOUNS))}`,
+    ])()
+
+  const sentence = (rng: Rng) =>
+    pick(rng, [
+      () =>
+        `The ${pick(rng, ADJS)} ${pick(rng, NOUNS)} ${pick(rng, VERBS)} ${pick(rng, PLACES)}.`,
+      () =>
+        `Every ${pick(rng, NOUNS)} remembers the ${pick(rng, NOUNS)} it used to be.`,
+      () =>
+        `Somewhere ${pick(rng, PLACES)}, a ${pick(rng, ADJS)} ${pick(rng, NOUNS)} ${pick(rng, VERBS)}.`,
+      () =>
+        `Nobody maintains the ${pick(rng, NOUNS)} any more, and yet it ${pick(rng, VERBS)}.`,
+      () =>
+        `We measured the ${pick(rng, NOUNS)} twice; it was ${pick(rng, ADJS)} both times.`,
+      () =>
+        `If you fold the ${pick(rng, NOUNS)} carefully enough, it becomes a ${pick(rng, NOUNS)}.`,
+    ])()
+
+  const paragraph = (rng: Rng) =>
+    Array.from({ length: int(rng, 2, 4) }, () => sentence(rng)).join(' ')
+
+  const question = (rng: Rng) =>
+    pick(rng, [
+      () => `Why does the ${pick(rng, NOUNS)} ${pick(rng, VERBS)}?`,
+      () => `Can a ${pick(rng, ADJS)} ${pick(rng, NOUNS)} be themed?`,
+      () => `What happens ${pick(rng, PLACES)}?`,
+      () => `Do ${pick(rng, ADJS)} ${pick(rng, NOUNS)}s cascade?`,
+    ])()
+
+  // ── Biomes ─────────────────────────────────────────────────────────────────
+  // A biome is a depth band with its own colour family, accent, radius scale
+  // and type. Crucially it is expressed entirely in ZUI's own vocabulary: the
+  // generator overrides the semantic tokens (--color-background, --color-text,
+  // --color-theme, --radius-scale, --font-display…) and every ZUI component
+  // inside restyles itself. Palettes are built with light-dark() from the
+  // Tailwind-derived scales, so the whole generated world still honours the
+  // site's dark-mode toggle.
+  const BIOME_SPAN = 4
+  const FAMILIES = [
+    'mist', 'slate', 'stone', 'zinc', 'mauve', 'taupe', 'olive', 'sky', 'teal',
+    'emerald', 'amber', 'rose', 'violet', 'indigo', 'cyan', 'lime', 'orange',
+    'blue', 'green', 'pink', 'purple', 'fuchsia', 'red', 'yellow',
+  ] as const
+  // Colour names that exist as zui-badge-color-* classes.
+  const BADGE_COLORS = new Set([
+    'amber', 'blue', 'cyan', 'emerald', 'fuchsia', 'gray', 'green', 'indigo',
+    'lime', 'orange', 'pink', 'purple', 'red', 'rose', 'sky', 'teal', 'violet',
+    'yellow',
+  ])
+  const BIOME_NOUNS = [
+    'Shallows', 'Strata', 'Meridian', 'Archive', 'Terraces', 'Hollows',
+    'Expanse', 'Reef', 'Foundry', 'Orchard', 'Commons', 'Atelier',
+  ] as const
+  const FONTS = [
+    'var(--font-stack-sans)',
+    'var(--font-stack-serif)',
+    'var(--font-stack-mono)',
+  ] as const
+
+  type Biome = {
+    index: number
+    name: string
+    fam: string
+    acc: string
+    badge: string
+    radius: number
+    displayFont: string
+    bodyFont: string
+  }
+  const biomeCache = new Map<number, Biome>()
+  const biomeFor = (bi: number): Biome => {
+    let b = biomeCache.get(bi)
+    if (b) return b
+    const rng = rngFor('biome:' + bi)
+    const fam = pick(rng, FAMILIES)
+    let acc = pick(rng, FAMILIES.filter((f) => BADGE_COLORS.has(f)))
+    if (acc === fam) acc = fam === 'sky' ? 'rose' : 'sky'
+    b = {
+      index: bi,
+      name: `The ${cap(fam)} ${pick(rng, BIOME_NOUNS)}`,
+      fam,
+      acc,
+      badge: BADGE_COLORS.has(fam) ? fam : 'gray',
+      radius: pick(rng, [0, 0.6, 1, 1.6, 2.6] as const),
+      displayFont: pick(rng, FONTS),
+      bodyFont: chance(rng, 0.25) ? 'var(--font-stack-serif)' : 'var(--font-stack-sans)',
+    }
+    biomeCache.set(bi, b)
+    return b
+  }
+
+  // Per-section palette: the biome fixes the colour families; the section
+  // jitters the lightness steps so neighbouring sections read as shades of one
+  // place, not clones. Steps mirror ZUI's own theme.css formula (bg/surface a
+  // step apart, border mid-scale, text near the ends) so contrast holds.
+  const sectionStyle = (rng: Rng, b: Biome, swapAccent = false) => {
+    const fam = swapAccent ? b.acc : b.fam
+    const acc = swapAccent ? b.fam : b.acc
+    const [bgL, surfL] = pick(rng, [[100, 50], [200, 100]] as const)
+    const [bgD, surfD] = pick(rng, [[800, 900], [900, 950]] as const)
+    const textL = pick(rng, [800, 900] as const)
+    const v = (name: string, l: number | string, d: number | string) =>
+      `--color-${name}: light-dark(var(--color-${fam}-${l}), var(--color-${fam}-${d}));`
+    return [
+      v('background', bgL, bgD),
+      v('surface', surfL, surfD),
+      v('border', 300, 700),
+      v('text', textL, 100),
+      v('theme', 600, 400),
+      `--color-accent: light-dark(var(--color-${acc}-600), var(--color-${acc}-400));`,
+      `--radius-scale: ${b.radius};`,
+      `--font-display: ${b.displayFont};`,
+      `--font-body: ${b.bodyFont};`,
+    ].join('')
+  }
+
+  // ── Generative SVG art ─────────────────────────────────────────────────────
+  // Stand-ins for imagery: four little algorithms (scatter, ridges, grid,
+  // rings) drawn as inline SVG. Fills reference the biome's colour-scale
+  // tokens, so even the artwork is on-token and dark-mode aware.
+  const svgArt = (rng: Rng, b: Biome, w = 800, h = 420) => {
+    const col = (light: number, dark: number, famOverride?: string) =>
+      `light-dark(var(--color-${famOverride ?? b.fam}-${light}), var(--color-${famOverride ?? b.fam}-${dark}))`
+    const shade = () =>
+      pick(rng, [
+        col(300, 700), col(400, 600), col(500, 500), col(600, 400),
+        col(400, 600, b.acc), col(600, 400, b.acc),
+      ] as const)
+    let inner = ''
+    const kind = pick(rng, ['scatter', 'ridges', 'grid', 'rings'] as const)
+    if (kind === 'scatter') {
+      for (let i = 0, n = int(rng, 14, 30); i < n; i++)
+        inner += `<circle cx="${int(rng, 0, w)}" cy="${int(rng, 0, h)}" r="${int(rng, 4, 60)}" fill="${shade()}" opacity="${(0.25 + rng() * 0.55).toFixed(2)}"/>`
+    } else if (kind === 'ridges') {
+      for (let r = 0, n = int(rng, 3, 5); r < n; r++) {
+        const baseY = (h / (n + 1)) * (r + 1)
+        let pts = `0,${h} `
+        for (let x = 0; x <= w; x += 40)
+          pts += `${x},${(baseY + (rng() - 0.5) * 90).toFixed(0)} `
+        pts += `${w},${h}`
+        inner += `<polygon points="${pts}" fill="${shade()}" opacity="0.8"/>`
+      }
+    } else if (kind === 'grid') {
+      const cell = int(rng, 40, 70)
+      for (let y = cell / 2; y < h; y += cell)
+        for (let x = cell / 2; x < w; x += cell) {
+          if (chance(rng, 0.25)) continue
+          const r = int(rng, 4, cell / 2 - 4)
+          inner += chance(rng, 0.5)
+            ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${shade()}" opacity="0.8"/>`
+            : `<rect x="${x - r}" y="${y - r}" width="${r * 2}" height="${r * 2}" fill="${shade()}" opacity="0.8"/>`
+        }
+    } else {
+      const cx = int(rng, w * 0.25, w * 0.75)
+      const cy = int(rng, h * 0.25, h * 0.75)
+      for (let r = int(rng, 20, 40); r < w; r += int(rng, 18, 42))
+        inner += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${shade()}" stroke-width="${int(rng, 2, 8)}" opacity="0.7"/>`
+    }
+    return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Generated artwork" preserveAspectRatio="xMidYMid slice"><rect width="${w}" height="${h}" fill="var(--color-surface)"/>${inner}</svg>`
+  }
+
+  // ── Small ZUI markup helpers ───────────────────────────────────────────────
+  const badge = (rng: Rng, b: Biome, text: string, fill = false) =>
+    `<span class="zui-badge${fill ? ' zui-badge-variant-fill' : ''} zui-badge-color-${pick(rng, [b.badge, b.acc] as const)}">${text}</span>`
+
+  const button = (
+    text: string,
+    opts: { variant?: string; color?: string; size?: string; icon?: string } = {},
+  ) => {
+    const cls = [
+      'zui-button',
+      opts.variant && `zui-button-variant-${opts.variant}`,
+      opts.color && `zui-button-color-${opts.color}`,
+      opts.size && `zui-button-size-${opts.size}`,
+    ]
+      .filter(Boolean)
+      .join(' ')
+    const icon = opts.icon
+      ? `<i class="ph ${opts.icon}" aria-hidden="true"></i> `
+      : ''
+    return `<button class="${cls}" type="button">${icon}${text}</button>`
+  }
+
+  const avatar = (rng: Rng, size?: string, shape?: string) => {
+    const initials = `${pick(rng, FIRST)[0]}${pick(rng, LAST)[0]}`
+    const cls = [
+      'zui-avatar',
+      size && `zui-avatar-size-${size}`,
+      shape && `zui-avatar-shape-${shape}`,
+    ]
+      .filter(Boolean)
+      .join(' ')
+    return `<span class="${cls}"><span class="zui-avatar-fallback">${initials}</span></span>`
+  }
+
+  const person = (rng: Rng) => `${pick(rng, FIRST)} ${pick(rng, LAST)}`
+
+  // ── Section archetypes ─────────────────────────────────────────────────────
+  // The layout grammar. Each archetype returns inner HTML for one section and
+  // declares (in MANIFEST below) which ZUI components and utilities it used,
+  // so the section footer can link to the right docs pages.
+  const archetypes = {
+    hero(rng: Rng, b: Biome) {
+      const align = pick(rng, ['start', 'center', 'end'] as const)
+      const buttons = [
+        button(titleCase(`${pick(rng, VERBS)} the ${pick(rng, NOUNS)}`), {
+          size: 'lg',
+          icon: pick(rng, ICONS),
+        }),
+        button(titleCase(`${pick(rng, ADJS)} mode`), {
+          size: 'lg',
+          variant: pick(rng, ['outline', 'ghost', 'subtle'] as const),
+          color: 'accent',
+        }),
+      ].join('\n')
+      return `<div class="pg-hero" style="text-align:${align}">
+        ${badge(rng, b, pick(rng, ADJS) + ' ' + pick(rng, NOUNS), chance(rng, 0.5))}
+        <h2 class="pg-huge${chance(rng, 0.3) ? ' pg-outline-text' : ''}">${makeTitle(rng)}</h2>
+        <p class="zui-text-1 pg-sub">${sentence(rng)}</p>
+        <div class="flex gap-sm flex-wrap" style="justify-content:${align === 'center' ? 'center' : align === 'end' ? 'flex-end' : 'flex-start'}">
+          ${buttons}
+        </div>
+      </div>`
+    },
+    features(rng: Rng, b: Biome) {
+      const n = int(rng, 3, 6)
+      const elevated = chance(rng, 0.4) ? ' zui-card-elevated' : ''
+      const cards = Array.from({ length: n }, () =>
+        `<div class="zui-card${elevated}">
+          <div class="zui-card-header">
+            <i class="ph-duotone ${pick(rng, ICONS)} pg-feature-icon" aria-hidden="true"></i>
+            <div class="zui-card-title">${titleCase(pick(rng, ADJS) + ' ' + pick(rng, NOUNS))}</div>
+            <div class="zui-card-description">${sentence(rng)}</div>
+          </div>
+        </div>`,
+      ).join('\n')
+      return `<h2>${makeTitle(rng)}</h2>
+        <div class="pg-grid gap-md" style="--pg-col: 15rem">${cards}</div>`
+    },
+    pricing(rng: Rng, b: Biome) {
+      const tiers = ['Baseline', 'Cascade', 'Inherit!'].map((name, ti) => {
+        const popular = ti === 1
+        const feats = Array.from(
+          { length: int(rng, 3, 5) },
+          () =>
+            `<li><i class="ph ph-check" aria-hidden="true"></i> ${cap(pick(rng, ADJS))} ${pick(rng, NOUNS)}s</li>`,
+        ).join('\n')
+        return `<div class="zui-card${popular ? ' zui-card-elevated pg-popular' : ''}">
+          <div class="zui-card-header">
+            <div class="zui-card-title">${name}</div>
+            ${popular ? `<span class="zui-badge zui-badge-variant-fill zui-badge-color-${b.acc}">popular</span>` : ''}
+            <div class="zui-card-description">${sentence(rng)}</div>
+          </div>
+          <div class="zui-card-body">
+            <p class="pg-price">$${int(rng, 1, 19) * (ti + 1)}<span class="zui-text--1">/mo</span></p>
+            <ul class="pg-featlist">${feats}</ul>
+          </div>
+          <div class="zui-card-footer">
+            ${button(popular ? 'Start cascading' : 'Choose ' + name.toLowerCase(), { variant: popular ? 'fill' : 'outline', color: popular ? 'accent' : undefined })}
+          </div>
+        </div>`
+      })
+      return `<h2>${makeTitle(rng)}</h2>
+        <div class="pg-grid gap-md" style="--pg-col: 16rem">${tiers.join('\n')}</div>`
+    },
+    testimonial(rng: Rng, b: Biome) {
+      return `<figure class="pg-quote">
+        <blockquote>
+          <p>“${sentence(rng)} ${sentence(rng)}”</p>
+        </blockquote>
+        <figcaption class="flex items-center gap-sm">
+          ${avatar(rng, 'lg', pick(rng, ['default', 'soft', 'squircle'] as const))}
+          <span>
+            <strong>${person(rng)}</strong><br />
+            <span class="zui-text--1">${pick(rng, ROLES)}</span>
+          </span>
+        </figcaption>
+      </figure>`
+    },
+    stats(rng: Rng) {
+      const stat = () => {
+        const v = pick(rng, [
+          () => `${int(rng, 3, 97)}%`,
+          () => int(rng, 1000, 90000).toLocaleString('en-GB'),
+          () => `${(rng() * 9 + 0.5).toFixed(1)}k`,
+          () => `${int(rng, 2, 400)}`,
+        ] as const)()
+        return `<div class="pg-stat">
+          <span class="pg-stat-num">${v}</span>
+          <span class="zui-text--1">${pick(rng, ADJS)} ${pick(rng, NOUNS)}s</span>
+        </div>`
+      }
+      return `<div class="pg-stats">${Array.from({ length: int(rng, 3, 4) }, stat).join('\n')}</div>`
+    },
+    table(rng: Rng, b: Biome) {
+      const statuses = [
+        ['stable', 'green'], ['beta', 'amber'], ['deprecated', 'red'],
+        ['experimental', b.acc],
+      ] as const
+      const rows = Array.from({ length: int(rng, 3, 6) }, () => {
+        const [label, color] = pick(rng, statuses)
+        return `<tr class="zui-table-row">
+          <td class="zui-table-cell"><strong>${titleCase(pick(rng, ADJS) + ' ' + pick(rng, NOUNS))}</strong></td>
+          <td class="zui-table-cell"><span class="zui-badge zui-badge-color-${color}">${label}</span></td>
+          <td class="zui-table-cell">${int(rng, 1, 9)}.${int(rng, 0, 12)}.${int(rng, 0, 9)}</td>
+          <td class="zui-table-cell pg-num">${int(rng, 12, 9800).toLocaleString('en-GB')}</td>
+        </tr>`
+      }).join('\n')
+      return `<h2>${makeTitle(rng)}</h2>
+        <table class="zui-table">
+          <thead class="zui-table-header">
+            <tr class="zui-table-row"><th class="zui-table-head">${cap(pick(rng, NOUNS))}</th><th class="zui-table-head">Status</th><th class="zui-table-head">Version</th><th class="zui-table-head pg-num">Weekly ${pick(rng, VERBS)}</th></tr>
+          </thead>
+          <tbody class="zui-table-body">${rows}</tbody>
+        </table>`
+    },
+    faq(rng: Rng, _b: Biome, i: number) {
+      // exclusive-open groups are scoped per section via its unique index
+      const group = `pg-faq-${i}`
+      const items = Array.from({ length: int(rng, 3, 5) }, (_, qi) =>
+        `<details class="zui-accordion-item" name="${group}"${qi === 0 ? ' open' : ''}>
+          <summary class="zui-accordion-trigger">${question(rng)}</summary>
+          <div class="zui-accordion-content"><p>${paragraph(rng)}</p></div>
+        </details>`,
+      ).join('\n')
+      return `<div class="pg-narrow">
+        <h2>${makeTitle(rng)}</h2>
+        <div class="zui-accordion">${items}</div>
+      </div>`
+    },
+    form(rng: Rng, _b: Biome, i: number) {
+      const noun = pick(rng, NOUNS)
+      // ids must be unique per generated section — derive them from its index
+      const uid = `pg-f-${i}`
+      return `<div class="pg-narrow">
+        <div class="zui-card zui-card-elevated">
+          <div class="zui-card-header">
+            <div class="zui-card-title">${titleCase(`register your ${noun}`)}</div>
+            <div class="zui-card-description">${sentence(rng)}</div>
+          </div>
+          <div class="zui-card-body flow">
+            <div class="zui-field" role="group">
+              <label class="zui-label" for="${uid}-name">${cap(noun)} name</label>
+              <input class="zui-input" id="${uid}-name" type="text" placeholder="e.g. the ${pick(rng, ADJS)} ${pick(rng, NOUNS)}" />
+              <p class="zui-field-description">${sentence(rng)}</p>
+            </div>
+            <div class="zui-field" role="group">
+              <label class="zui-label" for="${uid}-kind">Kind</label>
+              <select class="zui-select" id="${uid}-kind">
+                ${Array.from({ length: 3 }, () => `<option>${titleCase(pick(rng, ADJS))}</option>`).join('\n')}
+              </select>
+            </div>
+            <label class="zui-checkbox">
+              <input type="checkbox" checked />
+              Notify me when it ${pick(rng, VERBS)}
+            </label>
+          </div>
+          <div class="zui-card-footer">
+            ${button('Submit', { color: 'accent', icon: 'ph-paper-plane-tilt' })}
+            ${button('Cancel', { variant: 'ghost' })}
+          </div>
+        </div>
+      </div>`
+    },
+    team(rng: Rng, b: Biome) {
+      const shape = pick(rng, ['default', 'soft', 'squircle', 'hard'] as const)
+      const members = Array.from({ length: int(rng, 4, 8) }, () =>
+        `<div class="pg-member">
+          ${avatar(rng, 'lg', shape)}
+          <strong>${person(rng)}</strong>
+          <span class="zui-badge zui-badge-color-${pick(rng, [b.badge, b.acc] as const)}">${pick(rng, ROLES)}</span>
+        </div>`,
+      ).join('\n')
+      return `<h2>${makeTitle(rng)}</h2>
+        <div class="pg-grid gap-lg" style="--pg-col: 10rem">${members}</div>`
+    },
+    cta(rng: Rng, b: Biome) {
+      return `<div class="pg-cta">
+        <h2 class="pg-huge">${titleCase(`${pick(rng, VERBS)} ${pick(rng, PLACES)}`)}</h2>
+        <p class="zui-text-1">${sentence(rng)}</p>
+        <div class="flex gap-sm justify-center flex-wrap">
+          ${button(titleCase('get the ' + pick(rng, NOUNS)), { size: 'xl', color: 'accent', icon: pick(rng, ICONS) })}
+          ${button('Read the docs', { size: 'xl', variant: 'link' })}
+        </div>
+      </div>`
+    },
+    timeline(rng: Rng) {
+      let year = 1860 + int(rng, 0, 130)
+      const rows = Array.from({ length: int(rng, 3, 5) }, () => {
+        const r = `<div class="pg-tl-row">
+          <span class="pg-tl-year">${year}</span>
+          <p>${sentence(rng)}</p>
+        </div>`
+        year += int(rng, 2, 28)
+        return r
+      }).join('\n')
+      return `<div class="pg-narrow">
+        <h2>${makeTitle(rng)}</h2>
+        <div>${rows}</div>
+      </div>`
+    },
+    shortcuts(rng: Rng) {
+      const KEYS = ['⌘', 'Ctrl', 'Alt', 'Shift'] as const
+      const LETTERS = 'ABDEFGKMPRSTVX'
+      const rows = Array.from({ length: int(rng, 3, 6) }, () =>
+        `<div class="pg-shortcut">
+          <span>${cap(pick(rng, VERBS))} the ${pick(rng, ADJS)} ${pick(rng, NOUNS)}</span>
+          <kbd class="zui-kbd-group">
+            <kbd class="zui-kbd">${pick(rng, KEYS)}</kbd>
+            <kbd class="zui-kbd">${LETTERS[int(rng, 0, LETTERS.length - 1)]}</kbd>
+          </kbd>
+        </div>`,
+      ).join('\n')
+      return `<div class="pg-narrow">
+        <h2>${makeTitle(rng)}</h2>
+        <div class="zui-card"><div class="zui-card-body">${rows}</div></div>
+      </div>`
+    },
+    prose(rng: Rng) {
+      const paras = Array.from(
+        { length: int(rng, 2, 3) },
+        () => `<p>${paragraph(rng)}</p>`,
+      ).join('\n')
+      const list = chance(rng, 0.5)
+        ? `<ul>${Array.from({ length: int(rng, 3, 5) }, () => `<li>${cap(pick(rng, ADJS))} ${pick(rng, NOUNS)}s ${pick(rng, PLACES)}</li>`).join('\n')}</ul>`
+        : ''
+      return `<div class="pg-narrow prose flow">
+        <h2>${makeTitle(rng)}</h2>
+        ${paras}
+        ${list}
+        <p>${sentence(rng)} <code>--${pick(rng, NOUNS)}-${pick(rng, NOUNS)}</code> ${pick(rng, VERBS)} ${pick(rng, PLACES)}.</p>
+      </div>`
+    },
+    art(rng: Rng, b: Biome) {
+      return `<figure class="pg-art">
+        ${svgArt(rng, b)}
+        <figcaption class="zui-text--1">Fig. ${int(rng, 1, 99)} — ${sentence(rng)}</figcaption>
+      </figure>`
+    },
+    gallery(rng: Rng, b: Biome) {
+      const tiles = Array.from(
+        { length: int(rng, 4, 8) },
+        () => `<div class="pg-tile">${svgArt(rng, b, 300, 220)}</div>`,
+      ).join('\n')
+      return `<h2>${makeTitle(rng)}</h2>
+        <div class="pg-grid gap-sm" style="--pg-col: 11rem">${tiles}</div>`
+    },
+  } as const
+  type Kind = keyof typeof archetypes
+
+  // Which ZUI pieces each archetype uses, and where their docs live. This is
+  // what powers the "made of" chips in every section footer.
+  const DOC_LINKS: Record<string, string> = {
+    Accordion: '/components/accordion',
+    Avatar: '/components/avatar',
+    Badge: '/components/badge',
+    Button: '/components/button',
+    Card: '/components/card',
+    Checkbox: '/components/checkbox',
+    Field: '/components/field',
+    Input: '/components/input',
+    Kbd: '/components/kbd',
+    Label: '/components/label',
+    Select: '/components/select',
+    Table: '/components/table',
+    flex: '/utilities/flex',
+    flow: '/utilities/flow',
+    prose: '/utilities/prose',
+    'text sizes': '/utilities/ui-typography',
+    tokens: '/tokens',
+  }
+  const MANIFEST: Record<Kind, string[]> = {
+    art: ['tokens'],
+    cta: ['Button', 'flex', 'text sizes'],
+    faq: ['Accordion'],
+    features: ['Card'],
+    form: ['Card', 'Field', 'Label', 'Input', 'Select', 'Checkbox', 'Button', 'flow'],
+    gallery: ['tokens'],
+    hero: ['Badge', 'Button', 'flex', 'text sizes'],
+    pricing: ['Card', 'Badge', 'Button', 'text sizes'],
+    prose: ['prose', 'flow'],
+    shortcuts: ['Card', 'Kbd'],
+    stats: ['text sizes'],
+    table: ['Table', 'Badge'],
+    team: ['Avatar', 'Badge'],
+    testimonial: ['Avatar', 'flex', 'text sizes'],
+    timeline: ['tokens'],
+  }
+
+  // Weighted layout choice — everyday patterns dominate, oddities are rarer,
+  // and an occasional mid-scroll hero opens a new "chapter".
+  const WEIGHTS: [Kind, number][] = [
+    ['features', 2], ['prose', 1.6], ['table', 1.2], ['faq', 1.2],
+    ['testimonial', 1.2], ['stats', 1.2], ['art', 1], ['form', 1],
+    ['pricing', 1], ['team', 1], ['timeline', 0.9], ['gallery', 0.8],
+    ['shortcuts', 0.8], ['cta', 0.8], ['hero', 0.6],
+  ]
+  const TOTAL_W = WEIGHTS.reduce((t, [, w]) => t + w, 0)
+  const pickKind = (rng: Rng): Kind => {
+    let roll = rng() * TOTAL_W
+    for (const [kind, w] of WEIGHTS) if ((roll -= w) < 0) return kind
+    return 'features'
+  }
+
+  // ── Code serialisation ─────────────────────────────────────────────────────
+  // Pretty-print a section's generated DOM back into copy-pastable HTML. The
+  // section wrapper's inline palette is deliberately left out: the snippet
+  // only carries zui-* classes, so it adopts whatever theme it's pasted into.
+  const VOID_TAGS = new Set(['img', 'input', 'br', 'hr'])
+  const escapeHtml = (s: string) =>
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const fmtNode = (n: Node, depth: number): string[] => {
+    const pad = '  '.repeat(depth)
+    if (n.nodeType === Node.TEXT_NODE) {
+      const t = n.textContent?.trim()
+      return t ? [pad + t] : []
+    }
+    if (!(n instanceof Element)) return []
+    const tag = n.tagName.toLowerCase()
+    const attrs = [...n.attributes]
+      .map((a) => (a.value === '' ? a.name : `${a.name}="${a.value}"`))
+      .join(' ')
+    const open = attrs ? `<${tag} ${attrs}>` : `<${tag}>`
+    if (VOID_TAGS.has(tag)) return [pad + open]
+    if (
+      n.childNodes.length <= 1 &&
+      (!n.firstChild || n.firstChild.nodeType === Node.TEXT_NODE) &&
+      (n.textContent ?? '').trim().length < 60
+    )
+      return [pad + open + (n.textContent ?? '').trim() + `</${tag}>`]
+    const kids = [...n.childNodes].flatMap((c) => fmtNode(c, depth + 1))
+    return [pad + open, ...kids, pad + `</${tag}>`]
+  }
+  const sectionCode = (content: Element) =>
+    [...content.childNodes].flatMap((c) => fmtNode(c, 0)).join('\n')
+
+  // ── Saved ideas ────────────────────────────────────────────────────────────
+  type SavedIdea = { seed: string; index: number; kind: string; pieces: string[] }
+  const SAVED_KEY = 'zui-playground-saved'
+  const loadSaved = (): SavedIdea[] => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(SAVED_KEY) ?? '[]')
+      return Array.isArray(raw) ? raw : []
+    } catch {
+      return []
+    }
+  }
+  const storeSaved = (items: SavedIdea[]) =>
+    localStorage.setItem(SAVED_KEY, JSON.stringify(items))
+
+  // ── Setup ──────────────────────────────────────────────────────────────────
+  let seed = ''
+  const rngFor = (key: string): Rng => mulberry32(xmur3(seed + '/' + key)())
+
+  function init() {
+    const world = document.getElementById('pg-world')
+    if (!world || world.dataset.init) return
+    world.dataset.init = '1'
+
+    // The seed lives in the URL so a generated page is shareable. Sanitised
+    // because it's user input that ends up displayed in the HUD.
+    const params = new URLSearchParams(location.search)
+    seed = (params.get('seed') ?? '').replace(/[^a-zA-Z0-9-]/g, '').slice(0, 24)
+    if (!seed) {
+      seed = Math.random().toString(36).slice(2, 8)
+      const url = new URL(location.href)
+      url.searchParams.set('seed', seed)
+      history.replaceState(null, '', url)
+    }
+    biomeCache.clear()
+
+    const hud = document.querySelector<HTMLElement>('.pg-hud')!
+    const seedEl = hud.querySelector('[data-pg-seed]')!
+    const countEl = hud.querySelector('[data-pg-count]')!
+    const biomeEl = hud.querySelector<HTMLElement>('[data-pg-biome]')!
+    const savedCountEl = hud.querySelector('[data-pg-saved-count]')!
+    seedEl.textContent = seed
+
+    let saved = loadSaved()
+    const refreshSavedCount = () => {
+      savedCountEl.textContent = String(saved.length)
+    }
+    refreshSavedCount()
+    const isSaved = (i: number) =>
+      saved.some((s) => s.seed === seed && s.index === i)
+
+    const sectionUrl = (i: number) => {
+      const url = new URL(location.href)
+      url.searchParams.set('seed', seed)
+      url.searchParams.set('s', String(i))
+      return url.toString()
+    }
+
+    const flashButton = (btn: HTMLButtonElement, icon = 'ph-check') => {
+      const prev = btn.innerHTML
+      btn.innerHTML = `<i class="ph ${icon}" aria-hidden="true"></i>`
+      setTimeout(() => (btn.innerHTML = prev), 1200)
+    }
+
+    // ── Section builder ──────────────────────────────────────────────────────
+    let built = 0
+
+    const metaBar = (i: number, kind: Kind, biome: Biome) => {
+      const bar = document.createElement('footer')
+      bar.className = 'pg-meta'
+      const chips = MANIFEST[kind]
+        .map((piece) => {
+          const href = DOC_LINKS[piece]
+          return href
+            ? `<a class="zui-badge zui-badge-variant-outline" href="${href}">${piece}</a>`
+            : `<span class="zui-badge zui-badge-variant-outline">${piece}</span>`
+        })
+        .join('')
+      bar.innerHTML = `
+        <div class="pg-meta-chips">
+          <span class="zui-badge zui-badge-variant-fill zui-badge-color-${biome.acc}">§${i} ${kind}</span>
+          <span class="pg-meta-label">made of</span>
+          ${chips}
+        </div>
+        <div class="pg-meta-actions">
+          <button class="zui-button zui-button-size-xs zui-button-variant-ghost" data-act="code" title="View HTML">
+            <i class="ph ph-code" aria-hidden="true"></i> Code
+          </button>
+          <button class="zui-button zui-button-size-xs zui-button-variant-ghost" data-act="copy" title="Copy HTML">
+            <i class="ph ph-copy" aria-hidden="true"></i> Copy
+          </button>
+          <button class="zui-button zui-button-size-xs zui-button-variant-ghost" data-act="link" title="Copy a link to this section">
+            <i class="ph ph-link" aria-hidden="true"></i>
+          </button>
+          <button class="zui-button zui-button-size-xs zui-button-variant-ghost" data-act="save" title="Save this idea" aria-pressed="${isSaved(i)}">
+            <i class="ph ${isSaved(i) ? 'ph-bookmark-simple-fill' : 'ph-bookmark-simple'}" aria-hidden="true"></i>
+          </button>
+        </div>`
+      return bar
+    }
+
+    const renderSection = (i: number): HTMLElement => {
+      const rng = rngFor('sec:' + i)
+      const biome = biomeFor(Math.floor(i / BIOME_SPAN))
+      const el = document.createElement('section')
+      el.dataset.biome = biome.name
+      el.dataset.index = String(i)
+      el.id = `s${i}`
+
+      // Biome boundaries get an announcement band instead of a normal section;
+      // the very first section is always a hero so the page opens with a title.
+      if (i > 0 && i % BIOME_SPAN === 0) {
+        el.className = 'pg-sec pg-sec-divider'
+        el.style.cssText = sectionStyle(rng, biome)
+        el.innerHTML = `<div class="pg-sec-content pg-divider">
+          <span class="zui-badge zui-badge-variant-outline">biome ${Math.floor(i / BIOME_SPAN) + 1}</span>
+          <h2>${biome.name}</h2>
+          <span class="pg-divider-note">new palette · radius ×${biome.radius} · same components</span>
+        </div>`
+        return el
+      }
+
+      const kind: Kind = i === 0 ? 'hero' : pickKind(rng)
+      el.className = `pg-sec pg-sec-${kind}`
+      el.style.cssText = sectionStyle(rng, biome, kind === 'cta')
+      const content = document.createElement('div')
+      content.className = 'pg-sec-content'
+      content.dataset.content = ''
+      // widened call: archetypes that don't need the index simply ignore it
+      content.innerHTML = (
+        archetypes[kind] as (rng: Rng, b: Biome, i: number) => string
+      )(rng, biome, i)
+      el.append(content, metaBar(i, kind, biome))
+      return el
+    }
+
+    const buildNext = (n: number) => {
+      const frag = document.createDocumentFragment()
+      for (let k = 0; k < n; k++) frag.append(renderSection(built++))
+      world.append(frag)
+      countEl.textContent = String(built)
+    }
+
+    // ── Section toolbar actions (delegated) ──────────────────────────────────
+    world.addEventListener('click', async (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(
+        '.pg-meta [data-act]',
+      )
+      if (!btn) return
+      const sec = btn.closest<HTMLElement>('.pg-sec')!
+      const i = Number(sec.dataset.index)
+      const content = sec.querySelector('[data-content]')!
+      const act = btn.dataset.act
+
+      if (act === 'code') {
+        let wrap = sec.querySelector<HTMLElement>('.pg-codewrap')
+        if (!wrap) {
+          wrap = document.createElement('div')
+          wrap.className = 'pg-codewrap'
+          wrap.innerHTML = `<pre class="pg-code"><code>${escapeHtml(sectionCode(content))}</code></pre>`
+          sec.insertBefore(wrap, sec.querySelector('.pg-meta'))
+        } else {
+          wrap.hidden = !wrap.hidden
+        }
+      } else if (act === 'copy') {
+        const kind = sec.className.match(/pg-sec-(\w+)/)?.[1] ?? 'section'
+        const header = `<!-- ${kind} · generated by the ZUI procedural playground (seed ${seed} §${i}) — zui-* classes map to ZUI components; pg-* classes are page-local layout scaffolding -->\n`
+        await navigator.clipboard.writeText(header + sectionCode(content))
+        flashButton(btn)
+      } else if (act === 'link') {
+        await navigator.clipboard.writeText(sectionUrl(i))
+        flashButton(btn)
+      } else if (act === 'save') {
+        const kind = (sec.className.match(/pg-sec-(\w+)/)?.[1] ?? '?') as Kind
+        if (isSaved(i)) {
+          saved = saved.filter((s) => !(s.seed === seed && s.index === i))
+        } else {
+          saved.push({ index: i, kind, pieces: MANIFEST[kind] ?? [], seed })
+        }
+        storeSaved(saved)
+        refreshSavedCount()
+        btn.setAttribute('aria-pressed', String(isSaved(i)))
+        btn.innerHTML = `<i class="ph ${isSaved(i) ? 'ph-bookmark-simple-fill' : 'ph-bookmark-simple'}" aria-hidden="true"></i>`
+      }
+    })
+
+    // ── Scroll wiring ────────────────────────────────────────────────────────
+    // A sentinel below the world triggers generation just-in-time: whenever it
+    // comes within two viewports, a few more sections are built, which pushes
+    // it back down. Deep links (?s=N) build straight down to the target.
+    // floor() rejects fractional values that could never match a section id
+    const targetParam = Math.floor(Number(params.get('s')))
+    buildNext(Number.isFinite(targetParam) && targetParam > 0
+      ? Math.min(targetParam, 500) + 2
+      : 4)
+    if (Number.isFinite(targetParam) && targetParam > 0) {
+      // Re-anchor a few times: sections above the target use estimated
+      // content-visibility heights that settle as they render, which would
+      // otherwise shift the target back out of view.
+      const target = document.getElementById(`s${Math.min(targetParam, 500)}`)
+      target?.scrollIntoView()
+      for (const delay of [150, 450, 900])
+        setTimeout(() => target?.scrollIntoView(), delay)
+    }
+
+    new IntersectionObserver(
+      (entries) => entries.some((e) => e.isIntersecting) && buildNext(3),
+      { rootMargin: '200% 0px' },
+    ).observe(document.getElementById('pg-sentinel')!)
+
+    // The HUD shows the biome of whatever section is at mid-viewport.
+    let ticking = false
+    const updateHud = () => {
+      ticking = false
+      if (!document.body.contains(world)) return
+      const mid = document
+        .elementsFromPoint(innerWidth / 2, innerHeight / 2)
+        .find((n) => n instanceof HTMLElement && n.dataset.biome) as
+        | HTMLElement
+        | undefined
+      if (mid) biomeEl.textContent = mid.dataset.biome!
+    }
+    addEventListener(
+      'scroll',
+      () => {
+        if (!ticking && document.body.contains(world)) {
+          ticking = true
+          requestAnimationFrame(updateHud)
+        }
+      },
+      { passive: true },
+    )
+    updateHud()
+
+    // ── HUD controls ─────────────────────────────────────────────────────────
+    const reroll = () => {
+      const url = new URL(location.href)
+      url.searchParams.set('seed', Math.random().toString(36).slice(2, 8))
+      url.searchParams.delete('s')
+      location.href = url.toString()
+    }
+    const jump = () => {
+      const first = built
+      buildNext(10)
+      document.getElementById(`s${first}`)?.scrollIntoView({
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth',
+      })
+    }
+    hud.querySelector('[data-pg-reroll]')?.addEventListener('click', reroll)
+    hud.querySelector('[data-pg-jump]')?.addEventListener('click', jump)
+    hud
+      .querySelector<HTMLButtonElement>('[data-pg-copy-seed]')
+      ?.addEventListener('click', async (e) => {
+        // capture before await — currentTarget is nulled once dispatch ends
+        const btn = e.currentTarget as HTMLButtonElement
+        await navigator.clipboard.writeText(location.href)
+        flashButton(btn)
+      })
+
+    // ── Saved ideas dialog ───────────────────────────────────────────────────
+    const dialog = document.getElementById('pg-saved-dialog') as HTMLDialogElement
+    const listEl = dialog.querySelector<HTMLElement>('[data-pg-saved-list]')!
+    const renderSavedList = () => {
+      if (!saved.length) {
+        listEl.innerHTML = `<p class="zui-text--1">Nothing saved yet. Hit the <i class="ph ph-bookmark-simple" aria-hidden="true"></i> button on any generated section to keep the idea.</p>`
+        return
+      }
+      listEl.innerHTML = saved
+        .map(
+          (s, si) => `<div class="pg-saved-row">
+            <span class="zui-badge">${s.kind}</span>
+            <code class="zui-code">${s.seed}#${s.index}</code>
+            <span class="pg-saved-pieces zui-text--1">${s.pieces.join(', ')}</span>
+            <a class="zui-button zui-button-size-xs zui-button-variant-outline" href="/playground?seed=${s.seed}&s=${s.index}">Open</a>
+            <button class="zui-button zui-button-size-xs zui-button-variant-ghost" data-remove="${si}" aria-label="Remove saved idea">
+              <i class="ph ph-trash" aria-hidden="true"></i>
+            </button>
+          </div>`,
+        )
+        .join('')
+    }
+    const openSaved = () => {
+      renderSavedList()
+      dialog.showModal()
+    }
+    hud.querySelector('[data-pg-open-saved]')?.addEventListener('click', openSaved)
+    dialog
+      .querySelector('[data-pg-close-saved]')
+      ?.addEventListener('click', () => dialog.close())
+    dialog
+      .querySelector('[data-pg-clear-saved]')
+      ?.addEventListener('click', () => {
+        saved = []
+        storeSaved(saved)
+        refreshSavedCount()
+        renderSavedList()
+      })
+    listEl.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-remove]')
+      if (!btn) return
+      saved.splice(Number(btn.dataset.remove), 1)
+      storeSaved(saved)
+      refreshSavedCount()
+      renderSavedList()
+    })
+
+    // ── Keyboard shortcuts ───────────────────────────────────────────────────
+    addEventListener('keydown', (e) => {
+      if (!document.body.contains(world) || dialog.open) return
+      const t = e.target
+      if (
+        e.metaKey || e.ctrlKey || e.altKey ||
+        (t instanceof Element &&
+          t.closest('input, textarea, select, [contenteditable]'))
+      )
+        return
+      if (e.key === 'r') reroll()
+      else if (e.key === 'j') jump()
+      else if (e.key === '.') openSaved()
+    })
+  }
+
+  init()
+  document.addEventListener('astro:page-load', init)
+</script>
+
+<style>
+  .pg-intro {
+    max-width: 60rem;
+    margin-inline: auto;
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+  }
+  .pg-intro h1 {
+    margin: 0;
+    font-size: var(--step-4);
+  }
+  .pg-lede {
+    font-size: var(--step-1);
+    text-wrap: balance;
+  }
+  .pg-intro p {
+    max-width: 68ch;
+    line-height: 1.6;
+  }
+  .pg-keys {
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  #pg-sentinel {
+    height: 1px;
+  }
+
+  /* Fixed HUD — the only site-themed UI once you're inside the world. */
+  .pg-hud {
+    position: fixed;
+    left: var(--space-sm);
+    bottom: var(--space-sm);
+    z-index: var(--z-sticky, 10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-2xs) var(--space-sm);
+    background: var(--color-background);
+    border: var(--border-style) 1px var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    font-size: var(--step--1);
+    max-width: min(22rem, calc(100vw - 2 * var(--space-sm)));
+  }
+  .pg-hud-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+  .pg-hud-biome {
+    font-weight: 600;
+  }
+  .pg-hud-meta {
+    font-size: var(--step--2);
+    color: var(--color-muted);
+  }
+  .pg-hud-meta code {
+    font-size: 1em;
+  }
+  .pg-hud-actions {
+    padding-top: var(--space-3xs);
+    flex-wrap: wrap;
+  }
+
+  .pg-saved-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding-block: var(--space-2xs);
+    border-block-end: 1px var(--border-style) var(--color-border);
+  }
+  .pg-saved-row:last-child {
+    border-block-end: none;
+  }
+  .pg-saved-pieces {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-muted);
+  }
+</style>
+
+<style is:global>
+  /* Everything in #pg-world is injected at runtime, so Astro's scoped styles
+     can't reach it — these rules are global but namespaced under #pg-world.
+     Each section carries its palette as overridden ZUI semantic tokens on its
+     own style attribute; everything below just consumes them. */
+  #pg-world .pg-sec {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 4rem);
+    /* Off-screen sections skip layout/paint — the page is infinite. */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
+  }
+  #pg-world .pg-sec-content {
+    max-width: 68rem;
+    margin-inline: auto;
+  }
+  #pg-world .pg-narrow {
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+  #pg-world h2 {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 1rem + 2.5vw, 2.6rem);
+    line-height: 1.1;
+  }
+  #pg-world p {
+    line-height: 1.65;
+  }
+
+  /* layout helpers for generated grids */
+  #pg-world .pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--pg-col, 14rem), 100%), 1fr));
+  }
+
+  /* hero + cta */
+  #pg-world .pg-hero,
+  #pg-world .pg-cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  #pg-world .pg-hero[style*='center'] {
+    align-items: center;
+  }
+  #pg-world .pg-hero[style*='end'] {
+    align-items: flex-end;
+  }
+  #pg-world .pg-hero[style*='start'] {
+    align-items: flex-start;
+  }
+  #pg-world .pg-cta {
+    align-items: center;
+    text-align: center;
+  }
+  #pg-world .pg-huge {
+    font-size: clamp(2.4rem, 1.2rem + 6vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  #pg-world .pg-outline-text {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-accent);
+  }
+  #pg-world .pg-sub {
+    max-width: 52ch;
+  }
+
+  /* features */
+  #pg-world .pg-feature-icon {
+    font-size: var(--step-3);
+    color: var(--color-accent);
+  }
+
+  /* pricing */
+  #pg-world .pg-popular {
+    border-color: var(--color-accent);
+  }
+  #pg-world .pg-price {
+    font-size: var(--step-4);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+  }
+  #pg-world .pg-featlist {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xs) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+  #pg-world .pg-featlist i {
+    color: var(--color-success);
+  }
+
+  /* testimonial */
+  #pg-world .pg-quote {
+    max-width: 44rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  #pg-world .pg-quote blockquote {
+    margin: 0;
+    border-inline-start: 6px solid var(--color-accent);
+    padding-inline-start: var(--space-md);
+  }
+  #pg-world .pg-quote blockquote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 1rem + 1.6vw, 2rem);
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  /* stats */
+  #pg-world .pg-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: var(--space-lg);
+    text-align: center;
+  }
+  #pg-world .pg-stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 1rem + 4vw, 4rem);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-block-end: var(--space-3xs);
+  }
+  #pg-world .pg-stat .zui-text--1 {
+    text-transform: capitalize;
+    color: var(--color-muted);
+  }
+
+  /* table */
+  #pg-world .pg-num {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* team */
+  #pg-world .pg-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2xs);
+    text-align: center;
+  }
+
+  /* timeline */
+  #pg-world .pg-tl-row {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-block-start: 1px var(--border-style) var(--color-border);
+  }
+  #pg-world .pg-tl-year {
+    font-weight: 700;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  #pg-world .pg-tl-row p {
+    margin: 0;
+  }
+
+  /* shortcuts */
+  #pg-world .pg-shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding-block: var(--space-2xs);
+  }
+  #pg-world .pg-shortcut + .pg-shortcut {
+    border-block-start: 1px var(--border-style) var(--color-border);
+  }
+
+  /* art + gallery */
+  #pg-world .pg-art {
+    margin: 0;
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+  #pg-world .pg-art svg,
+  #pg-world .pg-tile svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    border: 1px var(--border-style) var(--color-border);
+  }
+  #pg-world .pg-art figcaption {
+    margin-top: var(--space-2xs);
+    color: var(--color-muted);
+  }
+
+  /* biome divider */
+  #pg-world .pg-sec-divider {
+    padding-block: clamp(2rem, 6vw, 4rem);
+    text-align: center;
+    border-block: 4px double var(--color-accent);
+  }
+  #pg-world .pg-divider h2 {
+    margin: 0.3em 0 0.5em;
+    font-size: clamp(1.8rem, 1rem + 3.5vw, 3.2rem);
+  }
+  #pg-world .pg-divider-note {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: var(--step--2);
+    color: var(--color-muted);
+  }
+
+  /* per-section meta bar */
+  #pg-world .pg-meta {
+    max-width: 68rem;
+    margin: var(--space-md) auto 0;
+    padding-block-start: var(--space-2xs);
+    border-block-start: 1px dashed var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    font-family: var(--font-stack-sans);
+  }
+  #pg-world .pg-meta-chips {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    flex-wrap: wrap;
+  }
+  #pg-world .pg-meta-chips a.zui-badge {
+    text-decoration: none;
+  }
+  #pg-world .pg-meta-chips a.zui-badge:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  #pg-world .pg-meta-label {
+    font-size: var(--step--2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-faint);
+  }
+  #pg-world .pg-meta-actions {
+    display: flex;
+    gap: var(--space-3xs);
+  }
+
+  /* generated-code viewer */
+  #pg-world .pg-codewrap {
+    max-width: 68rem;
+    margin: var(--space-md) auto 0;
+  }
+  #pg-world .pg-code {
+    margin: 0;
+    padding: var(--space-sm);
+    background: var(--color-surface);
+    border: 1px var(--border-style) var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    font-family: var(--font-code);
+    font-size: var(--step--1);
+    line-height: 1.5;
+    max-height: 24rem;
+    overflow-y: auto;
+  }
+</style>
