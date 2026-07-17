@@ -10,7 +10,13 @@ const indexPages = import.meta.glob('./pages/*/index.mdx', { eager: true })
 
 export const sidebarSections = buildSidebarSections(pages, {
   append: [
-    { heading: 'Guides', items: [{ href: '/changelog', label: 'Changelog' }] },
+    {
+      heading: 'Guides',
+      items: [
+        { href: '/playground', label: 'Procedural playground' },
+        { href: '/changelog', label: 'Changelog' },
+      ],
+    },
   ],
 })
 
