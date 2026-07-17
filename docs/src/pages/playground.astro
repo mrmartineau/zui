@@ -511,19 +511,19 @@ const description =
       ] as const
       const rows = Array.from({ length: int(rng, 3, 6) }, () => {
         const [label, color] = pick(rng, statuses)
-        return `<tr>
-          <td><strong>${titleCase(pick(rng, ADJS) + ' ' + pick(rng, NOUNS))}</strong></td>
-          <td><span class="zui-badge zui-badge-color-${color}">${label}</span></td>
-          <td>${int(rng, 1, 9)}.${int(rng, 0, 12)}.${int(rng, 0, 9)}</td>
-          <td class="pg-num">${int(rng, 12, 9800).toLocaleString('en-GB')}</td>
+        return `<tr class="zui-table-row">
+          <td class="zui-table-cell"><strong>${titleCase(pick(rng, ADJS) + ' ' + pick(rng, NOUNS))}</strong></td>
+          <td class="zui-table-cell"><span class="zui-badge zui-badge-color-${color}">${label}</span></td>
+          <td class="zui-table-cell">${int(rng, 1, 9)}.${int(rng, 0, 12)}.${int(rng, 0, 9)}</td>
+          <td class="zui-table-cell pg-num">${int(rng, 12, 9800).toLocaleString('en-GB')}</td>
         </tr>`
       }).join('\n')
       return `<h2>${makeTitle(rng)}</h2>
         <table class="zui-table">
-          <thead>
-            <tr><th>${cap(pick(rng, NOUNS))}</th><th>Status</th><th>Version</th><th class="pg-num">Weekly ${pick(rng, VERBS)}</th></tr>
+          <thead class="zui-table-header">
+            <tr class="zui-table-row"><th class="zui-table-head">${cap(pick(rng, NOUNS))}</th><th class="zui-table-head">Status</th><th class="zui-table-head">Version</th><th class="zui-table-head pg-num">Weekly ${pick(rng, VERBS)}</th></tr>
           </thead>
-          <tbody>${rows}</tbody>
+          <tbody class="zui-table-body">${rows}</tbody>
         </table>`
     },
     faq(rng: Rng) {
@@ -1099,7 +1099,7 @@ const description =
   /* Fixed HUD — the only site-themed UI once you're inside the world. */
   .pg-hud {
     position: fixed;
-    right: var(--space-sm);
+    left: var(--space-sm);
     bottom: var(--space-sm);
     z-index: var(--z-sticky, 10);
     display: flex;
