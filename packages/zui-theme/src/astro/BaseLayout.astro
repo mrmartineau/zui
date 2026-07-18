@@ -72,6 +72,16 @@ const metaDescription = description ?? site.description ?? ''
   <body>
     <header class="site-header">
       <div class="site-header-start">
+        {hasMobileNav && (
+          <button
+            class="mobile-menu-btn zui-button zui-button-variant-ghost zui-button-shape-squircle"
+            type="button"
+            aria-label="Open navigation"
+            data-mobile-nav-open
+          >
+            <i class="ph ph-list"></i>
+          </button>
+        )}
         <a href="/" class="site-logo">{logo}</a>
         {site.version ? (
           <a href={versionHref} class="zui-badge zui-badge-variant-outline site-version">v{site.version}</a>
@@ -92,23 +102,12 @@ const metaDescription = description ?? site.description ?? ''
         ))}
         {showMiniThemeSwitcher && <MiniThemeSwitcher themes={site.miniThemes} />}
         {showColorSchemeToggle && <DarkModeSwitcher />}
-        {hasMobileNav && (
-          <button
-            class="mobile-menu-btn zui-button zui-button-variant-ghost zui-button-shape-squircle"
-            type="button"
-            aria-label="Open navigation"
-            data-mobile-nav-open
-          >
-            <i class="ph ph-list"></i>
-          </button>
-        )}
       </div>
     </header>
 
     {hasMobileNav && (
       <dialog id="mobile-nav" class="mobile-nav-dialog">
         <div class="mobile-nav-header">
-          <a href="/" class="site-logo">{logo}</a>
           <button
             class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
             type="button"
@@ -117,6 +116,7 @@ const metaDescription = description ?? site.description ?? ''
           >
             <i class="ph ph-x"></i>
           </button>
+          <a href="/" class="site-logo">{logo}</a>
         </div>
         <div class="mobile-nav-body">
           <Sidebar currentPath={currentPath} sections={sections} />
@@ -193,7 +193,7 @@ const metaDescription = description ?? site.description ?? ''
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-xs) var(--space-md);
+    padding: var(--space-xs);
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-surface);
     position: sticky;
@@ -309,8 +309,8 @@ const metaDescription = description ?? site.description ?? ''
   .mobile-nav-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: var(--space-xs) var(--space-3xs) var(--space-xs) var(--space-md);
+    gap: var(--space-2xs);
+    padding: var(--space-xs);
     border-bottom: 1px solid var(--color-border);
   }
 
