@@ -88,18 +88,20 @@ const metaDescription = description ?? site.description ?? ''
         ) : null}
       </div>
       <div class="site-header-end">
-        {social.map((link) => (
-          <a
-            href={link.href}
-            class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
-            aria-label={link.ariaLabel ?? link.label}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {link.icon ? <i class={`ph ph-${link.icon}`}></i> : null}
-            {link.label ? <span>{link.label}</span> : null}
-          </a>
-        ))}
+        <div class="site-header-social">
+          {social.map((link) => (
+            <a
+              href={link.href}
+              class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
+              aria-label={link.ariaLabel ?? link.label}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.icon ? <i class={`ph ph-${link.icon}`}></i> : null}
+              {link.label ? <span>{link.label}</span> : null}
+            </a>
+          ))}
+        </div>
         {showMiniThemeSwitcher && <MiniThemeSwitcher themes={site.miniThemes} />}
         {showColorSchemeToggle && <DarkModeSwitcher />}
       </div>
@@ -119,6 +121,18 @@ const metaDescription = description ?? site.description ?? ''
           <a href="/" class="site-logo">{logo}</a>
         </div>
         <div class="mobile-nav-body">
+          {social.map((link) => (
+            <a
+              href={link.href}
+              class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
+              aria-label={link.ariaLabel ?? link.label}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.icon ? <i class={`ph ph-${link.icon}`}></i> : null}
+              {link.label ? <span>{link.label}</span> : null}
+            </a>
+          ))}
           <Sidebar currentPath={currentPath} sections={sections} />
         </div>
       </dialog>
@@ -216,7 +230,13 @@ const metaDescription = description ?? site.description ?? ''
   .site-header-end {
     display: flex;
     align-items: center;
-    gap: var(--space-2xs);
+    gap: var(--space-3xs);
+  }
+
+  @media (max-width: 500px) {
+    .site-header-social {
+      display:none;
+    }
   }
 
   .mobile-menu-btn {
@@ -271,6 +291,7 @@ const metaDescription = description ?? site.description ?? ''
   .site-footer-nav {
     display: flex;
     gap: var(--space-sm);
+    flex-wrap: wrap;
   }
 
   .site-footer-nav a {

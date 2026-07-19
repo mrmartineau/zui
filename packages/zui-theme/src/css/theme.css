@@ -179,6 +179,7 @@
     font-variant-ligatures: none;
     overflow-y: auto;
     white-space: pre-wrap;
+    word-break: break-word;
 
     @supports (corner-shape: squircle) {
       corner-shape: superellipse(1.25);
