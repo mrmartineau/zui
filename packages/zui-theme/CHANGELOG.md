@@ -1,3 +1,15 @@
+# [@mrmartineau/zui-theme-v1.1.2](https://github.com/mrmartineau/zui/compare/@mrmartineau/zui-theme-v1.1.1...@mrmartineau/zui-theme-v1.1.2) (2026-07-21)
+
+
+### Bug Fixes
+
+* docs styles ([9182085](https://github.com/mrmartineau/zui/commit/918208544950f9d46e298b2b218dad1512a96603))
+* **docs:** mobile layout ([aa5ce63](https://github.com/mrmartineau/zui/commit/aa5ce63d8ad51e3809b6cfbae146d207d3ab6a91))
+* **docs:** mobile nav ([51c7e97](https://github.com/mrmartineau/zui/commit/51c7e974e0d73bac995cf23fbbde2386ad8fad81))
+* **docs:** spacing ([389bbce](https://github.com/mrmartineau/zui/commit/389bbce2851a968f4345f6c1c4438c11a26c507a))
+* **zui-theme:** docs prose fixes ([0911a45](https://github.com/mrmartineau/zui/commit/0911a4560ec070e2f076138d05e0ec9d71f58ace))
+* **zui-theme:** ensure main section is stretches ([28accb6](https://github.com/mrmartineau/zui/commit/28accb65d982c043683d7de9a6d545fea58ad9bb))
+
 # [@mrmartineau/zui-theme-v1.1.1](https://github.com/mrmartineau/zui/compare/@mrmartineau/zui-theme-v1.1.0...@mrmartineau/zui-theme-v1.1.1) (2026-07-06)
 
 
