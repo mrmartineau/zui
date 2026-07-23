@@ -1,0 +1,34 @@
+---
+/**
+ * SiteThemeButton.astro
+ *
+ * "Use this theme" button for a showcase theme. Clicking applies the theme to
+ * the entire docs site (persisted across pages); clicking again resets to the
+ * default theme. Requires SiteTheme.astro, which every layout includes.
+ */
+interface Props {
+  /** Theme slug from site-themes.css, e.g. `golden-hour`. */
+  theme: string
+  size?: 'xs' | 'sm'
+}
+
+const { theme, size = 'sm' } = Astro.props
+---
+
+<button
+  type="button"
+  class={`zui-button zui-button-size-${size} zui-button-variant-outline site-theme-button`}
+  data-site-theme-set={theme}
+  aria-pressed="false"
+>
+  <i class="ph ph-paint-brush-broad" aria-hidden="true"></i>
+  <span data-site-theme-label>Use this theme</span>
+</button>
+
+<style>
+  .site-theme-button[aria-pressed='true'] {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: oklch(from var(--color-accent) l c h / 12%);
+  }
+</style>

@@ -1,0 +1,116 @@
+/*
+ * Site-wide showcase themes.
+ *
+ * The five themes from the theming showcase, applied to the whole docs site
+ * when `data-site-theme` is set on <html> (see SiteTheme.astro). Each block is
+ * the same `:root` override CSS the matching CodePen demo uses.
+ *
+ * Deliberately unlayered: ZUI's own token defaults live in `@layer zui.base`,
+ * so these rules win regardless of import order, while inline styles (the
+ * ThemeSwitcher playground) still take precedence.
+ */
+
+:root[data-site-theme="golden-hour"] {
+  /* Colours — rose action, amber brand, on warm cream */
+  --color-accent: light-dark(var(--color-rose-600), var(--color-rose-400));
+  --color-theme: light-dark(var(--color-amber-600), var(--color-amber-400));
+  --color-background: light-dark(oklch(0.98 0.02 70), var(--color-stone-900));
+  --color-surface: light-dark(oklch(1 0.008 80), var(--color-stone-800));
+  --color-border: light-dark(oklch(0.9 0.03 60), var(--color-stone-700));
+  --color-text: light-dark(var(--color-stone-800), var(--color-stone-100));
+
+  /* Typography — serif display + serif body */
+  --font-display: "Fraunces", var(--font-stack-serif);
+  --font-body: "Newsreader", var(--font-stack-serif);
+  --font-code: "JetBrains Mono", var(--font-stack-mono);
+
+  /* Shape */
+  --radius-scale: 1.25;
+  --line-height: var(--line-height-lg);
+  --border-style: solid;
+}
+
+:root[data-site-theme="terminal"] {
+  /* Colours — phosphor green on near-black (dark mode forced) */
+  color-scheme: dark;
+  --color-accent: light-dark(var(--color-emerald-600), oklch(0.86 0.21 150));
+  --color-theme: light-dark(var(--color-lime-600), var(--color-lime-400));
+  --color-background: light-dark(#0a0e0a, oklch(0.17 0.02 150));
+  --color-surface: light-dark(#0f140f, oklch(0.21 0.02 150));
+  --color-border: light-dark(#1c241c, oklch(0.34 0.04 150));
+  --color-text: light-dark(#c8f0c8, oklch(0.9 0.07 150));
+
+  /* Typography — monospace everything */
+  --font-display: "JetBrains Mono", var(--font-stack-mono);
+  --font-body: "JetBrains Mono", var(--font-stack-mono);
+  --font-code: "JetBrains Mono", var(--font-stack-mono);
+
+  /* Shape */
+  --radius-scale: 0;
+  --line-height: var(--line-height-sm);
+  --border-style: solid;
+}
+
+:root[data-site-theme="bubblegum"] {
+  /* Colours — fuchsia + pink on candy pink */
+  --color-accent: light-dark(
+    var(--color-fuchsia-600),
+    var(--color-fuchsia-400)
+  );
+  --color-theme: light-dark(var(--color-pink-600), var(--color-pink-400));
+  --color-background: light-dark(oklch(0.97 0.03 340), oklch(0.2 0.05 330));
+  --color-surface: light-dark(#ffffff, oklch(0.25 0.05 330));
+  --color-border: light-dark(oklch(0.9 0.06 335), oklch(0.35 0.06 330));
+  --color-text: light-dark(oklch(0.36 0.11 340), oklch(0.94 0.03 340));
+
+  /* Typography — rounded display + friendly body */
+  --font-display: "Baloo 2", var(--font-stack-sans);
+  --font-body: "Nunito", var(--font-stack-sans);
+
+  /* Shape — very round */
+  --radius-scale: 2.5;
+  --line-height: var(--line-height-md);
+  --border-style: solid;
+}
+
+:root[data-site-theme="nordic"] {
+  /* Colours — blue action, indigo brand, on slate */
+  --color-accent: light-dark(var(--color-blue-600), var(--color-blue-400));
+  --color-theme: light-dark(var(--color-indigo-600), var(--color-indigo-400));
+  --color-background: light-dark(
+    var(--color-slate-100),
+    var(--color-slate-900)
+  );
+  --color-surface: light-dark(#ffffff, var(--color-slate-800));
+  --color-border: light-dark(var(--color-slate-300), var(--color-slate-700));
+  --color-text: light-dark(var(--color-slate-800), var(--color-slate-200));
+
+  /* Typography — one crisp sans for everything */
+  --font-display: "Inter", var(--font-stack-sans);
+  --font-body: "Inter", var(--font-stack-sans);
+
+  /* Shape — restrained */
+  --radius-scale: 0.5;
+  --line-height: var(--line-height-sm);
+  --border-style: solid;
+}
+
+:root[data-site-theme="brutalist"] {
+  /* Colours — black + one yellow accent on off-white */
+  --color-accent: light-dark(var(--color-yellow-400), var(--color-yellow-400));
+  --color-theme: light-dark(#111111, #fafafa);
+  --color-background: light-dark(#faf9f0, #111111);
+  --color-surface: light-dark(#ffffff, #1a1a1a);
+  --color-border: light-dark(#111111, #fafafa);
+  --color-text: light-dark(#111111, #fafafa);
+
+  /* Typography — geometric sans + mono code */
+  --font-display: "Space Grotesk", var(--font-stack-sans);
+  --font-body: "Space Grotesk", var(--font-stack-sans);
+  --font-code: "Space Mono", var(--font-stack-mono);
+
+  /* Shape — hard corners */
+  --radius-scale: 0;
+  --line-height: var(--line-height-md);
+  --border-style: solid;
+}

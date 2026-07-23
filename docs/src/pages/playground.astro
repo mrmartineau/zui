@@ -1,6 +1,8 @@
 ---
 import { Badge, Flex, Kbd } from '@mrmartineau/zui/astro'
 import { BaseLayout } from '@mrmartineau/zui-theme/astro'
+import SiteTheme from '../components/SiteTheme.astro'
+import SiteThemeMenu from '../components/SiteThemeMenu.astro'
 import { footerSections, sidebarSections } from '../nav'
 import { site } from '../site.config'
 
@@ -17,6 +19,10 @@ const description =
   sections={sidebarSections}
   footerSections={footerSections}
 >
+  <Fragment slot="head">
+    <SiteTheme />
+  </Fragment>
+  <SiteThemeMenu slot="theme-menu" />
   <div class="pg-page">
     <header class="pg-intro flow">
       <Flex align="center" gap="sm" wrap="wrap">

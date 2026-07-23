@@ -8,7 +8,9 @@ import {
   Tooltip,
 } from '@mrmartineau/zui/astro'
 import { version } from '../../../packages/zui/package.json'
+import SiteThemeButton from '../components/SiteThemeButton.astro'
 import Layout from '../layouts/HomeLayout.astro'
+import { siteThemes as themePreviews } from '../site-themes'
 
 const allMdxPages = import.meta.glob('./**/*.mdx', { eager: true })
 
@@ -23,72 +25,6 @@ const stats = [
   { label: 'Theme file', value: '1' },
 ]
 
-// Mini live previews that mirror the demo themes from /guides/theming-showcase.
-// Colours use the same light-dark() pairs as the real themes so the tiles
-// follow the docs' colour scheme. Terminal is pinned dark (its pen forces
-// zui-dark); Brutalist inverts to black-on-dark.
-const themePreviews = [
-  {
-    accent: 'light-dark(var(--color-rose-600), var(--color-rose-400))',
-    bg: 'light-dark(oklch(0.98 0.02 70), var(--color-stone-900))',
-    border: 'light-dark(oklch(0.9 0.03 60), var(--color-stone-700))',
-    font: 'var(--font-stack-serif)',
-    name: 'Golden Hour',
-    note: 'Warm serif editorial',
-    onAccent: 'light-dark(#ffffff, oklch(0.2 0.05 20))',
-    radius: '10px',
-    surface: 'light-dark(oklch(1 0.008 80), var(--color-stone-800))',
-    text: 'light-dark(var(--color-stone-800), var(--color-stone-100))',
-  },
-  {
-    accent: 'oklch(0.86 0.21 150)',
-    bg: 'oklch(0.17 0.02 150)',
-    border: 'oklch(0.34 0.04 150)',
-    font: 'var(--font-stack-mono)',
-    name: 'Terminal',
-    note: 'Mono, dark, zero radius',
-    onAccent: '#0a0e0a',
-    radius: '0',
-    surface: 'oklch(0.21 0.02 150)',
-    text: 'oklch(0.9 0.07 150)',
-  },
-  {
-    accent: 'light-dark(var(--color-fuchsia-600), var(--color-fuchsia-400))',
-    bg: 'light-dark(oklch(0.97 0.03 340), oklch(0.2 0.05 330))',
-    border: 'light-dark(oklch(0.9 0.06 335), oklch(0.35 0.06 330))',
-    font: 'var(--font-stack-sans)',
-    name: 'Bubblegum',
-    note: 'Round & playful',
-    onAccent: 'light-dark(#ffffff, oklch(0.2 0.08 330))',
-    radius: '18px',
-    surface: 'light-dark(#ffffff, oklch(0.25 0.05 330))',
-    text: 'light-dark(oklch(0.36 0.11 340), oklch(0.94 0.03 340))',
-  },
-  {
-    accent: 'light-dark(var(--color-blue-600), var(--color-blue-400))',
-    bg: 'light-dark(var(--color-slate-100), var(--color-slate-900))',
-    border: 'light-dark(var(--color-slate-300), var(--color-slate-700))',
-    font: 'var(--font-stack-sans)',
-    name: 'Nordic',
-    note: 'Crisp & corporate',
-    onAccent: 'light-dark(#ffffff, oklch(0.2 0.06 250))',
-    radius: '3px',
-    surface: 'light-dark(#ffffff, var(--color-slate-800))',
-    text: 'light-dark(var(--color-slate-800), var(--color-slate-200))',
-  },
-  {
-    accent: 'var(--color-yellow-400)',
-    bg: 'light-dark(#faf9f0, #111111)',
-    border: 'light-dark(#111111, #fafafa)',
-    font: 'var(--font-stack-sans)',
-    name: 'Brutalist',
-    note: 'High-contrast, square',
-    onAccent: '#111111',
-    radius: '0',
-    surface: 'light-dark(#ffffff, #1a1a1a)',
-    text: 'light-dark(#111111, #fafafa)',
-  },
-]
 
 const tokenColors = [
   'var(--color-rose-500)',
@@ -289,7 +225,7 @@ const tokenColors = [
     <header class="section-header">
       <p class="section-eyebrow">Theming</p>
       <h2 class="section-title">One theme file, infinite looks</h2>
-      <p class="section-lede">Every ZUI component reads from a small set of semantic custom properties. Override that <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and borders all follow. Same markup, five very different personalities:</p>
+      <p class="section-lede">Every ZUI component reads from a small set of semantic custom properties. Override that <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and borders all follow. Same markup, five very different personalities &mdash; try one on this very site:</p>
     </header>
     <ul class="theming-swatches">
       {themePreviews.map((theme) => (
@@ -303,6 +239,7 @@ const tokenColors = [
           </div>
           <span class="theming-swatch-name">{theme.name}</span>
           <span class="theming-swatch-note">{theme.note}</span>
+          <SiteThemeButton theme={theme.slug} size="xs" />
         </li>
       ))}
     </ul>
@@ -848,6 +785,23 @@ const tokenColors = [
   .theming-swatch-note {
     font-size: var(--step--2);
     color: color-mix(in oklch, var(--sw-text) 60%, transparent);
+  }
+
+  /* The apply button dresses in its card's swatch, not the site theme. */
+  .theming-swatch :global(.site-theme-button) {
+    margin-block-start: var(--space-2xs);
+    align-self: start;
+    border-color: var(--sw-border);
+    border-radius: var(--sw-radius);
+    background: var(--sw-surface);
+    color: var(--sw-text);
+    font-family: var(--sw-font);
+  }
+
+  .theming-swatch :global(.site-theme-button[aria-pressed='true']) {
+    background: var(--sw-accent);
+    border-color: var(--sw-accent);
+    color: var(--sw-on-accent);
   }
 
   /* Agents ------------------------------------------------------------------ */

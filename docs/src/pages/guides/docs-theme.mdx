@@ -202,9 +202,20 @@ buildSidebarSections(pages, {
 | `phosphor` | `true` | Load Phosphor Icons from the CDN |
 | `phosphorVersion` | `2.1.2` | Phosphor web package version for the CDN |
 | `themeSwitcher` | `true` | Floating theme builder |
-| `miniThemeSwitcher` | `true` | Header colour-theme dots |
+| `miniThemeSwitcher` | `true` | Header theme popover |
 | `miniThemes` | ZUI palette | Colours for the mini switcher |
 | `colorSchemeToggle` | `true` | Light/dark/system toggle |
+
+### Extending the theme popover
+
+The header's mini theme switcher is a swatches button that opens a ZUI popover of colour-theme radios. Both layouts forward a `theme-menu` slot into it, so a site can append its own controls below the radios — this docs site injects its [showcase themes](/guides/theming-showcase) there:
+
+```astro
+<DocsLayout {...props}>
+  <MyExtraThemes slot="theme-menu" />
+  <slot />
+</DocsLayout>
+```
 
 ## Notes
 

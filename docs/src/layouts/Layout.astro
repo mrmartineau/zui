@@ -1,5 +1,7 @@
 ---
 import { DocsLayout } from '@mrmartineau/zui-theme/astro'
+import SiteTheme from '../components/SiteTheme.astro'
+import SiteThemeMenu from '../components/SiteThemeMenu.astro'
 import { footerSections, sidebarSections } from '../nav'
 import { site } from '../site.config'
 
@@ -26,7 +28,9 @@ const currentPath = Astro.url.pathname
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+    <SiteTheme />
   </Fragment>
+  <SiteThemeMenu slot="theme-menu" />
   <slot />
   <Fragment slot="body-end">
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88182718a8c6437783661af812d8c2fc"}'></script>

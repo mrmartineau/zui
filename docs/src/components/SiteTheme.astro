@@ -1,0 +1,147 @@
+---
+/**
+ * SiteTheme.astro
+ *
+ * Site-wide theme switching for the showcase themes. Include once per layout
+ * (in the head slot). Provides:
+ *
+ * - the `site-themes.css` stylesheet with the five showcase themes, keyed off
+ *   `data-site-theme` on <html>
+ * - a pre-paint inline script that restores a persisted theme (and its Google
+ *   Fonts) before first render, so there is no flash of the default theme
+ * - a delegated click handler for `[data-site-theme-set]` buttons rendered by
+ *   SiteThemeButton.astro anywhere on the page
+ *
+ * Clicking a button applies that theme to the whole site and persists it in
+ * localStorage; clicking the active theme's button again resets to default.
+ */
+import '../styles/site-themes.css'
+---
+
+<script is:inline>
+  // Pre-paint: restore the persisted site theme and start its font download
+  // before first render. The font map doubles as the single source of truth
+  // for the module script below.
+  ;(function () {
+    var base = 'https://fonts.googleapis.com/css2?display=swap&family='
+    window.__siteThemeFonts = {
+      'golden-hour':
+        base +
+        'Fraunces:opsz,wght@9..144,300..900&family=Newsreader:opsz,wght@6..72,300..800&family=JetBrains+Mono:wght@100..800',
+      terminal: base + 'JetBrains+Mono:wght@100..800',
+      bubblegum: base + 'Baloo+2:wght@400..800&family=Nunito:wght@300..900',
+      nordic: base + 'Inter:opsz,wght@14..32,100..900',
+      brutalist:
+        base + 'Space+Grotesk:wght@300..700&family=Space+Mono:wght@400;700',
+    }
+    window.__siteThemeFontLink = function (slug) {
+      var url = window.__siteThemeFonts[slug]
+      if (!url || document.getElementById('site-theme-font-' + slug)) return
+      var link = document.createElement('link')
+      link.id = 'site-theme-font-' + slug
+      link.rel = 'stylesheet'
+      link.href = url
+      document.head.append(link)
+    }
+    try {
+      var slug = localStorage.getItem('zui-site-theme')
+      if (slug && window.__siteThemeFonts[slug]) {
+        document.documentElement.dataset.siteTheme = slug
+        window.__siteThemeFontLink(slug)
+      }
+    } catch (e) {}
+  })()
+</script>
+
+<script>
+  declare global {
+    interface Window {
+      __siteThemeFonts: Record<string, string>
+      __siteThemeFontLink: (slug: string) => void
+      __siteThemeWired?: boolean
+    }
+  }
+
+  const KEY = 'zui-site-theme'
+  const current = () => document.documentElement.dataset.siteTheme ?? null
+
+  // The ThemeSwitcher / MiniThemeSwitcher playgrounds set token overrides as
+  // inline styles on <html>, which would sit above our attribute selectors.
+  // Applying a site theme clears them (and the mini switcher's persistence)
+  // so the theme actually shows.
+  const clearInlineOverrides = () => {
+    const root = document.documentElement
+    for (const prop of [
+      '--color-theme', '--color-accent', '--color-background',
+      '--color-surface', '--color-border', '--color-text',
+      '--font-body', '--font-display', '--radius-scale',
+    ])
+      root.style.removeProperty(prop)
+    localStorage.removeItem('mini-theme')
+    document
+      .querySelectorAll<HTMLInputElement>('[name="mini-theme"]')
+      .forEach((input) => (input.checked = false))
+  }
+
+  const syncButtons = () => {
+    const active = current()
+    document
+      .querySelectorAll<HTMLButtonElement>('[data-site-theme-set]')
+      .forEach((btn) => {
+        const pressed = btn.dataset.siteThemeSet === active
+        btn.setAttribute('aria-pressed', String(pressed))
+        const label = btn.querySelector('[data-site-theme-label]')
+        if (label) label.textContent = pressed ? 'Reset theme' : 'Use this theme'
+      })
+  }
+
+  const setTheme = (slug: string | null) => {
+    if (slug) {
+      clearInlineOverrides()
+      window.__siteThemeFontLink(slug)
+      document.documentElement.dataset.siteTheme = slug
+      localStorage.setItem(KEY, slug)
+    } else {
+      delete document.documentElement.dataset.siteTheme
+      localStorage.removeItem(KEY)
+    }
+    syncButtons()
+  }
+
+  if (!window.__siteThemeWired) {
+    window.__siteThemeWired = true
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement
+      // The theme popover's reset clears the showcase theme too (the mini
+      // switcher's own script handles the colour-theme radios).
+      if (target.closest('[data-mini-theme-reset]')) return setTheme(null)
+      const btn = target.closest<HTMLButtonElement>('[data-site-theme-set]')
+      if (!btn) return
+      const slug = btn.dataset.siteThemeSet!
+      setTheme(slug === current() ? null : slug)
+    })
+
+    // Picking a mini colour theme should win: drop the site theme so the
+    // radio's inline overrides aren't fighting a full showcase theme.
+    document.addEventListener('change', (e) => {
+      const input = e.target as HTMLInputElement
+      if (input.name === 'mini-theme' && current()) {
+        delete document.documentElement.dataset.siteTheme
+        localStorage.removeItem(KEY)
+        syncButtons()
+      }
+    })
+
+    // View transitions replace <html>'s attributes with the next page's, so
+    // re-apply before the new page paints, then sync its buttons.
+    document.addEventListener('astro:after-swap', () => {
+      const saved = localStorage.getItem(KEY)
+      if (saved && window.__siteThemeFonts[saved])
+        document.documentElement.dataset.siteTheme = saved
+    })
+    document.addEventListener('astro:page-load', syncButtons)
+  }
+
+  syncButtons()
+</script>

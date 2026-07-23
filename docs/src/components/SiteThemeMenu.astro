@@ -1,0 +1,120 @@
+---
+/**
+ * SiteThemeMenu.astro
+ *
+ * The showcase themes as a compact grid of swatch buttons, injected into the
+ * MiniThemeSwitcher popover via the layouts' `theme-menu` slot. Each button
+ * carries `data-site-theme-set`, so SiteTheme.astro's delegated handler does
+ * the applying/persisting/toggling — same wiring as the buttons on the
+ * homepage and the theming showcase page.
+ */
+import { siteThemes } from '../site-themes'
+---
+
+<div class="site-theme-menu">
+  <p class="site-theme-menu-label">Showcase themes</p>
+  <div class="site-theme-menu-grid">
+    {siteThemes.map((theme) => (
+      <button
+        type="button"
+        class="site-theme-chip"
+        data-site-theme-set={theme.slug}
+        aria-pressed="false"
+        title={theme.note}
+        style={`--sw-bg:${theme.surface};--sw-border:${theme.border};--sw-text:${theme.text};--sw-accent:${theme.accent};--sw-on-accent:${theme.onAccent};--sw-radius:${theme.radius};--sw-font:${theme.font}`}
+      >
+        <span class="site-theme-chip-preview" aria-hidden="true">Aa</span>
+        <span class="site-theme-chip-name">{theme.name}</span>
+      </button>
+    ))}
+  </div>
+  <a class="site-theme-menu-more" href="/guides/theming-showcase">
+    About these themes <i class="ph ph-arrow-right" aria-hidden="true"></i>
+  </a>
+</div>
+
+<style>
+  .site-theme-menu {
+    margin-block-start: var(--space-xs);
+    padding-block-start: var(--space-xs);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .site-theme-menu-label {
+    margin: 0 0 var(--space-2xs);
+    font-size: var(--step--3);
+    font-weight: var(--font-weight-6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  /* Two equal columns; the odd theme out spans the full row. */
+  .site-theme-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: var(--space-3xs);
+  }
+
+  .site-theme-chip:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .site-theme-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4xs);
+    padding: var(--space-3xs);
+    border: 1px solid var(--sw-border);
+    border-radius: max(var(--sw-radius), var(--radius-sm));
+    background: var(--sw-bg);
+    color: var(--sw-text);
+    font-family: var(--sw-font);
+    cursor: pointer;
+    transition: transform 0.15s var(--ease-out, ease), outline-color 0.15s ease;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .site-theme-chip:hover {
+    transform: translateY(-1px);
+  }
+
+  .site-theme-chip[aria-pressed='true'] {
+    outline-color: var(--color-accent);
+  }
+
+  .site-theme-chip-preview {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--sw-accent);
+    color: var(--sw-on-accent, var(--sw-bg));
+    border-radius: var(--sw-radius);
+    font-size: var(--step--2);
+    font-weight: 700;
+  }
+
+  .site-theme-chip-name {
+    font-size: var(--step--2);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .site-theme-menu-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4xs);
+    margin-block-start: var(--space-2xs);
+    font-size: var(--step--2);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  .site-theme-menu-more:hover {
+    color: var(--color-accent);
+  }
+</style>
