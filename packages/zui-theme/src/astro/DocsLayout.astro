@@ -47,6 +47,7 @@ const {
     </main>
     <TableOfContents />
   </div>
+  {Astro.slots.has('theme-menu') && <slot name="theme-menu" slot="theme-menu" />}
   {Astro.slots.has('footer') && <slot name="footer" slot="footer" />}
   <slot name="body-end" slot="body-end" />
 </BaseLayout>

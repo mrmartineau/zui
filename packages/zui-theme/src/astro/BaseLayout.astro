@@ -102,7 +102,11 @@ const metaDescription = description ?? site.description ?? ''
             </a>
           ))}
         </div>
-        {showMiniThemeSwitcher && <MiniThemeSwitcher themes={site.miniThemes} />}
+        {showMiniThemeSwitcher && (
+          <MiniThemeSwitcher themes={site.miniThemes}>
+            <slot name="theme-menu" />
+          </MiniThemeSwitcher>
+        )}
         {showColorSchemeToggle && <DarkModeSwitcher />}
       </div>
     </header>

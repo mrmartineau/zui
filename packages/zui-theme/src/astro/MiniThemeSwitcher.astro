@@ -1,4 +1,15 @@
 ---
+/**
+ * MiniThemeSwitcher.astro
+ *
+ * Header control for quick site theming. Renders a swatches button that opens
+ * a ZUI popover containing:
+ *
+ * - a radio grid of the configured mini colour themes (persisted in
+ *   localStorage as `mini-theme`, applied as inline token overrides on :root)
+ * - a default slot, so a consuming site can inject its own extra theme
+ *   controls (e.g. the ZUI docs' showcase themes) into the same popover
+ */
 import type { MiniTheme } from '../nav'
 
 interface Props {
@@ -14,26 +25,58 @@ const defaultThemes: MiniTheme[] = [
 ]
 
 const { themes = defaultThemes } = Astro.props
+const popoverId = 'mini-theme-popover'
 ---
 
-<form class="mini-theme-switcher" action="">
-  <fieldset>
-    <legend class="visually-hidden">Pick a colour theme</legend>
-    {themes.map(({ id, color }) => (
-      <>
-        <label for={`mini-theme-${id}`} class="visually-hidden">{id} theme</label>
-        <input
-          type="radio"
-          id={`mini-theme-${id}`}
-          name="mini-theme"
-          value={id}
-          style={`--swatch-color: ${color}`}
-          title={id}
-        />
-      </>
-    ))}
-  </fieldset>
-</form>
+<div class="mini-theme-switcher">
+  <button
+    type="button"
+    class="zui-button zui-button-icon zui-button-variant-ghost zui-button-shape-squircle"
+    popovertarget={popoverId}
+    style={`anchor-name: --${popoverId}`}
+    aria-label="Site theme"
+    title="Site theme"
+  >
+    <i class="ph ph-swatches" aria-hidden="true"></i>
+  </button>
+
+  <div
+    id={popoverId}
+    popover="auto"
+    class="zui-popover mini-theme-popover"
+    style={`position-anchor: --${popoverId}`}
+  >
+    <form action="">
+      <fieldset>
+        <legend class="mini-theme-popover-label">Colour theme</legend>
+        <div class="mini-theme-options">
+          {themes.map(({ id, color }) => (
+            <label class="mini-theme-option" style={`--swatch-color: ${color}`}>
+              <input
+                type="radio"
+                name="mini-theme"
+                value={id}
+                title={id}
+              />
+              <span class="mini-theme-option-name">{id}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </form>
+
+    <slot />
+
+    <button
+      type="button"
+      class="zui-button zui-button-size-xs zui-button-variant-ghost mini-theme-reset"
+      data-mini-theme-reset
+    >
+      <i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i>
+      Reset theme
+    </button>
+  </div>
+</div>
 
 <script>
   function initMiniThemeSwitcher() {
@@ -64,6 +107,21 @@ const { themes = defaultThemes } = Astro.props
       })
     })
 
+    // Clears the mini theme; sites listening on [data-mini-theme-reset] can
+    // clear their own slotted theme controls off the same click.
+    document.querySelectorAll('[data-mini-theme-reset]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        localStorage.removeItem('mini-theme')
+        inputs.forEach(input => (input.checked = false))
+        const root = document.documentElement
+        for (const prop of [
+          '--color-theme', '--color-background', '--color-surface',
+          '--color-border', '--color-text',
+        ])
+          root.style.removeProperty(prop)
+      })
+    })
+
     restoreTheme()
   }
 
@@ -71,19 +129,55 @@ const { themes = defaultThemes } = Astro.props
 </script>
 
 <style>
-  .mini-theme-switcher fieldset {
+  .mini-theme-popover {
+    min-width: 14rem;
+  }
+
+  .mini-theme-popover form {
+    margin: 0;
+  }
+
+  .mini-theme-popover fieldset {
     border: 0;
     padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
+  }
+
+  .mini-theme-popover-label {
+    padding: 0;
+    margin-block-end: var(--space-2xs);
+    font-size: var(--step--3);
+    font-weight: var(--font-weight-6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  .mini-theme-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(3.6rem, 1fr));
     gap: var(--space-3xs);
   }
 
-  .mini-theme-switcher input[type="radio"] {
+  .mini-theme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4xs);
+    padding: var(--space-3xs);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+  }
+
+  .mini-theme-option:hover {
+    background: oklch(from var(--color-text) l c h / 0.06);
+  }
+
+  .mini-theme-option input[type='radio'] {
     appearance: none;
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0;
     border-radius: 50%;
     background-color: var(--swatch-color);
     outline: 2px solid transparent;
@@ -92,12 +186,21 @@ const { themes = defaultThemes } = Astro.props
     transition: outline-color 0.15s ease, transform 0.15s ease;
   }
 
-  .mini-theme-switcher input[type="radio"]:hover {
-    transform: scale(1.15);
-    outline-color: oklch(from var(--swatch-color) l c h / 50%);
+  .mini-theme-option:hover input[type='radio'] {
+    transform: scale(1.1);
   }
 
-  .mini-theme-switcher input[type="radio"]:checked {
+  .mini-theme-option input[type='radio']:checked {
     outline-color: var(--swatch-color);
+  }
+
+  .mini-theme-option-name {
+    font-size: var(--step--2);
+    color: var(--color-muted);
+  }
+
+  .mini-theme-reset {
+    width: 100%;
+    margin-block-start: var(--space-xs);
   }
 </style>
