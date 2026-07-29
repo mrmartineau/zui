@@ -811,10 +811,11 @@ Props: `display` (`flex` | `inline-flex`), `direction` (`row` | `column`), `alig
 
 ### Spacing
 
-Gap (all axes): `gap-0`, `gap-2xs`, `gap-xs`, `gap-s`, `gap-m`, `gap-l`, `gap-xl`, `gap-2xl`, `gap-3xl`, `gap-4xl`
+Gap (all axes): `gap-0`, `gap-2xs`, `gap-xs`, `gap-sm`, `gap-md`, `gap-lg`, `gap-xl`, `gap-2xl`, `gap-3xl`, `gap-4xl`
 Column gap only: `gapx-{size}` (same scale)
 Row gap only: `gapy-{size}` (same scale)
-Padding: `p-{size}`, `px-{size}`, `py-{size}`, `pt-{size}`, `pb-{size}`, `pl-{size}`, `pr-{size}`
+Padding: `p-{size}`, `px-{size}`, `py-{size}`, `pt-{size}`, `pb-{size}`, `pl-{size}`, `pr-{size}` (same scale)
+Margin: `m-{size}`, `mx-{size}`, `my-{size}`, `mt-{size}`, `mb-{size}`, `ml-{size}`, `mr-{size}` (same scale, plus `-auto`)
 
 ### Typography
 
@@ -854,7 +855,7 @@ Padding: `p-{size}`, `px-{size}`, `py-{size}`, `pt-{size}`, `pb-{size}`, `pl-{si
 3. **Use `light-dark()`** for colour values that differ between themes.
 4. **Use `oklch(from …)`** relative colour syntax to derive tints, shades, and transparency.
 5. **Component classes use `zui-` prefix** — e.g. `zui-button`, `zui-card`.
-6. **Utility classes have no prefix** — e.g. `flex`, `gap-m`, `p-xs`.
+6. **Utility classes have no prefix** — e.g. `flex`, `gap-md`, `p-xs`.
 7. **Icons use Phosphor Icons** — never inline SVG. HTML: `<i class="ph ph-icon-name"></i>`, React: `import { Icon } from '@phosphor-icons/react'`.
 8. **Border style** uses `var(--border-style)`.
 9. **Focus ring** uses `var(--focus-ring)` and `var(--focus-ring-offset)`.

@@ -1,33 +1,39 @@
 ---
 layout: ../../layouts/Layout.astro
 title: AI Agent Skills
-description: An AI agent skill giving coding assistants deep knowledge of ZUI's components, tokens, and conventions.
+description: AI agent skills giving coding assistants deep knowledge of ZUI's components, tokens, conventions, docs theme, and migration path.
 ---
 
-## Install the skill
+## Install the skills
 
 ```sh
 npx skills add mrmartineau/zui
 ```
 
-This writes the skill file into your project's `.skills/` directory and registers it with your AI tooling.
+This writes the skill files into your project's `.skills/` directory and registers them with your AI tooling.
 
-## What the skill teaches the model
+## Available skills
 
-Once installed, the skill gives the AI assistant:
+| Skill | Use it for |
+| --- | --- |
+| [`using-zui`](https://github.com/mrmartineau/zui/blob/main/skills/using-zui/SKILL.md) | Building interfaces with ZUI — components, tokens, utilities, framework wrappers |
+| [`migrate-to-zui`](https://github.com/mrmartineau/zui/blob/main/skills/migrate-to-zui/SKILL.md) | Porting an existing app from Tailwind, shadcn/ui, MUI, Chakra, Bootstrap, or a bespoke design system to ZUI |
+| [`zui-theme`](https://github.com/mrmartineau/zui/blob/main/skills/zui-theme/SKILL.md) | Building a documentation site with `@mrmartineau/zui-theme` |
+
+## `using-zui`
+
+Gives the AI assistant:
 
 - **Component API** — every `zui-*` class, variant axis, size, and shape for all components (Button, Badge, Card, Input, Dialog, Tooltip, Popover, and more)
 - **Design tokens** — the full set of `--space-*`, `--step-*`, `--color-*`, `--radius-*`, `--shadow-*`, `--ease-*`, and `--z-*` custom properties
 - **Semantic theme tokens** — `--color-theme`, `--color-accent`, `--color-background`, `--color-surface`, `--color-border`, `--color-text`, and state colours
-- **Utility classes** — layout (`flex`, `flex-center`, `gap-*`), spacing (`p-*`, `px-*`), typography (`zui-text-*`), flow (`flow`, `prose`), and visibility (`sr-only`)
+- **Utility classes** — layout (`flex`, `flex-center`, `gap-*`), spacing (`p-*`, `m-*`), typography (`zui-text-*`), flow (`flow`, `prose`), and visibility (`sr-only`)
 - **CSS layer system** — when to place custom CSS in `zui.reset`, `zui.base`, `zui.components`, or `zui.utilities`
-- **Framework wrappers** — import paths and prop names for `@mrmartineau/zui/react`, `@mrmartineau/zui/astro`, `@mrmartineau/zui/solid`, and `@mrmartineau/zui/vue`
+- **Framework wrappers** — import paths and prop names for `@mrmartineau/zui/react`, `/astro`, `/solid`, `/svelte`, and `/vue`
 - **Icon convention** — use `<i class="ph ph-icon-name"></i>` (HTML/Astro) or `@phosphor-icons/react` (React), never inline SVGs
 - **Colour patterns** — `light-dark()` for theme-aware values, `oklch(from …)` for tints and transparency
 
-## Usage
-
-After installing, the skill is automatically loaded in supported editors. You can then prompt your AI assistant naturally:
+Prompt naturally once installed:
 
 ```
 Add a success badge next to the user's name
@@ -37,19 +43,43 @@ Add a success badge next to the user's name
 Create a contact form with name, email, and message fields
 ```
 
+The model will use correct ZUI classes and tokens rather than generic Tailwind or inline styles.
+
+## `migrate-to-zui`
+
+A phased migration workflow for moving an existing project onto ZUI without a big-bang rewrite:
+
+- **Audit** — inventory component usage, theme values, and styling escape hatches before editing anything
+- **Coexistence** — install ZUI alongside the old library, with the layer order and reset/preflight settings that stop the two fighting
+- **Token mapping** — turn `tailwind.config`, `createTheme`, or `extendTheme` into a handful of CSS custom property overrides
+- **Component mapping tables** — Tailwind utilities, shadcn/ui components, MUI and Chakra props, plus Bootstrap quick hits
+- **Gap strategy** — what to do about Switch, Alert, Toast, Skeleton, Progress, Slider, and Combobox, which ZUI doesn't ship
+- **Verification checklist** — what must be true before the old dependency is uninstalled
+
+Prompt examples:
+
 ```
-Build a card grid with hover effects using ZUI tokens
+Migrate this app from shadcn/ui to ZUI
 ```
 
-The model will use correct ZUI classes and tokens rather than generic Tailwind or inline styles.
+```
+Map our Tailwind theme config onto ZUI tokens
+```
+
+## `zui-theme`
+
+Covers scaffolding and integrating [`@mrmartineau/zui-theme`](/guides/docs-theme), the source-only Astro docs theme built on ZUI — `DocsLayout`, file-based sidebar and TOC, the `Demo` component, and the theme switchers.
 
 ## Manual installation
 
-If your tooling doesn't support `npx skills add`, copy the skill file directly:
+If your tooling doesn't support `npx skills add`, copy a skill file directly:
 
 ```sh
 curl -o .skills/using-zui.md \
   https://raw.githubusercontent.com/mrmartineau/zui/main/skills/using-zui/SKILL.md
+
+curl -o .skills/migrate-to-zui.md \
+  https://raw.githubusercontent.com/mrmartineau/zui/main/skills/migrate-to-zui/SKILL.md
 ```
 
-Or reference the skill content from the repository at `skills/using-zui/SKILL.md`.
+Or reference the skill content from the repository at `skills/<skill-name>/SKILL.md`.
