@@ -5,7 +5,8 @@
     "includes": [
       "**",
       "!packages/vscode-zui/src/manifest.json",
-      "!packages/raycast-zui/src/data"
+      "!packages/raycast-zui/src/data",
+      "!packages/raycast-zui/raycast-env.d.ts"
     ]
   },
   "overrides": [
