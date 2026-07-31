@@ -8,6 +8,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'latest'
+          cache: 'pnpm'
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
+      - run: pnpm install --frozen-lockfile
+      # Unit tests across every package, then the skill evals. Neither needs a
+      # build — both run against source.
+      - name: Unit tests
+        run: pnpm run test
+      - name: Skill evals
+        # Run even when the unit tests fail, so a PR surfaces every failure at
+        # once instead of one per push.
+        if: ${{ !cancelled() }}
+        run: pnpm run eval:skills
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'latest'
+          cache: 'pnpm'
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec biome ci .
+
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -21,8 +59,4 @@ jobs:
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile
-      - name: Lint
-        run: pnpm exec biome ci .
       - run: pnpm run build
-      - name: Test
-        run: pnpm --filter @mrmartineau/zui test
