@@ -791,6 +791,8 @@ Props: `display` (`flex` | `inline-flex`), `direction` (`row` | `column`), `alig
 
 **CSS classes:** `zui-table`, `zui-table-header` (`<thead>`), `zui-table-body` (`<tbody>`), `zui-table-footer` (`<tfoot>`), `zui-table-row` (`<tr>`), `zui-table-head` (`<th>`), `zui-table-cell` (`<td>`), `zui-table-caption`
 
+**Components:** `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption` — one per class above, in every framework.
+
 ## Utility Classes
 
 ### Layout

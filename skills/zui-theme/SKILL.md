@@ -166,7 +166,7 @@ import {
 
 ### Components
 
-- **Layout/nav:** `DocsLayout` (the configurable shell), `Sidebar`, `TableOfContents`.
+- **Layout/nav:** `DocsLayout` (the configurable shell), `BaseLayout` (the `<html>` shell `DocsLayout` builds on — head, CSS imports, header, mobile nav, theme switchers, footer; use it directly for full-width pages that want the chrome but not the sidebar/TOC/prose column), `Sidebar`, `TableOfContents`.
 - **Content:** `Demo` (preview + code tabs), `DemoPreview` (preview box), `CopyCode` (click-to-copy inline code), `TokenGrid`/`TokenRow` (design-token tables), `Section`, `Subtitle`.
 - **Theme controls:** `DarkModeSwitcher` (light/dark/system), `MiniThemeSwitcher` (colour dots), `ThemeSwitcher` (floating builder; `inline` prop for an embedded panel).
 
