@@ -14,6 +14,9 @@ importers:
       '@mrmartineau/kit':
         specifier: ^1.0.0
         version: 1.0.0(typescript@5.9.3)
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@26.0.0)(jsdom@26.1.0)(lightningcss@1.32.0)(tsx@4.21.0)
 
   docs:
     dependencies:

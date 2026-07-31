@@ -115,3 +115,11 @@ The Astro docs site at `docs/` is the living documentation for ZUI. **Whenever y
 - Before creating new CSS, tokens, components, or demo helpers, check if an existing one can be reused or extended.
 - Prefer composing existing utility classes and tokens over writing new CSS.
 - Check `docs/src/components/` for existing presentational helpers before building new ones for doc pages.
+
+## Skills (`skills/`)
+
+`skills/using-zui`, `skills/zui-theme` and `skills/migrate-to-zui` are agent skills that teach ZUI's API. They are documentation the model trusts more than the codebase, so they must be updated alongside any API change — same rule as the docs site.
+
+`pnpm run eval:skills` checks them against the source: class names, tokens, import paths, barrel exports, layer names, and component coverage. It takes under a second. `pnpm run test:all` runs it together with the unit tests; CI runs both on every PR. See `skills/evals/README.md`.
+
+A new component therefore needs a `using-zui` entry as well as a docs page — the coverage eval fails until both exist.

@@ -31,6 +31,10 @@ ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, S
 pnpm run build        # Build CSS bundle + React components
 pnpm run dev          # Watch mode
 
+pnpm run test         # Unit tests (all packages)
+pnpm run eval:skills  # Skill evals — check skills/ against the source
+pnpm run test:all     # Both; CI runs these on every PR
+
 cd docs
 pnpm run dev          # Run docs site locally
 ```
