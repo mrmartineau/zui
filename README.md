@@ -94,6 +94,14 @@ Override semantic tokens in your CSS to retheme the library:
 
 See [zui.zander.wtf](https://zui.zander.wtf) for the full token reference, component docs, and live examples.
 
+## More Astro packages
+
+Other Astro tools I have made:
+
+- [astro-git-dates](https://github.com/mrmartineau/astro-git-dates): set content collection dates from git history
+- [astro-d1-search](https://github.com/mrmartineau/astro-d1-search): site search for Astro backed by Cloudflare D1
+- [zed-astro-starter](https://github.com/mrmartineau/zed-astro-starter): an opinionated Astro starter, ready to deploy to Cloudflare Workers
+
 ## Releasing
 
 This package uses [semantic-release](https://github.com/semantic-release/semantic-release) to automate versioning and publishing based on [Conventional Commits](https://www.conventionalcommits.org/).
