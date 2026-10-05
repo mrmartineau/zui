@@ -1,0 +1,105 @@
+<label class="zui-checkbox mb-sm">
+  <input type="checkbox" id="sq-toggle" checked />
+  Squircle shape on
+</label>
+
+<div id="sq-gallery" class="zui-squircle-all flow">
+  <div class="flex flex-wrap items-center gap-sm">
+    <button class="zui-button">Button</button>
+    <button class="zui-button zui-button-variant-outline">Outline</button>
+    <button class="zui-button zui-button-icon" aria-label="Heart"><i class="ph ph-heart"></i></button>
+    <span class="zui-avatar"><span class="zui-avatar-fallback">AB</span></span>
+    <span class="zui-badge">Badge</span>
+    <kbd class="zui-kbd">Esc</kbd>
+    <label class="zui-checkbox"><input type="checkbox" checked /> Checkbox</label>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-sm">
+    <button class="zui-button zui-button-variant-outline" onclick="document.getElementById('sq-dialog').showModal()">Open dialog</button>
+    <button class="zui-button zui-button-variant-outline" popovertarget="sq-popover" style="anchor-name: --sq-popover">Open popover</button>
+    <span class="zui-tooltip">
+      <button class="zui-button zui-button-variant-outline" style="anchor-name: --sq-tooltip" data-sq-tooltip="sq-tooltip">Hover for tooltip</button>
+      <span popover="manual" id="sq-tooltip" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --sq-tooltip" role="tooltip">Squircle tooltip</span>
+    </span>
+  </div>
+
+  <div class="zui-field">
+    <label class="zui-label" for="sq-demo-input">Input</label>
+    <input class="zui-input" id="sq-demo-input" placeholder="Type here" />
+  </div>
+  <div class="zui-field">
+    <label class="zui-label" for="sq-demo-select">Select</label>
+    <select class="zui-select" id="sq-demo-select"><option>Option one</option><option>Option two</option></select>
+  </div>
+  <div class="zui-field">
+    <label class="zui-label" for="sq-demo-textarea">Textarea</label>
+    <textarea class="zui-textarea" id="sq-demo-textarea" placeholder="Type here"></textarea>
+  </div>
+
+  <div class="zui-card">
+    <div class="zui-card-header">
+      <div class="zui-card-title">Card</div>
+    </div>
+    <div class="zui-card-body">Card content goes here.</div>
+  </div>
+
+  <div class="zui-tabs" data-orientation="horizontal">
+    <div class="zui-tabs-list" role="tablist" aria-label="Squircle tabs demo">
+      <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true" data-state="active">Account</button>
+      <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+      <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Billing</button>
+    </div>
+  </div>
+
+  <div class="zui-menu" data-state="open">
+    <div class="zui-menu-content" role="menu" data-state="open" style="position: static;">
+      <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
+      <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
+    </div>
+  </div>
+
+  <details class="zui-collapsible">
+    <summary class="zui-collapsible-trigger">Collapsible</summary>
+    <div class="zui-collapsible-content"><p>Collapsible content.</p></div>
+  </details>
+
+  <div class="zui-accordion">
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">Accordion item one</summary>
+      <div class="zui-accordion-content"><p>Accordion content.</p></div>
+    </details>
+    <details class="zui-accordion-item">
+      <summary class="zui-accordion-trigger">Accordion item two</summary>
+      <div class="zui-accordion-content"><p>Accordion content.</p></div>
+    </details>
+  </div>
+
+  <div id="sq-popover" popover class="zui-popover" style="position-anchor: --sq-popover;">
+    <p>Squircle popover.</p>
+  </div>
+
+  <dialog id="sq-dialog" class="zui-dialog" closedby="any">
+    <div class="zui-dialog-header">
+      <div class="zui-dialog-title">Squircle dialog</div>
+    </div>
+    <div class="zui-dialog-body"><p>The dialog gets the squircle shape too.</p></div>
+    <div class="zui-dialog-footer">
+      <form method="dialog"><button class="zui-button">Close</button></form>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  const gallery = document.getElementById('sq-gallery')
+  document.getElementById('sq-toggle')?.addEventListener('change', (event) => {
+    gallery?.classList.toggle('zui-squircle-all', (event.target as HTMLInputElement).checked)
+  })
+  document.querySelectorAll('[data-sq-tooltip]').forEach((trigger) => {
+    const tip = document.getElementById((trigger as HTMLElement).dataset.sqTooltip ?? '')
+    if (!tip) return
+    trigger.addEventListener('mouseenter', () => tip.showPopover())
+    trigger.addEventListener('mouseleave', () => tip.hidePopover())
+    trigger.addEventListener('focus', () => tip.showPopover())
+    trigger.addEventListener('blur', () => tip.hidePopover())
+  })
+</script>

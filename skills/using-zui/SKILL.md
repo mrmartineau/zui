@@ -168,6 +168,8 @@ One-up pairs: `--space-3xs-2xs`, `--space-xs-sm`, `--space-sm-md`, `--space-md-l
 
 Controlled globally by `--radius-scale` (default `1`).
 
+Squircle corners: `zui-squircle` on one element, or `zui-squircle-all` on a parent (put it on `<html>` for a global default). See Utility Classes → Shape.
+
 ### Shadows
 
 `--shadow-sm` · `--shadow` · `--shadow-md` · `--shadow-lg` · `--shadow-xl` · `--shadow-2xl`
@@ -841,6 +843,15 @@ Margin: `m-{size}`, `mx-{size}`, `my-{size}`, `mt-{size}`, `mb-{size}`, `ml-{siz
 | Class | Effect |
 |---|---|
 | `surface` | Subtle background tint for alternating sections |
+
+### Shape
+
+| Class | Effect |
+|---|---|
+| `zui-squircle` | Squircle corners on one component (any ZUI component) |
+| `zui-squircle-all` | Squircle corners on every ZUI component inside it. On `<html>`, it makes squircle the global default — no need for `shape="squircle"` on each Button/Avatar. `shape="hard"`/`"soft"`, drawer dialogs, flush accordions, and underline tabs keep their shape. |
+
+Squircles use `corner-shape`, so only some browsers show them. Other browsers keep normal rounded corners.
 
 ### Visibility
 

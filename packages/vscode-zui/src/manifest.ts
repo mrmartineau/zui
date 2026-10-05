@@ -88,7 +88,7 @@ function extractUtilityClasses(css: string, source: string): ClassEntry[] {
   for (const match of css.matchAll(re)) {
     const chain = match[0]
     for (const seg of chain.split('.')) {
-      if (!seg || seg.startsWith('zui-') || seen.has(seg)) continue
+      if (!seg || seen.has(seg)) continue
       seen.add(seg)
       entries.push({ name: seg, source: `utility/${source}` })
     }
@@ -137,8 +137,15 @@ export function buildManifest(sources: ManifestSources): Manifest {
     tokens.push(...extractTokens(sources.theme, 'theme'))
   }
 
+  // Utility files can reference component classes (e.g. squircle.css lists
+  // `.zui-button`); keep the component entry and skip the duplicate.
+  const classSeen = new Set(classes.map((c) => c.name))
   for (const file of sources.utilities) {
-    classes.push(...extractUtilityClasses(file.css, file.name))
+    for (const entry of extractUtilityClasses(file.css, file.name)) {
+      if (classSeen.has(entry.name)) continue
+      classSeen.add(entry.name)
+      classes.push(entry)
+    }
   }
 
   // Dedup tokens globally — e.g. `--shadow-color` is declared in both a token

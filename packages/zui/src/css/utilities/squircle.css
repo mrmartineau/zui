@@ -1,0 +1,52 @@
+@layer zui.utilities {
+  /* squircle - limited browser support.
+   * .zui-squircle: one element.
+   * .zui-squircle-all: every ZUI component inside it (put it on <html> for a global default).
+   * Variants that are square or pill on purpose keep their shape. */
+  .zui-squircle,
+  .zui-squircle-all
+    :is(
+      .zui-button,
+      .zui-avatar,
+      .zui-badge,
+      .zui-card,
+      .zui-input,
+      .zui-textarea,
+      .zui-select,
+      .zui-dialog,
+      .zui-popover,
+      .zui-menu-content,
+      .zui-tooltip-content,
+      .zui-kbd,
+      .zui-accordion,
+      .zui-collapsible,
+      .zui-tabs-list,
+      .zui-app-shell-toggle,
+      .zui-app-shell-skip-link
+    ):not(
+      .zui-button-shape-hard,
+      .zui-button-shape-soft,
+      .zui-avatar-shape-hard,
+      .zui-avatar-shape-soft,
+      .zui-dialog-position-left,
+      .zui-dialog-position-right,
+      .zui-dialog-position-top,
+      .zui-dialog-position-bottom,
+      .zui-accordion-flush,
+      .zui-tabs-list-variant-underline
+    ) {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
+
+  /* small or nested parts keep their own radius: tabs triggers nest inside
+   * the list, and a 20px radius would turn a checkbox into a circle.
+   * Radios stay round on purpose. */
+  .zui-squircle-all :is(.zui-tabs-trigger, .zui-checkbox input[type="checkbox"]) {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+    }
+  }
+}

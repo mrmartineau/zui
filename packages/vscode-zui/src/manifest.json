@@ -1445,7 +1445,111 @@
       "source": "utility/prose"
     },
     {
+      "name": "zui-squircle",
+      "source": "utility/squircle"
+    },
+    {
+      "name": "zui-squircle-all",
+      "source": "utility/squircle"
+    },
+    {
+      "name": "zui-text--4",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text--3",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text--2",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text--1",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-0",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-base",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-1",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-2",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-3",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-4",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-5",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-6",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-7",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-8",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-9",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-10",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-left",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-center",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-text-right",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-color-muted",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-color-faint",
+      "source": "utility/ui-typography"
+    },
+    {
       "name": "surface",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-link",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-pre",
+      "source": "utility/ui-typography"
+    },
+    {
+      "name": "zui-code",
       "source": "utility/ui-typography"
     }
   ],

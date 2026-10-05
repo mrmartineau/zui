@@ -1,0 +1,87 @@
+---
+layout: ../../layouts/Layout.astro
+title: Squircle
+description: Give one component, or every component, a squircle shape with one class.
+---
+
+import SquircleGallery from '../../components/SquircleGallery.astro'
+
+## How it works
+
+Add `.zui-squircle` to any element with a border radius. It works on inputs, textareas, selects, cards, dialogs, popovers, menus, badges, tabs, and more.
+
+```css
+.zui-squircle {
+  @supports (corner-shape: squircle) {
+    corner-shape: superellipse(1.25);
+    border-radius: 20px;
+  }
+}
+```
+
+The class lives in the `zui.utilities` layer, so it wins over component radius styles. Browsers without `corner-shape` support keep the normal rounded corners.
+
+## Every component
+
+Turn the switch off and on to compare the normal shape with the squircle shape. Squircles only show in browsers that support `corner-shape`, for example Chrome.
+
+<SquircleGallery />
+
+## Squircles everywhere
+
+Add `.zui-squircle-all` to a parent element. Every ZUI component inside it gets a squircle shape. Put it on `<html>` to make squircle the default shape for the whole site.
+
+```html
+<html class="zui-squircle-all">
+```
+
+This works in every framework, because it is only a class. In React, you do not need to pass `shape="squircle"` to each `<Button>`.
+
+These components get the squircle shape: button, avatar, badge, card, input, textarea, select, checkbox, dialog, popover, menu, tooltip, kbd, accordion, collapsible, tabs, and the app shell menu toggle and skip link.
+
+Radio buttons stay round on purpose.
+
+Variants that are square or pill on purpose keep their shape:
+
+- `shape="hard"` and `shape="soft"` on buttons and avatars
+- Side and top/bottom dialog positions (drawers)
+- Flush accordions
+- Underline tabs
+
+To use a different shape on one button, pass `shape="hard"` or `shape="soft"`.
+
+Buttons and avatars also have a `shape="squircle"` prop. See [Button](/components/button) and [Avatar](/components/avatar).
+
+## Usage
+
+<div class="flow">
+  <div class="zui-field">
+    <label class="zui-label" for="sq-input">Input</label>
+    <input class="zui-input zui-squircle" id="sq-input" placeholder="Squircle input" />
+  </div>
+  <div class="zui-field">
+    <label class="zui-label" for="sq-textarea">Textarea</label>
+    <textarea class="zui-textarea zui-squircle" id="sq-textarea" placeholder="Squircle textarea"></textarea>
+  </div>
+  <div class="zui-field">
+    <label class="zui-label" for="sq-select">Select</label>
+    <select class="zui-select zui-squircle" id="sq-select"><option>Squircle select</option></select>
+  </div>
+  <div class="zui-card zui-squircle">
+    <div class="zui-card-body">Squircle card</div>
+  </div>
+</div>
+
+```html
+<input class="zui-input zui-squircle" />
+<textarea class="zui-textarea zui-squircle"></textarea>
+<select class="zui-select zui-squircle">…</select>
+<div class="zui-card zui-squircle">…</div>
+```
+
+In the framework wrappers, pass `zui-squircle` as the class (`className` in React):
+
+```tsx
+<Input className="zui-squircle" />
+<Card className="zui-squircle">…</Card>
+```
