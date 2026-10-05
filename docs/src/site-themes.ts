@@ -87,4 +87,18 @@ export const siteThemes: SiteThemePreview[] = [
     surface: 'light-dark(#ffffff, #1a1a1a)',
     text: 'light-dark(#111111, #fafafa)',
   },
+  {
+    accent: 'light-dark(var(--color-neutral-900), var(--color-neutral-200))',
+    bg: 'light-dark(var(--color-white), var(--color-neutral-950))',
+    border:
+      'light-dark(var(--color-neutral-200), oklch(from var(--color-white) l c h / 10%))',
+    font: 'var(--font-stack-sans)',
+    name: 'Contrast',
+    note: 'Monochrome startup',
+    onAccent: 'light-dark(var(--color-neutral-50), var(--color-neutral-900))',
+    radius: '10px',
+    slug: 'contrast',
+    surface: 'light-dark(var(--color-white), var(--color-neutral-900))',
+    text: 'light-dark(var(--color-neutral-950), var(--color-neutral-50))',
+  },
 ]

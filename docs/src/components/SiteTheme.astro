@@ -5,7 +5,7 @@
  * Site-wide theme switching for the showcase themes. Include once per layout
  * (in the head slot). Provides:
  *
- * - the `site-themes.css` stylesheet with the five showcase themes, keyed off
+ * - the `site-themes.css` stylesheet with the showcase themes, keyed off
  *   `data-site-theme` on <html>
  * - a pre-paint inline script that restores a persisted theme (and its Google
  *   Fonts) before first render, so there is no flash of the default theme
@@ -33,6 +33,7 @@ import '../styles/site-themes.css'
       nordic: base + 'Inter:opsz,wght@14..32,100..900',
       brutalist:
         base + 'Space+Grotesk:wght@300..700&family=Space+Mono:wght@400;700',
+      contrast: base + 'Geist:wght@100..900&family=Geist+Mono:wght@100..900',
     }
     window.__siteThemeFontLink = function (slug) {
       var url = window.__siteThemeFonts[slug]

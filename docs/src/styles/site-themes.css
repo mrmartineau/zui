@@ -114,3 +114,28 @@
   --line-height: var(--line-height-md);
   --border-style: solid;
 }
+
+:root[data-site-theme="contrast"] {
+  /* Colours — monochrome neutrals, black/white action (exact Tailwind matches) */
+  --color-accent: light-dark(var(--color-neutral-900), var(--color-neutral-200));
+  --color-theme: light-dark(var(--color-neutral-900), var(--color-neutral-200));
+  --color-background: light-dark(var(--color-white), var(--color-neutral-950));
+  --color-surface: light-dark(var(--color-white), var(--color-neutral-900));
+  --color-border: light-dark(
+    var(--color-neutral-200),
+    oklch(from var(--color-white) l c h / 10%)
+  );
+  --color-text: light-dark(var(--color-neutral-950), var(--color-neutral-50));
+  --color-muted: light-dark(var(--color-neutral-500), var(--color-neutral-400));
+  --color-error: light-dark(var(--color-red-600), var(--color-red-400));
+
+  /* Typography — Geist throughout */
+  --font-display: "Geist", var(--font-stack-sans);
+  --font-body: "Geist", var(--font-stack-sans);
+  --font-code: "Geist Mono", var(--font-stack-mono);
+
+  /* Shape — ZUI --radius-lg is 6px; this aims for 10px */
+  --radius-scale: 1.667;
+  --line-height: var(--line-height-md);
+  --border-style: solid;
+}

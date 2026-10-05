@@ -16,7 +16,8 @@
 import SiteThemeButton from './SiteThemeButton.astro'
 
 interface Theme {
-  id: string
+  /** CodePen slug hash. Omit until the pen exists; the demo is then skipped. */
+  id?: string
   name: string
   slug: string
   blurb: string
@@ -64,6 +65,14 @@ const themes: Theme[] = [
     name: 'Brutalist',
     slug: 'brutalist',
   },
+  {
+    blurb:
+      'Simple startup. Pure monochrome neutrals, a black (or white) primary action, Geist and Geist Mono, and a slightly larger 10px corner radius. Every colour is a stock ZUI token.',
+    htmlClass: 'zui-light',
+    name: 'Contrast',
+    slug: 'contrast',
+    id: 'GgWOqrX',
+  },
 ]
 
 const embeds = themes.map((theme) => ({
@@ -81,20 +90,22 @@ const embeds = themes.map((theme) => ({
 <div class="theming-showcase">
   {
     embeds.map((embed) => (
-      <section class="theming-showcase-item flow" id={embed.id}>
+      <section class="theming-showcase-item flow" id={embed.id ?? embed.slug}>
         <h3>{embed.name}</h3>
         <p class="theming-showcase-blurb">{embed.blurb}</p>
         <p class="theming-showcase-actions">
           <SiteThemeButton theme={embed.slug} />
         </p>
-        <p class="codepen"
-           data-height="630"
-           data-pen-title={embed.name}
-           data-default-tab="result"
-           data-slug-hash={embed.id}
-           data-user="mrmartineau"
-        >
-        </p>
+        {embed.id && (
+          <p
+            class="codepen"
+            data-height="630"
+            data-pen-title={embed.name}
+            data-default-tab="result"
+            data-slug-hash={embed.id}
+            data-user="mrmartineau"
+          ></p>
+        )}
       </section>
     ))
   }
