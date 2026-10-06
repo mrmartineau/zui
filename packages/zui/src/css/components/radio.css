@@ -12,15 +12,15 @@
 
   /* The ring is drawn with border (padding forms the gap) rather than
      outline, so the focus ring doesn't replace the control's own ring */
-  .zui-radio input[type="radio"] {
+  .zui-radio input[type='radio'] {
     appearance: none;
     box-sizing: content-box;
-    width: 0.8em;
-    height: 0.8em;
-    padding: 3px;
-    outline: 3px var(--border-style, solid) var(--color-border, currentColor);
+    width: 0.35em;
+    height: 0.35em;
+    padding: 0.15em;
+    outline: 0.15em var(--border-style, solid) var(--color-border, currentColor);
     /* background-clip: content-box; */
-    outline-offset: 3px;
+    outline-offset: 0.15em;
     border-radius: var(--radius-full);
     cursor: pointer;
     transition-property: border-color, background-color;
@@ -29,21 +29,21 @@
     flex-shrink: 0;
   }
 
-  .zui-radio input[type="radio"]:checked {
+  .zui-radio input[type='radio']:checked {
     background-color: var(--color-accent);
   }
 
-  .zui-radio input[type="radio"]:focus-visible {
+  .zui-radio input[type='radio']:focus-visible {
     outline: var(--focus-ring);
     outline-offset: var(--focus-ring-offset);
   }
 
-  .zui-radio input[type="radio"]:disabled {
+  .zui-radio input[type='radio']:disabled {
     cursor: not-allowed;
     filter: grayscale(100%) opacity(50%);
   }
 
-  .zui-radio input[type="radio"]:disabled ~ * {
+  .zui-radio input[type='radio']:disabled ~ * {
     cursor: not-allowed;
     opacity: 0.5;
   }
