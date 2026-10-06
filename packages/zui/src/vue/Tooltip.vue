@@ -1,5 +1,5 @@
 <template>
-  <span :class="['zui-tooltip', props.class].filter(Boolean).join(' ')" v-bind="$attrs">
+  <span :class="wrapperClass" v-bind="$attrs">
     <!-- focusin/focusout: native focus does not bubble, so focus events
          from the wrapped child never reach this non-focusable span -->
     <span
@@ -41,6 +41,7 @@ const props = defineProps<{
   text: string
   class?: string
   placement?: TooltipVariantProps['placement']
+  shape?: TooltipVariantProps['shape']
 }>()
 
 const contentClass = computed(() => {
@@ -48,6 +49,13 @@ const contentClass = computed(() => {
     .split(' ')
     .find((c: string) => c.startsWith('zui-tooltip-placement-'))
   return ['zui-tooltip-content', placementClass].filter(Boolean).join(' ')
+})
+
+const wrapperClass = computed(() => {
+  const shapeClass = tooltipVariants({ shape: props.shape })
+    .split(' ')
+    .find((c: string) => c.startsWith('zui-tooltip-shape-'))
+  return ['zui-tooltip', shapeClass, props.class].filter(Boolean).join(' ')
 })
 
 const show = () => popoverEl.value?.showPopover()

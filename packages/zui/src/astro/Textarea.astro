@@ -1,12 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { textareaVariants } from '../shared/textareaVariants'
 
-interface Props extends HTMLAttributes<'textarea'> {
+type TextareaVariantProps = VariantProps<typeof textareaVariants>
+
+interface Props extends HTMLAttributes<'textarea'>, TextareaVariantProps {
   class?: string
 }
 
-const { class: className, ...props } = Astro.props
-const classes = ['zui-textarea', className].filter(Boolean).join(' ')
+const { class: className, shape, ...props } = Astro.props
+const classes = textareaVariants({ class: className, shape })
 ---
 
 <textarea class={classes} {...props}><slot /></textarea>

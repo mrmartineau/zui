@@ -1,18 +1,31 @@
+import type { VariantProps } from 'cva'
 import type { JSX } from 'solid-js'
 import { splitProps } from 'solid-js'
+import { cardVariants } from '../shared/cardVariants'
+
+type CardVariantProps = VariantProps<typeof cardVariants>
 
 export type CardProps = JSX.HTMLAttributes<HTMLDivElement> &
-  JSX.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  JSX.AnchorHTMLAttributes<HTMLAnchorElement> &
+  CardVariantProps & {
     class?: string
     href?: string
   }
 
 export function Card(props: CardProps) {
-  const [local, rest] = splitProps(props, ['class', 'href', 'children'])
+  const [local, rest] = splitProps(props, [
+    'class',
+    'href',
+    'shape',
+    'children',
+  ])
   const classes = () =>
-    ['zui-card', local.href && 'zui-card-interactive', local.class]
-      .filter(Boolean)
-      .join(' ')
+    cardVariants({
+      class: [local.href && 'zui-card-interactive', local.class]
+        .filter(Boolean)
+        .join(' '),
+      shape: local.shape,
+    })
 
   return (
     <>

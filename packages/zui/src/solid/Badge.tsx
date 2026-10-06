@@ -15,12 +15,14 @@ export function Badge(props: BadgeProps) {
     'class',
     'variant',
     'color',
+    'shape',
     'children',
   ])
   const classes = () =>
     badgeVariants({
       className: local.class,
       color: local.color,
+      shape: local.shape,
       variant: local.variant,
     })
   return (

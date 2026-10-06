@@ -1,10 +1,15 @@
+import type { VariantProps } from 'cva'
 import type { TextareaHTMLAttributes } from 'react'
+import { textareaVariants } from '../shared/textareaVariants'
 
-export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  className?: string
-}
+type TextareaVariantProps = VariantProps<typeof textareaVariants>
 
-export function Textarea({ className, ...props }: TextareaProps) {
-  const classes = ['zui-textarea', className].filter(Boolean).join(' ')
+export type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  TextareaVariantProps & {
+    className?: string
+  }
+
+export function Textarea({ className, shape, ...props }: TextareaProps) {
+  const classes = textareaVariants({ className, shape })
   return <textarea className={classes} {...props} />
 }

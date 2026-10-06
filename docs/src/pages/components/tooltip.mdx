@@ -194,9 +194,139 @@ import { Tooltip, Button } from '@mrmartineau/zui/vue'
   </div>
 </Demo>
 
+## Shape
+
+Use the `shape` prop on `Tooltip` to change the corners of the tooltip: `default` (rounded), `hard` (square), `soft` (pill) or `squircle`. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners. Hover each button to compare.
+
+<Demo
+  html={`<span class="zui-tooltip">
+  <button class="zui-button" style="anchor-name: --sq-tooltip-default" data-tooltip-trigger="sq-tooltip-default">Default</button>
+  <span popover="manual" id="sq-tooltip-default" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --sq-tooltip-default" role="tooltip">Helpful information</span>
+</span>
+<span class="zui-tooltip zui-tooltip-shape-hard">
+  <button class="zui-button" style="anchor-name: --sq-tooltip-hard" data-tooltip-trigger="sq-tooltip-hard">Hard</button>
+  <span popover="manual" id="sq-tooltip-hard" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --sq-tooltip-hard" role="tooltip">Helpful information</span>
+</span>
+<span class="zui-tooltip zui-tooltip-shape-soft">
+  <button class="zui-button" style="anchor-name: --sq-tooltip-soft" data-tooltip-trigger="sq-tooltip-soft">Soft</button>
+  <span popover="manual" id="sq-tooltip-soft" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --sq-tooltip-soft" role="tooltip">Helpful information</span>
+</span>
+<span class="zui-tooltip zui-tooltip-shape-squircle">
+  <button class="zui-button" style="anchor-name: --sq-tooltip-squircle" data-tooltip-trigger="sq-tooltip-squircle">Squircle</button>
+  <span popover="manual" id="sq-tooltip-squircle" class="zui-tooltip-content zui-tooltip-placement-top" style="position-anchor: --sq-tooltip-squircle" role="tooltip">Helpful information</span>
+</span>
+
+<script>
+  document.querySelectorAll('[data-tooltip-trigger]').forEach((trigger) => {
+    const popover = document.getElementById(trigger.dataset.tooltipTrigger)
+    if (!popover) return
+    trigger.addEventListener('mouseenter', () => popover.showPopover())
+    trigger.addEventListener('mouseleave', () => popover.hidePopover())
+    trigger.addEventListener('focus', () => popover.showPopover())
+    trigger.addEventListener('blur', () => popover.hidePopover())
+  })
+</script>`}
+  react={`import { Tooltip, Button } from '@mrmartineau/zui/react'
+
+<Tooltip text="Helpful information">
+  <Button>Default</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="hard">
+  <Button>Hard</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="soft">
+  <Button>Soft</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="squircle">
+  <Button>Squircle</Button>
+</Tooltip>`}
+  astro={`---
+import { Tooltip, Button } from '@mrmartineau/zui/astro'
+---
+
+<Tooltip text="Helpful information">
+  <Button>Default</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="hard">
+  <Button>Hard</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="soft">
+  <Button>Soft</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="squircle">
+  <Button>Squircle</Button>
+</Tooltip>`}
+  solid={`import { Tooltip, Button } from '@mrmartineau/zui/solid'
+
+<Tooltip text="Helpful information">
+  <Button>Default</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="hard">
+  <Button>Hard</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="soft">
+  <Button>Soft</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="squircle">
+  <Button>Squircle</Button>
+</Tooltip>`}
+  vue={`<template>
+  <Tooltip text="Helpful information">
+    <Button>Default</Button>
+  </Tooltip>
+  <Tooltip text="Helpful information" shape="hard">
+    <Button>Hard</Button>
+  </Tooltip>
+  <Tooltip text="Helpful information" shape="soft">
+    <Button>Soft</Button>
+  </Tooltip>
+  <Tooltip text="Helpful information" shape="squircle">
+    <Button>Squircle</Button>
+  </Tooltip>
+</template>
+
+<script setup>
+import { Tooltip, Button } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Tooltip, Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tooltip text="Helpful information">
+  <Button>Default</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="hard">
+  <Button>Hard</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="soft">
+  <Button>Soft</Button>
+</Tooltip>
+<Tooltip text="Helpful information" shape="squircle">
+  <Button>Squircle</Button>
+</Tooltip>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <Tooltip text="Helpful information">
+      <button class="zui-button">Default</button>
+    </Tooltip>
+    <Tooltip text="Helpful information" shape="hard">
+      <button class="zui-button">Hard</button>
+    </Tooltip>
+    <Tooltip text="Helpful information" shape="soft">
+      <button class="zui-button">Soft</button>
+    </Tooltip>
+    <Tooltip text="Helpful information" shape="squircle">
+      <button class="zui-button">Squircle</button>
+    </Tooltip>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |
 |---|---|---|
 | `--zui-tooltip-bg` | `light-dark(var(--color-mist-700), var(--color-mist-200))` | Background colour |
 | `--zui-tooltip-fg` | `light-dark(var(--color-mist-50), var(--color-mist-900))` | Text colour |
+| `--zui-tooltip-radius` | `var(--radius-md)` | Border radius |

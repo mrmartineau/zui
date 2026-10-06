@@ -86,7 +86,7 @@ import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
       Open menu <i class="ph ph-caret-down"></i>
     </MenuTrigger>
     <MenuContent>
-      <MenuItem>Profile</MenuItem>
+      <MenuItem>Profile Profile Profile Profile Profile</MenuItem>
       <MenuItem>Settings</MenuItem>
       <MenuItem>Logout</MenuItem>
     </MenuContent>
@@ -174,6 +174,195 @@ import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
     </MenuContent>
   </Menu>
 </Demo>
+
+## Shape
+
+Use the `shape` prop on `Menu` to change the corners of the menu panel: `default` (rounded), `hard` (square) or `squircle`. Menu has no `soft` shape, because a pill shape does not suit a large panel. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners. Open each menu to compare.
+
+<Demo
+  html={`<div class="zui-menu">
+  <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
+    Default <i class="ph ph-caret-down"></i>
+  </button>
+  <div class="zui-menu-content" role="menu" hidden>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
+  </div>
+</div>
+<div class="zui-menu zui-menu-shape-hard">
+  <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
+    Hard <i class="ph ph-caret-down"></i>
+  </button>
+  <div class="zui-menu-content" role="menu" hidden>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
+  </div>
+</div>
+<div class="zui-menu zui-menu-shape-squircle">
+  <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
+    Squircle <i class="ph ph-caret-down"></i>
+  </button>
+  <div class="zui-menu-content" role="menu" hidden>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
+    <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
+  </div>
+</div>`}
+  react={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/react'
+
+<Menu>
+  <MenuTrigger>Default <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="hard">
+  <MenuTrigger>Hard <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="squircle">
+  <MenuTrigger>Squircle <i className="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>`}
+  astro={`---
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
+---
+
+<Menu>
+  <MenuTrigger>Default <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="hard">
+  <MenuTrigger>Hard <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="squircle">
+  <MenuTrigger>Squircle <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>`}
+  solid={`import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/solid'
+
+<Menu>
+  <MenuTrigger>Default <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="hard">
+  <MenuTrigger>Hard <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="squircle">
+  <MenuTrigger>Squircle <i class="ph ph-caret-down" /></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>`}
+  vue={`<template>
+  <Menu>
+    <MenuTrigger>Default <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuContent>
+      <MenuItem>Profile</MenuItem>
+      <MenuItem>Settings</MenuItem>
+    </MenuContent>
+  </Menu>
+  <Menu shape="hard">
+    <MenuTrigger>Hard <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuContent>
+      <MenuItem>Profile</MenuItem>
+      <MenuItem>Settings</MenuItem>
+    </MenuContent>
+  </Menu>
+  <Menu shape="squircle">
+    <MenuTrigger>Squircle <i class="ph ph-caret-down" /></MenuTrigger>
+    <MenuContent>
+      <MenuItem>Profile</MenuItem>
+      <MenuItem>Settings</MenuItem>
+    </MenuContent>
+  </Menu>
+</template>
+
+<script setup>
+import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/svelte'
+</script>
+
+<Menu>
+  <MenuTrigger>Default <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="hard">
+  <MenuTrigger>Hard <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>
+<Menu shape="squircle">
+  <MenuTrigger>Squircle <i class="ph ph-caret-down"></i></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <Menu>
+      <MenuTrigger>
+        Default <i class="ph ph-caret-down"></i>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>Settings</MenuItem>
+      </MenuContent>
+    </Menu>
+    <Menu shape="hard">
+      <MenuTrigger>
+        Hard <i class="ph ph-caret-down"></i>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>Settings</MenuItem>
+      </MenuContent>
+    </Menu>
+    <Menu shape="squircle">
+      <MenuTrigger>
+        Squircle <i class="ph ph-caret-down"></i>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>Settings</MenuItem>
+      </MenuContent>
+    </Menu>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
 
 ## Anatomy
 

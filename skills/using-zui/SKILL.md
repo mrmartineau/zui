@@ -230,6 +230,7 @@ All component classes use the `zui-` prefix. Each component exists as a CSS clas
 |---|---|---|
 | variant | `subtle` (default), `fill`, `outline` | `zui-badge-variant-{name}` |
 | color | `default`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`, `gray` | `zui-badge-color-{name}` |
+| shape | `default`, `hard`, `soft` (same as default — badges are pills), `squircle` | `zui-badge-shape-{name}` |
 
 ```html
 <span class="zui-badge">Default</span>
@@ -242,6 +243,8 @@ All component classes use the `zui-` prefix. Each component exists as a CSS clas
 ```
 
 ### Card
+
+**Shape prop:** `default`, `hard`, `squircle` (no `soft`) → `zui-card-shape-{name}`.
 
 **CSS classes:** `zui-card` (base), `zui-card-header`, `zui-card-title`, `zui-card-description`, `zui-card-body`, `zui-card-footer`
 
@@ -276,6 +279,10 @@ Variants: `zui-card-elevated` (shadow, no border), `zui-card-interactive` (hover
 
 Handles `:focus`, `:disabled`, `[aria-invalid="true"]`, and `:user-invalid` states automatically.
 
+| Prop | Values | CSS class |
+|---|---|---|
+| shape | `default`, `hard`, `soft`, `squircle` | `zui-input-shape-{name}` |
+
 ```html
 <input class="zui-input" type="text" placeholder="Enter text" />
 ```
@@ -286,11 +293,11 @@ Handles `:focus`, `:disabled`, `[aria-invalid="true"]`, and `:user-invalid` stat
 
 ### Textarea
 
-**CSS class:** `zui-textarea` — same API pattern as Input.
+**CSS class:** `zui-textarea` — same API pattern as Input, including `shape` (`zui-textarea-shape-{name}`). `soft` uses `--radius-3xl`, not a full pill.
 
 ### Select
 
-**CSS class:** `zui-select` — same API pattern as Input.
+**CSS class:** `zui-select` — same API pattern as Input, including `shape` (`zui-select-shape-{name}`).
 
 ### Label
 
@@ -366,6 +373,8 @@ Field components are presentational — wire `id`/`for`/`aria-describedby`/`aria
 
 ### Dialog
 
+**Shape prop:** `default`, `hard`, `squircle` (no `soft`) → `zui-dialog-shape-{name}`. An explicit shape also applies to drawer positions.
+
 **CSS classes:** `zui-dialog` (base), `zui-dialog-header`, `zui-dialog-title`, `zui-dialog-description`, `zui-dialog-body`, `zui-dialog-footer`, `zui-dialog-close`
 
 Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in backdrop blur and fade transitions.
@@ -423,6 +432,8 @@ Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in back
 
 ### Tooltip
 
+**Shape prop:** `default`, `hard`, `soft`, `squircle` on the root → `zui-tooltip-shape-{name}`. Radius var: `--zui-tooltip-radius`.
+
 **CSS classes:** `zui-tooltip` (wrapper), `zui-tooltip-content` (popover content)
 
 Uses CSS Anchor Positioning and Popover API. Placements: `zui-tooltip-placement-top` (default), `-bottom`, `-left`, `-right`.
@@ -452,6 +463,8 @@ Uses CSS Anchor Positioning and Popover API. Placements: `zui-tooltip-placement-
 ```
 
 ### Popover
+
+**Shape prop:** `default`, `hard`, `squircle` (no `soft`) → `zui-popover-shape-{name}`.
 
 **CSS class:** `zui-popover`
 
@@ -502,6 +515,8 @@ Uses CSS Anchor Positioning and Popover API. Positioned below the trigger by def
 
 ### Kbd / KbdGroup
 
+**Shape prop:** `default`, `hard`, `soft`, `squircle` on Kbd → `zui-kbd-shape-{name}`.
+
 **CSS classes:** `zui-kbd` (single key), `zui-kbd-group` (shortcut wrapper). Both render a `<kbd>`. Keys scale to the surrounding font size, so they work inline in text, buttons, and tooltips. Use plain `<span>` children inside a group as connectors (`+`, `then`).
 
 ```html
@@ -547,6 +562,8 @@ Uses CSS Anchor Positioning and Popover API. Positioned below the trigger by def
 ```
 
 ### Accordion
+
+**Shape prop:** `default`, `hard`, `squircle` (no `soft`) on the root → `zui-accordion-shape-{name}`.
 
 **CSS classes:** `zui-accordion` (wrapper), `zui-accordion-item` (`<details>`), `zui-accordion-trigger` (`<summary>`), `zui-accordion-content`
 
@@ -689,6 +706,8 @@ Falls back to a user icon when `src` is absent or fails to load. The `fallback` 
 
 ### Collapsible
 
+**Shape prop:** `default`, `hard`, `squircle` (no `soft`) → `zui-collapsible-shape-{name}`.
+
 **CSS classes:** `zui-collapsible` (`<details>`), `zui-collapsible-trigger` (`<summary>`), `zui-collapsible-content`
 
 Single disclosure widget with animated open/close. Uses native `<details>`/`<summary>`.
@@ -718,6 +737,7 @@ Accessible tabs primitive with managed state, keyboard navigation, and horizonta
 | list variant | `surface` (default), `underline` | `zui-tabs-list-variant-{name}` |
 | trigger variant | `surface` (default), `underline` | `zui-tabs-trigger-variant-{name}` |
 | orientation | `horizontal` (default), `vertical` | `data-orientation={name}` |
+| shape | `default`, `hard`, `soft`, `squircle` — on the root; underline tabs stay square | `zui-tabs-shape-{name}` |
 | activationMode | `auto` (default), `manual` | prop only |
 
 ```html
@@ -748,6 +768,8 @@ Accessible tabs primitive with managed state, keyboard navigation, and horizonta
 Use `variant="underline"` on both `TabsList` and `TabsTrigger` for the underline style. Use `orientation="vertical"` for vertical tabs.
 
 ### Menu
+
+**Shape prop:** `default`, `hard`, `squircle` (no `soft`) on the root → `zui-menu-shape-{name}`.
 
 **CSS classes:** `zui-menu` (root), `zui-menu-trigger`, `zui-menu-content`, `zui-menu-item`
 
@@ -849,7 +871,18 @@ Margin: `m-{size}`, `mx-{size}`, `my-{size}`, `mt-{size}`, `mb-{size}`, `ml-{siz
 | Class | Effect |
 |---|---|
 | `zui-squircle` | Squircle corners on one component (any ZUI component) |
-| `zui-squircle-all` | Squircle corners on every ZUI component inside it. On `<html>`, it makes squircle the global default — no need for `shape="squircle"` on each Button/Avatar. `shape="hard"`/`"soft"`, drawer dialogs, flush accordions, and underline tabs keep their shape. |
+| `zui-squircle-all` | Squircle corners on every ZUI component inside it. On `<html>`, it makes squircle the global default — no need for `shape="squircle"` on each Button/Avatar. `shape="hard"`/`"soft"` (Button, Avatar, Input, Textarea, Select), drawer dialogs, flush accordions, and underline tabs keep their shape. |
+
+Shape prop — prefer it over the classes above for one component:
+
+| Component | Shapes | CSS class |
+|---|---|---|
+| Button, Avatar, Input, Select | `default`, `hard`, `soft`, `squircle` | `zui-{component}-shape-{name}` |
+| Textarea | `default`, `hard`, `soft`, `squircle` | `soft` uses `--radius-3xl`, not a full pill |
+| Badge, Kbd | `default`, `hard`, `soft`, `squircle` | on a badge, `soft` looks the same as `default` |
+| Tooltip, Tabs | `default`, `hard`, `soft`, `squircle` | on the root (`zui-tooltip`, `zui-tabs`) |
+| Menu | `default`, `hard`, `squircle` | on the root (`zui-menu`) |
+| Card, Dialog, Popover, Accordion, Collapsible | `default`, `hard`, `squircle` | no `soft`: a pill shape does not suit large boxes |
 
 Squircles use `corner-shape`, so only some browsers show them. Other browsers keep normal rounded corners.
 

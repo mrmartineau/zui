@@ -3,6 +3,7 @@ import { cva } from 'cva'
 export const dialogVariants = cva({
   base: 'zui-dialog',
   defaultVariants: {
+    shape: 'default',
     size: 'md',
   },
   variants: {
@@ -13,6 +14,11 @@ export const dialogVariants = cva({
       left: 'zui-dialog-position-left',
       right: 'zui-dialog-position-right',
       top: 'zui-dialog-position-top',
+    },
+    shape: {
+      default: '',
+      hard: 'zui-dialog-shape-hard',
+      squircle: 'zui-dialog-shape-squircle',
     },
     size: {
       full: 'zui-dialog-size-full',

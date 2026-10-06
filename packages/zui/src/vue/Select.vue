@@ -5,15 +5,20 @@
 </template>
 
 <script setup lang="ts">
+import type { VariantProps } from 'cva'
 import { computed } from 'vue'
+import { selectVariants } from '../shared/selectVariants'
 
 defineOptions({ inheritAttrs: false })
 
+type SelectVariantProps = VariantProps<typeof selectVariants>
+
 const props = defineProps<{
   class?: string
+  shape?: SelectVariantProps['shape']
 }>()
 
 const classes = computed(() =>
-  ['zui-select', props.class].filter(Boolean).join(' '),
+  selectVariants({ className: props.class, shape: props.shape }),
 )
 </script>

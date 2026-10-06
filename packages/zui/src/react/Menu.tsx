@@ -1,3 +1,4 @@
+import type { VariantProps } from 'cva'
 import type { HTMLAttributes } from 'react'
 import { useEffect, useId, useMemo, useRef, useSyncExternalStore } from 'react'
 import {
@@ -6,8 +7,11 @@ import {
   type MenuDirection,
   type MenuSide,
 } from '../core/menu'
+import { menuVariants } from '../shared/menuVariants'
 import { MenuContext } from './menuContext'
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
+
+type MenuVariantProps = VariantProps<typeof menuVariants>
 
 export type MenuProps = HTMLAttributes<HTMLDivElement> & {
   align?: MenuAlign
@@ -18,6 +22,7 @@ export type MenuProps = HTMLAttributes<HTMLDivElement> & {
   modal?: boolean
   onOpenChange?: (open: boolean) => void
   open?: boolean
+  shape?: MenuVariantProps['shape']
   side?: MenuSide
 }
 
@@ -32,6 +37,7 @@ export function Menu({
   modal = false,
   onOpenChange,
   open,
+  shape,
   side = 'bottom',
   ...props
 }: MenuProps) {
@@ -111,7 +117,7 @@ export function Menu({
       <div
         {...props}
         ref={rootRef}
-        className={['zui-menu', className].filter(Boolean).join(' ')}
+        className={menuVariants({ className, shape })}
         data-align={snapshot.align}
         data-disabled={snapshot.disabled ? 'true' : undefined}
         data-side={snapshot.side}

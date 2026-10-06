@@ -10,12 +10,20 @@ type Props = HTMLAttributes<HTMLSpanElement> & {
   class?: string
   variant?: BadgeVariantProps['variant']
   color?: BadgeVariantProps['color']
+  shape?: BadgeVariantProps['shape']
   children?: Snippet
 }
 
-let { class: className, variant, color, children, ...rest }: Props = $props()
+let {
+  class: className,
+  variant,
+  color,
+  shape,
+  children,
+  ...rest
+}: Props = $props()
 
-const classes = $derived(badgeVariants({ className, color, variant }))
+const classes = $derived(badgeVariants({ className, color, shape, variant }))
 </script>
 
 <span class={classes} {...rest}>

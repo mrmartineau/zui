@@ -13,10 +13,11 @@ export function Badge({
   className,
   variant,
   color,
+  shape,
   children,
   ...props
 }: BadgeProps) {
-  const classes = badgeVariants({ className, color, variant })
+  const classes = badgeVariants({ className, color, shape, variant })
   return (
     <span className={classes} {...props}>
       {children}

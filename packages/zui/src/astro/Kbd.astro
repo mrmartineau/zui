@@ -1,12 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { kbdVariants } from '../shared/kbdVariants'
 
-interface Props extends HTMLAttributes<'kbd'> {
+type KbdVariantProps = VariantProps<typeof kbdVariants>
+
+interface Props extends HTMLAttributes<'kbd'>, KbdVariantProps {
   class?: string
 }
 
-const { class: className, ...props } = Astro.props
-const classes = ['zui-kbd', className].filter(Boolean).join(' ')
+const { class: className, shape, ...props } = Astro.props
+const classes = kbdVariants({ class: className, shape })
 ---
 
 <kbd class={classes} {...props}><slot /></kbd>

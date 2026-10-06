@@ -161,4 +161,27 @@
       var(--color-gray-400)
     );
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-badge-radius */
+
+  /* hard */
+  .zui-badge.zui-badge-shape-hard {
+    --zui-badge-radius: 0;
+  }
+
+  /* soft */
+  .zui-badge.zui-badge-shape-soft {
+    --zui-badge-radius: 9999px;
+  }
+
+  /* squircle - limited browser support */
+  .zui-badge.zui-badge-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

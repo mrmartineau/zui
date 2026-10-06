@@ -63,4 +63,28 @@
   .zui-card-interactive:active {
     scale: 0.99;
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-card-radius */
+
+  /* hard */
+  .zui-card.zui-card-shape-hard {
+    --zui-card-radius: 0;
+  }
+
+  /* squircle - limited browser support */
+  .zui-card.zui-card-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+
+      /* auto focus ring ignores corner-shape, see utilities/squircle.css */
+      &:focus-visible {
+        outline-style: solid;
+        outline-offset: calc(var(--focus-ring-offset) - 2px);
+      }
+    }
+  }
 }

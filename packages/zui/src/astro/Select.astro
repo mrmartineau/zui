@@ -1,12 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { selectVariants } from '../shared/selectVariants'
 
-interface Props extends HTMLAttributes<'select'> {
+type SelectVariantProps = VariantProps<typeof selectVariants>
+
+interface Props extends HTMLAttributes<'select'>, SelectVariantProps {
   class?: string
 }
 
-const { class: className, ...props } = Astro.props
-const classes = ['zui-select', className].filter(Boolean).join(' ')
+const { class: className, shape, ...props } = Astro.props
+const classes = selectVariants({ class: className, shape })
 ---
 
 <select class={classes} {...props}><slot /></select>

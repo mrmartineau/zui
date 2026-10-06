@@ -21,6 +21,14 @@
       "source": "accordion"
     },
     {
+      "name": "zui-accordion-shape-hard",
+      "source": "accordion"
+    },
+    {
+      "name": "zui-accordion-shape-squircle",
+      "source": "accordion"
+    },
+    {
       "name": "zui-app-shell",
       "source": "app-shell"
     },
@@ -177,6 +185,18 @@
       "source": "badge"
     },
     {
+      "name": "zui-badge-shape-hard",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-shape-soft",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-shape-squircle",
+      "source": "badge"
+    },
+    {
       "name": "zui-button",
       "source": "button"
     },
@@ -277,6 +297,14 @@
       "source": "card"
     },
     {
+      "name": "zui-card-shape-hard",
+      "source": "card"
+    },
+    {
+      "name": "zui-card-shape-squircle",
+      "source": "card"
+    },
+    {
       "name": "zui-checkbox",
       "source": "checkbox"
     },
@@ -294,6 +322,14 @@
     },
     {
       "name": "zui-collapsible-content",
+      "source": "collapsible"
+    },
+    {
+      "name": "zui-collapsible-shape-hard",
+      "source": "collapsible"
+    },
+    {
+      "name": "zui-collapsible-shape-squircle",
       "source": "collapsible"
     },
     {
@@ -354,6 +390,14 @@
     },
     {
       "name": "zui-dialog-position-bottom",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-shape-hard",
+      "source": "dialog"
+    },
+    {
+      "name": "zui-dialog-shape-squircle",
       "source": "dialog"
     },
     {
@@ -429,11 +473,35 @@
       "source": "input"
     },
     {
+      "name": "zui-input-shape-hard",
+      "source": "input"
+    },
+    {
+      "name": "zui-input-shape-soft",
+      "source": "input"
+    },
+    {
+      "name": "zui-input-shape-squircle",
+      "source": "input"
+    },
+    {
       "name": "zui-kbd",
       "source": "kbd"
     },
     {
       "name": "zui-kbd-group",
+      "source": "kbd"
+    },
+    {
+      "name": "zui-kbd-shape-hard",
+      "source": "kbd"
+    },
+    {
+      "name": "zui-kbd-shape-soft",
+      "source": "kbd"
+    },
+    {
+      "name": "zui-kbd-shape-squircle",
       "source": "kbd"
     },
     {
@@ -461,7 +529,23 @@
       "source": "menu"
     },
     {
+      "name": "zui-menu-shape-hard",
+      "source": "menu"
+    },
+    {
+      "name": "zui-menu-shape-squircle",
+      "source": "menu"
+    },
+    {
       "name": "zui-popover",
+      "source": "popover"
+    },
+    {
+      "name": "zui-popover-shape-hard",
+      "source": "popover"
+    },
+    {
+      "name": "zui-popover-shape-squircle",
       "source": "popover"
     },
     {
@@ -482,6 +566,18 @@
     },
     {
       "name": "zui-light",
+      "source": "select"
+    },
+    {
+      "name": "zui-select-shape-hard",
+      "source": "select"
+    },
+    {
+      "name": "zui-select-shape-soft",
+      "source": "select"
+    },
+    {
+      "name": "zui-select-shape-squircle",
       "source": "select"
     },
     {
@@ -537,7 +633,31 @@
       "source": "tabs"
     },
     {
+      "name": "zui-tabs-shape-hard",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-shape-soft",
+      "source": "tabs"
+    },
+    {
+      "name": "zui-tabs-shape-squircle",
+      "source": "tabs"
+    },
+    {
       "name": "zui-textarea",
+      "source": "textarea"
+    },
+    {
+      "name": "zui-textarea-shape-hard",
+      "source": "textarea"
+    },
+    {
+      "name": "zui-textarea-shape-soft",
+      "source": "textarea"
+    },
+    {
+      "name": "zui-textarea-shape-squircle",
       "source": "textarea"
     },
     {
@@ -562,6 +682,18 @@
     },
     {
       "name": "zui-tooltip-placement-right",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-shape-hard",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-shape-soft",
+      "source": "tooltip"
+    },
+    {
+      "name": "zui-tooltip-shape-squircle",
       "source": "tooltip"
     },
     {

@@ -340,6 +340,216 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@mrmartineau/zui/v
   </a>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (rounded), `hard` (square) or `squircle`. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners.
+
+<Demo
+  html={`<div class="zui-card">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Default</div>
+  </div>
+  <div class="zui-card-body">
+    <p>Card content.</p>
+  </div>
+</div>
+
+<div class="zui-card zui-card-shape-hard">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Hard</div>
+  </div>
+  <div class="zui-card-body">
+    <p>Card content.</p>
+  </div>
+</div>
+
+<div class="zui-card zui-card-shape-squircle">
+  <div class="zui-card-header">
+    <div class="zui-card-title">Squircle</div>
+  </div>
+  <div class="zui-card-body">
+    <p>Card content.</p>
+  </div>
+</div>`}
+  react={`import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/react'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Default</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="hard">
+  <CardHeader>
+    <CardTitle>Hard</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="squircle">
+  <CardHeader>
+    <CardTitle>Squircle</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>`}
+  astro={`---
+import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/astro'
+---
+
+<Card>
+  <CardHeader>
+    <CardTitle>Default</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="hard">
+  <CardHeader>
+    <CardTitle>Hard</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="squircle">
+  <CardHeader>
+    <CardTitle>Squircle</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>`}
+  solid={`import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/solid'
+
+<Card>
+  <CardHeader>
+    <CardTitle>Default</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="hard">
+  <CardHeader>
+    <CardTitle>Hard</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="squircle">
+  <CardHeader>
+    <CardTitle>Squircle</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>`}
+  vue={`<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>Default</CardTitle>
+    </CardHeader>
+    <CardBody>
+      <p>Card content.</p>
+    </CardBody>
+  </Card>
+
+  <Card shape="hard">
+    <CardHeader>
+      <CardTitle>Hard</CardTitle>
+    </CardHeader>
+    <CardBody>
+      <p>Card content.</p>
+    </CardBody>
+  </Card>
+
+  <Card shape="squircle">
+    <CardHeader>
+      <CardTitle>Squircle</CardTitle>
+    </CardHeader>
+    <CardBody>
+      <p>Card content.</p>
+    </CardBody>
+  </Card>
+</template>
+
+<script setup>
+import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/svelte'
+</script>
+
+<Card>
+  <CardHeader>
+    <CardTitle>Default</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="hard">
+  <CardHeader>
+    <CardTitle>Hard</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>
+
+<Card shape="squircle">
+  <CardHeader>
+    <CardTitle>Squircle</CardTitle>
+  </CardHeader>
+  <CardBody>
+    <p>Card content.</p>
+  </CardBody>
+</Card>`}
+>
+  <div class="flex flex-wrap gap-sm" style="width: 100%;">
+    <div class="flex-auto zui-card">
+      <div class="zui-card-header">
+        <div class="zui-card-title">Default</div>
+      </div>
+      <div class="zui-card-body">
+        <p>Card content.</p>
+      </div>
+    </div>
+    <div class="flex-auto zui-card zui-card-shape-hard">
+      <div class="zui-card-header">
+        <div class="zui-card-title">Hard</div>
+      </div>
+      <div class="zui-card-body">
+        <p>Card content.</p>
+      </div>
+    </div>
+    <div class="flex-auto zui-card zui-card-shape-squircle">
+      <div class="zui-card-header">
+        <div class="zui-card-title">Squircle</div>
+      </div>
+      <div class="zui-card-body">
+        <p>Card content.</p>
+      </div>
+    </div>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

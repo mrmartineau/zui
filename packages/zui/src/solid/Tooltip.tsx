@@ -19,6 +19,7 @@ export function Tooltip(props: TooltipProps) {
   const [local, rest] = splitProps(props, [
     'text',
     'placement',
+    'shape',
     'class',
     'children',
   ])
@@ -34,7 +35,15 @@ export function Tooltip(props: TooltipProps) {
 
   return (
     <span
-      class={['zui-tooltip', local.class].filter(Boolean).join(' ')}
+      class={[
+        'zui-tooltip',
+        tooltipVariants({ shape: local.shape })
+          .split(' ')
+          .find((c) => c.startsWith('zui-tooltip-shape-')),
+        local.class,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       {...rest}
     >
       {/* focusin/focusout: native focus does not bubble, so focus events

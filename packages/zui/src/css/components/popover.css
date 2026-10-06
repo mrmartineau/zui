@@ -46,4 +46,22 @@
       }
     }
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-popover-radius */
+
+  /* hard */
+  .zui-popover.zui-popover-shape-hard {
+    --zui-popover-radius: 0;
+  }
+
+  /* squircle - limited browser support */
+  .zui-popover.zui-popover-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

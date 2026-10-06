@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { VariantProps } from 'cva'
 import type { Snippet } from 'svelte'
 import type { HTMLAttributes } from 'svelte/elements'
 import {
@@ -10,6 +11,8 @@ import {
 import { tabsVariants } from '../shared/tabsVariants'
 import { setTabsContext } from './tabsContext'
 
+type TabsVariantProps = VariantProps<typeof tabsVariants>
+
 type Props = HTMLAttributes<HTMLDivElement> & {
   activationMode?: TabsActivationMode
   defaultValue?: string
@@ -19,6 +22,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
   onValueChange?: (value: string) => void
   orientation?: TabsOrientation
   value?: string
+  shape?: TabsVariantProps['shape']
   class?: string
   children?: Snippet
 }
@@ -32,6 +36,7 @@ let {
   id,
   onValueChange,
   orientation,
+  shape,
   value,
   children,
   ...rest
@@ -75,7 +80,7 @@ setTabsContext({
   getSnapshot: () => snapshot,
 })
 
-const classes = $derived(tabsVariants({ className }))
+const classes = $derived(tabsVariants({ className, shape }))
 </script>
 
 <div

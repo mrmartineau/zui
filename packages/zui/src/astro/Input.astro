@@ -1,12 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { inputVariants } from '../shared/inputVariants'
 
-interface Props extends HTMLAttributes<'input'> {
+type InputVariantProps = VariantProps<typeof inputVariants>
+
+interface Props extends HTMLAttributes<'input'>, InputVariantProps {
   class?: string
 }
 
-const { class: className, ...props } = Astro.props
-const classes = ['zui-input', className].filter(Boolean).join(' ')
+const { class: className, shape, ...props } = Astro.props
+const classes = inputVariants({ class: className, shape })
 ---
 
 <input class={classes} {...props} />

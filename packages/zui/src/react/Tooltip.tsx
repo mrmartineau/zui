@@ -15,6 +15,7 @@ export type TooltipProps = HTMLAttributes<HTMLSpanElement> &
 export function Tooltip({
   text,
   placement,
+  shape,
   className,
   children,
   ...props
@@ -38,7 +39,15 @@ export function Tooltip({
 
   return (
     <span
-      className={['zui-tooltip', className].filter(Boolean).join(' ')}
+      className={[
+        'zui-tooltip',
+        tooltipVariants({ shape: shape })
+          .split(' ')
+          .find((c) => c.startsWith('zui-tooltip-shape-')),
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
     >
       {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}

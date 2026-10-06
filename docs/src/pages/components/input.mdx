@@ -218,6 +218,148 @@ import { Input } from '@mrmartineau/zui/vue'
   <input class="zui-input" type="text" value="Cannot edit" disabled />
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners. It works the same as on [Button](/components/button#shape): `default` (rounded), `hard` (square), `soft` (pill) and `squircle`.
+
+A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners. To make squircle the default everywhere, see [Squircle](/utilities/squircle).
+
+<Demo
+  html={`<div class="zui-field">
+  <label class="zui-label" for="default-input">Default (rounded)</label>
+  <input class="zui-input" type="text" id="default-input" placeholder="Type here" />
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="hard-input">Hard</label>
+  <input class="zui-input zui-input-shape-hard" type="text" id="hard-input" placeholder="Type here" />
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="soft-input">Soft</label>
+  <input class="zui-input zui-input-shape-soft" type="text" id="soft-input" placeholder="Type here" />
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="squircle-input">Squircle</label>
+  <input class="zui-input zui-input-shape-squircle" type="text" id="squircle-input" placeholder="Type here" />
+</div>`}
+  react={`import { Field, Label, Input } from '@mrmartineau/zui/react'
+
+<Field>
+  <Label htmlFor="default-input">Default (rounded)</Label>
+  <Input type="text" id="default-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label htmlFor="hard-input">Hard</Label>
+  <Input shape="hard" type="text" id="hard-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label htmlFor="soft-input">Soft</Label>
+  <Input shape="soft" type="text" id="soft-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label htmlFor="squircle-input">Squircle</Label>
+  <Input shape="squircle" type="text" id="squircle-input" placeholder="Type here" />
+</Field>`}
+  astro={`---
+import { Field, Label, Input } from '@mrmartineau/zui/astro'
+---
+
+<Field>
+  <Label for="default-input">Default (rounded)</Label>
+  <Input type="text" id="default-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="hard-input">Hard</Label>
+  <Input shape="hard" type="text" id="hard-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="soft-input">Soft</Label>
+  <Input shape="soft" type="text" id="soft-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="squircle-input">Squircle</Label>
+  <Input shape="squircle" type="text" id="squircle-input" placeholder="Type here" />
+</Field>`}
+  solid={`import { Field, Label, Input } from '@mrmartineau/zui/solid'
+
+<Field>
+  <Label for="default-input">Default (rounded)</Label>
+  <Input type="text" id="default-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="hard-input">Hard</Label>
+  <Input shape="hard" type="text" id="hard-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="soft-input">Soft</Label>
+  <Input shape="soft" type="text" id="soft-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="squircle-input">Squircle</Label>
+  <Input shape="squircle" type="text" id="squircle-input" placeholder="Type here" />
+</Field>`}
+  vue={`<template>
+  <Field>
+    <Label for="default-input">Default (rounded)</Label>
+    <Input type="text" id="default-input" placeholder="Type here" />
+  </Field>
+  <Field>
+    <Label for="hard-input">Hard</Label>
+    <Input shape="hard" type="text" id="hard-input" placeholder="Type here" />
+  </Field>
+  <Field>
+    <Label for="soft-input">Soft</Label>
+    <Input shape="soft" type="text" id="soft-input" placeholder="Type here" />
+  </Field>
+  <Field>
+    <Label for="squircle-input">Squircle</Label>
+    <Input shape="squircle" type="text" id="squircle-input" placeholder="Type here" />
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, Input } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field>
+  <Label for="default-input">Default (rounded)</Label>
+  <Input type="text" id="default-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="hard-input">Hard</Label>
+  <Input shape="hard" type="text" id="hard-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="soft-input">Soft</Label>
+  <Input shape="soft" type="text" id="soft-input" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="squircle-input">Squircle</Label>
+  <Input shape="squircle" type="text" id="squircle-input" placeholder="Type here" />
+</Field>`}
+>
+  <div class="flow" style="width: 100%;">
+    <div class="zui-field">
+      <label class="zui-label" for="sq-default-input">Default (rounded)</label>
+      <input class="zui-input" type="text" id="sq-default-input" placeholder="Type here" />
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-hard-input">Hard</label>
+      <input class="zui-input zui-input-shape-hard" type="text" id="sq-hard-input" placeholder="Type here" />
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-soft-input">Soft</label>
+      <input class="zui-input zui-input-shape-soft" type="text" id="sq-soft-input" placeholder="Type here" />
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-squircle-input">Squircle</label>
+      <input class="zui-input zui-input-shape-squircle" type="text" id="sq-squircle-input" placeholder="Type here" />
+    </div>
+  </div>
+</Demo>
+
 ## CSS custom properties
 
 | Property | Default | Description |

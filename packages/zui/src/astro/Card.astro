@@ -1,15 +1,20 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { cardVariants } from '../shared/cardVariants'
 
-interface Props extends HTMLAttributes<'div'> {
+type CardVariantProps = VariantProps<typeof cardVariants>
+
+interface Props extends HTMLAttributes<'div'>, CardVariantProps {
   href?: string
   class?: string
 }
 
-const { href, class: className, ...props } = Astro.props
-const classes = ['zui-card', href && 'zui-card-interactive', className]
-  .filter(Boolean)
-  .join(' ')
+const { href, class: className, shape, ...props } = Astro.props
+const classes = cardVariants({
+  class: [href && 'zui-card-interactive', className].filter(Boolean).join(' '),
+  shape,
+})
 ---
 
 {

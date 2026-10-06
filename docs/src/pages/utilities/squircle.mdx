@@ -43,14 +43,31 @@ Radio buttons stay round on purpose.
 
 Variants that are square or pill on purpose keep their shape:
 
-- `shape="hard"` and `shape="soft"` on buttons and avatars
+- Any component with `shape="hard"` or `shape="soft"`
 - Side and top/bottom dialog positions (drawers)
 - Flush accordions
 - Underline tabs
 
-To use a different shape on one button, pass `shape="hard"` or `shape="soft"`.
+To use a different shape on one component, pass `shape="hard"` or `shape="soft"`.
 
-Buttons and avatars also have a `shape="squircle"` prop. See [Button](/components/button) and [Avatar](/components/avatar).
+## The shape prop
+
+Most components also have a `shape` prop. Use it to set the shape of one component. Each component page has a Shape section with a demo.
+
+| Component | Shapes | CSS class |
+|---|---|---|
+| Button, Avatar, Input, Select | `default`, `hard`, `soft`, `squircle` | `zui-{component}-shape-{name}` |
+| Textarea | `default`, `hard`, `soft`, `squircle` | `soft` uses `--radius-3xl`, not a full pill |
+| Badge, Kbd | `default`, `hard`, `soft`, `squircle` | on a badge, `soft` looks the same as `default` |
+| Tooltip, Tabs | `default`, `hard`, `soft`, `squircle` | on the root (`zui-tooltip`, `zui-tabs`) |
+| Menu | `default`, `hard`, `squircle` | on the root (`zui-menu`) |
+| Card, Dialog, Popover, Accordion, Collapsible | `default`, `hard`, `squircle` | no `soft`: a pill shape does not suit large boxes |
+
+Checkbox and radio have no `shape` prop. Inside `zui-squircle-all`, checkboxes get squircle corners and radios stay round.
+
+## Focus ring
+
+Chrome draws the default focus ring (`outline-style: auto`) as a round ring outside the element, even on a squircle. So squircle shapes use a `solid` focus ring instead. It follows the squircle corners and sits in the same place as the ring on other shapes.
 
 ## Usage
 

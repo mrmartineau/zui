@@ -369,6 +369,64 @@ import { Badge } from '@mrmartineau/zui/vue'
   )
 })}
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (pill), `hard` (square), `soft` (pill) or `squircle`. The default badge is already a pill, so `soft` looks the same. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners.
+
+<Demo
+  html={`<span class="zui-badge">Default</span>
+<span class="zui-badge zui-badge-shape-hard">Hard</span>
+<span class="zui-badge zui-badge-shape-soft">Soft</span>
+<span class="zui-badge zui-badge-shape-squircle">Squircle</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge>Default</Badge>
+<Badge shape="hard">Hard</Badge>
+<Badge shape="soft">Soft</Badge>
+<Badge shape="squircle">Squircle</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge>Default</Badge>
+<Badge shape="hard">Hard</Badge>
+<Badge shape="soft">Soft</Badge>
+<Badge shape="squircle">Squircle</Badge>`}
+  solid={`import { Badge } from '@mrmartineau/zui/solid'
+
+<Badge>Default</Badge>
+<Badge shape="hard">Hard</Badge>
+<Badge shape="soft">Soft</Badge>
+<Badge shape="squircle">Squircle</Badge>`}
+  vue={`<template>
+  <Badge>Default</Badge>
+  <Badge shape="hard">Hard</Badge>
+  <Badge shape="soft">Soft</Badge>
+  <Badge shape="squircle">Squircle</Badge>
+</template>
+
+<script setup>
+import { Badge } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Badge } from '@mrmartineau/zui/svelte'
+</script>
+
+<Badge>Default</Badge>
+<Badge shape="hard">Hard</Badge>
+<Badge shape="soft">Soft</Badge>
+<Badge shape="squircle">Squircle</Badge>`}
+>
+  <div class="flex items-center gap-sm">
+    <span class="zui-badge">Default</span>
+    <span class="zui-badge zui-badge-shape-hard">Hard</span>
+    <span class="zui-badge zui-badge-shape-soft">Soft</span>
+    <span class="zui-badge zui-badge-shape-squircle">Squircle</span>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

@@ -26,6 +26,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       className,
       size,
       position,
+      shape,
       closedby = 'any',
       children,
       ...props
@@ -43,7 +44,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       },
       [forwardedRef],
     )
-    const classes = dialogVariants({ className, position, size })
+    const classes = dialogVariants({ className, position, shape, size })
 
     useEffect(() => {
       if (open) {

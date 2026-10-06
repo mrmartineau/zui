@@ -1,10 +1,15 @@
+import type { VariantProps } from 'cva'
 import type { InputHTMLAttributes } from 'react'
+import { inputVariants } from '../shared/inputVariants'
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  className?: string
-}
+type InputVariantProps = VariantProps<typeof inputVariants>
 
-export function Input({ className, ...props }: InputProps) {
-  const classes = ['zui-input', className].filter(Boolean).join(' ')
+export type InputProps = InputHTMLAttributes<HTMLInputElement> &
+  InputVariantProps & {
+    className?: string
+  }
+
+export function Input({ className, shape, ...props }: InputProps) {
+  const classes = inputVariants({ className, shape })
   return <input className={classes} {...props} />
 }

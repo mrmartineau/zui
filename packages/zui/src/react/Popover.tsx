@@ -1,19 +1,25 @@
+import type { VariantProps } from 'cva'
 import type { CSSProperties, HTMLAttributes } from 'react'
+import { popoverVariants } from '../shared/popoverVariants'
 
-export type PopoverProps = HTMLAttributes<HTMLDivElement> & {
-  id: string
-  popover?: 'auto' | 'manual'
-}
+type PopoverVariantProps = VariantProps<typeof popoverVariants>
+
+export type PopoverProps = HTMLAttributes<HTMLDivElement> &
+  PopoverVariantProps & {
+    id: string
+    popover?: 'auto' | 'manual'
+  }
 
 export function Popover({
   id,
   popover = 'auto',
   className,
+  shape,
   style,
   children,
   ...props
 }: PopoverProps) {
-  const classes = ['zui-popover', className].filter(Boolean).join(' ')
+  const classes = popoverVariants({ className, shape })
   const anchorStyle: CSSProperties = {
     positionAnchor: `--${id}`,
     ...style,

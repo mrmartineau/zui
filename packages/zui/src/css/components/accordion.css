@@ -100,4 +100,22 @@
         var(--zui-accordion-border);
     }
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-accordion-radius */
+
+  /* hard */
+  .zui-accordion.zui-accordion-shape-hard {
+    --zui-accordion-radius: 0;
+  }
+
+  /* squircle - limited browser support */
+  .zui-accordion.zui-accordion-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

@@ -132,6 +132,18 @@ All ZUI components use BEM-style classes prefixed with `zui-`. Apply them direct
 |:------|:--------|
 | `zui-popover` | Popover container |
 
+### Shapes
+
+Most components take a shape class: `zui-{component}-shape-{name}`.
+
+| Component | Shape classes |
+|:------|:--------|
+| Button, Avatar, Input, Textarea, Select, Badge, Kbd | `-shape-hard`, `-shape-soft`, `-shape-squircle` |
+| Tooltip, Tabs (on the `zui-tooltip` / `zui-tabs` root) | `-shape-hard`, `-shape-soft`, `-shape-squircle` |
+| Card, Dialog, Popover, Accordion, Collapsible, Menu (on the `zui-menu` root) | `-shape-hard`, `-shape-squircle` |
+
+For example: `<div class="zui-card zui-card-shape-squircle">`. See [Squircle](/utilities/squircle).
+
 ## Framework examples
 
 ### Plain HTML
@@ -218,6 +230,16 @@ ZUI ships utility classes you can use in any framework. Note that spacing, flex,
 ```html
 <!-- Visually hidden (screen reader only) -->
 <span class="sr-only">Screen reader label</span>
+```
+
+### Squircle
+
+```html
+<!-- One component -->
+<input class="zui-input zui-squircle" />
+
+<!-- Every ZUI component on the page -->
+<html class="zui-squircle-all">
 ```
 
 ## Building wrapper components

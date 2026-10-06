@@ -28,17 +28,17 @@ Then import components from `@mrmartineau/zui/svelte`:
 All components are exported from `@mrmartineau/zui/svelte`:
 
 - **Button** — with `variant`, `color`, `size`, `shape`, and `icon` props
-- **Badge** — with `variant` and `color` props
+- **Badge** — with `variant` and `color`, and `shape` props
 - **Avatar** — with `size` and `shape` props, and a `fallback` snippet
-- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
-- **Input**, **Textarea**, **Select**
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody** — `shape` on Card
+- **Input**, **Textarea**, **Select** — with a `shape` prop
 - **Label**, **Checkbox**, **Radio**
 - **Text**, **ZuiLink**, **Code**, **Pre**, **Prose**
 - **Table**, **TableHeader**, **TableBody**, **TableFooter**, **TableRow**, **TableHead**, **TableCell**, **TableCaption**
-- **Tooltip**, **Popover**, **Dialog** and sub-components
-- **Menu**, **MenuTrigger**, **MenuItem**
-- **Collapsible**, **CollapsibleTrigger**, **CollapsibleContent**
-- **Accordion**, **AccordionItem**, **AccordionTrigger**, **AccordionContent**
+- **Tooltip**, **Popover**, **Dialog** and sub-components — each with a `shape` prop
+- **Menu**, **MenuTrigger**, **MenuItem** — `shape` on Menu
+- **Collapsible**, **CollapsibleTrigger**, **CollapsibleContent** — `shape` on Collapsible
+- **Accordion**, **AccordionItem**, **AccordionTrigger**, **AccordionContent** — `shape` on Accordion
 - **Flex**
 
 Every component spreads remaining props onto its root element via `{...rest}`, so all standard HTML attributes are forwarded.
@@ -212,6 +212,22 @@ You can always use the underlying CSS classes without the Svelte components:
   </div>
 </div>
 ```
+
+## Shapes and squircles
+
+Most components have a `shape` prop: `default`, `hard`, `squircle`, and on small components `soft` (a pill). Large boxes such as Card, Dialog, Popover, Menu, Accordion and Collapsible have no `soft`.
+
+```svelte
+<script lang="ts">
+  import { Card, Dialog, Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Input shape="squircle" />
+<Card shape="hard">…</Card>
+<Dialog shape="squircle">…</Dialog>
+```
+
+To make squircle the default shape for every component, add `zui-squircle-all` to `<html>`. A `hard` or `soft` shape prop still wins. See [Squircle](/utilities/squircle) for the full list of components and shapes.
 
 ## Theming
 

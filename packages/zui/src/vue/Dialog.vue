@@ -19,6 +19,7 @@ const props = withDefaults(
     open?: boolean
     size?: DialogVariantProps['size']
     position?: DialogVariantProps['position']
+    shape?: DialogVariantProps['shape']
     closedby?: 'any' | 'closerequest' | 'none'
   }>(),
   {
@@ -35,6 +36,7 @@ const classes = computed(() =>
   dialogVariants({
     className: props.class,
     position: props.position,
+    shape: props.shape,
     size: props.size,
   }),
 )

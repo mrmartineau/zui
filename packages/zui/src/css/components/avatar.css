@@ -82,6 +82,12 @@
     @supports (corner-shape: squircle) {
       corner-shape: superellipse(1.25);
       border-radius: 20px;
+
+      /* auto focus ring ignores corner-shape, see utilities/squircle.css */
+      &:focus-visible {
+        outline-style: solid;
+        outline-offset: calc(var(--focus-ring-offset) - 2px);
+      }
     }
   }
 }

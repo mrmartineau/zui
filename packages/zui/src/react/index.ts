@@ -4,6 +4,7 @@ export {
   type AppShellMode,
   appShellNoFlashScript,
 } from '../shared/AppShellController'
+export { accordionVariants } from '../shared/accordionVariants'
 export {
   appShellHeaderVariants,
   appShellMainVariants,
@@ -16,16 +17,24 @@ export {
 export { avatarVariants } from '../shared/avatarVariants'
 export { badgeVariants } from '../shared/badgeVariants'
 export { buttonVariants } from '../shared/buttonVariants'
+export { cardVariants } from '../shared/cardVariants'
+export { collapsibleVariants } from '../shared/collapsibleVariants'
 export { dialogVariants } from '../shared/dialogVariants'
 export { fieldLegendVariants } from '../shared/fieldLegendVariants'
 export { fieldVariants } from '../shared/fieldVariants'
 export { flexVariants } from '../shared/flexVariants'
+export { inputVariants } from '../shared/inputVariants'
+export { kbdVariants } from '../shared/kbdVariants'
+export { menuVariants } from '../shared/menuVariants'
+export { popoverVariants } from '../shared/popoverVariants'
+export { selectVariants } from '../shared/selectVariants'
 export {
   tabsContentVariants,
   tabsListVariants,
   tabsTriggerVariants,
   tabsVariants,
 } from '../shared/tabsVariants'
+export { textareaVariants } from '../shared/textareaVariants'
 export type { TextSize } from '../shared/textSizeClass'
 export { tooltipVariants } from '../shared/tooltipVariants'
 export type { ColorScheme } from '../utils/colorScheme'

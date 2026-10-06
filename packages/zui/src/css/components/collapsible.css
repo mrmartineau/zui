@@ -73,4 +73,22 @@
     font-size: var(--step-0);
     color: var(--color-text);
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-collapsible-radius */
+
+  /* hard */
+  .zui-collapsible.zui-collapsible-shape-hard {
+    --zui-collapsible-radius: 0;
+  }
+
+  /* squircle - limited browser support */
+  .zui-collapsible.zui-collapsible-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

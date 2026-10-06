@@ -45,4 +45,27 @@
     color: var(--color-muted);
     font-family: var(--font-code);
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-kbd-radius */
+
+  /* hard */
+  .zui-kbd.zui-kbd-shape-hard {
+    --zui-kbd-radius: 0;
+  }
+
+  /* soft */
+  .zui-kbd.zui-kbd-shape-soft {
+    --zui-kbd-radius: 9999px;
+  }
+
+  /* squircle - limited browser support */
+  .zui-kbd.zui-kbd-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

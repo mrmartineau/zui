@@ -1,3 +1,4 @@
+import type { VariantProps } from 'cva'
 import type { HTMLAttributes } from 'react'
 import { useId, useMemo, useRef, useSyncExternalStore } from 'react'
 import {
@@ -10,6 +11,8 @@ import { tabsVariants } from '../shared/tabsVariants'
 import { TabsContext } from './tabsContext'
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
 
+type TabsVariantProps = VariantProps<typeof tabsVariants>
+
 export type TabsProps = HTMLAttributes<HTMLDivElement> & {
   activationMode?: TabsActivationMode
   defaultValue?: string
@@ -18,6 +21,7 @@ export type TabsProps = HTMLAttributes<HTMLDivElement> & {
   id?: string
   onValueChange?: (value: string) => void
   orientation?: TabsOrientation
+  shape?: TabsVariantProps['shape']
   value?: string
 }
 
@@ -31,6 +35,7 @@ export function Tabs({
   id,
   onValueChange,
   orientation = 'horizontal',
+  shape,
   value,
   ...props
 }: TabsProps) {
@@ -92,7 +97,7 @@ export function Tabs({
     controller.getSnapshot,
     controller.getSnapshot,
   )
-  const classes = tabsVariants({ className })
+  const classes = tabsVariants({ className, shape })
 
   return (
     <TabsContext.Provider value={contextValue}>

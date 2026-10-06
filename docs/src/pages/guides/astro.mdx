@@ -42,9 +42,9 @@ import Button from '@mrmartineau/zui/astro/Button.astro'
 All components are exported from `@mrmartineau/zui/astro`:
 
 - **Button** — with `variant`, `accent`, `size`, `shape`, and `icon` props
-- **Badge** — with `variant` and `color` props
-- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody**
-- **Input**, **Textarea**, **Select**
+- **Badge** — with `variant` and `color`, and `shape` props
+- **Card**, **CardHeader**, **CardTitle**, **CardDescription**, **CardBody** — `shape` on Card
+- **Input**, **Textarea**, **Select** — with a `shape` prop
 - **Label**, **Checkbox**, **Radio**
 - **Text**, **Link**, **Code**, **Pre**, **Prose**
 
@@ -231,6 +231,22 @@ export default function InteractiveForm() {
   )
 }
 ```
+
+## Shapes and squircles
+
+Most components have a `shape` prop: `default`, `hard`, `squircle`, and on small components `soft` (a pill). Large boxes such as Card, Dialog, Popover, Menu, Accordion and Collapsible have no `soft`.
+
+```astro
+---
+import { Card, Dialog, Input } from '@mrmartineau/zui/astro'
+---
+
+<Input shape="squircle" />
+<Card shape="hard">…</Card>
+<Dialog shape="squircle">…</Dialog>
+```
+
+To make squircle the default shape for every component, add `zui-squircle-all` to `<html>`. A `hard` or `soft` shape prop still wins. See [Squircle](/utilities/squircle) for the full list of components and shapes.
 
 ## Theming
 

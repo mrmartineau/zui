@@ -1,6 +1,9 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
 import { tabsVariants } from '../shared/tabsVariants'
+
+type TabsVariantProps = VariantProps<typeof tabsVariants>
 
 interface Props extends HTMLAttributes<'div'> {
   activationMode?: 'auto' | 'manual'
@@ -10,6 +13,7 @@ interface Props extends HTMLAttributes<'div'> {
   id?: string
   orientation?: 'horizontal' | 'vertical'
   value?: string
+  shape?: TabsVariantProps['shape']
   class?: string
 }
 
@@ -21,12 +25,13 @@ const {
   disabled = false,
   id,
   orientation = 'horizontal',
+  shape,
   value,
   ...props
 } = Astro.props
 
 const rootId = id ?? `zui-tabs-${crypto.randomUUID()}`
-const classes = tabsVariants({ class: className })
+const classes = tabsVariants({ class: className, shape })
 ---
 
 <div

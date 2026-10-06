@@ -10,10 +10,18 @@ type Props = HTMLAttributes<HTMLSpanElement> & {
   text: string
   class?: string
   placement?: TooltipVariantProps['placement']
+  shape?: TooltipVariantProps['shape']
   children?: Snippet
 }
 
-let { text, class: className, placement, children, ...rest }: Props = $props()
+let {
+  text,
+  class: className,
+  placement,
+  shape,
+  children,
+  ...rest
+}: Props = $props()
 
 const id = `tooltip-${Math.random().toString(36).slice(2, 9)}`
 const anchorName = `--${id}`
@@ -31,7 +39,15 @@ const contentClass = $derived(
 )
 
 const wrapperClass = $derived(
-  ['zui-tooltip', className].filter(Boolean).join(' '),
+  [
+    'zui-tooltip',
+    tooltipVariants({ shape })
+      .split(' ')
+      .find((c: string) => c.startsWith('zui-tooltip-shape-')),
+    className,
+  ]
+    .filter(Boolean)
+    .join(' '),
 )
 
 const show = () => popoverEl?.showPopover()

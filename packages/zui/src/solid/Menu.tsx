@@ -1,3 +1,4 @@
+import type { VariantProps } from 'cva'
 import type { JSX } from 'solid-js'
 import {
   createEffect,
@@ -13,7 +14,10 @@ import {
   type MenuDirection,
   type MenuSide,
 } from '../core/menu'
+import { menuVariants } from '../shared/menuVariants'
 import { MenuContext } from './menuContext'
+
+type MenuVariantProps = VariantProps<typeof menuVariants>
 
 export type MenuProps = JSX.HTMLAttributes<HTMLDivElement> & {
   align?: MenuAlign
@@ -24,6 +28,7 @@ export type MenuProps = JSX.HTMLAttributes<HTMLDivElement> & {
   modal?: boolean
   onOpenChange?: (open: boolean) => void
   open?: boolean
+  shape?: MenuVariantProps['shape']
   side?: MenuSide
 }
 
@@ -39,6 +44,7 @@ export function Menu(props: MenuProps) {
     'modal',
     'onOpenChange',
     'open',
+    'shape',
     'side',
   ])
   const generatedId = createUniqueId()
@@ -92,7 +98,7 @@ export function Menu(props: MenuProps) {
       <div
         {...rest}
         ref={setRootRef}
-        class={['zui-menu', local.class].filter(Boolean).join(' ')}
+        class={menuVariants({ class: local.class, shape: local.shape })}
         data-align={snapshot().align}
         data-disabled={snapshot().disabled ? 'true' : undefined}
         data-side={snapshot().side}

@@ -5,18 +5,25 @@
 </template>
 
 <script setup lang="ts">
+import type { VariantProps } from 'cva'
 import { computed } from 'vue'
+import { accordionVariants } from '../shared/accordionVariants'
 
 defineOptions({ inheritAttrs: false })
+
+type AccordionVariantProps = VariantProps<typeof accordionVariants>
 
 const props = defineProps<{
   class?: string
   flush?: boolean
+  shape?: AccordionVariantProps['shape']
 }>()
 
 const classes = computed(() =>
-  ['zui-accordion', props.flush && 'zui-accordion-flush', props.class]
-    .filter(Boolean)
-    .join(' '),
+  accordionVariants({
+    className: props.class,
+    flush: props.flush,
+    shape: props.shape,
+  }),
 )
 </script>

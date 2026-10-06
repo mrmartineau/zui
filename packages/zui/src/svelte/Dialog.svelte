@@ -11,6 +11,7 @@ type Props = HTMLDialogAttributes & {
   open?: boolean
   size?: DialogVariantProps['size']
   position?: DialogVariantProps['position']
+  shape?: DialogVariantProps['shape']
   /** Controls how the dialog can be dismissed. Defaults to `"any"`. */
   closedby?: 'any' | 'closerequest' | 'none'
   onclose?: (event: Event) => void
@@ -22,6 +23,7 @@ let {
   open = false,
   size,
   position,
+  shape,
   closedby = 'any',
   onclose,
   children,
@@ -29,7 +31,7 @@ let {
 }: Props = $props()
 
 let dialogRef = $state<HTMLDialogElement | null>(null)
-const classes = $derived(dialogVariants({ className, position, size }))
+const classes = $derived(dialogVariants({ className, position, shape, size }))
 
 $effect(() => {
   if (!dialogRef) return

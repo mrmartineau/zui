@@ -1,15 +1,16 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { accordionVariants } from '../shared/accordionVariants'
 
-interface Props extends HTMLAttributes<'div'> {
-  flush?: boolean
+type AccordionVariantProps = VariantProps<typeof accordionVariants>
+
+interface Props extends HTMLAttributes<'div'>, AccordionVariantProps {
   class?: string
 }
 
-const { class: className, flush, ...props } = Astro.props
-const classes = ['zui-accordion', flush && 'zui-accordion-flush', className]
-  .filter(Boolean)
-  .join(' ')
+const { class: className, flush, shape, ...props } = Astro.props
+const classes = accordionVariants({ class: className, flush, shape })
 ---
 
 <div class={classes} {...props}>

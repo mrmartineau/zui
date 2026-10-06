@@ -1,12 +1,18 @@
+import type { VariantProps } from 'cva'
 import type { HTMLAttributes } from 'react'
+import { accordionVariants } from '../shared/accordionVariants'
 
-export type AccordionProps = HTMLAttributes<HTMLDivElement> & {
-  flush?: boolean
-}
+type AccordionVariantProps = VariantProps<typeof accordionVariants>
 
-export function Accordion({ className, flush, ...props }: AccordionProps) {
-  const classes = ['zui-accordion', flush && 'zui-accordion-flush', className]
-    .filter(Boolean)
-    .join(' ')
+export type AccordionProps = HTMLAttributes<HTMLDivElement> &
+  AccordionVariantProps
+
+export function Accordion({
+  className,
+  flush,
+  shape,
+  ...props
+}: AccordionProps) {
+  const classes = accordionVariants({ className, flush, shape })
   return <div className={classes} {...props} />
 }

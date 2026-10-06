@@ -346,6 +346,64 @@ import { Kbd, KbdGroup, Button } from '@mrmartineau/zui/vue'
   </button>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (rounded), `hard` (square), `soft` (pill) or `squircle`. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners.
+
+<Demo
+  html={`<kbd class="zui-kbd">Esc</kbd>
+<kbd class="zui-kbd zui-kbd-shape-hard">Esc</kbd>
+<kbd class="zui-kbd zui-kbd-shape-soft">Esc</kbd>
+<kbd class="zui-kbd zui-kbd-shape-squircle">Esc</kbd>`}
+  react={`import { Kbd } from '@mrmartineau/zui/react'
+
+<Kbd>Esc</Kbd>
+<Kbd shape="hard">Esc</Kbd>
+<Kbd shape="soft">Esc</Kbd>
+<Kbd shape="squircle">Esc</Kbd>`}
+  astro={`---
+import { Kbd } from '@mrmartineau/zui/astro'
+---
+
+<Kbd>Esc</Kbd>
+<Kbd shape="hard">Esc</Kbd>
+<Kbd shape="soft">Esc</Kbd>
+<Kbd shape="squircle">Esc</Kbd>`}
+  solid={`import { Kbd } from '@mrmartineau/zui/solid'
+
+<Kbd>Esc</Kbd>
+<Kbd shape="hard">Esc</Kbd>
+<Kbd shape="soft">Esc</Kbd>
+<Kbd shape="squircle">Esc</Kbd>`}
+  vue={`<template>
+  <Kbd>Esc</Kbd>
+  <Kbd shape="hard">Esc</Kbd>
+  <Kbd shape="soft">Esc</Kbd>
+  <Kbd shape="squircle">Esc</Kbd>
+</template>
+
+<script setup>
+import { Kbd } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Kbd } from '@mrmartineau/zui/svelte'
+</script>
+
+<Kbd>Esc</Kbd>
+<Kbd shape="hard">Esc</Kbd>
+<Kbd shape="soft">Esc</Kbd>
+<Kbd shape="squircle">Esc</Kbd>`}
+>
+  <div class="flex items-center gap-sm">
+    <span class="flex items-center gap-2xs"><kbd class="zui-kbd">Esc</kbd> <span>Default</span></span>
+    <span class="flex items-center gap-2xs"><kbd class="zui-kbd zui-kbd-shape-hard">Esc</kbd> <span>Hard</span></span>
+    <span class="flex items-center gap-2xs"><kbd class="zui-kbd zui-kbd-shape-soft">Esc</kbd> <span>Soft</span></span>
+    <span class="flex items-center gap-2xs"><kbd class="zui-kbd zui-kbd-shape-squircle">Esc</kbd> <span>Squircle</span></span>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 Set on `.zui-kbd`.

@@ -460,6 +460,218 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@m
   </div>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (rounded), `hard` (square) or `squircle` (a rounded square with smooth corners). Browsers without `corner-shape` support show normal rounded corners for `squircle`.
+
+`flush` accordions have no outer corners, so `shape` has no effect on them.
+
+<Demo
+  html={`<div class="zui-accordion">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Default</summary>
+    <div class="zui-accordion-content">
+      <p>Accordion content.</p>
+    </div>
+  </details>
+</div>
+
+<div class="zui-accordion zui-accordion-shape-hard">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Hard</summary>
+    <div class="zui-accordion-content">
+      <p>Accordion content.</p>
+    </div>
+  </details>
+</div>
+
+<div class="zui-accordion zui-accordion-shape-squircle">
+  <details class="zui-accordion-item">
+    <summary class="zui-accordion-trigger">Squircle</summary>
+    <div class="zui-accordion-content">
+      <p>Accordion content.</p>
+    </div>
+  </details>
+</div>`}
+  react={`import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/react'
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Default</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="hard">
+  <AccordionItem>
+    <AccordionTrigger>Hard</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="squircle">
+  <AccordionItem>
+    <AccordionTrigger>Squircle</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  astro={`---
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/astro'
+---
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Default</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="hard">
+  <AccordionItem>
+    <AccordionTrigger>Hard</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="squircle">
+  <AccordionItem>
+    <AccordionTrigger>Squircle</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  solid={`import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/solid'
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Default</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="hard">
+  <AccordionItem>
+    <AccordionTrigger>Hard</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="squircle">
+  <AccordionItem>
+    <AccordionTrigger>Squircle</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+  vue={`<template>
+  <Accordion>
+    <AccordionItem>
+      <AccordionTrigger>Default</AccordionTrigger>
+      <AccordionContent>
+        <p>Accordion content.</p>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion shape="hard">
+    <AccordionItem>
+      <AccordionTrigger>Hard</AccordionTrigger>
+      <AccordionContent>
+        <p>Accordion content.</p>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+
+  <Accordion shape="squircle">
+    <AccordionItem>
+      <AccordionTrigger>Squircle</AccordionTrigger>
+      <AccordionContent>
+        <p>Accordion content.</p>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</template>
+
+<script setup>
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Default</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="hard">
+  <AccordionItem>
+    <AccordionTrigger>Hard</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+<Accordion shape="squircle">
+  <AccordionItem>
+    <AccordionTrigger>Squircle</AccordionTrigger>
+    <AccordionContent>
+      <p>Accordion content.</p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`}
+>
+  <div class="flow" style="width: 100%;">
+    <div class="zui-accordion">
+      <details class="zui-accordion-item">
+        <summary class="zui-accordion-trigger">Default</summary>
+        <div class="zui-accordion-content">
+          <p>Accordion content.</p>
+        </div>
+      </details>
+    </div>
+    <div class="zui-accordion zui-accordion-shape-hard">
+      <details class="zui-accordion-item">
+        <summary class="zui-accordion-trigger">Hard</summary>
+        <div class="zui-accordion-content">
+          <p>Accordion content.</p>
+        </div>
+      </details>
+    </div>
+    <div class="zui-accordion zui-accordion-shape-squircle">
+      <details class="zui-accordion-item">
+        <summary class="zui-accordion-trigger">Squircle</summary>
+        <div class="zui-accordion-content">
+          <p>Accordion content.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

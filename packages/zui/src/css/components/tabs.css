@@ -137,4 +137,38 @@
   .zui-tabs-content[hidden] {
     display: none;
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-tabs-list-radius; triggers
+   * derive their radius from it. Underline lists reset it to 0. */
+
+  /* hard */
+  .zui-tabs.zui-tabs-shape-hard {
+    --zui-tabs-list-radius: 0;
+  }
+
+  /* soft */
+  .zui-tabs.zui-tabs-shape-soft {
+    --zui-tabs-list-radius: 9999px;
+  }
+
+  /* squircle - limited browser support */
+  .zui-tabs.zui-tabs-shape-squircle {
+    @supports (corner-shape: squircle) {
+      --zui-tabs-list-radius: 20px;
+
+      .zui-tabs-list,
+      .zui-tabs-trigger {
+        corner-shape: superellipse(1.25);
+      }
+
+      /* auto focus ring ignores corner-shape, see utilities/squircle.css */
+      .zui-tabs-trigger:focus-visible {
+        outline-style: solid;
+        outline-offset: calc(var(--focus-ring-offset) - 2px);
+      }
+    }
+  }
 }

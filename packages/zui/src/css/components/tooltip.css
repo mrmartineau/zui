@@ -4,13 +4,14 @@
     display: inline-block;
     --zui-tooltip-bg: var(--color-surface);
     --zui-tooltip-fg: currentColor;
+    --zui-tooltip-radius: var(--radius-md);
   }
 
   .zui-tooltip-content {
     background-color: var(--zui-tooltip-bg);
     color: var(--zui-tooltip-fg);
     padding: var(--space-4xs) var(--space-2xs);
-    border-radius: var(--radius-md);
+    border-radius: var(--zui-tooltip-radius);
     border: none;
     font-size: var(--step--2);
     line-height: var(--line-height-sm);
@@ -105,6 +106,29 @@
       &:popover-open {
         translate: -4px 0;
       }
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-tooltip-radius */
+
+  /* hard */
+  .zui-tooltip.zui-tooltip-shape-hard {
+    --zui-tooltip-radius: 0;
+  }
+
+  /* soft */
+  .zui-tooltip.zui-tooltip-shape-soft {
+    --zui-tooltip-radius: 9999px;
+  }
+
+  /* squircle - limited browser support */
+  .zui-tooltip.zui-tooltip-shape-squircle .zui-tooltip-content {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
     }
   }
 }

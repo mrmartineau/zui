@@ -1,5 +1,9 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { menuVariants } from '../shared/menuVariants'
+
+type MenuVariantProps = VariantProps<typeof menuVariants>
 
 interface Props extends HTMLAttributes<'div'> {
   align?: 'start' | 'center' | 'end'
@@ -10,6 +14,7 @@ interface Props extends HTMLAttributes<'div'> {
   modal?: boolean
   open?: boolean
   side?: 'top' | 'right' | 'bottom' | 'left'
+  shape?: MenuVariantProps['shape']
   class?: string
 }
 
@@ -22,12 +27,13 @@ const {
   id,
   modal = false,
   open,
+  shape,
   side = 'bottom',
   ...props
 } = Astro.props
 
 const rootId = id ?? `zui-menu-${crypto.randomUUID()}`
-const classes = ['zui-menu', className].filter(Boolean).join(' ')
+const classes = menuVariants({ class: className, shape })
 ---
 
 <div

@@ -26,6 +26,16 @@
       "docsUrl": "https://zui.zander.wtf/components/accordion"
     },
     {
+      "name": "zui-accordion-shape-hard",
+      "source": "accordion",
+      "docsUrl": "https://zui.zander.wtf/components/accordion"
+    },
+    {
+      "name": "zui-accordion-shape-squircle",
+      "source": "accordion",
+      "docsUrl": "https://zui.zander.wtf/components/accordion"
+    },
+    {
       "name": "zui-app-shell",
       "source": "app-shell",
       "docsUrl": "https://zui.zander.wtf/components/app-shell"
@@ -221,6 +231,21 @@
       "docsUrl": "https://zui.zander.wtf/components/badge"
     },
     {
+      "name": "zui-badge-shape-hard",
+      "source": "badge",
+      "docsUrl": "https://zui.zander.wtf/components/badge"
+    },
+    {
+      "name": "zui-badge-shape-soft",
+      "source": "badge",
+      "docsUrl": "https://zui.zander.wtf/components/badge"
+    },
+    {
+      "name": "zui-badge-shape-squircle",
+      "source": "badge",
+      "docsUrl": "https://zui.zander.wtf/components/badge"
+    },
+    {
       "name": "zui-button",
       "source": "button",
       "docsUrl": "https://zui.zander.wtf/components/button"
@@ -346,6 +371,16 @@
       "docsUrl": "https://zui.zander.wtf/components/card"
     },
     {
+      "name": "zui-card-shape-hard",
+      "source": "card",
+      "docsUrl": "https://zui.zander.wtf/components/card"
+    },
+    {
+      "name": "zui-card-shape-squircle",
+      "source": "card",
+      "docsUrl": "https://zui.zander.wtf/components/card"
+    },
+    {
       "name": "zui-checkbox",
       "source": "checkbox",
       "docsUrl": "https://zui.zander.wtf/components/checkbox"
@@ -367,6 +402,16 @@
     },
     {
       "name": "zui-collapsible-content",
+      "source": "collapsible",
+      "docsUrl": "https://zui.zander.wtf/components/collapsible"
+    },
+    {
+      "name": "zui-collapsible-shape-hard",
+      "source": "collapsible",
+      "docsUrl": "https://zui.zander.wtf/components/collapsible"
+    },
+    {
+      "name": "zui-collapsible-shape-squircle",
       "source": "collapsible",
       "docsUrl": "https://zui.zander.wtf/components/collapsible"
     },
@@ -442,6 +487,16 @@
     },
     {
       "name": "zui-dialog-position-bottom",
+      "source": "dialog",
+      "docsUrl": "https://zui.zander.wtf/components/dialog"
+    },
+    {
+      "name": "zui-dialog-shape-hard",
+      "source": "dialog",
+      "docsUrl": "https://zui.zander.wtf/components/dialog"
+    },
+    {
+      "name": "zui-dialog-shape-squircle",
       "source": "dialog",
       "docsUrl": "https://zui.zander.wtf/components/dialog"
     },
@@ -529,12 +584,42 @@
       "docsUrl": "https://zui.zander.wtf/components/field"
     },
     {
+      "name": "zui-input-shape-hard",
+      "source": "input",
+      "docsUrl": "https://zui.zander.wtf/components/input"
+    },
+    {
+      "name": "zui-input-shape-soft",
+      "source": "input",
+      "docsUrl": "https://zui.zander.wtf/components/input"
+    },
+    {
+      "name": "zui-input-shape-squircle",
+      "source": "input",
+      "docsUrl": "https://zui.zander.wtf/components/input"
+    },
+    {
       "name": "zui-kbd",
       "source": "kbd",
       "docsUrl": "https://zui.zander.wtf/components/kbd"
     },
     {
       "name": "zui-kbd-group",
+      "source": "kbd",
+      "docsUrl": "https://zui.zander.wtf/components/kbd"
+    },
+    {
+      "name": "zui-kbd-shape-hard",
+      "source": "kbd",
+      "docsUrl": "https://zui.zander.wtf/components/kbd"
+    },
+    {
+      "name": "zui-kbd-shape-soft",
+      "source": "kbd",
+      "docsUrl": "https://zui.zander.wtf/components/kbd"
+    },
+    {
+      "name": "zui-kbd-shape-squircle",
       "source": "kbd",
       "docsUrl": "https://zui.zander.wtf/components/kbd"
     },
@@ -564,7 +649,27 @@
       "docsUrl": "https://zui.zander.wtf/components/menu"
     },
     {
+      "name": "zui-menu-shape-hard",
+      "source": "menu",
+      "docsUrl": "https://zui.zander.wtf/components/menu"
+    },
+    {
+      "name": "zui-menu-shape-squircle",
+      "source": "menu",
+      "docsUrl": "https://zui.zander.wtf/components/menu"
+    },
+    {
       "name": "zui-popover",
+      "source": "popover",
+      "docsUrl": "https://zui.zander.wtf/components/popover"
+    },
+    {
+      "name": "zui-popover-shape-hard",
+      "source": "popover",
+      "docsUrl": "https://zui.zander.wtf/components/popover"
+    },
+    {
+      "name": "zui-popover-shape-squircle",
       "source": "popover",
       "docsUrl": "https://zui.zander.wtf/components/popover"
     },
@@ -585,6 +690,21 @@
     },
     {
       "name": "zui-light",
+      "source": "select",
+      "docsUrl": "https://zui.zander.wtf/components/select"
+    },
+    {
+      "name": "zui-select-shape-hard",
+      "source": "select",
+      "docsUrl": "https://zui.zander.wtf/components/select"
+    },
+    {
+      "name": "zui-select-shape-soft",
+      "source": "select",
+      "docsUrl": "https://zui.zander.wtf/components/select"
+    },
+    {
+      "name": "zui-select-shape-squircle",
       "source": "select",
       "docsUrl": "https://zui.zander.wtf/components/select"
     },
@@ -654,6 +774,36 @@
       "docsUrl": "https://zui.zander.wtf/components/tabs"
     },
     {
+      "name": "zui-tabs-shape-hard",
+      "source": "tabs",
+      "docsUrl": "https://zui.zander.wtf/components/tabs"
+    },
+    {
+      "name": "zui-tabs-shape-soft",
+      "source": "tabs",
+      "docsUrl": "https://zui.zander.wtf/components/tabs"
+    },
+    {
+      "name": "zui-tabs-shape-squircle",
+      "source": "tabs",
+      "docsUrl": "https://zui.zander.wtf/components/tabs"
+    },
+    {
+      "name": "zui-textarea-shape-hard",
+      "source": "textarea",
+      "docsUrl": "https://zui.zander.wtf/components/textarea"
+    },
+    {
+      "name": "zui-textarea-shape-soft",
+      "source": "textarea",
+      "docsUrl": "https://zui.zander.wtf/components/textarea"
+    },
+    {
+      "name": "zui-textarea-shape-squircle",
+      "source": "textarea",
+      "docsUrl": "https://zui.zander.wtf/components/textarea"
+    },
+    {
       "name": "zui-tooltip",
       "source": "tooltip",
       "docsUrl": "https://zui.zander.wtf/components/tooltip"
@@ -680,6 +830,21 @@
     },
     {
       "name": "zui-tooltip-placement-right",
+      "source": "tooltip",
+      "docsUrl": "https://zui.zander.wtf/components/tooltip"
+    },
+    {
+      "name": "zui-tooltip-shape-hard",
+      "source": "tooltip",
+      "docsUrl": "https://zui.zander.wtf/components/tooltip"
+    },
+    {
+      "name": "zui-tooltip-shape-soft",
+      "source": "tooltip",
+      "docsUrl": "https://zui.zander.wtf/components/tooltip"
+    },
+    {
+      "name": "zui-tooltip-shape-squircle",
       "source": "tooltip",
       "docsUrl": "https://zui.zander.wtf/components/tooltip"
     },
@@ -2164,7 +2329,7 @@
       "url": "https://zui.zander.wtf/guides/svelte"
     },
     {
-      "description": "Five live CodePen demos — identical ZUI markup, radically different looks. Only the :root custom properties change.",
+      "description": "Live CodePen demos — identical ZUI markup, radically different looks. Only the :root custom properties change.",
       "section": "Guides",
       "slug": "guides/theming-showcase",
       "title": "Theming showcase",
@@ -2353,7 +2518,7 @@
       "url": "https://zui.zander.wtf/utilities/visibility"
     }
   ],
-  "generatedAt": "2026-10-05T11:45:45.618Z",
+  "generatedAt": "2026-10-06T14:32:41.352Z",
   "schemaVersion": 1,
   "snippets": [
     {
@@ -2397,6 +2562,20 @@
       "page": "Accordion",
       "pageUrl": "https://zui.zander.wtf/components/accordion",
       "title": "Flush variant"
+    },
+    {
+      "frameworks": {
+        "html": "<div class=\"zui-accordion\">\n  <details class=\"zui-accordion-item\">\n    <summary class=\"zui-accordion-trigger\">Default</summary>\n    <div class=\"zui-accordion-content\">\n      <p>Accordion content.</p>\n    </div>\n  </details>\n</div>\n\n<div class=\"zui-accordion zui-accordion-shape-hard\">\n  <details class=\"zui-accordion-item\">\n    <summary class=\"zui-accordion-trigger\">Hard</summary>\n    <div class=\"zui-accordion-content\">\n      <p>Accordion content.</p>\n    </div>\n  </details>\n</div>\n\n<div class=\"zui-accordion zui-accordion-shape-squircle\">\n  <details class=\"zui-accordion-item\">\n    <summary class=\"zui-accordion-trigger\">Squircle</summary>\n    <div class=\"zui-accordion-content\">\n      <p>Accordion content.</p>\n    </div>\n  </details>\n</div>",
+        "react": "import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/react'\n\n<Accordion>\n  <AccordionItem>\n    <AccordionTrigger>Default</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"hard\">\n  <AccordionItem>\n    <AccordionTrigger>Hard</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"squircle\">\n  <AccordionItem>\n    <AccordionTrigger>Squircle</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>",
+        "astro": "---\nimport { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/astro'\n---\n\n<Accordion>\n  <AccordionItem>\n    <AccordionTrigger>Default</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"hard\">\n  <AccordionItem>\n    <AccordionTrigger>Hard</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"squircle\">\n  <AccordionItem>\n    <AccordionTrigger>Squircle</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>",
+        "solid": "import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/solid'\n\n<Accordion>\n  <AccordionItem>\n    <AccordionTrigger>Default</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"hard\">\n  <AccordionItem>\n    <AccordionTrigger>Hard</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"squircle\">\n  <AccordionItem>\n    <AccordionTrigger>Squircle</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>",
+        "vue": "<template>\n  <Accordion>\n    <AccordionItem>\n      <AccordionTrigger>Default</AccordionTrigger>\n      <AccordionContent>\n        <p>Accordion content.</p>\n      </AccordionContent>\n    </AccordionItem>\n  </Accordion>\n\n  <Accordion shape=\"hard\">\n    <AccordionItem>\n      <AccordionTrigger>Hard</AccordionTrigger>\n      <AccordionContent>\n        <p>Accordion content.</p>\n      </AccordionContent>\n    </AccordionItem>\n  </Accordion>\n\n  <Accordion shape=\"squircle\">\n    <AccordionItem>\n      <AccordionTrigger>Squircle</AccordionTrigger>\n      <AccordionContent>\n        <p>Accordion content.</p>\n      </AccordionContent>\n    </AccordionItem>\n  </Accordion>\n</template>\n\n<script setup>\nimport { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@mrmartineau/zui/svelte'\n</script>\n\n<Accordion>\n  <AccordionItem>\n    <AccordionTrigger>Default</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"hard\">\n  <AccordionItem>\n    <AccordionTrigger>Hard</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>\n\n<Accordion shape=\"squircle\">\n  <AccordionItem>\n    <AccordionTrigger>Squircle</AccordionTrigger>\n    <AccordionContent>\n      <p>Accordion content.</p>\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>"
+      },
+      "id": "components-accordion-3",
+      "page": "Accordion",
+      "pageUrl": "https://zui.zander.wtf/components/accordion",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -2560,6 +2739,20 @@
       "page": "Badge",
       "pageUrl": "https://zui.zander.wtf/components/badge",
       "title": "All Variants × Colours"
+    },
+    {
+      "frameworks": {
+        "html": "<span class=\"zui-badge\">Default</span>\n<span class=\"zui-badge zui-badge-shape-hard\">Hard</span>\n<span class=\"zui-badge zui-badge-shape-soft\">Soft</span>\n<span class=\"zui-badge zui-badge-shape-squircle\">Squircle</span>",
+        "react": "import { Badge } from '@mrmartineau/zui/react'\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>",
+        "astro": "---\nimport { Badge } from '@mrmartineau/zui/astro'\n---\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>",
+        "solid": "import { Badge } from '@mrmartineau/zui/solid'\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>",
+        "vue": "<template>\n  <Badge>Default</Badge>\n  <Badge shape=\"hard\">Hard</Badge>\n  <Badge shape=\"soft\">Soft</Badge>\n  <Badge shape=\"squircle\">Squircle</Badge>\n</template>\n\n<script setup>\nimport { Badge } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Badge } from '@mrmartineau/zui/svelte'\n</script>\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>"
+      },
+      "id": "components-badge-6",
+      "page": "Badge",
+      "pageUrl": "https://zui.zander.wtf/components/badge",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -2759,6 +2952,20 @@
     },
     {
       "frameworks": {
+        "html": "<div class=\"zui-card\">\n  <div class=\"zui-card-header\">\n    <div class=\"zui-card-title\">Default</div>\n  </div>\n  <div class=\"zui-card-body\">\n    <p>Card content.</p>\n  </div>\n</div>\n\n<div class=\"zui-card zui-card-shape-hard\">\n  <div class=\"zui-card-header\">\n    <div class=\"zui-card-title\">Hard</div>\n  </div>\n  <div class=\"zui-card-body\">\n    <p>Card content.</p>\n  </div>\n</div>\n\n<div class=\"zui-card zui-card-shape-squircle\">\n  <div class=\"zui-card-header\">\n    <div class=\"zui-card-title\">Squircle</div>\n  </div>\n  <div class=\"zui-card-body\">\n    <p>Card content.</p>\n  </div>\n</div>",
+        "react": "import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/react'\n\n<Card>\n  <CardHeader>\n    <CardTitle>Default</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"hard\">\n  <CardHeader>\n    <CardTitle>Hard</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"squircle\">\n  <CardHeader>\n    <CardTitle>Squircle</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>",
+        "astro": "---\nimport { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/astro'\n---\n\n<Card>\n  <CardHeader>\n    <CardTitle>Default</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"hard\">\n  <CardHeader>\n    <CardTitle>Hard</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"squircle\">\n  <CardHeader>\n    <CardTitle>Squircle</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>",
+        "solid": "import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/solid'\n\n<Card>\n  <CardHeader>\n    <CardTitle>Default</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"hard\">\n  <CardHeader>\n    <CardTitle>Hard</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"squircle\">\n  <CardHeader>\n    <CardTitle>Squircle</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>",
+        "vue": "<template>\n  <Card>\n    <CardHeader>\n      <CardTitle>Default</CardTitle>\n    </CardHeader>\n    <CardBody>\n      <p>Card content.</p>\n    </CardBody>\n  </Card>\n\n  <Card shape=\"hard\">\n    <CardHeader>\n      <CardTitle>Hard</CardTitle>\n    </CardHeader>\n    <CardBody>\n      <p>Card content.</p>\n    </CardBody>\n  </Card>\n\n  <Card shape=\"squircle\">\n    <CardHeader>\n      <CardTitle>Squircle</CardTitle>\n    </CardHeader>\n    <CardBody>\n      <p>Card content.</p>\n    </CardBody>\n  </Card>\n</template>\n\n<script setup>\nimport { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Card, CardHeader, CardTitle, CardBody } from '@mrmartineau/zui/svelte'\n</script>\n\n<Card>\n  <CardHeader>\n    <CardTitle>Default</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"hard\">\n  <CardHeader>\n    <CardTitle>Hard</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>\n\n<Card shape=\"squircle\">\n  <CardHeader>\n    <CardTitle>Squircle</CardTitle>\n  </CardHeader>\n  <CardBody>\n    <p>Card content.</p>\n  </CardBody>\n</Card>"
+      },
+      "id": "components-card-4",
+      "page": "Card",
+      "pageUrl": "https://zui.zander.wtf/components/card",
+      "title": "Shape"
+    },
+    {
+      "frameworks": {
         "html": "<label class=\"zui-checkbox\">\n  <input type=\"checkbox\" checked />\n  Accept terms\n</label>",
         "react": "import { Checkbox } from '@mrmartineau/zui/react'\n\n<Checkbox defaultChecked>Accept terms</Checkbox>",
         "astro": "---\nimport { Checkbox } from '@mrmartineau/zui/astro'\n---\n\n<Checkbox checked>Accept terms</Checkbox>",
@@ -2801,6 +3008,20 @@
     },
     {
       "frameworks": {
+        "html": "<div class=\"zui-squircle-all\">\n  <label class=\"zui-checkbox\">\n    <input type=\"checkbox\" checked />\n    Squircle checkbox\n  </label>\n</div>",
+        "react": "import { Checkbox } from '@mrmartineau/zui/react'\n\n<div className=\"zui-squircle-all\">\n  <Checkbox defaultChecked>Squircle checkbox</Checkbox>\n</div>",
+        "astro": "---\nimport { Checkbox } from '@mrmartineau/zui/astro'\n---\n\n<div class=\"zui-squircle-all\">\n  <Checkbox checked>Squircle checkbox</Checkbox>\n</div>",
+        "solid": "import { Checkbox } from '@mrmartineau/zui/solid'\n\n<div class=\"zui-squircle-all\">\n  <Checkbox defaultChecked>Squircle checkbox</Checkbox>\n</div>",
+        "vue": "<template>\n  <div class=\"zui-squircle-all\">\n    <Checkbox checked>Squircle checkbox</Checkbox>\n  </div>\n</template>\n\n<script setup>\nimport { Checkbox } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Checkbox } from '@mrmartineau/zui/svelte'\n  let checked = $state(true)\n</script>\n\n<div class=\"zui-squircle-all\">\n  <Checkbox bind:checked={checked}>Squircle checkbox</Checkbox>\n</div>"
+      },
+      "id": "components-checkbox-3",
+      "page": "Checkbox",
+      "pageUrl": "https://zui.zander.wtf/components/checkbox",
+      "title": "Shape"
+    },
+    {
+      "frameworks": {
         "html": "<details class=\"zui-collapsible\">\n  <summary class=\"zui-collapsible-trigger\">What is ZUI?</summary>\n  <div class=\"zui-collapsible-content\">\n    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers.</p>\n  </div>\n</details>",
         "react": "import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/react'\n\n<Collapsible>\n  <CollapsibleTrigger>What is ZUI?</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers.</p>\n  </CollapsibleContent>\n</Collapsible>",
         "astro": "---\nimport { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/astro'\n---\n\n<Collapsible>\n  <CollapsibleTrigger>What is ZUI?</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers.</p>\n  </CollapsibleContent>\n</Collapsible>",
@@ -2826,6 +3047,20 @@
       "page": "Collapsible",
       "pageUrl": "https://zui.zander.wtf/components/collapsible",
       "title": "Open by default"
+    },
+    {
+      "frameworks": {
+        "html": "<details class=\"zui-collapsible\">\n  <summary class=\"zui-collapsible-trigger\">Default</summary>\n  <div class=\"zui-collapsible-content\">\n    <p>Collapsible content.</p>\n  </div>\n</details>\n\n<details class=\"zui-collapsible zui-collapsible-shape-hard\">\n  <summary class=\"zui-collapsible-trigger\">Hard</summary>\n  <div class=\"zui-collapsible-content\">\n    <p>Collapsible content.</p>\n  </div>\n</details>\n\n<details class=\"zui-collapsible zui-collapsible-shape-squircle\">\n  <summary class=\"zui-collapsible-trigger\">Squircle</summary>\n  <div class=\"zui-collapsible-content\">\n    <p>Collapsible content.</p>\n  </div>\n</details>",
+        "react": "import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/react'\n\n<Collapsible>\n  <CollapsibleTrigger>Default</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"hard\">\n  <CollapsibleTrigger>Hard</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"squircle\">\n  <CollapsibleTrigger>Squircle</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>",
+        "astro": "---\nimport { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/astro'\n---\n\n<Collapsible>\n  <CollapsibleTrigger>Default</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"hard\">\n  <CollapsibleTrigger>Hard</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"squircle\">\n  <CollapsibleTrigger>Squircle</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>",
+        "solid": "import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/solid'\n\n<Collapsible>\n  <CollapsibleTrigger>Default</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"hard\">\n  <CollapsibleTrigger>Hard</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"squircle\">\n  <CollapsibleTrigger>Squircle</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>",
+        "vue": "<template>\n  <Collapsible>\n    <CollapsibleTrigger>Default</CollapsibleTrigger>\n    <CollapsibleContent>\n      <p>Collapsible content.</p>\n    </CollapsibleContent>\n  </Collapsible>\n\n  <Collapsible shape=\"hard\">\n    <CollapsibleTrigger>Hard</CollapsibleTrigger>\n    <CollapsibleContent>\n      <p>Collapsible content.</p>\n    </CollapsibleContent>\n  </Collapsible>\n\n  <Collapsible shape=\"squircle\">\n    <CollapsibleTrigger>Squircle</CollapsibleTrigger>\n    <CollapsibleContent>\n      <p>Collapsible content.</p>\n    </CollapsibleContent>\n  </Collapsible>\n</template>\n\n<script setup>\nimport { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/svelte'\n</script>\n\n<Collapsible>\n  <CollapsibleTrigger>Default</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"hard\">\n  <CollapsibleTrigger>Hard</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>\n\n<Collapsible shape=\"squircle\">\n  <CollapsibleTrigger>Squircle</CollapsibleTrigger>\n  <CollapsibleContent>\n    <p>Collapsible content.</p>\n  </CollapsibleContent>\n</Collapsible>"
+      },
+      "id": "components-collapsible-2",
+      "page": "Collapsible",
+      "pageUrl": "https://zui.zander.wtf/components/collapsible",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -2910,6 +3145,20 @@
       "page": "Dialog",
       "pageUrl": "https://zui.zander.wtf/components/dialog",
       "title": "With form"
+    },
+    {
+      "frameworks": {
+        "html": "<button class=\"zui-button\" onclick=\"document.getElementById('sq-dialog-demo').showModal()\">\n  Open dialog\n</button>\n\n<dialog id=\"sq-dialog-demo\" class=\"zui-dialog zui-dialog-shape-squircle\" closedby=\"any\">\n  <div class=\"zui-dialog-header\">\n    <h2 class=\"zui-dialog-title\">Dialog title</h2>\n    <p class=\"zui-dialog-description\">A short description of the dialog content.</p>\n  </div>\n  <div class=\"zui-dialog-body\">\n    <p>Dialog body content goes here.</p>\n  </div>\n  <div class=\"zui-dialog-footer\">\n    <form method=\"dialog\">\n      <button class=\"zui-button zui-button-variant-outline\">Cancel</button>\n    </form>\n    <button class=\"zui-button\" onclick=\"document.getElementById('sq-dialog-demo').close()\">Confirm</button>\n  </div>\n</dialog>",
+        "react": "import { useState } from 'react'\nimport {\n  Dialog,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogBody,\n  DialogFooter,\n  Button,\n} from '@mrmartineau/zui/react'\n\nfunction MyComponent() {\n  const [open, setOpen] = useState(false)\n\n  return (\n    <Button onClick={() => setOpen(true)}>Open dialog</Button>\n    <Dialog shape=\"squircle\" open={open} onClose={() => setOpen(false)}>\n      <DialogHeader>\n        <DialogTitle>Dialog title</DialogTitle>\n        <DialogDescription>A short description of the dialog content.</DialogDescription>\n      </DialogHeader>\n      <DialogBody>\n        <p>Dialog body content goes here.</p>\n      </DialogBody>\n      <DialogFooter>\n        <Button variant=\"outline\" onClick={() => setOpen(false)}>Cancel</Button>\n        <Button onClick={() => setOpen(false)}>Confirm</Button>\n      </DialogFooter>\n    </Dialog>\n\n  )\n}",
+        "astro": "---\nimport { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/astro'\n---\n\n<Button onclick=\"document.getElementById('sq-dialog-demo').showModal()\">Open dialog</Button>\n\n<Dialog shape=\"squircle\" id=\"sq-dialog-demo\">\n  <DialogHeader>\n    <DialogTitle>Dialog title</DialogTitle>\n    <DialogDescription>A short description of the dialog content.</DialogDescription>\n  </DialogHeader>\n  <DialogBody>\n    <p>Dialog body content goes here.</p>\n  </DialogBody>\n  <DialogFooter>\n    <form method=\"dialog\">\n      <Button variant=\"outline\">Cancel</Button>\n    </form>\n    <Button>Confirm</Button>\n  </DialogFooter>\n</Dialog>",
+        "solid": "import { createSignal } from 'solid-js'\nimport {\n  Dialog,\n  DialogHeader,\n  DialogTitle,\n  DialogDescription,\n  DialogBody,\n  DialogFooter,\n  Button,\n} from '@mrmartineau/zui/solid'\n\nfunction MyComponent() {\n  const [open, setOpen] = createSignal(false)\n\n  return (\n    <Button onClick={() => setOpen(true)}>Open dialog</Button>\n    <Dialog shape=\"squircle\" open={open} onClose={() => setOpen(false)}>\n      <DialogHeader>\n        <DialogTitle>Dialog title</DialogTitle>\n        <DialogDescription>A short description of the dialog content.</DialogDescription>\n      </DialogHeader>\n      <DialogBody>\n        <p>Dialog body content goes here.</p>\n      </DialogBody>\n      <DialogFooter>\n        <Button variant=\"outline\" onClick={() => setOpen(false)}>Cancel</Button>\n        <Button onClick={() => setOpen(false)}>Confirm</Button>\n      </DialogFooter>\n    </Dialog>\n\n  )\n}",
+        "vue": "<template>\n  <Button @click=\"open = true\">Open dialog</Button>\n  <Dialog shape=\"squircle\" :open=\"open\" @close=\"open = false\">\n    <DialogHeader>\n      <DialogTitle>Dialog title</DialogTitle>\n      <DialogDescription>A short description of the dialog content.</DialogDescription>\n    </DialogHeader>\n    <DialogBody>\n      <p>Dialog body content goes here.</p>\n    </DialogBody>\n    <DialogFooter>\n      <Button variant=\"outline\" @click=\"open = false\">Cancel</Button>\n      <Button @click=\"open = false\">Confirm</Button>\n    </DialogFooter>\n  </Dialog>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/vue'\n\nconst open = ref(false)\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import {\n    Dialog,\n    DialogHeader,\n    DialogTitle,\n    DialogDescription,\n    DialogBody,\n    DialogFooter,\n    Button,\n  } from '@mrmartineau/zui/svelte'\n\n  let open = $state(false)\n</script>\n\n<Button onclick={() => (open = true)}>Open dialog</Button>\n<Dialog shape=\"squircle\" bind:open>\n  <DialogHeader>\n    <DialogTitle>Dialog title</DialogTitle>\n    <DialogDescription>A short description of the dialog content.</DialogDescription>\n  </DialogHeader>\n  <DialogBody>\n    <p>Dialog body content goes here.</p>\n  </DialogBody>\n  <DialogFooter>\n    <Button variant=\"outline\" onclick={() => (open = false)}>Cancel</Button>\n    <Button onclick={() => (open = false)}>Confirm</Button>\n  </DialogFooter>\n</Dialog>"
+      },
+      "id": "components-dialog-6",
+      "page": "Dialog",
+      "pageUrl": "https://zui.zander.wtf/components/dialog",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -3221,6 +3470,20 @@
     },
     {
       "frameworks": {
+        "html": "<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"default-input\">Default (rounded)</label>\n  <input class=\"zui-input\" type=\"text\" id=\"default-input\" placeholder=\"Type here\" />\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"hard-input\">Hard</label>\n  <input class=\"zui-input zui-input-shape-hard\" type=\"text\" id=\"hard-input\" placeholder=\"Type here\" />\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"soft-input\">Soft</label>\n  <input class=\"zui-input zui-input-shape-soft\" type=\"text\" id=\"soft-input\" placeholder=\"Type here\" />\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"squircle-input\">Squircle</label>\n  <input class=\"zui-input zui-input-shape-squircle\" type=\"text\" id=\"squircle-input\" placeholder=\"Type here\" />\n</div>",
+        "react": "import { Field, Label, Input } from '@mrmartineau/zui/react'\n\n<Field>\n  <Label htmlFor=\"default-input\">Default (rounded)</Label>\n  <Input type=\"text\" id=\"default-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label htmlFor=\"hard-input\">Hard</Label>\n  <Input shape=\"hard\" type=\"text\" id=\"hard-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label htmlFor=\"soft-input\">Soft</Label>\n  <Input shape=\"soft\" type=\"text\" id=\"soft-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label htmlFor=\"squircle-input\">Squircle</Label>\n  <Input shape=\"squircle\" type=\"text\" id=\"squircle-input\" placeholder=\"Type here\" />\n</Field>",
+        "astro": "---\nimport { Field, Label, Input } from '@mrmartineau/zui/astro'\n---\n\n<Field>\n  <Label for=\"default-input\">Default (rounded)</Label>\n  <Input type=\"text\" id=\"default-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"hard-input\">Hard</Label>\n  <Input shape=\"hard\" type=\"text\" id=\"hard-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"soft-input\">Soft</Label>\n  <Input shape=\"soft\" type=\"text\" id=\"soft-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"squircle-input\">Squircle</Label>\n  <Input shape=\"squircle\" type=\"text\" id=\"squircle-input\" placeholder=\"Type here\" />\n</Field>",
+        "solid": "import { Field, Label, Input } from '@mrmartineau/zui/solid'\n\n<Field>\n  <Label for=\"default-input\">Default (rounded)</Label>\n  <Input type=\"text\" id=\"default-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"hard-input\">Hard</Label>\n  <Input shape=\"hard\" type=\"text\" id=\"hard-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"soft-input\">Soft</Label>\n  <Input shape=\"soft\" type=\"text\" id=\"soft-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"squircle-input\">Squircle</Label>\n  <Input shape=\"squircle\" type=\"text\" id=\"squircle-input\" placeholder=\"Type here\" />\n</Field>",
+        "vue": "<template>\n  <Field>\n    <Label for=\"default-input\">Default (rounded)</Label>\n    <Input type=\"text\" id=\"default-input\" placeholder=\"Type here\" />\n  </Field>\n  <Field>\n    <Label for=\"hard-input\">Hard</Label>\n    <Input shape=\"hard\" type=\"text\" id=\"hard-input\" placeholder=\"Type here\" />\n  </Field>\n  <Field>\n    <Label for=\"soft-input\">Soft</Label>\n    <Input shape=\"soft\" type=\"text\" id=\"soft-input\" placeholder=\"Type here\" />\n  </Field>\n  <Field>\n    <Label for=\"squircle-input\">Squircle</Label>\n    <Input shape=\"squircle\" type=\"text\" id=\"squircle-input\" placeholder=\"Type here\" />\n  </Field>\n</template>\n\n<script setup>\nimport { Field, Label, Input } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Field, Label, Input } from '@mrmartineau/zui/svelte'\n</script>\n\n<Field>\n  <Label for=\"default-input\">Default (rounded)</Label>\n  <Input type=\"text\" id=\"default-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"hard-input\">Hard</Label>\n  <Input shape=\"hard\" type=\"text\" id=\"hard-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"soft-input\">Soft</Label>\n  <Input shape=\"soft\" type=\"text\" id=\"soft-input\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"squircle-input\">Squircle</Label>\n  <Input shape=\"squircle\" type=\"text\" id=\"squircle-input\" placeholder=\"Type here\" />\n</Field>"
+      },
+      "id": "components-input-5",
+      "page": "Input",
+      "pageUrl": "https://zui.zander.wtf/components/input",
+      "title": "Shape"
+    },
+    {
+      "frameworks": {
         "html": "<kbd class=\"zui-kbd\">Esc</kbd>",
         "react": "import { Kbd } from '@mrmartineau/zui/react'\n\n<Kbd>Esc</Kbd>",
         "astro": "---\nimport { Kbd } from '@mrmartineau/zui/astro'\n---\n\n<Kbd>Esc</Kbd>",
@@ -3274,6 +3537,20 @@
       "page": "Kbd",
       "pageUrl": "https://zui.zander.wtf/components/kbd",
       "title": "In context"
+    },
+    {
+      "frameworks": {
+        "html": "<kbd class=\"zui-kbd\">Esc</kbd>\n<kbd class=\"zui-kbd zui-kbd-shape-hard\">Esc</kbd>\n<kbd class=\"zui-kbd zui-kbd-shape-soft\">Esc</kbd>\n<kbd class=\"zui-kbd zui-kbd-shape-squircle\">Esc</kbd>",
+        "react": "import { Kbd } from '@mrmartineau/zui/react'\n\n<Kbd>Esc</Kbd>\n<Kbd shape=\"hard\">Esc</Kbd>\n<Kbd shape=\"soft\">Esc</Kbd>\n<Kbd shape=\"squircle\">Esc</Kbd>",
+        "astro": "---\nimport { Kbd } from '@mrmartineau/zui/astro'\n---\n\n<Kbd>Esc</Kbd>\n<Kbd shape=\"hard\">Esc</Kbd>\n<Kbd shape=\"soft\">Esc</Kbd>\n<Kbd shape=\"squircle\">Esc</Kbd>",
+        "solid": "import { Kbd } from '@mrmartineau/zui/solid'\n\n<Kbd>Esc</Kbd>\n<Kbd shape=\"hard\">Esc</Kbd>\n<Kbd shape=\"soft\">Esc</Kbd>\n<Kbd shape=\"squircle\">Esc</Kbd>",
+        "vue": "<template>\n  <Kbd>Esc</Kbd>\n  <Kbd shape=\"hard\">Esc</Kbd>\n  <Kbd shape=\"soft\">Esc</Kbd>\n  <Kbd shape=\"squircle\">Esc</Kbd>\n</template>\n\n<script setup>\nimport { Kbd } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Kbd } from '@mrmartineau/zui/svelte'\n</script>\n\n<Kbd>Esc</Kbd>\n<Kbd shape=\"hard\">Esc</Kbd>\n<Kbd shape=\"soft\">Esc</Kbd>\n<Kbd shape=\"squircle\">Esc</Kbd>"
+      },
+      "id": "components-kbd-4",
+      "page": "Kbd",
+      "pageUrl": "https://zui.zander.wtf/components/kbd",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -3347,9 +3624,23 @@
     },
     {
       "frameworks": {
-        "astro": "---\nimport { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'\n---\n\n<Menu side=\"top\" align=\"end\">\n  <MenuTrigger variant=\"outline\">More <i class=\"ph ph-dots-three\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Rename</MenuItem>\n    <MenuItem>Duplicate</MenuItem>\n    <MenuItem>Archive</MenuItem>\n  </MenuContent>\n</Menu>"
+        "html": "<div class=\"zui-menu\">\n  <button class=\"zui-button zui-button-variant-outline zui-menu-trigger\" aria-haspopup=\"menu\" aria-expanded=\"false\">\n    Default <i class=\"ph ph-caret-down\"></i>\n  </button>\n  <div class=\"zui-menu-content\" role=\"menu\" hidden>\n    <button class=\"zui-menu-item zui-button zui-button-variant-ghost\" role=\"menuitem\">Profile</button>\n    <button class=\"zui-menu-item zui-button zui-button-variant-ghost\" role=\"menuitem\">Settings</button>\n  </div>\n</div>\n<div class=\"zui-menu zui-menu-shape-hard\">\n  <button class=\"zui-button zui-button-variant-outline zui-menu-trigger\" aria-haspopup=\"menu\" aria-expanded=\"false\">\n    Hard <i class=\"ph ph-caret-down\"></i>\n  </button>\n  <div class=\"zui-menu-content\" role=\"menu\" hidden>\n    <button class=\"zui-menu-item zui-button zui-button-variant-ghost\" role=\"menuitem\">Profile</button>\n    <button class=\"zui-menu-item zui-button zui-button-variant-ghost\" role=\"menuitem\">Settings</button>\n  </div>\n</div>\n<div class=\"zui-menu zui-menu-shape-squircle\">\n  <button class=\"zui-button zui-button-variant-outline zui-menu-trigger\" aria-haspopup=\"menu\" aria-expanded=\"false\">\n    Squircle <i class=\"ph ph-caret-down\"></i>\n  </button>\n  <div class=\"zui-menu-content\" role=\"menu\" hidden>\n    <button class=\"zui-menu-item zui-button zui-button-variant-ghost\" role=\"menuitem\">Profile</button>\n    <button class=\"zui-menu-item zui-button zui-button-variant-ghost\" role=\"menuitem\">Settings</button>\n  </div>\n</div>",
+        "react": "import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/react'\n\n<Menu>\n  <MenuTrigger>Default <i className=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"hard\">\n  <MenuTrigger>Hard <i className=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"squircle\">\n  <MenuTrigger>Squircle <i className=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>",
+        "astro": "---\nimport { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'\n---\n\n<Menu>\n  <MenuTrigger>Default <i class=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"hard\">\n  <MenuTrigger>Hard <i class=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"squircle\">\n  <MenuTrigger>Squircle <i class=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>",
+        "solid": "import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/solid'\n\n<Menu>\n  <MenuTrigger>Default <i class=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"hard\">\n  <MenuTrigger>Hard <i class=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"squircle\">\n  <MenuTrigger>Squircle <i class=\"ph ph-caret-down\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>",
+        "vue": "<template>\n  <Menu>\n    <MenuTrigger>Default <i class=\"ph ph-caret-down\" /></MenuTrigger>\n    <MenuContent>\n      <MenuItem>Profile</MenuItem>\n      <MenuItem>Settings</MenuItem>\n    </MenuContent>\n  </Menu>\n  <Menu shape=\"hard\">\n    <MenuTrigger>Hard <i class=\"ph ph-caret-down\" /></MenuTrigger>\n    <MenuContent>\n      <MenuItem>Profile</MenuItem>\n      <MenuItem>Settings</MenuItem>\n    </MenuContent>\n  </Menu>\n  <Menu shape=\"squircle\">\n    <MenuTrigger>Squircle <i class=\"ph ph-caret-down\" /></MenuTrigger>\n    <MenuContent>\n      <MenuItem>Profile</MenuItem>\n      <MenuItem>Settings</MenuItem>\n    </MenuContent>\n  </Menu>\n</template>\n\n<script setup>\nimport { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/svelte'\n</script>\n\n<Menu>\n  <MenuTrigger>Default <i class=\"ph ph-caret-down\"></i></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"hard\">\n  <MenuTrigger>Hard <i class=\"ph ph-caret-down\"></i></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>\n<Menu shape=\"squircle\">\n  <MenuTrigger>Squircle <i class=\"ph ph-caret-down\"></i></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Profile</MenuItem>\n    <MenuItem>Settings</MenuItem>\n  </MenuContent>\n</Menu>"
       },
       "id": "components-menu-2",
+      "page": "Menu",
+      "pageUrl": "https://zui.zander.wtf/components/menu",
+      "title": "Shape"
+    },
+    {
+      "frameworks": {
+        "astro": "---\nimport { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'\n---\n\n<Menu side=\"top\" align=\"end\">\n  <MenuTrigger variant=\"outline\">More <i class=\"ph ph-dots-three\" /></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Rename</MenuItem>\n    <MenuItem>Duplicate</MenuItem>\n    <MenuItem>Archive</MenuItem>\n  </MenuContent>\n</Menu>"
+      },
+      "id": "components-menu-3",
       "page": "Menu",
       "pageUrl": "https://zui.zander.wtf/components/menu",
       "title": "Positioning"
@@ -3358,7 +3649,7 @@
       "frameworks": {
         "astro": "---\nimport { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'\n---\n\n<Menu>\n  <MenuTrigger variant=\"outline\">Jump to item</MenuTrigger>\n  <MenuContent>\n    <MenuItem textValue=\"profile\"><i class=\"ph ph-user\" /> Profile</MenuItem>\n    <MenuItem textValue=\"settings\"><i class=\"ph ph-gear\" /> Settings</MenuItem>\n    <MenuItem textValue=\"sign out\"><i class=\"ph ph-sign-out\" /> Sign out</MenuItem>\n  </MenuContent>\n</Menu>"
       },
-      "id": "components-menu-3",
+      "id": "components-menu-4",
       "page": "Menu",
       "pageUrl": "https://zui.zander.wtf/components/menu",
       "title": "Typeahead"
@@ -3372,7 +3663,7 @@
         "svelte": "<script lang=\"ts\">\n  import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/svelte'\n</script>\n\n<Menu>\n  <MenuTrigger variant=\"outline\">Actions <i class=\"ph ph-caret-down\"></i></MenuTrigger>\n  <MenuContent>\n    <MenuItem>Edit</MenuItem>\n    <MenuItem disabled>Archive</MenuItem>\n    <MenuItem>Delete</MenuItem>\n  </MenuContent>\n</Menu>",
         "vue": "<template>\n  <Menu>\n    <MenuTrigger variant=\"outline\">Actions <i class=\"ph ph-caret-down\" /></MenuTrigger>\n    <MenuContent>\n      <MenuItem>Edit</MenuItem>\n      <MenuItem disabled>Archive</MenuItem>\n      <MenuItem>Delete</MenuItem>\n    </MenuContent>\n  </Menu>\n</template>\n\n<script setup>\nimport { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'\n</script>"
       },
-      "id": "components-menu-4",
+      "id": "components-menu-5",
       "page": "Menu",
       "pageUrl": "https://zui.zander.wtf/components/menu",
       "title": "Disabled items"
@@ -3418,6 +3709,20 @@
       "page": "Popover",
       "pageUrl": "https://zui.zander.wtf/components/popover",
       "title": "With rich content"
+    },
+    {
+      "frameworks": {
+        "html": "<button\n  class=\"zui-button\"\n  popovertarget=\"sq-popover\"\n  style=\"anchor-name: --sq-popover\"\n>\n  Open popover\n</button>\n<div id=\"sq-popover\" popover class=\"zui-popover zui-popover-shape-squircle\" style=\"position-anchor: --sq-popover;\">\n  <p>Popover content goes here.</p>\n</div>",
+        "react": "import { Popover, Button } from '@mrmartineau/zui/react'\n\n<Button popovertarget=\"sq-popover\" style={{ anchorName: '--sq-popover' }}>\n  Open popover\n</Button>\n<Popover id=\"sq-popover\" shape=\"squircle\">\n  <p>Popover content goes here.</p>\n</Popover>",
+        "astro": "---\nimport { Popover, Button } from '@mrmartineau/zui/astro'\n---\n\n<Button popovertarget=\"sq-popover\" style=\"anchor-name: --sq-popover\">\n  Open popover\n</Button>\n<Popover id=\"sq-popover\" shape=\"squircle\">\n  <p>Popover content goes here.</p>\n</Popover>",
+        "solid": "import { Popover, Button } from '@mrmartineau/zui/solid'\n\n<Button popovertarget=\"sq-popover\" style={{ anchorName: '--sq-popover' }}>\n  Open popover\n</Button>\n<Popover id=\"sq-popover\" shape=\"squircle\">\n  <p>Popover content goes here.</p>\n</Popover>",
+        "vue": "<template>\n  <Button popovertarget=\"sq-popover\" style=\"anchor-name: --sq-popover\">\n    Open popover\n  </Button>\n  <Popover id=\"sq-popover\" shape=\"squircle\">\n    <p>Popover content goes here.</p>\n  </Popover>\n</template>\n\n<script setup>\nimport { Popover, Button } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Popover, Button } from '@mrmartineau/zui/svelte'\n</script>\n\n<Button popovertarget=\"sq-popover\" style=\"anchor-name: --sq-popover\">\n  Open popover\n</Button>\n<Popover id=\"sq-popover\" shape=\"squircle\">\n  <p>Popover content goes here.</p>\n</Popover>"
+      },
+      "id": "components-popover-3",
+      "page": "Popover",
+      "pageUrl": "https://zui.zander.wtf/components/popover",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -3502,6 +3807,20 @@
       "page": "Select",
       "pageUrl": "https://zui.zander.wtf/components/select",
       "title": "Disabled"
+    },
+    {
+      "frameworks": {
+        "html": "<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"default-select\">Default (rounded)</label>\n  <select class=\"zui-select\" id=\"default-select\"><option>Option one</option><option>Option two</option></select>\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"hard-select\">Hard</label>\n  <select class=\"zui-select zui-select-shape-hard\" id=\"hard-select\"><option>Option one</option><option>Option two</option></select>\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"soft-select\">Soft</label>\n  <select class=\"zui-select zui-select-shape-soft\" id=\"soft-select\"><option>Option one</option><option>Option two</option></select>\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"squircle-select\">Squircle</label>\n  <select class=\"zui-select zui-select-shape-squircle\" id=\"squircle-select\"><option>Option one</option><option>Option two</option></select>\n</div>",
+        "react": "import { Field, Label, Select } from '@mrmartineau/zui/react'\n\n<Field>\n  <Label htmlFor=\"default-select\">Default (rounded)</Label>\n  <Select id=\"default-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label htmlFor=\"hard-select\">Hard</Label>\n  <Select shape=\"hard\" id=\"hard-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label htmlFor=\"soft-select\">Soft</Label>\n  <Select shape=\"soft\" id=\"soft-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label htmlFor=\"squircle-select\">Squircle</Label>\n  <Select shape=\"squircle\" id=\"squircle-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>",
+        "astro": "---\nimport { Field, Label, Select } from '@mrmartineau/zui/astro'\n---\n\n<Field>\n  <Label for=\"default-select\">Default (rounded)</Label>\n  <Select id=\"default-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"hard-select\">Hard</Label>\n  <Select shape=\"hard\" id=\"hard-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"soft-select\">Soft</Label>\n  <Select shape=\"soft\" id=\"soft-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"squircle-select\">Squircle</Label>\n  <Select shape=\"squircle\" id=\"squircle-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>",
+        "solid": "import { Field, Label, Select } from '@mrmartineau/zui/solid'\n\n<Field>\n  <Label for=\"default-select\">Default (rounded)</Label>\n  <Select id=\"default-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"hard-select\">Hard</Label>\n  <Select shape=\"hard\" id=\"hard-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"soft-select\">Soft</Label>\n  <Select shape=\"soft\" id=\"soft-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"squircle-select\">Squircle</Label>\n  <Select shape=\"squircle\" id=\"squircle-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>",
+        "vue": "<template>\n  <Field>\n    <Label for=\"default-select\">Default (rounded)</Label>\n    <Select id=\"default-select\">\n      <option>Option one</option>\n      <option>Option two</option>\n    </Select>\n  </Field>\n  <Field>\n    <Label for=\"hard-select\">Hard</Label>\n    <Select shape=\"hard\" id=\"hard-select\">\n      <option>Option one</option>\n      <option>Option two</option>\n    </Select>\n  </Field>\n  <Field>\n    <Label for=\"soft-select\">Soft</Label>\n    <Select shape=\"soft\" id=\"soft-select\">\n      <option>Option one</option>\n      <option>Option two</option>\n    </Select>\n  </Field>\n  <Field>\n    <Label for=\"squircle-select\">Squircle</Label>\n    <Select shape=\"squircle\" id=\"squircle-select\">\n      <option>Option one</option>\n      <option>Option two</option>\n    </Select>\n  </Field>\n</template>\n\n<script setup>\nimport { Field, Label, Select } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Field, Label, Select } from '@mrmartineau/zui/svelte'\n</script>\n\n<Field>\n  <Label for=\"default-select\">Default (rounded)</Label>\n  <Select id=\"default-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"hard-select\">Hard</Label>\n  <Select shape=\"hard\" id=\"hard-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"soft-select\">Soft</Label>\n  <Select shape=\"soft\" id=\"soft-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>\n<Field>\n  <Label for=\"squircle-select\">Squircle</Label>\n  <Select shape=\"squircle\" id=\"squircle-select\">\n    <option>Option one</option>\n    <option>Option two</option>\n  </Select>\n</Field>"
+      },
+      "id": "components-select-3",
+      "page": "Select",
+      "pageUrl": "https://zui.zander.wtf/components/select",
+      "title": "Shape"
     },
     {
       "frameworks": {
@@ -3639,6 +3958,20 @@
     },
     {
       "frameworks": {
+        "html": "<div class=\"zui-tabs\" data-orientation=\"horizontal\">\n  <div class=\"zui-tabs-list\" role=\"tablist\" aria-label=\"Default tabs\">\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"true\" data-state=\"active\">Account</button>\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"false\">Security</button>\n  </div>\n  <div class=\"zui-tabs-content\" role=\"tabpanel\">Default</div>\n</div>\n<div class=\"zui-tabs zui-tabs-shape-hard\" data-orientation=\"horizontal\">\n  <div class=\"zui-tabs-list\" role=\"tablist\" aria-label=\"Hard tabs\">\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"true\" data-state=\"active\">Account</button>\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"false\">Security</button>\n  </div>\n  <div class=\"zui-tabs-content\" role=\"tabpanel\">Hard</div>\n</div>\n<div class=\"zui-tabs zui-tabs-shape-soft\" data-orientation=\"horizontal\">\n  <div class=\"zui-tabs-list\" role=\"tablist\" aria-label=\"Soft tabs\">\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"true\" data-state=\"active\">Account</button>\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"false\">Security</button>\n  </div>\n  <div class=\"zui-tabs-content\" role=\"tabpanel\">Soft</div>\n</div>\n<div class=\"zui-tabs zui-tabs-shape-squircle\" data-orientation=\"horizontal\">\n  <div class=\"zui-tabs-list\" role=\"tablist\" aria-label=\"Squircle tabs\">\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"true\" data-state=\"active\">Account</button>\n    <button class=\"zui-tabs-trigger\" type=\"button\" role=\"tab\" aria-selected=\"false\">Security</button>\n  </div>\n  <div class=\"zui-tabs-content\" role=\"tabpanel\">Squircle</div>\n</div>",
+        "react": "import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'\n\n<Tabs defaultValue=\"account\">\n  <TabsList aria-label=\"Default tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Default</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"hard\">\n  <TabsList aria-label=\"Hard tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Hard</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"soft\">\n  <TabsList aria-label=\"Soft tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Soft</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"squircle\">\n  <TabsList aria-label=\"Squircle tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Squircle</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>",
+        "astro": "---\nimport { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'\n---\n\n<Tabs defaultValue=\"account\">\n  <TabsList aria-label=\"Default tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Default</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"hard\">\n  <TabsList aria-label=\"Hard tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Hard</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"soft\">\n  <TabsList aria-label=\"Soft tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Soft</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"squircle\">\n  <TabsList aria-label=\"Squircle tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Squircle</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>",
+        "solid": "import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'\n\n<Tabs defaultValue=\"account\">\n  <TabsList aria-label=\"Default tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Default</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"hard\">\n  <TabsList aria-label=\"Hard tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Hard</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"soft\">\n  <TabsList aria-label=\"Soft tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Soft</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"squircle\">\n  <TabsList aria-label=\"Squircle tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Squircle</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>",
+        "vue": "<template>\n  <Tabs defaultValue=\"account\">\n    <TabsList aria-label=\"Default tabs\">\n      <TabsTrigger value=\"account\">Account</TabsTrigger>\n      <TabsTrigger value=\"security\">Security</TabsTrigger>\n    </TabsList>\n    <TabsContent value=\"account\">Default</TabsContent>\n    <TabsContent value=\"security\">Security settings</TabsContent>\n  </Tabs>\n  <Tabs defaultValue=\"account\" shape=\"hard\">\n    <TabsList aria-label=\"Hard tabs\">\n      <TabsTrigger value=\"account\">Account</TabsTrigger>\n      <TabsTrigger value=\"security\">Security</TabsTrigger>\n    </TabsList>\n    <TabsContent value=\"account\">Hard</TabsContent>\n    <TabsContent value=\"security\">Security settings</TabsContent>\n  </Tabs>\n  <Tabs defaultValue=\"account\" shape=\"soft\">\n    <TabsList aria-label=\"Soft tabs\">\n      <TabsTrigger value=\"account\">Account</TabsTrigger>\n      <TabsTrigger value=\"security\">Security</TabsTrigger>\n    </TabsList>\n    <TabsContent value=\"account\">Soft</TabsContent>\n    <TabsContent value=\"security\">Security settings</TabsContent>\n  </Tabs>\n  <Tabs defaultValue=\"account\" shape=\"squircle\">\n    <TabsList aria-label=\"Squircle tabs\">\n      <TabsTrigger value=\"account\">Account</TabsTrigger>\n      <TabsTrigger value=\"security\">Security</TabsTrigger>\n    </TabsList>\n    <TabsContent value=\"account\">Squircle</TabsContent>\n    <TabsContent value=\"security\">Security settings</TabsContent>\n  </Tabs>\n</template>\n\n<script setup>\nimport { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'\n</script>\n\n<Tabs defaultValue=\"account\">\n  <TabsList aria-label=\"Default tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Default</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"hard\">\n  <TabsList aria-label=\"Hard tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Hard</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"soft\">\n  <TabsList aria-label=\"Soft tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Soft</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>\n<Tabs defaultValue=\"account\" shape=\"squircle\">\n  <TabsList aria-label=\"Squircle tabs\">\n    <TabsTrigger value=\"account\">Account</TabsTrigger>\n    <TabsTrigger value=\"security\">Security</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"account\">Squircle</TabsContent>\n  <TabsContent value=\"security\">Security settings</TabsContent>\n</Tabs>"
+      },
+      "id": "components-tabs-7",
+      "page": "Tabs",
+      "pageUrl": "https://zui.zander.wtf/components/tabs",
+      "title": "Shape"
+    },
+    {
+      "frameworks": {
         "html": "<textarea class=\"zui-textarea\" placeholder=\"Write something...\"></textarea>",
         "react": "import { Textarea } from '@mrmartineau/zui/react'\n\n<Textarea placeholder=\"Write something...\" />",
         "astro": "---\nimport { Textarea } from '@mrmartineau/zui/astro'\n---\n\n<Textarea placeholder=\"Write something...\" />",
@@ -3695,6 +4028,20 @@
     },
     {
       "frameworks": {
+        "html": "<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"default-textarea\">Default (rounded)</label>\n  <textarea class=\"zui-textarea\" id=\"default-textarea\" placeholder=\"Type here\"></textarea>\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"hard-textarea\">Hard</label>\n  <textarea class=\"zui-textarea zui-textarea-shape-hard\" id=\"hard-textarea\" placeholder=\"Type here\"></textarea>\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"soft-textarea\">Soft</label>\n  <textarea class=\"zui-textarea zui-textarea-shape-soft\" id=\"soft-textarea\" placeholder=\"Type here\"></textarea>\n</div>\n<div class=\"zui-field\">\n  <label class=\"zui-label\" for=\"squircle-textarea\">Squircle</label>\n  <textarea class=\"zui-textarea zui-textarea-shape-squircle\" id=\"squircle-textarea\" placeholder=\"Type here\"></textarea>\n</div>",
+        "react": "import { Field, Label, Textarea } from '@mrmartineau/zui/react'\n\n<Field>\n  <Label htmlFor=\"default-textarea\">Default (rounded)</Label>\n  <Textarea id=\"default-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label htmlFor=\"hard-textarea\">Hard</Label>\n  <Textarea shape=\"hard\" id=\"hard-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label htmlFor=\"soft-textarea\">Soft</Label>\n  <Textarea shape=\"soft\" id=\"soft-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label htmlFor=\"squircle-textarea\">Squircle</Label>\n  <Textarea shape=\"squircle\" id=\"squircle-textarea\" placeholder=\"Type here\" />\n</Field>",
+        "astro": "---\nimport { Field, Label, Textarea } from '@mrmartineau/zui/astro'\n---\n\n<Field>\n  <Label for=\"default-textarea\">Default (rounded)</Label>\n  <Textarea id=\"default-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"hard-textarea\">Hard</Label>\n  <Textarea shape=\"hard\" id=\"hard-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"soft-textarea\">Soft</Label>\n  <Textarea shape=\"soft\" id=\"soft-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"squircle-textarea\">Squircle</Label>\n  <Textarea shape=\"squircle\" id=\"squircle-textarea\" placeholder=\"Type here\" />\n</Field>",
+        "solid": "import { Field, Label, Textarea } from '@mrmartineau/zui/solid'\n\n<Field>\n  <Label for=\"default-textarea\">Default (rounded)</Label>\n  <Textarea id=\"default-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"hard-textarea\">Hard</Label>\n  <Textarea shape=\"hard\" id=\"hard-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"soft-textarea\">Soft</Label>\n  <Textarea shape=\"soft\" id=\"soft-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"squircle-textarea\">Squircle</Label>\n  <Textarea shape=\"squircle\" id=\"squircle-textarea\" placeholder=\"Type here\" />\n</Field>",
+        "vue": "<template>\n  <Field>\n    <Label for=\"default-textarea\">Default (rounded)</Label>\n    <Textarea id=\"default-textarea\" placeholder=\"Type here\" />\n  </Field>\n  <Field>\n    <Label for=\"hard-textarea\">Hard</Label>\n    <Textarea shape=\"hard\" id=\"hard-textarea\" placeholder=\"Type here\" />\n  </Field>\n  <Field>\n    <Label for=\"soft-textarea\">Soft</Label>\n    <Textarea shape=\"soft\" id=\"soft-textarea\" placeholder=\"Type here\" />\n  </Field>\n  <Field>\n    <Label for=\"squircle-textarea\">Squircle</Label>\n    <Textarea shape=\"squircle\" id=\"squircle-textarea\" placeholder=\"Type here\" />\n  </Field>\n</template>\n\n<script setup>\nimport { Field, Label, Textarea } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Field, Label, Textarea } from '@mrmartineau/zui/svelte'\n</script>\n\n<Field>\n  <Label for=\"default-textarea\">Default (rounded)</Label>\n  <Textarea id=\"default-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"hard-textarea\">Hard</Label>\n  <Textarea shape=\"hard\" id=\"hard-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"soft-textarea\">Soft</Label>\n  <Textarea shape=\"soft\" id=\"soft-textarea\" placeholder=\"Type here\" />\n</Field>\n<Field>\n  <Label for=\"squircle-textarea\">Squircle</Label>\n  <Textarea shape=\"squircle\" id=\"squircle-textarea\" placeholder=\"Type here\" />\n</Field>"
+      },
+      "id": "components-textarea-4",
+      "page": "Textarea",
+      "pageUrl": "https://zui.zander.wtf/components/textarea",
+      "title": "Shape"
+    },
+    {
+      "frameworks": {
         "html": "<span class=\"zui-tooltip\">\n  <button class=\"zui-button\" style=\"anchor-name: --tooltip-demo\" data-tooltip-trigger=\"tooltip-demo\">Hover me</button>\n  <span popover=\"manual\" id=\"tooltip-demo\" class=\"zui-tooltip-content zui-tooltip-placement-top\" style=\"position-anchor: --tooltip-demo\" role=\"tooltip\">Helpful information</span>\n</span>\n\n<script>\n  document.querySelectorAll('[data-tooltip-trigger]').forEach((trigger) => {\n    const popover = document.getElementById(trigger.dataset.tooltipTrigger)\n    if (!popover) return\n    trigger.addEventListener('mouseenter', () => popover.showPopover())\n    trigger.addEventListener('mouseleave', () => popover.hidePopover())\n    trigger.addEventListener('focus', () => popover.showPopover())\n    trigger.addEventListener('blur', () => popover.hidePopover())\n  })\n</script>",
         "react": "import { Tooltip, Button } from '@mrmartineau/zui/react'\n\n<Tooltip text=\"Helpful information\">\n  <Button>Hover me</Button>\n</Tooltip>",
         "astro": "---\nimport { Tooltip, Button } from '@mrmartineau/zui/astro'\n---\n\n<Tooltip text=\"Helpful information\">\n  <Button>Hover me</Button>\n</Tooltip>",
@@ -3720,6 +4067,20 @@
       "page": "Tooltip",
       "pageUrl": "https://zui.zander.wtf/components/tooltip",
       "title": "Placement"
+    },
+    {
+      "frameworks": {
+        "html": "<span class=\"zui-tooltip\">\n  <button class=\"zui-button\" style=\"anchor-name: --sq-tooltip-default\" data-tooltip-trigger=\"sq-tooltip-default\">Default</button>\n  <span popover=\"manual\" id=\"sq-tooltip-default\" class=\"zui-tooltip-content zui-tooltip-placement-top\" style=\"position-anchor: --sq-tooltip-default\" role=\"tooltip\">Helpful information</span>\n</span>\n<span class=\"zui-tooltip zui-tooltip-shape-hard\">\n  <button class=\"zui-button\" style=\"anchor-name: --sq-tooltip-hard\" data-tooltip-trigger=\"sq-tooltip-hard\">Hard</button>\n  <span popover=\"manual\" id=\"sq-tooltip-hard\" class=\"zui-tooltip-content zui-tooltip-placement-top\" style=\"position-anchor: --sq-tooltip-hard\" role=\"tooltip\">Helpful information</span>\n</span>\n<span class=\"zui-tooltip zui-tooltip-shape-soft\">\n  <button class=\"zui-button\" style=\"anchor-name: --sq-tooltip-soft\" data-tooltip-trigger=\"sq-tooltip-soft\">Soft</button>\n  <span popover=\"manual\" id=\"sq-tooltip-soft\" class=\"zui-tooltip-content zui-tooltip-placement-top\" style=\"position-anchor: --sq-tooltip-soft\" role=\"tooltip\">Helpful information</span>\n</span>\n<span class=\"zui-tooltip zui-tooltip-shape-squircle\">\n  <button class=\"zui-button\" style=\"anchor-name: --sq-tooltip-squircle\" data-tooltip-trigger=\"sq-tooltip-squircle\">Squircle</button>\n  <span popover=\"manual\" id=\"sq-tooltip-squircle\" class=\"zui-tooltip-content zui-tooltip-placement-top\" style=\"position-anchor: --sq-tooltip-squircle\" role=\"tooltip\">Helpful information</span>\n</span>\n\n<script>\n  document.querySelectorAll('[data-tooltip-trigger]').forEach((trigger) => {\n    const popover = document.getElementById(trigger.dataset.tooltipTrigger)\n    if (!popover) return\n    trigger.addEventListener('mouseenter', () => popover.showPopover())\n    trigger.addEventListener('mouseleave', () => popover.hidePopover())\n    trigger.addEventListener('focus', () => popover.showPopover())\n    trigger.addEventListener('blur', () => popover.hidePopover())\n  })\n</script>",
+        "react": "import { Tooltip, Button } from '@mrmartineau/zui/react'\n\n<Tooltip text=\"Helpful information\">\n  <Button>Default</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"hard\">\n  <Button>Hard</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"soft\">\n  <Button>Soft</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"squircle\">\n  <Button>Squircle</Button>\n</Tooltip>",
+        "astro": "---\nimport { Tooltip, Button } from '@mrmartineau/zui/astro'\n---\n\n<Tooltip text=\"Helpful information\">\n  <Button>Default</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"hard\">\n  <Button>Hard</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"soft\">\n  <Button>Soft</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"squircle\">\n  <Button>Squircle</Button>\n</Tooltip>",
+        "solid": "import { Tooltip, Button } from '@mrmartineau/zui/solid'\n\n<Tooltip text=\"Helpful information\">\n  <Button>Default</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"hard\">\n  <Button>Hard</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"soft\">\n  <Button>Soft</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"squircle\">\n  <Button>Squircle</Button>\n</Tooltip>",
+        "vue": "<template>\n  <Tooltip text=\"Helpful information\">\n    <Button>Default</Button>\n  </Tooltip>\n  <Tooltip text=\"Helpful information\" shape=\"hard\">\n    <Button>Hard</Button>\n  </Tooltip>\n  <Tooltip text=\"Helpful information\" shape=\"soft\">\n    <Button>Soft</Button>\n  </Tooltip>\n  <Tooltip text=\"Helpful information\" shape=\"squircle\">\n    <Button>Squircle</Button>\n  </Tooltip>\n</template>\n\n<script setup>\nimport { Tooltip, Button } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Tooltip, Button } from '@mrmartineau/zui/svelte'\n</script>\n\n<Tooltip text=\"Helpful information\">\n  <Button>Default</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"hard\">\n  <Button>Hard</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"soft\">\n  <Button>Soft</Button>\n</Tooltip>\n<Tooltip text=\"Helpful information\" shape=\"squircle\">\n  <Button>Squircle</Button>\n</Tooltip>"
+      },
+      "id": "components-tooltip-2",
+      "page": "Tooltip",
+      "pageUrl": "https://zui.zander.wtf/components/tooltip",
+      "title": "Shape"
     },
     {
       "frameworks": {

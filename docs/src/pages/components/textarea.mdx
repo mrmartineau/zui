@@ -152,6 +152,148 @@ import { Textarea } from '@mrmartineau/zui/vue'
   <textarea class="zui-textarea" disabled>Cannot edit this</textarea>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners. It works the same as on [Button](/components/button#shape): `default` (rounded), `hard` (square), `soft` (pill) and `squircle`. On a textarea, `soft` uses `--radius-3xl` instead of a full pill, so text in the corners is not cut off.
+
+A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners. To make squircle the default everywhere, see [Squircle](/utilities/squircle).
+
+<Demo
+  html={`<div class="zui-field">
+  <label class="zui-label" for="default-textarea">Default (rounded)</label>
+  <textarea class="zui-textarea" id="default-textarea" placeholder="Type here"></textarea>
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="hard-textarea">Hard</label>
+  <textarea class="zui-textarea zui-textarea-shape-hard" id="hard-textarea" placeholder="Type here"></textarea>
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="soft-textarea">Soft</label>
+  <textarea class="zui-textarea zui-textarea-shape-soft" id="soft-textarea" placeholder="Type here"></textarea>
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="squircle-textarea">Squircle</label>
+  <textarea class="zui-textarea zui-textarea-shape-squircle" id="squircle-textarea" placeholder="Type here"></textarea>
+</div>`}
+  react={`import { Field, Label, Textarea } from '@mrmartineau/zui/react'
+
+<Field>
+  <Label htmlFor="default-textarea">Default (rounded)</Label>
+  <Textarea id="default-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label htmlFor="hard-textarea">Hard</Label>
+  <Textarea shape="hard" id="hard-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label htmlFor="soft-textarea">Soft</Label>
+  <Textarea shape="soft" id="soft-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label htmlFor="squircle-textarea">Squircle</Label>
+  <Textarea shape="squircle" id="squircle-textarea" placeholder="Type here" />
+</Field>`}
+  astro={`---
+import { Field, Label, Textarea } from '@mrmartineau/zui/astro'
+---
+
+<Field>
+  <Label for="default-textarea">Default (rounded)</Label>
+  <Textarea id="default-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="hard-textarea">Hard</Label>
+  <Textarea shape="hard" id="hard-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="soft-textarea">Soft</Label>
+  <Textarea shape="soft" id="soft-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="squircle-textarea">Squircle</Label>
+  <Textarea shape="squircle" id="squircle-textarea" placeholder="Type here" />
+</Field>`}
+  solid={`import { Field, Label, Textarea } from '@mrmartineau/zui/solid'
+
+<Field>
+  <Label for="default-textarea">Default (rounded)</Label>
+  <Textarea id="default-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="hard-textarea">Hard</Label>
+  <Textarea shape="hard" id="hard-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="soft-textarea">Soft</Label>
+  <Textarea shape="soft" id="soft-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="squircle-textarea">Squircle</Label>
+  <Textarea shape="squircle" id="squircle-textarea" placeholder="Type here" />
+</Field>`}
+  vue={`<template>
+  <Field>
+    <Label for="default-textarea">Default (rounded)</Label>
+    <Textarea id="default-textarea" placeholder="Type here" />
+  </Field>
+  <Field>
+    <Label for="hard-textarea">Hard</Label>
+    <Textarea shape="hard" id="hard-textarea" placeholder="Type here" />
+  </Field>
+  <Field>
+    <Label for="soft-textarea">Soft</Label>
+    <Textarea shape="soft" id="soft-textarea" placeholder="Type here" />
+  </Field>
+  <Field>
+    <Label for="squircle-textarea">Squircle</Label>
+    <Textarea shape="squircle" id="squircle-textarea" placeholder="Type here" />
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, Textarea } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, Textarea } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field>
+  <Label for="default-textarea">Default (rounded)</Label>
+  <Textarea id="default-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="hard-textarea">Hard</Label>
+  <Textarea shape="hard" id="hard-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="soft-textarea">Soft</Label>
+  <Textarea shape="soft" id="soft-textarea" placeholder="Type here" />
+</Field>
+<Field>
+  <Label for="squircle-textarea">Squircle</Label>
+  <Textarea shape="squircle" id="squircle-textarea" placeholder="Type here" />
+</Field>`}
+>
+  <div class="flow" style="width: 100%;">
+    <div class="zui-field">
+      <label class="zui-label" for="sq-default-textarea">Default (rounded)</label>
+      <textarea class="zui-textarea" id="sq-default-textarea" placeholder="Type here"></textarea>
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-hard-textarea">Hard</label>
+      <textarea class="zui-textarea zui-textarea-shape-hard" id="sq-hard-textarea" placeholder="Type here"></textarea>
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-soft-textarea">Soft</label>
+      <textarea class="zui-textarea zui-textarea-shape-soft" id="sq-soft-textarea" placeholder="Type here"></textarea>
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-squircle-textarea">Squircle</label>
+      <textarea class="zui-textarea zui-textarea-shape-squircle" id="sq-squircle-textarea" placeholder="Type here"></textarea>
+    </div>
+  </div>
+</Demo>
+
 ## CSS custom properties
 
 | Property | Default | Description |

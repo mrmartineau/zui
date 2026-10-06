@@ -676,6 +676,256 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
   </Tabs>
 </Demo>
 
+## Shape
+
+Use the `shape` prop on `Tabs` to change the corners of the tab list and triggers: `default` (rounded), `hard` (square), `soft` (pill) or `squircle`. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners. Underline tabs keep square corners with any shape.
+
+<Demo
+  html={`<div class="zui-tabs" data-orientation="horizontal">
+  <div class="zui-tabs-list" role="tablist" aria-label="Default tabs">
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true" data-state="active">Account</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+  </div>
+  <div class="zui-tabs-content" role="tabpanel">Default</div>
+</div>
+<div class="zui-tabs zui-tabs-shape-hard" data-orientation="horizontal">
+  <div class="zui-tabs-list" role="tablist" aria-label="Hard tabs">
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true" data-state="active">Account</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+  </div>
+  <div class="zui-tabs-content" role="tabpanel">Hard</div>
+</div>
+<div class="zui-tabs zui-tabs-shape-soft" data-orientation="horizontal">
+  <div class="zui-tabs-list" role="tablist" aria-label="Soft tabs">
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true" data-state="active">Account</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+  </div>
+  <div class="zui-tabs-content" role="tabpanel">Soft</div>
+</div>
+<div class="zui-tabs zui-tabs-shape-squircle" data-orientation="horizontal">
+  <div class="zui-tabs-list" role="tablist" aria-label="Squircle tabs">
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="true" data-state="active">Account</button>
+    <button class="zui-tabs-trigger" type="button" role="tab" aria-selected="false">Security</button>
+  </div>
+  <div class="zui-tabs-content" role="tabpanel">Squircle</div>
+</div>`}
+  react={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/react'
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Default tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Default</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="hard">
+  <TabsList aria-label="Hard tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Hard</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="soft">
+  <TabsList aria-label="Soft tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Soft</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="squircle">
+  <TabsList aria-label="Squircle tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Squircle</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>`}
+  astro={`---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/astro'
+---
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Default tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Default</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="hard">
+  <TabsList aria-label="Hard tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Hard</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="soft">
+  <TabsList aria-label="Soft tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Soft</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="squircle">
+  <TabsList aria-label="Squircle tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Squircle</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>`}
+  solid={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/solid'
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Default tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Default</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="hard">
+  <TabsList aria-label="Hard tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Hard</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="soft">
+  <TabsList aria-label="Soft tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Soft</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="squircle">
+  <TabsList aria-label="Squircle tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Squircle</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>`}
+  vue={`<template>
+  <Tabs defaultValue="account">
+    <TabsList aria-label="Default tabs">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">Default</TabsContent>
+    <TabsContent value="security">Security settings</TabsContent>
+  </Tabs>
+  <Tabs defaultValue="account" shape="hard">
+    <TabsList aria-label="Hard tabs">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">Hard</TabsContent>
+    <TabsContent value="security">Security settings</TabsContent>
+  </Tabs>
+  <Tabs defaultValue="account" shape="soft">
+    <TabsList aria-label="Soft tabs">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">Soft</TabsContent>
+    <TabsContent value="security">Security settings</TabsContent>
+  </Tabs>
+  <Tabs defaultValue="account" shape="squircle">
+    <TabsList aria-label="Squircle tabs">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="security">Security</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">Squircle</TabsContent>
+    <TabsContent value="security">Security settings</TabsContent>
+  </Tabs>
+</template>
+
+<script setup>
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Tabs, TabsList, TabsTrigger, TabsContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Tabs defaultValue="account">
+  <TabsList aria-label="Default tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Default</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="hard">
+  <TabsList aria-label="Hard tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Hard</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="soft">
+  <TabsList aria-label="Soft tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Soft</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>
+<Tabs defaultValue="account" shape="squircle">
+  <TabsList aria-label="Squircle tabs">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="security">Security</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Squircle</TabsContent>
+  <TabsContent value="security">Security settings</TabsContent>
+</Tabs>`}
+>
+  <div class="flow">
+    <Tabs defaultValue="account">
+      <TabsList aria-label="Default tabs">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Default</TabsContent>
+      <TabsContent value="security">Security settings</TabsContent>
+    </Tabs>
+    <Tabs defaultValue="account" shape="hard">
+      <TabsList aria-label="Hard tabs">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Hard</TabsContent>
+      <TabsContent value="security">Security settings</TabsContent>
+    </Tabs>
+    <Tabs defaultValue="account" shape="soft">
+      <TabsList aria-label="Soft tabs">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Soft</TabsContent>
+      <TabsContent value="security">Security settings</TabsContent>
+    </Tabs>
+    <Tabs defaultValue="account" shape="squircle">
+      <TabsList aria-label="Squircle tabs">
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Squircle</TabsContent>
+      <TabsContent value="security">Security settings</TabsContent>
+    </Tabs>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

@@ -2,7 +2,8 @@
   /* squircle - limited browser support.
    * .zui-squircle: one element.
    * .zui-squircle-all: every ZUI component inside it (put it on <html> for a global default).
-   * Variants that are square or pill on purpose keep their shape. */
+   * Variants that are square or pill on purpose keep their shape: a hard or
+   * soft shape prop wins, and menu/tooltip/tabs roots pass it to their parts. */
   .zui-squircle,
   .zui-squircle-all
     :is(
@@ -24,10 +25,13 @@
       .zui-app-shell-toggle,
       .zui-app-shell-skip-link
     ):not(
-      .zui-button-shape-hard,
-      .zui-button-shape-soft,
-      .zui-avatar-shape-hard,
-      .zui-avatar-shape-soft,
+      [class*="-shape-hard"],
+      [class*="-shape-soft"],
+      :is(.zui-menu, .zui-tooltip, .zui-tabs):is(
+          [class*="-shape-hard"],
+          [class*="-shape-soft"]
+        )
+        *,
       .zui-dialog-position-left,
       .zui-dialog-position-right,
       .zui-dialog-position-top,
@@ -38,15 +42,31 @@
     @supports (corner-shape: squircle) {
       corner-shape: superellipse(1.25);
       border-radius: 20px;
+
+      /* Chrome's outline-style: auto ignores corner-shape and draws a round
+       * ring outside the offset. A solid ring follows the squircle; the
+       * offset puts it where the auto ring sits on other shapes. */
+      &:focus-visible {
+        outline-style: solid;
+        outline-offset: calc(var(--focus-ring-offset) - 2px);
+      }
     }
   }
 
   /* small or nested parts keep their own radius: tabs triggers nest inside
    * the list, and a 20px radius would turn a checkbox into a circle.
    * Radios stay round on purpose. */
-  .zui-squircle-all :is(.zui-tabs-trigger, .zui-checkbox input[type="checkbox"]) {
+  .zui-squircle-all
+  :is(.zui-tabs-trigger, .zui-checkbox input[type="checkbox"]):not(
+    .zui-tabs:is([class*="-shape-hard"], [class*="-shape-soft"]) *
+  ) {
     @supports (corner-shape: squircle) {
       corner-shape: superellipse(1.25);
+
+      &:focus-visible {
+        outline-style: solid;
+        outline-offset: calc(var(--focus-ring-offset) - 2px);
+      }
     }
   }
 }

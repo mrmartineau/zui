@@ -55,4 +55,33 @@
   .zui-select:user-invalid {
     border-color: var(--color-error);
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-select-radius */
+
+  /* hard */
+  .zui-select.zui-select-shape-hard {
+    --zui-select-radius: 0;
+  }
+
+  /* soft */
+  .zui-select.zui-select-shape-soft {
+    --zui-select-radius: 9999px;
+  }
+
+  /* squircle - limited browser support */
+  .zui-select.zui-select-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+
+      /* auto focus ring ignores corner-shape, see utilities/squircle.css */
+      &:focus-visible {
+        outline-style: solid;
+        outline-offset: calc(var(--focus-ring-offset) - 2px);
+      }
+    }
+  }
 }

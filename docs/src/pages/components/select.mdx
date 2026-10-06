@@ -213,6 +213,208 @@ import { Select } from '@mrmartineau/zui/vue'
   </select>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners. It works the same as on [Button](/components/button#shape): `default` (rounded), `hard` (square), `soft` (pill) and `squircle`.
+
+A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners. To make squircle the default everywhere, see [Squircle](/utilities/squircle).
+
+<Demo
+  html={`<div class="zui-field">
+  <label class="zui-label" for="default-select">Default (rounded)</label>
+  <select class="zui-select" id="default-select"><option>Option one</option><option>Option two</option></select>
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="hard-select">Hard</label>
+  <select class="zui-select zui-select-shape-hard" id="hard-select"><option>Option one</option><option>Option two</option></select>
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="soft-select">Soft</label>
+  <select class="zui-select zui-select-shape-soft" id="soft-select"><option>Option one</option><option>Option two</option></select>
+</div>
+<div class="zui-field">
+  <label class="zui-label" for="squircle-select">Squircle</label>
+  <select class="zui-select zui-select-shape-squircle" id="squircle-select"><option>Option one</option><option>Option two</option></select>
+</div>`}
+  react={`import { Field, Label, Select } from '@mrmartineau/zui/react'
+
+<Field>
+  <Label htmlFor="default-select">Default (rounded)</Label>
+  <Select id="default-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label htmlFor="hard-select">Hard</Label>
+  <Select shape="hard" id="hard-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label htmlFor="soft-select">Soft</Label>
+  <Select shape="soft" id="soft-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label htmlFor="squircle-select">Squircle</Label>
+  <Select shape="squircle" id="squircle-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>`}
+  astro={`---
+import { Field, Label, Select } from '@mrmartineau/zui/astro'
+---
+
+<Field>
+  <Label for="default-select">Default (rounded)</Label>
+  <Select id="default-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="hard-select">Hard</Label>
+  <Select shape="hard" id="hard-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="soft-select">Soft</Label>
+  <Select shape="soft" id="soft-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="squircle-select">Squircle</Label>
+  <Select shape="squircle" id="squircle-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>`}
+  solid={`import { Field, Label, Select } from '@mrmartineau/zui/solid'
+
+<Field>
+  <Label for="default-select">Default (rounded)</Label>
+  <Select id="default-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="hard-select">Hard</Label>
+  <Select shape="hard" id="hard-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="soft-select">Soft</Label>
+  <Select shape="soft" id="soft-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="squircle-select">Squircle</Label>
+  <Select shape="squircle" id="squircle-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>`}
+  vue={`<template>
+  <Field>
+    <Label for="default-select">Default (rounded)</Label>
+    <Select id="default-select">
+      <option>Option one</option>
+      <option>Option two</option>
+    </Select>
+  </Field>
+  <Field>
+    <Label for="hard-select">Hard</Label>
+    <Select shape="hard" id="hard-select">
+      <option>Option one</option>
+      <option>Option two</option>
+    </Select>
+  </Field>
+  <Field>
+    <Label for="soft-select">Soft</Label>
+    <Select shape="soft" id="soft-select">
+      <option>Option one</option>
+      <option>Option two</option>
+    </Select>
+  </Field>
+  <Field>
+    <Label for="squircle-select">Squircle</Label>
+    <Select shape="squircle" id="squircle-select">
+      <option>Option one</option>
+      <option>Option two</option>
+    </Select>
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, Select } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, Select } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field>
+  <Label for="default-select">Default (rounded)</Label>
+  <Select id="default-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="hard-select">Hard</Label>
+  <Select shape="hard" id="hard-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="soft-select">Soft</Label>
+  <Select shape="soft" id="soft-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>
+<Field>
+  <Label for="squircle-select">Squircle</Label>
+  <Select shape="squircle" id="squircle-select">
+    <option>Option one</option>
+    <option>Option two</option>
+  </Select>
+</Field>`}
+>
+  <div class="flow" style="width: 100%;">
+    <div class="zui-field">
+      <label class="zui-label" for="sq-default-select">Default (rounded)</label>
+      <select class="zui-select" id="sq-default-select"><option>Option one</option><option>Option two</option></select>
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-hard-select">Hard</label>
+      <select class="zui-select zui-select-shape-hard" id="sq-hard-select"><option>Option one</option><option>Option two</option></select>
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-soft-select">Soft</label>
+      <select class="zui-select zui-select-shape-soft" id="sq-soft-select"><option>Option one</option><option>Option two</option></select>
+    </div>
+    <div class="zui-field">
+      <label class="zui-label" for="sq-squircle-select">Squircle</label>
+      <select class="zui-select zui-select-shape-squircle" id="sq-squircle-select"><option>Option one</option><option>Option two</option></select>
+    </div>
+  </div>
+</Demo>
+
 ## CSS custom properties
 
 | Property | Default | Description |

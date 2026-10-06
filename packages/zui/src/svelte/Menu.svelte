@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { VariantProps } from 'cva'
 import type { Snippet } from 'svelte'
 import type { HTMLAttributes } from 'svelte/elements'
 import {
@@ -7,7 +8,10 @@ import {
   type MenuDirection,
   type MenuSide,
 } from '../core/menu'
+import { menuVariants } from '../shared/menuVariants'
 import { setMenuContext } from './menuContext'
+
+type MenuVariantProps = VariantProps<typeof menuVariants>
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   align?: MenuAlign
@@ -19,6 +23,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
   onOpenChange?: (open: boolean) => void
   open?: boolean
   side?: MenuSide
+  shape?: MenuVariantProps['shape']
   class?: string
   children?: Snippet
 }
@@ -33,6 +38,7 @@ let {
   modal,
   onOpenChange,
   open,
+  shape,
   side,
   children,
   ...rest
@@ -89,7 +95,7 @@ setMenuContext({
 <div
   {...rest}
   bind:this={root}
-  class={['zui-menu', className].filter(Boolean).join(' ')}
+  class={menuVariants({ className, shape })}
   data-align={snapshot.align}
   data-disabled={snapshot.disabled ? 'true' : undefined}
   data-side={snapshot.side}

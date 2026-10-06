@@ -255,4 +255,22 @@
       }
     }
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via base --zui-dialog-radius */
+
+  /* hard */
+  .zui-dialog.zui-dialog-shape-hard {
+    --zui-dialog-radius: 0;
+  }
+
+  /* squircle - limited browser support */
+  .zui-dialog.zui-dialog-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

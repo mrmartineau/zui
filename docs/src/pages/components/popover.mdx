@@ -367,6 +367,88 @@ import { Popover, Button } from '@mrmartineau/zui/vue'
   </div>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (rounded), `hard` (square) or `squircle` (a rounded square with smooth corners). Browsers without `corner-shape` support show normal rounded corners for `squircle`.
+
+<Demo
+  html={`<button
+  class="zui-button"
+  popovertarget="sq-popover"
+  style="anchor-name: --sq-popover"
+>
+  Open popover
+</button>
+<div id="sq-popover" popover class="zui-popover zui-popover-shape-squircle" style="position-anchor: --sq-popover;">
+  <p>Popover content goes here.</p>
+</div>`}
+  react={`import { Popover, Button } from '@mrmartineau/zui/react'
+
+<Button popovertarget="sq-popover" style={{ anchorName: '--sq-popover' }}>
+  Open popover
+</Button>
+<Popover id="sq-popover" shape="squircle">
+  <p>Popover content goes here.</p>
+</Popover>`}
+  astro={`---
+import { Popover, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button popovertarget="sq-popover" style="anchor-name: --sq-popover">
+  Open popover
+</Button>
+<Popover id="sq-popover" shape="squircle">
+  <p>Popover content goes here.</p>
+</Popover>`}
+  solid={`import { Popover, Button } from '@mrmartineau/zui/solid'
+
+<Button popovertarget="sq-popover" style={{ anchorName: '--sq-popover' }}>
+  Open popover
+</Button>
+<Popover id="sq-popover" shape="squircle">
+  <p>Popover content goes here.</p>
+</Popover>`}
+  vue={`<template>
+  <Button popovertarget="sq-popover" style="anchor-name: --sq-popover">
+    Open popover
+  </Button>
+  <Popover id="sq-popover" shape="squircle">
+    <p>Popover content goes here.</p>
+  </Popover>
+</template>
+
+<script setup>
+import { Popover, Button } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Popover, Button } from '@mrmartineau/zui/svelte'
+</script>
+
+<Button popovertarget="sq-popover" style="anchor-name: --sq-popover">
+  Open popover
+</Button>
+<Popover id="sq-popover" shape="squircle">
+  <p>Popover content goes here.</p>
+</Popover>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <button class="zui-button zui-button-variant-outline" popovertarget="sq-popover-default" style="anchor-name: --sq-popover-default">Default</button>
+    <div id="sq-popover-default" popover class="zui-popover" style="position-anchor: --sq-popover-default;">
+      <p>This popover uses the <code>default</code> shape.</p>
+    </div>
+    <button class="zui-button zui-button-variant-outline" popovertarget="sq-popover-hard" style="anchor-name: --sq-popover-hard">Hard</button>
+    <div id="sq-popover-hard" popover class="zui-popover zui-popover-shape-hard" style="position-anchor: --sq-popover-hard;">
+      <p>This popover uses the <code>hard</code> shape.</p>
+    </div>
+    <button class="zui-button zui-button-variant-outline" popovertarget="sq-popover-squircle" style="anchor-name: --sq-popover-squircle">Squircle</button>
+    <div id="sq-popover-squircle" popover class="zui-popover zui-popover-shape-squircle" style="position-anchor: --sq-popover-squircle;">
+      <p>This popover uses the <code>squircle</code> shape.</p>
+    </div>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

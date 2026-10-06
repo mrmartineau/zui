@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<'span'>, TooltipVariantProps {
   class?: string
 }
 
-const { text, placement, class: className, ...props } = Astro.props
+const { text, placement, shape, class: className, ...props } = Astro.props
 
 const id = `tooltip-${Math.random().toString(36).slice(2, 9)}`
 const anchorName = `--${id}`
@@ -22,9 +22,12 @@ const contentClasses = [
 ]
   .filter(Boolean)
   .join(' ')
+const shapeClass = tooltipVariants({ shape })
+  .split(' ')
+  .find((c) => c.startsWith('zui-tooltip-shape-'))
 ---
 
-<span class:list={['zui-tooltip', className]} {...props}>
+<span class:list={['zui-tooltip', shapeClass, className]} {...props}>
   <span
     style={`anchor-name: ${anchorName}`}
     data-tooltip-trigger={id}

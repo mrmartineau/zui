@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import type { VariantProps } from 'cva'
 import { computed, onUnmounted, ref, watchEffect } from 'vue'
 import {
   createTabsController,
@@ -25,6 +26,8 @@ import { provideTabsContext } from './tabsContext'
 
 defineOptions({ inheritAttrs: false })
 
+type TabsVariantProps = VariantProps<typeof tabsVariants>
+
 const props = defineProps<{
   activationMode?: TabsActivationMode
   class?: string
@@ -34,6 +37,7 @@ const props = defineProps<{
   id?: string
   onValueChange?: (value: string) => void
   orientation?: TabsOrientation
+  shape?: TabsVariantProps['shape']
   value?: string
 }>()
 
@@ -75,5 +79,7 @@ provideTabsContext({
   snapshot,
 })
 
-const classes = computed(() => tabsVariants({ className: props.class }))
+const classes = computed(() =>
+  tabsVariants({ className: props.class, shape: props.shape }),
+)
 </script>

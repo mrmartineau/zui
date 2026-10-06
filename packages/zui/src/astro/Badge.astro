@@ -9,8 +9,8 @@ interface Props extends HTMLAttributes<'span'>, BadgeVariantProps {
   class?: string
 }
 
-const { class: className, variant, color, ...props } = Astro.props
-const classes = badgeVariants({ class: className, color, variant })
+const { class: className, variant, color, shape, ...props } = Astro.props
+const classes = badgeVariants({ class: className, color, shape, variant })
 ---
 
 <span class={classes} {...props}><slot /></span>

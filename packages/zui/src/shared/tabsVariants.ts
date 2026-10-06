@@ -2,6 +2,17 @@ import { cva } from 'cva'
 
 export const tabsVariants = cva({
   base: 'zui-tabs',
+  defaultVariants: {
+    shape: 'default',
+  },
+  variants: {
+    shape: {
+      default: '',
+      hard: 'zui-tabs-shape-hard',
+      soft: 'zui-tabs-shape-soft',
+      squircle: 'zui-tabs-shape-squircle',
+    },
+  },
 })
 
 export const tabsListVariants = cva({

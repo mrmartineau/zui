@@ -58,4 +58,22 @@
   .zui-menu-item[data-disabled="true"] {
     opacity: 0.5;
   }
+
+  /* -------------------------------------------------------------------------
+   * Shape
+   * ---------------------------------------------------------------------- */
+  /* default shape already set via --zui-menu-radius on .zui-menu-content */
+
+  /* hard */
+  .zui-menu.zui-menu-shape-hard .zui-menu-content {
+    --zui-menu-radius: 0;
+  }
+
+  /* squircle - limited browser support */
+  .zui-menu.zui-menu-shape-squircle .zui-menu-content {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
 }

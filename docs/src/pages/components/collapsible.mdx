@@ -140,6 +140,174 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartinea
   </details>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (rounded), `hard` (square) or `squircle` (a rounded square with smooth corners). Browsers without `corner-shape` support show normal rounded corners for `squircle`.
+
+<Demo
+  html={`<details class="zui-collapsible">
+  <summary class="zui-collapsible-trigger">Default</summary>
+  <div class="zui-collapsible-content">
+    <p>Collapsible content.</p>
+  </div>
+</details>
+
+<details class="zui-collapsible zui-collapsible-shape-hard">
+  <summary class="zui-collapsible-trigger">Hard</summary>
+  <div class="zui-collapsible-content">
+    <p>Collapsible content.</p>
+  </div>
+</details>
+
+<details class="zui-collapsible zui-collapsible-shape-squircle">
+  <summary class="zui-collapsible-trigger">Squircle</summary>
+  <div class="zui-collapsible-content">
+    <p>Collapsible content.</p>
+  </div>
+</details>`}
+  react={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/react'
+
+<Collapsible>
+  <CollapsibleTrigger>Default</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="hard">
+  <CollapsibleTrigger>Hard</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="squircle">
+  <CollapsibleTrigger>Squircle</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+  astro={`---
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/astro'
+---
+
+<Collapsible>
+  <CollapsibleTrigger>Default</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="hard">
+  <CollapsibleTrigger>Hard</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="squircle">
+  <CollapsibleTrigger>Squircle</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+  solid={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/solid'
+
+<Collapsible>
+  <CollapsibleTrigger>Default</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="hard">
+  <CollapsibleTrigger>Hard</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="squircle">
+  <CollapsibleTrigger>Squircle</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+  vue={`<template>
+  <Collapsible>
+    <CollapsibleTrigger>Default</CollapsibleTrigger>
+    <CollapsibleContent>
+      <p>Collapsible content.</p>
+    </CollapsibleContent>
+  </Collapsible>
+
+  <Collapsible shape="hard">
+    <CollapsibleTrigger>Hard</CollapsibleTrigger>
+    <CollapsibleContent>
+      <p>Collapsible content.</p>
+    </CollapsibleContent>
+  </Collapsible>
+
+  <Collapsible shape="squircle">
+    <CollapsibleTrigger>Squircle</CollapsibleTrigger>
+    <CollapsibleContent>
+      <p>Collapsible content.</p>
+    </CollapsibleContent>
+  </Collapsible>
+</template>
+
+<script setup>
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@mrmartineau/zui/svelte'
+</script>
+
+<Collapsible>
+  <CollapsibleTrigger>Default</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="hard">
+  <CollapsibleTrigger>Hard</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>
+
+<Collapsible shape="squircle">
+  <CollapsibleTrigger>Squircle</CollapsibleTrigger>
+  <CollapsibleContent>
+    <p>Collapsible content.</p>
+  </CollapsibleContent>
+</Collapsible>`}
+>
+  <div class="flow" style="width: 100%;">
+    <details class="zui-collapsible">
+      <summary class="zui-collapsible-trigger">Default</summary>
+      <div class="zui-collapsible-content">
+        <p>Collapsible content.</p>
+      </div>
+    </details>
+    <details class="zui-collapsible zui-collapsible-shape-hard">
+      <summary class="zui-collapsible-trigger">Hard</summary>
+      <div class="zui-collapsible-content">
+        <p>Collapsible content.</p>
+      </div>
+    </details>
+    <details class="zui-collapsible zui-collapsible-shape-squircle">
+      <summary class="zui-collapsible-trigger">Squircle</summary>
+      <div class="zui-collapsible-content">
+        <p>Collapsible content.</p>
+      </div>
+    </details>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

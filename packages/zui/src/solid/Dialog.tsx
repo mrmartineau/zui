@@ -20,6 +20,7 @@ export function Dialog(props: DialogProps) {
     'class',
     'size',
     'position',
+    'shape',
     'closedby',
     'children',
   ])
@@ -27,6 +28,7 @@ export function Dialog(props: DialogProps) {
     dialogVariants({
       className: local.class,
       position: local.position,
+      shape: local.shape,
       size: local.size,
     })
 

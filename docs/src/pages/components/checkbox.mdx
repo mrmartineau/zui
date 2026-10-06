@@ -210,3 +210,63 @@ import { Checkbox } from '@mrmartineau/zui/vue'
     Disabled unchecked
   </label>
 </Demo>
+
+## Shape
+
+A squircle is a rounded square with smooth corners. The checkbox box is inside the label, so put `zui-squircle-all` on a parent element. Every ZUI component inside it gets a squircle shape. Browsers without `corner-shape` support show normal rounded corners. To make squircle the default everywhere, see [Squircle](/utilities/squircle).
+
+<Demo
+  html={`<div class="zui-squircle-all">
+  <label class="zui-checkbox">
+    <input type="checkbox" checked />
+    Squircle checkbox
+  </label>
+</div>`}
+  react={`import { Checkbox } from '@mrmartineau/zui/react'
+
+<div className="zui-squircle-all">
+  <Checkbox defaultChecked>Squircle checkbox</Checkbox>
+</div>`}
+  astro={`---
+import { Checkbox } from '@mrmartineau/zui/astro'
+---
+
+<div class="zui-squircle-all">
+  <Checkbox checked>Squircle checkbox</Checkbox>
+</div>`}
+  solid={`import { Checkbox } from '@mrmartineau/zui/solid'
+
+<div class="zui-squircle-all">
+  <Checkbox defaultChecked>Squircle checkbox</Checkbox>
+</div>`}
+  vue={`<template>
+  <div class="zui-squircle-all">
+    <Checkbox checked>Squircle checkbox</Checkbox>
+  </div>
+</template>
+
+<script setup>
+import { Checkbox } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Checkbox } from '@mrmartineau/zui/svelte'
+  let checked = $state(true)
+</script>
+
+<div class="zui-squircle-all">
+  <Checkbox bind:checked={checked}>Squircle checkbox</Checkbox>
+</div>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <label class="zui-checkbox">
+      <input type="checkbox" checked />
+      Default
+    </label>
+    <div class="zui-squircle-all">
+      <label class="zui-checkbox">
+        <input type="checkbox" checked />
+        Squircle
+      </label>
+    </div>
+  </div>
+</Demo>

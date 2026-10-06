@@ -1,3 +1,4 @@
+import type { VariantProps } from 'cva'
 import type { JSX } from 'solid-js'
 import {
   createEffect,
@@ -15,6 +16,8 @@ import { createTabsController } from '../core/tabs'
 import { tabsVariants } from '../shared/tabsVariants'
 import { TabsContext } from './tabsContext'
 
+type TabsVariantProps = VariantProps<typeof tabsVariants>
+
 export type TabsProps = JSX.HTMLAttributes<HTMLDivElement> & {
   activationMode?: TabsActivationMode
   defaultValue?: string
@@ -23,6 +26,7 @@ export type TabsProps = JSX.HTMLAttributes<HTMLDivElement> & {
   id?: string
   onValueChange?: (value: string) => void
   orientation?: TabsOrientation
+  shape?: TabsVariantProps['shape']
   value?: string
 }
 
@@ -37,6 +41,7 @@ export function Tabs(props: TabsProps) {
     'id',
     'onValueChange',
     'orientation',
+    'shape',
     'value',
   ])
 
@@ -70,7 +75,9 @@ export function Tabs(props: TabsProps) {
     })
   })
 
-  const classes = createMemo(() => tabsVariants({ className: local.class }))
+  const classes = createMemo(() =>
+    tabsVariants({ className: local.class, shape: local.shape }),
+  )
   const contextValue = {
     controller,
     rootRef,

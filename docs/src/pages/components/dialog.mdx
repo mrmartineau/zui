@@ -1220,6 +1220,209 @@ const open = ref(false)
   </dialog>
 </Demo>
 
+## Shape
+
+Use the `shape` prop to change the corners: `default` (rounded), `hard` (square) or `squircle` (a rounded square with smooth corners). Browsers without `corner-shape` support show normal rounded corners for `squircle`. Drawer positions (`left`, `right`, `top`, `bottom`) have square corners by default. If you pass a `shape`, the shape wins.
+
+<Demo
+  html={`<button class="zui-button" onclick="document.getElementById('sq-dialog-demo').showModal()">
+  Open dialog
+</button>
+
+<dialog id="sq-dialog-demo" class="zui-dialog zui-dialog-shape-squircle" closedby="any">
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title">Dialog title</h2>
+    <p class="zui-dialog-description">A short description of the dialog content.</p>
+  </div>
+  <div class="zui-dialog-body">
+    <p>Dialog body content goes here.</p>
+  </div>
+  <div class="zui-dialog-footer">
+    <form method="dialog">
+      <button class="zui-button zui-button-variant-outline">Cancel</button>
+    </form>
+    <button class="zui-button" onclick="document.getElementById('sq-dialog-demo').close()">Confirm</button>
+  </div>
+</dialog>`}
+  react={`import { useState } from 'react'
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from '@mrmartineau/zui/react'
+
+function MyComponent() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <Button onClick={() => setOpen(true)}>Open dialog</Button>
+    <Dialog shape="squircle" open={open} onClose={() => setOpen(false)}>
+      <DialogHeader>
+        <DialogTitle>Dialog title</DialogTitle>
+        <DialogDescription>A short description of the dialog content.</DialogDescription>
+      </DialogHeader>
+      <DialogBody>
+        <p>Dialog body content goes here.</p>
+      </DialogBody>
+      <DialogFooter>
+        <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+        <Button onClick={() => setOpen(false)}>Confirm</Button>
+      </DialogFooter>
+    </Dialog>
+
+  )
+}`}
+  astro={`---
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button onclick="document.getElementById('sq-dialog-demo').showModal()">Open dialog</Button>
+
+<Dialog shape="squircle" id="sq-dialog-demo">
+  <DialogHeader>
+    <DialogTitle>Dialog title</DialogTitle>
+    <DialogDescription>A short description of the dialog content.</DialogDescription>
+  </DialogHeader>
+  <DialogBody>
+    <p>Dialog body content goes here.</p>
+  </DialogBody>
+  <DialogFooter>
+    <form method="dialog">
+      <Button variant="outline">Cancel</Button>
+    </form>
+    <Button>Confirm</Button>
+  </DialogFooter>
+</Dialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from '@mrmartineau/zui/solid'
+
+function MyComponent() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <Button onClick={() => setOpen(true)}>Open dialog</Button>
+    <Dialog shape="squircle" open={open} onClose={() => setOpen(false)}>
+      <DialogHeader>
+        <DialogTitle>Dialog title</DialogTitle>
+        <DialogDescription>A short description of the dialog content.</DialogDescription>
+      </DialogHeader>
+      <DialogBody>
+        <p>Dialog body content goes here.</p>
+      </DialogBody>
+      <DialogFooter>
+        <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+        <Button onClick={() => setOpen(false)}>Confirm</Button>
+      </DialogFooter>
+    </Dialog>
+
+  )
+}`}
+  vue={`<template>
+  <Button @click="open = true">Open dialog</Button>
+  <Dialog shape="squircle" :open="open" @close="open = false">
+    <DialogHeader>
+      <DialogTitle>Dialog title</DialogTitle>
+      <DialogDescription>A short description of the dialog content.</DialogDescription>
+    </DialogHeader>
+    <DialogBody>
+      <p>Dialog body content goes here.</p>
+    </DialogBody>
+    <DialogFooter>
+      <Button variant="outline" @click="open = false">Cancel</Button>
+      <Button @click="open = false">Confirm</Button>
+    </DialogFooter>
+  </Dialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Dialog, DialogHeader, DialogTitle, DialogDescription, DialogBody, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const open = ref(false)
+</script>`}
+  svelte={`<script lang="ts">
+  import {
+    Dialog,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogBody,
+    DialogFooter,
+    Button,
+  } from '@mrmartineau/zui/svelte'
+
+  let open = $state(false)
+</script>
+
+<Button onclick={() => (open = true)}>Open dialog</Button>
+<Dialog shape="squircle" bind:open>
+  <DialogHeader>
+    <DialogTitle>Dialog title</DialogTitle>
+    <DialogDescription>A short description of the dialog content.</DialogDescription>
+  </DialogHeader>
+  <DialogBody>
+    <p>Dialog body content goes here.</p>
+  </DialogBody>
+  <DialogFooter>
+    <Button variant="outline" onclick={() => (open = false)}>Cancel</Button>
+    <Button onclick={() => (open = false)}>Confirm</Button>
+  </DialogFooter>
+</Dialog>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <button class="zui-button zui-button-variant-outline" onclick="document.getElementById('sq-dialog-default').showModal()">Default</button>
+    <dialog id="sq-dialog-default" class="zui-dialog" closedby="any">
+      <div class="zui-dialog-header">
+        <div class="zui-dialog-title">Default dialog</div>
+        <p class="zui-dialog-description">This dialog uses the <code>default</code> shape.</p>
+      </div>
+      <div class="zui-dialog-footer">
+        <form method="dialog">
+          <button class="zui-button">Close</button>
+        </form>
+      </div>
+    </dialog>
+    <button class="zui-button zui-button-variant-outline" onclick="document.getElementById('sq-dialog-hard').showModal()">Hard</button>
+    <dialog id="sq-dialog-hard" class="zui-dialog zui-dialog-shape-hard" closedby="any">
+      <div class="zui-dialog-header">
+        <div class="zui-dialog-title">Hard dialog</div>
+        <p class="zui-dialog-description">This dialog uses the <code>hard</code> shape.</p>
+      </div>
+      <div class="zui-dialog-footer">
+        <form method="dialog">
+          <button class="zui-button">Close</button>
+        </form>
+      </div>
+    </dialog>
+    <button class="zui-button zui-button-variant-outline" onclick="document.getElementById('sq-dialog-squircle').showModal()">Squircle</button>
+    <dialog id="sq-dialog-squircle" class="zui-dialog zui-dialog-shape-squircle" closedby="any">
+      <div class="zui-dialog-header">
+        <div class="zui-dialog-title">Squircle dialog</div>
+        <p class="zui-dialog-description">This dialog uses the <code>squircle</code> shape.</p>
+      </div>
+      <div class="zui-dialog-footer">
+        <form method="dialog">
+          <button class="zui-button">Close</button>
+        </form>
+      </div>
+    </dialog>
+  </div>
+</Demo>
+
+To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
+
 ## CSS custom properties
 
 | Property | Default | Description |

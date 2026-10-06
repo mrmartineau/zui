@@ -107,7 +107,8 @@ Map the old theme in this order:
 | whole spacing scale (`theme.spacing(n)`, `p-4`) | `--space-*` scale — see the tables below |
 | type scale (`text-lg`, `typography.h1`) | `--step-*` scale |
 | `borderRadius` config | `--radius-*`, globally scaled by `--radius-scale` |
-| squircle / smooth corners | `zui-squircle-all` on `<html>` (or `zui-squircle` per element) |
+| squircle / smooth corners | `zui-squircle-all` on `<html>`, or `shape="squircle"` on one component |
+| per-component `rounded-none` / `rounded-full` | `shape="hard"` / `shape="soft"` (soft only on small components) |
 | shadow scale | `--shadow-sm` … `--shadow-2xl` |
 | dark mode class/`ThemeProvider` toggle | `light-dark()` values + `color-scheme` — see the `using-zui` skill |
 

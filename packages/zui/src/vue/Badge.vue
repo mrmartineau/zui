@@ -18,6 +18,7 @@ const props = withDefaults(
     class?: string
     variant?: BadgeVariantProps['variant']
     color?: BadgeVariantProps['color']
+    shape?: BadgeVariantProps['shape']
   }>(),
   {},
 )
@@ -26,6 +27,7 @@ const classes = computed(() =>
   badgeVariants({
     className: props.class,
     color: props.color,
+    shape: props.shape,
     variant: props.variant,
   }),
 )

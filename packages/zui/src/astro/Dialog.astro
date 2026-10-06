@@ -17,10 +17,11 @@ const {
   class: className,
   size,
   position,
+  shape,
   closedby = 'any',
   ...props
 } = Astro.props
-const classes = dialogVariants({ class: className, position, size })
+const classes = dialogVariants({ class: className, position, shape, size })
 ---
 
 <dialog id={id} class={classes} closedby={closedby} {...props}>

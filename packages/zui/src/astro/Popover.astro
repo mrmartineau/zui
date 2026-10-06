@@ -1,15 +1,26 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { popoverVariants } from '../shared/popoverVariants'
 
-interface Props extends HTMLAttributes<'div'> {
+type PopoverVariantProps = VariantProps<typeof popoverVariants>
+
+interface Props extends HTMLAttributes<'div'>, PopoverVariantProps {
   id: string
   type?: 'auto' | 'manual'
   class?: string
   style?: string
 }
 
-const { id, type = 'auto', class: className, style, ...props } = Astro.props
-const classes = ['zui-popover', className].filter(Boolean).join(' ')
+const {
+  id,
+  type = 'auto',
+  class: className,
+  shape,
+  style,
+  ...props
+} = Astro.props
+const classes = popoverVariants({ class: className, shape })
 const anchorStyle = `position-anchor: --${id};${style ? ` ${style}` : ''}`
 ---
 

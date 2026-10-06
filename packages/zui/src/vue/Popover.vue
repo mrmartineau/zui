@@ -5,16 +5,21 @@
 </template>
 
 <script setup lang="ts">
+import type { VariantProps } from 'cva'
 import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
+import { popoverVariants } from '../shared/popoverVariants'
 
 defineOptions({ inheritAttrs: false })
+
+type PopoverVariantProps = VariantProps<typeof popoverVariants>
 
 const props = withDefaults(
   defineProps<{
     id: string
     popover?: 'auto' | 'manual'
     class?: string
+    shape?: PopoverVariantProps['shape']
   }>(),
   {
     popover: 'auto',
@@ -22,7 +27,7 @@ const props = withDefaults(
 )
 
 const classes = computed(() =>
-  ['zui-popover', props.class].filter(Boolean).join(' '),
+  popoverVariants({ className: props.class, shape: props.shape }),
 )
 const anchorStyle = computed<CSSProperties>(() => ({
   positionAnchor: `--${props.id}`,

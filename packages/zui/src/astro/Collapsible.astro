@@ -1,13 +1,17 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { collapsibleVariants } from '../shared/collapsibleVariants'
 
-interface Props extends HTMLAttributes<'details'> {
+type CollapsibleVariantProps = VariantProps<typeof collapsibleVariants>
+
+interface Props extends HTMLAttributes<'details'>, CollapsibleVariantProps {
   open?: boolean
   class?: string
 }
 
-const { class: className, open, ...props } = Astro.props
-const classes = ['zui-collapsible', className].filter(Boolean).join(' ')
+const { class: className, open, shape, ...props } = Astro.props
+const classes = collapsibleVariants({ class: className, shape })
 ---
 
 <details class={classes} open={open} {...props}>

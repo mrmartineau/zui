@@ -15,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import type { VariantProps } from 'cva'
 import { computed, onMounted, onUnmounted, ref, useId, watchEffect } from 'vue'
 import {
   createMenuController,
@@ -22,9 +23,12 @@ import {
   type MenuDirection,
   type MenuSide,
 } from '../core/menu'
+import { menuVariants } from '../shared/menuVariants'
 import { provideMenuContext } from './menuContext'
 
 defineOptions({ inheritAttrs: false })
+
+type MenuVariantProps = VariantProps<typeof menuVariants>
 
 const props = defineProps<{
   align?: MenuAlign
@@ -36,6 +40,7 @@ const props = defineProps<{
   modal?: boolean
   onOpenChange?: (open: boolean) => void
   open?: boolean
+  shape?: MenuVariantProps['shape']
   side?: MenuSide
 }>()
 
@@ -91,6 +96,6 @@ onUnmounted(() => {
 provideMenuContext({ controller, rootRef, snapshot })
 
 const classes = computed(() =>
-  ['zui-menu', props.class].filter(Boolean).join(' '),
+  menuVariants({ className: props.class, shape: props.shape }),
 )
 </script>
