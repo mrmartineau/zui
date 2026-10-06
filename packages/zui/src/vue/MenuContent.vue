@@ -8,7 +8,7 @@
     :data-side="snapshot.side"
     :data-state="snapshot.open ? 'open' : 'closed'"
     data-zui-menu-content=""
-    :hidden="!snapshot.open"
+    popover="manual"
     :id="snapshot.contentId"
     role="menu"
     @keydown="handleKeydown"

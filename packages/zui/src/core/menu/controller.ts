@@ -98,8 +98,31 @@ export function createMenuController(
     return cachedSnapshot
   }
 
+  // The content is a manual popover so it renders in the top layer, and the
+  // trigger is its CSS anchor so position-try-fallbacks keeps it on screen.
+  const anchorName = `--${rootId.replace(/[^\w-]/g, '')}-anchor`
+  let shownContent: HTMLElement | null = null
+
+  function syncPopover() {
+    const trigger = registry.getTrigger()?.element
+    const content = registry.getContent()?.element
+    trigger?.style.setProperty('anchor-name', anchorName)
+    if (!content?.hasAttribute('popover') || !content.showPopover) return
+    content.style.setProperty('position-anchor', anchorName)
+
+    const shouldShow = getCurrentOpen() && content.isConnected
+    if (shouldShow && shownContent !== content) {
+      content.showPopover()
+      shownContent = content
+    } else if (!shouldShow && shownContent === content) {
+      content.hidePopover()
+      shownContent = null
+    }
+  }
+
   function emit() {
     cachedSnapshot = computeSnapshot()
+    syncPopover()
     for (const listener of listeners) listener(cachedSnapshot)
   }
 

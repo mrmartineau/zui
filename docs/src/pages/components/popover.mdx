@@ -449,6 +449,12 @@ import { Popover, Button } from '@mrmartineau/zui/vue'
 
 To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — see [Squircle](/utilities/squircle).
 
+## Browser support
+
+The popover uses the Popover API and CSS anchor positioning. The Popover API works in all current browsers. Anchor positioning needs Chrome or Edge 125, Safari 26 or Firefox 147 or later.
+
+In older browsers, the popover shows in the centre of the viewport, not next to its trigger. To get the correct position in these browsers, load the [CSS anchor positioning polyfill](https://anchor-positioning.oddbird.net/) in your app.
+
 ## CSS custom properties
 
 | Property | Default | Description |

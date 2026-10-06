@@ -25,7 +25,7 @@ $effect(() => controller.registerContent({ contentId, element: ref ?? null }))
   data-side={getSnapshot().side}
   data-state={getSnapshot().open ? 'open' : 'closed'}
   data-zui-menu-content=""
-  hidden={!getSnapshot().open}
+  popover="manual"
   id={getSnapshot().contentId}
   on:keydown={(event) => {
     onkeydown?.(event)

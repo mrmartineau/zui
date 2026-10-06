@@ -114,7 +114,6 @@ function applySnapshot(root: HTMLElement, controller: MenuControllerApi) {
     content.dataset.state = snapshot.open ? 'open' : 'closed'
     content.dataset.side = snapshot.side
     content.dataset.align = snapshot.align
-    content.hidden = !snapshot.open
     content.setAttribute('role', 'menu')
     content.setAttribute('aria-labelledby', snapshot.triggerId)
   }
@@ -287,6 +286,8 @@ export function attachMenuDom(
       const content = contents[0]
       if (content) {
         content.id = content.id || createMenuContentId(rootId)
+        content.hidden = false
+        content.setAttribute('popover', 'manual')
         const unregister = controller.registerContent({
           contentId: content.id,
           element: content,

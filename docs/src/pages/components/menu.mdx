@@ -184,7 +184,7 @@ Use the `shape` prop on `Menu` to change the corners of the menu panel: `default
   <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
     Default <i class="ph ph-caret-down"></i>
   </button>
-  <div class="zui-menu-content" role="menu" hidden>
+  <div class="zui-menu-content" role="menu" popover="manual">
     <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
     <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
   </div>
@@ -193,7 +193,7 @@ Use the `shape` prop on `Menu` to change the corners of the menu panel: `default
   <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
     Hard <i class="ph ph-caret-down"></i>
   </button>
-  <div class="zui-menu-content" role="menu" hidden>
+  <div class="zui-menu-content" role="menu" popover="manual">
     <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
     <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
   </div>
@@ -202,7 +202,7 @@ Use the `shape` prop on `Menu` to change the corners of the menu panel: `default
   <button class="zui-button zui-button-variant-outline zui-menu-trigger" aria-haspopup="menu" aria-expanded="false">
     Squircle <i class="ph ph-caret-down"></i>
   </button>
-  <div class="zui-menu-content" role="menu" hidden>
+  <div class="zui-menu-content" role="menu" popover="manual">
     <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Profile</button>
     <button class="zui-menu-item zui-button zui-button-variant-ghost" role="menuitem">Settings</button>
   </div>
@@ -402,6 +402,8 @@ To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — 
 
 Use `side` and `align` on `Menu` to change where the menu surface appears.
 
+The menu uses CSS anchor positioning to stay next to its trigger. If the menu does not fit in the viewport, it moves to the other side of the trigger. For example, a menu near the right edge of the screen opens to the left.
+
 <Demo
   astro={`---
 import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/astro'
@@ -568,7 +570,13 @@ import { Menu, MenuTrigger, MenuContent, MenuItem } from '@mrmartineau/zui/vue'
 - `MenuTrigger` is always button-based.
 - `MenuItem` renders as a button by default, or as a link when `href` is provided.
 - Disabled items are skipped by keyboard navigation and typeahead.
-- Menu content stays mounted and is hidden with the `hidden` attribute when closed.
+- Menu content stays mounted. It is a manual popover (`popover="manual"`), so it opens in the top layer above all other content.
+
+## Browser support
+
+The menu uses the Popover API and CSS anchor positioning. The Popover API works in all current browsers. Anchor positioning needs Chrome or Edge 125, Safari 26 or Firefox 147 or later.
+
+In older browsers, the menu shows in the centre of the viewport, not next to its trigger. To get the correct position in these browsers, load the [CSS anchor positioning polyfill](https://anchor-positioning.oddbird.net/) in your app.
 
 ## CSS custom properties
 

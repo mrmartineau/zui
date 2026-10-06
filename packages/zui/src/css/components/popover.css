@@ -64,4 +64,13 @@
       border-radius: 20px;
     }
   }
+
+  /* Fallback for browsers without anchor positioning (Safari < 26, Firefox
+     < 147): centre the panel in the viewport instead of the top-left corner. */
+  @supports not (anchor-name: --a) {
+    .zui-popover {
+      inset: 0;
+      margin: auto;
+    }
+  }
 }

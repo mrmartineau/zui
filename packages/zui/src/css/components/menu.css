@@ -46,9 +46,59 @@
     inset-inline-end: 0;
   }
 
+  /* Popover in the top layer, anchored to the trigger (the menu script sets
+     anchor-name and position-anchor). It flips to stay inside the viewport. */
+  .zui-menu-content[popover] {
+    position: fixed;
+    inset: auto;
+    translate: none;
+    margin: 0;
+    margin-block-start: var(--space-2xs);
+    color: inherit;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-inline, flip-block, flip-block flip-inline;
+
+    &:not(:popover-open) {
+      display: none;
+    }
+
+    &[data-align="center"] {
+      position-area: block-end center;
+    }
+
+    &[data-align="end"] {
+      position-area: block-end span-inline-start;
+    }
+
+    &[data-side="top"] {
+      margin-block: 0 var(--space-2xs);
+      position-area: block-start span-inline-end;
+
+      &[data-align="center"] {
+        position-area: block-start center;
+      }
+
+      &[data-align="end"] {
+        position-area: block-start span-inline-start;
+      }
+    }
+  }
+
+  /* Block, not flex: text-overflow does not work on text inside a flex box. */
   .zui-menu-item {
-    justify-content: flex-start;
+    display: block;
+    align-content: center;
     width: 100%;
+    text-align: start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    & > svg,
+    & > i {
+      vertical-align: middle;
+      margin-inline-end: var(--space-4xs);
+    }
   }
 
   .zui-menu-item[data-highlighted="true"] {
@@ -74,6 +124,15 @@
     @supports (corner-shape: squircle) {
       corner-shape: superellipse(1.25);
       border-radius: 20px;
+    }
+  }
+
+  /* Fallback for browsers without anchor positioning (Safari < 26, Firefox
+     < 147): centre the panel in the viewport instead of the top-left corner. */
+  @supports not (anchor-name: --a) {
+    .zui-menu .zui-menu-content[popover] {
+      inset: 0;
+      margin: auto;
     }
   }
 }

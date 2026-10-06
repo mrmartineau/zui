@@ -28,7 +28,7 @@ export function MenuContent(props: MenuContentProps) {
       data-side={snapshot().side}
       data-state={snapshot().open ? 'open' : 'closed'}
       data-zui-menu-content=""
-      hidden={!snapshot().open}
+      popover="manual"
       id={snapshot().contentId}
       onKeyDown={(event) => {
         local.onKeyDown?.(event)

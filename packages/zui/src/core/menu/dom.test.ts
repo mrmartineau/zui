@@ -128,3 +128,23 @@ describe('menu dom adapter', () => {
     root.remove()
   })
 })
+
+describe('menu popover', () => {
+  it('shows and hides the content popover with the open state', () => {
+    const root = createRoot()
+    const content = root.querySelector<HTMLElement>('[data-zui-menu-content]')!
+    const calls: string[] = []
+    content.showPopover = () => calls.push('show')
+    content.hidePopover = () => calls.push('hide')
+    const instance = attachMenuDom(root)
+
+    expect(content.getAttribute('popover')).toBe('manual')
+    instance.controller.openMenu()
+    instance.controller.openMenu()
+    instance.controller.closeMenu()
+    expect(calls).toEqual(['show', 'hide'])
+
+    instance.destroy()
+    root.remove()
+  })
+})
