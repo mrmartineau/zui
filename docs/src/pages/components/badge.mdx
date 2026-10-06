@@ -369,6 +369,55 @@ import { Badge } from '@mrmartineau/zui/vue'
   )
 })}
 
+## Size
+
+Use the `size` prop to make a badge smaller or bigger: `sm`, `md` (default) or `lg`.
+
+<Demo
+  html={`<span class="zui-badge zui-badge-size-sm">Small</span>
+<span class="zui-badge">Medium</span>
+<span class="zui-badge zui-badge-size-lg">Large</span>`}
+  react={`import { Badge } from '@mrmartineau/zui/react'
+
+<Badge size="sm">Small</Badge>
+<Badge>Medium</Badge>
+<Badge size="lg">Large</Badge>`}
+  astro={`---
+import { Badge } from '@mrmartineau/zui/astro'
+---
+
+<Badge size="sm">Small</Badge>
+<Badge>Medium</Badge>
+<Badge size="lg">Large</Badge>`}
+  solid={`import { Badge } from '@mrmartineau/zui/solid'
+
+<Badge size="sm">Small</Badge>
+<Badge>Medium</Badge>
+<Badge size="lg">Large</Badge>`}
+  vue={`<template>
+  <Badge size="sm">Small</Badge>
+  <Badge>Medium</Badge>
+  <Badge size="lg">Large</Badge>
+</template>
+
+<script setup>
+import { Badge } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Badge } from '@mrmartineau/zui/svelte'
+</script>
+
+<Badge size="sm">Small</Badge>
+<Badge>Medium</Badge>
+<Badge size="lg">Large</Badge>`}
+>
+  <div class="flex items-center gap-sm">
+    <span class="zui-badge zui-badge-size-sm">Small</span>
+    <span class="zui-badge">Medium</span>
+    <span class="zui-badge zui-badge-size-lg">Large</span>
+  </div>
+</Demo>
+
 ## Shape
 
 Use the `shape` prop to change the corners: `default` (pill), `hard` (square), `soft` (pill) or `squircle`. The default badge is already a pill, so `soft` looks the same. A squircle is a rounded square with smooth corners. Browsers without `corner-shape` support show normal rounded corners.
@@ -433,3 +482,6 @@ To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — 
 |---|---|---|
 | `--zui-badge-accent` | `var(--color-theme)` | Accent colour used for the badge |
 | `--zui-badge-radius` | `var(--radius-full)` | Border radius |
+| `--zui-badge-font-size` | `var(--step--2)` | Font size |
+| `--zui-badge-padding-block` | `var(--space-4xs)` | Top and bottom padding |
+| `--zui-badge-padding-inline` | `var(--space-2xs)` | Left and right padding |

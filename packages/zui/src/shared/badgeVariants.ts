@@ -5,6 +5,7 @@ export const badgeVariants = cva({
   defaultVariants: {
     color: 'default',
     shape: 'default',
+    size: 'md',
     variant: 'subtle',
   },
   variants: {
@@ -34,6 +35,11 @@ export const badgeVariants = cva({
       hard: 'zui-badge-shape-hard',
       soft: 'zui-badge-shape-soft',
       squircle: 'zui-badge-shape-squircle',
+    },
+    size: {
+      lg: 'zui-badge-size-lg',
+      md: '',
+      sm: 'zui-badge-size-sm',
     },
     variant: {
       fill: 'zui-badge-variant-fill',

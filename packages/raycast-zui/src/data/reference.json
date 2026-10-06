@@ -231,6 +231,16 @@
       "docsUrl": "https://zui.zander.wtf/components/badge"
     },
     {
+      "name": "zui-badge-size-sm",
+      "source": "badge",
+      "docsUrl": "https://zui.zander.wtf/components/badge"
+    },
+    {
+      "name": "zui-badge-size-lg",
+      "source": "badge",
+      "docsUrl": "https://zui.zander.wtf/components/badge"
+    },
+    {
       "name": "zui-badge-shape-hard",
       "source": "badge",
       "docsUrl": "https://zui.zander.wtf/components/badge"
@@ -2518,7 +2528,7 @@
       "url": "https://zui.zander.wtf/utilities/visibility"
     }
   ],
-  "generatedAt": "2026-10-06T14:32:41.352Z",
+  "generatedAt": "2026-10-06T14:34:02.243Z",
   "schemaVersion": 1,
   "snippets": [
     {
@@ -2742,6 +2752,20 @@
     },
     {
       "frameworks": {
+        "html": "<span class=\"zui-badge zui-badge-size-sm\">Small</span>\n<span class=\"zui-badge\">Medium</span>\n<span class=\"zui-badge zui-badge-size-lg\">Large</span>",
+        "react": "import { Badge } from '@mrmartineau/zui/react'\n\n<Badge size=\"sm\">Small</Badge>\n<Badge>Medium</Badge>\n<Badge size=\"lg\">Large</Badge>",
+        "astro": "---\nimport { Badge } from '@mrmartineau/zui/astro'\n---\n\n<Badge size=\"sm\">Small</Badge>\n<Badge>Medium</Badge>\n<Badge size=\"lg\">Large</Badge>",
+        "solid": "import { Badge } from '@mrmartineau/zui/solid'\n\n<Badge size=\"sm\">Small</Badge>\n<Badge>Medium</Badge>\n<Badge size=\"lg\">Large</Badge>",
+        "vue": "<template>\n  <Badge size=\"sm\">Small</Badge>\n  <Badge>Medium</Badge>\n  <Badge size=\"lg\">Large</Badge>\n</template>\n\n<script setup>\nimport { Badge } from '@mrmartineau/zui/vue'\n</script>",
+        "svelte": "<script lang=\"ts\">\n  import { Badge } from '@mrmartineau/zui/svelte'\n</script>\n\n<Badge size=\"sm\">Small</Badge>\n<Badge>Medium</Badge>\n<Badge size=\"lg\">Large</Badge>"
+      },
+      "id": "components-badge-6",
+      "page": "Badge",
+      "pageUrl": "https://zui.zander.wtf/components/badge",
+      "title": "Size"
+    },
+    {
+      "frameworks": {
         "html": "<span class=\"zui-badge\">Default</span>\n<span class=\"zui-badge zui-badge-shape-hard\">Hard</span>\n<span class=\"zui-badge zui-badge-shape-soft\">Soft</span>\n<span class=\"zui-badge zui-badge-shape-squircle\">Squircle</span>",
         "react": "import { Badge } from '@mrmartineau/zui/react'\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>",
         "astro": "---\nimport { Badge } from '@mrmartineau/zui/astro'\n---\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>",
@@ -2749,7 +2773,7 @@
         "vue": "<template>\n  <Badge>Default</Badge>\n  <Badge shape=\"hard\">Hard</Badge>\n  <Badge shape=\"soft\">Soft</Badge>\n  <Badge shape=\"squircle\">Squircle</Badge>\n</template>\n\n<script setup>\nimport { Badge } from '@mrmartineau/zui/vue'\n</script>",
         "svelte": "<script lang=\"ts\">\n  import { Badge } from '@mrmartineau/zui/svelte'\n</script>\n\n<Badge>Default</Badge>\n<Badge shape=\"hard\">Hard</Badge>\n<Badge shape=\"soft\">Soft</Badge>\n<Badge shape=\"squircle\">Squircle</Badge>"
       },
-      "id": "components-badge-6",
+      "id": "components-badge-7",
       "page": "Badge",
       "pageUrl": "https://zui.zander.wtf/components/badge",
       "title": "Shape"

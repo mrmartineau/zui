@@ -2,13 +2,16 @@
   .zui-badge {
     --zui-badge-accent: var(--color-theme);
     --zui-badge-radius: var(--radius-full);
+    --zui-badge-font-size: var(--step--2);
+    --zui-badge-padding-block: var(--space-4xs);
+    --zui-badge-padding-inline: var(--space-2xs);
 
     display: inline-flex;
     align-items: center;
     gap: var(--space-4xs);
-    padding: var(--space-4xs) var(--space-2xs);
+    padding: var(--zui-badge-padding-block) var(--zui-badge-padding-inline);
     border-radius: var(--zui-badge-radius);
-    font-size: var(--step--2);
+    font-size: var(--zui-badge-font-size);
     font-weight: var(--font-weight-medium);
     line-height: 1;
     white-space: nowrap;
@@ -160,6 +163,25 @@
       var(--color-gray-600),
       var(--color-gray-400)
     );
+  }
+
+  /* -------------------------------------------------------------------------
+   * Size
+   * ---------------------------------------------------------------------- */
+  /* sm */
+  .zui-badge.zui-badge-size-sm {
+    --zui-badge-font-size: var(--step--3);
+    --zui-badge-padding-block: var(--space-5xs);
+    --zui-badge-padding-inline: var(--space-3xs);
+  }
+
+  /* md is the default — no extra class needed */
+
+  /* lg */
+  .zui-badge.zui-badge-size-lg {
+    --zui-badge-font-size: var(--step--1);
+    --zui-badge-padding-block: var(--space-3xs);
+    --zui-badge-padding-inline: var(--space-xs);
   }
 
   /* -------------------------------------------------------------------------

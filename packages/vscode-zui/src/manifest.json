@@ -185,6 +185,14 @@
       "source": "badge"
     },
     {
+      "name": "zui-badge-size-sm",
+      "source": "badge"
+    },
+    {
+      "name": "zui-badge-size-lg",
+      "source": "badge"
+    },
+    {
       "name": "zui-badge-shape-hard",
       "source": "badge"
     },

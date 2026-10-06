@@ -231,6 +231,7 @@ All component classes use the `zui-` prefix. Each component exists as a CSS clas
 | variant | `subtle` (default), `fill`, `outline` | `zui-badge-variant-{name}` |
 | color | `default`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`, `gray` | `zui-badge-color-{name}` |
 | shape | `default`, `hard`, `soft` (same as default — badges are pills), `squircle` | `zui-badge-shape-{name}` |
+| size | `sm`, `md` (default), `lg` | `zui-badge-size-{name}` |
 
 ```html
 <span class="zui-badge">Default</span>

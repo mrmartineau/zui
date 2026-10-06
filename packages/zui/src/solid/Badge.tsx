@@ -16,6 +16,7 @@ export function Badge(props: BadgeProps) {
     'variant',
     'color',
     'shape',
+    'size',
     'children',
   ])
   const classes = () =>
@@ -23,6 +24,7 @@ export function Badge(props: BadgeProps) {
       className: local.class,
       color: local.color,
       shape: local.shape,
+      size: local.size,
       variant: local.variant,
     })
   return (
