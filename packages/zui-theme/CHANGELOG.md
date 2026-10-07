@@ -1,3 +1,10 @@
+# [@mrmartineau/zui-theme-v1.2.0](https://github.com/mrmartineau/zui/compare/@mrmartineau/zui-theme-v1.1.2...@mrmartineau/zui-theme-v1.2.0) (2026-10-07)
+
+
+### Features
+
+* **zui-theme:** mini theme switcher popover with theme-menu slot ([5ddbfcb](https://github.com/mrmartineau/zui/commit/5ddbfcb47d9d835ac463303edc4a03dead9347f2))
+
 # [@mrmartineau/zui-theme-v1.1.2](https://github.com/mrmartineau/zui/compare/@mrmartineau/zui-theme-v1.1.1...@mrmartineau/zui-theme-v1.1.2) (2026-07-21)
 
 
