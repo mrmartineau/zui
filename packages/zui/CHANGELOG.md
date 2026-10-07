@@ -1,3 +1,18 @@
+# [@mrmartineau/zui-v1.7.0](https://github.com/mrmartineau/zui/compare/v1.6.2...v1.7.0) (2026-10-07)
+
+
+### Bug Fixes
+
+* **zui:** scale radio control with font size ([0f95066](https://github.com/mrmartineau/zui/commit/0f950666a8fe00a9f0e4bee9f1c17137688b14ff))
+
+
+### Features
+
+* **zui:** add badge sizes ([3afba76](https://github.com/mrmartineau/zui/commit/3afba76874b4a3459b81e95a2c5e7d0a1759d6b5))
+* **zui:** add shape prop to every rounded component ([cc771c4](https://github.com/mrmartineau/zui/commit/cc771c4e8c4c1c7567364fc343f6577721da54e9))
+* **zui:** add squircle utilities ([0eb782e](https://github.com/mrmartineau/zui/commit/0eb782e3f300bc29c17c8c7e7498bb73dd182b85))
+* **zui:** keep menu inside the viewport with popover and anchor positioning ([edff77f](https://github.com/mrmartineau/zui/commit/edff77f342b7ad71a1825544f50f0de023c79f9f))
+
 # [@mrmartineau/zui-v1.6.2](https://github.com/mrmartineau/zui/compare/v1.6.1...v1.6.2) (2026-07-10)
 
 
