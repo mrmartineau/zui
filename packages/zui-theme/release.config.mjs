@@ -13,15 +13,7 @@ export default {
     // Bump the version in package.json but don't publish here — pnpm publish rewrites the
     // `workspace:*` dependency on @mrmartineau/zui to a real version before publishing.
     ['@semantic-release/npm', { npmPublish: false }],
-    // `npmPublish: false` makes the npm plugin skip its auth check, so check the token here.
-    // A bad NPM_TOKEN then fails in verifyConditions, before any release commit or tag is pushed.
-    [
-      '@semantic-release/exec',
-      {
-        verifyConditionsCmd: 'pnpm whoami',
-        publishCmd: 'pnpm publish --no-git-checks',
-      },
-    ],
+    ['@semantic-release/exec', { publishCmd: 'pnpm publish --no-git-checks' }],
     [
       '@semantic-release/git',
       {

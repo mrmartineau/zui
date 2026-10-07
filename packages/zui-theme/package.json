@@ -44,6 +44,11 @@
     "css"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmartineau/zui.git",
+    "directory": "packages/zui-theme"
+  },
   "name": "@mrmartineau/zui-theme",
   "peerDependencies": {
     "@mrmartineau/zui": "^1.0.0",

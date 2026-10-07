@@ -26,9 +26,10 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-      # No id-token: granting it makes pnpm attempt npm OIDC trusted publishing, which
-      # 404s for packages without a configured trusted publisher and then fails to publish.
-      # Without it, pnpm uses the NPM_TOKEN from .npmrc directly.
+      # npm trusted publishing (OIDC): pnpm swaps this for a short-lived publish token.
+      # No NPM_TOKEN secret, so nothing expires and npm asks for no 2FA code.
+      # Each package needs a trusted publisher on npmjs.com pointing at this workflow file.
+      id-token: write
     steps:
       - uses: actions/checkout@v6
         with:
@@ -44,9 +45,6 @@ jobs:
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile ${{ inputs.skip_package_age && '--safe-chain-skip-minimum-package-age' || '' }}
-      - name: Configure npm auth
-        # Placeholder is written literally; pnpm substitutes ${NPM_TOKEN} from the env at publish time.
-        run: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
       - name: Build @mrmartineau/zui
         if: matrix.package == 'zui'
         run: pnpm --filter @mrmartineau/zui run build
@@ -55,4 +53,3 @@ jobs:
         run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
