@@ -9,7 +9,7 @@
     background-color: var(--color-background);
     height: stretch;
     scroll-behavior: smooth;
-    scrollbar-gutter: stable;
+    scrollbar-gutter: auto;
     accent-color: var(--color-theme);
     interpolate-size: allow-keywords;
   }
