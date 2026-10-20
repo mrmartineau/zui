@@ -1,3 +1,17 @@
+# [@mrmartineau/zui-v1.8.0](https://github.com/mrmartineau/zui/compare/v1.7.0...v1.8.0) (2026-10-20)
+
+
+### Bug Fixes
+
+* **zui:** scrollbar gutter ([b5fceb0](https://github.com/mrmartineau/zui/commit/b5fceb009ebe39a41c62106447126ec39f95a94d))
+
+
+### Features
+
+* **zui:** make component custom properties overridable from :root ([b5b04df](https://github.com/mrmartineau/zui/commit/b5b04df91349ca23d7a070819a180daffeac4b20))
+* **zui:** prose font-size custom properties ([#20](https://github.com/mrmartineau/zui/issues/20)) ([a75f9fc](https://github.com/mrmartineau/zui/commit/a75f9fca0527bf52f3fb6882749944d60c14f34a))
+* **zui:** show tooltip with shortcut on app shell toggle ([#22](https://github.com/mrmartineau/zui/issues/22)) ([163891b](https://github.com/mrmartineau/zui/commit/163891bd71ce1173704749b146e92fafa10d50ae))
+
 # [@mrmartineau/zui-v1.7.0](https://github.com/mrmartineau/zui/compare/v1.6.2...v1.7.0) (2026-10-07)
 
 
