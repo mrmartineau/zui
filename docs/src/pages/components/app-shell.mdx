@@ -304,7 +304,7 @@ To change the mobile breakpoint, re-author the `@media (max-width: ...)` rule in
 
 Hovering or keyboard-focusing the header toggle shows a tooltip with the `toggleLabel` text. When `shortcut` is enabled, the tooltip also shows the shortcut: <kbd>⌘ B</kbd> on Apple devices, <kbd>Ctrl B</kbd> elsewhere. <kbd>Esc</kbd> hides it.
 
-The framework wrappers render the tooltip for you. In plain HTML, put this markup directly after the toggle button. The controller shows and hides it, and fills in the modifier key:
+The framework wrappers render the tooltip for you. In plain HTML, put this markup directly after the toggle button. The controller shows and hides it. The stylesheet shows <kbd>⌘</kbd> or <kbd>Ctrl</kbd> in the empty `.zui-app-shell-toggle-mod` key, so leave that element empty:
 
 ```html
 <span

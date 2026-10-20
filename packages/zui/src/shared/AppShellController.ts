@@ -132,10 +132,14 @@ export class AppShellController {
     // Delegated so toggles rendered after mount still get their tooltip.
     // Capture phase because pointerenter/leave do not bubble.
     this.tooltipHandler = (e: Event) => {
-      const btn = e.target
-      if (!(btn instanceof Element) || !btn.matches('.zui-app-shell-toggle')) {
-        return
-      }
+      const target = e.target
+      if (!(target instanceof Element)) return
+      // Clicks can land on the nested icon. Hover events must match the
+      // button exactly: leaving the icon would otherwise hide the tooltip
+      // while the pointer is still over the button.
+      const btn =
+        e.type === 'click' ? target.closest('.zui-app-shell-toggle') : target
+      if (!btn?.matches('.zui-app-shell-toggle')) return
       const tip = btn.nextElementSibling
       if (
         !(tip instanceof HTMLElement) ||
