@@ -329,6 +329,27 @@ All prose styles are wrapped in `:where(.prose)`, giving them zero specificity. 
 }
 ```
 
+### Font sizes
+
+Each size has a default. Set the property on `.prose`, or in your theme, to change it. Unset properties use the default.
+
+<TokenGrid>
+  <TokenRow><CopyCode>--prose-font-size</CopyCode><span>Body text. Default: <code>var(--step-0)</code></span></TokenRow>
+  <TokenRow><CopyCode>--prose-h1-font-size</CopyCode><span>Default: <code>var(--step-3)</code></span></TokenRow>
+  <TokenRow><CopyCode>--prose-h2-font-size</CopyCode><span>Default: <code>var(--step-2)</code></span></TokenRow>
+  <TokenRow><CopyCode>--prose-h3-font-size</CopyCode><span>Default: <code>var(--step-1)</code></span></TokenRow>
+  <TokenRow><CopyCode>--prose-h4-font-size</CopyCode><span>Default: <code>var(--step-0)</code></span></TokenRow>
+  <TokenRow><CopyCode>--prose-code-font-size</CopyCode><span>Inline code. Default: <code>var(--step--1)</code></span></TokenRow>
+  <TokenRow><CopyCode>--prose-pre-font-size</CopyCode><span>Code blocks. Default: <code>var(--step--2)</code></span></TokenRow>
+</TokenGrid>
+
+```css
+:root {
+  --prose-h1-font-size: var(--step-5);
+  --prose-font-size: var(--step-1);
+}
+```
+
 ## Modifiers
 
 <TokenGrid>
