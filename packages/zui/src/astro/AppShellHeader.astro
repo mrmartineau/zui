@@ -25,6 +25,7 @@ const classes = appShellHeaderVariants({ class: className })
 
 <header class={classes} {...props}>
   {toggle && (
+    <>
     <button
       type="button"
       class="zui-app-shell-toggle"
@@ -34,6 +35,18 @@ const classes = appShellHeaderVariants({ class: className })
     >
       <i class="ph ph-list" aria-hidden="true"></i>
     </button>
+    <span
+      popover="manual"
+      aria-hidden="true"
+      class="zui-tooltip-content zui-tooltip-placement-bottom zui-app-shell-toggle-tooltip"
+    >
+      {toggleLabel}
+      <kbd class="zui-kbd-group zui-app-shell-toggle-kbd">
+        <kbd class="zui-kbd zui-app-shell-toggle-mod"></kbd>
+        <kbd class="zui-kbd">B</kbd>
+      </kbd>
+    </span>
+    </>
   )}
   <slot />
 </header>

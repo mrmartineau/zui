@@ -254,7 +254,7 @@ AppShell
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `toggle` | `boolean` | `true` | Auto-inject the sidebar toggle button. |
-| `toggleLabel` | `string` | `'Toggle sidebar'` | aria-label for the toggle button. |
+| `toggleLabel` | `string` | `'Toggle sidebar'` | aria-label and tooltip text for the toggle button. |
 
 ## Props — AppShellSidebar
 
@@ -307,9 +307,30 @@ To change the mobile breakpoint, re-author the `@media (max-width: ...)` rule in
 - <kbd>Esc</kbd> closes the sidebar. On desktop it sets `data-collapsed="true"`. On mobile the popover API handles dismissal natively. Escape is ignored when focus is inside an `input`, `textarea`, `select`, or `contenteditable` element.
 - <kbd>Cmd/Ctrl + B</kbd> toggles the sidebar when `shortcut` is enabled on `AppShell`.
 
+## Toggle tooltip
+
+Hovering or keyboard-focusing the header toggle shows a tooltip with the `toggleLabel` text. When `shortcut` is enabled, the tooltip also shows the shortcut: <kbd>⌘ B</kbd> on Apple devices, <kbd>Ctrl B</kbd> elsewhere. <kbd>Esc</kbd> hides it.
+
+The framework wrappers render the tooltip for you. In plain HTML, put this markup directly after the toggle button. The controller shows and hides it. The stylesheet shows <kbd>⌘</kbd> or <kbd>Ctrl</kbd> in the empty `.zui-app-shell-toggle-mod` key, so leave that element empty:
+
+```html
+<span
+  popover="manual"
+  aria-hidden="true"
+  class="zui-tooltip-content zui-tooltip-placement-bottom zui-app-shell-toggle-tooltip"
+>
+  Toggle sidebar
+  <kbd class="zui-kbd-group zui-app-shell-toggle-kbd">
+    <kbd class="zui-kbd zui-app-shell-toggle-mod"></kbd>
+    <kbd class="zui-kbd">B</kbd>
+  </kbd>
+</span>
+```
+
 ## Accessibility
 
 - Sidebar element is a `<aside>` (or `<nav>` in your own composition) with `aria-label`.
 - Header is `<header>`; main is `<main>` and is the target of the auto-injected skip link.
 - The toggle button carries `aria-controls` referencing the sidebar id.
+- The toggle tooltip is `aria-hidden`; the button's `aria-label` already names it.
 - All transitions honour `prefers-reduced-motion`.

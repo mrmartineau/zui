@@ -34,6 +34,17 @@ const classes = $derived(appShellHeaderVariants({ class: className }))
     >
       <i class="ph ph-list" aria-hidden="true"></i>
     </button>
+    <span
+      popover="manual"
+      aria-hidden="true"
+      class="zui-tooltip-content zui-tooltip-placement-bottom zui-app-shell-toggle-tooltip"
+    >
+      {toggleLabel}
+      <kbd class="zui-kbd-group zui-app-shell-toggle-kbd">
+        <kbd class="zui-kbd zui-app-shell-toggle-mod"></kbd>
+        <kbd class="zui-kbd">B</kbd>
+      </kbd>
+    </span>
   {/if}
   {@render children?.()}
 </header>

@@ -61,6 +61,18 @@
       "source": "app-shell"
     },
     {
+      "name": "zui-app-shell-toggle-tooltip",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-toggle-kbd",
+      "source": "app-shell"
+    },
+    {
+      "name": "zui-app-shell-toggle-mod",
+      "source": "app-shell"
+    },
+    {
       "name": "zui-app-shell-main",
       "source": "app-shell"
     },
@@ -4301,5 +4313,5 @@
       "value": "4px"
     }
   ],
-  "version": "1.6.2"
+  "version": "1.7.0"
 }

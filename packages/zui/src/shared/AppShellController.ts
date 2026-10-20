@@ -10,6 +10,7 @@
  * - localStorage persistence of collapse state (when uncontrolled)
  * - Escape-to-close on desktop (mobile drawer handles Escape natively)
  * - optional Cmd/Ctrl+B keyboard shortcut
+ * - the header toggle's tooltip (shows the shortcut when it is bound)
  *
  * See docs/adr/0001-shared-js-controllers.md for the rationale.
  */
@@ -37,6 +38,13 @@ export interface AppShellControllerOptions {
 
 const DEFAULT_BREAKPOINT = 768
 const DEFAULT_STORAGE_KEY = 'zui-app-shell-collapsed'
+const TOOLTIP_EVENTS = [
+  'pointerenter',
+  'pointerleave',
+  'focusin',
+  'focusout',
+  'click',
+] as const
 
 export class AppShellController {
   private root: HTMLElement
@@ -53,6 +61,7 @@ export class AppShellController {
   private mediaHandler?: (e: MediaQueryListEvent) => void
   private keyboardHandler?: (e: KeyboardEvent) => void
   private escapeHandler?: (e: KeyboardEvent) => void
+  private tooltipHandler?: (e: Event) => void
   private modeListeners = new Set<(mode: AppShellMode) => void>()
 
   constructor(options: AppShellControllerOptions) {
@@ -113,6 +122,39 @@ export class AppShellController {
         }
       }
       window.addEventListener('keydown', this.keyboardHandler)
+      // CSS reads these to show the shortcut in the toggle tooltip
+      this.root.setAttribute('data-zui-shortcut', '')
+      if (/Mac|iPhone|iPad/.test(navigator.userAgent)) {
+        this.root.setAttribute('data-zui-mac', '')
+      }
+    }
+
+    // Delegated so toggles rendered after mount still get their tooltip.
+    // Capture phase because pointerenter/leave do not bubble.
+    this.tooltipHandler = (e: Event) => {
+      const target = e.target
+      if (!(target instanceof Element)) return
+      // Clicks can land on the nested icon. Hover events must match the
+      // button exactly: leaving the icon would otherwise hide the tooltip
+      // while the pointer is still over the button.
+      const btn =
+        e.type === 'click' ? target.closest('.zui-app-shell-toggle') : target
+      if (!btn?.matches('.zui-app-shell-toggle')) return
+      const tip = btn.nextElementSibling
+      if (
+        !(tip instanceof HTMLElement) ||
+        !tip.matches('.zui-app-shell-toggle-tooltip')
+      ) {
+        return
+      }
+      const show =
+        (e.type === 'pointerenter' &&
+          (e as PointerEvent).pointerType === 'mouse') ||
+        (e.type === 'focusin' && btn.matches(':focus-visible'))
+      if (show !== tip.matches(':popover-open')) tip.togglePopover(show)
+    }
+    for (const type of TOOLTIP_EVENTS) {
+      this.root.addEventListener(type, this.tooltipHandler, true)
     }
 
     // Escape closes the sidebar on desktop. Mobile drawer already handles
@@ -120,6 +162,11 @@ export class AppShellController {
     // redundant collapsed-state write.
     this.escapeHandler = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return
+      for (const tip of this.root.querySelectorAll<HTMLElement>(
+        '.zui-app-shell-toggle-tooltip:popover-open',
+      )) {
+        tip.hidePopover()
+      }
       if (e.defaultPrevented) return
       if (this.mode !== 'desktop') return
       if (this.collapsed) return
@@ -152,6 +199,13 @@ export class AppShellController {
       window.removeEventListener('keydown', this.escapeHandler)
       this.escapeHandler = undefined
     }
+    if (this.tooltipHandler) {
+      for (const type of TOOLTIP_EVENTS) {
+        this.root.removeEventListener(type, this.tooltipHandler, true)
+      }
+      this.tooltipHandler = undefined
+    }
+    this.root.removeAttribute('data-zui-shortcut')
     this.modeListeners.clear()
   }
 

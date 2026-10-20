@@ -196,6 +196,36 @@
     outline-offset: 2px;
   }
 
+  /* Toggle tooltip — reuses the tooltip component styles; shown by AppShellController.
+     anchor-scope keeps each shell's tooltip on its own toggle. */
+  .zui-app-shell {
+    anchor-scope: --zui-app-shell-toggle;
+  }
+  .zui-app-shell-toggle {
+    anchor-name: --zui-app-shell-toggle;
+  }
+  .zui-app-shell .zui-app-shell-toggle-tooltip {
+    --zui-tooltip-bg: var(--color-surface);
+    --zui-tooltip-fg: currentColor;
+    --zui-tooltip-radius: var(--radius-md);
+    position-anchor: --zui-app-shell-toggle;
+    /* Toggle sits at the header's start edge, so grow away from it */
+    position-area: block-end span-inline-end;
+  }
+  .zui-app-shell-toggle-kbd {
+    margin-inline-start: var(--space-2xs);
+    vertical-align: middle;
+  }
+  .zui-app-shell:not([data-zui-shortcut]) .zui-app-shell-toggle-kbd {
+    display: none;
+  }
+  .zui-app-shell-toggle-mod::before {
+    content: "Ctrl";
+  }
+  .zui-app-shell[data-zui-mac] .zui-app-shell-toggle-mod::before {
+    content: "⌘";
+  }
+
   /* ---------- Main ---------- */
 
   .zui-app-shell-main {

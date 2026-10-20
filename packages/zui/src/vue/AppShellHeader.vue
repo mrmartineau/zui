@@ -10,6 +10,18 @@
     >
       <i class="ph ph-list" aria-hidden="true" />
     </button>
+    <span
+      v-if="toggle"
+      popover="manual"
+      aria-hidden="true"
+      class="zui-tooltip-content zui-tooltip-placement-bottom zui-app-shell-toggle-tooltip"
+    >
+      {{ toggleLabel }}
+      <kbd class="zui-kbd-group zui-app-shell-toggle-kbd">
+        <kbd class="zui-kbd zui-app-shell-toggle-mod" />
+        <kbd class="zui-kbd">B</kbd>
+      </kbd>
+    </span>
     <slot />
   </header>
 </template>
