@@ -191,15 +191,28 @@ export function AppShellHeader({
   return (
     <header className={classes} {...props}>
       {toggle && (
-        <button
-          type="button"
-          className="zui-app-shell-toggle"
-          aria-label={toggleLabel}
-          aria-controls={ctx.sidebarId}
-          onClick={ctx.toggle}
-        >
-          <i className="ph ph-list" aria-hidden="true" />
-        </button>
+        <>
+          <button
+            type="button"
+            className="zui-app-shell-toggle"
+            aria-label={toggleLabel}
+            aria-controls={ctx.sidebarId}
+            onClick={ctx.toggle}
+          >
+            <i className="ph ph-list" aria-hidden="true" />
+          </button>
+          <span
+            popover="manual"
+            aria-hidden="true"
+            className="zui-tooltip-content zui-tooltip-placement-bottom zui-app-shell-toggle-tooltip"
+          >
+            {toggleLabel}
+            <kbd className="zui-kbd-group zui-app-shell-toggle-kbd">
+              <kbd className="zui-kbd zui-app-shell-toggle-mod" />
+              <kbd className="zui-kbd">B</kbd>
+            </kbd>
+          </span>
+        </>
       )}
       {children}
     </header>

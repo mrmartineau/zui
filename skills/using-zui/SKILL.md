@@ -676,7 +676,7 @@ State on root: `data-collapsed="true"` flips desktop layout to hide the sidebar;
 
 **`AppShell` props:** `position` (`'left' | 'right'`), `defaultCollapsed`, `collapsed` (controlled), `onCollapsedChange`, `mobileBreakpoint` (default 768), `storageKey` (default `'zui-app-shell-collapsed'`, pass `null` to disable), `shortcut` (binds <kbd>Cmd/Ctrl+B</kbd>).
 
-**`AppShellHeader` props:** `toggle` (default `true`, auto-injects the hamburger toggle button), `toggleLabel`.
+**`AppShellHeader` props:** `toggle` (default `true`, auto-injects the hamburger toggle button), `toggleLabel` (aria-label and hover/focus tooltip text; the tooltip also shows <kbd>⌘/Ctrl B</kbd> when `shortcut` is on).
 
 **`AppShellSidebar` props:** `label` (default `'Sidebar'`, used as `aria-label`).
 
