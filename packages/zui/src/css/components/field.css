@@ -4,7 +4,7 @@
   .zui-field-group {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--zui-field-group-gap, var(--space-md));
     container-type: inline-size;
   }
 
@@ -13,7 +13,7 @@
   .zui-field {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3xs);
+    gap: var(--zui-field-gap, var(--space-3xs));
   }
 
   .zui-field > .zui-label {
@@ -22,14 +22,14 @@
 
   /* Helper text + validation message */
   .zui-field-description {
-    font-size: var(--step--1);
+    font-size: var(--zui-field-description-font-size, var(--step--1));
     line-height: var(--line-height-sm);
     color: color-mix(in oklch, var(--color-text) 65%, transparent);
     text-wrap: pretty;
   }
 
   .zui-field-error {
-    font-size: var(--step--1);
+    font-size: var(--zui-field-error-font-size, var(--step--1));
     line-height: var(--line-height-sm);
     color: var(--color-error);
     text-wrap: pretty;

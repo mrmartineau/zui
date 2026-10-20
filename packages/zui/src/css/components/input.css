@@ -1,23 +1,25 @@
 @layer zui.components {
   .zui-input {
     /* shared custom properties */
-    --zui-input-radius: var(--radius-lg);
-    --zui-input-border: var(--color-border);
-    --zui-input-bg: var(--color-background);
-    --zui-input-fg: var(--color-text);
-    --zui-input-padding-block: var(--space-3xs);
-    --zui-input-padding-inline: var(--space-xs);
+    --_input-radius: var(--zui-input-radius, var(--radius-lg));
+    --_input-border: var(--zui-input-border, var(--color-border));
+    --_input-bg: var(--zui-input-bg, var(--color-background));
+    --_input-fg: var(--zui-input-fg, var(--color-text));
+    --_input-padding-block: var(--zui-input-padding-block, var(--space-3xs));
+    --_input-padding-inline: var(--zui-input-padding-inline, var(--space-xs));
+    --_input-font-size: var(--zui-input-font-size, var(--step-0));
+    --_input-focus-border: var(--zui-input-focus-border, var(--color-theme));
 
     display: block;
     width: 100%;
-    padding-block: var(--zui-input-padding-block);
-    padding-inline: var(--zui-input-padding-inline);
-    border: 1px var(--border-style, solid) var(--zui-input-border);
-    border-radius: var(--zui-input-radius);
-    background-color: var(--zui-input-bg);
-    color: var(--zui-input-fg);
+    padding-block: var(--_input-padding-block);
+    padding-inline: var(--_input-padding-inline);
+    border: 1px var(--border-style, solid) var(--_input-border);
+    border-radius: var(--_input-radius);
+    background-color: var(--_input-bg);
+    color: var(--_input-fg);
     font-family: inherit;
-    font-size: var(--step-0);
+    font-size: var(--_input-font-size);
     line-height: var(--line-height-md);
     transition-property: border-color, box-shadow;
     transition-duration: 200ms;
@@ -29,7 +31,7 @@
   }
 
   .zui-input:focus-visible {
-    border-color: var(--color-theme);
+    border-color: var(--_input-focus-border);
   }
 
   .zui-input:disabled {

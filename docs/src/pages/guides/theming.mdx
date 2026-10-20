@@ -198,6 +198,71 @@ The base body line height is controlled by `--line-height`. It defaults to `--li
 }
 ```
 
+## Component custom properties
+
+The tokens above change every component at once. To change one component, set its own custom properties. Each component page lists them with their defaults, for example `--zui-card-padding` or `--zui-btn-font-size`.
+
+ZUI never sets these properties itself. Each component reads them with a fallback, like `var(--zui-card-bg, var(--color-surface))`. So you can set them anywhere, and the nearest value wins.
+
+### Everywhere
+
+Put them on `:root`, next to your other theme overrides:
+
+```css
+:root {
+  --zui-card-padding: var(--space-md);
+  --zui-btn-font-size: var(--step-0);
+  --zui-tooltip-font-size: var(--step--1);
+  --prose-h1-font-size: var(--step-5);
+}
+```
+
+### In one part of the page
+
+Put them on a wrapper. Only components inside it change:
+
+```css
+.sidebar {
+  --zui-btn-radius: 0;
+  --zui-input-bg: var(--color-surface);
+}
+```
+
+### On one element
+
+Use the `style` attribute:
+
+```html
+<div class="zui-card" style="--zui-card-padding: var(--space-lg);">…</div>
+```
+
+### Variants
+
+Variants and sizes set the same properties on the element. A value from `:root` or a wrapper changes the default, and the variants keep their own values:
+
+```css
+:root {
+  --zui-card-radius: var(--radius-sm); /* default cards */
+}
+/* .zui-card-shape-hard still has a radius of 0 */
+```
+
+To change one variant, set the property on the variant class:
+
+```css
+.zui-button-size-sm {
+  --zui-btn-font-size: var(--step--1);
+}
+```
+
+Don't set them on the base component class (`.zui-card { … }`). Rules outside a `@layer` beat every ZUI rule, so that value would also replace the shape and size variants.
+
+### Things to know
+
+- **Properties that start with `--_` are internal.** For example `--_card-bg`. Don't set or read them. They can change in any release.
+- **`:root` values use `:root` tokens.** `:root { --zui-card-bg: var(--color-background); }` uses the background colour from `:root`. If a section sets its own `--color-background`, the card doesn't follow it. Set the card property on that section instead. The defaults don't have this problem, because each component reads its tokens where it is used.
+- **Prose and code use shorter names:** `--prose-*`, `--link-*`, `--zui-code-*` and `--zui-pre-*`. See [Prose](/utilities/prose) and [UI typography](/utilities/ui-typography).
+
 ## Full example
 
 A complete theme override combining colours, fonts, and shape:
@@ -228,5 +293,9 @@ A complete theme override combining colours, fonts, and shape:
 
   /* Line height */
   --line-height: var(--line-height-md);
+
+  /* Components */
+  --zui-card-padding: var(--space-md);
+  --zui-btn-font-size: var(--step-0);
 }
 ```

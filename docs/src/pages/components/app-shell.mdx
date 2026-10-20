@@ -281,17 +281,24 @@ When `storageKey` is set (default), the collapse state is persisted to `localSto
 <script>{appShellNoFlashScript()}</script>
 ```
 
-## Tokens
+## CSS custom properties
 
-All sizing tokens are scoped to the `.zui-app-shell` root and prefixed `--zui-app-shell-*`. Override at the call site:
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
 
-```css
-.my-app .zui-app-shell {
-  --zui-app-shell-sidebar-width: 17rem;
-  --zui-app-shell-header-height: 3.5rem;
-  --zui-app-shell-main-padding: var(--space-lg);
-}
-```
+| Property | Default | Description |
+|---|---|---|
+| `--zui-app-shell-sidebar-width` | `15rem` | Sidebar width on desktop |
+| `--zui-app-shell-header-height` | `3rem` | Header height |
+| `--zui-app-shell-main-padding` | `var(--space-md)` | Padding inside the main area |
+| `--zui-app-shell-transition-duration` | `200ms` | Duration of the sidebar collapse |
+| `--zui-app-shell-bg` | `var(--color-background)` | Background colour |
+| `--zui-app-shell-surface` | `var(--color-surface)` | Sidebar and header background |
+| `--zui-app-shell-border` | `var(--color-border)` | Border colour |
+| `--zui-app-shell-sidebar-padding` | `var(--space-xs)` | Padding inside the sidebar body |
+| `--zui-app-shell-drawer-width` | `min(20rem, 85vw)` | Sidebar width on mobile |
+| `--zui-app-shell-toggle-size` | `2rem` | Width and height of the toggle button |
+| `--zui-app-shell-toggle-radius` | `var(--radius-md)` | Border radius of the toggle button |
+| `--zui-app-shell-toggle-font-size` | `var(--step-1)` | Icon size in the toggle button |
 
 To change the mobile breakpoint, re-author the `@media (max-width: ...)` rule in your own stylesheet — `@media` cannot read CSS custom properties.
 

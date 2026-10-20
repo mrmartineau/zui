@@ -1,21 +1,27 @@
 @layer zui.components {
   .zui-textarea {
-    --zui-textarea-radius: var(--radius-lg);
-    --zui-textarea-border: var(--color-border);
-    --zui-textarea-bg: var(--color-background);
-    --zui-textarea-fg: var(--color-text);
-    --zui-textarea-padding: var(--space-xs);
+    --_textarea-radius: var(--zui-textarea-radius, var(--radius-lg));
+    --_textarea-border: var(--zui-textarea-border, var(--color-border));
+    --_textarea-bg: var(--zui-textarea-bg, var(--color-background));
+    --_textarea-fg: var(--zui-textarea-fg, var(--color-text));
+    --_textarea-padding: var(--zui-textarea-padding, var(--space-xs));
+    --_textarea-font-size: var(--zui-textarea-font-size, var(--step-0));
+    --_textarea-focus-border: var(
+      --zui-textarea-focus-border,
+      var(--color-theme)
+    );
+    --_textarea-min-height: var(--zui-textarea-min-height, 6rem);
 
     display: block;
     width: 100%;
-    min-height: 6rem;
-    padding: var(--zui-textarea-padding);
-    border: 1px var(--border-style, solid) var(--zui-textarea-border);
-    border-radius: var(--zui-textarea-radius);
-    background-color: var(--zui-textarea-bg);
-    color: var(--zui-textarea-fg);
+    min-height: var(--_textarea-min-height);
+    padding: var(--_textarea-padding);
+    border: 1px var(--border-style, solid) var(--_textarea-border);
+    border-radius: var(--_textarea-radius);
+    background-color: var(--_textarea-bg);
+    color: var(--_textarea-fg);
     font-family: inherit;
-    font-size: var(--step-0);
+    font-size: var(--_textarea-font-size);
     line-height: var(--line-height-md);
     resize: vertical;
     field-sizing: content;
@@ -29,7 +35,7 @@
   }
 
   .zui-textarea:focus-visible {
-    border-color: var(--color-theme);
+    border-color: var(--_textarea-focus-border);
   }
 
   .zui-textarea:disabled {

@@ -15,16 +15,23 @@
    */
 
   .zui-app-shell {
-    --zui-app-shell-sidebar-width: 15rem;
-    --zui-app-shell-header-height: 3rem;
-    --zui-app-shell-main-padding: var(--space-md);
-    --zui-app-shell-transition-duration: 200ms;
-    --zui-app-shell-surface: var(--color-surface);
-    --zui-app-shell-border: var(--color-border);
+    --_app-shell-sidebar-width: var(--zui-app-shell-sidebar-width, 15rem);
+    --_app-shell-header-height: var(--zui-app-shell-header-height, 3rem);
+    --_app-shell-main-padding: var(
+      --zui-app-shell-main-padding,
+      var(--space-md)
+    );
+    --_app-shell-transition-duration: var(
+      --zui-app-shell-transition-duration,
+      200ms
+    );
+    --_app-shell-surface: var(--zui-app-shell-surface, var(--color-surface));
+    --_app-shell-border: var(--zui-app-shell-border, var(--color-border));
+    --_app-shell-bg: var(--zui-app-shell-bg, var(--color-background));
 
     display: grid;
-    grid-template-columns: var(--zui-app-shell-sidebar-width) 1fr;
-    grid-template-rows: var(--zui-app-shell-header-height) 1fr;
+    grid-template-columns: var(--_app-shell-sidebar-width) 1fr;
+    grid-template-rows: var(--_app-shell-header-height) 1fr;
     grid-template-areas:
       "sidebar header"
       "sidebar main";
@@ -33,16 +40,16 @@
     inline-size: 100%;
     overflow: hidden;
 
-    background-color: var(--color-background);
+    background-color: var(--_app-shell-bg);
     color: var(--color-text);
 
-    transition: grid-template-columns var(--zui-app-shell-transition-duration)
+    transition: grid-template-columns var(--_app-shell-transition-duration)
       var(--ease, ease);
   }
 
   /* Right-positioned sidebar swaps grid areas */
   .zui-app-shell-position-right {
-    grid-template-columns: 1fr var(--zui-app-shell-sidebar-width);
+    grid-template-columns: 1fr var(--_app-shell-sidebar-width);
     grid-template-areas:
       "header sidebar"
       "main sidebar";
@@ -66,12 +73,12 @@
       opacity: 0;
       pointer-events: none;
       transition:
-        opacity var(--zui-app-shell-transition-duration) ease,
-        visibility 0s linear var(--zui-app-shell-transition-duration);
+        opacity var(--_app-shell-transition-duration) ease,
+        visibility 0s linear var(--_app-shell-transition-duration);
     }
     .zui-app-shell .zui-app-shell-sidebar {
       transition:
-        opacity var(--zui-app-shell-transition-duration) ease,
+        opacity var(--_app-shell-transition-duration) ease,
         visibility 0s linear;
     }
   }
@@ -96,15 +103,13 @@
     max-block-size: none;
     border: 0;
     color: inherit;
-    background-color: var(--zui-app-shell-surface);
-    border-inline-end: 1px var(--border-style, solid)
-      var(--zui-app-shell-border);
+    background-color: var(--_app-shell-surface);
+    border-inline-end: 1px var(--border-style, solid) var(--_app-shell-border);
   }
 
   .zui-app-shell-position-right .zui-app-shell-sidebar {
     border-inline-end: 0;
-    border-inline-start: 1px var(--border-style, solid)
-      var(--zui-app-shell-border);
+    border-inline-start: 1px var(--border-style, solid) var(--_app-shell-border);
   }
 
   .zui-app-shell-sidebar::backdrop {
@@ -128,27 +133,26 @@
   /* ---------- Sidebar regions ---------- */
 
   .zui-app-shell-sidebar-header {
-    block-size: var(--zui-app-shell-header-height);
+    block-size: var(--_app-shell-header-height);
     padding-inline: var(--space-sm);
     display: flex;
     align-items: center;
     gap: var(--space-xs);
-    border-block-end: 1px var(--border-style, solid) var(--zui-app-shell-border);
+    border-block-end: 1px var(--border-style, solid) var(--_app-shell-border);
     min-inline-size: 0;
   }
 
   .zui-app-shell-sidebar-body {
     overflow-y: auto;
     overflow-x: hidden;
-    padding: var(--space-xs);
+    padding: var(--zui-app-shell-sidebar-padding, var(--space-xs));
     min-inline-size: 0;
   }
 
   .zui-app-shell-sidebar-footer {
     padding-inline: var(--space-sm);
     padding-block: var(--space-xs);
-    border-block-start: 1px var(--border-style, solid)
-      var(--zui-app-shell-border);
+    border-block-start: 1px var(--border-style, solid) var(--_app-shell-border);
     display: flex;
     align-items: center;
     gap: var(--space-xs);
@@ -159,13 +163,13 @@
 
   .zui-app-shell-header {
     grid-area: header;
-    block-size: var(--zui-app-shell-header-height);
+    block-size: var(--_app-shell-header-height);
     display: flex;
     align-items: center;
     gap: var(--space-xs);
     padding-inline: var(--space-sm);
-    border-block-end: 1px var(--border-style, solid) var(--zui-app-shell-border);
-    background-color: var(--zui-app-shell-surface);
+    border-block-end: 1px var(--border-style, solid) var(--_app-shell-border);
+    background-color: var(--_app-shell-surface);
     min-inline-size: 0;
   }
 
@@ -174,15 +178,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    inline-size: 2rem;
-    block-size: 2rem;
+    inline-size: var(--zui-app-shell-toggle-size, 2rem);
+    block-size: var(--zui-app-shell-toggle-size, 2rem);
     padding: 0;
     border: 0;
-    border-radius: var(--radius-md);
+    border-radius: var(--zui-app-shell-toggle-radius, var(--radius-md));
     background: transparent;
     color: inherit;
     cursor: pointer;
-    font-size: var(--step-1);
+    font-size: var(--zui-app-shell-toggle-font-size, var(--step-1));
   }
   .zui-app-shell-toggle:hover {
     background-color: oklch(from var(--color-text) l c h / 8%);
@@ -198,7 +202,7 @@
     grid-area: main;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: var(--zui-app-shell-main-padding);
+    padding: var(--_app-shell-main-padding);
     min-inline-size: 0;
     min-block-size: 0;
   }
@@ -231,7 +235,7 @@
     .zui-app-shell,
     .zui-app-shell-position-right {
       grid-template-columns: 1fr;
-      grid-template-rows: var(--zui-app-shell-header-height) 1fr;
+      grid-template-rows: var(--_app-shell-header-height) 1fr;
       grid-template-areas:
         "header"
         "main";
@@ -243,11 +247,10 @@
       inset-block: 0;
       inset-inline-start: 0;
       inset-inline-end: auto;
-      inline-size: min(20rem, 85vw);
+      inline-size: var(--zui-app-shell-drawer-width, min(20rem, 85vw));
       max-inline-size: 85vw;
       block-size: 100dvh;
-      border-inline-end: 1px var(--border-style, solid)
-        var(--zui-app-shell-border);
+      border-inline-end: 1px var(--border-style, solid) var(--_app-shell-border);
       border-inline-start: 0;
       box-shadow: var(--shadow-2xl);
 
@@ -288,7 +291,7 @@
       inset-inline-end: 0;
       border-inline-end: 0;
       border-inline-start: 1px var(--border-style, solid)
-        var(--zui-app-shell-border);
+        var(--_app-shell-border);
       translate: 100% 0;
     }
     .zui-app-shell-position-right .zui-app-shell-sidebar:popover-open {

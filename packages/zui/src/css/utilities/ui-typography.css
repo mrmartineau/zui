@@ -91,11 +91,18 @@
   }
 
   .zui-link {
-    --link-color: var(--color-text);
-    --link-color-decoration: oklch(from var(--color-text) l c h / 50%);
-    --link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);
-    color: var(--link-color);
-    text-decoration-color: var(--link-color-decoration);
+    --_link-color: var(--link-color, var(--color-text));
+    --_link-color-decoration: var(
+      --link-color-decoration,
+      oklch(from var(--_link-color) l c h / 50%)
+    );
+    --_link-color-decoration-hover: var(
+      --link-color-decoration-hover,
+      oklch(from var(--_link-color) l c h / 90%)
+    );
+
+    color: var(--_link-color);
+    text-decoration-color: var(--_link-color-decoration);
     text-decoration-thickness: 0.2ex;
     text-underline-offset: 0.3ex;
     text-decoration-line: underline;
@@ -105,18 +112,22 @@
     border-radius: var(--radius-md);
 
     &:hover {
-      color: oklch(from var(--color-text) l c h / 90%);
-      text-decoration-color: var(--link-color-decoration-hover);
+      color: oklch(from var(--_link-color) l c h / 90%);
+      text-decoration-color: var(--_link-color-decoration-hover);
     }
   }
 
   .zui-pre,
   .zui-code {
-    --zui-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
-    --zui-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
     font-family: var(--font-code);
-    background-color: var(--zui-code-bg-color);
-    color: var(--zui-code-color);
+    background-color: var(
+      --zui-code-bg-color,
+      oklch(from var(--color-background) calc(l + 0.1) c h)
+    );
+    color: var(
+      --zui-code-color,
+      oklch(from var(--color-text) calc(l + 0.1) c h)
+    );
   }
 
   .zui-pre {
@@ -125,7 +136,7 @@
     max-width: 100%;
     box-shadow: var(--shadow-sm);
     position: relative;
-    font-size: var(--step--2);
+    font-size: var(--zui-pre-font-size, var(--step--2));
 
     code {
       all: unset;
@@ -134,7 +145,7 @@
 
   .zui-code {
     padding: 2px 4px;
-    font-size: var(--step--1);
+    font-size: var(--zui-code-font-size, var(--step--1));
     display: inline-block;
     border-radius: var(--radius-md);
     line-height: var(--line-height-xs);

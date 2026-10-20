@@ -1,22 +1,22 @@
 @layer zui.components {
   .zui-badge {
-    --zui-badge-accent: var(--color-theme);
-    --zui-badge-radius: var(--radius-full);
-    --zui-badge-font-size: var(--step--2);
-    --zui-badge-padding-block: var(--space-4xs);
-    --zui-badge-padding-inline: var(--space-2xs);
+    --_badge-accent: var(--zui-badge-accent, var(--color-theme));
+    --_badge-radius: var(--zui-badge-radius, var(--radius-full));
+    --_badge-font-size: var(--zui-badge-font-size, var(--step--2));
+    --_badge-padding-block: var(--zui-badge-padding-block, var(--space-4xs));
+    --_badge-padding-inline: var(--zui-badge-padding-inline, var(--space-2xs));
 
     display: inline-flex;
     align-items: center;
     gap: var(--space-4xs);
-    padding: var(--zui-badge-padding-block) var(--zui-badge-padding-inline);
-    border-radius: var(--zui-badge-radius);
-    font-size: var(--zui-badge-font-size);
+    padding: var(--_badge-padding-block) var(--_badge-padding-inline);
+    border-radius: var(--_badge-radius);
+    font-size: var(--_badge-font-size);
     font-weight: var(--font-weight-medium);
     line-height: 1;
     white-space: nowrap;
-    background-color: oklch(from var(--zui-badge-accent) l c h / 15%);
-    color: var(--zui-badge-accent);
+    background-color: oklch(from var(--_badge-accent) l c h / 15%);
+    color: var(--_badge-accent);
   }
 
   /* -------------------------------------------------------------------------
@@ -27,10 +27,10 @@
 
   /* fill */
   .zui-badge.zui-badge-variant-fill {
-    background-color: var(--zui-badge-accent);
+    background-color: var(--_badge-accent);
     color: light-dark(
-      oklch(from var(--zui-badge-accent) calc(l + 0.4) 0 0),
-      oklch(from var(--zui-badge-accent) calc(l - 0.4) 0 0)
+      oklch(from var(--_badge-accent) calc(l + 0.4) 0 0),
+      oklch(from var(--_badge-accent) calc(l - 0.4) 0 0)
     );
   }
 
@@ -38,8 +38,8 @@
   .zui-badge.zui-badge-variant-outline {
     background-color: transparent;
     border: 1px var(--border-style, solid)
-      oklch(from var(--zui-badge-accent) l c h / 40%);
-    color: var(--zui-badge-accent);
+      oklch(from var(--_badge-accent) l c h / 40%);
+    color: var(--_badge-accent);
   }
 
   /* -------------------------------------------------------------------------

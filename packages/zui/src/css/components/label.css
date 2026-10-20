@@ -1,10 +1,10 @@
 @layer zui.components {
   .zui-label {
     display: block;
-    font-size: var(--step--1);
+    font-size: var(--zui-label-font-size, var(--step--1));
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-sm);
-    color: var(--color-text);
+    color: var(--zui-label-color, var(--color-text));
   }
 
   .zui-label-required::after {

@@ -1,10 +1,11 @@
 @layer zui.components {
   .zui-kbd {
-    --zui-kbd-bg: var(--color-border);
-    --zui-kbd-color: var(--color-text);
-    --zui-kbd-radius: var(--radius-md);
-    --zui-kbd-font-size: var(--step--2);
-    --zui-kbd-font-family: var(--font-body);
+    --_kbd-bg: var(--zui-kbd-bg, var(--color-border));
+    --_kbd-color: var(--zui-kbd-color, var(--color-text));
+    --_kbd-radius: var(--zui-kbd-radius, var(--radius-md));
+    --_kbd-font-size: var(--zui-kbd-font-size, var(--step--2));
+    --_kbd-font-family: var(--zui-kbd-font-family, var(--font-body));
+    --_kbd-padding-inline: var(--zui-kbd-padding-inline, var(--space-3xs));
 
     display: inline-flex;
     align-items: center;
@@ -12,14 +13,14 @@
     gap: var(--space-4xs);
     min-width: 1.7em;
     height: 1.7em;
-    padding-inline: var(--space-3xs);
-    border-radius: var(--zui-kbd-radius);
-    background-color: var(--zui-kbd-bg);
-    font-family: var(--zui-kbd-font-family);
-    font-size: var(--zui-kbd-font-size);
+    padding-inline: var(--_kbd-padding-inline);
+    border-radius: var(--_kbd-radius);
+    background-color: var(--_kbd-bg);
+    font-family: var(--_kbd-font-family);
+    font-size: var(--_kbd-font-size);
     font-weight: var(--font-weight-medium);
     line-height: 1;
-    color: var(--zui-kbd-color);
+    color: var(--_kbd-color);
     white-space: nowrap;
   }
 

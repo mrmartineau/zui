@@ -1,5 +1,19 @@
 @layer zui.components {
   .zui-table {
+    --_table-border: var(
+      --zui-table-border,
+      oklch(from currentColor l c h / 15%)
+    );
+    --_table-cell-padding: var(--zui-table-cell-padding, var(--space-2xs));
+    --_table-hover-bg: var(
+      --zui-table-hover-bg,
+      oklch(from currentColor l c h / 10%)
+    );
+    --_table-selected-bg: var(
+      --zui-table-selected-bg,
+      oklch(from currentColor l c h / 25%)
+    );
+
     width: 100%;
     caption-side: bottom;
     font-variant-numeric: tabular-nums;
@@ -9,16 +23,16 @@
   }
 
   .zui-table-row {
-    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+    border-bottom: 1px var(--border-style, solid) var(--_table-border);
     transition: background-color 150ms ease-in-out;
   }
 
   .zui-table-body .zui-table-row:hover {
-    background-color: oklch(from currentColor l c h / 10%);
+    background-color: var(--_table-hover-bg);
   }
 
   .zui-table-row[data-state="selected"] {
-    background-color: oklch(from currentColor l c h / 25%);
+    background-color: var(--_table-selected-bg);
   }
 
   .zui-table-head {
@@ -27,16 +41,16 @@
     text-align: left;
     vertical-align: middle;
     font-weight: var(--font-weight-bold);
-    border-bottom: 1px solid oklch(from currentColor l c h / 15%);
+    border-bottom: 1px var(--border-style, solid) var(--_table-border);
   }
 
   .zui-table-cell {
-    padding: var(--space-2xs);
+    padding: var(--_table-cell-padding);
     vertical-align: middle;
   }
 
   .zui-table-footer {
-    border-top: 1px solid oklch(from currentColor l c h / 15%);
+    border-top: 1px var(--border-style, solid) var(--_table-border);
     background-color: oklch(from currentColor l c h / 5%);
     font-weight: var(--font-weight-bold);
   }

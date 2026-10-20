@@ -89,7 +89,7 @@ For example, to change a button's foreground colour, set `--zui-btn-fg` — don'
 
 ```css
 /* ✅ Do — override the variable */
-.checkout .zui-button {
+.checkout {
   --zui-btn-fg: var(--color-background);
   --zui-btn-bg: var(--color-success);
 }
@@ -105,7 +105,24 @@ For example, to change a button's foreground colour, set `--zui-btn-fg` — don'
 
 ### CSS custom properties
 
-Every component exposes CSS custom properties that control its appearance — colours, border radius, padding, shadow, and more. Override these without touching source CSS.
+Every component exposes CSS custom properties that control its appearance — colours, border radius, padding, font sizes, shadow, and more. ZUI never sets them itself; each component reads them with a fallback (`var(--zui-card-bg, var(--color-surface))`), so the nearest value wins.
+
+**Theme-wide** — set on `:root`, next to the other theme tokens:
+
+```css
+:root {
+  --zui-card-padding: var(--space-md);
+  --zui-btn-font-size: var(--step-0);
+}
+```
+
+**Scoped** — set on a wrapper to change only the components inside it:
+
+```css
+.my-sidebar {
+  --zui-btn-radius: 0;
+}
+```
 
 **Inline** — via `style` attribute on the component's root element:
 
@@ -113,24 +130,11 @@ Every component exposes CSS custom properties that control its appearance — co
 <div class="zui-card" style="--zui-card-radius: var(--radius-sm); --zui-card-padding: var(--space-lg);">…</div>
 ```
 
-**Stylesheet** — target the component class. Rules outside a `@layer` win over `zui.components` automatically, no `!important` needed:
+**One variant** — set on the variant class: `.zui-button-size-sm { --zui-btn-font-size: var(--step--1); }`.
 
-```css
-.zui-card {
-  --zui-card-radius: var(--radius-sm);
-  --zui-card-padding: var(--space-lg);
-}
-```
+Don't set them on the bare component class (`.zui-card { … }`): an unlayered rule beats every ZUI rule, so it also overrides the shape and size variants. Never set or read `--_*` properties (e.g. `--_card-bg`) — they're internal.
 
-**Scoped** — nest under a parent selector to restrict the override to a specific context:
-
-```css
-.my-sidebar .zui-button {
-  --zui-btn-radius: 0;
-}
-```
-
-Each component page in the docs lists its available custom properties and their defaults.
+Each component page in the docs lists its available custom properties and their defaults. See the theming guide's "Component custom properties" section for the full rules.
 
 ## Design Tokens
 

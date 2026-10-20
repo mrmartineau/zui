@@ -331,8 +331,13 @@ In older browsers, the tooltip shows in the centre of the viewport, not next to 
 
 ## CSS custom properties
 
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
 | Property | Default | Description |
 |---|---|---|
-| `--zui-tooltip-bg` | `light-dark(var(--color-mist-700), var(--color-mist-200))` | Background colour |
-| `--zui-tooltip-fg` | `light-dark(var(--color-mist-50), var(--color-mist-900))` | Text colour |
+| `--zui-tooltip-bg` | `var(--color-surface)` | Background colour |
+| `--zui-tooltip-fg` | `currentColor` | Text colour |
 | `--zui-tooltip-radius` | `var(--radius-md)` | Border radius |
+| `--zui-tooltip-padding` | `var(--space-4xs) var(--space-2xs)` | Padding |
+| `--zui-tooltip-font-size` | `var(--step--2)` | Font size |
+| `--zui-tooltip-shadow` | `var(--shadow-md)` | Box shadow |

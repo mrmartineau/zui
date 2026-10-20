@@ -7,10 +7,12 @@
   }
 
   .zui-menu-content {
-    --zui-menu-radius: var(--radius-xl);
-    --zui-menu-border: var(--color-border);
-    --zui-menu-bg: var(--color-surface);
-    --zui-menu-padding: var(--space-2xs);
+    --_menu-radius: var(--zui-menu-radius, var(--radius-xl));
+    --_menu-border: var(--zui-menu-border, var(--color-border));
+    --_menu-bg: var(--zui-menu-bg, var(--color-surface));
+    --_menu-padding: var(--zui-menu-padding, var(--space-2xs));
+    --_menu-shadow: var(--zui-menu-shadow, var(--shadow-md));
+    --_menu-min-width: var(--zui-menu-min-width, 12.5rem);
 
     position: absolute;
     inset-inline-start: 0;
@@ -18,12 +20,12 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-4xs);
-    min-width: 12.5rem;
-    padding: var(--zui-menu-padding);
-    border: 1px var(--border-style, solid) var(--zui-menu-border);
-    border-radius: var(--zui-menu-radius);
-    background-color: var(--zui-menu-bg);
-    box-shadow: var(--shadow-md);
+    min-width: var(--_menu-min-width);
+    padding: var(--_menu-padding);
+    border: 1px var(--border-style, solid) var(--_menu-border);
+    border-radius: var(--_menu-radius);
+    background-color: var(--_menu-bg);
+    box-shadow: var(--_menu-shadow);
     z-index: var(--z-2);
   }
 
@@ -105,7 +107,10 @@
   }
 
   .zui-menu-item[data-highlighted="true"] {
-    background: oklch(from var(--color-text) l c h / 0.08);
+    background: var(
+      --zui-menu-item-highlight-bg,
+      oklch(from var(--color-text) l c h / 0.08)
+    );
   }
 
   .zui-menu-item[data-disabled="true"] {

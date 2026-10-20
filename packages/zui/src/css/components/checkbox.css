@@ -11,11 +11,15 @@
   }
 
   .zui-checkbox input[type="checkbox"] {
+    --_checkbox-size: var(--zui-checkbox-size, 1.25em);
+    --_checkbox-radius: var(--zui-checkbox-radius, var(--radius-sm));
+    --_checkbox-accent: var(--zui-checkbox-accent, var(--color-accent));
+
     appearance: none;
-    width: 1.25em;
-    height: 1.25em;
-    border: 2px var(--border-style, solid) var(--color-accent, currentColor);
-    border-radius: var(--radius-sm);
+    width: var(--_checkbox-size);
+    height: var(--_checkbox-size);
+    border: 2px var(--border-style, solid) var(--_checkbox-accent);
+    border-radius: var(--_checkbox-radius);
     background-color: var(--color-background);
     cursor: pointer;
     transition-property: border-color, background-color;
@@ -37,8 +41,8 @@
   }
 
   .zui-checkbox input[type="checkbox"]:checked {
-    border-color: var(--color-accent);
-    background-color: var(--color-accent);
+    border-color: var(--_checkbox-accent);
+    background-color: var(--_checkbox-accent);
   }
 
   .zui-checkbox input[type="checkbox"]:checked::before {

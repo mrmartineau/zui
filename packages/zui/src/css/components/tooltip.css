@@ -2,23 +2,32 @@
   .zui-tooltip {
     position: relative;
     display: inline-block;
-    --zui-tooltip-bg: var(--color-surface);
-    --zui-tooltip-fg: currentColor;
-    --zui-tooltip-radius: var(--radius-md);
   }
 
+  /* Knobs resolve on the content, so a shape class on the wrapper still
+     reaches it, and content used without a wrapper gets the defaults. */
   .zui-tooltip-content {
-    background-color: var(--zui-tooltip-bg);
-    color: var(--zui-tooltip-fg);
-    padding: var(--space-4xs) var(--space-2xs);
-    border-radius: var(--zui-tooltip-radius);
+    --_tooltip-bg: var(--zui-tooltip-bg, var(--color-surface));
+    --_tooltip-fg: var(--zui-tooltip-fg, currentColor);
+    --_tooltip-radius: var(--zui-tooltip-radius, var(--radius-md));
+    --_tooltip-padding: var(
+      --zui-tooltip-padding,
+      var(--space-4xs) var(--space-2xs)
+    );
+    --_tooltip-font-size: var(--zui-tooltip-font-size, var(--step--2));
+    --_tooltip-shadow: var(--zui-tooltip-shadow, var(--shadow-md));
+
+    background-color: var(--_tooltip-bg);
+    color: var(--_tooltip-fg);
+    padding: var(--_tooltip-padding);
+    border-radius: var(--_tooltip-radius);
     border: none;
-    font-size: var(--step--2);
+    font-size: var(--_tooltip-font-size);
     line-height: var(--line-height-sm);
     width: max-content;
     max-width: 20rem;
     margin: 0;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--_tooltip-shadow);
     pointer-events: none;
     z-index: var(--z-2);
 

@@ -39,6 +39,12 @@ docs/                   → Astro docs site, built on @mrmartineau/zui-theme (se
 - Use CSS `light-dark()` for colour values that differ between themes. Reference semantic tokens from `theme.css` (e.g. `--color-text`, `--color-background`, `--color-surface`, `--color-border`, `--color-theme`, `--color-accent`) over raw palette tokens where appropriate.
 - Use CSS relative colour syntax (`oklch(from …)`) to derive transparency, tints, or shade variations rather than adding new tokens.
 - Border style uses `var(--border-style)`.
+- **Component custom properties.** Public knobs are `--zui-<component>-<name>` (button uses `--zui-btn-*`). Never set a public knob in a component's base rule — read it with a fallback, so a value on `:root` or any ancestor reaches the component:
+  - Knobs for the component's main element: resolve each once into a private property at the top of the rule that uses it, and read the private one everywhere else: `--_card-bg: var(--zui-card-bg, var(--color-surface));` then `background-color: var(--_card-bg);`.
+  - Knobs for one part only: read inline, e.g. `.zui-card-title { font-size: var(--zui-card-title-font-size, var(--step-1)); }`.
+  - Variant, size and shape classes set the **public** knob (`.zui-card-shape-hard { --zui-card-radius: 0; }`). A class that is the default variant must not set it.
+  - Values derived from other knobs (e.g. button colours from `--zui-btn-accent`) stay private and live on the element.
+  - Every new knob goes in the component's docs table. The user-facing rules live in the theming guide (`docs/src/pages/guides/theming.mdx`, "Component custom properties").
 
 ### Components
 

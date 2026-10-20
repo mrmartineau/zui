@@ -3,24 +3,27 @@
    * Base
    * ---------------------------------------------------------------------- */
   .zui-avatar {
-    --zui-avatar-size: 2.5rem;
-    --zui-avatar-radius: var(--radius-full);
-    --zui-avatar-font-size: 90%;
+    --_avatar-size: var(--zui-avatar-size, 2.5rem);
+    --_avatar-radius: var(--zui-avatar-radius, var(--radius-full));
+    --_avatar-font-size: var(--zui-avatar-font-size, 90%);
+    --_avatar-bg: var(--zui-avatar-bg, var(--color-surface));
+    --_avatar-border: var(--zui-avatar-border, var(--color-border));
+    --_avatar-fg: var(--zui-avatar-fg, var(--color-text));
 
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--zui-avatar-size);
-    height: var(--zui-avatar-size);
-    border-radius: var(--zui-avatar-radius);
+    width: var(--_avatar-size);
+    height: var(--_avatar-size);
+    border-radius: var(--_avatar-radius);
     overflow: hidden;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background-color: var(--_avatar-bg);
+    border: 1px var(--border-style, solid) var(--_avatar-border);
     flex-shrink: 0;
-    font-size: var(--zui-avatar-font-size);
+    font-size: var(--_avatar-font-size);
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--_avatar-fg);
     user-select: none;
   }
 

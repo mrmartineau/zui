@@ -317,31 +317,28 @@ All prose styles are wrapped in `:where(.prose)`, giving them zero specificity. 
 
 ## Custom properties
 
-```css
-.prose {
-  --prose-accent-color: var(--color-theme);
-  --prose-link-color: var(--color-text);
-  --prose-link-color-decoration: oklch(from var(--color-text) l c h / 50%);
-  --prose-link-color-decoration-hover: oklch(from var(--color-text) l c h / 90%);
-  --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
-  --prose-code-bg-color: oklch(from var(--color-background) calc(l + 0.1) c h);
-  --prose-scroll-margin: 1.5rem;
-}
-```
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
 
-### Font sizes
-
-Each size has a default. Set the property on `.prose`, or in your theme, to change it. Unset properties use the default.
-
-<TokenGrid>
-  <TokenRow><CopyCode>--prose-font-size</CopyCode><span>Body text. Default: <code>var(--step-0)</code></span></TokenRow>
-  <TokenRow><CopyCode>--prose-h1-font-size</CopyCode><span>Default: <code>var(--step-3)</code></span></TokenRow>
-  <TokenRow><CopyCode>--prose-h2-font-size</CopyCode><span>Default: <code>var(--step-2)</code></span></TokenRow>
-  <TokenRow><CopyCode>--prose-h3-font-size</CopyCode><span>Default: <code>var(--step-1)</code></span></TokenRow>
-  <TokenRow><CopyCode>--prose-h4-font-size</CopyCode><span>Default: <code>var(--step-0)</code></span></TokenRow>
-  <TokenRow><CopyCode>--prose-code-font-size</CopyCode><span>Inline code. Default: <code>var(--step--1)</code></span></TokenRow>
-  <TokenRow><CopyCode>--prose-pre-font-size</CopyCode><span>Code blocks. Default: <code>var(--step--2)</code></span></TokenRow>
-</TokenGrid>
+| Property | Default | Description |
+|---|---|---|
+| `--prose-color` | `var(--color-text)` | Text colour |
+| `--prose-accent-color` | `var(--color-theme)` | `h2` colour |
+| `--prose-link-color` | `var(--color-text)` | Link colour |
+| `--prose-link-color-decoration` | `oklch(from var(--color-text) l c h / 50%)` | Link underline colour |
+| `--prose-link-color-decoration-hover` | `oklch(from var(--color-text) l c h / 90%)` | Link underline colour on hover |
+| `--prose-code-color` | `oklch(from var(--color-text) calc(l + 0.1) c h)` | Code text colour |
+| `--prose-code-bg-color` | `oklch(from var(--color-background) calc(l + 0.1) c h)` | Code background colour |
+| `--prose-scroll-margin` | `1.5rem` | Space above an element when you link to its `id` |
+| `--prose-font-size` | `var(--step-0)` | Body text font size |
+| `--prose-h1-font-size` | `var(--step-3)` | `h1` font size |
+| `--prose-h2-font-size` | `var(--step-2)` | `h2` font size |
+| `--prose-h3-font-size` | `var(--step-1)` | `h3` font size |
+| `--prose-h4-font-size` | `var(--step-0)` | `h4` font size |
+| `--prose-code-font-size` | `var(--step--1)` | Inline code font size |
+| `--prose-code-radius` | `var(--radius-md)` | Inline code border radius |
+| `--prose-pre-font-size` | `var(--step--2)` | Code block font size |
+| `--prose-pre-radius` | `var(--radius-xl)` | Code block border radius |
+| `--prose-pre-padding` | `var(--space-2xs) var(--space-xs)` | Code block padding |
 
 ```css
 :root {
@@ -349,6 +346,8 @@ Each size has a default. Set the property on `.prose`, or in your theme, to chan
   --prose-font-size: var(--step-1);
 }
 ```
+
+`.prose.inverted` sets its own colours, so a colour you set on `:root` doesn't change inverted prose.
 
 ## Modifiers
 

@@ -928,23 +928,23 @@ To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — 
 
 ## CSS custom properties
 
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
 | Property | Default | Description |
 |---|---|---|
-| `--zui-tabs-gap` | `var(--space-sm)` | Gap between the tab list and panel area |
+| `--zui-tabs-gap` | `var(--space-xs)` | Gap between the tab list and the panel |
 | `--zui-tabs-list-gap` | `var(--space-4xs)` | Gap between triggers |
-| `--zui-tabs-list-padding` | `var(--space-4xs)` | Inner padding of the tab list container |
-| `--zui-tabs-list-radius` | `var(--radius-lg)` | Border radius of the tab list |
+| `--zui-tabs-list-padding` | `var(--space-4xs)` | Padding inside the tab list |
+| `--zui-tabs-list-radius` | `var(--radius-xl)` | Border radius of the tab list |
 | `--zui-tabs-list-border` | `var(--color-border)` | Border colour of the tab list |
 | `--zui-tabs-list-bg` | `color-mix(in oklch, var(--color-text) 4%, var(--color-surface))` | Background of the tab list |
-| `--zui-tabs-trigger-radius` | `calc(var(--zui-tabs-list-radius) - var(--space-5xs))` | Border radius of each trigger |
+| `--zui-tabs-trigger-radius` | List radius minus list padding | Border radius of each trigger |
 | `--zui-tabs-trigger-padding-inline` | `var(--space-sm)` | Horizontal padding inside each trigger |
 | `--zui-tabs-trigger-padding-block` | `var(--space-3xs)` | Vertical padding inside each trigger |
-| `--zui-tabs-trigger-color` | `color-mix(in oklch, var(--color-text) 72%, transparent)` | Default trigger text colour |
+| `--zui-tabs-trigger-color` | `color-mix(in oklch, var(--color-text) 72%, transparent)` | Trigger text colour |
 | `--zui-tabs-trigger-active-bg` | `var(--color-surface)` | Background of the active trigger |
 | `--zui-tabs-trigger-active-color` | `var(--color-text)` | Text colour of the active trigger |
-| `--zui-tabs-trigger-active-shadow` | `var(--shadow-sm)` | Shadow applied to the active trigger |
-| `--zui-tabs-trigger-focus-ring` | `oklch(from var(--color-theme) l c h / 0.35)` | Focus ring colour |
-| `--zui-tabs-content-padding` | `var(--space-xs) 0` | Padding for the tab panel content |
+| `--zui-tabs-content-padding` | `var(--space-xs) 0` | Padding of the tab panel |
 
 ## Notes
 

@@ -670,3 +670,14 @@ import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableC
     </tfoot>
   </table>
 </Demo>
+
+## CSS custom properties
+
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-table-border` | `oklch(from currentColor l c h / 15%)` | Row, header and footer border colour |
+| `--zui-table-cell-padding` | `var(--space-2xs)` | Cell padding |
+| `--zui-table-hover-bg` | `oklch(from currentColor l c h / 10%)` | Row background on hover |
+| `--zui-table-selected-bg` | `oklch(from currentColor l c h / 25%)` | Background of a row with `data-state="selected"` |

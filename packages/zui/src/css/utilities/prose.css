@@ -3,22 +3,30 @@
      class — ZUI utilities or user classes — overrides them. Prose still
      beats zui.components styles because layer order trumps specificity. */
   :where(.prose) {
-    --prose-accent-color: var(--color-theme);
-    --prose-link-color: var(--color-text);
-    --prose-link-color-decoration: oklch(from var(--color-text) l c h / 50%);
-    --prose-link-color-decoration-hover: oklch(
-      from var(--color-text) l c h / 90%
+    --_prose-color: var(--prose-color, var(--color-text));
+    --_prose-accent-color: var(--prose-accent-color, var(--color-theme));
+    --_prose-link-color: var(--prose-link-color, var(--color-text));
+    --_prose-link-color-decoration: var(
+      --prose-link-color-decoration,
+      oklch(from var(--color-text) l c h / 50%)
     );
-    --prose-code-color: oklch(from var(--color-text) calc(l + 0.1) c h);
-    --prose-code-bg-color: oklch(
-      from var(--color-background) calc(l + 0.1) c h
+    --_prose-link-color-decoration-hover: var(
+      --prose-link-color-decoration-hover,
+      oklch(from var(--color-text) l c h / 90%)
     );
-    --prose-scroll-margin: 1.5rem;
+    --_prose-code-color: var(
+      --prose-code-color,
+      oklch(from var(--color-text) calc(l + 0.1) c h)
+    );
+    --_prose-code-bg-color: var(
+      --prose-code-bg-color,
+      oklch(from var(--color-background) calc(l + 0.1) c h)
+    );
 
-    color: var(--prose-color, var(--color-text));
+    color: var(--_prose-color);
 
     :where([id]) {
-      scroll-margin-top: var(--prose-scroll-margin);
+      scroll-margin-top: var(--prose-scroll-margin, 1.5rem);
     }
 
     * {
@@ -83,12 +91,12 @@
 
     h1 {
       font-size: var(--prose-h1-font-size, var(--step-3));
-      color: var(--prose-color);
+      color: var(--_prose-color);
     }
 
     h2 {
       font-size: var(--prose-h2-font-size, var(--step-2));
-      color: var(--prose-accent-color);
+      color: var(--_prose-accent-color);
     }
 
     h3 {
@@ -115,8 +123,8 @@
     }
 
     a:where(:not(.zui-button)) {
-      color: var(--prose-link-color);
-      text-decoration-color: var(--prose-link-color-decoration);
+      color: var(--_prose-link-color);
+      text-decoration-color: var(--_prose-link-color-decoration);
       text-decoration-thickness: 0.2ex;
       text-underline-offset: 0.3ex;
       text-decoration-line: underline;
@@ -126,31 +134,31 @@
       border-radius: var(--radius-md);
 
       &:hover {
-        color: var(--prose-link-color);
-        text-decoration-color: var(--prose-link-color-decoration-hover);
+        color: var(--_prose-link-color);
+        text-decoration-color: var(--_prose-link-color-decoration-hover);
       }
     }
 
     pre,
     code {
       font-family: var(--font-code);
-      background-color: var(--prose-code-bg-color);
-      color: var(--prose-code-color);
-      font-feature-settings: 'ss09' 1;
+      background-color: var(--_prose-code-bg-color);
+      color: var(--_prose-code-color);
+      font-feature-settings: "ss09" 1;
     }
 
     code {
       padding: 2px 4px;
       font-size: var(--prose-code-font-size, var(--step--1));
       display: inline-block;
-      border-radius: var(--radius-md);
+      border-radius: var(--prose-code-radius, var(--radius-md));
       line-height: var(--line-height-xs);
-      font-feature-settings: 'ss09' 1;
+      font-feature-settings: "ss09" 1;
     }
 
     pre {
-      padding: var(--space-2xs) var(--space-xs);
-      border-radius: var(--radius-xl);
+      padding: var(--prose-pre-padding, var(--space-2xs) var(--space-xs));
+      border-radius: var(--prose-pre-radius, var(--radius-xl));
       max-width: 100%;
       box-shadow: var(--shadow-sm);
       position: relative;
@@ -187,10 +195,12 @@
     --prose-accent-color: var(--color-accent);
     --prose-link-color: var(--color-background);
     --prose-link-color-decoration: oklch(
-      from var(--color-background) l c h / 50%
+      from var(--color-background) l c h /
+      50%
     );
     --prose-link-color-decoration-hover: oklch(
-      from var(--color-background) l c h / 90%
+      from var(--color-background) l c h /
+      90%
     );
     --prose-code-color: oklch(from var(--color-background) calc(l - 0.1) c h);
     --prose-code-bg-color: oklch(from var(--color-text) calc(l + 0.1) c h);

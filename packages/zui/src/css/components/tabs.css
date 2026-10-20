@@ -1,34 +1,9 @@
 @layer zui.components {
   .zui-tabs {
-    --zui-tabs-gap: var(--space-xs);
-    --zui-tabs-list-gap: var(--space-4xs);
-    --zui-tabs-list-padding: var(--space-4xs);
-    --zui-tabs-list-radius: var(--radius-xl);
-    --zui-tabs-list-border: var(--color-border);
-    --zui-tabs-list-bg: color-mix(
-      in oklch,
-      var(--color-text) 4%,
-      var(--color-surface)
-    );
-    --zui-tabs-trigger-radius: calc(
-      var(--zui-tabs-list-radius) -
-      var(--zui-tabs-list-padding)
-    );
-    --zui-tabs-trigger-padding-inline: var(--space-sm);
-    --zui-tabs-trigger-padding-block: var(--space-3xs);
-    --zui-tabs-trigger-color: color-mix(
-      in oklch,
-      var(--color-text) 72%,
-      transparent
-    );
-    --zui-tabs-trigger-active-bg: var(--color-surface);
-    --zui-tabs-trigger-active-color: var(--color-text);
-    --zui-tabs-trigger-active-shadow: var(--shadow-sm);
-    --zui-tabs-trigger-focus-ring: oklch(from var(--color-theme) l c h / 0.35);
-    --zui-tabs-content-padding: var(--space-xs) 0;
+    --_tabs-gap: var(--zui-tabs-gap, var(--space-xs));
 
     display: grid;
-    gap: var(--zui-tabs-gap);
+    gap: var(--_tabs-gap);
   }
 
   .zui-tabs[data-orientation="vertical"] {
@@ -36,14 +11,25 @@
     align-items: start;
   }
 
+  /* List and trigger knobs resolve on their own element, so the underline
+     variant classes on those elements can change them. */
   .zui-tabs-list {
+    --_tabs-list-gap: var(--zui-tabs-list-gap, var(--space-4xs));
+    --_tabs-list-padding: var(--zui-tabs-list-padding, var(--space-4xs));
+    --_tabs-list-radius: var(--zui-tabs-list-radius, var(--radius-xl));
+    --_tabs-list-border: var(--zui-tabs-list-border, var(--color-border));
+    --_tabs-list-bg: var(
+      --zui-tabs-list-bg,
+      color-mix(in oklch, var(--color-text) 4%, var(--color-surface))
+    );
+
     display: inline-flex;
     align-items: center;
-    gap: var(--zui-tabs-list-gap);
-    padding: var(--zui-tabs-list-padding);
-    border: 1px var(--border-style, solid) var(--zui-tabs-list-border);
-    border-radius: var(--zui-tabs-list-radius);
-    background: var(--zui-tabs-list-bg);
+    gap: var(--_tabs-list-gap);
+    padding: var(--_tabs-list-padding);
+    border: 1px var(--border-style, solid) var(--_tabs-list-border);
+    border-radius: var(--_tabs-list-radius);
+    background: var(--_tabs-list-bg);
     width: fit-content;
   }
 
@@ -58,7 +44,7 @@
     --zui-tabs-list-radius: 0;
 
     border: none;
-    border-block-end: 1px var(--border-style, solid) var(--zui-tabs-list-border);
+    border-block-end: 1px var(--border-style, solid) var(--_tabs-list-border);
     border-radius: 0;
     background: transparent;
     width: fit-content;
@@ -66,19 +52,43 @@
 
   .zui-tabs-list-variant-underline[data-orientation="vertical"] {
     border-block-end: none;
-    border-inline-end: 1px var(--border-style, solid)
-      var(--zui-tabs-list-border);
+    border-inline-end: 1px var(--border-style, solid) var(--_tabs-list-border);
     width: 100%;
   }
 
   .zui-tabs-trigger {
+    --_tabs-trigger-radius: var(
+      --zui-tabs-trigger-radius,
+      calc(var(--_tabs-list-radius) - var(--_tabs-list-padding))
+    );
+    --_tabs-trigger-padding-inline: var(
+      --zui-tabs-trigger-padding-inline,
+      var(--space-sm)
+    );
+    --_tabs-trigger-padding-block: var(
+      --zui-tabs-trigger-padding-block,
+      var(--space-3xs)
+    );
+    --_tabs-trigger-color: var(
+      --zui-tabs-trigger-color,
+      color-mix(in oklch, var(--color-text) 72%, transparent)
+    );
+    --_tabs-trigger-active-bg: var(
+      --zui-tabs-trigger-active-bg,
+      var(--color-surface)
+    );
+    --_tabs-trigger-active-color: var(
+      --zui-tabs-trigger-active-color,
+      var(--color-text)
+    );
+
     appearance: none;
     border: none;
     background: transparent;
-    color: var(--zui-tabs-trigger-color);
-    border-radius: var(--zui-tabs-trigger-radius);
-    padding-block: var(--zui-tabs-trigger-padding-block);
-    padding-inline: var(--zui-tabs-trigger-padding-inline);
+    color: var(--_tabs-trigger-color);
+    border-radius: var(--_tabs-trigger-radius);
+    padding-block: var(--_tabs-trigger-padding-block);
+    padding-inline: var(--_tabs-trigger-padding-inline);
     font: inherit;
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-sm);
@@ -95,8 +105,8 @@
   }
 
   .zui-tabs-trigger[data-state="active"] {
-    background: var(--zui-tabs-trigger-active-bg);
-    color: var(--zui-tabs-trigger-active-color);
+    background: var(--_tabs-trigger-active-bg);
+    color: var(--_tabs-trigger-active-color);
   }
 
   .zui-tabs-trigger-variant-underline {
@@ -104,7 +114,7 @@
     --zui-tabs-trigger-padding-inline: var(--space-2xs);
 
     position: relative;
-    color: var(--zui-tabs-trigger-color);
+    color: var(--_tabs-trigger-color);
     border-block-end: 2px solid transparent;
   }
 
@@ -131,7 +141,7 @@
 
   .zui-tabs-content {
     min-width: 0;
-    padding: var(--zui-tabs-content-padding);
+    padding: var(--zui-tabs-content-padding, var(--space-xs) 0);
   }
 
   .zui-tabs-content[hidden] {

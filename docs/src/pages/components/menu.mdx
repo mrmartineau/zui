@@ -580,7 +580,7 @@ In older browsers, the menu shows in the centre of the viewport, not next to its
 
 ## CSS custom properties
 
-These custom properties are exposed on `.zui-menu-content`.
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
 
 | Property | Default | Description |
 |---|---|---|
@@ -588,3 +588,6 @@ These custom properties are exposed on `.zui-menu-content`.
 | `--zui-menu-border` | `var(--color-border)` | Panel border colour |
 | `--zui-menu-bg` | `var(--color-surface)` | Panel background |
 | `--zui-menu-padding` | `var(--space-2xs)` | Panel padding |
+| `--zui-menu-shadow` | `var(--shadow-md)` | Panel box shadow |
+| `--zui-menu-min-width` | `12.5rem` | Panel minimum width |
+| `--zui-menu-item-highlight-bg` | `oklch(from var(--color-text) l c h / 0.08)` | Background of the highlighted item |

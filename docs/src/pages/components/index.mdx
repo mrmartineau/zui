@@ -87,38 +87,26 @@ Component styles live in the `zui.components` layer, below `zui.utilities`. This
 
 ## CSS custom properties
 
-Every component exposes CSS custom properties (variables) that control its appearance — colours, border radius, padding, shadow, and more. You can override these without touching the source CSS and without ejecting any styles.
+Every component has CSS custom properties (variables) for its colours, radius, padding, font sizes, shadow, and more. Each component page lists them with their defaults.
 
-### Inline overrides
-
-Pass overrides via the `style` attribute on the component's root element:
-
-```html
-<div class="zui-card" style="--zui-card-radius: var(--radius-sm); --zui-card-padding: var(--space-lg);">
-  …
-</div>
-```
-
-### CSS overrides
-
-Target the component class in your own stylesheet. Because component styles live in `zui.components`, any rule outside a `@layer` already wins — no `!important` needed:
+Set them on `:root` to change every instance, on a wrapper to change one part of the page, or in a `style` attribute to change one element:
 
 ```css
-.zui-card {
+:root {
   --zui-card-radius: var(--radius-sm);
   --zui-card-padding: var(--space-lg);
 }
-```
 
-To scope an override to a specific context, nest it under a parent selector:
-
-```css
-.my-sidebar .zui-button {
+.my-sidebar {
   --zui-btn-radius: 0;
 }
 ```
 
-See this [live CodePen example](https://codepen.io/mrmartineau/pen/VYKBEqQ?editors=1100) showing three cards side by side: one with default styles, one customised via inline `style` attributes, and one themed via scoped CSS classes. Each component page lists its available custom properties and their defaults.
+```html
+<div class="zui-card" style="--zui-card-padding: var(--space-lg);">…</div>
+```
+
+See [Component custom properties](/guides/theming#component-custom-properties) in the theming guide for how variants work, and what to avoid. This [live CodePen example](https://codepen.io/mrmartineau/pen/VYKBEqQ?editors=1100) shows three cards side by side: one with default styles, one customised via inline `style` attributes, and one themed via scoped CSS classes.
 
 ## Components
 

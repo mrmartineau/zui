@@ -1,22 +1,21 @@
 @layer zui.components {
   .zui-accordion {
-    --zui-accordion-border: var(--color-border);
-    --zui-accordion-radius: var(--radius-md);
-    --zui-accordion-bg: var(--color-surface);
-    --zui-accordion-padding-x: var(--space-xs);
-    --zui-accordion-padding-y: var(--space-2xs);
+    --_accordion-border: var(--zui-accordion-border, var(--color-border));
+    --_accordion-radius: var(--zui-accordion-radius, var(--radius-md));
+    --_accordion-bg: var(--zui-accordion-bg, var(--color-surface));
+    --_accordion-padding-x: var(--zui-accordion-padding-x, var(--space-xs));
+    --_accordion-padding-y: var(--zui-accordion-padding-y, var(--space-2xs));
 
     display: flex;
     flex-direction: column;
-    border: 1px var(--border-style, solid) var(--zui-accordion-border);
-    border-radius: var(--zui-accordion-radius);
-    background-color: var(--zui-accordion-bg);
+    border: 1px var(--border-style, solid) var(--_accordion-border);
+    border-radius: var(--_accordion-radius);
+    background-color: var(--_accordion-bg);
     overflow: hidden;
   }
 
   .zui-accordion-item {
-    border-block-start: 1px var(--border-style, solid)
-      var(--zui-accordion-border);
+    border-block-start: 1px var(--border-style, solid) var(--_accordion-border);
     overflow: hidden;
 
     &:first-child {
@@ -30,10 +29,10 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-xs);
-    padding: var(--zui-accordion-padding-y) var(--zui-accordion-padding-x);
+    padding: var(--_accordion-padding-y) var(--_accordion-padding-x);
     cursor: pointer;
     font-weight: var(--font-weight-medium, 500);
-    font-size: var(--step-0);
+    font-size: var(--zui-accordion-trigger-font-size, var(--step-0));
     color: var(--color-text);
     user-select: none;
     width: 100%;
@@ -75,8 +74,8 @@
   }
 
   .zui-accordion-content {
-    padding: 0 var(--zui-accordion-padding-x) var(--zui-accordion-padding-y);
-    font-size: var(--step-0);
+    padding: 0 var(--_accordion-padding-x) var(--_accordion-padding-y);
+    font-size: var(--zui-accordion-content-font-size, var(--step-0));
     color: var(--color-text);
   }
 
@@ -88,7 +87,7 @@
 
     .zui-accordion-item {
       border-block-start: 1px var(--border-style, solid)
-        var(--zui-accordion-border);
+        var(--_accordion-border);
     }
 
     .zui-accordion-item:first-child {
@@ -96,8 +95,7 @@
     }
 
     .zui-accordion-item:last-child {
-      border-block-end: 1px var(--border-style, solid)
-        var(--zui-accordion-border);
+      border-block-end: 1px var(--border-style, solid) var(--_accordion-border);
     }
   }
 

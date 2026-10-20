@@ -3,21 +3,28 @@
    * Base
    * ---------------------------------------------------------------------- */
   .zui-button {
-    --zui-btn-accent-fg: light-dark(
-      oklch(from var(--zui-btn-accent) 1 calc(c - 0.2) h),
-      oklch(from var(--zui-btn-accent) 0.3 calc(c - 0.2) h)
+    --_btn-accent: var(--zui-btn-accent, var(--color-theme));
+    --_btn-radius: var(--zui-btn-radius, var(--radius-lg));
+    --_btn-border-style: var(
+      --zui-btn-border-style,
+      var(--border-style, solid)
     );
-    --zui-btn-accent-hover: oklch(from var(--zui-btn-accent) calc(l - 0.1) c h);
-    --zui-btn-accent-subtle-bg: oklch(from var(--zui-btn-accent) l c h / 15%);
-    --zui-btn-accent-subtle-fg: oklch(from var(--zui-btn-accent) l c h);
-    --zui-btn-accent-subtle-hover-bg: oklch(
-      from var(--zui-btn-accent) l c h /
-      25%
+    --_btn-padding-block: var(--zui-btn-padding-block, var(--space-3xs));
+    --_btn-padding-inline: var(--zui-btn-padding-inline, var(--space-xs));
+    --_btn-height: var(--zui-btn-height, 2rem);
+    --_btn-font-size: var(--zui-btn-font-size, var(--step--1));
+    --_btn-font-weight: var(--zui-btn-font-weight, 500);
+    --_btn-icon-size: var(--zui-btn-icon-size, var(--step-0));
+
+    /* Colours derived from the accent. The variants below pick from these. */
+    --_btn-accent-fg: light-dark(
+      oklch(from var(--_btn-accent) 1 calc(c - 0.2) h),
+      oklch(from var(--_btn-accent) 0.3 calc(c - 0.2) h)
     );
-    --zui-btn-radius: var(--radius-lg);
-    --zui-btn-border-style: var(--border-style, solid);
-    --zui-btn-padding-block: var(--space-3xs);
-    --zui-btn-padding-inline: var(--space-xs);
+    --_btn-accent-hover: oklch(from var(--_btn-accent) calc(l - 0.1) c h);
+    --_btn-accent-subtle-bg: oklch(from var(--_btn-accent) l c h / 15%);
+    --_btn-accent-subtle-fg: oklch(from var(--_btn-accent) l c h);
+    --_btn-accent-subtle-hover-bg: oklch(from var(--_btn-accent) l c h / 25%);
 
     /* From Graffiti's auto-color class */
     --auto-threshold: 0.6;
@@ -25,7 +32,7 @@
     --auto-dark-text-l: 0.5;
     --auto-color: light-dark(
       oklch(
-        from var(--zui-btn-bg)
+        from var(--zui-btn-bg, var(--_btn-bg))
           clamp(
             var(--auto-dark-text-l),
             calc(
@@ -37,7 +44,7 @@
           0 0 / 1
       ),
       oklch(
-        from var(--zui-btn-bg)
+        from var(--zui-btn-bg, var(--_btn-bg))
           clamp(
             var(--auto-dark-text-l),
             calc(((l * alpha) / var(--auto-threshold) - 1) * -infinity),
@@ -51,34 +58,38 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-3xs-2xs);
-    min-height: var(--zui-btn-height, 2rem);
-    border: 1px var(--zui-btn-border-style) var(--zui-btn-border, transparent);
-    border-radius: var(--zui-btn-radius, 0.375rem);
-    background-color: var(--zui-btn-bg);
-    color: var(--zui-btn-fg, var(--auto-color)) !important;
+    min-height: var(--_btn-height);
+    border: 1px var(--_btn-border-style)
+      var(--zui-btn-border, var(--_btn-border, transparent));
+    border-radius: var(--_btn-radius);
+    background-color: var(--zui-btn-bg, var(--_btn-bg));
+    color: var(--zui-btn-fg, var(--_btn-fg, var(--auto-color))) !important;
     font-family: inherit;
-    font-size: var(--zui-btn-font-size, var(--step--1));
-    font-weight: 500;
+    font-size: var(--_btn-font-size);
+    font-weight: var(--_btn-font-weight);
     line-height: 1;
-    padding-block: var(--zui-btn-padding-block);
-    padding-inline: var(--zui-btn-padding-inline);
+    padding-block: var(--_btn-padding-block);
+    padding-inline: var(--_btn-padding-inline);
     cursor: pointer;
-    text-decoration: var(--zui-btn-text-decoration, none);
+    text-decoration: var(--_btn-text-decoration, none);
     transition-property: background-color, color, border-color, scale;
     transition-duration: 200ms;
     transition-timing-function: ease-in-out;
 
     & > svg,
     & > i {
-      font-size: var(--step-0);
+      font-size: var(--_btn-icon-size);
     }
   }
 
   .zui-button:not(:disabled):hover,
   .zui-button:not(:disabled)[aria-pressed="true"] {
-    background-color: var(--zui-btn-hover-bg);
-    color: var(--zui-btn-hover-fg, var(--auto-color));
-    border-color: var(--zui-btn-hover-border, transparent);
+    background-color: var(--zui-btn-hover-bg, var(--_btn-hover-bg));
+    color: var(--zui-btn-hover-fg, var(--_btn-hover-fg, var(--auto-color)));
+    border-color: var(
+      --zui-btn-hover-border,
+      var(--_btn-hover-border, transparent)
+    );
   }
 
   .zui-button:not(:disabled):active {
@@ -93,16 +104,15 @@
   /* -------------------------------------------------------------------------
    * Accent — sets the colour palette
    *
-   * Each accent defines a set of raw colour values. Variants then pick from
-   * these to compose the final button appearance.
-   *
-   * Override these custom properties with your own design tokens.
+   * Each colour sets --zui-btn-accent. The base rule derives the other
+   * colours from it, and the variants pick from those.
    * ---------------------------------------------------------------------- */
 
-  /* theme (default) */
-  .zui-button,
+  /* theme (default) — same as the base rule. It must not set
+     --zui-btn-accent, or a theme-wide --zui-btn-accent could not reach
+     these buttons. */
   .zui-button.zui-button-color-theme {
-    --zui-btn-accent: var(--color-theme);
+    --_btn-accent: var(--zui-btn-accent, var(--color-theme));
   }
 
   /* accent */
@@ -122,60 +132,63 @@
   /* fill (default) */
   .zui-button,
   .zui-button.zui-button-variant-fill {
-    --zui-btn-bg: var(--zui-btn-accent);
-    --zui-btn-fg: var(--zui-btn-accent-fg);
-    --zui-btn-hover-bg: var(--zui-btn-accent-hover);
-    --zui-btn-hover-fg: var(--zui-btn-accent-fg);
+    --_btn-bg: var(--_btn-accent);
+    --_btn-fg: var(--_btn-accent-fg);
+    --_btn-hover-bg: var(--_btn-accent-hover);
+    --_btn-hover-fg: var(--_btn-accent-fg);
   }
 
   /* subtle */
   .zui-button.zui-button-variant-subtle {
-    --zui-btn-bg: var(--zui-btn-accent-subtle-bg);
-    --zui-btn-fg: light-dark(
-      oklch(from var(--zui-btn-accent) calc(l - 0.1) c h),
-      oklch(from var(--zui-btn-accent) calc(l + 0.1) c h)
+    --_btn-bg: var(--_btn-accent-subtle-bg);
+    --_btn-fg: light-dark(
+      oklch(from var(--_btn-accent) calc(l - 0.1) c h),
+      oklch(from var(--_btn-accent) calc(l + 0.1) c h)
     );
-    --zui-btn-hover-bg: var(--zui-btn-accent-subtle-hover-bg);
-    --zui-btn-hover-fg: light-dark(
-      oklch(from var(--zui-btn-accent) calc(l - 0.15) c h),
-      oklch(from var(--zui-btn-accent) calc(l + 0.15) c h)
+    --_btn-hover-bg: var(--_btn-accent-subtle-hover-bg);
+    --_btn-hover-fg: light-dark(
+      oklch(from var(--_btn-accent) calc(l - 0.15) c h),
+      oklch(from var(--_btn-accent) calc(l + 0.15) c h)
     );
   }
 
   /* outline */
   .zui-button.zui-button-variant-outline {
-    --zui-btn-bg: transparent;
-    --zui-btn-fg: var(--zui-btn-accent);
-    --zui-btn-border: oklch(from var(--zui-btn-accent) l c h / 30%);
-    --zui-btn-hover-bg: oklch(from var(--zui-btn-accent) l c h / 20%);
-    --zui-btn-hover-fg: var(--zui-btn-accent);
-    --zui-btn-hover-border: oklch(from var(--zui-btn-accent) l c h / 40%);
+    --_btn-bg: transparent;
+    --_btn-fg: var(--_btn-accent);
+    --_btn-border: oklch(from var(--_btn-accent) l c h / 30%);
+    --_btn-hover-bg: oklch(from var(--_btn-accent) l c h / 20%);
+    --_btn-hover-fg: var(--_btn-accent);
+    --_btn-hover-border: oklch(from var(--_btn-accent) l c h / 40%);
   }
 
   /* ghost */
   .zui-button.zui-button-variant-ghost {
-    --zui-btn-bg: transparent;
-    --zui-btn-fg: var(--zui-btn-accent);
-    --zui-btn-hover-bg: var(--zui-btn-accent-subtle-bg);
-    --zui-btn-hover-fg: var(--zui-btn-accent-subtle-fg);
+    --_btn-bg: transparent;
+    --_btn-fg: var(--_btn-accent);
+    --_btn-hover-bg: var(--_btn-accent-subtle-bg);
+    --_btn-hover-fg: var(--_btn-accent-subtle-fg);
   }
 
   /* link */
   .zui-button.zui-button-variant-link {
-    --zui-btn-bg: transparent;
-    --zui-btn-fg: var(--zui-btn-accent);
-    --zui-btn-hover-bg: transparent;
-    --zui-btn-hover-fg: oklch(from var(--zui-btn-fg) l c h / 90%);
-    --zui-btn-text-decoration: underline 0.2ex 0.3ex
-      oklch(from var(--zui-btn-fg) l c h / 50%);
-    /* text-decoration-color: oklch(from var(--zui-btn-fg) l c h / 50%) !important;
+    --_btn-bg: transparent;
+    --_btn-fg: var(--_btn-accent);
+    --_btn-hover-bg: transparent;
+    --_btn-hover-fg: oklch(from var(--zui-btn-fg, var(--_btn-fg)) l c h / 90%);
+    --_btn-text-decoration: underline 0.2ex 0.3ex
+      oklch(from var(--zui-btn-fg, var(--_btn-fg)) l c h / 50%);
+    /* text-decoration-color: oklch(from var(--_btn-fg) l c h / 50%) !important;
     text-decoration-thickness: 0.2ex !important;
     text-underline-offset: 0.3ex; */
     /* text-decoration-line: underline !important; */
     padding: 0;
 
     &:hover {
-      text-decoration-color: oklch(from var(--zui-btn-fg) l c h / 90%);
+      text-decoration-color: oklch(
+        from var(--zui-btn-fg, var(--_btn-fg)) l c h /
+        90%
+      );
     }
   }
 
@@ -188,11 +201,7 @@
     --zui-btn-font-size: var(--step--3);
     --zui-btn-padding-block: var(--space-5xs);
     --zui-btn-padding-inline: var(--space-3xs);
-
-    & > svg,
-    & > i {
-      font-size: var(--step--4);
-    }
+    --zui-btn-icon-size: var(--step--4);
   }
 
   /* sm */
@@ -201,11 +210,7 @@
     --zui-btn-font-size: var(--step--2);
     --zui-btn-padding-block: var(--space-4xs);
     --zui-btn-padding-inline: var(--space-2xs);
-
-    & > svg,
-    & > i {
-      font-size: var(--step--3);
-    }
+    --zui-btn-icon-size: var(--step--3);
   }
 
   /* md is the default — no extra class needed */
@@ -216,11 +221,7 @@
     --zui-btn-font-size: var(--step-0);
     --zui-btn-padding-block: var(--space-2xs);
     --zui-btn-padding-inline: var(--space-md);
-
-    & > svg,
-    & > i {
-      font-size: var(--step-1);
-    }
+    --zui-btn-icon-size: var(--step-1);
   }
 
   /* xl */
@@ -229,11 +230,7 @@
     --zui-btn-font-size: 1.125rem;
     --zui-btn-padding-block: var(--space-xs);
     --zui-btn-padding-inline: var(--space-lg);
-
-    & > svg,
-    & > i {
-      font-size: var(--step-2);
-    }
+    --zui-btn-icon-size: var(--step-2);
   }
 
   /* -------------------------------------------------------------------------
@@ -269,7 +266,7 @@
    * Icon button — 1:1 aspect ratio, for a single icon
    * ---------------------------------------------------------------------- */
   .zui-button.zui-button-icon {
-    min-width: var(--zui-btn-height, 2rem);
+    min-width: var(--_btn-height);
     padding: 0;
   }
 }

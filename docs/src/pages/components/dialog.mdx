@@ -1425,6 +1425,8 @@ To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — 
 
 ## CSS custom properties
 
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
 | Property | Default | Description |
 |---|---|---|
 | `--zui-dialog-bg` | `var(--color-surface)` | Background colour |
@@ -1432,4 +1434,9 @@ To make squircle the default everywhere, add `zui-squircle-all` to `<html>` — 
 | `--zui-dialog-radius` | `var(--radius-xl)` | Border radius |
 | `--zui-dialog-shadow` | `var(--shadow-2xl)` | Box shadow |
 | `--zui-dialog-padding` | `var(--space-md)` | Padding inside the dialog |
-| `--zui-dialog-max-width` | `32rem` | Maximum width |
+| `--zui-dialog-max-width` | `32rem` | Maximum width. Sizes `sm`, `lg` and `full` set their own. |
+| `--zui-dialog-backdrop` | `oklch(0% 0 0 / 50%)` | Backdrop colour |
+| `--zui-dialog-top-offset` | `60px` | Space above the dialog when `position` is `central` |
+| `--zui-dialog-title-font-size` | `var(--step-1)` | Title font size |
+| `--zui-dialog-description-font-size` | `var(--step--1)` | Description font size |
+| `--zui-dialog-body-font-size` | `var(--step-0)` | Body font size |

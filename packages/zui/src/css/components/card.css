@@ -1,14 +1,16 @@
 @layer zui.components {
   .zui-card {
-    --zui-card-radius: var(--radius-xl);
-    --zui-card-border: var(--color-border);
-    --zui-card-bg: var(--color-surface);
-    --zui-card-padding: var(--space-sm);
+    --_card-radius: var(--zui-card-radius, var(--radius-xl));
+    --_card-border: var(--zui-card-border, var(--color-border));
+    --_card-bg: var(--zui-card-bg, var(--color-surface));
+    --_card-padding: var(--zui-card-padding, var(--space-sm));
+    --_card-shadow: var(--zui-card-shadow, none);
 
-    padding: var(--zui-card-padding);
-    border: 1px var(--border-style, solid) var(--zui-card-border);
-    border-radius: var(--zui-card-radius);
-    background-color: var(--zui-card-bg);
+    padding: var(--_card-padding);
+    border: 1px var(--border-style, solid) var(--_card-border);
+    border-radius: var(--_card-radius);
+    background-color: var(--_card-bg);
+    box-shadow: var(--_card-shadow);
   }
 
   .zui-card-header {
@@ -16,20 +18,20 @@
   }
 
   .zui-card-title {
-    font-size: var(--step-1);
+    font-size: var(--zui-card-title-font-size, var(--step-1));
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-sm);
     color: var(--color-text);
   }
 
   .zui-card-description {
-    font-size: var(--step--1);
+    font-size: var(--zui-card-description-font-size, var(--step--1));
     color: color-mix(in oklch, var(--color-text) 65%, transparent);
     margin-block-start: var(--space-3xs);
   }
 
   .zui-card-body {
-    font-size: var(--step-0);
+    font-size: var(--zui-card-body-font-size, var(--step-0));
   }
 
   .zui-card-footer {
@@ -41,8 +43,9 @@
 
   /* Elevated variant */
   .zui-card-elevated {
+    --zui-card-shadow: var(--shadow-lg);
+
     border-color: transparent;
-    box-shadow: var(--shadow-lg);
   }
 
   /* Interactive variant */

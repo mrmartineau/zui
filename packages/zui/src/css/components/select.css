@@ -1,23 +1,25 @@
 @layer zui.components {
   .zui-select {
-    --zui-select-radius: var(--radius-lg);
-    --zui-select-border: var(--color-border);
-    --zui-select-bg: var(--color-background);
-    --zui-select-fg: var(--color-text);
-    --zui-select-padding-block: var(--space-3xs);
-    --zui-select-padding-inline: var(--space-xs);
+    --_select-radius: var(--zui-select-radius, var(--radius-lg));
+    --_select-border: var(--zui-select-border, var(--color-border));
+    --_select-bg: var(--zui-select-bg, var(--color-background));
+    --_select-fg: var(--zui-select-fg, var(--color-text));
+    --_select-padding-block: var(--zui-select-padding-block, var(--space-3xs));
+    --_select-padding-inline: var(--zui-select-padding-inline, var(--space-xs));
+    --_select-font-size: var(--zui-select-font-size, var(--step-0));
+    --_select-focus-border: var(--zui-select-focus-border, var(--color-theme));
 
     display: block;
     width: 100%;
-    padding-block: var(--zui-select-padding-block);
-    padding-inline: var(--zui-select-padding-inline);
+    padding-block: var(--_select-padding-block);
+    padding-inline: var(--_select-padding-inline);
     padding-inline-end: var(--space-lg);
-    border: 1px var(--border-style, solid) var(--zui-select-border);
-    border-radius: var(--zui-select-radius);
-    background-color: var(--zui-select-bg);
-    color: var(--zui-select-fg);
+    border: 1px var(--border-style, solid) var(--_select-border);
+    border-radius: var(--_select-radius);
+    background-color: var(--_select-bg);
+    color: var(--_select-fg);
     font-family: inherit;
-    font-size: var(--step-0);
+    font-size: var(--_select-font-size);
     line-height: var(--line-height-md);
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
@@ -43,7 +45,7 @@
   }
 
   .zui-select:focus-visible {
-    border-color: var(--color-theme);
+    border-color: var(--_select-focus-border);
   }
 
   .zui-select:disabled {
