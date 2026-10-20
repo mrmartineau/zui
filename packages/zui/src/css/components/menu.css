@@ -56,7 +56,10 @@
     margin-block-start: var(--space-2xs);
     color: inherit;
     position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-inline, flip-block, flip-block flip-inline;
+    position-try-fallbacks:
+      flip-inline,
+      flip-block,
+      flip-block flip-inline;
 
     &:not(:popover-open) {
       display: none;
