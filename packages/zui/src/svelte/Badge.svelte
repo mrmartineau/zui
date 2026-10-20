@@ -25,7 +25,9 @@ let {
   ...rest
 }: Props = $props()
 
-const classes = $derived(badgeVariants({ className, color, shape, size, variant }))
+const classes = $derived(
+  badgeVariants({ className, color, shape, size, variant }),
+)
 </script>
 
 <span class={classes} {...rest}>

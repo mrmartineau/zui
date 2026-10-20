@@ -5,7 +5,8 @@
     "includes": [
       "**",
       "!packages/vscode-zui/src/manifest.json",
-      "!packages/raycast-zui/src/data"
+      "!packages/raycast-zui/src/data",
+      "!packages/raycast-zui/raycast-env.d.ts"
     ]
   },
   "overrides": [
@@ -26,23 +27,12 @@
           "complexity": {
             "noImportantStyles": "off"
           },
-          "style": {
-            "noDescendingSpecificity": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": [
-        "**/components/avatar.css",
-        "**/components/button.css",
-        "packages/zui-theme/src/css/theme.css"
-      ],
-      "linter": {
-        "rules": {
           "correctness": {
             "noUnknownFunction": "off",
             "noUnknownProperty": "off"
+          },
+          "style": {
+            "noDescendingSpecificity": "off"
           }
         }
       }

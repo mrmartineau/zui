@@ -117,7 +117,10 @@
 
 :root[data-site-theme="contrast"] {
   /* Colours — monochrome neutrals, black/white action (exact Tailwind matches) */
-  --color-accent: light-dark(var(--color-neutral-900), var(--color-neutral-200));
+  --color-accent: light-dark(
+    var(--color-neutral-900),
+    var(--color-neutral-200)
+  );
   --color-theme: light-dark(var(--color-neutral-900), var(--color-neutral-200));
   --color-background: light-dark(var(--color-white), var(--color-neutral-950));
   --color-surface: light-dark(var(--color-white), var(--color-neutral-900));
