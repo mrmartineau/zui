@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 # Stop hook: before Claude finishes, run the package tests (unit + design-system
-# oracle) if CSS, wrappers, shared variants, docs pages or intent/ changed.
-# Exit 2 blocks the stop and feeds the failure back.
+# oracle) if CSS, wrappers, shared variants, docs pages or intent/ changed on
+# this branch, committed or not. Exit 2 blocks the stop and feeds the failure
+# back.
 set -uo pipefail
 
 input=$(cat)
-if [[ "$input" == *'"stop_hook_active":true'* ]]; then exit 0; fi
+# Already continuing because of this hook: don't loop forever.
+if [[ "$input" =~ \"stop_hook_active\"[[:space:]]*:[[:space:]]*true ]]; then exit 0; fi
 
-cd "${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel)}" || exit 0
+# Test where Claude is working (may be a worktree), not where the session began.
+cwd=""
+if [[ "$input" =~ \"cwd\"[[:space:]]*:[[:space:]]*\"([^\"]*)\" ]]; then cwd="${BASH_REMATCH[1]}"; fi
+cd "${cwd:-${CLAUDE_PROJECT_DIR:-.}}" 2>/dev/null || exit 0
+cd "$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
 
-changed=$( { git diff --name-only HEAD; git ls-files --others --exclude-standard; } 2>/dev/null \
+# Everything this branch changed vs main, plus uncommitted and untracked work.
+base=$(git merge-base HEAD origin/main 2>/dev/null || git merge-base HEAD main 2>/dev/null || echo HEAD)
+changed=$( { git diff --name-only "$base"; git ls-files --others --exclude-standard; } 2>/dev/null \
   | grep -E '^(packages/zui/src|docs/src/pages|intent)/' || true)
 [[ -z "$changed" ]] && exit 0
 

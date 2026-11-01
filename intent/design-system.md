@@ -34,18 +34,24 @@ If `shape: 'default'` maps to a class, that class mustn't set
 - **Why:** same as D2; the default is always applied.
 - **Check:** D3, using each config's `defaultVariants`.
 
-## D4. Component CSS is layered and uses tokens for colour
+## D4. Component CSS is layered and uses no colour literals
 
-Every file in `css/components/` is in `@layer zui.components`. No hex,
-`rgb()`/`hsl()` literals; use tokens, `light-dark()`, `oklch(from …)` or
-`color-mix()`.
+Every rule in `css/components/` sits inside `@layer zui.components`; nothing at
+the top level outside it. No colour literal in any syntax (hex, `rgb()`,
+`hsl()`, named colours, `oklch()`/`lab()` literals). Use tokens,
+`light-dark()`, `oklch(from …)` or `color-mix()`. `transparent` and
+`currentcolor` are fine.
 
 - **Why:** unlayered CSS beats consumer overrides; raw colours ignore theme and
   dark mode.
-- **Not checked yet:** raw spacing, radii, font sizes and z-indices. AGENTS.md
-  forbids them "when a token exists", which needs a token→value map to check.
-  Candidate next rule.
-- **Check:** D4.
+- **Baseline:** the backdrop scrim `oklch(0% 0 0 / 50%)` in `app-shell.css`
+  and `dialog.css`. No token exists for it, so AGENTS.md allows it today. A
+  shared `--color-backdrop` token would retire both entries. Undecided.
+- **Not checked yet:** raw spacing, radii, shadows, font sizes and z-indices.
+  AGENTS.md forbids them "when a token exists", which needs a token→value map
+  to check. Candidate next rule.
+- **Check:** D4a walks each file at brace depth 0; D4b visits every parsed
+  colour value via the lightningcss AST.
 
 ## D5. Every component is exported from all five entry points
 
@@ -71,4 +77,5 @@ Every `var(--zui-…)` read in `css/components/` appears somewhere in
 ## Baselines
 
 The oracle has `KNOWN_*` lists for debt that existed when a rule was written.
-All are empty as of 2026-11-01. They should only shrink.
+As of 2026-11-01 only `KNOWN_RAW_COLOURS` has entries (see D4). They should only
+shrink.

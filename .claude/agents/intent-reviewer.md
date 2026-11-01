@@ -9,10 +9,13 @@ change. Don't fix anything; report.
 
 1. Read `intent/README.md`, `intent/design-system.md`, `intent/decisions/`,
    and the Key Conventions section of `AGENTS.md`.
-2. Get the change: `git diff main...HEAD` plus `git diff` for uncommitted work.
+2. Get the change. Base: `git merge-base HEAD origin/main` (or the PR's base
+   branch if it isn't main). Then `git diff <base>` for committed, staged and
+   unstaged changes, and `git status --short` for untracked files to read.
 3. Run `pnpm --filter @mrmartineau/zui test`. Report any D1-D6 failure verbatim.
 4. Then review what the oracle can't see:
-   - Raw spacing/radius/font-size/z-index values where a token exists.
+   - Raw spacing/radius/shadow/font-size/z-index/easing values where a token
+     exists.
    - Knobs documented in the wrong component's table.
    - A new component missing a docs page or sidebar entry.
    - Wrapper behaviour drift: same props, same classes across all five.

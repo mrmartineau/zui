@@ -193,18 +193,60 @@ describe('intent/design-system.md', () => {
     expect([...new Set(offenders)].sort()).toEqual([])
   })
 
-  test('D4 component CSS lives in @layer zui.components and uses no raw colours', () => {
+  test('D4a every top-level rule in component CSS is inside @layer zui.components', () => {
     const problems: string[] = []
     for (const file of walk(COMPONENT_CSS_DIR, '.css')) {
-      const src = readFileSync(file, 'utf-8').replace(/\/\*[\s\S]*?\*\//g, '')
       const name = basename(file)
-      if (!/@layer\s+zui\.components\b/.test(src))
-        problems.push(`${name}: no @layer zui.components`)
-      for (const m of src.matchAll(/#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?)\(/gi)) {
-        problems.push(`${name}: raw colour ${m[0]}`)
+      // Walk the source at brace depth 0. The only thing allowed there is an
+      // `@layer zui.components { … }` block.
+      const src = readFileSync(file, 'utf-8')
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g, '""')
+      let depth = 0
+      let prelude = ''
+      for (const ch of src) {
+        if (depth === 0) {
+          if (ch === '{') {
+            if (!/^@layer\s+zui\.components$/.test(prelude.trim()))
+              problems.push(
+                `${name}: top-level block outside layer: ${prelude.trim().slice(0, 60)}`,
+              )
+            prelude = ''
+            depth++
+          } else if (ch === ';') {
+            if (prelude.trim())
+              problems.push(`${name}: top-level statement: ${prelude.trim()}`)
+            prelude = ''
+          } else prelude += ch
+        } else if (ch === '{') depth++
+        else if (ch === '}') depth--
       }
+      if (prelude.trim()) problems.push(`${name}: trailing top-level text`)
     }
     expect(problems).toEqual([])
+  })
+
+  test('D4b component CSS uses no colour literals (tokens or derived only)', () => {
+    // Every colour value lightningcss parses, in any syntax: hex, rgb/hsl,
+    // named colours, oklch/lab literals… Colours built from var() aren't
+    // literals, so they never reach this visitor.
+    const isAllowed = (c: { type: string; alpha?: number }) =>
+      c.type === 'currentcolor' || (c.type === 'rgb' && c.alpha === 0) // transparent
+    const found = new Set<string>()
+    for (const file of walk(COMPONENT_CSS_DIR, '.css')) {
+      transform({
+        code: readFileSync(file),
+        filename: file,
+        visitor: {
+          Color(color) {
+            if (!isAllowed(color as { type: string; alpha?: number }))
+              found.add(`${basename(file)}: ${JSON.stringify(color)}`)
+            return undefined
+          },
+        },
+      })
+    }
+    expect([...found].sort()).toEqual(KNOWN_RAW_COLOURS)
   })
 
   test('D5 every component is exported from all five framework entry points', () => {
@@ -261,5 +303,14 @@ const EXPORT_RENAMES: Partial<Record<string, Record<string, string>>> = {
 }
 
 const KNOWN_MISSING_CLASSES: string[] = []
+/**
+ * Backdrop scrim, duplicated in two components. No token exists for it, so
+ * AGENTS.md allows the literal; a shared --color-backdrop token would retire
+ * both entries. See intent/design-system.md D4.
+ */
+const KNOWN_RAW_COLOURS: string[] = [
+  'app-shell.css: {"type":"oklch","l":0,"c":0,"h":0,"alpha":0.5}',
+  'dialog.css: {"type":"oklch","l":0,"c":0,"h":0,"alpha":0.5}',
+]
 const KNOWN_WRAPPER_GAPS: string[] = []
 const KNOWN_UNDOCUMENTED_KNOBS: string[] = []
