@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/oracle-gate.sh",
+            "timeout": 180,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -4,6 +4,17 @@
 
 ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, Solid, Svelte, and Vue component wrappers. See `AGENTS.md` for full architecture and conventions — everything there applies here too.
 
+## Intent first
+
+`intent/` holds the design-system promises (D1-D6) and decision records.
+`packages/zui/src/intent/design-system.oracle.test.ts` checks them against the
+real CSS AST and cva configs: variants ↔ CSS, knob rules, layers, five-framework
+parity, documented knobs. Runs in CI and on a Claude Code Stop hook.
+
+If a check fails, fix the change or edit the rule in `intent/` first and say
+why. Never grow a `KNOWN_*` baseline to get green. Use the `record-intent` skill
+when a session settles something new; the `intent-reviewer` agent checks a diff.
+
 ## Critical Rules
 
 1. **Update the docs site.** Any new component, token, utility, or API change must be reflected in the Astro docs site at `docs/`. Create or update the relevant `.mdx` page and add sidebar entries in `docs/src/components/Sidebar.astro`.
