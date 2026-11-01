@@ -20,10 +20,10 @@ Goal: the next agent gets the decision and the reasoning, not just the code.
 3. **Strengthen the check** in
    `packages/zui/src/intent/design-system.oracle.test.ts`. Use the lightningcss
    AST and captured cva configs already there; no regex over CSS structure.
-4. **Mutation-test it.** Copy the file you'll break to the scratchpad, break
-   it, confirm the new check fails and names the right file, then copy the
-   backup back. Don't use `git checkout` to revert; it discards other
-   uncommitted work in the file.
+4. **Mutation-test it.** Back up the file you'll break outside the repo
+   (`bak=$(mktemp)`; `cp <file> "$bak"`), break it, confirm the new check fails
+   and names the right file, then `cp "$bak" <file>` and `rm "$bak"`. Don't use
+   `git checkout` to revert; it discards other uncommitted work in the file.
 5. **Run** `pnpm --filter @mrmartineau/zui test` and `pnpm run check`.
 6. Summarise in 3 lines: rules added/changed, checks added, open questions.
 

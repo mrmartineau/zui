@@ -12,8 +12,11 @@ a knob set in a base rule, passes CI today.
 ## Decision
 
 Encode the checkable rules as `intent/design-system.md` D1-D6 and check them in
-`packages/zui/src/intent/design-system.oracle.test.ts` against the lightningcss AST and the
-real cva configs (captured by wrapping `cva` in a vitest mock), not regexes.
+`packages/zui/src/intent/design-system.oracle.test.ts`. Selectors, custom
+properties and colours come from the lightningcss AST; variants from the real
+cva configs (captured by wrapping `cva` in a vitest mock). Layer nesting (D4a)
+uses a brace-depth scan; exports (D5) and knob docs (D6) use targeted text
+matching on `index.ts` and the MDX pages.
 
 ## Consequences
 
