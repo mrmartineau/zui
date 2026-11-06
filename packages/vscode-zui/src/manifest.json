@@ -557,6 +557,34 @@
       "source": "menu"
     },
     {
+      "name": "zui-input",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-button",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-button-size-sm",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input-toggle",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input-show",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input-hide",
+      "source": "password-input"
+    },
+    {
       "name": "zui-popover",
       "source": "popover"
     },
@@ -4313,5 +4341,5 @@
       "value": "4px"
     }
   ],
-  "version": "1.7.0"
+  "version": "1.8.0"
 }
