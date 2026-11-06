@@ -437,10 +437,6 @@
       "source": "field"
     },
     {
-      "name": "zui-label",
-      "source": "field"
-    },
-    {
       "name": "zui-field-description",
       "source": "field"
     },
@@ -450,18 +446,6 @@
     },
     {
       "name": "zui-field-invalid",
-      "source": "field"
-    },
-    {
-      "name": "zui-input",
-      "source": "field"
-    },
-    {
-      "name": "zui-textarea",
-      "source": "field"
-    },
-    {
-      "name": "zui-select",
       "source": "field"
     },
     {
@@ -557,19 +541,7 @@
       "source": "menu"
     },
     {
-      "name": "zui-input",
-      "source": "password-input"
-    },
-    {
-      "name": "zui-button",
-      "source": "password-input"
-    },
-    {
       "name": "zui-password-input",
-      "source": "password-input"
-    },
-    {
-      "name": "zui-button-size-sm",
       "source": "password-input"
     },
     {

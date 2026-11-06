@@ -10,7 +10,7 @@ type Props = Omit<HTMLInputAttributes, 'type'> & {
   class?: string
   shape?: InputVariantProps['shape']
   toggleLabel?: string
-  value?: string | null
+  value?: string | number | null
 }
 
 let {

@@ -32,6 +32,8 @@ const props = defineProps<{
   class?: string
   shape?: InputVariantProps['shape']
   toggleLabel?: string
+  /** Not allowed: the toggle owns the input type. */
+  type?: never
 }>()
 
 const visible = ref(false)
