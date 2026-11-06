@@ -16,12 +16,19 @@
     );
     --_tooltip-font-size: var(--zui-tooltip-font-size, var(--step--2));
     --_tooltip-shadow: var(--zui-tooltip-shadow, var(--shadow-md));
+    --_tooltip-border: var(--zui-tooltip-border, var(--color-border));
+    --_tooltip-border-width: var(--zui-tooltip-border-width, 1px);
+    --_tooltip-border-style: var(
+      --zui-tooltip-border-style,
+      var(--border-style, solid)
+    );
 
     background-color: var(--_tooltip-bg);
     color: var(--_tooltip-fg);
     padding: var(--_tooltip-padding);
     border-radius: var(--_tooltip-radius);
-    border: none;
+    border: var(--_tooltip-border-width) var(--_tooltip-border-style)
+      var(--_tooltip-border);
     font-size: var(--_tooltip-font-size);
     line-height: var(--line-height-sm);
     width: max-content;

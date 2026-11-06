@@ -3,6 +3,11 @@
     --_popover-bg: var(--zui-popover-bg, var(--color-surface));
     --_popover-fg: var(--zui-popover-fg, currentColor);
     --_popover-border: var(--zui-popover-border, var(--color-border));
+    --_popover-border-width: var(--zui-popover-border-width, 1px);
+    --_popover-border-style: var(
+      --zui-popover-border-style,
+      var(--border-style, solid)
+    );
     --_popover-radius: var(--zui-popover-radius, var(--radius-lg));
     --_popover-shadow: var(--zui-popover-shadow, var(--shadow-lg));
     --_popover-padding: var(--zui-popover-padding, var(--space-xs));
@@ -10,7 +15,8 @@
 
     background-color: var(--_popover-bg);
     color: var(--_popover-fg);
-    border: 0;
+    border: var(--_popover-border-width) var(--_popover-border-style)
+      var(--_popover-border);
     border-radius: var(--_popover-radius);
     box-shadow: var(--_popover-shadow);
     padding: var(--_popover-padding);
