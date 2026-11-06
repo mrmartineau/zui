@@ -437,10 +437,6 @@
       "source": "field"
     },
     {
-      "name": "zui-label",
-      "source": "field"
-    },
-    {
       "name": "zui-field-description",
       "source": "field"
     },
@@ -450,18 +446,6 @@
     },
     {
       "name": "zui-field-invalid",
-      "source": "field"
-    },
-    {
-      "name": "zui-input",
-      "source": "field"
-    },
-    {
-      "name": "zui-textarea",
-      "source": "field"
-    },
-    {
-      "name": "zui-select",
       "source": "field"
     },
     {
@@ -555,6 +539,22 @@
     {
       "name": "zui-menu-shape-squircle",
       "source": "menu"
+    },
+    {
+      "name": "zui-password-input",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input-toggle",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input-show",
+      "source": "password-input"
+    },
+    {
+      "name": "zui-password-input-hide",
+      "source": "password-input"
     },
     {
       "name": "zui-popover",
@@ -4313,5 +4313,5 @@
       "value": "4px"
     }
   ],
-  "version": "1.7.0"
+  "version": "1.8.0"
 }

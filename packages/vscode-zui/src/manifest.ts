@@ -125,8 +125,21 @@ export function buildManifest(sources: ManifestSources): Manifest {
   const classes: ClassEntry[] = []
   const tokens: TokenEntry[] = []
 
-  for (const file of sources.components) {
-    classes.push(...extractZuiClasses(file.css, file.name))
+  // Component files can reference other components' classes (e.g. field.css
+  // styles `.zui-input`). List each class once, from the file it belongs to
+  // (`zui-input` → input.css); fall back to the first file that uses it.
+  const componentEntries = sources.components.flatMap((file) =>
+    extractZuiClasses(file.css, file.name),
+  )
+  const ownsClass = (e: ClassEntry) =>
+    e.name === `zui-${e.source}` || e.name.startsWith(`zui-${e.source}-`)
+  const owned = new Set(componentEntries.filter(ownsClass).map((e) => e.name))
+  const componentSeen = new Set<string>()
+  for (const entry of componentEntries) {
+    if (componentSeen.has(entry.name)) continue
+    if (owned.has(entry.name) && !ownsClass(entry)) continue
+    componentSeen.add(entry.name)
+    classes.push(entry)
   }
 
   for (const file of sources.tokens) {
