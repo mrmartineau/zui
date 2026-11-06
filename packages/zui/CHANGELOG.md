@@ -1,3 +1,12 @@
+# [@mrmartineau/zui-v1.9.0](https://github.com/mrmartineau/zui/compare/v1.8.0...v1.9.0) (2026-11-06)
+
+
+### Features
+
+* **zui:** add borders to tooltip and popover ([#25](https://github.com/mrmartineau/zui/issues/25)) ([919179b](https://github.com/mrmartineau/zui/commit/919179b72f8f83a99f4e0ca88048cee3d368c7f9))
+* **zui:** add number field with step buttons ([#26](https://github.com/mrmartineau/zui/issues/26)) ([40891aa](https://github.com/mrmartineau/zui/commit/40891aae6e1aeef0565d1efb00a69587eeaf9fdf))
+* **zui:** add password input with show/hide toggle ([#24](https://github.com/mrmartineau/zui/issues/24)) ([9b602e2](https://github.com/mrmartineau/zui/commit/9b602e2fafce4aee67772ed4a61c300f6be9340e))
+
 # [@mrmartineau/zui-v1.8.0](https://github.com/mrmartineau/zui/compare/v1.7.0...v1.8.0) (2026-10-20)
 
 
