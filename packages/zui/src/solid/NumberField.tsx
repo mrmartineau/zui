@@ -26,7 +26,8 @@ export function NumberField(props: NumberFieldProps) {
   ])
   const classes = () =>
     numberFieldVariants({ class: local.class, shape: local.shape })
-  const buttonDisabled = () => Boolean(rest.disabled || rest.readOnly)
+  const buttonDisabled = () =>
+    Boolean(rest.disabled || rest.readOnly || rest.readonly)
   return (
     <div class={classes()}>
       <button

@@ -179,7 +179,7 @@ Use the `shape` prop to change the outer corners: `default` (rounded), `hard` (s
 
 ## Props
 
-`class` and `shape` go on the wrapper. `decrementLabel` and `incrementLabel` name the buttons. All other props go on the `<input>`, so you can use any input prop, for example `value`, `min`, `max`, `step`, `name`, `disabled` and `readonly`. You cannot change `type`. It is always `number`.
+`class` and `shape` go on the wrapper. `decrementLabel` and `incrementLabel` name the buttons. All other props go on the `<input>`, so you can use any input prop, for example `value`, `min`, `max`, `step`, `name` and `disabled`. For read-only, use `readOnly` in React and `readonly` in Astro, Svelte and Vue. Solid and Vue accept both spellings. You cannot change `type`. It is always `number`.
 
 | Prop | Default | Description |
 |---|---|---|
