@@ -53,3 +53,15 @@ jobs:
         run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Release commits use GITHUB_TOKEN and [skip ci], so they do not trigger deploy.yml on push.
+  deploy-docs:
+    name: Deploy docs
+    needs: release
+    uses: ./.github/workflows/deploy.yml
+    permissions:
+      contents: read
+      deployments: write
+    secrets: inherit
+    with:
+      skip_package_age: ${{ inputs.skip_package_age }}

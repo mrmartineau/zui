@@ -10,10 +10,17 @@ on:
         description: 'Bypass Aikido safe-chain minimum package age check'
         type: boolean
         default: false
+  # Called by release.yml after a release, so the changelog page shows the new version.
+  workflow_call:
+    inputs:
+      skip_package_age:
+        type: boolean
+        default: false
 
 # Coalesce rapid pushes; a newer commit cancels an in-flight deploy of an older one.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  # Fixed name: in a workflow_call run, github.workflow is the caller's name.
+  group: deploy-docs-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -25,6 +32,9 @@ jobs:
       deployments: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Branch tip, not github.sha: after a release, that includes the release commit.
+          ref: ${{ github.ref }}
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
