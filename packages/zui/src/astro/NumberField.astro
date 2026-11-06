@@ -1,0 +1,67 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import { numberFieldVariants } from '../shared/numberFieldVariants'
+
+type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>
+
+interface Props
+  extends Omit<HTMLAttributes<'input'>, 'type'>,
+    NumberFieldVariantProps {
+  /** Class for the wrapper. Other props go to the `<input>`. */
+  class?: string
+  decrementLabel?: string
+  incrementLabel?: string
+}
+
+const {
+  class: className,
+  shape,
+  decrementLabel = 'Decrease',
+  incrementLabel = 'Increase',
+  ...props
+} = Astro.props
+const classes = numberFieldVariants({ class: className, shape })
+const buttonDisabled = Boolean(props.disabled || props.readonly)
+---
+
+<div class={classes}>
+  <button
+    type="button"
+    class="zui-number-field-button"
+    tabindex="-1"
+    aria-label={decrementLabel}
+    disabled={buttonDisabled}
+    data-zui-number-field-step="down"
+  >
+    <i class="ph ph-minus" aria-hidden="true"></i>
+  </button>
+  <input type="number" class="zui-input zui-number-field-input" {...props} />
+  <button
+    type="button"
+    class="zui-number-field-button"
+    tabindex="-1"
+    aria-label={incrementLabel}
+    disabled={buttonDisabled}
+    data-zui-number-field-step="up"
+  >
+    <i class="ph ph-plus" aria-hidden="true"></i>
+  </button>
+</div>
+
+<script>
+  import { stepNumberField } from '../shared/stepNumberField'
+
+  // One listener on the document handles every number field on the page,
+  // including ones added after load or by view transitions.
+  document.addEventListener('click', (event) => {
+    const button = (event.target as Element | null)?.closest<HTMLElement>(
+      '[data-zui-number-field-step]',
+    )
+    if (!button) return
+    stepNumberField(
+      button,
+      button.dataset.zuiNumberFieldStep === 'down' ? 'down' : 'up',
+    )
+  })
+</script>

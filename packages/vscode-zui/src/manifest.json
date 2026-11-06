@@ -541,6 +541,26 @@
       "source": "menu"
     },
     {
+      "name": "zui-number-field",
+      "source": "number-field"
+    },
+    {
+      "name": "zui-number-field-input",
+      "source": "number-field"
+    },
+    {
+      "name": "zui-number-field-button",
+      "source": "number-field"
+    },
+    {
+      "name": "zui-number-field-shape-hard",
+      "source": "number-field"
+    },
+    {
+      "name": "zui-number-field-shape-soft",
+      "source": "number-field"
+    },
+    {
       "name": "zui-password-input",
       "source": "password-input"
     },
