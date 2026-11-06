@@ -11,9 +11,12 @@ export function stepNumberField(button: Element, direction: 'up' | 'down') {
   if (!input || input.disabled || input.readOnly) return
 
   const before = input.value
-  // ponytail: stepUp() throws for step="any"; set a numeric step if buttons are needed
+  // stepUp() throws for step="any". Use step 1 instead (moves to the next whole number).
+  const anyStep = input.step.toLowerCase() === 'any'
+  if (anyStep) input.step = '1'
   if (direction === 'up') input.stepUp()
   else input.stepDown()
+  if (anyStep) input.step = 'any'
   if (input.value === before) return
 
   input.dispatchEvent(new Event('input', { bubbles: true }))

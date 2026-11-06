@@ -5,7 +5,7 @@
       class="zui-number-field-button"
       tabindex="-1"
       :aria-label="decrementLabel"
-      :disabled="buttonDisabled"
+      :disabled="buttonDisabled()"
       @click="step($event, 'down')"
     >
       <i class="ph ph-minus" aria-hidden="true" />
@@ -13,8 +13,6 @@
     <input
       type="number"
       class="zui-input zui-number-field-input"
-      :disabled="disabled"
-      :readonly="readonly"
       v-bind="$attrs"
     />
     <button
@@ -22,7 +20,7 @@
       class="zui-number-field-button"
       tabindex="-1"
       :aria-label="incrementLabel"
-      :disabled="buttonDisabled"
+      :disabled="buttonDisabled()"
       @click="step($event, 'up')"
     >
       <i class="ph ph-plus" aria-hidden="true" />
@@ -32,7 +30,7 @@
 
 <script setup lang="ts">
 import type { VariantProps } from 'cva'
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 import { numberFieldVariants } from '../shared/numberFieldVariants'
 import { stepNumberField } from '../shared/stepNumberField'
 
@@ -45,10 +43,10 @@ const props = withDefaults(
   defineProps<{
     class?: string
     shape?: NumberFieldVariantProps['shape']
-    disabled?: boolean
-    readonly?: boolean
     decrementLabel?: string
     incrementLabel?: string
+    /** Not allowed: the buttons need a number input. */
+    type?: never
   }>(),
   { decrementLabel: 'Decrease', incrementLabel: 'Increase' },
 )
@@ -56,7 +54,14 @@ const props = withDefaults(
 const classes = computed(() =>
   numberFieldVariants({ className: props.class, shape: props.shape }),
 )
-const buttonDisabled = computed(() => props.disabled || props.readonly)
+// disabled and readonly stay in $attrs and go to the input. Vue does not
+// normalise attribute names, so check both spellings of readonly. attrs is
+// not reactive, so this is a function the template calls on each render.
+const attrs = useAttrs()
+const isSet = (value: unknown) => value != null && value !== false
+function buttonDisabled() {
+  return isSet(attrs.disabled) || isSet(attrs.readonly) || isSet(attrs.readOnly)
+}
 
 function step(event: MouseEvent, direction: 'up' | 'down') {
   stepNumberField(event.currentTarget as Element, direction)

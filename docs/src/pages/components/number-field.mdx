@@ -9,7 +9,7 @@ import { Field, Label, NumberField } from '@mrmartineau/zui/astro'
 
 The number field puts a minus button and a plus button on each side of a number input. The three parts touch. The input has square corners. Only the outer edges of the buttons are rounded.
 
-The buttons use the input's `step`, `min` and `max`. The arrow keys also work in the input. The buttons are not in the tab order, because the arrow keys do the same thing.
+The buttons use the input's `step`, `min` and `max`. With `step="any"`, they move to the next whole number. The arrow keys also work in the input. The buttons are not in the tab order, because the arrow keys do the same thing.
 
 ## Usage
 
@@ -34,7 +34,11 @@ The buttons use the input's `step`, `min` and `max`. The arrow keys also work in
     const input = button?.closest('.zui-number-field')?.querySelector('input')
     if (!input || input.disabled || input.readOnly) return
     const before = input.value
+    // stepUp() throws for step="any". Use step 1 instead.
+    const anyStep = input.step.toLowerCase() === 'any'
+    if (anyStep) input.step = '1'
     button.dataset.zuiNumberFieldStep === 'down' ? input.stepDown() : input.stepUp()
+    if (anyStep) input.step = 'any'
     if (input.value === before) return
     input.dispatchEvent(new Event('input', { bubbles: true }))
     input.dispatchEvent(new Event('change', { bubbles: true }))
@@ -137,8 +141,24 @@ A disabled or read-only input also disables the buttons.
 Use the `shape` prop to change the outer corners: `default` (rounded), `hard` (square) or `soft` (pill). The input always has square corners.
 
 <Demo
-  html={`<div class="zui-number-field zui-number-field-shape-hard">…</div>
-<div class="zui-number-field zui-number-field-shape-soft">…</div>`}
+  html={`<div class="zui-number-field zui-number-field-shape-hard">
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Decrease" data-zui-number-field-step="down">
+    <i class="ph ph-minus" aria-hidden="true"></i>
+  </button>
+  <input class="zui-input zui-number-field-input" type="number" aria-label="Hard" value="1" />
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Increase" data-zui-number-field-step="up">
+    <i class="ph ph-plus" aria-hidden="true"></i>
+  </button>
+</div>
+<div class="zui-number-field zui-number-field-shape-soft">
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Decrease" data-zui-number-field-step="down">
+    <i class="ph ph-minus" aria-hidden="true"></i>
+  </button>
+  <input class="zui-input zui-number-field-input" type="number" aria-label="Soft" value="1" />
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Increase" data-zui-number-field-step="up">
+    <i class="ph ph-plus" aria-hidden="true"></i>
+  </button>
+</div>`}
   react={`<NumberField aria-label="Hard" shape="hard" defaultValue={1} />
 <NumberField aria-label="Soft" shape="soft" defaultValue={1} />`}
   astro={`<NumberField aria-label="Hard" shape="hard" value={1} />
@@ -159,7 +179,7 @@ Use the `shape` prop to change the outer corners: `default` (rounded), `hard` (s
 
 ## Props
 
-The `class` prop goes on the wrapper. All other props go on the `<input>`.
+`class` and `shape` go on the wrapper. `decrementLabel` and `incrementLabel` name the buttons. All other props go on the `<input>`, so you can use any input prop, for example `value`, `min`, `max`, `step`, `name`, `disabled` and `readonly`. You cannot change `type`. It is always `number`.
 
 | Prop | Default | Description |
 |---|---|---|
