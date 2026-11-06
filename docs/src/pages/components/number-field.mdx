@@ -1,0 +1,178 @@
+---
+layout: ../../layouts/Layout.astro
+title: Number Field
+description: A number input with decrease and increase buttons on each side.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+import { Field, Label, NumberField } from '@mrmartineau/zui/astro'
+
+The number field puts a minus button and a plus button on each side of a number input. The three parts touch. The input has square corners. Only the outer edges of the buttons are rounded.
+
+The buttons use the input's `step`, `min` and `max`. The arrow keys also work in the input. The buttons are not in the tab order, because the arrow keys do the same thing.
+
+## Usage
+
+<Demo
+  html={`<div class="zui-field">
+  <label class="zui-label" for="quantity">Quantity</label>
+  <div class="zui-number-field">
+    <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Decrease" data-zui-number-field-step="down">
+      <i class="ph ph-minus" aria-hidden="true"></i>
+    </button>
+    <input class="zui-input zui-number-field-input" type="number" id="quantity" value="1" min="0" />
+    <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Increase" data-zui-number-field-step="up">
+      <i class="ph ph-plus" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  // The buttons need this script in plain HTML. The framework components include it.
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-zui-number-field-step]')
+    const input = button?.closest('.zui-number-field')?.querySelector('input')
+    if (!input || input.disabled || input.readOnly) return
+    const before = input.value
+    button.dataset.zuiNumberFieldStep === 'down' ? input.stepDown() : input.stepUp()
+    if (input.value === before) return
+    input.dispatchEvent(new Event('input', { bubbles: true }))
+    input.dispatchEvent(new Event('change', { bubbles: true }))
+  })
+</script>`}
+  react={`import { Field, Label, NumberField } from '@mrmartineau/zui/react'
+
+<Field>
+  <Label htmlFor="quantity">Quantity</Label>
+  <NumberField id="quantity" defaultValue={1} min={0} />
+</Field>`}
+  astro={`---
+import { Field, Label, NumberField } from '@mrmartineau/zui/astro'
+---
+
+<Field>
+  <Label for="quantity">Quantity</Label>
+  <NumberField id="quantity" value={1} min={0} />
+</Field>`}
+  solid={`import { Field, Label, NumberField } from '@mrmartineau/zui/solid'
+
+<Field>
+  <Label for="quantity">Quantity</Label>
+  <NumberField id="quantity" value={1} min={0} />
+</Field>`}
+  vue={`<template>
+  <Field>
+    <Label for="quantity">Quantity</Label>
+    <NumberField id="quantity" value="1" min="0" />
+  </Field>
+</template>
+
+<script setup>
+import { Field, Label, NumberField } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, Label, NumberField } from '@mrmartineau/zui/svelte'
+  let quantity = $state(1)
+</script>
+
+<Field>
+  <Label for="quantity">Quantity</Label>
+  <NumberField id="quantity" min={0} bind:value={quantity} />
+</Field>`}
+>
+  <Field>
+    <Label for="nf-quantity">Quantity</Label>
+    <NumberField id="nf-quantity" value={1} min={0} />
+  </Field>
+</Demo>
+
+## Step, min and max
+
+The buttons move the value by `step`. They stop at `min` and `max`.
+
+<Demo
+  html={`<div class="zui-number-field">
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Decrease" data-zui-number-field-step="down">
+    <i class="ph ph-minus" aria-hidden="true"></i>
+  </button>
+  <input class="zui-input zui-number-field-input" type="number" aria-label="Volume" value="50" min="0" max="100" step="10" />
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Increase" data-zui-number-field-step="up">
+    <i class="ph ph-plus" aria-hidden="true"></i>
+  </button>
+</div>`}
+  react={`<NumberField aria-label="Volume" defaultValue={50} min={0} max={100} step={10} />`}
+  astro={`<NumberField aria-label="Volume" value={50} min={0} max={100} step={10} />`}
+  solid={`<NumberField aria-label="Volume" value={50} min={0} max={100} step={10} />`}
+  vue={`<NumberField aria-label="Volume" value="50" min="0" max="100" step="10" />`}
+  svelte={`<NumberField aria-label="Volume" value={50} min={0} max={100} step={10} />`}
+>
+  <NumberField aria-label="Volume" value={50} min={0} max={100} step={10} />
+</Demo>
+
+## Disabled
+
+A disabled or read-only input also disables the buttons.
+
+<Demo
+  html={`<div class="zui-number-field">
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Decrease" disabled>
+    <i class="ph ph-minus" aria-hidden="true"></i>
+  </button>
+  <input class="zui-input zui-number-field-input" type="number" aria-label="Seats" value="4" disabled />
+  <button type="button" class="zui-number-field-button" tabindex="-1" aria-label="Increase" disabled>
+    <i class="ph ph-plus" aria-hidden="true"></i>
+  </button>
+</div>`}
+  react={`<NumberField aria-label="Seats" defaultValue={4} disabled />`}
+  astro={`<NumberField aria-label="Seats" value={4} disabled />`}
+  solid={`<NumberField aria-label="Seats" value={4} disabled />`}
+  vue={`<NumberField aria-label="Seats" value="4" disabled />`}
+  svelte={`<NumberField aria-label="Seats" value={4} disabled />`}
+>
+  <NumberField aria-label="Seats" value={4} disabled />
+</Demo>
+
+## Shape
+
+Use the `shape` prop to change the outer corners: `default` (rounded), `hard` (square) or `soft` (pill). The input always has square corners.
+
+<Demo
+  html={`<div class="zui-number-field zui-number-field-shape-hard">…</div>
+<div class="zui-number-field zui-number-field-shape-soft">…</div>`}
+  react={`<NumberField aria-label="Hard" shape="hard" defaultValue={1} />
+<NumberField aria-label="Soft" shape="soft" defaultValue={1} />`}
+  astro={`<NumberField aria-label="Hard" shape="hard" value={1} />
+<NumberField aria-label="Soft" shape="soft" value={1} />`}
+  solid={`<NumberField aria-label="Hard" shape="hard" value={1} />
+<NumberField aria-label="Soft" shape="soft" value={1} />`}
+  vue={`<NumberField aria-label="Hard" shape="hard" value="1" />
+<NumberField aria-label="Soft" shape="soft" value="1" />`}
+  svelte={`<NumberField aria-label="Hard" shape="hard" value={1} />
+<NumberField aria-label="Soft" shape="soft" value={1} />`}
+>
+  <div class="flow">
+    <NumberField aria-label="Default" value={1} />
+    <NumberField aria-label="Hard" shape="hard" value={1} />
+    <NumberField aria-label="Soft" shape="soft" value={1} />
+  </div>
+</Demo>
+
+## Props
+
+The `class` prop goes on the wrapper. All other props go on the `<input>`.
+
+| Prop | Default | Description |
+|---|---|---|
+| `shape` | `default` | Outer corners: `default`, `hard` or `soft` |
+| `decrementLabel` | `"Decrease"` | Accessible name of the minus button |
+| `incrementLabel` | `"Increase"` | Accessible name of the plus button |
+
+## CSS custom properties
+
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties). The input also uses the [Input](/components/input#css-custom-properties) properties.
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-number-field-radius` | `var(--zui-input-radius, var(--radius-lg))` | Radius of the outer corners |
+| `--zui-number-field-input-width` | `6rem` | Width of the input |
+| `--zui-number-field-button-bg` | `var(--color-surface)` | Background colour of the buttons |
