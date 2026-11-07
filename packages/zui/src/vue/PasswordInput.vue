@@ -13,12 +13,14 @@
       :disabled="$attrs.disabled != null && $attrs.disabled !== false"
       @click="visible = !visible"
     >
-      <i :class="['ph', visible ? 'ph-eye-slash' : 'ph-eye']" aria-hidden="true" />
+      <PhEyeSlash v-if="visible" aria-hidden="true" />
+      <PhEye v-else aria-hidden="true" />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { PhEye, PhEyeSlash } from '@phosphor-icons/vue'
 import type { VariantProps } from 'cva'
 import { ref } from 'vue'
 import { inputVariants } from '../shared/inputVariants'

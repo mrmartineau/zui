@@ -2,7 +2,7 @@
   <span :class="classes" v-bind="$attrs">
     <span class="zui-avatar-fallback">
       <slot name="fallback">
-        <i class="ph ph-user" aria-hidden="true" />
+        <PhUser aria-hidden="true" />
       </slot>
     </span>
     <img
@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import { PhUser } from '@phosphor-icons/vue'
 import type { VariantProps } from 'cva'
 import { computed, ref } from 'vue'
 import { avatarVariants } from '../shared/avatarVariants'

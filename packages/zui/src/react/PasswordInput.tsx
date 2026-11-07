@@ -1,3 +1,4 @@
+import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react'
 import type { VariantProps } from 'cva'
 import { type InputHTMLAttributes, useState } from 'react'
 import { inputVariants } from '../shared/inputVariants'
@@ -38,10 +39,11 @@ export function PasswordInput({
         disabled={props.disabled}
         onClick={() => setVisible((v) => !v)}
       >
-        <i
-          className={`ph ${visible ? 'ph-eye-slash' : 'ph-eye'}`}
-          aria-hidden="true"
-        />
+        {visible ? (
+          <EyeSlashIcon aria-hidden="true" />
+        ) : (
+          <EyeIcon aria-hidden="true" />
+        )}
       </button>
     </div>
   )

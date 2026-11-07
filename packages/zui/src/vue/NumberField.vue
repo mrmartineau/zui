@@ -8,7 +8,7 @@
       :disabled="buttonDisabled()"
       @click="step($event, 'down')"
     >
-      <i class="ph ph-minus" aria-hidden="true" />
+      <PhMinus aria-hidden="true" />
     </button>
     <input
       type="number"
@@ -23,12 +23,13 @@
       :disabled="buttonDisabled()"
       @click="step($event, 'up')"
     >
-      <i class="ph ph-plus" aria-hidden="true" />
+      <PhPlus aria-hidden="true" />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { PhMinus, PhPlus } from '@phosphor-icons/vue'
 import type { VariantProps } from 'cva'
 import { computed, useAttrs } from 'vue'
 import { numberFieldVariants } from '../shared/numberFieldVariants'

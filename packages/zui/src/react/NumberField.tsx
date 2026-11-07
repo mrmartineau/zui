@@ -1,3 +1,4 @@
+import { MinusIcon, PlusIcon } from '@phosphor-icons/react'
 import type { VariantProps } from 'cva'
 import type { InputHTMLAttributes } from 'react'
 import { numberFieldVariants } from '../shared/numberFieldVariants'
@@ -37,7 +38,7 @@ export function NumberField({
         disabled={buttonDisabled}
         onClick={(e) => stepNumberField(e.currentTarget, 'down')}
       >
-        <i className="ph ph-minus" aria-hidden="true" />
+        <MinusIcon aria-hidden="true" />
       </button>
       <input
         type="number"
@@ -54,7 +55,7 @@ export function NumberField({
         disabled={buttonDisabled}
         onClick={(e) => stepNumberField(e.currentTarget, 'up')}
       >
-        <i className="ph ph-plus" aria-hidden="true" />
+        <PlusIcon aria-hidden="true" />
       </button>
     </div>
   )
