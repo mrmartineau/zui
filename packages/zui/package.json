@@ -5,7 +5,7 @@
   "dependencies": {
     "cva": "1.0.0-beta.4"
   },
-  "description": "ZUI \u2014 a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
+  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
     "@mrmartineau/kit": "^1.0.0",
@@ -142,5 +142,5 @@
     "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
   },
   "type": "module",
-  "version": "1.9.0"
+  "version": "1.9.1"
 }

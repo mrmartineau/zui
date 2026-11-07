@@ -1,3 +1,10 @@
+# [@mrmartineau/zui-v1.9.1](https://github.com/mrmartineau/zui/compare/v1.9.0...v1.9.1) (2026-11-07)
+
+
+### Bug Fixes
+
+* **zui:** use Phosphor React and Vue packages for built-in icons ([#27](https://github.com/mrmartineau/zui/issues/27)) ([b689920](https://github.com/mrmartineau/zui/commit/b689920142a78b9642674f20a0722e2f4d8d8326))
+
 # [@mrmartineau/zui-v1.9.0](https://github.com/mrmartineau/zui/compare/v1.8.0...v1.9.0) (2026-11-06)
 
 
