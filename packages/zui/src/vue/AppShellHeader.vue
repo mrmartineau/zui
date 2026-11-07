@@ -8,7 +8,7 @@
       :aria-controls="ctx.sidebarId"
       @click="ctx.toggle"
     >
-      <i class="ph ph-list" aria-hidden="true" />
+      <PhList aria-hidden="true" />
     </button>
     <span
       v-if="toggle"
@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import { PhList } from '@phosphor-icons/vue'
 import { computed } from 'vue'
 import { appShellHeaderVariants } from '../shared/appShellVariants'
 import { useAppShellContext } from './appShellContext'

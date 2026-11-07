@@ -1,3 +1,4 @@
+import { UserIcon } from '@phosphor-icons/react'
 import type { VariantProps } from 'cva'
 import type { HTMLAttributes } from 'react'
 import { useState } from 'react'
@@ -29,7 +30,7 @@ export function Avatar({
   return (
     <span className={classes} {...props}>
       <span className="zui-avatar-fallback">
-        {fallback ?? <i className="ph ph-user" aria-hidden="true" />}
+        {fallback ?? <UserIcon aria-hidden="true" />}
       </span>
       {src && !imageError && (
         <img

@@ -5,6 +5,7 @@
     "@astrojs/react": "^6.0.0",
     "@mrmartineau/zui": "workspace:*",
     "@mrmartineau/zui-theme": "workspace:*",
+    "@phosphor-icons/react": "^2.1.10",
     "@tanstack/react-form": "^1.33.0",
     "@tanstack/react-table": "^8.21.3",
     "astro": "^7.1.3",

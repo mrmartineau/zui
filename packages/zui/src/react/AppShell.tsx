@@ -1,3 +1,4 @@
+import { ListIcon } from '@phosphor-icons/react'
 import type { HTMLAttributes } from 'react'
 import {
   createContext,
@@ -199,7 +200,7 @@ export function AppShellHeader({
             aria-controls={ctx.sidebarId}
             onClick={ctx.toggle}
           >
-            <i className="ph ph-list" aria-hidden="true" />
+            <ListIcon aria-hidden="true" />
           </button>
           <span
             popover="manual"

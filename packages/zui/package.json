@@ -5,10 +5,12 @@
   "dependencies": {
     "cva": "1.0.0-beta.4"
   },
-  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
+  "description": "ZUI \u2014 a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
     "@mrmartineau/kit": "^1.0.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@phosphor-icons/vue": "^2.2.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
@@ -94,6 +96,8 @@
     "directory": "packages/zui"
   },
   "peerDependencies": {
+    "@phosphor-icons/react": "^2.1.0",
+    "@phosphor-icons/vue": "^2.2.0",
     "astro": "^6.0.0 || ^7.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "solid-js": "^1.7.0",
@@ -101,6 +105,12 @@
     "vue": "^3.3.0"
   },
   "peerDependenciesMeta": {
+    "@phosphor-icons/react": {
+      "optional": true
+    },
+    "@phosphor-icons/vue": {
+      "optional": true
+    },
     "astro": {
       "optional": true
     },
