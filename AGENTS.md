@@ -1,5 +1,11 @@
 # ZUI — Agent Guidelines
 
+## Coding standards
+
+Follow the `coding-standards` skill (`~/code/mrmartineau/agent-skills/skills/coding-standards/`). Where this file and the skill disagree, this file wins: it describes how this repo already works. Do not rename existing files or classes to match the skill unless asked.
+
+Known differences from the skill: this is a library, so its own conventions come first: `zui-` prefixed kebab-case class names with `-variant-` and `-shape-` modifiers (not the Kickoff scheme), PascalCase component files in each framework folder (`Accordion.tsx`, `Accordion.astro`), and `index.ts` files that re-export each framework's components as package entry points. The skill has no Svelte or Vue rules; follow "Key Conventions" below.
+
 ## Project Overview
 
 ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers. CSS is authored as modular source files in `packages/zui/src/css/` using `@import` and `@layer`, then bundled with [tsdown](https://tsdown.dev/) (Lightning CSS) into `packages/zui/dist/css/zui.css`.
