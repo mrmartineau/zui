@@ -23,6 +23,7 @@ packages/
         tokens/             → Design tokens as CSS custom properties (space, color, radii, shadow, easing, etc.)
         components/         → Component styles (button, badge, card, input, etc.)
         utilities/          → Utility classes (flex, flow, prose, spacing, etc.)
+        integrations/       → Opt-in skins for third-party libraries (e.g. ramka.css). Not in zui.css; each is its own export
         layouts/            → Layout styles
       astro/                → Astro components (.astro files)
       react/                → React components (.tsx files)
@@ -51,6 +52,8 @@ docs/                   → Astro docs site, built on @mrmartineau/zui-theme (se
   - Variant, size and shape classes set the **public** knob (`.zui-card-shape-hard { --zui-card-radius: 0; }`). A class that is the default variant must not set it.
   - Values derived from other knobs (e.g. button colours from `--zui-btn-accent`) stay private and live on the element.
   - Every new knob goes in the component's docs table. The user-facing rules live in the theming guide (`docs/src/pages/guides/theming.mdx`, "Component custom properties").
+
+- **Integration skins.** A stylesheet that themes a third-party library (e.g. Ramka) goes in `packages/zui/src/css/integrations/<lib>.css`, not in `components.css`. Start it with the layer order statement from `layers.css`, wrap rules in `@layer zui.components`, prefix any classes it adds with `zui-<lib>-`, and add an export `./css/<lib>` in `packages/zui/package.json`. Document it on `docs/src/pages/integrations/<lib>.mdx`, in the README (Integrations + Package exports), and in `skills/using-zui/SKILL.md` (Integrations).
 
 ### Components
 

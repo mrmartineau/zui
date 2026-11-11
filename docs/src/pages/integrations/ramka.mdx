@@ -1,0 +1,358 @@
+---
+order: 6
+layout: ../../layouts/Layout.astro
+title: Ramka
+description: Add a photo lightbox with Ramka's headless parts, ZUI buttons for the controls, and ZUI's ready-made Ramka stylesheet.
+---
+
+import DemoPreview from '../../components/DemoPreview.astro'
+import RamkaDemo from '../../components/demos/RamkaDemo.tsx'
+import RamkaEditorialDemo from '../../components/demos/RamkaEditorialDemo.tsx'
+
+[Ramka](https://ramka.dev/docs) is a set of **unstyled** lightbox primitives
+for React, in the style of Radix and Base UI. It owns the hard parts — focus
+trap, keyboard, swipe, pinch-zoom, pull-to-dismiss and a View Transition morph
+from thumbnail to full size. ZUI has no lightbox component, so Ramka fills the
+gap. ZUI ships an optional stylesheet that skins Ramka with ZUI's
+[tokens](/tokens), and ZUI's [Button](/components/button) drops straight into
+its controls.
+
+> **React only.** Ramka is a React library. In Astro, Solid, Svelte or Vue
+> projects, mount it inside a React island (as the demo does).
+
+Click a photo. Swipe or use the arrow keys to move, pinch or double-click to
+zoom, and press Escape (or drag down on touch) to close:
+
+<DemoPreview>
+  <RamkaDemo client:only="react" />
+</DemoPreview>
+
+## Quick start
+
+Three steps: install, import two stylesheets, paste one component.
+
+### 1. Install
+
+```sh
+npm install @mrmartineau/zui @ramka/react @phosphor-icons/react
+```
+
+### 2. Import the styles
+
+Import ZUI first, then the Ramka skin:
+
+```ts
+import '@mrmartineau/zui/css'
+import '@mrmartineau/zui/css/ramka'
+```
+
+`@mrmartineau/zui/css/ramka` is opt-in. It is not part of the main
+`zui.css` bundle, so apps without a lightbox do not pay for it. Its rules sit in
+the `zui.components` [layer](/guides/layers), so your own CSS always wins.
+
+### 3. Add the gallery
+
+Copy this component into your app. It is the same code as the demo above.
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  MagnifyingGlassMinusIcon,
+  MagnifyingGlassPlusIcon,
+  XIcon,
+} from '@phosphor-icons/react'
+import * as Lightbox from '@ramka/react/lightbox'
+
+export type Photo = {
+  id: string
+  src: string
+  thumb: string
+  alt: string
+  width: number
+  height: number
+}
+
+export function PhotoGallery({ photos }: { photos: Photo[] }) {
+  return (
+    <Lightbox.Root>
+      <div className="zui-ramka-grid">
+        {photos.map((p, i) => (
+          <Lightbox.Trigger key={p.id} index={i} aria-label={`Open ${p.alt}`}>
+            {({ imageRef }) => <img ref={imageRef} src={p.thumb} alt={p.alt} />}
+          </Lightbox.Trigger>
+        ))}
+      </div>
+
+      <Lightbox.Portal>
+        <Lightbox.Backdrop />
+        <Lightbox.Content aria-label="Photo viewer">
+          <Lightbox.Slides aria-label="Photos" aria-roledescription="carousel">
+            {photos.map((p, i) => (
+              <Lightbox.Slide key={p.id}>
+                <Lightbox.Item
+                  index={i}
+                  caption={p.alt}
+                  aria-roledescription="slide"
+                  aria-label={`${i + 1} of ${photos.length}`}
+                >
+                  <Lightbox.Zoom>
+                    <Lightbox.Media width={p.width} height={p.height}>
+                      <img src={p.src} alt={p.alt} width={p.width} height={p.height} />
+                    </Lightbox.Media>
+                  </Lightbox.Zoom>
+                </Lightbox.Item>
+              </Lightbox.Slide>
+            ))}
+          </Lightbox.Slides>
+
+          <div className="zui-ramka-toolbar">
+            <Lightbox.ZoomOut aria-label="Zoom out" render={<Button variant="ghost" icon />}>
+              <MagnifyingGlassMinusIcon aria-hidden />
+            </Lightbox.ZoomOut>
+            <Lightbox.ZoomIn aria-label="Zoom in" render={<Button variant="ghost" icon />}>
+              <MagnifyingGlassPlusIcon aria-hidden />
+            </Lightbox.ZoomIn>
+            <Lightbox.Close aria-label="Close" render={<Button variant="ghost" icon />}>
+              <XIcon aria-hidden />
+            </Lightbox.Close>
+          </div>
+
+          <div className="zui-ramka-footer">
+            <Lightbox.Counter />
+            <Lightbox.Caption />
+            <Lightbox.Previous aria-label="Previous photo" render={<Button variant="subtle" icon />}>
+              <CaretLeftIcon aria-hidden />
+            </Lightbox.Previous>
+            <Lightbox.Next aria-label="Next photo" render={<Button variant="subtle" icon />}>
+              <CaretRightIcon aria-hidden />
+            </Lightbox.Next>
+          </div>
+        </Lightbox.Content>
+      </Lightbox.Portal>
+    </Lightbox.Root>
+  )
+}
+```
+
+Use it:
+
+```tsx
+<PhotoGallery
+  photos={[
+    { id: 'fjord', src: '/photos/fjord.jpg', thumb: '/photos/fjord-thumb.jpg', alt: 'A fjord', width: 1600, height: 1000 },
+    { id: 'pug', src: '/photos/pug.jpg', thumb: '/photos/pug-thumb.jpg', alt: 'A pug', width: 1000, height: 1250 },
+  ]}
+/>
+```
+
+## How it fits together
+
+- **`index` links a thumbnail to its slide.** Each `Lightbox.Trigger` opens the
+  viewer at its `index`. The `Lightbox.Item` with the same `index` is that slide.
+- **`imageRef` powers the morph.** Pass it to the thumbnail `<img>`. Ramka then
+  animates that image into the full-size one.
+- **Give every photo a real `width` and `height`.** Ramka sizes the box before
+  the image loads, so the morph has a target and the layout does not jump.
+- **`render` swaps in a ZUI Button.** Every Ramka part takes a `render` prop.
+  Ramka merges its own props, state and event handlers onto the element you pass.
+  Use any `Button` `variant`, `size` or `shape`.
+- **Ramka ships no text.** Give each control an `aria-label`. Ramka warns in
+  development when a control has no name.
+
+## Editorial example
+
+A viewer for photos inside an article, like a news site. It is based on Ramka's
+[Editorial preset](https://ramka.dev/presets/editorial). The viewer is dark in
+both site themes, shows a caption and a credit under each photo, and has large
+arrows at the left and right edges. There is no zoom: people read here, they do
+not inspect.
+
+Click a photo in the article:
+
+<DemoPreview>
+  <RamkaEditorialDemo client:only="react" />
+</DemoPreview>
+
+It uses the same stylesheet. Four changes from the gallery above:
+
+1. **Add `zui-ramka-editorial` to `Lightbox.Portal`.** It sets
+   `color-scheme: dark` on the viewer. ZUI's colours use `light-dark()`, so every
+   token and every ZUI Button inside turns dark with no more CSS.
+2. **Pass caption and credit as one node.** `Lightbox.Item`'s `caption` takes
+   any React node. Put the credit in a `span` with `zui-ramka-credit`.
+3. **Put `Previous` and `Next` directly in `Lightbox.Content`.** Outside the
+   footer, they become edge arrows on desktop. On mobile they hide and people
+   swipe.
+4. **Leave out `Lightbox.Zoom`.** Put `Lightbox.Media` straight in
+   `Lightbox.Item`. The skin still centres and fits the photo.
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+import { CaretLeftIcon, CaretRightIcon, XIcon } from '@phosphor-icons/react'
+import * as Lightbox from '@ramka/react/lightbox'
+
+export type Figure = {
+  id: string
+  src: string
+  thumb: string
+  alt: string
+  caption: string
+  credit: string
+  width: number
+  height: number
+}
+
+export function ArticleFigures({ figures }: { figures: Figure[] }) {
+  return (
+    <Lightbox.Root
+      loop
+      // Keep the current figure in view when the viewer opens and closes.
+      scrollTriggerIntoView={[
+        { type: 'onOpenComplete', behavior: 'instant', block: 'nearest' },
+        { type: 'onClose', behavior: 'instant', block: 'nearest' },
+      ]}
+    >
+      {figures.map((f, i) => (
+        <figure key={f.id}>
+          <Lightbox.Trigger index={i} aria-label={`Open photo: ${f.alt}`}>
+            {({ imageRef }) => (
+              <img ref={imageRef} src={f.thumb} alt={f.alt} width={f.width} height={f.height} />
+            )}
+          </Lightbox.Trigger>
+          <figcaption className="zui-text--1 zui-color-muted mt-2xs">
+            {f.caption} <span className="zui-color-faint">{f.credit}</span>
+          </figcaption>
+        </figure>
+      ))}
+
+      <Lightbox.Portal className="zui-ramka-editorial">
+        <Lightbox.Backdrop />
+        <Lightbox.Content aria-label="Article photographs">
+          <Lightbox.Slides aria-label="Article photographs" aria-roledescription="carousel">
+            {figures.map((f, i) => (
+              <Lightbox.Slide key={f.id}>
+                <Lightbox.Item
+                  index={i}
+                  aria-roledescription="slide"
+                  aria-label={`${i + 1} of ${figures.length}`}
+                  caption={
+                    <>
+                      <span>{f.caption}</span>
+                      <span className="zui-ramka-credit">{f.credit}</span>
+                    </>
+                  }
+                >
+                  <Lightbox.Media width={f.width} height={f.height}>
+                    <img src={f.src} alt={f.alt} width={f.width} height={f.height} />
+                  </Lightbox.Media>
+                </Lightbox.Item>
+              </Lightbox.Slide>
+            ))}
+          </Lightbox.Slides>
+
+          <div className="zui-ramka-toolbar">
+            <Lightbox.Counter />
+            <Lightbox.Close aria-label="Close" render={<Button variant="ghost" icon />}>
+              <XIcon aria-hidden />
+            </Lightbox.Close>
+          </div>
+
+          <Lightbox.Previous aria-label="Previous photo" render={<Button variant="ghost" icon size="lg" />}>
+            <CaretLeftIcon aria-hidden />
+          </Lightbox.Previous>
+          <Lightbox.Next aria-label="Next photo" render={<Button variant="ghost" icon size="lg" />}>
+            <CaretRightIcon aria-hidden />
+          </Lightbox.Next>
+
+          <div className="zui-ramka-footer">
+            <Lightbox.Caption />
+          </div>
+        </Lightbox.Content>
+      </Lightbox.Portal>
+    </Lightbox.Root>
+  )
+}
+```
+
+In a real article the figures sit between paragraphs, not in one loop. That is
+fine: any `Lightbox.Trigger` inside `Lightbox.Root` works, wherever it is.
+
+## Classes and attributes
+
+The stylesheet styles Ramka's own `data-ramka-*` attributes, so most parts need
+no class. Add these three classes to your own wrapper elements:
+
+| Class                | Put it on                                 | What it does                                                     |
+| :------------------- | :---------------------------------------- | :--------------------------------------------------------------- |
+| `.zui-ramka-grid`    | the `div` around the triggers             | Responsive square thumbnail grid                                 |
+| `.zui-ramka-toolbar` | a `div` inside `Lightbox.Content`         | Top-right bar for zoom and close                                 |
+| `.zui-ramka-footer`  | a `div` inside `Lightbox.Content`         | Bottom bar for counter, caption, previous and next. Hides on zoom |
+| `.zui-ramka-editorial` | `Lightbox.Portal`                       | Dark article-figure viewer with a caption + credit block          |
+| `.zui-ramka-credit`  | a `span` inside an `Item` caption         | Small uppercase credit line                                      |
+
+Without the grid class, triggers still work. Lay them out however you like.
+
+`Lightbox.Previous` and `Lightbox.Next` placed directly inside `Lightbox.Content`
+become edge arrows on desktop and hide on mobile.
+
+## Customise
+
+Set these custom properties on `:root` or any ancestor:
+
+| Property               | Default                  | Controls                                  |
+| :--------------------- | :----------------------- | :---------------------------------------- |
+| `--zui-ramka-backdrop` | `var(--color-background)` | Viewer background                         |
+| `--zui-ramka-inset`    | `var(--space-2xl)`        | Space above and below the photo           |
+| `--zui-ramka-radius`   | `var(--radius-lg)`        | Corner radius of thumbnails and the photo |
+
+The default backdrop follows ZUI's light and dark themes. For a black,
+photo-first viewer in both themes:
+
+```css
+:root {
+  --zui-ramka-backdrop: var(--color-black);
+}
+
+[data-ramka-content] {
+  color: var(--color-white);
+}
+```
+
+For anything else, target Ramka's attributes in your own CSS. Unlayered CSS
+beats the skin without `!important`:
+
+- **Parts:** `[data-ramka-trigger]`, `[data-ramka-backdrop]`,
+  `[data-ramka-content]`, `[data-ramka-slide]`, `[data-ramka-media]`,
+  `[data-ramka-counter]`, `[data-ramka-caption]`, and more.
+- **State:** `[data-open]`, `[data-pulling]` (dragging to close), `[data-zoomed]`,
+  `[data-active]`, `[data-disabled]`.
+- **Variables Ramka writes:** `--lightbox-pull-progress` (0 → 1 while dragging
+  to close) and `--lightbox-vt-duration` (the morph timing). Read them; do not
+  set them.
+
+Ramka injects all of its view-transition CSS itself. The full list of parts,
+attributes and variables is in the
+[Ramka API reference](https://ramka.dev/docs/lightbox/api).
+
+## Without the stylesheet
+
+To own every rule, skip the import and copy
+[`ramka.css`](https://github.com/mrmartineau/zui/blob/main/packages/zui/src/css/integrations/ramka.css)
+into your project. It is under 300 lines and uses only ZUI tokens.
+
+## Notes
+
+- **Open from code.** `Lightbox.createHandle()` gives you `open(index)`,
+  `close()` and `goTo(index)`. Pass the handle to `Lightbox.Root`. Or control it
+  with `open` / `onOpenChange` and `value` / `onValueChange`. See
+  [State & lifecycle](https://ramka.dev/docs/lightbox/state-lifecycle).
+- **Motion presets.** `<Lightbox.Root viewTransition="spring">` picks a morph
+  timing (`default`, `snappy`, `relaxed`, `spring`). Pass `false` to turn the
+  morph off. Ramka respects `prefers-reduced-motion`.
+- **Thumbnail strip.** Add `Lightbox.ThumbnailStrip` or `Lightbox.ThumbnailGroup`
+  inside `Content` for a row of thumbnails. See
+  [Composition](https://ramka.dev/docs/lightbox/composition).
+- **Ramka is new.** It is at version 0.0.x, so its API can change. Pin the
+  version in your `package.json`.

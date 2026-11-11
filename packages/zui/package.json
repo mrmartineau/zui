@@ -44,6 +44,10 @@
       "style": "./dist/css/zui.min.css",
       "default": "./dist/css/zui.min.css"
     },
+    "./css/ramka": {
+      "style": "./src/css/integrations/ramka.css",
+      "default": "./src/css/integrations/ramka.css"
+    },
     "./react": {
       "import": {
         "types": "./dist/react/index.d.mts",

@@ -27,6 +27,7 @@ export default defineConfig({
       exclude: ['@mrmartineau/zui/vue'],
     },
     resolve: {
+      // biome-ignore assist/source/useSortedKeys: Vite matches aliases as prefixes, so /css/ramka must come before /css
       alias: {
         '@mrmartineau/zui-theme/astro': resolve(
           import.meta.dirname,
@@ -43,6 +44,10 @@ export default defineConfig({
         '@mrmartineau/zui/astro': resolve(
           import.meta.dirname,
           '../packages/zui/src/astro/index.ts',
+        ),
+        '@mrmartineau/zui/css/ramka': resolve(
+          import.meta.dirname,
+          '../packages/zui/src/css/integrations/ramka.css',
         ),
         '@mrmartineau/zui/css': resolve(
           import.meta.dirname,
