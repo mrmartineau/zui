@@ -38,7 +38,7 @@ export function Dropzone(props: DropzoneProps) {
       data-max-size={local.maxSize}
     >
       <label class="zui-dropzone-box">
-        <input class="zui-dropzone-input" type="file" {...rest} />
+        <input {...rest} class="zui-dropzone-input" type="file" />
         <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true" />
         <span class="zui-dropzone-title">
           {local.label ?? 'Drop files here, or click to browse'}

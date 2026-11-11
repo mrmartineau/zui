@@ -33,7 +33,7 @@ const classes = dropzoneVariants({ class: className, shape })
 
 <div class={classes} data-zui-dropzone data-max-size={maxSize}>
   <label class="zui-dropzone-box">
-    <input class="zui-dropzone-input" type="file" {...props} />
+    <input {...props} class="zui-dropzone-input" type="file" />
     <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
     <span class="zui-dropzone-title">{label}</span>
     {hint && <span class="zui-dropzone-hint">{hint}</span>}

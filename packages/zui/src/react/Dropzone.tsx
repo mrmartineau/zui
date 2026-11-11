@@ -41,7 +41,7 @@ export function Dropzone({
       data-max-size={maxSize}
     >
       <label className="zui-dropzone-box">
-        <input className="zui-dropzone-input" type="file" {...props} />
+        <input {...props} className="zui-dropzone-input" type="file" />
         <UploadSimpleIcon className="zui-dropzone-icon" aria-hidden="true" />
         <span className="zui-dropzone-title">{label}</span>
         {hint && <span className="zui-dropzone-hint">{hint}</span>}

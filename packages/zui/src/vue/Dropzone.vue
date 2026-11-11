@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" data-zui-dropzone="" :data-max-size="maxSize">
     <label class="zui-dropzone-box">
-      <input class="zui-dropzone-input" type="file" v-bind="$attrs" />
+      <input v-bind="$attrs" class="zui-dropzone-input" type="file" />
       <PhUploadSimple class="zui-dropzone-icon" aria-hidden="true" />
       <span class="zui-dropzone-title">{{ label }}</span>
       <span v-if="hint" class="zui-dropzone-hint">{{ hint }}</span>

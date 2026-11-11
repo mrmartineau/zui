@@ -37,7 +37,7 @@ onMount(initDropzones)
 
 <div class={classes} data-zui-dropzone="" data-max-size={maxSize}>
   <label class="zui-dropzone-box">
-    <input class="zui-dropzone-input" type="file" bind:files {...rest} />
+    <input {...rest} class="zui-dropzone-input" type="file" bind:files />
     <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
     <span class="zui-dropzone-title">{label}</span>
     {#if hint}

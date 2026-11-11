@@ -94,8 +94,9 @@ const hasFiles = (event: DragEvent) =>
   Array.from(event.dataTransfer?.types ?? []).includes('Files')
 
 function clearDragging() {
+  // Only dropzones: another component may use data-dragging for itself
   for (const zone of document.querySelectorAll<HTMLElement>(
-    '[data-dragging]',
+    '[data-zui-dropzone][data-dragging]',
   )) {
     delete zone.dataset.dragging
   }
@@ -107,28 +108,40 @@ function onChange(event: Event) {
   const zone = zoneOf(input)
   if (!zone) return
 
-  const maxSize = Number(zone.dataset.maxSize) || undefined
+  // data-max-size="0" is a real limit: it refuses every non-empty file
+  const rawMaxSize = zone.dataset.maxSize
+  const parsedMaxSize =
+    rawMaxSize == null || rawMaxSize.trim() === ''
+      ? Number.NaN
+      : Number(rawMaxSize)
+  const maxSize = Number.isFinite(parsedMaxSize) ? parsedMaxSize : undefined
   const { accepted, rejected } = checkFiles(Array.from(input.files ?? []), {
     accept: input.accept,
     maxSize,
   })
 
+  let kept = accepted
+  let cleared = false
   if (rejected.length) {
     // Keep only the good files, so the app's own change handler sees them.
     // This runs in the capture phase, before that handler.
     try {
-      const kept = new DataTransfer()
-      for (const file of accepted) kept.items.add(file)
-      input.files = kept.files
+      const list = new DataTransfer()
+      for (const file of accepted) list.items.add(file)
+      input.files = list.files
     } catch {
-      // No DataTransfer constructor: the status below still says what was refused.
+      // The list cannot be rebuilt here. Clear it, so the app never gets
+      // files that failed the check, and ask for the good ones again.
+      input.value = ''
+      kept = []
+      cleared = accepted.length > 0
     }
   }
 
   const parts = [
-    accepted.length ? describeAccepted(accepted) : '',
+    kept.length ? describeAccepted(kept) : '',
     rejected.length
-      ? `Not added: ${rejected.map((r) => describeRejection(r, maxSize)).join('. ')}.`
+      ? `Not added: ${rejected.map((r) => describeRejection(r, maxSize)).join('. ')}.${cleared ? ' Choose the files again.' : ''}`
       : '',
   ].filter(Boolean)
   const status = zone.querySelector('.zui-dropzone-status')
@@ -157,7 +170,10 @@ export function initDropzones(): void {
 
   const over = (event: DragEvent) => {
     const zone = zoneOf(event.target)
-    if (zone && hasFiles(event)) zone.dataset.dragging = ''
+    // A disabled input takes no drop, so do not invite one
+    const disabled =
+      zone?.querySelector<HTMLInputElement>('input[type="file"]')?.disabled
+    if (zone && !disabled && hasFiles(event)) zone.dataset.dragging = ''
   }
   document.addEventListener('dragenter', over as EventListener)
   document.addEventListener('dragover', over as EventListener)
@@ -167,7 +183,8 @@ export function initDropzones(): void {
       delete zone.dataset.dragging
     }
   }) as EventListener)
-  document.addEventListener('drop', clearDragging)
+  // Capture phase: an app's own drop handler may stop the event from bubbling
+  document.addEventListener('drop', clearDragging, true)
   document.addEventListener('dragend', clearDragging)
   document.addEventListener('change', onChange, true)
 }

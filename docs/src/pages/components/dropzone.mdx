@@ -163,14 +163,14 @@ import { Dropzone } from '@mrmartineau/zui/vue'
 
 ## In a form
 
-Give the input a `name` and put the dropzone in a `Field` with a label, like any other control. The label names the input, and `FieldDescription` can hold longer help.
+Give the input a `name` and an `id`, and put the dropzone in a `Field` with a label that points at that `id`, like any other control. The input then has two labels: yours ("Attachments") and the dropzone's own text, so a screen reader says both.
 
 <Demo
   html={`<form class="zui-field" method="post" enctype="multipart/form-data">
-  <p class="zui-label" id="attachments-label">Attachments</p>
+  <label class="zui-label" for="attachments">Attachments</label>
   <div class="zui-dropzone" data-zui-dropzone>
     <label class="zui-dropzone-box">
-      <input class="zui-dropzone-input" type="file" name="attachments" multiple aria-describedby="attachments-label" />
+      <input class="zui-dropzone-input" type="file" id="attachments" name="attachments" multiple />
       <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
       <span class="zui-dropzone-title">Drop files here, or click to browse</span>
     </label>
@@ -181,8 +181,8 @@ Give the input a `name` and put the dropzone in a `Field` with a label, like any
 
 <form method="post" encType="multipart/form-data">
   <Field>
-    <Label>Attachments</Label>
-    <Dropzone name="attachments" multiple />
+    <Label htmlFor="attachments">Attachments</Label>
+    <Dropzone id="attachments" name="attachments" multiple />
   </Field>
 </form>`}
   astro={`---
@@ -191,23 +191,23 @@ import { Dropzone, Field, Label } from '@mrmartineau/zui/astro'
 
 <form method="post" enctype="multipart/form-data">
   <Field>
-    <Label>Attachments</Label>
-    <Dropzone name="attachments" multiple />
+    <Label for="attachments">Attachments</Label>
+    <Dropzone id="attachments" name="attachments" multiple />
   </Field>
 </form>`}
   solid={`import { Dropzone, Field, Label } from '@mrmartineau/zui/solid'
 
 <form method="post" enctype="multipart/form-data">
   <Field>
-    <Label>Attachments</Label>
-    <Dropzone name="attachments" multiple />
+    <Label for="attachments">Attachments</Label>
+    <Dropzone id="attachments" name="attachments" multiple />
   </Field>
 </form>`}
   vue={`<template>
   <form method="post" enctype="multipart/form-data">
     <Field>
-      <Label>Attachments</Label>
-      <Dropzone name="attachments" multiple />
+      <Label for="attachments">Attachments</Label>
+      <Dropzone id="attachments" name="attachments" multiple />
     </Field>
   </form>
 </template>
@@ -221,16 +221,16 @@ import { Dropzone, Field, Label } from '@mrmartineau/zui/vue'
 
 <form method="post" enctype="multipart/form-data">
   <Field>
-    <Label>Attachments</Label>
-    <Dropzone name="attachments" multiple />
+    <Label for="attachments">Attachments</Label>
+    <Dropzone id="attachments" name="attachments" multiple />
   </Field>
 </form>`}
 >
   <form class="zui-field" method="post" enctype="multipart/form-data" style="width: 100%;">
-    <p class="zui-label" id="attachments-label">Attachments</p>
+    <label class="zui-label" for="attachments">Attachments</label>
     <div class="zui-dropzone" data-zui-dropzone>
       <label class="zui-dropzone-box">
-        <input class="zui-dropzone-input" type="file" name="attachments" multiple aria-describedby="attachments-label" />
+        <input class="zui-dropzone-input" type="file" id="attachments" name="attachments" multiple />
         <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
         <span class="zui-dropzone-title">Drop files here, or click to browse</span>
       </label>
@@ -364,7 +364,7 @@ for (const { file, reason } of rejected) {
 | `accept` | `string` | — | Allowed types: `.pdf`, `image/*`, `image/png`. Checked on drop too |
 | `multiple` | `boolean` | `false` | Allow more than one file |
 | `shape` | `default \| hard \| squircle` | `default` | Corner shape |
-| `class` | `string` | — | Class for the wrapper. Other props go to the `<input>` |
+| `class` (`className` in React) | `string` | — | Class for the wrapper. Other props go to the `<input>` |
 
 ## CSS custom properties
 
