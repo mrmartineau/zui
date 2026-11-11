@@ -33,4 +33,6 @@ const mergedStyle =
     : { ...skeletonVars(sizeProps), ...style }
 ---
 
-<div {...props} class={classes} style={mergedStyle} aria-hidden="true"></div>
+<!-- Astro writes repeated attributes in order, and a browser keeps the first.
+     So aria-hidden goes before the spread, or a caller could un-hide it. -->
+<div class={classes} style={mergedStyle} aria-hidden="true" {...props}></div>
