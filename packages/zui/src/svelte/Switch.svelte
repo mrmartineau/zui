@@ -19,6 +19,6 @@ const classes = $derived(['zui-switch', className].filter(Boolean).join(' '))
 </script>
 
 <label class={classes}>
-  <input {...rest} type="checkbox" role="switch" bind:checked />
+  <input bind:checked {...rest} type="checkbox" role="switch" />
   {@render children?.()}
 </label>
