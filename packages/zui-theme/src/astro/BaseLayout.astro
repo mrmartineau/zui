@@ -88,6 +88,7 @@ const metaDescription = description ?? site.description ?? ''
         ) : null}
       </div>
       <div class="site-header-end">
+        <slot name="search" />
         <div class="site-header-social">
           {social.map((link) => (
             <a
