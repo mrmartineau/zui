@@ -96,7 +96,7 @@ See [zui.zander.wtf](https://zui.zander.wtf) for the full token reference, compo
 
 ## Integrations
 
-ZUI pairs with headless or themeable libraries: they own the behaviour, and ZUI's tokens and components set the look. The [Integrations](https://zui.zander.wtf/integrations) docs have a recipe for each: TanStack Form, TanStack Table, Sonner, cmdk and Ramka.
+ZUI pairs with headless or themeable libraries: they own the behaviour, and ZUI's tokens and components set the look. The [Integrations](https://zui.zander.wtf/integrations) docs have a recipe for each: TanStack Form, TanStack Table, Sonner, cmdk, Blossom Carousel and Ramka.
 
 Some integrations ship an optional stylesheet. Import it after ZUI's CSS:
 

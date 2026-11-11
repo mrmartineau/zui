@@ -899,7 +899,7 @@ Squircles use `corner-shape`, so only some browsers show them. Other browsers ke
 
 ## Integrations
 
-ZUI has no toast, command menu, data table or lightbox. For those, use a headless or themeable library and style it with ZUI tokens and components. Recipes for each: https://zui.zander.wtf/integrations (TanStack Form, TanStack Table, Sonner, cmdk, Ramka).
+ZUI has no toast, command menu, data table, carousel or lightbox. For those, use a headless or themeable library and style it with ZUI tokens and components. Recipes for each: https://zui.zander.wtf/integrations (TanStack Form, TanStack Table, Sonner, cmdk, Blossom Carousel, Ramka).
 
 ### Ramka (photo lightbox, React only)
 
