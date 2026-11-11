@@ -13,3 +13,4 @@ demo/.wrangler
 # copies that directory (including any .gitignore) into the raycast/extensions
 # fork and runs plain `git add`, which would silently drop the snapshot there.
 packages/raycast-zui/src/data/reference.json
+packages/vscode-zui/src/manifest.json
