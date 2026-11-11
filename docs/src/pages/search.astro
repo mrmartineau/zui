@@ -1,0 +1,121 @@
+---
+export const prerender = false
+
+import { env } from 'cloudflare:workers'
+import { Button, Input } from '@mrmartineau/zui/astro'
+import { resolveConfig, searchIndex } from 'astro-d1-search/core'
+import searchConfig from '../../search.config'
+import Layout from '../layouts/Layout.astro'
+import { rankResults, splitSnippet, toPath, typeLabels } from '../lib/search'
+import '../styles/search.css'
+
+const PAGE_SIZE = 10
+// Same ceilings as the /api/search endpoint (maxQueryLength, maxOffset).
+const MAX_QUERY_LENGTH = 100
+const MAX_PAGE = 20
+
+const params = Astro.url.searchParams
+const query = params.get('q')?.trim().slice(0, MAX_QUERY_LENGTH) ?? ''
+const page = Math.min(
+  MAX_PAGE,
+  Math.max(1, Math.trunc(Number(params.get('page'))) || 1),
+)
+
+// Fetch one extra row to learn whether a next page exists: FTS5 has no cheap total.
+// Pass the resolved config or the page silently uses the default ranking.
+const rows =
+  query.length >= 2
+    ? await searchIndex(
+        env.SEARCH_DB,
+        { limit: PAGE_SIZE + 1, offset: (page - 1) * PAGE_SIZE, query },
+        resolveConfig(searchConfig),
+      )
+    : []
+const results = rankResults(rows.slice(0, PAGE_SIZE), query)
+const hasNext = rows.length > PAGE_SIZE
+
+const pageHref = (n: number) =>
+  `/search?q=${encodeURIComponent(query)}${n > 1 ? `&page=${n}` : ''}`
+---
+
+<Layout title="Search" description="Search components, tokens, utilities and guides.">
+  <form action="/search" method="get" role="search" class="flex gap-xs search-form">
+    <Input
+      type="search"
+      name="q"
+      value={query}
+      placeholder="Search the docs…"
+      aria-label="Search the docs"
+      class="flex-auto"
+      autofocus={!query}
+    />
+    <Button type="submit"><i class="ph ph-magnifying-glass"></i> Search</Button>
+  </form>
+
+  {
+    query.length < 2 ? (
+      <p>Type at least 2 characters to search.</p>
+    ) : results.length === 0 ? (
+      <p>No results for “{query}”.</p>
+    ) : (
+      <>
+        <ol class="stack search-hits">
+          {results.map((result) => (
+            <li class="search-hit">
+              <a class="zui-link" href={toPath(result.url)}>
+                {result.title}
+              </a>
+              <span class="zui-badge zui-badge-variant-outline">
+                {typeLabels[result.type] ?? result.type}
+              </span>
+              <p>
+                {splitSnippet(result.snippet).map((part) =>
+                  part.hit ? <mark>{part.text}</mark> : part.text,
+                )}
+              </p>
+            </li>
+          ))}
+        </ol>
+        <nav class="flex gap-xs" aria-label="Search pages">
+          {page > 1 && (
+            <Button variant="outline" href={pageHref(page - 1)}>
+              <i class="ph ph-arrow-left"></i> Previous
+            </Button>
+          )}
+          {hasNext && page < MAX_PAGE && (
+            <Button variant="outline" href={pageHref(page + 1)}>
+              Next <i class="ph ph-arrow-right"></i>
+            </Button>
+          )}
+        </nav>
+      </>
+    )
+  }
+</Layout>
+
+<style>
+  .search-form {
+    margin-block-end: var(--space-md);
+  }
+
+  .search-hits {
+    margin: 0 0 var(--space-md);
+    padding: 0;
+    list-style: none;
+  }
+
+  .search-hit {
+    padding-block: var(--space-xs);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .search-hit > a {
+    margin-inline-end: var(--space-2xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .search-hit > p {
+    margin: var(--space-3xs) 0 0;
+    color: oklch(from var(--color-text) l c h / 70%);
+  }
+</style>

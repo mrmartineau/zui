@@ -217,6 +217,17 @@ The header's mini theme switcher is a swatches button that opens a ZUI popover o
 </DocsLayout>
 ```
 
+### Adding a search button
+
+Both layouts also forward a `search` slot. It sits at the start of the header's right-hand side, before the social links. The theme ships no search of its own, so put your own button there — this docs site uses a [cmdk](/integrations/cmdk) overlay:
+
+```astro
+<DocsLayout {...props}>
+  <MySearch slot="search" client:load />
+  <slot />
+</DocsLayout>
+```
+
 ## Notes
 
 - The theme intentionally doesn't ship a `SectionCards` component — it depends on a glob of your own pages. The scaffold template includes a ready-made local copy you can drop in.
