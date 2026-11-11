@@ -1,7 +1,7 @@
 <template>
   <label :class="classes">
     <input
-      v-bind="inputAttrs"
+      v-bind="inputAttrs()"
       @change="emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
     />
     <slot />
@@ -25,14 +25,18 @@ const emit = defineEmits<{
 
 const attrs = useAttrs()
 
+// A function, not a computed: fallthrough attrs are not reactive, so a cached
+// copy would go stale when the parent changes `disabled`, `name` or a listener.
 // type and role come last, so a caller cannot turn the switch into something else.
 // `checked` is set only with v-model, so a plain `checked` attribute still works.
-const inputAttrs = computed(() => ({
-  ...attrs,
-  ...(props.modelValue === undefined ? {} : { checked: props.modelValue }),
-  role: 'switch',
-  type: 'checkbox',
-}))
+function inputAttrs() {
+  return {
+    ...attrs,
+    ...(props.modelValue === undefined ? {} : { checked: props.modelValue }),
+    role: 'switch',
+    type: 'checkbox',
+  }
+}
 
 const classes = computed(() =>
   ['zui-switch', props.class].filter(Boolean).join(' '),

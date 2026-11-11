@@ -14,7 +14,7 @@ export function Switch(props: SwitchProps) {
   return (
     <label class={classes()}>
       {/* biome-ignore lint/a11y/useAriaPropsForRole: a native checkbox exposes checked state, so aria-checked is implicit */}
-      <input type="checkbox" role="switch" {...rest} />
+      <input {...rest} type="checkbox" role="switch" />
       {local.children}
     </label>
   )

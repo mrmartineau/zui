@@ -16,7 +16,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
   return (
     <label className={classes}>
       {/* biome-ignore lint/a11y/useAriaPropsForRole: a native checkbox exposes checked state, so aria-checked is implicit */}
-      <input ref={ref} type="checkbox" role="switch" {...props} />
+      <input {...props} ref={ref} type="checkbox" role="switch" />
       {children}
     </label>
   )
