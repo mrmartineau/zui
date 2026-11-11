@@ -44,5 +44,5 @@ export function Skeleton(props: SkeletonProps) {
       ? [skeletonStyleString(sizeProps), local.style].filter(Boolean).join('; ')
       : { ...skeletonVars(sizeProps), ...local.style }
   }
-  return <div class={classes()} style={style()} aria-hidden="true" {...rest} />
+  return <div {...rest} class={classes()} style={style()} aria-hidden="true" />
 }

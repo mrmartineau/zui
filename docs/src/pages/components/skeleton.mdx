@@ -205,6 +205,8 @@ import { Skeleton } from '@mrmartineau/zui/vue'
 
 Use `width`, `height` or `size` (both at once). A number is pixels. A string is any CSS length. In plain HTML, set `--zui-skeleton-width`, `--zui-skeleton-height` or `--zui-skeleton-size`.
 
+For a circle, set `size`, or only a `width`. The height then follows the width, so the circle stays round.
+
 <Demo
   html={`<div style="display: grid; gap: var(--space-xs); width: 100%;">
   <div class="zui-skeleton" style="--zui-skeleton-width: 12rem; --zui-skeleton-height: 1.5rem;" aria-hidden="true"></div>
@@ -398,7 +400,7 @@ import { Skeleton } from '@mrmartineau/zui/vue'
 
 ## Accessibility
 
-A skeleton is decoration. The wrappers add `aria-hidden="true"`, so screen readers skip it. In plain HTML, add it yourself.
+A skeleton is decoration. The wrappers always set `aria-hidden="true"`, so screen readers skip it. In plain HTML, add it yourself.
 
 Tell assistive tech about the loading state on the region that holds the skeletons:
 

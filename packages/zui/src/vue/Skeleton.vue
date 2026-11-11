@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="vars" aria-hidden="true" v-bind="$attrs"></div>
+  <div v-bind="$attrs" :class="classes" :style="vars" aria-hidden="true"></div>
 </template>
 
 <script setup lang="ts">

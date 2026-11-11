@@ -27,10 +27,10 @@ export function Skeleton({
   const vars = skeletonVars({ aspectRatio, height, size, width })
   return (
     <div
+      {...props}
       className={classes}
       style={{ ...vars, ...style } as CSSProperties}
       aria-hidden="true"
-      {...props}
     />
   )
 }

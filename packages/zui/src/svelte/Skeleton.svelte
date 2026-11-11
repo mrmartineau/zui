@@ -37,4 +37,4 @@ const mergedStyle = $derived(
 )
 </script>
 
-<div class={classes} style={mergedStyle} aria-hidden="true" {...rest}></div>
+<div {...rest} class={classes} style={mergedStyle} aria-hidden="true"></div>

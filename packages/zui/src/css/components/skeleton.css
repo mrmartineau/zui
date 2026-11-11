@@ -19,14 +19,21 @@
     box-sizing: border-box;
     max-width: 100%;
     /* Fill the parent: its set height, or the row height in flex and grid.
-       Without either, the skeleton is one line tall (min-height below). */
+       Without either, the height is auto and the ::before line below makes it
+       one line tall. A set height wins, so a short parent is never overrun. */
     width: var(--zui-skeleton-width, var(--zui-skeleton-size, 100%));
     height: var(--zui-skeleton-height, var(--zui-skeleton-size, 100%));
-    min-height: var(--zui-skeleton-height, var(--zui-skeleton-size, 1em));
+    overflow: hidden;
     aspect-ratio: var(--zui-skeleton-aspect-ratio, auto);
     border-radius: var(--_skeleton-radius);
     background-color: var(--_skeleton-bg);
     animation: zui-skeleton-pulse 1.8s ease-in-out infinite;
+  }
+
+  /* One empty line of text: the height when nothing else sets one */
+  .zui-skeleton::before {
+    content: "\00a0";
+    visibility: hidden;
   }
 
   /* `stretch` also fills a flex or grid row; 100% above does not. */
@@ -60,8 +67,12 @@
 
   .zui-skeleton-shape-circle {
     --zui-skeleton-radius: var(--radius-full);
-    /* Square when only one side is known */
+    /* Height follows the width, so a circle stays round with a width alone
+       and in a row that is not square. Set `size` or `height` to override. */
+    height: var(--zui-skeleton-height, var(--zui-skeleton-size, auto));
     aspect-ratio: var(--zui-skeleton-aspect-ratio, 1);
+    /* Do not stretch to the row height in flex or grid: that would make an oval */
+    align-self: start;
   }
 
   .zui-skeleton.zui-skeleton-shape-squircle {
