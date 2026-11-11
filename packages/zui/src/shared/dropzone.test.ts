@@ -172,17 +172,31 @@ describe('initDropzones', () => {
   it('clears the input when the list cannot be rebuilt', () => {
     vi.stubGlobal('DataTransfer', BrokenDataTransfer)
     const { input, status } = setup()
-    const setValue = vi.fn()
+    // Like a real file input: setting value to '' empties the file list
+    const setValue = vi.fn(() => {
+      Object.defineProperty(input, 'files', {
+        configurable: true,
+        value: [],
+        writable: true,
+      })
+    })
     Object.defineProperty(input, 'value', {
       configurable: true,
       get: () => '',
       set: setValue,
+    })
+    let seen: File[] | null = null
+    input.addEventListener('change', () => {
+      seen = Array.from(input.files ?? [])
     })
     choose(input, [
       file('a.png', 'image/png', 20),
       file('b.exe', 'application/x-msdownload'),
     ])
     expect(setValue).toHaveBeenCalledWith('')
+    // The app's handler sees an empty list, never the refused file
+    expect(Array.from(input.files ?? [])).toEqual([])
+    expect(seen).toEqual([])
     expect(status.textContent).toBe(
       'Not added: b.exe is not an accepted file type. Choose the files again.',
     )
