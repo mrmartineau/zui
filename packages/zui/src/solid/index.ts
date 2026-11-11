@@ -49,6 +49,7 @@ export {
   AccordionTrigger,
   type AccordionTriggerProps,
 } from './AccordionTrigger'
+export { AlertDialog, type AlertDialogProps } from './AlertDialog'
 export {
   AppShell,
   AppShellHeader,

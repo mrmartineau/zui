@@ -1,0 +1,21 @@
+@layer zui.components {
+  /*
+   * Alert dialog: a modal that asks the user to confirm or cancel.
+   * It is a `zui-dialog` with role="alertdialog". Add this class to it.
+   */
+  .zui-dialog.zui-alert-dialog {
+    --_dialog-max-width: var(--zui-alert-dialog-max-width, 26rem);
+  }
+
+  .zui-alert-dialog .zui-dialog-footer {
+    flex-wrap: wrap;
+  }
+
+  /* Narrow screens: full-width buttons, the main action on top */
+  @media (max-width: 30rem) {
+    .zui-alert-dialog .zui-dialog-footer {
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+  }
+}
