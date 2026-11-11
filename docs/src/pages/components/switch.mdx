@@ -184,32 +184,32 @@ Size scales with `--zui-switch-size`. Set it on the element or a wrapper.
 </label>
 <label class="zui-switch" style="--zui-switch-size: 2em; --zui-switch-accent: var(--color-success)">
   <input type="checkbox" role="switch" checked />
-  Large and green
+  Large, success colour
 </label>`}
   react={`import { Switch } from '@mrmartineau/zui/react'
 
 <Switch defaultChecked style={{ '--zui-switch-size': '1.1em' }}>Small</Switch>
-<Switch defaultChecked style={{ '--zui-switch-size': '2em', '--zui-switch-accent': 'green' }}>
-  Large and green
+<Switch defaultChecked style={{ '--zui-switch-size': '2em', '--zui-switch-accent': 'var(--color-success)' }}>
+  Large, success colour
 </Switch>`}
   astro={`---
 import { Switch } from '@mrmartineau/zui/astro'
 ---
 
 <Switch checked style="--zui-switch-size: 1.1em">Small</Switch>
-<Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: green">
-  Large and green
+<Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: var(--color-success)">
+  Large, success colour
 </Switch>`}
   solid={`import { Switch } from '@mrmartineau/zui/solid'
 
 <Switch checked style={{ '--zui-switch-size': '1.1em' }}>Small</Switch>
-<Switch checked style={{ '--zui-switch-size': '2em', '--zui-switch-accent': 'green' }}>
-  Large and green
+<Switch checked style={{ '--zui-switch-size': '2em', '--zui-switch-accent': 'var(--color-success)' }}>
+  Large, success colour
 </Switch>`}
   vue={`<template>
   <Switch checked style="--zui-switch-size: 1.1em">Small</Switch>
-  <Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: green">
-    Large and green
+  <Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: var(--color-success)">
+    Large, success colour
   </Switch>
 </template>
 
@@ -221,8 +221,8 @@ import { Switch } from '@mrmartineau/zui/vue'
 </script>
 
 <Switch checked style="--zui-switch-size: 1.1em">Small</Switch>
-<Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: green">
-  Large and green
+<Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: var(--color-success)">
+  Large, success colour
 </Switch>`}
 >
   <div class="flex flex-wrap gap-sm">
@@ -230,9 +230,9 @@ import { Switch } from '@mrmartineau/zui/vue'
       <input type="checkbox" role="switch" checked />
       Small
     </label>
-    <label class="zui-switch" style="--zui-switch-size: 2em; --zui-switch-accent: green">
+    <label class="zui-switch" style="--zui-switch-size: 2em; --zui-switch-accent: var(--color-success)">
       <input type="checkbox" role="switch" checked />
-      Large and green
+      Large, success colour
     </label>
   </div>
 </Demo>

@@ -1,10 +1,7 @@
 <template>
   <label :class="classes">
     <input
-      type="checkbox"
-      role="switch"
-      :checked="modelValue"
-      v-bind="$attrs"
+      v-bind="inputAttrs"
       @change="emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
     />
     <slot />
@@ -12,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -25,6 +22,17 @@ const props = defineProps<{
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
 }>()
+
+const attrs = useAttrs()
+
+// type and role come last, so a caller cannot turn the switch into something else.
+// `checked` is set only with v-model, so a plain `checked` attribute still works.
+const inputAttrs = computed(() => ({
+  ...attrs,
+  ...(props.modelValue === undefined ? {} : { checked: props.modelValue }),
+  role: 'switch',
+  type: 'checkbox',
+}))
 
 const classes = computed(() =>
   ['zui-switch', props.class].filter(Boolean).join(' '),

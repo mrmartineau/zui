@@ -42,20 +42,17 @@
     border-radius: inherit;
     background-color: var(--_switch-thumb);
     box-shadow: var(--shadow-sm);
-    transition: translate 200ms ease-in-out;
+    transition: inset-inline-start 200ms ease-in-out;
   }
 
   .zui-switch input[type="checkbox"]:checked {
     background-color: var(--_switch-accent);
   }
 
-  /* Track width minus thumb width minus both insets */
+  /* Start edge when on: track width minus thumb width minus one inset.
+     Logical, so it flips for rtl however the direction is set. */
   .zui-switch input[type="checkbox"]:checked::before {
-    translate: calc(var(--_switch-size) * 0.8) 0;
-  }
-
-  [dir="rtl"] .zui-switch input[type="checkbox"]:checked::before {
-    translate: calc(var(--_switch-size) * -0.8) 0;
+    inset-inline-start: calc(var(--_switch-size) * 0.8 + var(--_switch-inset));
   }
 
   .zui-switch input[type="checkbox"]:focus-visible {
@@ -63,14 +60,15 @@
     outline-offset: var(--focus-ring-offset);
   }
 
-  .zui-switch input[type="checkbox"]:disabled {
-    cursor: not-allowed;
-    filter: grayscale(100%) opacity(50%);
-  }
-
-  .zui-switch input[type="checkbox"]:disabled ~ * {
+  /* The label text is a text node, so style the label, not a sibling */
+  .zui-switch:has(input[type="checkbox"]:disabled) {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  .zui-switch input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
   }
 
   @media (prefers-reduced-motion: reduce) {
