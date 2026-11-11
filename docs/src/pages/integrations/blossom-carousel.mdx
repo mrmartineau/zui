@@ -1,0 +1,322 @@
+---
+order: 5
+layout: ../../layouts/Layout.astro
+title: Blossom Carousel
+description: Build native-scroll carousels with Blossom Carousel and style the slides, buttons and dots with ZUI.
+---
+
+import DemoPreview from '../../components/DemoPreview.astro'
+import BlossomBasicDemo from '../../components/demos/BlossomBasicDemo.tsx'
+import BlossomCardsDemo from '../../components/demos/BlossomCardsDemo.tsx'
+
+[Blossom Carousel](https://www.blossom-carousel.com) is a native-scroll-first
+carousel. The browser does the scrolling and snapping. Blossom adds mouse
+dragging, rubber-band overscroll and accessible prev/next and dot controls.
+Layout is plain CSS grid and `scroll-snap`, so ZUI's tokens and components drop
+straight in.
+
+> **Many frameworks.** Blossom ships packages for React, Vue, Svelte, Web
+> Components and a vanilla core. The demos below use React. The
+> [Web Components](#web-components) section shows the same setup without a
+> framework.
+
+## Install
+
+```sh
+npm install @blossom-carousel/react
+```
+
+Import Blossom's stylesheet once, next to ZUI's:
+
+```tsx
+import '@mrmartineau/zui/css'
+import '@blossom-carousel/react/style.css'
+```
+
+Blossom's CSS lives in its own `blossom-carousel` cascade layer. Your own
+carousel styles (unlayered, or in a later layer) win over it.
+
+ZUI's base styles give every element a thin scrollbar, which can beat
+Blossom's hidden one. Hide it again on the carousel:
+
+```css
+[blossom-carousel] {
+  scrollbar-width: none;
+}
+```
+
+## Buttons and dots
+
+Drag with a mouse, scroll with a trackpad, or use the controls:
+
+<DemoPreview>
+  <BlossomBasicDemo client:only="react" />
+</DemoPreview>
+
+The controls find their carousel by **id**: give `BlossomCarousel` an `id` and
+pass the same value to each control's `for` prop. No refs or state needed.
+Mark each slide with `data-blossom-slide` so the dots know how many to render.
+
+`BlossomPrev` and `BlossomNext` render a plain `<button>` and pass `className`
+through, so ZUI's `buttonVariants` styles them. Children replace the default
+label, so use a Phosphor icon. The buttons keep their "Previous slide" / "Next
+slide" `aria-label` and disable themselves at each end.
+
+```tsx
+import {
+  BlossomCarousel,
+  BlossomDots,
+  BlossomNext,
+  BlossomPrev,
+} from '@blossom-carousel/react'
+import '@blossom-carousel/react/style.css'
+import { buttonVariants } from '@mrmartineau/zui/react'
+
+const navButton = buttonVariants({ icon: true, variant: 'outline' })
+
+export function Gallery() {
+  return (
+    <>
+      <BlossomCarousel id="gallery" className="blossom-basic">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+          <div key={n} className="zui-card" data-blossom-slide>
+            <h3 className="zui-card-title">Slide {n}</h3>
+            <p className="zui-card-description">Drag, scroll or use the controls.</p>
+          </div>
+        ))}
+      </BlossomCarousel>
+
+      <div className="blossom-controls">
+        <BlossomPrev for="gallery" className={navButton}>
+          <i className="ph ph-caret-left" aria-hidden="true" />
+        </BlossomPrev>
+        <BlossomDots for="gallery" />
+        <BlossomNext for="gallery" className={navButton}>
+          <i className="ph ph-caret-right" aria-hidden="true" />
+        </BlossomNext>
+      </div>
+    </>
+  )
+}
+```
+
+The carousel is a grid that flows into columns. The dots read
+`--blossom-dot-*` custom properties, so point them at ZUI's colour tokens:
+
+```css
+.blossom-basic {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 12rem;
+  gap: var(--space-sm);
+  scroll-snap-type: inline mandatory;
+}
+
+.blossom-basic > * {
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: start;
+}
+
+.blossom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+
+  --blossom-dot-color: var(--color-theme);
+  --blossom-dots-gap: var(--space-2xs);
+}
+```
+
+Other dot properties: `--blossom-dot-size`, `--blossom-dot-radius`,
+`--blossom-dot-opacity`, `--blossom-dot-hover-opacity` and
+`--blossom-dot-active-opacity`. The active dot has `aria-current="true"`.
+
+### Custom dots
+
+For full control, pass a function to `BlossomDots` and render a `BlossomDot`
+for each slide:
+
+```tsx
+import { BlossomDot, BlossomDots } from '@blossom-carousel/react'
+import { buttonVariants } from '@mrmartineau/zui/react'
+
+<BlossomDots for="gallery">
+  {({ index, active }) => (
+    <BlossomDot className={buttonVariants({ size: 'xs', variant: active ? 'fill' : 'ghost' })}>
+      {index + 1}
+    </BlossomDot>
+  )}
+</BlossomDots>
+```
+
+### Read the state
+
+`useBlossomNavigation` gives you the same state the controls use. `activeIndex`
+is `-1` until the carousel has been measured.
+
+```tsx
+import { useBlossomNavigation } from '@blossom-carousel/react'
+
+const { activeIndex, count, canPrev, canNext } = useBlossomNavigation('gallery')
+```
+
+To move the carousel from code, put a `ref` on `BlossomCarousel` and call
+`prev()`, `next()` or `goTo(index)`.
+
+## Cards
+
+A stack of cards that fan out as you scroll. The effect is pure CSS: each slide
+is `position: sticky` and drives a
+[scroll-driven animation](https://developer.mozilla.org/docs/Web/CSS/CSS_scroll-driven_animations)
+from its own `view-timeline`. Blossom adds drag and an `onOverscroll` handler
+that tilts the stack at each end.
+
+<DemoPreview>
+  <BlossomCardsDemo client:only="react" />
+</DemoPreview>
+
+```tsx
+import {
+  BlossomCarousel,
+  type BlossomOverscrollEvent,
+} from '@blossom-carousel/react'
+
+// Tilt the stack when the user drags past either end.
+function handleOverscroll(event: BlossomOverscrollEvent) {
+  const carousel = event.currentTarget as HTMLElement
+  const overscroll = event.detail.left * 0.2
+  const width = carousel.clientWidth
+  for (const slide of carousel.children as HTMLCollectionOf<HTMLElement>) {
+    slide.style.transform = `translateX(${overscroll}px) rotate(${(overscroll / width) * 70}deg) scale(${1 - Math.abs(overscroll) / width})`
+  }
+}
+
+export function Cards() {
+  return (
+    <BlossomCarousel className="blossom-cards" onOverscroll={handleOverscroll}>
+      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+        <div key={n}>
+          <div className="zui-card">{n}</div>
+        </div>
+      ))}
+    </BlossomCarousel>
+  )
+}
+```
+
+Each card is a ZUI [Card](/components/card), re-coloured through its
+`--zui-card-*` custom properties:
+
+```css
+.blossom-cards {
+  --card-width: min(12rem, 28vw);
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  inline-size: calc(var(--card-width) * 3);
+  max-inline-size: none;
+  margin-inline: auto;
+  padding-inline: var(--card-width);
+  scroll-snap-type: x mandatory;
+}
+
+.blossom-cards > * {
+  position: sticky;
+  /* Must exceed the carousel's padding-inline, or Safari miscomputes the contain range. */
+  left: calc(var(--card-width) * -1 - 1px);
+  right: calc(var(--card-width) * -1 - 1px);
+  inline-size: var(--card-width);
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  transform-origin: center 70%;
+  will-change: transform;
+
+  view-timeline: --cards inline;
+  animation: blossom-stack-cards linear both;
+  animation-timeline: --cards;
+  animation-range: contain;
+}
+
+.blossom-cards .zui-card {
+  --zui-card-bg: var(--color-theme);
+  --zui-card-border: transparent;
+  --zui-card-radius: var(--radius-lg);
+  --zui-card-shadow: var(--shadow-md);
+
+  display: grid;
+  place-items: center;
+  block-size: 100%;
+  color: var(--color-background);
+  font-size: var(--step-3);
+
+  animation: blossom-rotate-cards linear both;
+  animation-timeline: --cards;
+  animation-range: contain -50% contain 150%;
+}
+
+.blossom-cards > :nth-child(even) .zui-card {
+  --zui-card-bg: var(--color-accent);
+}
+
+@keyframes blossom-stack-cards {
+  0% { z-index: calc(100 - sibling-index()); }
+  40% { z-index: 1000; }
+  100% { z-index: sibling-index(); }
+}
+
+@keyframes blossom-rotate-cards {
+  0% { transform: translateX(-80%) rotate(10deg) scale(0.8); }
+  25% { transform: translateX(-90%) rotate(5deg) scale(0.9); }
+  50% { transform: translateX(0) rotate(0) scale(1); }
+  60% { transform: translateX(-20%) rotate(-15deg) scale(0.6); }
+  75% { transform: translateX(90%) rotate(-5deg) scale(0.9); }
+  100% { transform: translateX(80%) rotate(-10deg) scale(0.8); }
+}
+```
+
+> **Browser support.** This effect needs scroll-driven animations and
+> `sibling-index()`. In browsers without them, the cards fall back to a plain
+> scroll-snap row.
+
+## Web Components
+
+No framework? Use `@blossom-carousel/web`. The controls work the same way, by
+`id` and `for`:
+
+```sh
+npm install @blossom-carousel/web
+```
+
+```js
+import '@blossom-carousel/web'
+import '@blossom-carousel/web/style.css'
+```
+
+```html
+<blossom-carousel id="gallery" class="blossom-basic">
+  <div class="zui-card" data-blossom-slide>…</div>
+  <div class="zui-card" data-blossom-slide>…</div>
+</blossom-carousel>
+
+<div class="blossom-controls">
+  <blossom-prev for="gallery"></blossom-prev>
+  <blossom-dots for="gallery"></blossom-dots>
+  <blossom-next for="gallery"></blossom-next>
+</div>
+```
+
+The same CSS works. For Vue, Svelte or Next.js, see the
+[Blossom installation guide](https://www.blossom-carousel.com/docs/getting-started/installation).
+
+## Notes
+
+- **Drag loads only where it helps.** By default (`load="conditional"`) the
+  drag engine loads only on devices with a fine pointer. Touch devices use
+  native scrolling. Set `load="always"` to change this.
+- **Overscroll needs the drag engine.** `onOverscroll` fires only while
+  dragging with a mouse.
+- **Use one id per carousel.** Controls match by `id`, so each carousel on the
+  page needs its own.
