@@ -1,0 +1,126 @@
+/**
+ * Blossom Carousel + ZUI.
+ *
+ * Blossom only owns scrolling and dragging. Layout is plain CSS grid and
+ * scroll-snap, so the slides and controls take ZUI's tokens directly.
+ */
+
+/* ZUI's base styles give every element a thin scrollbar; Blossom hides it. */
+[blossom-carousel] {
+  scrollbar-width: none;
+}
+
+/* ── Basic: buttons + dots ─────────────────────────────── */
+
+.blossom-basic {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 12rem;
+  gap: var(--space-sm);
+  scroll-snap-type: inline mandatory;
+}
+
+.blossom-basic > * {
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: start;
+}
+
+.blossom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+
+  /* Blossom's dots read these custom properties */
+  --blossom-dot-color: var(--color-theme);
+  --blossom-dots-gap: var(--space-2xs);
+}
+
+/* ── Cards: scroll-driven stack ────────────────────────── */
+
+.blossom-cards {
+  --card-width: min(12rem, 28vw);
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  inline-size: calc(var(--card-width) * 3);
+  max-inline-size: none;
+  margin-inline: auto;
+  padding-inline: var(--card-width);
+  padding-block: var(--space-3xs);
+  scroll-snap-type: x mandatory;
+}
+
+.blossom-cards > * {
+  position: sticky;
+  /* Must exceed the carousel's padding-inline, or Safari miscomputes the contain range. */
+  left: calc(var(--card-width) * -1 - 1px);
+  right: calc(var(--card-width) * -1 - 1px);
+  inline-size: var(--card-width);
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  transform-origin: center 70%;
+  will-change: transform;
+
+  view-timeline: --cards inline;
+  animation: blossom-stack-cards linear both;
+  animation-timeline: --cards;
+  animation-range: contain;
+}
+
+.blossom-cards .zui-card {
+  --zui-card-bg: var(--color-theme);
+  --zui-card-border: transparent;
+  --zui-card-radius: var(--radius-lg);
+  --zui-card-shadow: var(--shadow-md);
+
+  display: grid;
+  place-items: center;
+  block-size: 100%;
+  color: var(--color-background);
+  font-size: var(--step-3);
+  font-weight: var(--font-weight-medium);
+
+  animation: blossom-rotate-cards linear both;
+  animation-timeline: --cards;
+  animation-range: contain -50% contain 150%;
+}
+
+.blossom-cards > :nth-child(even) .zui-card {
+  --zui-card-bg: var(--color-accent);
+}
+
+@keyframes blossom-stack-cards {
+  0% {
+    z-index: calc(100 - sibling-index());
+  }
+  40% {
+    z-index: 1000;
+  }
+  100% {
+    z-index: sibling-index();
+  }
+}
+
+@keyframes blossom-rotate-cards {
+  0% {
+    transform: translateX(-80%) rotate(10deg) scale(0.8);
+  }
+  25% {
+    transform: translateX(-90%) rotate(5deg) scale(0.9);
+  }
+  50% {
+    transform: translateX(0) rotate(0) scale(1);
+  }
+  60% {
+    transform: translateX(-20%) rotate(-15deg) scale(0.6);
+  }
+  75% {
+    transform: translateX(90%) rotate(-5deg) scale(0.9);
+  }
+  100% {
+    transform: translateX(80%) rotate(-10deg) scale(0.8);
+  }
+}

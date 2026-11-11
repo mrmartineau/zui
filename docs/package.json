@@ -3,6 +3,7 @@
     "@astrojs/cloudflare": "^14.1.4",
     "@astrojs/mdx": "^7.0.0",
     "@astrojs/react": "^6.0.0",
+    "@blossom-carousel/react": "^1.8.0",
     "@mrmartineau/zui": "workspace:*",
     "@mrmartineau/zui-theme": "workspace:*",
     "@phosphor-icons/react": "^2.1.10",

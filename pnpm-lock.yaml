@@ -26,6 +26,9 @@ importers:
       '@astrojs/react':
         specifier: ^6.0.0
         version: 6.0.0(@types/node@26.0.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(tsx@4.21.0)
+      '@blossom-carousel/react':
+        specifier: ^1.8.0
+        version: 1.8.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@mrmartineau/zui':
         specifier: workspace:*
         version: link:../packages/zui
@@ -612,6 +615,19 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@blossom-carousel/core@1.1.10':
+    resolution: {integrity: sha512-nixyTKHQwHdzZFKUwJDsoXtfuz8WBgnaeRewC9z+YKMQt/DLcTAj+aqwQ5KF7QsrYbKgeeMZRIX7UnXg6h80pg==}
+
+  '@blossom-carousel/react@1.8.0':
+    resolution: {integrity: sha512-g72IYNL2QLgnBFIxWaLdA7VMTuSf6KHiQqTk85ZdPm7q4y7p+uovRfy9f2ARIWfB700JqVWSTKSu3UAj4kHztA==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
+  '@bramus/style-observer@2.0.2':
+    resolution: {integrity: sha512-oRKamZ9Z637pAZgNGJIbNGiFoYQSeA47PpU4K8hXZq9lQcPu35BCqMG9d9J/ab2CB/0XlXq6ToMnVhHF8mLNqg==}
+    engines: {node: '>=12'}
 
   '@bruits/satteri-darwin-arm64@0.9.5':
     resolution: {integrity: sha512-iw4nZgx9v30lWo/MTngQqi1pI78KI0DnkSm+lVJGYdmPLgAyDNJigVhpG42/Iq55A6c1Ll8q66ljyyRiQUxwow==}
@@ -6957,6 +6973,18 @@ snapshots:
 
   '@biomejs/cli-win32-x64@2.4.12':
     optional: true
+
+  '@blossom-carousel/core@1.1.10':
+    dependencies:
+      '@bramus/style-observer': 2.0.2
+
+  '@blossom-carousel/react@1.8.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@blossom-carousel/core': 1.1.10
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+
+  '@bramus/style-observer@2.0.2': {}
 
   '@bruits/satteri-darwin-arm64@0.9.5':
     optional: true
