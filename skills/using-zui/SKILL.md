@@ -1,6 +1,6 @@
 ---
 name: using-zui
-description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, Svelte, or Vue markup that should use ZUI components, design tokens, and utility classes. Also covers headless-library integrations such as a Ramka photo lightbox. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui, zui-ramka, lightbox, photo gallery."
+description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, Svelte, or Vue markup that should use ZUI components, design tokens, and utility classes. Also covers integrations with headless or themeable libraries such as a Ramka photo lightbox. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui, zui-ramka, lightbox, photo gallery."
 user-invocable: true
 ---
 
@@ -899,7 +899,7 @@ Squircles use `corner-shape`, so only some browsers show them. Other browsers ke
 
 ## Integrations
 
-ZUI has no toast, command menu, data table or lightbox. For those, use a headless library and style it with ZUI. Recipes for each: https://zui.zander.wtf/integrations (TanStack Form, TanStack Table, Sonner, cmdk, Ramka).
+ZUI has no toast, command menu, data table or lightbox. For those, use a headless or themeable library and style it with ZUI tokens and components. Recipes for each: https://zui.zander.wtf/integrations (TanStack Form, TanStack Table, Sonner, cmdk, Ramka).
 
 ### Ramka (photo lightbox, React only)
 

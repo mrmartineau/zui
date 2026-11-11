@@ -112,6 +112,13 @@
     }
   }
 
+  /* A closed viewer that stays in the page (Portal `keepMounted`, or during
+     the close fade) must not catch clicks meant for the page under it. */
+  [data-ramka-backdrop]:not([data-open]),
+  [data-ramka-content]:not([data-open]) {
+    pointer-events: none;
+  }
+
   /* ── Slides + Media ─────────────────────────────────────────────────── */
 
   [data-ramka-slides] {
@@ -155,7 +162,9 @@
     align-items: center;
     gap: var(--space-3xs);
     padding: var(--space-xs);
-    transition: opacity 200ms var(--ease-out);
+    transition:
+      opacity 200ms var(--ease-out),
+      visibility 0s;
   }
 
   .zui-ramka-toolbar {
@@ -178,7 +187,9 @@
     top: 50%;
     z-index: 1;
     translate: 0 -50%;
-    transition: opacity 200ms var(--ease-out);
+    transition:
+      opacity 200ms var(--ease-out),
+      visibility 0s;
   }
 
   [data-ramka-content] > [data-ramka-previous] {
@@ -209,14 +220,19 @@
     }
   }
 
-  /* Hide controls while dragging to close, and the footer while zoomed. */
+  /* Hide controls while dragging to close, and the footer while zoomed.
+     `visibility` also takes them out of clicks and the Tab order (children
+     inherit it). It flips after the 200ms fade-out, and at once on fade-in. */
   [data-ramka-content]:is([data-pulling], [data-pull-dismissing])
     :is(.zui-ramka-toolbar, .zui-ramka-footer),
   [data-ramka-content]:is([data-pulling], [data-pull-dismissing])
     > :is([data-ramka-previous], [data-ramka-next]),
   [data-ramka-content][data-zoomed] .zui-ramka-footer {
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
+    transition:
+      opacity 200ms var(--ease-out),
+      visibility 0s linear 200ms;
   }
 
   [data-ramka-counter] {

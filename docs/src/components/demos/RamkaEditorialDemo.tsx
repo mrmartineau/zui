@@ -72,8 +72,6 @@ export default function RamkaEditorialDemo() {
     <article className="flow" style={{ maxWidth: '36rem' }}>
       <Lightbox.Root
         loop
-        // Thumbnails are the same photos at half size, so skip the decode wait.
-        awaitImageDecode={false}
         // Figures sit in a scrolling article. Keep the current one in view
         // when the viewer opens and closes.
         scrollTriggerIntoView={[
