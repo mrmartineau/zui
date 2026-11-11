@@ -1,0 +1,101 @@
+@layer zui.components {
+  /*
+   * Skeleton: a placeholder block shown while content loads.
+   * It fills its container by default. Set --zui-skeleton-width,
+   * --zui-skeleton-height or --zui-skeleton-size to give it a fixed size.
+   */
+  .zui-skeleton {
+    --_skeleton-bg: var(
+      --zui-skeleton-bg,
+      oklch(from var(--color-text) l c h / 10%)
+    );
+    --_skeleton-highlight: var(
+      --zui-skeleton-highlight,
+      oklch(from var(--color-text) l c h / 18%)
+    );
+    --_skeleton-radius: var(--zui-skeleton-radius, var(--radius-md));
+
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    /* Fill the parent: its set height, or the row height in flex and grid.
+       Without either, the skeleton is one line tall (min-height below). */
+    width: var(--zui-skeleton-width, var(--zui-skeleton-size, 100%));
+    height: var(--zui-skeleton-height, var(--zui-skeleton-size, 100%));
+    min-height: var(--zui-skeleton-height, var(--zui-skeleton-size, 1em));
+    aspect-ratio: var(--zui-skeleton-aspect-ratio, auto);
+    border-radius: var(--_skeleton-radius);
+    background-color: var(--_skeleton-bg);
+    animation: zui-skeleton-pulse 1.8s ease-in-out infinite;
+  }
+
+  /* `stretch` also fills a flex or grid row; 100% above does not. */
+  @supports (height: stretch) {
+    .zui-skeleton {
+      height: var(--zui-skeleton-height, var(--zui-skeleton-size, stretch));
+    }
+  }
+
+  /* Animation */
+  .zui-skeleton-animation-wave {
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--_skeleton-highlight) 50%,
+      transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    animation: zui-skeleton-wave 1.6s ease-in-out infinite;
+  }
+
+  .zui-skeleton-animation-none {
+    animation: none;
+  }
+
+  /* Shape */
+  .zui-skeleton-shape-hard {
+    --zui-skeleton-radius: 0;
+  }
+
+  .zui-skeleton-shape-circle {
+    --zui-skeleton-radius: var(--radius-full);
+    /* Square when only one side is known */
+    aspect-ratio: var(--zui-skeleton-aspect-ratio, 1);
+  }
+
+  .zui-skeleton.zui-skeleton-shape-squircle {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 20px;
+    }
+  }
+
+  @keyframes zui-skeleton-pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes zui-skeleton-wave {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: -100% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zui-skeleton {
+      animation: none;
+    }
+  }
+
+  /* Windows High Contrast: author colours are replaced, so draw an outline */
+  @media (forced-colors: active) {
+    .zui-skeleton {
+      border: 1px solid GrayText;
+    }
+  }
+}

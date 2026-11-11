@@ -1,0 +1,441 @@
+---
+layout: ../../layouts/Layout.astro
+title: Skeleton
+description: A placeholder block for content that is still loading. It fills its container, or takes a size you set.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+A skeleton stands in for content while it loads. By default it **fills its container**: the full width, and the full height when the parent has a set height. When the parent has no set height, it is one line tall. Set a size when you want something else.
+
+## Usage
+
+<Demo
+  html={`<div style="display: flex; gap: var(--space-sm); align-items: center; width: 100%;">
+  <div class="zui-skeleton zui-skeleton-shape-circle" style="--zui-skeleton-size: 3rem; flex-shrink: 0;" aria-hidden="true"></div>
+  <div style="flex: 1; display: grid; gap: var(--space-2xs);">
+    <div class="zui-skeleton" style="--zui-skeleton-width: 40%;" aria-hidden="true"></div>
+    <div class="zui-skeleton" aria-hidden="true"></div>
+  </div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<div style={{ display: 'flex', gap: 'var(--space-sm)', alignItems: 'center' }}>
+  <Skeleton shape="circle" size="3rem" style={{ flexShrink: 0 }} />
+  <div style={{ flex: 1, display: 'grid', gap: 'var(--space-2xs)' }}>
+    <Skeleton width="40%" />
+    <Skeleton />
+  </div>
+</div>`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<div style="display: flex; gap: var(--space-sm); align-items: center;">
+  <Skeleton shape="circle" size="3rem" style="flex-shrink: 0;" />
+  <div style="flex: 1; display: grid; gap: var(--space-2xs);">
+    <Skeleton width="40%" />
+    <Skeleton />
+  </div>
+</div>`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<div style={{ display: 'flex', gap: 'var(--space-sm)', 'align-items': 'center' }}>
+  <Skeleton shape="circle" size="3rem" style={{ 'flex-shrink': 0 }} />
+  <div style={{ flex: 1, display: 'grid', gap: 'var(--space-2xs)' }}>
+    <Skeleton width="40%" />
+    <Skeleton />
+  </div>
+</div>`}
+  vue={`<template>
+  <div style="display: flex; gap: var(--space-sm); align-items: center;">
+    <Skeleton shape="circle" size="3rem" style="flex-shrink: 0;" />
+    <div style="flex: 1; display: grid; gap: var(--space-2xs);">
+      <Skeleton width="40%" />
+      <Skeleton />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<div style="display: flex; gap: var(--space-sm); align-items: center;">
+  <Skeleton shape="circle" size="3rem" style="flex-shrink: 0;" />
+  <div style="flex: 1; display: grid; gap: var(--space-2xs);">
+    <Skeleton width="40%" />
+    <Skeleton />
+  </div>
+</div>`}
+>
+  <div style="display: flex; gap: var(--space-sm); align-items: center; width: 100%;">
+    <div class="zui-skeleton zui-skeleton-shape-circle" style="--zui-skeleton-size: 3rem; flex-shrink: 0;" aria-hidden="true"></div>
+    <div style="flex: 1; display: grid; gap: var(--space-2xs);">
+      <div class="zui-skeleton" style="--zui-skeleton-width: 40%;" aria-hidden="true"></div>
+      <div class="zui-skeleton" aria-hidden="true"></div>
+    </div>
+  </div>
+</Demo>
+
+## Fill the container
+
+With no size set, a skeleton takes the width and height of its parent. Give the parent a height, and the skeleton fills it. This suits an image slot or a card that must not change size when the real content arrives.
+
+<Demo
+  html={`<div style="width: 100%; height: 8rem;">
+  <div class="zui-skeleton" aria-hidden="true"></div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<div style={{ width: '100%', height: '8rem' }}>
+  <Skeleton />
+</div>`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<div style="width: 100%; height: 8rem;">
+  <Skeleton />
+</div>`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<div style={{ width: '100%', height: '8rem' }}>
+  <Skeleton />
+</div>`}
+  vue={`<template>
+  <div style="width: 100%; height: 8rem;">
+    <Skeleton />
+  </div>
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<div style="width: 100%; height: 8rem;">
+  <Skeleton />
+</div>`}
+>
+  <div style="width: 100%; height: 8rem;">
+    <div class="zui-skeleton" aria-hidden="true"></div>
+  </div>
+</Demo>
+
+In a flex row, a skeleton stretches to the height of its tallest sibling. Here it matches the height of the text block beside it.
+
+<Demo
+  html={`<div style="display: flex; gap: var(--space-sm); width: 100%;">
+  <div class="zui-skeleton" style="--zui-skeleton-width: 6rem; flex-shrink: 0;" aria-hidden="true"></div>
+  <div>
+    <h3 style="margin: 0;">Article title</h3>
+    <p>Two lines of text<br />set the height.</p>
+  </div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<div style={{ display: 'flex', gap: 'var(--space-sm)' }}>
+  <Skeleton width="6rem" style={{ flexShrink: 0 }} />
+  <div>
+    <h3>Article title</h3>
+    <p>Two lines of text<br />set the height.</p>
+  </div>
+</div>`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<div style="display: flex; gap: var(--space-sm);">
+  <Skeleton width="6rem" style="flex-shrink: 0;" />
+  <div>
+    <h3>Article title</h3>
+    <p>Two lines of text<br />set the height.</p>
+  </div>
+</div>`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<div style={{ display: 'flex', gap: 'var(--space-sm)' }}>
+  <Skeleton width="6rem" style={{ 'flex-shrink': 0 }} />
+  <div>
+    <h3>Article title</h3>
+    <p>Two lines of text<br />set the height.</p>
+  </div>
+</div>`}
+  vue={`<template>
+  <div style="display: flex; gap: var(--space-sm);">
+    <Skeleton width="6rem" style="flex-shrink: 0;" />
+    <div>
+      <h3>Article title</h3>
+      <p>Two lines of text<br />set the height.</p>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<div style="display: flex; gap: var(--space-sm);">
+  <Skeleton width="6rem" style="flex-shrink: 0;" />
+  <div>
+    <h3>Article title</h3>
+    <p>Two lines of text<br />set the height.</p>
+  </div>
+</div>`}
+>
+  <div style="display: flex; gap: var(--space-sm); width: 100%;">
+    <div class="zui-skeleton" style="--zui-skeleton-width: 6rem; flex-shrink: 0;" aria-hidden="true"></div>
+    <div>
+      <h3 style="margin: 0;">Article title</h3>
+      <p style="margin: 0;">Two lines of text<br />set the height.</p>
+    </div>
+  </div>
+</Demo>
+
+## Set a size
+
+Use `width`, `height` or `size` (both at once). A number is pixels. A string is any CSS length. In plain HTML, set `--zui-skeleton-width`, `--zui-skeleton-height` or `--zui-skeleton-size`.
+
+<Demo
+  html={`<div style="display: grid; gap: var(--space-xs); width: 100%;">
+  <div class="zui-skeleton" style="--zui-skeleton-width: 12rem; --zui-skeleton-height: 1.5rem;" aria-hidden="true"></div>
+  <div class="zui-skeleton" style="--zui-skeleton-width: 60%; --zui-skeleton-height: 0.75rem;" aria-hidden="true"></div>
+  <div class="zui-skeleton" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<Skeleton width="12rem" height="1.5rem" />
+<Skeleton width="60%" height={12} />
+<Skeleton size="4rem" />`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<Skeleton width="12rem" height="1.5rem" />
+<Skeleton width="60%" height={12} />
+<Skeleton size="4rem" />`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<Skeleton width="12rem" height="1.5rem" />
+<Skeleton width="60%" height={12} />
+<Skeleton size="4rem" />`}
+  vue={`<template>
+  <Skeleton width="12rem" height="1.5rem" />
+  <Skeleton width="60%" :height="12" />
+  <Skeleton size="4rem" />
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<Skeleton width="12rem" height="1.5rem" />
+<Skeleton width="60%" height={12} />
+<Skeleton size="4rem" />`}
+>
+  <div style="display: grid; gap: var(--space-xs); width: 100%;">
+    <div class="zui-skeleton" style="--zui-skeleton-width: 12rem; --zui-skeleton-height: 1.5rem;" aria-hidden="true"></div>
+    <div class="zui-skeleton" style="--zui-skeleton-width: 60%; --zui-skeleton-height: 0.75rem;" aria-hidden="true"></div>
+    <div class="zui-skeleton" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+  </div>
+</Demo>
+
+## Aspect ratio
+
+Use `aspectRatio` when you know the shape but not the size, for example an image. The width fills the container and the height follows.
+
+<Demo
+  html={`<div style="width: min(100%, 20rem);">
+  <div class="zui-skeleton" style="--zui-skeleton-aspect-ratio: 16 / 9; --zui-skeleton-height: auto;" aria-hidden="true"></div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<Skeleton aspectRatio="16 / 9" />`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<Skeleton aspectRatio="16 / 9" />`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<Skeleton aspectRatio="16 / 9" />`}
+  vue={`<template>
+  <Skeleton aspect-ratio="16 / 9" />
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<Skeleton aspectRatio="16 / 9" />`}
+>
+  <div style="width: min(100%, 20rem);">
+    <div class="zui-skeleton" style="--zui-skeleton-aspect-ratio: 16 / 9; --zui-skeleton-height: auto;" aria-hidden="true"></div>
+  </div>
+</Demo>
+
+## Animation
+
+`pulse` is the default. `wave` sweeps a highlight across. `none` is still, for a calm page or a print layout. Motion stops when the user turns on "reduce motion".
+
+<Demo
+  html={`<div style="display: grid; gap: var(--space-xs); width: 100%;">
+  <div class="zui-skeleton" aria-hidden="true"></div>
+  <div class="zui-skeleton zui-skeleton-animation-wave" aria-hidden="true"></div>
+  <div class="zui-skeleton zui-skeleton-animation-none" aria-hidden="true"></div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<Skeleton />
+<Skeleton animation="wave" />
+<Skeleton animation="none" />`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<Skeleton />
+<Skeleton animation="wave" />
+<Skeleton animation="none" />`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<Skeleton />
+<Skeleton animation="wave" />
+<Skeleton animation="none" />`}
+  vue={`<template>
+  <Skeleton />
+  <Skeleton animation="wave" />
+  <Skeleton animation="none" />
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<Skeleton />
+<Skeleton animation="wave" />
+<Skeleton animation="none" />`}
+>
+  <div style="display: grid; gap: var(--space-xs); width: 100%;">
+    <div class="zui-skeleton" aria-hidden="true"></div>
+    <div class="zui-skeleton zui-skeleton-animation-wave" aria-hidden="true"></div>
+    <div class="zui-skeleton zui-skeleton-animation-none" aria-hidden="true"></div>
+  </div>
+</Demo>
+
+## Shape
+
+<Demo
+  html={`<div style="display: flex; gap: var(--space-sm); align-items: center;">
+  <div class="zui-skeleton" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+  <div class="zui-skeleton zui-skeleton-shape-hard" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+  <div class="zui-skeleton zui-skeleton-shape-circle" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+  <div class="zui-skeleton zui-skeleton-shape-squircle" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+</div>`}
+  react={`import { Skeleton } from '@mrmartineau/zui/react'
+
+<Skeleton size="4rem" />
+<Skeleton size="4rem" shape="hard" />
+<Skeleton size="4rem" shape="circle" />
+<Skeleton size="4rem" shape="squircle" />`}
+  astro={`---
+import { Skeleton } from '@mrmartineau/zui/astro'
+---
+
+<Skeleton size="4rem" />
+<Skeleton size="4rem" shape="hard" />
+<Skeleton size="4rem" shape="circle" />
+<Skeleton size="4rem" shape="squircle" />`}
+  solid={`import { Skeleton } from '@mrmartineau/zui/solid'
+
+<Skeleton size="4rem" />
+<Skeleton size="4rem" shape="hard" />
+<Skeleton size="4rem" shape="circle" />
+<Skeleton size="4rem" shape="squircle" />`}
+  vue={`<template>
+  <Skeleton size="4rem" />
+  <Skeleton size="4rem" shape="hard" />
+  <Skeleton size="4rem" shape="circle" />
+  <Skeleton size="4rem" shape="squircle" />
+</template>
+
+<script setup>
+import { Skeleton } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Skeleton } from '@mrmartineau/zui/svelte'
+</script>
+
+<Skeleton size="4rem" />
+<Skeleton size="4rem" shape="hard" />
+<Skeleton size="4rem" shape="circle" />
+<Skeleton size="4rem" shape="squircle" />`}
+>
+  <div style="display: flex; gap: var(--space-sm); align-items: center;">
+    <div class="zui-skeleton" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+    <div class="zui-skeleton zui-skeleton-shape-hard" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+    <div class="zui-skeleton zui-skeleton-shape-circle" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+    <div class="zui-skeleton zui-skeleton-shape-squircle" style="--zui-skeleton-size: 4rem;" aria-hidden="true"></div>
+  </div>
+</Demo>
+
+## Accessibility
+
+A skeleton is decoration. The wrappers add `aria-hidden="true"`, so screen readers skip it. In plain HTML, add it yourself.
+
+Tell assistive tech about the loading state on the region that holds the skeletons:
+
+- Set `aria-busy="true"` on the region. Remove it when the content arrives.
+- Add a visually hidden message with `role="status"`, such as "Loading comments". A screen reader announces it.
+
+```html
+<section aria-busy="true">
+  <p class="sr-only" role="status">Loading comments</p>
+  <div class="zui-skeleton" aria-hidden="true"></div>
+  <div class="zui-skeleton" aria-hidden="true"></div>
+</section>
+```
+
+In forced-colours mode (Windows High Contrast) each skeleton gets an outline, so it stays visible.
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `width` | `string \| number` | fills the container | Width. A number is pixels |
+| `height` | `string \| number` | fills the container, at least one line | Height. A number is pixels |
+| `size` | `string \| number` | — | Sets width and height together |
+| `aspectRatio` | `string \| number` | — | For example `16 / 9` or `1`. Height follows the width |
+| `shape` | `default \| hard \| circle \| squircle` | `default` | Corner shape |
+| `animation` | `pulse \| wave \| none` | `pulse` | Loading animation |
+
+## CSS custom properties
+
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-skeleton-width` | `100%` | Width |
+| `--zui-skeleton-height` | `100%` | Height. When the parent has no set height, the skeleton is one line tall |
+| `--zui-skeleton-size` | — | Width and height together. `width` and `height` win over it |
+| `--zui-skeleton-aspect-ratio` | `auto` | Aspect ratio. Set `--zui-skeleton-height: auto` with it |
+| `--zui-skeleton-radius` | `var(--radius-md)` | Border radius |
+| `--zui-skeleton-bg` | `oklch(from var(--color-text) l c h / 10%)` | Base colour |
+| `--zui-skeleton-highlight` | `oklch(from var(--color-text) l c h / 18%)` | Sweep colour for the `wave` animation |

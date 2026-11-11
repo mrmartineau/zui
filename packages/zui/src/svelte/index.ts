@@ -29,6 +29,7 @@ export { menuVariants } from '../shared/menuVariants'
 export { numberFieldVariants } from '../shared/numberFieldVariants'
 export { popoverVariants } from '../shared/popoverVariants'
 export { selectVariants } from '../shared/selectVariants'
+export { skeletonVariants } from '../shared/skeletonVariants'
 export {
   tabsContentVariants,
   tabsListVariants,
@@ -93,6 +94,7 @@ export { default as Pre } from './Pre.svelte'
 export { default as Prose } from './Prose.svelte'
 export { default as Radio } from './Radio.svelte'
 export { default as Select } from './Select.svelte'
+export { default as Skeleton } from './Skeleton.svelte'
 export { default as Table } from './Table.svelte'
 export { default as TableBody } from './TableBody.svelte'
 export { default as TableCaption } from './TableCaption.svelte'
