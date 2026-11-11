@@ -1,0 +1,382 @@
+---
+layout: ../../layouts/Layout.astro
+title: Dropzone
+description: A box that takes dropped files, or opens the file picker on click. It checks type and size on drop.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+import { Dropzone } from '@mrmartineau/zui/astro'
+
+A dropzone lets people add files by dragging them onto a box, or by clicking it. It is a real `<input type="file">` stretched over the box, so it works with a keyboard, a screen reader and a form, and the browser handles the drop.
+
+The dropzone adds three things the browser does not:
+
+- The box highlights while files are dragged over it.
+- A drop skips the input's `accept` attribute, so the dropzone checks **type** and **size** itself. Files that fail are removed from the input and named in a status line.
+- A status line says what was chosen. It is a live region, so screen readers hear it.
+
+The dropzone only picks files. You still read them from the input (`input.files`, or a `change` event) and upload them yourself.
+
+## Usage
+
+<Demo
+  html={`<div class="zui-dropzone" data-zui-dropzone data-max-size="5242880">
+  <label class="zui-dropzone-box">
+    <input class="zui-dropzone-input" type="file" multiple accept="image/*,.pdf" />
+    <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+    <span class="zui-dropzone-title">Drop files here, or click to browse</span>
+    <span class="zui-dropzone-hint">Images or PDF, up to 5 MB each</span>
+  </label>
+  <p class="zui-dropzone-status" role="status"></p>
+</div>`}
+  react={`import { Dropzone } from '@mrmartineau/zui/react'
+
+<Dropzone
+  multiple
+  accept="image/*,.pdf"
+  maxSize={5 * 1024 * 1024}
+  hint="Images or PDF, up to 5 MB each"
+  onChange={(event) => upload(event.target.files)}
+/>`}
+  astro={`---
+import { Dropzone } from '@mrmartineau/zui/astro'
+---
+
+<Dropzone
+  multiple
+  accept="image/*,.pdf"
+  maxSize={5 * 1024 * 1024}
+  hint="Images or PDF, up to 5 MB each"
+/>`}
+  solid={`import { Dropzone } from '@mrmartineau/zui/solid'
+
+<Dropzone
+  multiple
+  accept="image/*,.pdf"
+  maxSize={5 * 1024 * 1024}
+  hint="Images or PDF, up to 5 MB each"
+  onChange={(event) => upload(event.currentTarget.files)}
+/>`}
+  vue={`<template>
+  <Dropzone
+    multiple
+    accept="image/*,.pdf"
+    :max-size="5 * 1024 * 1024"
+    hint="Images or PDF, up to 5 MB each"
+    @change="(event) => upload(event.target.files)"
+  />
+</template>
+
+<script setup>
+import { Dropzone } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Dropzone } from '@mrmartineau/zui/svelte'
+
+  let files = $state<FileList | null>(null)
+</script>
+
+<Dropzone
+  multiple
+  accept="image/*,.pdf"
+  maxSize={5 * 1024 * 1024}
+  hint="Images or PDF, up to 5 MB each"
+  bind:files
+/>`}
+>
+  <div style="width: 100%;">
+    <Dropzone
+      multiple
+      accept="image/*,.pdf"
+      maxSize={5 * 1024 * 1024}
+      hint="Images or PDF, up to 5 MB each"
+    />
+  </div>
+</Demo>
+
+Drag a file from your desktop onto the box to see the highlight. Drop a `.zip` to see it refused.
+
+## Plain HTML
+
+The class names alone give you the look, the click and the drop. The highlight, the type and size check and the status line need a script. The framework wrappers load it for you. In plain HTML, import it once, with a bundler such as Vite:
+
+```js
+import { initDropzones } from '@mrmartineau/zui/dropzone'
+
+initDropzones()
+```
+
+It uses one set of listeners on the document, so it covers every dropzone on the page, including ones added later. Set the size limit in bytes with `data-max-size` on the element that has `data-zui-dropzone`. Set the types with `accept` on the input.
+
+## Single file
+
+Leave out `multiple`. The input then holds one file.
+
+<Demo
+  html={`<div class="zui-dropzone" data-zui-dropzone style="width: 100%;">
+  <label class="zui-dropzone-box">
+    <input class="zui-dropzone-input" type="file" accept="image/png,image/jpeg" />
+    <i class="ph ph-image zui-dropzone-icon" aria-hidden="true"></i>
+    <span class="zui-dropzone-title">Add a cover image</span>
+    <span class="zui-dropzone-hint">PNG or JPG</span>
+  </label>
+  <p class="zui-dropzone-status" role="status"></p>
+</div>`}
+  react={`import { Dropzone } from '@mrmartineau/zui/react'
+
+<Dropzone
+  accept="image/png,image/jpeg"
+  label="Add a cover image"
+  hint="PNG or JPG"
+/>`}
+  astro={`---
+import { Dropzone } from '@mrmartineau/zui/astro'
+---
+
+<Dropzone accept="image/png,image/jpeg" label="Add a cover image" hint="PNG or JPG" />`}
+  solid={`import { Dropzone } from '@mrmartineau/zui/solid'
+
+<Dropzone accept="image/png,image/jpeg" label="Add a cover image" hint="PNG or JPG" />`}
+  vue={`<template>
+  <Dropzone accept="image/png,image/jpeg" label="Add a cover image" hint="PNG or JPG" />
+</template>
+
+<script setup>
+import { Dropzone } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Dropzone } from '@mrmartineau/zui/svelte'
+</script>
+
+<Dropzone accept="image/png,image/jpeg" label="Add a cover image" hint="PNG or JPG" />`}
+>
+  <div class="zui-dropzone" data-zui-dropzone style="width: 100%;">
+    <label class="zui-dropzone-box">
+      <input class="zui-dropzone-input" type="file" accept="image/png,image/jpeg" />
+      <i class="ph ph-image zui-dropzone-icon" aria-hidden="true"></i>
+      <span class="zui-dropzone-title">Add a cover image</span>
+      <span class="zui-dropzone-hint">PNG or JPG</span>
+    </label>
+    <p class="zui-dropzone-status" role="status"></p>
+  </div>
+</Demo>
+
+## In a form
+
+Give the input a `name` and put the dropzone in a `Field` with a label, like any other control. The label names the input, and `FieldDescription` can hold longer help.
+
+<Demo
+  html={`<form class="zui-field" method="post" enctype="multipart/form-data">
+  <p class="zui-label" id="attachments-label">Attachments</p>
+  <div class="zui-dropzone" data-zui-dropzone>
+    <label class="zui-dropzone-box">
+      <input class="zui-dropzone-input" type="file" name="attachments" multiple aria-describedby="attachments-label" />
+      <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+      <span class="zui-dropzone-title">Drop files here, or click to browse</span>
+    </label>
+    <p class="zui-dropzone-status" role="status"></p>
+  </div>
+</form>`}
+  react={`import { Dropzone, Field, Label } from '@mrmartineau/zui/react'
+
+<form method="post" encType="multipart/form-data">
+  <Field>
+    <Label>Attachments</Label>
+    <Dropzone name="attachments" multiple />
+  </Field>
+</form>`}
+  astro={`---
+import { Dropzone, Field, Label } from '@mrmartineau/zui/astro'
+---
+
+<form method="post" enctype="multipart/form-data">
+  <Field>
+    <Label>Attachments</Label>
+    <Dropzone name="attachments" multiple />
+  </Field>
+</form>`}
+  solid={`import { Dropzone, Field, Label } from '@mrmartineau/zui/solid'
+
+<form method="post" enctype="multipart/form-data">
+  <Field>
+    <Label>Attachments</Label>
+    <Dropzone name="attachments" multiple />
+  </Field>
+</form>`}
+  vue={`<template>
+  <form method="post" enctype="multipart/form-data">
+    <Field>
+      <Label>Attachments</Label>
+      <Dropzone name="attachments" multiple />
+    </Field>
+  </form>
+</template>
+
+<script setup>
+import { Dropzone, Field, Label } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Dropzone, Field, Label } from '@mrmartineau/zui/svelte'
+</script>
+
+<form method="post" enctype="multipart/form-data">
+  <Field>
+    <Label>Attachments</Label>
+    <Dropzone name="attachments" multiple />
+  </Field>
+</form>`}
+>
+  <form class="zui-field" method="post" enctype="multipart/form-data" style="width: 100%;">
+    <p class="zui-label" id="attachments-label">Attachments</p>
+    <div class="zui-dropzone" data-zui-dropzone>
+      <label class="zui-dropzone-box">
+        <input class="zui-dropzone-input" type="file" name="attachments" multiple aria-describedby="attachments-label" />
+        <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+        <span class="zui-dropzone-title">Drop files here, or click to browse</span>
+      </label>
+      <p class="zui-dropzone-status" role="status"></p>
+    </div>
+  </form>
+</Demo>
+
+## Disabled
+
+<Demo
+  html={`<div class="zui-dropzone" data-zui-dropzone style="width: 100%;">
+  <label class="zui-dropzone-box">
+    <input class="zui-dropzone-input" type="file" disabled />
+    <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+    <span class="zui-dropzone-title">Uploads are turned off</span>
+  </label>
+  <p class="zui-dropzone-status" role="status"></p>
+</div>`}
+  react={`import { Dropzone } from '@mrmartineau/zui/react'
+
+<Dropzone disabled label="Uploads are turned off" />`}
+  astro={`---
+import { Dropzone } from '@mrmartineau/zui/astro'
+---
+
+<Dropzone disabled label="Uploads are turned off" />`}
+  solid={`import { Dropzone } from '@mrmartineau/zui/solid'
+
+<Dropzone disabled label="Uploads are turned off" />`}
+  vue={`<template>
+  <Dropzone disabled label="Uploads are turned off" />
+</template>
+
+<script setup>
+import { Dropzone } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Dropzone } from '@mrmartineau/zui/svelte'
+</script>
+
+<Dropzone disabled label="Uploads are turned off" />`}
+>
+  <div class="zui-dropzone" data-zui-dropzone style="width: 100%;">
+    <label class="zui-dropzone-box">
+      <input class="zui-dropzone-input" type="file" disabled />
+      <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+      <span class="zui-dropzone-title">Uploads are turned off</span>
+    </label>
+    <p class="zui-dropzone-status" role="status"></p>
+  </div>
+</Demo>
+
+## Shape
+
+`shape` takes `default`, `hard` or `squircle`.
+
+<Demo
+  html={`<div class="zui-dropzone zui-dropzone-shape-hard" data-zui-dropzone style="width: 100%;">
+  <label class="zui-dropzone-box">
+    <input class="zui-dropzone-input" type="file" />
+    <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+    <span class="zui-dropzone-title">Hard corners</span>
+  </label>
+  <p class="zui-dropzone-status" role="status"></p>
+</div>`}
+  react={`import { Dropzone } from '@mrmartineau/zui/react'
+
+<Dropzone shape="hard" label="Hard corners" />`}
+  astro={`---
+import { Dropzone } from '@mrmartineau/zui/astro'
+---
+
+<Dropzone shape="hard" label="Hard corners" />`}
+  solid={`import { Dropzone } from '@mrmartineau/zui/solid'
+
+<Dropzone shape="hard" label="Hard corners" />`}
+  vue={`<template>
+  <Dropzone shape="hard" label="Hard corners" />
+</template>
+
+<script setup>
+import { Dropzone } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Dropzone } from '@mrmartineau/zui/svelte'
+</script>
+
+<Dropzone shape="hard" label="Hard corners" />`}
+>
+  <div class="zui-dropzone zui-dropzone-shape-hard" data-zui-dropzone style="width: 100%;">
+    <label class="zui-dropzone-box">
+      <input class="zui-dropzone-input" type="file" />
+      <i class="ph ph-upload-simple zui-dropzone-icon" aria-hidden="true"></i>
+      <span class="zui-dropzone-title">Hard corners</span>
+    </label>
+    <p class="zui-dropzone-status" role="status"></p>
+  </div>
+</Demo>
+
+## Checking files yourself
+
+`checkFiles` is the same check the dropzone runs. Use it to check files that arrive another way, such as a paste. A server must still check every upload: the browser check is a convenience, not a guard.
+
+```ts
+import { checkFiles, formatBytes } from '@mrmartineau/zui/react'
+
+const { accepted, rejected } = checkFiles(Array.from(files), {
+  accept: 'image/*,.pdf',
+  maxSize: 5 * 1024 * 1024,
+})
+for (const { file, reason } of rejected) {
+  console.log(`${file.name}: ${reason === 'size' ? 'too big' : 'wrong type'}`)
+}
+```
+
+## Accessibility
+
+- The input is the control. It stays focusable, and a focus ring shows on the box.
+- The label and hint are inside the `<label>`, so the input's name is "Drop files here, or click to browse. Images or PDF, up to 5 MB each".
+- The status line has `role="status"`. It says "report.pdf (240 KB)" after a choice, and names any file that was refused.
+- A drag-and-drop box is an extra. Clicking or pressing Enter or Space on the focused input opens the picker for people who cannot drag.
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | `Drop files here, or click to browse` | Main text |
+| `hint` | `string` | — | Smaller text under the label, such as the allowed types and size |
+| `maxSize` | `number` | — | Largest file in bytes. Bigger files are refused |
+| `accept` | `string` | — | Allowed types: `.pdf`, `image/*`, `image/png`. Checked on drop too |
+| `multiple` | `boolean` | `false` | Allow more than one file |
+| `shape` | `default \| hard \| squircle` | `default` | Corner shape |
+| `class` | `string` | — | Class for the wrapper. Other props go to the `<input>` |
+
+## CSS custom properties
+
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-dropzone-radius` | `var(--radius-lg)` | Border radius of the box |
+| `--zui-dropzone-border` | `var(--color-border)` | Dashed border colour |
+| `--zui-dropzone-accent` | `var(--color-theme)` | Border colour on hover and while dragging |
+| `--zui-dropzone-bg` | `transparent` | Background colour |
+| `--zui-dropzone-padding` | `var(--space-md)` | Space inside the box |
+| `--zui-dropzone-icon-size` | `var(--step-3)` | Icon size |
+| `--zui-dropzone-title-font-size` | `var(--step-0)` | Label size |
+| `--zui-dropzone-hint-font-size` | `var(--step--1)` | Hint and status size |

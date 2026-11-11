@@ -1,0 +1,123 @@
+@layer zui.components {
+  /*
+   * Dropzone: a box that takes dropped files, or opens the file picker on click.
+   * The real file input covers the box, so keyboard, click and drop all work.
+   * See shared/dropzone.ts for the drag highlight and the status line.
+   */
+  .zui-dropzone {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .zui-dropzone-box {
+    --_dropzone-radius: var(--zui-dropzone-radius, var(--radius-lg));
+    --_dropzone-border: var(--zui-dropzone-border, var(--color-border));
+    --_dropzone-accent: var(--zui-dropzone-accent, var(--color-theme));
+    --_dropzone-bg: var(--zui-dropzone-bg, transparent);
+    --_dropzone-padding: var(--zui-dropzone-padding, var(--space-md));
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xs);
+    padding: var(--_dropzone-padding);
+    border: 2px dashed var(--_dropzone-border);
+    border-radius: var(--_dropzone-radius);
+    background-color: var(--_dropzone-bg);
+    color: var(--color-text);
+    text-align: center;
+    cursor: pointer;
+    transition-property: border-color, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .zui-dropzone-box:hover,
+  .zui-dropzone[data-dragging] .zui-dropzone-box {
+    border-color: var(--_dropzone-accent);
+  }
+
+  .zui-dropzone[data-dragging] .zui-dropzone-box {
+    background-color: oklch(from var(--_dropzone-accent) l c h / 8%);
+  }
+
+  .zui-dropzone[data-invalid] .zui-dropzone-box {
+    border-color: var(--color-error);
+  }
+
+  .zui-dropzone-box:has(.zui-dropzone-input:focus-visible) {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .zui-dropzone-box:has(.zui-dropzone-input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .zui-dropzone-box:has(.zui-dropzone-input:disabled):hover {
+    border-color: var(--_dropzone-border);
+  }
+
+  /* The real input: invisible, but on top, so it gets the click and the drop */
+  .zui-dropzone-input {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: inherit;
+  }
+
+  .zui-dropzone-icon {
+    font-size: var(--zui-dropzone-icon-size, var(--step-3));
+    line-height: 1;
+    color: color-mix(in oklch, var(--color-text) 55%, transparent);
+  }
+
+  .zui-dropzone-title {
+    font-size: var(--zui-dropzone-title-font-size, var(--step-0));
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-sm);
+  }
+
+  .zui-dropzone-hint {
+    font-size: var(--zui-dropzone-hint-font-size, var(--step--1));
+    color: color-mix(in oklch, var(--color-text) 65%, transparent);
+  }
+
+  .zui-dropzone-status {
+    margin: 0;
+    font-size: var(--zui-dropzone-hint-font-size, var(--step--1));
+    overflow-wrap: anywhere;
+  }
+
+  .zui-dropzone-status:not(:empty) {
+    margin-block-start: var(--space-2xs);
+  }
+
+  .zui-dropzone[data-invalid] .zui-dropzone-status {
+    color: var(--color-error);
+  }
+
+  /* Shape */
+  .zui-dropzone.zui-dropzone-shape-hard {
+    --zui-dropzone-radius: 0;
+  }
+
+  .zui-dropzone.zui-dropzone-shape-squircle .zui-dropzone-box {
+    @supports (corner-shape: squircle) {
+      corner-shape: superellipse(1.25);
+      border-radius: 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zui-dropzone-box {
+      transition: none;
+    }
+  }
+}
