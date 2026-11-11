@@ -38,6 +38,9 @@ importers:
       '@phosphor-icons/react':
         specifier: ^2.1.10
         version: 2.1.10(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@ramka/react':
+        specifier: 0.0.2
+        version: 0.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@tanstack/react-form':
         specifier: ^1.33.0
         version: 1.33.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -1742,6 +1745,12 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  '@ramka/react@0.0.2':
+    resolution: {integrity: sha512-73x8vVlRfAEo3elHXgZ8rqvILb+UIF8WNCfIFArOuHRKiPwiSsqZjihJi1KUPQRsHTrLE0TqLftE8j5SjNBqyw==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
 
   '@raycast/api@1.104.20':
     resolution: {integrity: sha512-Hcvt0OVjdjBFLtb9rNQjRBL7FAZBF3mlU17y2TgCdNolkeGixfJdMb7idfiILfgoNa94gj4C+M/MZn1tf/q4Dg==}
@@ -7898,6 +7907,11 @@ snapshots:
       react: 19.2.7
     optionalDependencies:
       '@types/react': 19.2.17
+
+  '@ramka/react@0.0.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
 
   '@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.2.17)':
     dependencies:

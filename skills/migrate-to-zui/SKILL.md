@@ -310,10 +310,10 @@ Bootstrap-specific quick hits: `btn btn-primary` → `zui-button`; `btn-outline-
 
 ## Filling the gaps
 
-ZUI has no Switch, Alert, Toast, Skeleton, Progress, Slider, Combobox, Command palette, Date picker, or Carousel. Options, in order of preference:
+ZUI has no Switch, Alert, Toast, Skeleton, Progress, Slider, Combobox, Command palette, Date picker, Carousel, or Lightbox. Options, in order of preference:
 
 1. **Native element + tokens.** Many gaps are a styled native element: Progress → `<progress>`, Switch → a checkbox styled as a track/thumb, Alert → a `div[role="alert"]` built from `--color-error` / `--color-warning` + `--radius-md` + `--space-*`.
-2. **Keep a headless library, restyle it with ZUI tokens.** Radix, Ark UI, Base UI, TanStack, react-hook-form, and Sonner are unstyled or theme-able — keep the behaviour, swap the styling for ZUI tokens and component variables. This is the right answer for Combobox, Command, Date picker, and Toast.
+2. **Keep a headless library, restyle it with ZUI tokens.** Radix, Ark UI, Base UI, TanStack, react-hook-form, and Sonner are unstyled or theme-able — keep the behaviour, swap the styling for ZUI tokens and component variables. This is the right answer for Combobox, Command, Date picker, and Toast. Recipes: https://zui.zander.wtf/integrations. For a photo lightbox or gallery (e.g. replacing yet-another-react-lightbox, PhotoSwipe or Fancybox in a React app), use Ramka (`@ramka/react`) with ZUI's ready-made skin: `import '@mrmartineau/zui/css/ramka'` — see the Integrations section of the `using-zui` skill.
 3. **Write a new component in the ZUI style.** CSS in `@layer zui.components` with a `zui-` prefixed class and `--zui-<name>-*` custom properties for its knobs. If the component belongs in ZUI itself rather than the app, it needs the full multi-layer treatment (CSS + every framework wrapper + shared `cva` variants + docs) — see `AGENTS.md`.
 
 Whichever route: no inline SVG (use Phosphor), no hard-coded colours or spacing, and the component's knobs are custom properties, not props that emit inline styles.

@@ -1,6 +1,6 @@
 ---
 name: using-zui
-description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, Svelte, or Vue markup that should use ZUI components, design tokens, and utility classes. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui."
+description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, Svelte, or Vue markup that should use ZUI components, design tokens, and utility classes. Also covers headless-library integrations such as a Ramka photo lightbox. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui, zui-ramka, lightbox, photo gallery."
 user-invocable: true
 ---
 
@@ -896,6 +896,80 @@ Squircles use `corner-shape`, so only some browsers show them. Other browsers ke
 | Class | Effect |
 |---|---|
 | `sr-only` / `visually-hidden` | Screen-reader-only content |
+
+## Integrations
+
+ZUI has no toast, command menu, data table or lightbox. For those, use a headless library and style it with ZUI. Recipes for each: https://zui.zander.wtf/integrations (TanStack Form, TanStack Table, Sonner, cmdk, Ramka).
+
+### Ramka (photo lightbox, React only)
+
+Use [Ramka](https://ramka.dev/docs) (`@ramka/react`) for a photo gallery that opens into a full-screen viewer. ZUI ships an opt-in skin for it. It is not in `zui.css`, so import it after ZUI:
+
+```ts
+import '@mrmartineau/zui/css'
+import '@mrmartineau/zui/css/ramka'
+```
+
+The skin styles Ramka's `[data-ramka-*]` parts directly. Add these classes to your own wrapper elements:
+
+| Class | Put it on |
+|---|---|
+| `zui-ramka-grid` | the `div` around the `Lightbox.Trigger`s (square thumbnail grid) |
+| `zui-ramka-toolbar` | a `div` in `Lightbox.Content` holding `ZoomOut`, `ZoomIn`, `Close` |
+| `zui-ramka-footer` | a `div` in `Lightbox.Content` holding `Counter`, `Caption`, `Previous`, `Next` |
+
+**Editorial variant** (photos inside an article, like a news site): add `zui-ramka-editorial` to `Lightbox.Portal`. It sets `color-scheme: dark`, so the viewer and every ZUI Button inside are dark in both themes. Pass caption + credit as one node — `caption={<><span>{caption}</span><span className="zui-ramka-credit">{credit}</span></>}` — put `Counter` and `Close` in `zui-ramka-toolbar`, put `Caption` alone in `zui-ramka-footer`, and leave out `Lightbox.Zoom` (Media goes straight in Item).
+
+`Lightbox.Previous` / `Lightbox.Next` placed directly in `Lightbox.Content` (not in the footer) become edge arrows on desktop and hide on mobile.
+
+Knobs: `--zui-ramka-backdrop` (default `--color-background`), `--zui-ramka-inset` (default `--space-2xl`), `--zui-ramka-radius` (default `--radius-lg`).
+
+Render controls as ZUI Buttons with Ramka's `render` prop. Ramka ships no text, so every control needs an `aria-label`:
+
+```tsx
+import { Button } from '@mrmartineau/zui/react'
+import { XIcon } from '@phosphor-icons/react'
+import * as Lightbox from '@ramka/react/lightbox'
+
+<Lightbox.Root>
+  <div className="zui-ramka-grid">
+    {photos.map((p, i) => (
+      <Lightbox.Trigger key={p.id} index={i} aria-label={`Open ${p.alt}`}>
+        {({ imageRef }) => <img ref={imageRef} src={p.thumb} alt={p.alt} />}
+      </Lightbox.Trigger>
+    ))}
+  </div>
+  <Lightbox.Portal>
+    <Lightbox.Backdrop />
+    <Lightbox.Content aria-label="Photo viewer">
+      <Lightbox.Slides aria-label="Photos" aria-roledescription="carousel">
+        {photos.map((p, i) => (
+          <Lightbox.Slide key={p.id}>
+            <Lightbox.Item index={i} caption={p.alt} aria-roledescription="slide" aria-label={`${i + 1} of ${photos.length}`}>
+              <Lightbox.Zoom>
+                <Lightbox.Media width={p.width} height={p.height}>
+                  <img src={p.src} alt={p.alt} width={p.width} height={p.height} />
+                </Lightbox.Media>
+              </Lightbox.Zoom>
+            </Lightbox.Item>
+          </Lightbox.Slide>
+        ))}
+      </Lightbox.Slides>
+      <div className="zui-ramka-toolbar">
+        <Lightbox.Close aria-label="Close" render={<Button variant="ghost" icon />}>
+          <XIcon aria-hidden />
+        </Lightbox.Close>
+      </div>
+      <div className="zui-ramka-footer">
+        <Lightbox.Counter />
+        <Lightbox.Caption />
+      </div>
+    </Lightbox.Content>
+  </Lightbox.Portal>
+</Lightbox.Root>
+```
+
+Rules: the `index` on a `Trigger` matches the `index` on its `Item`. Pass `imageRef` to the thumbnail `<img>` for the open/close morph. Always give `Lightbox.Media` and the full-size `<img>` a real `width` and `height`. In Astro, Solid, Svelte or Vue, mount the gallery as a React island. Full copy-paste components (gallery with zoom, and the Editorial article viewer): https://zui.zander.wtf/integrations/ramka
 
 ## Key Rules
 

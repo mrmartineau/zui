@@ -94,6 +94,19 @@ Override semantic tokens in your CSS to retheme the library:
 
 See [zui.zander.wtf](https://zui.zander.wtf) for the full token reference, component docs, and live examples.
 
+## Integrations
+
+ZUI pairs with headless libraries that own behaviour and leave the look to you. The [Integrations](https://zui.zander.wtf/integrations) docs have a recipe for each: TanStack Form, TanStack Table, Sonner, cmdk and Ramka.
+
+Some integrations ship an optional stylesheet. Import it after ZUI's CSS:
+
+```ts
+import '@mrmartineau/zui/css'
+import '@mrmartineau/zui/css/ramka' // photo lightbox skin for @ramka/react
+```
+
+See [Ramka](https://zui.zander.wtf/integrations/ramka) for a copy-paste gallery component.
+
 ## More Astro packages
 
 Other Astro tools I have made:
@@ -133,6 +146,7 @@ The workflow requires an `NPM_TOKEN` secret set in the repository settings. `GIT
 | :--------------------------- | :--------------------------- |
 | `@mrmartineau/zui/css`       | `packages/zui/dist/css/zui.css`           |
 | `@mrmartineau/zui/css/min`   | `packages/zui/dist/css/zui.min.css`       |
+| `@mrmartineau/zui/css/ramka` | `packages/zui/src/css/integrations/ramka.css` |
 | `@mrmartineau/zui/react`     | `packages/zui/dist/react/index.mjs`       |
 | `@mrmartineau/zui/solid`     | `packages/zui/dist/solid/index.mjs`       |
 | `@mrmartineau/zui/svelte`    | `packages/zui/src/svelte/index.ts`        |
