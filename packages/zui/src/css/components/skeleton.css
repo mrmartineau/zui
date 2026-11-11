@@ -34,6 +34,8 @@
   .zui-skeleton::before {
     content: "\00a0";
     visibility: hidden;
+    /* At least 1em, even when a parent sets line-height: 0 */
+    line-height: max(1em, 1lh);
   }
 
   /* `stretch` also fills a flex or grid row; 100% above does not. */
@@ -69,10 +71,10 @@
     --zui-skeleton-radius: var(--radius-full);
     /* Height follows the width, so a circle stays round with a width alone
        and in a row that is not square. Set `size` or `height` to override. */
-    height: var(--zui-skeleton-height, var(--zui-skeleton-size, auto));
+    /* fit-content is not `auto`, so flex and grid do not stretch the circle
+       to the row height, and the parent's align-items still applies. */
+    height: var(--zui-skeleton-height, var(--zui-skeleton-size, fit-content));
     aspect-ratio: var(--zui-skeleton-aspect-ratio, 1);
-    /* Do not stretch to the row height in flex or grid: that would make an oval */
-    align-self: start;
   }
 
   .zui-skeleton.zui-skeleton-shape-squircle {
