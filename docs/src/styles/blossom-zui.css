@@ -53,21 +53,10 @@
 }
 
 .blossom-cards > * {
-  position: sticky;
-  /* Must exceed the carousel's padding-inline, or Safari miscomputes the contain range. */
-  left: calc(var(--card-width) * -1 - 1px);
-  right: calc(var(--card-width) * -1 - 1px);
   inline-size: var(--card-width);
   aspect-ratio: 3 / 4;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  transform-origin: center 70%;
-  will-change: transform;
-
-  view-timeline: --cards inline;
-  animation: blossom-stack-cards linear both;
-  animation-timeline: --cards;
-  animation-range: contain;
 }
 
 .blossom-cards .zui-card {
@@ -82,10 +71,29 @@
   color: var(--color-background);
   font-size: var(--step-3);
   font-weight: var(--font-weight-medium);
+}
 
-  animation: blossom-rotate-cards linear both;
-  animation-timeline: --cards;
-  animation-range: contain -50% contain 150%;
+/* Without scroll-driven animations the cards stay a plain scroll-snap row. */
+@supports (animation-timeline: view()) {
+  .blossom-cards > * {
+    position: sticky;
+    /* Must exceed the carousel's padding-inline, or Safari miscomputes the contain range. */
+    left: calc(var(--card-width) * -1 - 1px);
+    right: calc(var(--card-width) * -1 - 1px);
+    transform-origin: center 70%;
+    will-change: transform;
+
+    view-timeline: --cards inline;
+    animation: blossom-stack-cards linear both;
+    animation-timeline: --cards;
+    animation-range: contain;
+  }
+
+  .blossom-cards .zui-card {
+    animation: blossom-rotate-cards linear both;
+    animation-timeline: --cards;
+    animation-range: contain -50% contain 150%;
+  }
 }
 
 .blossom-cards > :nth-child(even) .zui-card {
