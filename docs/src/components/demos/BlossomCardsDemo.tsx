@@ -10,6 +10,8 @@ const CARDS = Array.from({ length: 10 }, (_, i) => i + 1)
 
 // Tilt the stack when the user drags past either end.
 function handleOverscroll(event: BlossomOverscrollEvent) {
+  // Replace Blossom's default rubber-band with our own tilt.
+  event.preventDefault()
   const carousel = event.currentTarget as HTMLElement
   const overscroll = event.detail.left * 0.2
   const width = carousel.clientWidth

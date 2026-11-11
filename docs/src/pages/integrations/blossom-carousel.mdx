@@ -184,6 +184,8 @@ import {
 
 // Tilt the stack when the user drags past either end.
 function handleOverscroll(event: BlossomOverscrollEvent) {
+  // Replace Blossom's default rubber-band with our own tilt.
+  event.preventDefault()
   const carousel = event.currentTarget as HTMLElement
   const overscroll = event.detail.left * 0.2
   const width = carousel.clientWidth
@@ -223,21 +225,10 @@ Each card is a ZUI [Card](/components/card), re-coloured through its
 }
 
 .blossom-cards > * {
-  position: sticky;
-  /* Must exceed the carousel's padding-inline, or Safari miscomputes the contain range. */
-  left: calc(var(--card-width) * -1 - 1px);
-  right: calc(var(--card-width) * -1 - 1px);
   inline-size: var(--card-width);
   aspect-ratio: 3 / 4;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  transform-origin: center 70%;
-  will-change: transform;
-
-  view-timeline: --cards inline;
-  animation: blossom-stack-cards linear both;
-  animation-timeline: --cards;
-  animation-range: contain;
 }
 
 .blossom-cards .zui-card {
@@ -251,10 +242,29 @@ Each card is a ZUI [Card](/components/card), re-coloured through its
   block-size: 100%;
   color: var(--color-background);
   font-size: var(--step-3);
+}
 
-  animation: blossom-rotate-cards linear both;
-  animation-timeline: --cards;
-  animation-range: contain -50% contain 150%;
+/* Without scroll-driven animations the cards stay a plain scroll-snap row. */
+@supports (animation-timeline: view()) {
+  .blossom-cards > * {
+    position: sticky;
+    /* Must exceed the carousel's padding-inline, or Safari miscomputes the contain range. */
+    left: calc(var(--card-width) * -1 - 1px);
+    right: calc(var(--card-width) * -1 - 1px);
+    transform-origin: center 70%;
+    will-change: transform;
+
+    view-timeline: --cards inline;
+    animation: blossom-stack-cards linear both;
+    animation-timeline: --cards;
+    animation-range: contain;
+  }
+
+  .blossom-cards .zui-card {
+    animation: blossom-rotate-cards linear both;
+    animation-timeline: --cards;
+    animation-range: contain -50% contain 150%;
+  }
 }
 
 .blossom-cards > :nth-child(even) .zui-card {
@@ -278,7 +288,8 @@ Each card is a ZUI [Card](/components/card), re-coloured through its
 ```
 
 > **Browser support.** This effect needs scroll-driven animations and
-> `sibling-index()`. In browsers without them, the cards fall back to a plain
+> `sibling-index()`. The sticky and animation rules sit inside an
+> `@supports (animation-timeline: view())` block. Other browsers get a plain
 > scroll-snap row.
 
 ## Web Components
