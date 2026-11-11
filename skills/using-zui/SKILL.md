@@ -342,6 +342,18 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 <Radio name="choice" value="a">Option A</Radio>
 ```
 
+### Switch
+
+**CSS class:** `zui-switch` — a checkbox drawn as an on/off toggle. Renders a `<label>` wrapping `<input type="checkbox" role="switch">`. Keep `role="switch"` in plain HTML (the wrappers add it). Resize with `--zui-switch-size`; recolour with `--zui-switch-accent`.
+
+```html
+<label class="zui-switch"><input type="checkbox" role="switch" name="notify" /> Notifications</label>
+```
+
+```tsx
+<Switch name="notify">Notifications</Switch>
+```
+
 ### Field
 
 Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.

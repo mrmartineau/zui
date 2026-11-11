@@ -1,0 +1,257 @@
+---
+layout: ../../layouts/Layout.astro
+title: Switch
+description: An on/off toggle built on a native checkbox with role="switch".
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+A switch is a [checkbox](/components/checkbox) drawn as a toggle. It is still a native `<input type="checkbox">`, so form submission, `:checked`, `:disabled` and keyboard use (Space) all work. The component adds `role="switch"`, so a screen reader says "on" or "off" instead of "checked".
+
+Use a switch for a setting that takes effect straight away, such as "Notifications". Use a [checkbox](/components/checkbox) when the user must submit a form to apply the choice.
+
+## Usage
+
+<Demo
+  html={`<label class="zui-switch">
+  <input type="checkbox" role="switch" checked />
+  Notifications
+</label>`}
+  react={`import { Switch } from '@mrmartineau/zui/react'
+
+<Switch defaultChecked>Notifications</Switch>`}
+  astro={`---
+import { Switch } from '@mrmartineau/zui/astro'
+---
+
+<Switch checked>Notifications</Switch>`}
+  solid={`import { Switch } from '@mrmartineau/zui/solid'
+
+<Switch checked>Notifications</Switch>`}
+  vue={`<template>
+  <Switch v-model="enabled">Notifications</Switch>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { Switch } from '@mrmartineau/zui/vue'
+
+const enabled = ref(true)
+</script>`}
+  svelte={`<script lang="ts">
+  import { Switch } from '@mrmartineau/zui/svelte'
+  let enabled = $state(true)
+</script>
+
+<Switch bind:checked={enabled}>Notifications</Switch>`}
+>
+  <label class="zui-switch">
+    <input type="checkbox" role="switch" checked />
+    Notifications
+  </label>
+</Demo>
+
+## In a form
+
+Wrap a switch in a `Field` like any other control. A switch with a description keeps the label short and puts the detail below.
+
+<Demo
+  html={`<div class="zui-field">
+  <label class="zui-switch">
+    <input type="checkbox" role="switch" name="marketing" aria-describedby="marketing-hint" />
+    Marketing emails
+  </label>
+  <p class="zui-field-description" id="marketing-hint">Product news, once a month.</p>
+</div>`}
+  react={`import { Field, FieldDescription, Switch } from '@mrmartineau/zui/react'
+
+<Field>
+  <Switch name="marketing" aria-describedby="marketing-hint">
+    Marketing emails
+  </Switch>
+  <FieldDescription id="marketing-hint">Product news, once a month.</FieldDescription>
+</Field>`}
+  astro={`---
+import { Field, FieldDescription, Switch } from '@mrmartineau/zui/astro'
+---
+
+<Field>
+  <Switch name="marketing" aria-describedby="marketing-hint">
+    Marketing emails
+  </Switch>
+  <FieldDescription id="marketing-hint">Product news, once a month.</FieldDescription>
+</Field>`}
+  solid={`import { Field, FieldDescription, Switch } from '@mrmartineau/zui/solid'
+
+<Field>
+  <Switch name="marketing" aria-describedby="marketing-hint">
+    Marketing emails
+  </Switch>
+  <FieldDescription id="marketing-hint">Product news, once a month.</FieldDescription>
+</Field>`}
+  vue={`<template>
+  <Field>
+    <Switch name="marketing" aria-describedby="marketing-hint">
+      Marketing emails
+    </Switch>
+    <FieldDescription id="marketing-hint">Product news, once a month.</FieldDescription>
+  </Field>
+</template>
+
+<script setup>
+import { Field, FieldDescription, Switch } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Field, FieldDescription, Switch } from '@mrmartineau/zui/svelte'
+</script>
+
+<Field>
+  <Switch name="marketing" aria-describedby="marketing-hint">
+    Marketing emails
+  </Switch>
+  <FieldDescription id="marketing-hint">Product news, once a month.</FieldDescription>
+</Field>`}
+>
+  <div class="zui-field">
+    <label class="zui-switch">
+      <input type="checkbox" role="switch" name="marketing" aria-describedby="marketing-hint" />
+      Marketing emails
+    </label>
+    <p class="zui-field-description" id="marketing-hint">Product news, once a month.</p>
+  </div>
+</Demo>
+
+## Disabled
+
+<Demo
+  html={`<label class="zui-switch">
+  <input type="checkbox" role="switch" disabled checked />
+  Disabled on
+</label>
+<label class="zui-switch">
+  <input type="checkbox" role="switch" disabled />
+  Disabled off
+</label>`}
+  react={`import { Switch } from '@mrmartineau/zui/react'
+
+<Switch disabled defaultChecked>Disabled on</Switch>
+<Switch disabled>Disabled off</Switch>`}
+  astro={`---
+import { Switch } from '@mrmartineau/zui/astro'
+---
+
+<Switch disabled checked>Disabled on</Switch>
+<Switch disabled>Disabled off</Switch>`}
+  solid={`import { Switch } from '@mrmartineau/zui/solid'
+
+<Switch disabled checked>Disabled on</Switch>
+<Switch disabled>Disabled off</Switch>`}
+  vue={`<template>
+  <Switch disabled checked>Disabled on</Switch>
+  <Switch disabled>Disabled off</Switch>
+</template>
+
+<script setup>
+import { Switch } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Switch } from '@mrmartineau/zui/svelte'
+</script>
+
+<Switch disabled checked>Disabled on</Switch>
+<Switch disabled>Disabled off</Switch>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <label class="zui-switch">
+      <input type="checkbox" role="switch" disabled checked />
+      Disabled on
+    </label>
+    <label class="zui-switch">
+      <input type="checkbox" role="switch" disabled />
+      Disabled off
+    </label>
+  </div>
+</Demo>
+
+## Size and colour
+
+Size scales with `--zui-switch-size`. Set it on the element or a wrapper.
+
+<Demo
+  html={`<label class="zui-switch" style="--zui-switch-size: 1.1em">
+  <input type="checkbox" role="switch" checked />
+  Small
+</label>
+<label class="zui-switch" style="--zui-switch-size: 2em; --zui-switch-accent: var(--color-success)">
+  <input type="checkbox" role="switch" checked />
+  Large and green
+</label>`}
+  react={`import { Switch } from '@mrmartineau/zui/react'
+
+<Switch defaultChecked style={{ '--zui-switch-size': '1.1em' }}>Small</Switch>
+<Switch defaultChecked style={{ '--zui-switch-size': '2em', '--zui-switch-accent': 'green' }}>
+  Large and green
+</Switch>`}
+  astro={`---
+import { Switch } from '@mrmartineau/zui/astro'
+---
+
+<Switch checked style="--zui-switch-size: 1.1em">Small</Switch>
+<Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: green">
+  Large and green
+</Switch>`}
+  solid={`import { Switch } from '@mrmartineau/zui/solid'
+
+<Switch checked style={{ '--zui-switch-size': '1.1em' }}>Small</Switch>
+<Switch checked style={{ '--zui-switch-size': '2em', '--zui-switch-accent': 'green' }}>
+  Large and green
+</Switch>`}
+  vue={`<template>
+  <Switch checked style="--zui-switch-size: 1.1em">Small</Switch>
+  <Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: green">
+    Large and green
+  </Switch>
+</template>
+
+<script setup>
+import { Switch } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Switch } from '@mrmartineau/zui/svelte'
+</script>
+
+<Switch checked style="--zui-switch-size: 1.1em">Small</Switch>
+<Switch checked style="--zui-switch-size: 2em; --zui-switch-accent: green">
+  Large and green
+</Switch>`}
+>
+  <div class="flex flex-wrap gap-sm">
+    <label class="zui-switch" style="--zui-switch-size: 1.1em">
+      <input type="checkbox" role="switch" checked />
+      Small
+    </label>
+    <label class="zui-switch" style="--zui-switch-size: 2em; --zui-switch-accent: green">
+      <input type="checkbox" role="switch" checked />
+      Large and green
+    </label>
+  </div>
+</Demo>
+
+## Accessibility
+
+- It is a native checkbox, so Space toggles it and it joins form submission.
+- `role="switch"` makes screen readers announce on/off. The wrappers add it for you. In plain HTML, add it yourself.
+- Write the label as the setting, not the action: "Notifications", not "Turn on notifications". The state is announced separately.
+- In forced-colours mode (Windows High Contrast) the track and thumb switch to system colours.
+
+## CSS custom properties
+
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties).
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-switch-size` | `1.5em` | Track height. Track width is 1.8 times this |
+| `--zui-switch-radius` | `var(--radius-full)` | Border radius of the track and thumb |
+| `--zui-switch-accent` | `var(--color-accent)` | Track colour when on |
+| `--zui-switch-track` | `oklch(from var(--color-text) l c h / 25%)` | Track colour when off |
+| `--zui-switch-thumb` | `var(--color-background)` | Thumb colour |
