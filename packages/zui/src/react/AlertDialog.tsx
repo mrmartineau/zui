@@ -41,7 +41,7 @@ export function AlertDialog({
     >
       <DialogHeader>
         <DialogTitle id={titleId}>{title}</DialogTitle>
-        {description && (
+        {!!description && (
           <DialogDescription id={descriptionId}>
             {description}
           </DialogDescription>

@@ -4,17 +4,21 @@
    * It is a `zui-dialog` with role="alertdialog". Add this class to it.
    */
   .zui-dialog.zui-alert-dialog {
-    --_dialog-max-width: var(--zui-alert-dialog-max-width, 26rem);
+    --_dialog-max-width: var(
+      --zui-alert-dialog-max-width,
+      var(--zui-dialog-max-width, 26rem)
+    );
   }
 
   .zui-alert-dialog .zui-dialog-footer {
     flex-wrap: wrap;
   }
 
-  /* Narrow screens: full-width buttons, the main action on top */
+  /* Narrow screens: full-width buttons, stacked in the same order as the DOM
+     and the tab order (Cancel first), so focus never jumps upward */
   @media (max-width: 30rem) {
     .zui-alert-dialog .zui-dialog-footer {
-      flex-direction: column-reverse;
+      flex-direction: column;
       align-items: stretch;
     }
   }

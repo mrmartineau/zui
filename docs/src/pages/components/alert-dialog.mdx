@@ -215,7 +215,7 @@ In plain HTML, give the `<dialog>` all of these: `role="alertdialog"`, `aria-lab
 | Esc | Closes it | Closes it. Treat Esc as Cancel |
 | Initial focus | First focusable element | First focusable element. Put Cancel first so it gets focus |
 | Close button (X) | Optional | None. The user must pick an answer |
-| Title and description | Optional | Required. They are the accessible name and description |
+| Title and description | Optional | Title is required: it is the accessible name. Description is optional but recommended |
 | Position and size | Several | Centred, one width |
 
 ## Dismissal
@@ -250,7 +250,9 @@ dialog.addEventListener('close', () => {
 | `onClose` | `() => void` | — | Called when the dialog closes (`onclose` in Svelte, `@close` in Vue) |
 | `id` | `string` | generated | Required in Astro, so you can open it. Title and description ids are `{id}-title` and `{id}-description` |
 | `shape` | `default \| hard \| squircle` | `default` | Corner shape, as on Dialog |
-| `closedby` | `closerequest \| none \| any` | `closerequest` | How the user can dismiss it |
+| `closedby` | `closerequest \| none \| any` | `closerequest` | How the user can dismiss it. `any` lets a click on the backdrop close it, which an alert dialog should not allow |
+
+The Svelte component needs Svelte 5.20 or newer, because it uses `$props.id()` for the generated ids.
 
 ## CSS custom properties
 
@@ -258,4 +260,4 @@ Set these on `:root`, on a wrapper, or on the element. See [Component custom pro
 
 | Property | Default | Description |
 |---|---|---|
-| `--zui-alert-dialog-max-width` | `26rem` | Maximum width |
+| `--zui-alert-dialog-max-width` | `var(--zui-dialog-max-width, 26rem)` | Maximum width |
