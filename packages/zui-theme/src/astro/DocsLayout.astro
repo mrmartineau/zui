@@ -62,7 +62,7 @@ const {
   .site-sidebar {
     position: sticky;
     top: var(--site-header-height);
-    height: 100dvh;
+    height: calc(100dvh - var(--site-header-height));
     overflow-y: auto;
     border-right: 1px solid var(--color-border);
     padding: 0 var(--space-xs) var(--space-sm);
