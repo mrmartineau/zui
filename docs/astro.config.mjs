@@ -13,7 +13,7 @@ import searchConfig from './search.config.ts'
 // The stats page lists only these pages. Anyone can post a made-up path to
 // the reactions API, so unknown paths stay off the public dashboard.
 // Every .mdx page has a `title:`. Index pages share titles like "Overview",
-// so they take their folder name instead.
+// so they get their folder name in front: "Components: Overview".
 const pagesDir = resolve(import.meta.dirname, 'src/pages')
 const reactionPages = [
   { title: 'Changelog', url: '/changelog' },
@@ -26,9 +26,10 @@ const reactionPages = [
       )?.[1]
       return {
         title: folder
-          ? `${folder[0].toUpperCase()}${folder.slice(1)} overview`
+          ? `${folder[0].toUpperCase()}${folder.slice(1)}: ${title}`
           : title,
-        url: `/${file.replace(/\.mdx$/, '').replace(/\/?index$/, '')}`,
+        // `index` must be a whole path segment, or `tokens/z-index` loses its tail
+        url: `/${file.replace(/\.mdx$/, '').replace(/(?:^|\/)index$/, '')}`,
       }
     }),
 ]
