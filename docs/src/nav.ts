@@ -20,4 +20,7 @@ export const sidebarSections = buildSidebarSections(pages, {
   ],
 })
 
-export const footerSections = buildFooterSections(indexPages)
+export const footerSections = [
+  ...buildFooterSections(indexPages),
+  { href: '/stats', label: 'Stats', sectionOrder: Number.POSITIVE_INFINITY },
+]

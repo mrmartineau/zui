@@ -6,9 +6,15 @@
   },
   "compatibility_date": "2026-01-20",
   "compatibility_flags": ["global_fetch_strictly_public"],
-  // No database_id: `wrangler deploy` creates the D1 database on first deploy.
   "d1_databases": [
-    { "binding": "SEARCH_DB", "database_name": "zui-docs-search" }
+    // No database_id: `wrangler deploy` creates the D1 database on first deploy.
+    { "binding": "SEARCH_DB", "database_name": "zui-docs-search" },
+    {
+      "binding": "REACTIONS_DB",
+      "database_id": "f6e91a67-6a78-48f5-8459-c3ae707ec12e",
+      "database_name": "zui-docs",
+      "migrations_dir": "node_modules/astro-d1-reactions/migrations"
+    }
   ],
   "main": "@astrojs/cloudflare/entrypoints/server",
   "name": "zui",

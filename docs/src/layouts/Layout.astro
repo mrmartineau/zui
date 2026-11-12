@@ -1,5 +1,6 @@
 ---
 import { DocsLayout } from '@mrmartineau/zui-theme/astro'
+import { Reactions } from 'astro-d1-reactions/components'
 import Search from '../components/Search.tsx'
 import SiteTheme from '../components/SiteTheme.astro'
 import SiteThemeMenu from '../components/SiteThemeMenu.astro'
@@ -35,6 +36,7 @@ const currentPath = Astro.url.pathname
   <SiteThemeMenu slot="theme-menu" />
   <slot />
   <Fragment slot="body-end">
+    <Reactions />
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88182718a8c6437783661af812d8c2fc"}'></script>
   </Fragment>
 </DocsLayout>

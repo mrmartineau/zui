@@ -50,6 +50,9 @@ importers:
       astro:
         specifier: ^7.1.3
         version: 7.1.3(@azure/identity@4.13.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(rollup@4.59.0)(tsx@4.21.0)
+      astro-d1-reactions:
+        specifier: ^2.0.1
+        version: 2.0.1(astro@7.1.3(@azure/identity@4.13.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(rollup@4.59.0)(tsx@4.21.0))
       astro-d1-search:
         specifier: ^2.0.0
         version: 2.0.0(astro@7.1.3(@azure/identity@4.13.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(rollup@4.59.0)(tsx@4.21.0))
@@ -2735,6 +2738,12 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
+
+  astro-d1-reactions@2.0.1:
+    resolution: {integrity: sha512-9KfoDhzJZL9jKZOLVISXvqR07GCrFfh3q8HckJQcg2XpUzsvHqxmI1UMmdSx5tq9Tx04iPRWXSxOVaz3l0tvNA==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      astro: ^6.0.0 || ^7.0.0
 
   astro-d1-search@2.0.0:
     resolution: {integrity: sha512-dsWl1Td50w0J1NsZOKgZOan1IuQrOL3oznoWJHV1jNqEJEtkye8QJii1aMNHApBGjvbNY54hXsYaLMzUoNF7XA==}
@@ -8908,6 +8917,10 @@ snapshots:
   astral-regex@2.0.0: {}
 
   astring@1.9.0: {}
+
+  astro-d1-reactions@2.0.1(astro@7.1.3(@azure/identity@4.13.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(rollup@4.59.0)(tsx@4.21.0)):
+    dependencies:
+      astro: 7.1.3(@azure/identity@4.13.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(rollup@4.59.0)(tsx@4.21.0)
 
   astro-d1-search@2.0.0(astro@7.1.3(@azure/identity@4.13.1)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@26.0.0)(rollup@4.59.0)(tsx@4.21.0)):
     dependencies:
