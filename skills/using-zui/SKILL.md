@@ -461,6 +461,27 @@ Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in back
 </Dialog>
 ```
 
+### Alert Dialog
+
+**CSS class:** `zui-alert-dialog`, added to a `zui-dialog` that has `role="alertdialog"`. Use it for a confirm-or-cancel question that must be answered. For anything else use Dialog. It differs from Dialog: no click-outside dismiss (`closedby="closerequest"`), no close button, one centred width, and the title is required while the description is optional (but recommended). In plain HTML, set `aria-labelledby` and `aria-describedby` yourself. **Put the Cancel button first**, so it gets the initial focus. Width knob: `--zui-alert-dialog-max-width`.
+
+```tsx
+// React / Solid — `title` and `description` are props; children go below the header
+<AlertDialog open={isOpen} onClose={() => setIsOpen(false)} title="Delete this project?" description="You cannot undo this.">
+  <DialogFooter>
+    <Button variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button color="destructive" onClick={remove}>Delete project</Button>
+  </DialogFooter>
+</AlertDialog>
+```
+
+```astro
+<!-- Astro — requires `id`; open with document.getElementById('x').showModal() -->
+<AlertDialog id="x" title="Delete this project?" description="You cannot undo this.">
+  <DialogFooter>...</DialogFooter>
+</AlertDialog>
+```
+
 ### Tooltip
 
 **Shape prop:** `default`, `hard`, `soft`, `squircle` on the root → `zui-tooltip-shape-{name}`. Radius var: `--zui-tooltip-radius`.

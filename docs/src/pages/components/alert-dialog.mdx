@@ -1,0 +1,263 @@
+---
+layout: ../../layouts/Layout.astro
+title: Alert Dialog
+description: A modal that asks the user to confirm or cancel before something risky happens. It is announced at once and cannot be dismissed by a click outside.
+---
+
+import { Demo } from '@mrmartineau/zui-theme/astro'
+
+An alert dialog interrupts the user to confirm an action, such as "Delete this project?". It is a [Dialog](/components/dialog) with `role="alertdialog"` and different rules for dismissal, focus and labelling.
+
+Use it only when the user must answer before they carry on. For a form, a picker or anything the user can safely ignore, use a [Dialog](/components/dialog).
+
+## Usage
+
+Give it a short `title` and a `description` that says what happens next. Put a `DialogFooter` with the buttons inside. **Put Cancel first.** A modal dialog focuses its first focusable element when it opens, so the safe choice gets focus.
+
+<Demo
+  html={`<button class="zui-button zui-button-color-destructive" onclick="document.getElementById('alert-dialog-demo').showModal()">
+  Delete project
+</button>
+
+<dialog
+  id="alert-dialog-demo"
+  class="zui-dialog zui-alert-dialog"
+  role="alertdialog"
+  closedby="closerequest"
+  aria-labelledby="alert-dialog-demo-title"
+  aria-describedby="alert-dialog-demo-description"
+>
+  <div class="zui-dialog-header">
+    <h2 class="zui-dialog-title" id="alert-dialog-demo-title">Delete this project?</h2>
+    <p class="zui-dialog-description" id="alert-dialog-demo-description">
+      This deletes the project and all its files. You cannot undo this.
+    </p>
+  </div>
+  <div class="zui-dialog-footer">
+    <button class="zui-button zui-button-variant-outline" onclick="this.closest('dialog').close('cancel')">Cancel</button>
+    <button class="zui-button zui-button-color-destructive" onclick="this.closest('dialog').close('delete')">Delete project</button>
+  </div>
+</dialog>`}
+  react={`import { useState } from 'react'
+import { AlertDialog, DialogFooter, Button } from '@mrmartineau/zui/react'
+
+function DeleteProject() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button color="destructive" onClick={() => setOpen(true)}>
+        Delete project
+      </Button>
+      <AlertDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Delete this project?"
+        description="This deletes the project and all its files. You cannot undo this."
+      >
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button
+            color="destructive"
+            onClick={() => {
+              deleteProject()
+              setOpen(false)
+            }}
+          >
+            Delete project
+          </Button>
+        </DialogFooter>
+      </AlertDialog>
+    </>
+  )
+}`}
+  astro={`---
+import { AlertDialog, DialogFooter, Button } from '@mrmartineau/zui/astro'
+---
+
+<Button color="destructive" onclick="document.getElementById('delete-project').showModal()">
+  Delete project
+</Button>
+
+<AlertDialog
+  id="delete-project"
+  title="Delete this project?"
+  description="This deletes the project and all its files. You cannot undo this."
+>
+  <DialogFooter>
+    <Button variant="outline" onclick="this.closest('dialog').close('cancel')">Cancel</Button>
+    <Button color="destructive" onclick="this.closest('dialog').close('delete')">
+      Delete project
+    </Button>
+  </DialogFooter>
+</AlertDialog>`}
+  solid={`import { createSignal } from 'solid-js'
+import { AlertDialog, DialogFooter, Button } from '@mrmartineau/zui/solid'
+
+function DeleteProject() {
+  const [open, setOpen] = createSignal(false)
+
+  return (
+    <>
+      <Button color="destructive" onClick={() => setOpen(true)}>
+        Delete project
+      </Button>
+      <AlertDialog
+        open={open()}
+        onClose={() => setOpen(false)}
+        title="Delete this project?"
+        description="This deletes the project and all its files. You cannot undo this."
+      >
+        <DialogFooter>
+          <Button variant="outline" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button
+            color="destructive"
+            onClick={() => {
+              deleteProject()
+              setOpen(false)
+            }}
+          >
+            Delete project
+          </Button>
+        </DialogFooter>
+      </AlertDialog>
+    </>
+  )
+}`}
+  vue={`<template>
+  <Button color="destructive" @click="open = true">Delete project</Button>
+
+  <AlertDialog
+    :open="open"
+    title="Delete this project?"
+    description="This deletes the project and all its files. You cannot undo this."
+    @close="open = false"
+  >
+    <DialogFooter>
+      <Button variant="outline" @click="open = false">Cancel</Button>
+      <Button color="destructive" @click="remove">Delete project</Button>
+    </DialogFooter>
+  </AlertDialog>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { AlertDialog, DialogFooter, Button } from '@mrmartineau/zui/vue'
+
+const open = ref(false)
+function remove() {
+  deleteProject()
+  open.value = false
+}
+</script>`}
+  svelte={`<script lang="ts">
+  import { AlertDialog, DialogFooter, Button } from '@mrmartineau/zui/svelte'
+
+  let open = $state(false)
+
+  function remove() {
+    deleteProject()
+    open = false
+  }
+</script>
+
+<Button color="destructive" onclick={() => (open = true)}>Delete project</Button>
+
+<AlertDialog
+  {open}
+  onclose={() => (open = false)}
+  title="Delete this project?"
+  description="This deletes the project and all its files. You cannot undo this."
+>
+  <DialogFooter>
+    <Button variant="outline" onclick={() => (open = false)}>Cancel</Button>
+    <Button color="destructive" onclick={remove}>Delete project</Button>
+  </DialogFooter>
+</AlertDialog>`}
+>
+  <button class="zui-button zui-button-color-destructive" onclick="document.getElementById('alert-dialog-demo').showModal()">
+    Delete project
+  </button>
+
+  <dialog
+    id="alert-dialog-demo"
+    class="zui-dialog zui-alert-dialog"
+    role="alertdialog"
+    closedby="closerequest"
+    aria-labelledby="alert-dialog-demo-title"
+    aria-describedby="alert-dialog-demo-description"
+  >
+    <div class="zui-dialog-header">
+      <h2 class="zui-dialog-title" id="alert-dialog-demo-title">Delete this project?</h2>
+      <p class="zui-dialog-description" id="alert-dialog-demo-description">
+        This deletes the project and all its files. You cannot undo this.
+      </p>
+    </div>
+    <div class="zui-dialog-footer">
+      <button class="zui-button zui-button-variant-outline" onclick="this.closest('dialog').close('cancel')">Cancel</button>
+      <button class="zui-button zui-button-color-destructive" onclick="this.closest('dialog').close('delete')">Delete project</button>
+    </div>
+  </dialog>
+</Demo>
+
+In plain HTML, give the `<dialog>` all of these: `role="alertdialog"`, `aria-labelledby` pointing at the title, and `aria-describedby` pointing at the description. The wrappers do this for you.
+
+## How it differs from Dialog
+
+| | Dialog | Alert Dialog |
+|---|---|---|
+| Role | `dialog` | `alertdialog`. A screen reader reads the title and description as soon as it opens |
+| Click outside | Closes it | Does nothing |
+| Esc | Closes it | Closes it. Treat Esc as Cancel |
+| Initial focus | First focusable element | First focusable element. Put Cancel first so it gets focus |
+| Close button (X) | Optional | None. The user must pick an answer |
+| Title and description | Optional | Title is required: it is the accessible name. Description is optional but recommended |
+| Position and size | Several | Centred, one width |
+
+## Dismissal
+
+`closedby` defaults to `"closerequest"`: Esc closes the dialog and a click on the backdrop does not. Browsers that do not support `closedby` already behave this way for modal dialogs. Set `closedby="none"` if Esc must not close it either. Then Cancel is the only way out, and you must give one.
+
+## Reacting to the answer
+
+The native `close` event fires for every way out. Read `dialog.returnValue` to see which button the user picked. In the plain HTML example above, Cancel closes with `'cancel'` and Delete with `'delete'`.
+
+```js
+dialog.addEventListener('close', () => {
+  if (dialog.returnValue === 'delete') deleteProject()
+})
+```
+
+## Accessibility
+
+- Write the title as a question or a short statement of the action: "Delete this project?".
+- Use the description to say what is lost or changed. Do not repeat the title.
+- Label buttons with the action ("Delete project"), not "OK" or "Yes".
+- Use `color="destructive"` for a destructive action. Do not rely on colour alone: the label must say what happens.
+- Focus stays inside the dialog while it is open, and returns to the button that opened it when it closes. The native `<dialog>` does both.
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `title` | `string` | — | Required. Names the dialog |
+| `description` | `string` | — | Says what happens next |
+| `open` | `boolean` | `false` | Opens the dialog. Not used in Astro: call `showModal()` |
+| `onClose` | `() => void` | — | Called when the dialog closes (`onclose` in Svelte, `@close` in Vue) |
+| `id` | `string` | generated | Required in Astro, so you can open it. Title and description ids are `{id}-title` and `{id}-description` |
+| `shape` | `default \| hard \| squircle` | `default` | Corner shape, as on Dialog |
+| `closedby` | `closerequest \| none \| any` | `closerequest` | How the user can dismiss it. `any` lets a click on the backdrop close it, which an alert dialog should not allow |
+
+The Svelte component needs Svelte 5.20 or newer, because it uses `$props.id()` for the generated ids.
+
+## CSS custom properties
+
+Set these on `:root`, on a wrapper, or on the element. See [Component custom properties](/guides/theming#component-custom-properties). All the [Dialog](/components/dialog#css-custom-properties) properties work too.
+
+| Property | Default | Description |
+|---|---|---|
+| `--zui-alert-dialog-max-width` | `var(--zui-dialog-max-width, 26rem)` | Maximum width |
