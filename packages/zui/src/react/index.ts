@@ -29,6 +29,7 @@ export { menuVariants } from '../shared/menuVariants'
 export { numberFieldVariants } from '../shared/numberFieldVariants'
 export { popoverVariants } from '../shared/popoverVariants'
 export { selectVariants } from '../shared/selectVariants'
+export { skeletonVariants } from '../shared/skeletonVariants'
 export {
   tabsContentVariants,
   tabsListVariants,
@@ -121,6 +122,8 @@ export { Pre, type PreProps } from './Pre'
 export { Prose, type ProseProps } from './Prose'
 export { Radio, type RadioProps } from './Radio'
 export { Select, type SelectProps } from './Select'
+export { Skeleton, type SkeletonProps } from './Skeleton'
+export { Switch, type SwitchProps } from './Switch'
 export { Table, type TableProps } from './Table'
 export { TableBody, type TableBodyProps } from './TableBody'
 export { TableCaption, type TableCaptionProps } from './TableCaption'
