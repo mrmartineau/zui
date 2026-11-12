@@ -48,6 +48,9 @@
       "style": "./src/css/integrations/ramka.css",
       "default": "./src/css/integrations/ramka.css"
     },
+    "./dropzone": {
+      "import": "./src/shared/dropzone.ts"
+    },
     "./react": {
       "import": {
         "types": "./dist/react/index.d.mts",

@@ -368,6 +368,16 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 <Skeleton aspectRatio="16 / 9" />
 ```
 
+### Dropzone
+
+**CSS classes:** `zui-dropzone` (wrapper, with `data-zui-dropzone`), `zui-dropzone-box` (a `<label>`), `zui-dropzone-input`, `zui-dropzone-icon`, `zui-dropzone-title`, `zui-dropzone-hint`, `zui-dropzone-status` (`role="status"`). The real `<input type="file">` covers the box, so click, keyboard and drop all work. A drop skips the input's `accept`, so `initDropzones()` (from `@mrmartineau/zui/dropzone`; the wrappers call it) checks type and size, sets `data-dragging` while dragging, and fills the status line. Size limit in bytes: `data-max-size` on the wrapper, or `maxSize`. The dropzone only picks files; read `input.files` and upload them yourself. A server must still check every upload.
+
+```tsx
+<Dropzone multiple accept="image/*,.pdf" maxSize={5 * 1024 * 1024} hint="Images or PDF, up to 5 MB each" onChange={(e) => upload(e.target.files)} />
+```
+
+For a plain file picker, use `<input class="zui-input" type="file">`.
+
 ### Field
 
 Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.

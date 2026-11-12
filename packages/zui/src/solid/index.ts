@@ -20,6 +20,8 @@ export { buttonVariants } from '../shared/buttonVariants'
 export { cardVariants } from '../shared/cardVariants'
 export { collapsibleVariants } from '../shared/collapsibleVariants'
 export { dialogVariants } from '../shared/dialogVariants'
+export { checkFiles, formatBytes } from '../shared/dropzone'
+export { dropzoneVariants } from '../shared/dropzoneVariants'
 export { fieldLegendVariants } from '../shared/fieldLegendVariants'
 export { fieldVariants } from '../shared/fieldVariants'
 export { flexVariants } from '../shared/flexVariants'
@@ -92,6 +94,7 @@ export {
 export { DialogFooter, type DialogFooterProps } from './DialogFooter'
 export { DialogHeader, type DialogHeaderProps } from './DialogHeader'
 export { DialogTitle, type DialogTitleProps } from './DialogTitle'
+export { Dropzone, type DropzoneProps } from './Dropzone'
 export { Field, type FieldProps } from './Field'
 export {
   FieldDescription,
