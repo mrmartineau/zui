@@ -15,10 +15,12 @@ export const sidebarSections = buildSidebarSections(pages, {
       items: [
         { href: '/playground', label: 'Procedural playground' },
         { href: '/changelog', label: 'Changelog' },
-        { href: '/stats', label: 'Stats' },
       ],
     },
   ],
 })
 
-export const footerSections = buildFooterSections(indexPages)
+export const footerSections = [
+  ...buildFooterSections(indexPages),
+  { href: '/stats', label: 'Stats', sectionOrder: Number.POSITIVE_INFINITY },
+]
