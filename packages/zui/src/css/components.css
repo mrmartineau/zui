@@ -1,4 +1,5 @@
 @import "./components/accordion.css";
+@import "./components/alert-dialog.css";
 @import "./components/app-shell.css";
 @import "./components/avatar.css";
 @import "./components/badge.css";
@@ -19,6 +20,8 @@
 @import "./components/popover.css";
 @import "./components/radio.css";
 @import "./components/select.css";
+@import "./components/skeleton.css";
+@import "./components/switch.css";
 @import "./components/table.css";
 @import "./components/tabs.css";
 @import "./components/textarea.css";

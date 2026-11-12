@@ -1,0 +1,99 @@
+@layer zui.components {
+  /* Switch: a checkbox drawn as an on/off toggle */
+  .zui-switch {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    cursor: pointer;
+    font-size: var(--step-0);
+    line-height: var(--line-height-sm);
+    color: var(--color-text);
+  }
+
+  .zui-switch input[type="checkbox"] {
+    --_switch-size: var(--zui-switch-size, 1.5em);
+    --_switch-accent: var(--zui-switch-accent, var(--color-accent));
+    --_switch-track: var(
+      --zui-switch-track,
+      oklch(from var(--color-text) l c h / 25%)
+    );
+    --_switch-thumb: var(--zui-switch-thumb, var(--color-background));
+    --_switch-inset: 0.2em;
+
+    appearance: none;
+    position: relative;
+    flex-shrink: 0;
+    width: calc(var(--_switch-size) * 1.8);
+    height: var(--_switch-size);
+    margin: 0;
+    border-radius: var(--zui-switch-radius, var(--radius-full));
+    background-color: var(--_switch-track);
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+  }
+
+  /* Thumb */
+  .zui-switch input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    inset-block: var(--_switch-inset);
+    inset-inline-start: var(--_switch-inset);
+    aspect-ratio: 1;
+    border-radius: inherit;
+    background-color: var(--_switch-thumb);
+    box-shadow: var(--shadow-sm);
+    transition: inset-inline-start 200ms ease-in-out;
+  }
+
+  .zui-switch input[type="checkbox"]:checked {
+    background-color: var(--_switch-accent);
+  }
+
+  /* Start edge when on: track width minus thumb width minus one inset.
+     Logical, so it flips for rtl however the direction is set. */
+  .zui-switch input[type="checkbox"]:checked::before {
+    inset-inline-start: calc(var(--_switch-size) * 0.8 + var(--_switch-inset));
+  }
+
+  .zui-switch input[type="checkbox"]:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  /* The label text is a text node, so style the label, not a sibling */
+  .zui-switch:has(input[type="checkbox"]:disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .zui-switch input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .zui-switch input[type="checkbox"],
+    .zui-switch input[type="checkbox"]::before {
+      transition: none;
+    }
+  }
+
+  /* Windows High Contrast: author colours are replaced, so use system ones */
+  @media (forced-colors: active) {
+    .zui-switch input[type="checkbox"] {
+      border: 1px solid ButtonText;
+    }
+
+    .zui-switch input[type="checkbox"]::before {
+      background-color: ButtonText;
+    }
+
+    .zui-switch input[type="checkbox"]:checked {
+      background-color: Highlight;
+    }
+
+    .zui-switch input[type="checkbox"]:checked::before {
+      background-color: HighlightText;
+    }
+  }
+}

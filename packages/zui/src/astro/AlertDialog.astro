@@ -1,0 +1,57 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import type { dialogVariants } from '../shared/dialogVariants'
+import Dialog from './Dialog.astro'
+import DialogDescription from './DialogDescription.astro'
+import DialogHeader from './DialogHeader.astro'
+import DialogTitle from './DialogTitle.astro'
+
+type DialogVariantProps = VariantProps<typeof dialogVariants>
+
+interface Props
+  extends Omit<HTMLAttributes<'dialog'>, 'role' | 'title'>,
+    Pick<DialogVariantProps, 'shape'> {
+  /** Open it with `document.getElementById(id).showModal()` */
+  id: string
+  /** Names the dialog for assistive tech. Keep it short, such as "Delete this project?" */
+  title: string
+  /** Says what happens next. Read out when the dialog opens */
+  description?: string
+  class?: string
+  /** Defaults to `"closerequest"`: Esc closes it, a click outside does not. */
+  closedby?: 'any' | 'closerequest' | 'none'
+}
+
+const {
+  id,
+  title,
+  description,
+  class: className,
+  shape,
+  closedby = 'closerequest',
+  ...props
+} = Astro.props
+const classes = ['zui-alert-dialog', className].filter(Boolean).join(' ')
+const titleId = `${id}-title`
+const descriptionId = `${id}-description`
+---
+
+<Dialog
+  id={id}
+  role="alertdialog"
+  aria-labelledby={titleId}
+  aria-describedby={description ? descriptionId : undefined}
+  class={classes}
+  shape={shape}
+  closedby={closedby}
+  {...props}
+>
+  <DialogHeader>
+    <DialogTitle id={titleId}>{title}</DialogTitle>
+    {description && (
+      <DialogDescription id={descriptionId}>{description}</DialogDescription>
+    )}
+  </DialogHeader>
+  <slot />
+</Dialog>
