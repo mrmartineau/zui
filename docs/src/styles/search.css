@@ -27,6 +27,13 @@
   border-radius: var(--radius-2xl);
 }
 
+/* Rows of the previous query while the next one loads. Selecting them does nothing.
+   The delay keeps quick answers from flickering. */
+[cmdk-item][data-stale] {
+  opacity: 0.6;
+  transition: opacity 100ms 250ms;
+}
+
 .search-result {
   display: flex;
   flex: 1;

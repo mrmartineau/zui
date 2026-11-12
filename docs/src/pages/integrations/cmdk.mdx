@@ -194,7 +194,8 @@ Style the overlay and positioned dialog alongside the parts above:
 - **`onSelect` per item.** Wire it to navigation, a [Sonner](/integrations/sonner)
   toast, or any action — it fires on click and on Enter.
 - **Live example.** The search button in this site's header is a cmdk dialog with
-  `shouldFilter={false}`. It sends each query to a D1 full-text index and shows the
+  `shouldFilter={false}`. Once you have typed two or more characters, it waits 150 ms
+  after the last key and sends the query to a D1 full-text index, then shows the
   hits. See `docs/src/components/Search.tsx`.
 - **Accessible by default.** cmdk manages roles, focus and `aria-selected`; the
   styling above only reacts to the state it already sets.

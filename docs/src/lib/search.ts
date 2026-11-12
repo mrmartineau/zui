@@ -8,6 +8,9 @@ export interface SearchResult {
   snippet: string | null
 }
 
+/** Same as `maxQueryLength` of /api/search: longer queries get a 400. */
+export const MAX_QUERY_LENGTH = 100
+
 export const typeLabels: Record<string, string> = {
   component: 'Component',
   guide: 'Guide',

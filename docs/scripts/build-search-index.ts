@@ -3,6 +3,7 @@ import {
   mkdtempSync,
   readdirSync,
   readFileSync,
+  rmSync,
   writeFileSync,
 } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -19,16 +20,20 @@ const COMPONENT_TAG = /<\/?[A-Z][\w.]*(?:[^>`]|`[^`]*`)*>/g
 // "Overview" and would link to /<section>/index (a 404).
 const copy = mkdtempSync(join(tmpdir(), 'zui-search-'))
 
-runCli({
-  ...searchConfig,
-  sources: searchConfig.sources.map(({ dir, ...source }) => {
-    const target = join(copy, basename(dir as string))
-    mkdirSync(target)
-    for (const file of readdirSync(dir as string)) {
-      if (!file.endsWith('.mdx') || file === 'index.mdx') continue
-      const text = readFileSync(join(dir as string, file), 'utf8')
-      writeFileSync(join(target, file), text.replace(COMPONENT_TAG, ''))
-    }
-    return { ...source, dir: target }
-  }),
-})
+try {
+  await runCli({
+    ...searchConfig,
+    sources: searchConfig.sources.map(({ dir, ...source }) => {
+      const target = join(copy, basename(dir as string))
+      mkdirSync(target)
+      for (const file of readdirSync(dir as string)) {
+        if (!file.endsWith('.mdx') || file === 'index.mdx') continue
+        const text = readFileSync(join(dir as string, file), 'utf8')
+        writeFileSync(join(target, file), text.replace(COMPONENT_TAG, ''))
+      }
+      return { ...source, dir: target }
+    }),
+  })
+} finally {
+  rmSync(copy, { force: true, recursive: true })
+}

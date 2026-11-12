@@ -6,12 +6,17 @@ import { Button, Input } from '@mrmartineau/zui/astro'
 import { resolveConfig, searchIndex } from 'astro-d1-search/core'
 import searchConfig from '../../search.config'
 import Layout from '../layouts/Layout.astro'
-import { rankResults, splitSnippet, toPath, typeLabels } from '../lib/search'
+import {
+  MAX_QUERY_LENGTH,
+  rankResults,
+  splitSnippet,
+  toPath,
+  typeLabels,
+} from '../lib/search'
 import '../styles/search.css'
 
 const PAGE_SIZE = 10
-// Same ceilings as the /api/search endpoint (maxQueryLength, maxOffset).
-const MAX_QUERY_LENGTH = 100
+// Same ceiling as the /api/search endpoint (maxOffset 200): MAX_PAGE * PAGE_SIZE rows.
 const MAX_PAGE = 20
 
 const params = Astro.url.searchParams
@@ -21,18 +26,23 @@ const page = Math.min(
   Math.max(1, Math.trunc(Number(params.get('page'))) || 1),
 )
 
-// Fetch one extra row to learn whether a next page exists: FTS5 has no cheap total.
+// Rank the whole bounded set, then cut it into pages. Ranking one page at a time would
+// leave a component whose name matches on a later page behind worse bm25 hits.
 // Pass the resolved config or the page silently uses the default ranking.
-const rows =
+const ranked =
   query.length >= 2
-    ? await searchIndex(
-        env.SEARCH_DB,
-        { limit: PAGE_SIZE + 1, offset: (page - 1) * PAGE_SIZE, query },
-        resolveConfig(searchConfig),
+    ? rankResults(
+        await searchIndex(
+          env.SEARCH_DB,
+          { limit: MAX_PAGE * PAGE_SIZE, query },
+          resolveConfig(searchConfig),
+        ),
+        query,
       )
     : []
-const results = rankResults(rows.slice(0, PAGE_SIZE), query)
-const hasNext = rows.length > PAGE_SIZE
+const results = ranked.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+// ranked never has more than MAX_PAGE * PAGE_SIZE rows, so this is false on the last page.
+const hasNext = ranked.length > page * PAGE_SIZE
 
 const pageHref = (n: number) =>
   `/search?q=${encodeURIComponent(query)}${n > 1 ? `&page=${n}` : ''}`
@@ -56,7 +66,7 @@ const pageHref = (n: number) =>
     query.length < 2 ? (
       <p>Type at least 2 characters to search.</p>
     ) : results.length === 0 ? (
-      <p>No results for “{query}”.</p>
+      <p>{page > 1 ? 'No more results' : 'No results'} for “{query}”.</p>
     ) : (
       <>
         <ol class="stack search-hits">
@@ -82,7 +92,7 @@ const pageHref = (n: number) =>
               <i class="ph ph-arrow-left"></i> Previous
             </Button>
           )}
-          {hasNext && page < MAX_PAGE && (
+          {hasNext && (
             <Button variant="outline" href={pageHref(page + 1)}>
               Next <i class="ph ph-arrow-right"></i>
             </Button>
