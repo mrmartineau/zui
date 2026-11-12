@@ -1,4 +1,5 @@
 @import "./components/accordion.css";
+@import "./components/alert-dialog.css";
 @import "./components/app-shell.css";
 @import "./components/avatar.css";
 @import "./components/badge.css";
@@ -8,6 +9,7 @@
 @import "./components/collapsible.css";
 @import "./components/dialog.css";
 @import "./components/drawer-slide.css";
+@import "./components/dropzone.css";
 @import "./components/field.css";
 @import "./components/input.css";
 @import "./components/password-input.css";
@@ -18,6 +20,8 @@
 @import "./components/popover.css";
 @import "./components/radio.css";
 @import "./components/select.css";
+@import "./components/skeleton.css";
+@import "./components/switch.css";
 @import "./components/table.css";
 @import "./components/tabs.css";
 @import "./components/textarea.css";

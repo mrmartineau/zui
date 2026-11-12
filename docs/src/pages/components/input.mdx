@@ -218,6 +218,39 @@ import { Input } from '@mrmartineau/zui/vue'
   <input class="zui-input" type="text" value="Cannot edit" disabled />
 </Demo>
 
+## File
+
+Use `type="file"` for a plain file picker. The "Choose file" button the browser draws takes the input's padding and border. For a larger drop area that also takes dragged files, use a [Dropzone](/components/dropzone).
+
+<Demo
+  html={`<input class="zui-input" type="file" accept="image/*" />`}
+  react={`import { Input } from '@mrmartineau/zui/react'
+
+<Input type="file" accept="image/*" />`}
+  astro={`---
+import { Input } from '@mrmartineau/zui/astro'
+---
+
+<Input type="file" accept="image/*" />`}
+  solid={`import { Input } from '@mrmartineau/zui/solid'
+
+<Input type="file" accept="image/*" />`}
+  vue={`<template>
+  <Input type="file" accept="image/*" />
+</template>
+
+<script setup>
+import { Input } from '@mrmartineau/zui/vue'
+</script>`}
+  svelte={`<script lang="ts">
+  import { Input } from '@mrmartineau/zui/svelte'
+</script>
+
+<Input type="file" accept="image/*" />`}
+>
+  <input class="zui-input" type="file" accept="image/*" />
+</Demo>
+
 ## Shape
 
 Use the `shape` prop to change the corners. It works the same as on [Button](/components/button#shape): `default` (rounded), `hard` (square), `soft` (pill) and `squircle`.

@@ -1,6 +1,7 @@
 ---
 import { Badge, Flex, Kbd } from '@mrmartineau/zui/astro'
 import { BaseLayout } from '@mrmartineau/zui-theme/astro'
+import Search from '../components/Search.tsx'
 import SiteTheme from '../components/SiteTheme.astro'
 import SiteThemeMenu from '../components/SiteThemeMenu.astro'
 import { footerSections, sidebarSections } from '../nav'
@@ -22,6 +23,7 @@ const description =
   <Fragment slot="head">
     <SiteTheme />
   </Fragment>
+  <Search slot="search" client:load />
   <SiteThemeMenu slot="theme-menu" />
   <div class="pg-page">
     <header class="pg-intro flow">

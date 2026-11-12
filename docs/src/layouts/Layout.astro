@@ -1,6 +1,7 @@
 ---
 import { DocsLayout } from '@mrmartineau/zui-theme/astro'
 import { Reactions } from 'astro-d1-reactions/components'
+import Search from '../components/Search.tsx'
 import SiteTheme from '../components/SiteTheme.astro'
 import SiteThemeMenu from '../components/SiteThemeMenu.astro'
 import { footerSections, sidebarSections } from '../nav'
@@ -31,6 +32,7 @@ const currentPath = Astro.url.pathname
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
     <SiteTheme />
   </Fragment>
+  <Search slot="search" client:load />
   <SiteThemeMenu slot="theme-menu" />
   <slot />
   <Fragment slot="body-end">

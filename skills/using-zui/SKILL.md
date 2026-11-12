@@ -342,9 +342,45 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 <Radio name="choice" value="a">Option A</Radio>
 ```
 
+### Switch
+
+**CSS class:** `zui-switch` — a checkbox drawn as an on/off toggle. Renders a `<label>` wrapping `<input type="checkbox" role="switch">`. Keep `role="switch"` in plain HTML (the wrappers add it). Resize with `--zui-switch-size`; recolour with `--zui-switch-accent` (on) and `--zui-switch-track` (off). Also `--zui-switch-thumb` and `--zui-switch-radius`.
+
+```html
+<label class="zui-switch"><input type="checkbox" role="switch" name="notify" /> Notifications</label>
+```
+
+```tsx
+<Switch name="notify">Notifications</Switch>
+```
+
+### Skeleton
+
+**CSS class:** `zui-skeleton` — a loading placeholder. It fills its container by default (full width; full height if the parent has a set height, else one line). Size it with `--zui-skeleton-width`, `--zui-skeleton-height`, `--zui-skeleton-size` or `--zui-skeleton-aspect-ratio` (set `--zui-skeleton-height: auto` with the ratio). Modifiers: `zui-skeleton-shape-{hard,circle,squircle}`, `zui-skeleton-animation-{wave,none}`. Always add `aria-hidden="true"`, and put `aria-busy="true"` on the loading region.
+
+```html
+<div class="zui-skeleton zui-skeleton-shape-circle" style="--zui-skeleton-size: 3rem" aria-hidden="true"></div>
+```
+
+```tsx
+<Skeleton shape="circle" size="3rem" />
+<Skeleton width="40%" height={12} />
+<Skeleton aspectRatio="16 / 9" />
+```
+
+### Dropzone
+
+**CSS classes:** `zui-dropzone` (wrapper, with `data-zui-dropzone`), `zui-dropzone-box` (a `<label>`), `zui-dropzone-input`, `zui-dropzone-icon`, `zui-dropzone-title`, `zui-dropzone-hint`, `zui-dropzone-status` (`role="status"`). The real `<input type="file">` covers the box, so click, keyboard and drop all work. A drop skips the input's `accept`, so `initDropzones()` (from `@mrmartineau/zui/dropzone`; the wrappers call it) checks type and size, sets `data-dragging` while dragging, and fills the status line. Size limit in bytes: `data-max-size` on the wrapper, or `maxSize`. The dropzone only picks files; read `input.files` and upload them yourself. A server must still check every upload.
+
+```tsx
+<Dropzone multiple accept="image/*,.pdf" maxSize={5 * 1024 * 1024} hint="Images or PDF, up to 5 MB each" onChange={(e) => upload(e.target.files)} />
+```
+
+For a plain file picker, use `<input class="zui-input" type="file">`.
+
 ### Field
 
-Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.
+Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.
 
 | Component | CSS class | Element | Purpose |
 |---|---|---|---|
@@ -433,6 +469,27 @@ Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in back
     <button class="zui-button">Confirm</button>
   </DialogFooter>
 </Dialog>
+```
+
+### Alert Dialog
+
+**CSS class:** `zui-alert-dialog`, added to a `zui-dialog` that has `role="alertdialog"`. Use it for a confirm-or-cancel question that must be answered. For anything else use Dialog. It differs from Dialog: no click-outside dismiss (`closedby="closerequest"`), no close button, one centred width, and the title is required while the description is optional (but recommended). In plain HTML, set `aria-labelledby` and `aria-describedby` yourself. **Put the Cancel button first**, so it gets the initial focus. Width knob: `--zui-alert-dialog-max-width`.
+
+```tsx
+// React / Solid — `title` and `description` are props; children go below the header
+<AlertDialog open={isOpen} onClose={() => setIsOpen(false)} title="Delete this project?" description="You cannot undo this.">
+  <DialogFooter>
+    <Button variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button color="destructive" onClick={remove}>Delete project</Button>
+  </DialogFooter>
+</AlertDialog>
+```
+
+```astro
+<!-- Astro — requires `id`; open with document.getElementById('x').showModal() -->
+<AlertDialog id="x" title="Delete this project?" description="You cannot undo this.">
+  <DialogFooter>...</DialogFooter>
+</AlertDialog>
 ```
 
 ### Tooltip

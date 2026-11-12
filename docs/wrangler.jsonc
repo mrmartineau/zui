@@ -7,6 +7,8 @@
   "compatibility_date": "2026-01-20",
   "compatibility_flags": ["global_fetch_strictly_public"],
   "d1_databases": [
+    // No database_id: `wrangler deploy` creates the D1 database on first deploy.
+    { "binding": "SEARCH_DB", "database_name": "zui-docs-search" },
     {
       "binding": "REACTIONS_DB",
       "database_id": "f6e91a67-6a78-48f5-8459-c3ae707ec12e",

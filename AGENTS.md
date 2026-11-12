@@ -125,6 +125,17 @@ The Astro docs site at `docs/` is the living documentation for ZUI. **Whenever y
 - Use existing demo helper components (`ButtonRow`, `TokenGrid`, `ColorPalette`, etc.) — check `docs/src/components/` before creating new ones.
 - Shiki code highlighting uses `rose-pine-dawn` (light) and `rose-pine` (dark) themes.
 
+### Docs search
+
+The docs site has full-text search built on [astro-d1-search](https://github.com/mrmartineau/astro-d1-search) (Cloudflare D1, SQLite FTS5).
+
+- **Overlay**: `docs/src/components/Search.tsx` is a cmdk React island in the header `search` slot. It opens on a click or on `/`, and queries `/api/search` (injected by the integration).
+- **Row subheading**: the overlay shows each page's front matter `description`. `/api/search` does not return one, so the island loads `/search-descriptions.json` (built from the `.mdx` files by `docs/src/pages/search-descriptions.json.ts`) the first time it opens.
+- **Page**: `docs/src/pages/search.astro` is server-rendered (`prerender = false`) and calls `searchIndex()` directly.
+- **Ranking**: bm25 comes from the library. `rankResults()` in `docs/src/lib/search.ts` puts component pages whose title matches the query first. The overlay and the page both use it.
+- **Config**: `docs/search.config.ts` maps each `docs/src/pages/<section>` folder to a `type`. A new top-level docs section needs a new source there, and a label in `typeLabels`. Keep Node imports out of that file: the `/search` page bundles it into the Worker.
+- **Index**: it is built from the `.mdx` files, so it does not update on its own. Run `pnpm --filter docs run search:index` to fill the local D1 database after a content change. CI runs `search:push` after each deploy. `/api/search` answers are cached for 5 minutes.
+
 ### Reuse Over Duplication
 
 - Before creating new CSS, tokens, components, or demo helpers, check if an existing one can be reused or extended.

@@ -7,6 +7,8 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import { defineConfig } from 'astro/config'
 import reactions from 'astro-d1-reactions'
+import d1Search from 'astro-d1-search'
+import searchConfig from './search.config.ts'
 
 // The stats page lists only these pages. Anyone can post a made-up path to
 // the reactions API, so unknown paths stay off the public dashboard.
@@ -37,6 +39,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     react(),
+    d1Search(searchConfig),
     reactions({ database: 'zui-docs', pages: reactionPages }),
   ],
 
