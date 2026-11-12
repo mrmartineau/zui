@@ -1,0 +1,67 @@
+/**
+ * Docs search: the cmdk overlay (Search.tsx) and the result rows shared with
+ * the /search page. cmdk parts themselves are styled in cmdk-zui.css.
+ */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-9);
+  background: oklch(from var(--color-text) l c h / 40%);
+}
+
+[cmdk-dialog] {
+  position: fixed;
+  top: 15vh;
+  left: 50%;
+  z-index: var(--z-9);
+  width: min(640px, 92vw);
+  transform: translateX(-50%);
+}
+
+/* Rounder than the cmdk demo: big radius outside, concentric radius on the rows. */
+[cmdk-dialog] [cmdk-root] {
+  border-radius: var(--radius-3xl);
+}
+
+[cmdk-dialog] [cmdk-item] {
+  border-radius: var(--radius-2xl);
+}
+
+/* Rows of the previous query while the next one loads. Selecting them does nothing.
+   The delay keeps quick answers from flickering. */
+[cmdk-item][data-stale] {
+  opacity: 0.6;
+  transition: opacity 100ms 250ms;
+}
+
+.search-result {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.search-result-title {
+  font-weight: var(--font-weight-bold);
+}
+
+.search-result-description {
+  overflow: hidden;
+  font-size: var(--step--1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: oklch(from currentColor l c h / 70%);
+}
+
+.search-hit mark {
+  background: oklch(from var(--color-theme) l c h / 25%);
+  color: inherit;
+  border-radius: var(--radius-sm);
+}
+
+.search-status {
+  padding: var(--space-md);
+  text-align: center;
+  font-size: var(--step--1);
+  color: oklch(from var(--color-text) l c h / 60%);
+}

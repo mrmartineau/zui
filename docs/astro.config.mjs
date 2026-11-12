@@ -5,11 +5,13 @@ import cloudflare from '@astrojs/cloudflare'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import { defineConfig } from 'astro/config'
+import d1Search from 'astro-d1-search'
+import searchConfig from './search.config.ts'
 
 // https://astro.build/config
 export default defineConfig({
   adapter: cloudflare(),
-  integrations: [mdx(), react()],
+  integrations: [mdx(), react(), d1Search(searchConfig)],
 
   markdown: {
     shikiConfig: {

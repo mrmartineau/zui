@@ -6,6 +6,10 @@
   },
   "compatibility_date": "2026-01-20",
   "compatibility_flags": ["global_fetch_strictly_public"],
+  // No database_id: `wrangler deploy` creates the D1 database on first deploy.
+  "d1_databases": [
+    { "binding": "SEARCH_DB", "database_name": "zui-docs-search" }
+  ],
   "main": "@astrojs/cloudflare/entrypoints/server",
   "name": "zui",
   "observability": {

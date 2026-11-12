@@ -57,3 +57,10 @@ jobs:
           workingDirectory: docs
           packageManager: pnpm
           command: deploy
+      # After the deploy, so the first deploy has created the D1 database (docs/wrangler.jsonc).
+      # The API token needs Account > D1 > Edit on top of the deploy scope.
+      - name: Push search index to D1
+        run: pnpm --filter docs run search:push
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
