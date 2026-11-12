@@ -36,7 +36,7 @@ const {
     <aside class="site-sidebar" transition:animate="none">
       <Sidebar currentPath={currentPath} sections={sections} />
     </aside>
-    <main class="site-main docs-prose" transition:animate="fade" data-pagefind-body>
+    <main class="site-main docs-prose" transition:animate="fade" data-pagefind-body data-highlightable>
       {title || description ? (
         <div class="page-header">
           {title ? (<h1>{title}</h1>) : null}
