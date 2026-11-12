@@ -1,0 +1,38 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { VariantProps } from 'cva'
+import type { SkeletonSizeProps } from '../shared/skeletonStyle'
+import { skeletonStyleString, skeletonVars } from '../shared/skeletonStyle'
+import { skeletonVariants } from '../shared/skeletonVariants'
+
+type SkeletonVariantProps = VariantProps<typeof skeletonVariants>
+
+interface Props
+  extends HTMLAttributes<'div'>,
+    SkeletonVariantProps,
+    SkeletonSizeProps {
+  class?: string
+}
+
+const {
+  class: className,
+  shape,
+  animation,
+  width,
+  height,
+  size,
+  aspectRatio,
+  style,
+  ...props
+} = Astro.props
+const classes = skeletonVariants({ animation, class: className, shape })
+const sizeProps = { aspectRatio, height, size, width }
+const mergedStyle =
+  typeof style === 'string'
+    ? [skeletonStyleString(sizeProps), style].filter(Boolean).join('; ')
+    : { ...skeletonVars(sizeProps), ...style }
+---
+
+<!-- Astro writes repeated attributes in order, and a browser keeps the first.
+     So aria-hidden goes before the spread, or a caller could un-hide it. -->
+<div class={classes} style={mergedStyle} aria-hidden="true" {...props}></div>

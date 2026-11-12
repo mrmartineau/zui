@@ -354,6 +354,20 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 <Switch name="notify">Notifications</Switch>
 ```
 
+### Skeleton
+
+**CSS class:** `zui-skeleton` — a loading placeholder. It fills its container by default (full width; full height if the parent has a set height, else one line). Size it with `--zui-skeleton-width`, `--zui-skeleton-height`, `--zui-skeleton-size` or `--zui-skeleton-aspect-ratio` (set `--zui-skeleton-height: auto` with the ratio). Modifiers: `zui-skeleton-shape-{hard,circle,squircle}`, `zui-skeleton-animation-{wave,none}`. Always add `aria-hidden="true"`, and put `aria-busy="true"` on the loading region.
+
+```html
+<div class="zui-skeleton zui-skeleton-shape-circle" style="--zui-skeleton-size: 3rem" aria-hidden="true"></div>
+```
+
+```tsx
+<Skeleton shape="circle" size="3rem" />
+<Skeleton width="40%" height={12} />
+<Skeleton aspectRatio="16 / 9" />
+```
+
 ### Field
 
 Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.
