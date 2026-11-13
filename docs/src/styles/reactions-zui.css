@@ -16,9 +16,3 @@
   --rx-font: var(--font-body);
   --rx-radius: var(--radius-lg);
 }
-
-/* The package resets `button { color: inherit }`, which beats its own
-   `.reactions-seg { color: var(--rx-text) }`. Set the colour on the parent. */
-.reactions {
-  color: var(--rx-text);
-}
