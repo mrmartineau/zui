@@ -25,6 +25,11 @@ ZUI is a CSS-first UI library (`@mrmartineau/zui`) with optional React, Astro, S
 
 7. **Colour handling.** Use `light-dark()` for theme-aware colours. Use `oklch(from …)` relative colour syntax for transparency or tint variations — don't create new tokens for every shade.
 
+8. **Docs-site integrations.** A package that adds UI or a Cloudflare binding to the docs site (e.g. `astro-d1-reactions`, `astro-d1-search`) needs three checks before it counts as done:
+   - **Theme it with ZUI tokens** in `docs/src/styles/<lib>-zui.css`. Map the package's variables to `--color-*`, `--radius-*`, `--shadow-*`, `--font-*`. Keep the file unlayered if the package's CSS is unlayered. See `reactions-zui.css` and `sonner-zui.css`.
+   - **Check light and dark** in a browser. A default dark widget can look fine in dark mode and fail in light mode.
+   - **Test the live site after deploy.** Call the real API, and apply D1 migrations in `.github/workflows/deploy.yml`. A passing build does not prove the database has tables.
+
 ## Build & Dev
 
 ```sh

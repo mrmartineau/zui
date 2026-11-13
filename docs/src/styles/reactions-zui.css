@@ -1,0 +1,24 @@
+/**
+ * Theme the astro-d1-reactions pill and stats page with ZUI's tokens.
+ *
+ * The package ships a fixed dark pill. Its text takes the page's text colour, so
+ * a light scheme gave dark text on a dark pill. These tokens use `light-dark()`,
+ * so the pill follows ZUI's colour scheme. Keep this file unlayered: the
+ * package's own styles are unlayered, and layered CSS would lose to them.
+ */
+:root {
+  --rx-bg: var(--color-surface);
+  --rx-line: var(--color-border);
+  --rx-text: var(--color-muted);
+  --rx-text-bright: var(--color-text);
+  --rx-accent: var(--color-accent);
+  --rx-shadow: var(--shadow-lg);
+  --rx-font: var(--font-body);
+  --rx-radius: var(--radius-lg);
+}
+
+/* The package resets `button { color: inherit }`, which beats its own
+   `.reactions-seg { color: var(--rx-text) }`. Set the colour on the parent. */
+.reactions {
+  color: var(--rx-text);
+}
