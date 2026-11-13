@@ -1,10 +1,13 @@
 packages:
-  - 'docs'
-  - 'packages/*'
+  - "docs"
+  - "packages/*"
 
 allowBuilds:
-  '@vscode/vsce-sign': true
+  "@vscode/vsce-sign": true
   esbuild: true
   keytar: false
   sharp: false
   workerd: true
+
+minimumReleaseAgeExclude:
+  - astro-d1-reactions@2.0.2
