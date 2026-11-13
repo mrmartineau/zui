@@ -41,3 +41,10 @@ const currentPath = Astro.url.pathname
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88182718a8c6437783661af812d8c2fc"}'></script>
   </Fragment>
 </DocsLayout>
+
+<style is:global>
+  ::selection {
+    color: var(--color-background);
+    background-color: var(--color-text);
+  }
+</style>

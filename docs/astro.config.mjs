@@ -58,6 +58,7 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       exclude: ['@mrmartineau/zui/vue'],
+      include: ['react', 'react-dom', 'react-dom/server', 'cmdk'],
     },
     resolve: {
       // biome-ignore assist/source/useSortedKeys: Vite matches aliases as prefixes, so /css/ramka must come before /css
