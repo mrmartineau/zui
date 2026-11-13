@@ -16,8 +16,8 @@ The mechanism: read the background's OKLCH lightness with relative colour syntax
 /* packages/zui/src/css/components/button.css */
 .zui-button {
   --auto-threshold: 0.6;
-  --auto-light-text-l: 1;   /* white text  */
-  --auto-dark-text-l: 0.5;  /* dark text   */
+  --auto-light-text-l: 1; /* white text  */
+  --auto-dark-text-l: 0.5; /* dark text   */
 
   /* If bg lightness is below the threshold → 1 (white),
      above → clamped down to the dark value. The `* -infinity`
@@ -72,13 +72,17 @@ The angle for the post: **one base token, infinite derivations.** ZUI deliberate
 ```css
 :root {
   --color-background: light-dark(var(--color-mist-200), var(--color-mist-800));
-  --color-text:       light-dark(var(--color-mist-700), var(--color-mist-300));
-  --color-accent:     light-dark(var(--color-sky-600),  var(--color-sky-400));
+  --color-text: light-dark(var(--color-mist-700), var(--color-mist-300));
+  --color-accent: light-dark(var(--color-sky-600), var(--color-sky-400));
 }
 
 /* Opt a subtree into a fixed scheme: */
-:root.zui-dark  { color-scheme: dark; }
-:root.zui-light { color-scheme: light; }
+:root.zui-dark {
+  color-scheme: dark;
+}
+:root.zui-light {
+  color-scheme: light;
+}
 ```
 
 It composes with everything else too — e.g. a `light-dark()` wrapping two `oklch(from …)` calls so the derived shade flips direction in dark mode. (Source: `theme.css`, `core.css`.)
@@ -113,8 +117,7 @@ html {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color:
-    light-dark(
+  scrollbar-color: light-dark(
       oklch(from var(--color-theme) calc(l - 0.1) c h),
       oklch(from var(--color-theme) calc(l + 0.1) c h / 30%)
     )
@@ -136,18 +139,23 @@ The TypeScript layer (CVA) is a thin prop→classname map:
 // packages/zui/src/shared/buttonVariants.ts
 export const buttonVariants = cva({
   base: 'zui-button',
-  defaultVariants: { color: 'theme', size: 'md', variant: 'fill', shape: 'default' },
+  defaultVariants: {
+    color: 'theme',
+    size: 'md',
+    variant: 'fill',
+    shape: 'default',
+  },
   variants: {
     variant: {
-      fill:    'zui-button-variant-fill',
-      subtle:  'zui-button-variant-subtle',
+      fill: 'zui-button-variant-fill',
+      subtle: 'zui-button-variant-subtle',
       outline: 'zui-button-variant-outline',
-      ghost:   'zui-button-variant-ghost',
-      link:    'zui-button-variant-link',
+      ghost: 'zui-button-variant-ghost',
+      link: 'zui-button-variant-link',
     },
     color: {
-      theme:       'zui-button-color-theme',
-      accent:      'zui-button-color-accent',
+      theme: 'zui-button-color-theme',
+      accent: 'zui-button-color-accent',
       destructive: 'zui-button-color-destructive',
     },
     // size, shape, icon …
@@ -166,8 +174,12 @@ export const buttonVariants = cva({
 }
 
 /* Colour variant = set ONE accent; everything else cascades from it */
-.zui-button.zui-button-color-accent      { --zui-btn-accent: var(--color-accent); }
-.zui-button.zui-button-color-destructive { --zui-btn-accent: var(--color-error); }
+.zui-button.zui-button-color-accent {
+  --zui-btn-accent: var(--color-accent);
+}
+.zui-button.zui-button-color-destructive {
+  --zui-btn-accent: var(--color-error);
+}
 
 /* Style variant = recompose the same handful of variables */
 .zui-button.zui-button-variant-outline {
@@ -206,7 +218,9 @@ The whole library is partitioned into four ordered layers, declared once. Reset 
 
 ```css
 @layer zui.components {
-  .zui-button { /* … */ }
+  .zui-button {
+    /* … */
+  }
 }
 ```
 
@@ -224,16 +238,22 @@ Animating elements **into** existence (and out, including `display: none`) used 
   opacity: 0;
   translate: 0 4px;
   transition:
-    opacity   150ms var(--ease-out),
+    opacity 150ms var(--ease-out),
     translate 150ms var(--ease-out),
-    display   150ms var(--ease-out) allow-discrete,
-    overlay   150ms var(--ease-out) allow-discrete;
+    display 150ms var(--ease-out) allow-discrete,
+    overlay 150ms var(--ease-out) allow-discrete;
 
-  &:popover-open { opacity: 1; translate: 0 0; }
+  &:popover-open {
+    opacity: 1;
+    translate: 0 0;
+  }
 
   /* the entry-from state */
   @starting-style {
-    &:popover-open { opacity: 0; translate: 0 4px; }
+    &:popover-open {
+      opacity: 0;
+      translate: 0 4px;
+    }
   }
 }
 ```
@@ -247,9 +267,15 @@ This is the modern answer to "why do I need a library to fade a modal in and out
 Tooltips and popovers are built on native primitives: the `[popover]` attribute (top-layer, light-dismiss for free), `:popover-open` for state, `::backdrop` for the scrim, and **CSS anchor positioning** (`position-area`) to place the floating element relative to its trigger — no Popper.js, no JS positioning loop.
 
 ```css
-.zui-tooltip-content              { position-area: block-start center; }
-.zui-tooltip-placement-bottom     { position-area: block-end center; }
-.zui-tooltip-placement-left       { position-area: center inline-start; }
+.zui-tooltip-content {
+  position-area: block-start center;
+}
+.zui-tooltip-placement-bottom {
+  position-area: block-end center;
+}
+.zui-tooltip-placement-left {
+  position-area: center inline-start;
+}
 
 .zui-dialog::backdrop {
   background-color: oklch(0% 0 0 / 50%);
@@ -324,9 +350,19 @@ Spring/bounce motion without a physics library. The `linear()` easing function a
 ```css
 :root {
   --ease-spring: linear(
-    0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%,
-    0.849 31.5%, 0.937 38.1%, 0.991 45.7%, 1.006 50.1%,
-    1.015 55%, 1.017 63.9%, 1.001
+    0,
+    0.006,
+    0.025 2.8%,
+    0.101 6.1%,
+    0.539 18.9%,
+    0.721 25.3%,
+    0.849 31.5%,
+    0.937 38.1%,
+    0.991 45.7%,
+    1.006 50.1%,
+    1.015 55%,
+    1.017 63.9%,
+    1.001
   );
   /* plus a full set of cubic-bezier elastic/squish curves */
   --ease-elastic-out: cubic-bezier(0.5, 0.75, 0.75, 1.25);
@@ -342,8 +378,14 @@ Spring/bounce motion without a physics library. The `linear()` easing function a
 Headings get balanced line lengths; descriptions and errors avoid orphans — both one-liners that used to need JS (Balance Text et al.).
 
 ```css
-h1, h2, h3            { text-wrap: balance; }
-.zui-field-description { text-wrap: pretty; }
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+.zui-field-description {
+  text-wrap: pretty;
+}
 ```
 
 (Source: `prose.css`, `field.css`.)
@@ -355,7 +397,9 @@ h1, h2, h3            { text-wrap: balance; }
 Form field groups switch to a two-column grid based on the **container's** width, so the same component lays out correctly in a wide page or a narrow sidebar.
 
 ```css
-.zui-field-group { container-type: inline-size; }
+.zui-field-group {
+  container-type: inline-size;
+}
 
 @container (min-width: 32rem) {
   .zui-field-responsive {
@@ -384,7 +428,7 @@ Form field groups switch to a two-column grid based on the **container's** width
 
 ### Suggested narrative arc for the article
 
-1. Open with the **auto-contrast button** (#1) — it's the "wait, CSS can do *that*?" hook.
+1. Open with the **auto-contrast button** (#1) — it's the "wait, CSS can do _that_?" hook.
 2. Zoom out to the **colour engine**: OKLCH + relative syntax (#2), `light-dark()` (#3), `color-mix()` (#4). One base token → everything derived.
 3. **Variants without the bloat** (#6) — CVA is just sugar over custom properties.
 4. **Modern interaction layer** as a cluster: scrollbars (#5), popover/anchor/`::backdrop` (#9), `@starting-style` open/close (#8), `field-sizing` + `::details-content` (#10, #11).

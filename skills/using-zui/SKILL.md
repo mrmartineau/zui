@@ -1,4 +1,5 @@
 ---
+
 name: using-zui
 description: "Build interfaces with the ZUI CSS-first UI library. Use when generating HTML, React, Astro, Solid, Svelte, or Vue markup that should use ZUI components, design tokens, and utility classes. Also covers integrations with headless or themeable libraries such as a Ramka photo lightbox. Triggers on: ZUI, zui-button, zui-card, zui- prefix, @mrmartineau/zui, zui-ramka, lightbox, photo gallery."
 user-invocable: true
@@ -52,7 +53,8 @@ After removing the redundant resets, **don't re-add hard-coded values to overrid
 
 ```css
 :root {
-  --font-body: 'Inter', var(--font-stack-sans); /* override ZUI's body font token */
+  --font-body:
+    "Inter", var(--font-stack-sans); /* override ZUI's body font token */
   --color-theme: oklch(0.6 0.2 250); /* override the brand colour token */
 }
 ```
@@ -142,17 +144,17 @@ Always use tokens via CSS custom properties — never hard-code raw values.
 
 ### Semantic Colours (from `theme.css`)
 
-| Token | Purpose |
-|---|---|
-| `--color-theme` | Primary brand colour |
-| `--color-accent` | Secondary accent |
-| `--color-background` | Page background |
-| `--color-surface` | Card/panel backgrounds |
-| `--color-border` | Default border colour |
-| `--color-text` | Body text |
-| `--color-success` | Success states |
-| `--color-error` | Error/destructive states |
-| `--color-warning` | Warning states |
+| Token                | Purpose                  |
+| -------------------- | ------------------------ |
+| `--color-theme`      | Primary brand colour     |
+| `--color-accent`     | Secondary accent         |
+| `--color-background` | Page background          |
+| `--color-surface`    | Card/panel backgrounds   |
+| `--color-border`     | Default border colour    |
+| `--color-text`       | Body text                |
+| `--color-success`    | Success states           |
+| `--color-error`      | Error/destructive states |
+| `--color-warning`    | Warning states           |
 
 Use `light-dark()` for values that differ between themes. Derive transparency/tints with `oklch(from … )` relative colour syntax.
 
@@ -204,13 +206,13 @@ All component classes use the `zui-` prefix. Each component exists as a CSS clas
 
 **CSS classes:** `zui-button` (base)
 
-| Variant axis | Options | Class pattern |
-|---|---|---|
-| variant | `fill` (default), `subtle`, `outline`, `ghost`, `link` | `zui-button-variant-{name}` |
-| color | `theme` (default), `accent`, `destructive` | `zui-button-color-{name}` |
-| size | `xs`, `sm`, `md` (default), `lg`, `xl` | `zui-button-size-{name}` |
-| shape | `default`, `hard`, `soft`, `squircle` | `zui-button-shape-{name}` |
-| icon | boolean — square 1:1 for icon-only buttons | `zui-button-icon` |
+| Variant axis | Options                                                | Class pattern               |
+| ------------ | ------------------------------------------------------ | --------------------------- |
+| variant      | `fill` (default), `subtle`, `outline`, `ghost`, `link` | `zui-button-variant-{name}` |
+| color        | `theme` (default), `accent`, `destructive`             | `zui-button-color-{name}`   |
+| size         | `xs`, `sm`, `md` (default), `lg`, `xl`                 | `zui-button-size-{name}`    |
+| shape        | `default`, `hard`, `soft`, `squircle`                  | `zui-button-shape-{name}`   |
+| icon         | boolean — square 1:1 for icon-only buttons             | `zui-button-icon`           |
 
 ```html
 <button class="zui-button">Default</button>
@@ -230,12 +232,12 @@ All component classes use the `zui-` prefix. Each component exists as a CSS clas
 
 **CSS classes:** `zui-badge` (base)
 
-| Variant axis | Options | Class pattern |
-|---|---|---|
-| variant | `subtle` (default), `fill`, `outline` | `zui-badge-variant-{name}` |
-| color | `default`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`, `gray` | `zui-badge-color-{name}` |
-| shape | `default`, `hard`, `soft` (same as default — badges are pills), `squircle` | `zui-badge-shape-{name}` |
-| size | `sm`, `md` (default), `lg` | `zui-badge-size-{name}` |
+| Variant axis | Options                                                                                                                                                                   | Class pattern              |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| variant      | `subtle` (default), `fill`, `outline`                                                                                                                                     | `zui-badge-variant-{name}` |
+| color        | `default`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`, `gray` | `zui-badge-color-{name}`   |
+| shape        | `default`, `hard`, `soft` (same as default — badges are pills), `squircle`                                                                                                | `zui-badge-shape-{name}`   |
+| size         | `sm`, `md` (default), `lg`                                                                                                                                                | `zui-badge-size-{name}`    |
 
 ```html
 <span class="zui-badge">Default</span>
@@ -269,7 +271,7 @@ Variants: `zui-card-elevated` (shadow, no border), `zui-card-interactive` (hover
 ```
 
 ```tsx
-<Card>
+;<Card>
   <CardHeader>
     <CardTitle>Title</CardTitle>
     <CardDescription>Description</CardDescription>
@@ -284,8 +286,8 @@ Variants: `zui-card-elevated` (shadow, no border), `zui-card-interactive` (hover
 
 Handles `:focus`, `:disabled`, `[aria-invalid="true"]`, and `:user-invalid` states automatically.
 
-| Prop | Values | CSS class |
-|---|---|---|
+| Prop  | Values                                | CSS class                |
+| ----- | ------------------------------------- | ------------------------ |
 | shape | `default`, `hard`, `soft`, `squircle` | `zui-input-shape-{name}` |
 
 ```html
@@ -293,7 +295,7 @@ Handles `:focus`, `:disabled`, `[aria-invalid="true"]`, and `:user-invalid` stat
 ```
 
 ```tsx
-<Input type="text" placeholder="Enter text" />
+;<Input type="text" placeholder="Enter text" />
 ```
 
 ### Textarea
@@ -327,7 +329,7 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 ```
 
 ```tsx
-<Checkbox name="agree">I agree</Checkbox>
+;<Checkbox name="agree">I agree</Checkbox>
 ```
 
 ### Radio
@@ -339,7 +341,9 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 ```
 
 ```tsx
-<Radio name="choice" value="a">Option A</Radio>
+;<Radio name="choice" value="a">
+  Option A
+</Radio>
 ```
 
 ### Switch
@@ -351,7 +355,7 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 ```
 
 ```tsx
-<Switch name="notify">Notifications</Switch>
+;<Switch name="notify">Notifications</Switch>
 ```
 
 ### Skeleton
@@ -373,7 +377,13 @@ Carries no margin — always wrap a label + control in a [Field](#field) for spa
 **CSS classes:** `zui-dropzone` (wrapper, with `data-zui-dropzone`), `zui-dropzone-box` (a `<label>`), `zui-dropzone-input`, `zui-dropzone-icon`, `zui-dropzone-title`, `zui-dropzone-hint`, `zui-dropzone-status` (`role="status"`). The real `<input type="file">` covers the box, so click, keyboard and drop all work. A drop skips the input's `accept`, so `initDropzones()` (from `@mrmartineau/zui/dropzone`; the wrappers call it) checks type and size, sets `data-dragging` while dragging, and fills the status line. Size limit in bytes: `data-max-size` on the wrapper, or `maxSize`. The dropzone only picks files; read `input.files` and upload them yourself. A server must still check every upload.
 
 ```tsx
-<Dropzone multiple accept="image/*,.pdf" maxSize={5 * 1024 * 1024} hint="Images or PDF, up to 5 MB each" onChange={(e) => upload(e.target.files)} />
+;<Dropzone
+  multiple
+  accept="image/*,.pdf"
+  maxSize={5 * 1024 * 1024}
+  hint="Images or PDF, up to 5 MB each"
+  onChange={(e) => upload(e.target.files)}
+/>
 ```
 
 For a plain file picker, use `<input class="zui-input" type="file">`.
@@ -382,15 +392,15 @@ For a plain file picker, use `<input class="zui-input" type="file">`.
 
 Composable wrappers that give forms consistent spacing, descriptions, errors, legends, and orientation. They wrap — they do not replace — the controls above (`Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `Switch`, `Label`). **Always wrap form controls in a `Field`**: `zui-label` and the controls carry no margins, so the Field family owns all spacing.
 
-| Component | CSS class | Element | Purpose |
-|---|---|---|---|
-| `Field` | `zui-field` | `div[role=group]` | Wraps a label + control + description/error. Props: `orientation` (`vertical`\|`horizontal`\|`responsive`), `invalid`. |
-| `FieldGroup` | `zui-field-group` | `div` | Stacks multiple fields; establishes the container for `responsive` orientation. |
-| `FieldDescription` | `zui-field-description` | `div` | Helper text. |
-| `FieldError` | `zui-field-error` | `div[role=alert]` | Validation message. |
-| `FieldSet` | `zui-field-set` | `fieldset` | Groups related controls (radios/checkboxes). |
-| `FieldLegend` | `zui-field-legend` | `legend` | Caption for a `FieldSet` (`variant`: `legend`\|`label`). |
-| `FieldSeparator` | `zui-field-separator` | `div[role=separator]` | Divider with optional inline content. |
+| Component          | CSS class               | Element               | Purpose                                                                                                                |
+| ------------------ | ----------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Field`            | `zui-field`             | `div[role=group]`     | Wraps a label + control + description/error. Props: `orientation` (`vertical`\|`horizontal`\|`responsive`), `invalid`. |
+| `FieldGroup`       | `zui-field-group`       | `div`                 | Stacks multiple fields; establishes the container for `responsive` orientation.                                        |
+| `FieldDescription` | `zui-field-description` | `div`                 | Helper text.                                                                                                           |
+| `FieldError`       | `zui-field-error`       | `div[role=alert]`     | Validation message.                                                                                                    |
+| `FieldSet`         | `zui-field-set`         | `fieldset`            | Groups related controls (radios/checkboxes).                                                                           |
+| `FieldLegend`      | `zui-field-legend`      | `legend`              | Caption for a `FieldSet` (`variant`: `legend`\|`label`).                                                               |
+| `FieldSeparator`   | `zui-field-separator`   | `div[role=separator]` | Divider with optional inline content.                                                                                  |
 
 Modifier classes: `zui-field-horizontal`, `zui-field-responsive` (needs a `FieldGroup` ancestor; flips to horizontal at `32rem`), `zui-field-invalid`.
 
@@ -403,7 +413,7 @@ Modifier classes: `zui-field-horizontal`, `zui-field-responsive` (needs a `Field
 ```
 
 ```tsx
-<Field>
+;<Field>
   <Label htmlFor="email">Email</Label>
   <Input type="email" id="email" aria-describedby="email-desc" />
   <FieldDescription id="email-desc">We'll never share it.</FieldDescription>
@@ -420,12 +430,12 @@ Field components are presentational — wire `id`/`for`/`aria-describedby`/`aria
 
 Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in backdrop blur and fade transitions.
 
-| Size | Class |
-|---|---|
-| sm (24rem) | `zui-dialog-size-sm` |
-| md (32rem, default) | — |
-| lg (42rem) | `zui-dialog-size-lg` |
-| full | `zui-dialog-size-full` |
+| Size                | Class                  |
+| ------------------- | ---------------------- |
+| sm (24rem)          | `zui-dialog-size-sm`   |
+| md (32rem, default) | —                      |
+| lg (42rem)          | `zui-dialog-size-lg`   |
+| full                | `zui-dialog-size-full` |
 
 ```html
 <dialog class="zui-dialog" closedby="any">
@@ -443,14 +453,16 @@ Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in back
 
 ```tsx
 // React — controlled via `open` boolean; `onClose` fires on native close
-<Dialog open={isOpen} onClose={() => setIsOpen(false)} size="md">
+;<Dialog open={isOpen} onClose={() => setIsOpen(false)} size="md">
   <DialogHeader>
     <DialogTitle>Title</DialogTitle>
     <DialogDescription>Description</DialogDescription>
   </DialogHeader>
   <DialogBody>Content</DialogBody>
   <DialogFooter>
-    <Button variant="ghost" onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button variant="ghost" onClick={() => setIsOpen(false)}>
+      Cancel
+    </Button>
     <Button>Confirm</Button>
   </DialogFooter>
 </Dialog>
@@ -477,10 +489,19 @@ Uses native `<dialog>` element with `showModal()` / `close()`. Has built-in back
 
 ```tsx
 // React / Solid — `title` and `description` are props; children go below the header
-<AlertDialog open={isOpen} onClose={() => setIsOpen(false)} title="Delete this project?" description="You cannot undo this.">
+;<AlertDialog
+  open={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Delete this project?"
+  description="You cannot undo this."
+>
   <DialogFooter>
-    <Button variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
-    <Button color="destructive" onClick={remove}>Delete project</Button>
+    <Button variant="outline" onClick={() => setIsOpen(false)}>
+      Cancel
+    </Button>
+    <Button color="destructive" onClick={remove}>
+      Delete project
+    </Button>
   </DialogFooter>
 </AlertDialog>
 ```
@@ -512,7 +533,7 @@ Uses CSS Anchor Positioning and Popover API. Placements: `zui-tooltip-placement-
 
 ```tsx
 // React — handles anchor wiring automatically
-<Tooltip text="Tooltip text" placement="top">
+;<Tooltip text="Tooltip text" placement="top">
   <button class="zui-button">Hover me</button>
 </Tooltip>
 ```
@@ -608,7 +629,7 @@ Uses CSS Anchor Positioning and Popover API. Positioned below the trigger by def
 ```
 
 ```tsx
-<Link href="/">Go home</Link>
+;<Link href="/">Go home</Link>
 ```
 
 ### Prose
@@ -620,7 +641,9 @@ Uses CSS Anchor Positioning and Popover API. Positioned below the trigger by def
 ```
 
 ```tsx
-<Prose><p>Long-form content…</p></Prose>
+;<Prose>
+  <p>Long-form content…</p>
+</Prose>
 ```
 
 ### Accordion
@@ -647,15 +670,17 @@ Uses native `<details>`/`<summary>` elements with CSS animated open/close. Add `
 ```
 
 ```tsx
-<Accordion>
+;<Accordion>
   <AccordionItem>
     <AccordionTrigger>Section 1</AccordionTrigger>
     <AccordionContent>Content here</AccordionContent>
   </AccordionItem>
 </Accordion>
 
-{/* Flush variant */}
-<Accordion flush>…</Accordion>
+{
+  /* Flush variant */
+}
+;<Accordion flush>…</Accordion>
 ```
 
 ### AppShell
@@ -664,9 +689,9 @@ Top-level application layout — full-height sidebar, header over main, scrollab
 
 **CSS classes:** `zui-app-shell` (root), `zui-app-shell-sidebar` (full-height aside, must carry `popover="auto"`), `zui-app-shell-sidebar-header`, `zui-app-shell-sidebar-body` (scrolls), `zui-app-shell-sidebar-footer`, `zui-app-shell-header`, `zui-app-shell-toggle` (header button), `zui-app-shell-main` (scrolls), `zui-app-shell-skip-link`
 
-| Variant axis | Options | Class pattern |
-|---|---|---|
-| position | `left` (default), `right` | `zui-app-shell-position-{name}` |
+| Variant axis | Options                   | Class pattern                   |
+| ------------ | ------------------------- | ------------------------------- |
+| position     | `left` (default), `right` | `zui-app-shell-position-{name}` |
 
 State on root: `data-collapsed="true"` flips desktop layout to hide the sidebar; the JS controller toggles this attribute.
 
@@ -701,16 +726,21 @@ State on root: `data-collapsed="true"` flips desktop layout to hide the sidebar;
 
 ```tsx
 // React — wrappers manage the controller automatically
-<AppShell shortcut>
+;<AppShell shortcut>
   <AppShellSidebar>
     <AppShellSidebarHeader>
-      <i className="ph ph-sparkle" /><span>Acme</span>
+      <i className="ph ph-sparkle" />
+      <span>Acme</span>
     </AppShellSidebarHeader>
     <AppShellSidebarBody>
-      <a href="#"><i className="ph ph-house" /><span>Home</span></a>
+      <a href="#">
+        <i className="ph ph-house" />
+        <span>Home</span>
+      </a>
     </AppShellSidebarBody>
     <AppShellSidebarFooter>
-      <i className="ph ph-user-circle" /><span>Account</span>
+      <i className="ph ph-user-circle" />
+      <span>Account</span>
     </AppShellSidebarFooter>
   </AppShellSidebar>
 
@@ -747,10 +777,10 @@ The `AppShellHeader` toggle calls `controller.toggle()` — on desktop it flips 
 
 **CSS classes:** `zui-avatar` (base), `zui-avatar-image` (`<img>`), `zui-avatar-fallback`
 
-| Variant axis | Options | Class pattern |
-|---|---|---|
-| size | `sm`, `md` (default), `lg` | `zui-avatar-size-{name}` |
-| shape | `default` (round), `hard` (square), `soft` (round), `squircle` | `zui-avatar-shape-{name}` |
+| Variant axis | Options                                                        | Class pattern             |
+| ------------ | -------------------------------------------------------------- | ------------------------- |
+| size         | `sm`, `md` (default), `lg`                                     | `zui-avatar-size-{name}`  |
+| shape        | `default` (round), `hard` (square), `soft` (round), `squircle` | `zui-avatar-shape-{name}` |
 
 Falls back to a user icon when `src` is absent or fails to load. The `fallback` prop accepts any React node.
 
@@ -782,7 +812,7 @@ Single disclosure widget with animated open/close. Uses native `<details>`/`<sum
 ```
 
 ```tsx
-<Collapsible>
+;<Collapsible>
   <CollapsibleTrigger>Show more</CollapsibleTrigger>
   <CollapsibleContent>Hidden content</CollapsibleContent>
 </Collapsible>
@@ -794,13 +824,13 @@ Single disclosure widget with animated open/close. Uses native `<details>`/`<sum
 
 Accessible tabs primitive with managed state, keyboard navigation, and horizontal or vertical orientation.
 
-| Variant axis | Options | Class pattern |
-|---|---|---|
-| list variant | `surface` (default), `underline` | `zui-tabs-list-variant-{name}` |
-| trigger variant | `surface` (default), `underline` | `zui-tabs-trigger-variant-{name}` |
-| orientation | `horizontal` (default), `vertical` | `data-orientation={name}` |
-| shape | `default`, `hard`, `soft`, `squircle` — on the root; underline tabs stay square | `zui-tabs-shape-{name}` |
-| activationMode | `auto` (default), `manual` | prop only |
+| Variant axis    | Options                                                                         | Class pattern                     |
+| --------------- | ------------------------------------------------------------------------------- | --------------------------------- |
+| list variant    | `surface` (default), `underline`                                                | `zui-tabs-list-variant-{name}`    |
+| trigger variant | `surface` (default), `underline`                                                | `zui-tabs-trigger-variant-{name}` |
+| orientation     | `horizontal` (default), `vertical`                                              | `data-orientation={name}`         |
+| shape           | `default`, `hard`, `soft`, `squircle` — on the root; underline tabs stay square | `zui-tabs-shape-{name}`           |
+| activationMode  | `auto` (default), `manual`                                                      | prop only                         |
 
 ```html
 <div class="zui-tabs" data-orientation="horizontal">
@@ -814,7 +844,7 @@ Accessible tabs primitive with managed state, keyboard navigation, and horizonta
 ```
 
 ```tsx
-<Tabs defaultValue="account">
+;<Tabs defaultValue="account">
   <TabsList aria-label="Profile sections">
     <TabsTrigger value="account">Account</TabsTrigger>
     <TabsTrigger value="security">Security</TabsTrigger>
@@ -850,7 +880,7 @@ Strict action menu primitive with managed focus, keyboard navigation, dismissal 
 ```
 
 ```tsx
-<Menu>
+;<Menu>
   <MenuTrigger>Open menu</MenuTrigger>
   <MenuContent>
     <MenuItem>Action</MenuItem>
@@ -866,7 +896,7 @@ Strict action menu primitive with managed focus, keyboard navigation, dismissal 
 Convenience React/Astro wrapper that applies flex utility classes via props. No dedicated CSS component — uses the utility layer.
 
 ```tsx
-<Flex direction="row" align="center" justify="between" gap="sm">
+;<Flex direction="row" align="center" justify="between" gap="sm">
   …
 </Flex>
 ```
@@ -881,19 +911,19 @@ Props: `display` (`flex` | `inline-flex`), `direction` (`row` | `column`), `alig
 
 ### Layout
 
-| Class | Effect |
-|---|---|
-| `flex` | `display: flex` |
-| `inline-flex` | `display: inline-flex` |
-| `flex-center` | `display: flex; align-items: center` |
-| `flex-column` | `flex-direction: column` |
-| `flex-row` | `flex-direction: row` |
-| `flex-wrap` | `flex-wrap: wrap` |
-| `flex-auto` | `flex: 1 1 auto` |
-| `flex-none` | `flex: none` |
-| `items-center` | `align-items: center` |
-| `justify-between` | `justify-content: space-between` |
-| `justify-center` | `justify-content: center` |
+| Class             | Effect                               |
+| ----------------- | ------------------------------------ |
+| `flex`            | `display: flex`                      |
+| `inline-flex`     | `display: inline-flex`               |
+| `flex-center`     | `display: flex; align-items: center` |
+| `flex-column`     | `flex-direction: column`             |
+| `flex-row`        | `flex-direction: row`                |
+| `flex-wrap`       | `flex-wrap: wrap`                    |
+| `flex-auto`       | `flex: 1 1 auto`                     |
+| `flex-none`       | `flex: none`                         |
+| `items-center`    | `align-items: center`                |
+| `justify-between` | `justify-content: space-between`     |
+| `justify-center`  | `justify-content: center`            |
 
 ### Spacing
 
@@ -905,53 +935,53 @@ Margin: `m-{size}`, `mx-{size}`, `my-{size}`, `mt-{size}`, `mb-{size}`, `ml-{siz
 
 ### Typography
 
-| Class | Effect |
-|---|---|
-| `zui-text--4` … `zui-text-6` | Font size steps |
-| `zui-text-base` | Base font size (step 0) |
-| `zui-color-muted` | 70% opacity text |
-| `zui-color-faint` | 50% opacity text |
-| `zui-link` | Styled link with underline |
-| `zui-code` | Inline code styling |
-| `zui-pre` | Code block styling |
+| Class                        | Effect                     |
+| ---------------------------- | -------------------------- |
+| `zui-text--4` … `zui-text-6` | Font size steps            |
+| `zui-text-base`              | Base font size (step 0)    |
+| `zui-color-muted`            | 70% opacity text           |
+| `zui-color-faint`            | 50% opacity text           |
+| `zui-link`                   | Styled link with underline |
+| `zui-code`                   | Inline code styling        |
+| `zui-pre`                    | Code block styling         |
 
 ### Content Flow
 
-| Class | Effect |
-|---|---|
-| `flow` | Vertical rhythm — `> * + *` gets `margin-block-start` |
-| `prose` | Rich text formatting for long-form content |
+| Class   | Effect                                                |
+| ------- | ----------------------------------------------------- |
+| `flow`  | Vertical rhythm — `> * + *` gets `margin-block-start` |
+| `prose` | Rich text formatting for long-form content            |
 
 ### Background
 
-| Class | Effect |
-|---|---|
+| Class     | Effect                                          |
+| --------- | ----------------------------------------------- |
 | `surface` | Subtle background tint for alternating sections |
 
 ### Shape
 
-| Class | Effect |
-|---|---|
-| `zui-squircle` | Squircle corners on one component (any ZUI component) |
+| Class              | Effect                                                                                                                                                                                                                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `zui-squircle`     | Squircle corners on one component (any ZUI component)                                                                                                                                                                                                                                                  |
 | `zui-squircle-all` | Squircle corners on every ZUI component inside it. On `<html>`, it makes squircle the global default — no need for `shape="squircle"` on each Button/Avatar. `shape="hard"`/`"soft"` (Button, Avatar, Input, Textarea, Select), drawer dialogs, flush accordions, and underline tabs keep their shape. |
 
 Shape prop — prefer it over the classes above for one component:
 
-| Component | Shapes | CSS class |
-|---|---|---|
-| Button, Avatar, Input, Select | `default`, `hard`, `soft`, `squircle` | `zui-{component}-shape-{name}` |
-| Textarea | `default`, `hard`, `soft`, `squircle` | `soft` uses `--radius-3xl`, not a full pill |
-| Badge, Kbd | `default`, `hard`, `soft`, `squircle` | on a badge, `soft` looks the same as `default` |
-| Tooltip, Tabs | `default`, `hard`, `soft`, `squircle` | on the root (`zui-tooltip`, `zui-tabs`) |
-| Menu | `default`, `hard`, `squircle` | on the root (`zui-menu`) |
-| Card, Dialog, Popover, Accordion, Collapsible | `default`, `hard`, `squircle` | no `soft`: a pill shape does not suit large boxes |
+| Component                                     | Shapes                                | CSS class                                         |
+| --------------------------------------------- | ------------------------------------- | ------------------------------------------------- |
+| Button, Avatar, Input, Select                 | `default`, `hard`, `soft`, `squircle` | `zui-{component}-shape-{name}`                    |
+| Textarea                                      | `default`, `hard`, `soft`, `squircle` | `soft` uses `--radius-3xl`, not a full pill       |
+| Badge, Kbd                                    | `default`, `hard`, `soft`, `squircle` | on a badge, `soft` looks the same as `default`    |
+| Tooltip, Tabs                                 | `default`, `hard`, `soft`, `squircle` | on the root (`zui-tooltip`, `zui-tabs`)           |
+| Menu                                          | `default`, `hard`, `squircle`         | on the root (`zui-menu`)                          |
+| Card, Dialog, Popover, Accordion, Collapsible | `default`, `hard`, `squircle`         | no `soft`: a pill shape does not suit large boxes |
 
 Squircles use `corner-shape`, so only some browsers show them. Other browsers keep normal rounded corners.
 
 ### Visibility
 
-| Class | Effect |
-|---|---|
+| Class                         | Effect                     |
+| ----------------------------- | -------------------------- |
 | `sr-only` / `visually-hidden` | Screen-reader-only content |
 
 ## Integrations
@@ -969,11 +999,11 @@ import '@mrmartineau/zui/css/ramka'
 
 The skin styles Ramka's `[data-ramka-*]` parts directly. Add these classes to your own wrapper elements:
 
-| Class | Put it on |
-|---|---|
-| `zui-ramka-grid` | the `div` around the `Lightbox.Trigger`s (square thumbnail grid) |
-| `zui-ramka-toolbar` | a `div` in `Lightbox.Content` holding `ZoomOut`, `ZoomIn`, `Close` |
-| `zui-ramka-footer` | a `div` in `Lightbox.Content` holding `Counter`, `Caption`, `Previous`, `Next` |
+| Class               | Put it on                                                                      |
+| ------------------- | ------------------------------------------------------------------------------ |
+| `zui-ramka-grid`    | the `div` around the `Lightbox.Trigger`s (square thumbnail grid)               |
+| `zui-ramka-toolbar` | a `div` in `Lightbox.Content` holding `ZoomOut`, `ZoomIn`, `Close`             |
+| `zui-ramka-footer`  | a `div` in `Lightbox.Content` holding `Counter`, `Caption`, `Previous`, `Next` |
 
 **Editorial variant** (photos inside an article, like a news site): add `zui-ramka-editorial` to `Lightbox.Portal`. It sets `color-scheme: dark`, so the viewer and every ZUI Button inside are dark in both themes. Pass caption + credit as one node — `caption={<><span>{caption}</span><span className="zui-ramka-credit">{credit}</span></>}` — put `Counter` and `Close` in `zui-ramka-toolbar`, put `Caption` alone in `zui-ramka-footer`, and leave out `Lightbox.Zoom` (Media goes straight in Item).
 
@@ -988,7 +1018,7 @@ import { Button } from '@mrmartineau/zui/react'
 import { XIcon } from '@phosphor-icons/react'
 import * as Lightbox from '@ramka/react/lightbox'
 
-<Lightbox.Root>
+;<Lightbox.Root>
   <div className="zui-ramka-grid">
     {photos.map((p, i) => (
       <Lightbox.Trigger key={p.id} index={i} aria-label={`Open ${p.alt}`}>
@@ -1002,10 +1032,20 @@ import * as Lightbox from '@ramka/react/lightbox'
       <Lightbox.Slides aria-label="Photos" aria-roledescription="carousel">
         {photos.map((p, i) => (
           <Lightbox.Slide key={p.id}>
-            <Lightbox.Item index={i} caption={p.alt} aria-roledescription="slide" aria-label={`${i + 1} of ${photos.length}`}>
+            <Lightbox.Item
+              index={i}
+              caption={p.alt}
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${photos.length}`}
+            >
               <Lightbox.Zoom>
                 <Lightbox.Media width={p.width} height={p.height}>
-                  <img src={p.src} alt={p.alt} width={p.width} height={p.height} />
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    width={p.width}
+                    height={p.height}
+                  />
                 </Lightbox.Media>
               </Lightbox.Zoom>
             </Lightbox.Item>
@@ -1013,7 +1053,10 @@ import * as Lightbox from '@ramka/react/lightbox'
         ))}
       </Lightbox.Slides>
       <div className="zui-ramka-toolbar">
-        <Lightbox.Close aria-label="Close" render={<Button variant="ghost" icon />}>
+        <Lightbox.Close
+          aria-label="Close"
+          render={<Button variant="ghost" icon />}
+        >
           <XIcon aria-hidden />
         </Lightbox.Close>
       </div>

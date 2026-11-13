@@ -43,8 +43,8 @@ The extension re-evaluates whenever any `package.json` in the workspace changes,
 
 ## Configuration
 
-| Setting      | Type                            | Default  | Description                                                                                       |
-| ------------ | ------------------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| Setting      | Type                            | Default  | Description                                                                                                                             |
+| ------------ | ------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `zui.enable` | `"auto" \| "always" \| "never"` | `"auto"` | `auto` activates only in workspaces that depend on `@mrmartineau/zui`. `always` forces IntelliSense on. `never` disables the extension. |
 
 ## How it works

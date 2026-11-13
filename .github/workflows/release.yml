@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       skip_package_age:
-        description: 'Bypass Aikido safe-chain minimum package age check'
+        description: "Bypass Aikido safe-chain minimum package age check"
         type: boolean
         default: false
 
@@ -36,12 +36,12 @@ jobs:
           # Resolve main at job start rather than pinning github.sha, so the
           # second serialised matrix job sees the first job's release commit.
           ref: main
-          fetch-depth: 0          # semantic-release needs full history
+          fetch-depth: 0 # semantic-release needs full history
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
+          node-version: "lts/*"
+          cache: "pnpm"
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile ${{ inputs.skip_package_age && '--safe-chain-skip-minimum-package-age' || '' }}

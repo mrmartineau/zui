@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       skip_package_age:
-        description: 'Bypass Aikido safe-chain minimum package age check'
+        description: "Bypass Aikido safe-chain minimum package age check"
         type: boolean
         default: false
 
@@ -33,7 +33,7 @@ jobs:
           # Release events check out the tag ref by default, but semantic-release
           # only publishes from a configured branch — check out main explicitly.
           ref: main
-          fetch-depth: 0          # semantic-release needs full history + tags
+          fetch-depth: 0 # semantic-release needs full history + tags
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # No `version` input: it would conflict with the root packageManager field,
@@ -42,8 +42,8 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
+          node-version: "lts/*"
+          cache: "pnpm"
 
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci

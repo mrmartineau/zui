@@ -57,9 +57,9 @@
    * the list, and a 20px radius would turn a checkbox into a circle.
    * Radios stay round on purpose. */
   .zui-squircle-all
-  :is(.zui-tabs-trigger, .zui-checkbox input[type="checkbox"]):not(
-    .zui-tabs:is([class*="-shape-hard"], [class*="-shape-soft"]) *
-  ) {
+    :is(.zui-tabs-trigger, .zui-checkbox input[type="checkbox"]):not(
+      .zui-tabs:is([class*="-shape-hard"], [class*="-shape-soft"]) *
+    ) {
     @supports (corner-shape: squircle) {
       corner-shape: superellipse(1.25);
 

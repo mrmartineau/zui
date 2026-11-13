@@ -1,4 +1,5 @@
 ---
+
 name: zui-theme
 description: "Build a documentation site with @mrmartineau/zui-theme, an Astro docs theme built on ZUI. Use when scaffolding a new docs site or adding docs to an existing Astro project that should use DocsLayout, the file-based sidebar/TOC, the Demo component, and theme switchers. Triggers on: zui-theme, @mrmartineau/zui-theme, DocsLayout, buildSidebarSections, create-zui-docs, ZUI docs site."
 user-invocable: true
@@ -61,8 +62,16 @@ export const site: SiteConfig = {
   author: 'Your Name',
   authorHref: 'https://example.com',
   social: [
-    { href: 'https://github.com/you/my-package', icon: 'github-logo', label: 'Repo' },
-    { href: 'https://www.npmjs.com/package/my-package', icon: 'package', ariaLabel: 'npm' },
+    {
+      href: 'https://github.com/you/my-package',
+      icon: 'github-logo',
+      label: 'Repo',
+    },
+    {
+      href: 'https://www.npmjs.com/package/my-package',
+      icon: 'package',
+      ariaLabel: 'npm',
+    },
   ],
 }
 ```
@@ -136,13 +145,13 @@ import { Demo } from '@mrmartineau/zui-theme/astro'
 
 ## Page frontmatter
 
-| Key            | Where         | Effect                                                |
-| -------------- | ------------- | ----------------------------------------------------- |
-| `layout`       | every page    | `../../layouts/Layout.astro`.                         |
-| `title`        | every page    | Sidebar label, page heading, and `<title>`.           |
-| `description`  | every page    | Sub-heading under the title + `<meta description>`.   |
-| `order`        | any page      | Position within a section's sidebar list (ascending). |
-| `sectionOrder` | `index.mdx`   | Position of the whole section in sidebar + footer.     |
+| Key            | Where       | Effect                                                |
+| -------------- | ----------- | ----------------------------------------------------- |
+| `layout`       | every page  | `../../layouts/Layout.astro`.                         |
+| `title`        | every page  | Sidebar label, page heading, and `<title>`.           |
+| `description`  | every page  | Sub-heading under the title + `<meta description>`.   |
+| `order`        | any page    | Position within a section's sidebar list (ascending). |
+| `sectionOrder` | `index.mdx` | Position of the whole section in sidebar + footer.    |
 
 ## Imports
 
@@ -150,10 +159,21 @@ Import components and helpers (named) from the barrel:
 
 ```ts
 import {
-  DocsLayout, Sidebar, TableOfContents,
-  Demo, DemoPreview, CopyCode, TokenGrid, TokenRow, Section, Subtitle,
-  DarkModeSwitcher, MiniThemeSwitcher, ThemeSwitcher,
-  buildSidebarSections, buildFooterSections,
+  DocsLayout,
+  Sidebar,
+  TableOfContents,
+  Demo,
+  DemoPreview,
+  CopyCode,
+  TokenGrid,
+  TokenRow,
+  Section,
+  Subtitle,
+  DarkModeSwitcher,
+  MiniThemeSwitcher,
+  ThemeSwitcher,
+  buildSidebarSections,
+  buildFooterSections,
 } from '@mrmartineau/zui-theme/astro'
 ```
 
@@ -184,22 +204,22 @@ import {
 
 ## `SiteConfig`
 
-| Field               | Default      | Description                                |
-| ------------------- | ------------ | ------------------------------------------ |
-| `title`             | —            | Brand name; logo + `<title>` prefix.       |
-| `logo`              | `title`      | Logo text override.                        |
-| `description`       | —            | Default meta description.                  |
-| `version`           | —            | Header badge + footer.                     |
-| `versionHref`       | `/changelog` | Where the version badge links.             |
-| `author`            | —            | Footer credit.                             |
-| `authorHref`        | —            | Author credit link.                        |
+| Field               | Default      | Description                                                                                                  |
+| ------------------- | ------------ | ------------------------------------------------------------------------------------------------------------ |
+| `title`             | —            | Brand name; logo + `<title>` prefix.                                                                         |
+| `logo`              | `title`      | Logo text override.                                                                                          |
+| `description`       | —            | Default meta description.                                                                                    |
+| `version`           | —            | Header badge + footer.                                                                                       |
+| `versionHref`       | `/changelog` | Where the version badge links.                                                                               |
+| `author`            | —            | Footer credit.                                                                                               |
+| `authorHref`        | —            | Author credit link.                                                                                          |
 | `social`            | `[]`         | Header + footer links (`{ href, icon?, label?, ariaLabel? }`; `icon` is a Phosphor name like `github-logo`). |
-| `phosphor`          | `true`       | Load Phosphor Icons from the CDN.          |
-| `phosphorVersion`   | `2.1.2`      | Phosphor web package version for the CDN.  |
-| `themeSwitcher`     | `true`       | Floating theme builder.                    |
-| `miniThemeSwitcher` | `true`       | Header colour-theme dots.                  |
-| `miniThemes`        | ZUI palette  | Colours for the mini switcher.             |
-| `colorSchemeToggle` | `true`       | Light/dark/system toggle.                  |
+| `phosphor`          | `true`       | Load Phosphor Icons from the CDN.                                                                            |
+| `phosphorVersion`   | `2.1.2`      | Phosphor web package version for the CDN.                                                                    |
+| `themeSwitcher`     | `true`       | Floating theme builder.                                                                                      |
+| `miniThemeSwitcher` | `true`       | Header colour-theme dots.                                                                                    |
+| `miniThemes`        | ZUI palette  | Colours for the mini switcher.                                                                               |
+| `colorSchemeToggle` | `true`       | Light/dark/system toggle.                                                                                    |
 
 ## Section landing cards (optional)
 

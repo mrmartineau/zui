@@ -80,7 +80,7 @@
      disabled when a script sets disabled or readonly on the input later.
      :read-only also matches a disabled input. */
   .zui-number-field:has(.zui-number-field-input:read-only)
-  .zui-number-field-button {
+    .zui-number-field-button {
     opacity: 0.5;
     pointer-events: none;
   }

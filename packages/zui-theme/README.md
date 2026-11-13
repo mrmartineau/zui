@@ -41,7 +41,7 @@ npm install @mrmartineau/zui-theme @mrmartineau/zui
 npx astro add mdx
 ```
 
-Create a thin layout that runs the page globs (they must run from *your*
+Create a thin layout that runs the page globs (they must run from _your_
 project so the paths resolve against your `src/pages`) and forwards them to the
 theme's `DocsLayout`:
 
@@ -91,7 +91,11 @@ export const site: SiteConfig = {
   author: 'Your Name',
   authorHref: 'https://example.com',
   social: [
-    { href: 'https://github.com/you/my-package', icon: 'github-logo', label: 'Repo' },
+    {
+      href: 'https://github.com/you/my-package',
+      icon: 'github-logo',
+      label: 'Repo',
+    },
   ],
 }
 ```
@@ -117,21 +121,21 @@ import { Demo } from '@mrmartineau/zui-theme/astro'
 
 ## Page conventions
 
-| Frontmatter    | Where         | Effect                                                  |
-| -------------- | ------------- | ------------------------------------------------------- |
-| `title`        | every page    | Sidebar label, page heading, and `<title>`.             |
-| `description`  | every page    | Sub-heading under the title and `<meta description>`.   |
-| `order`        | any page      | Position within its section's sidebar list (asc).       |
-| `sectionOrder` | `index.mdx`   | Position of the whole section in the sidebar/footer.    |
+| Frontmatter    | Where       | Effect                                                |
+| -------------- | ----------- | ----------------------------------------------------- |
+| `title`        | every page  | Sidebar label, page heading, and `<title>`.           |
+| `description`  | every page  | Sub-heading under the title and `<meta description>`. |
+| `order`        | any page    | Position within its section's sidebar list (asc).     |
+| `sectionOrder` | `index.mdx` | Position of the whole section in the sidebar/footer.  |
 
 ## Exports
 
-| Specifier                       | Contents                                              |
-| ------------------------------- | ---------------------------------------------------- |
-| `@mrmartineau/zui-theme/astro`  | All `.astro` components + nav helpers and types.      |
-| `@mrmartineau/zui-theme/astro/*`| Individual `.astro` components by path.               |
-| `@mrmartineau/zui-theme/nav`    | `buildSidebarSections`, `buildFooterSections`, types. |
-| `@mrmartineau/zui-theme/css`    | Global documentation styles (imported by DocsLayout). |
+| Specifier                        | Contents                                              |
+| -------------------------------- | ----------------------------------------------------- |
+| `@mrmartineau/zui-theme/astro`   | All `.astro` components + nav helpers and types.      |
+| `@mrmartineau/zui-theme/astro/*` | Individual `.astro` components by path.               |
+| `@mrmartineau/zui-theme/nav`     | `buildSidebarSections`, `buildFooterSections`, types. |
+| `@mrmartineau/zui-theme/css`     | Global documentation styles (imported by DocsLayout). |
 
 ### Components
 
@@ -155,22 +159,22 @@ You provide your own `<main>` wrapper.
 
 ## `SiteConfig`
 
-| Field               | Default        | Description                                  |
-| ------------------- | -------------- | -------------------------------------------- |
-| `title`             | —              | Brand name; logo + `<title>` prefix.         |
-| `logo`              | `title`        | Logo text override.                          |
-| `description`       | —              | Default meta description.                    |
-| `version`           | —              | Shown as a header badge + footer.            |
-| `versionHref`       | `/changelog`   | Where the version badge links.               |
-| `author`            | —              | Footer credit.                               |
-| `authorHref`        | —              | Link for the author credit.                  |
-| `social`            | `[]`           | Header + footer links (GitHub, npm, …).      |
-| `phosphor`          | `true`         | Load Phosphor Icons from the CDN.            |
-| `phosphorVersion`   | `2.1.2`        | Phosphor web package version for the CDN.    |
-| `themeSwitcher`     | `true`         | Floating theme builder.                      |
-| `miniThemeSwitcher` | `true`         | Header colour-theme dots.                    |
-| `miniThemes`        | ZUI palette    | Colours for the mini switcher.               |
-| `colorSchemeToggle` | `true`         | Light/dark/system toggle.                    |
+| Field               | Default      | Description                               |
+| ------------------- | ------------ | ----------------------------------------- |
+| `title`             | —            | Brand name; logo + `<title>` prefix.      |
+| `logo`              | `title`      | Logo text override.                       |
+| `description`       | —            | Default meta description.                 |
+| `version`           | —            | Shown as a header badge + footer.         |
+| `versionHref`       | `/changelog` | Where the version badge links.            |
+| `author`            | —            | Footer credit.                            |
+| `authorHref`        | —            | Link for the author credit.               |
+| `social`            | `[]`         | Header + footer links (GitHub, npm, …).   |
+| `phosphor`          | `true`       | Load Phosphor Icons from the CDN.         |
+| `phosphorVersion`   | `2.1.2`      | Phosphor web package version for the CDN. |
+| `themeSwitcher`     | `true`       | Floating theme builder.                   |
+| `miniThemeSwitcher` | `true`       | Header colour-theme dots.                 |
+| `miniThemes`        | ZUI palette  | Colours for the mini switcher.            |
+| `colorSchemeToggle` | `true`       | Light/dark/system toggle.                 |
 
 ## License
 

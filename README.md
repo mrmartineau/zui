@@ -19,13 +19,13 @@ npm install @mrmartineau/zui
 ### CSS only
 
 ```css
-@import '@mrmartineau/zui/css';
+@import "@mrmartineau/zui/css";
 ```
 
 Or minified:
 
 ```css
-@import '@mrmartineau/zui/css/min';
+@import "@mrmartineau/zui/css/min";
 ```
 
 ### React
@@ -124,10 +124,10 @@ This package uses [semantic-release](https://github.com/semantic-release/semanti
 
 When a release is run, semantic-release inspects the commit history since the last release to determine the next version:
 
-| Prefix | Release type |
-| :----- | :----------- |
-| `fix:` | Patch (`1.0.x`) |
-| `feat:` | Minor (`1.x.0`) |
+| Prefix                         | Release type    |
+| :----------------------------- | :-------------- |
+| `fix:`                         | Patch (`1.0.x`) |
+| `feat:`                        | Minor (`1.x.0`) |
 | `feat!:` or `BREAKING CHANGE:` | Major (`x.0.0`) |
 
 ### CI / automated releases
@@ -142,17 +142,17 @@ The workflow requires an `NPM_TOKEN` secret set in the repository settings. `GIT
 
 ## Package exports
 
-| Specifier                    | Resolves to                  |
-| :--------------------------- | :--------------------------- |
-| `@mrmartineau/zui/css`       | `packages/zui/dist/css/zui.css`           |
-| `@mrmartineau/zui/css/min`   | `packages/zui/dist/css/zui.min.css`       |
+| Specifier                    | Resolves to                                   |
+| :--------------------------- | :-------------------------------------------- |
+| `@mrmartineau/zui/css`       | `packages/zui/dist/css/zui.css`               |
+| `@mrmartineau/zui/css/min`   | `packages/zui/dist/css/zui.min.css`           |
 | `@mrmartineau/zui/css/ramka` | `packages/zui/src/css/integrations/ramka.css` |
-| `@mrmartineau/zui/react`     | `packages/zui/dist/react/index.mjs`       |
-| `@mrmartineau/zui/solid`     | `packages/zui/dist/solid/index.mjs`       |
-| `@mrmartineau/zui/svelte`    | `packages/zui/src/svelte/index.ts`        |
-| `@mrmartineau/zui/svelte/*`  | `packages/zui/src/svelte/*`               |
-| `@mrmartineau/zui/vue`       | `packages/zui/src/vue/index.ts`           |
-| `@mrmartineau/zui/vue/*`     | `packages/zui/src/vue/*`                  |
-| `@mrmartineau/zui/astro`     | `packages/zui/src/astro/index.ts`         |
-| `@mrmartineau/zui/astro/*`   | `packages/zui/src/astro/*`                |
-| `@mrmartineau/zui/utils`     | `packages/zui/dist/utils/index.mjs`       |
+| `@mrmartineau/zui/react`     | `packages/zui/dist/react/index.mjs`           |
+| `@mrmartineau/zui/solid`     | `packages/zui/dist/solid/index.mjs`           |
+| `@mrmartineau/zui/svelte`    | `packages/zui/src/svelte/index.ts`            |
+| `@mrmartineau/zui/svelte/*`  | `packages/zui/src/svelte/*`                   |
+| `@mrmartineau/zui/vue`       | `packages/zui/src/vue/index.ts`               |
+| `@mrmartineau/zui/vue/*`     | `packages/zui/src/vue/*`                      |
+| `@mrmartineau/zui/astro`     | `packages/zui/src/astro/index.ts`             |
+| `@mrmartineau/zui/astro/*`   | `packages/zui/src/astro/*`                    |
+| `@mrmartineau/zui/utils`     | `packages/zui/dist/utils/index.mjs`           |

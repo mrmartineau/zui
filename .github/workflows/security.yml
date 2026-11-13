@@ -2,10 +2,10 @@ name: Security
 
 on:
   push:
-    branches: ['**']
+    branches: ["**"]
   schedule:
     # Weekly scan so newly-disclosed advisories are caught without a push
-    - cron: '0 6 * * 1'
+    - cron: "0 6 * * 1"
 
 jobs:
   safe-chain:
@@ -21,8 +21,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
+          node-version: "lts/*"
+          cache: "pnpm"
 
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci

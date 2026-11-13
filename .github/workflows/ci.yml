@@ -1,7 +1,6 @@
 name: CI
 
-on:
-  pull_request
+on: pull_request
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,8 +15,8 @@ jobs:
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
+          node-version: "lts/*"
+          cache: "pnpm"
       - name: Install safe-chain
         run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
       - run: pnpm install --frozen-lockfile
