@@ -16,5 +16,5 @@
     "generate:colors": "pnpm --filter @mrmartineau/zui run generate:colors",
     "watch": "pnpm --filter @mrmartineau/zui run watch"
   },
-  "packageManager": "pnpm@11.1.1"
+  "packageManager": "pnpm@12.18.0"
 }

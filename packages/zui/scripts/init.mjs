@@ -238,7 +238,7 @@ async function main() {
     const pm = detectPackageManager()
     // cva's npm `latest` dist-tag points at a 0.0.0 placeholder — pin the
     // beta the copied components are written against.
-    const cvaSpec = 'cva@1.0.0-beta.4'
+    const cvaSpec = 'cva@1.0.0-beta.12'
     const installCmds = {
       bun: `bun add ${cvaSpec}`,
       npm: `npm install ${cvaSpec}`,
