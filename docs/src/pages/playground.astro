@@ -23,7 +23,7 @@ const description =
   <Fragment slot="head">
     <SiteTheme />
   </Fragment>
-  <Search slot="search" client:load />
+  <Search slot="search" client:only="react" />
   <SiteThemeMenu slot="theme-menu" />
   <div class="pg-page">
     <header class="pg-intro flow">

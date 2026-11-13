@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
     <SiteTheme />
   </Fragment>
-  <Search slot="search" client:load />
+  <Search slot="search" client:only="react" />
   <SiteThemeMenu slot="theme-menu" />
   <main class="home-main" transition:animate="fade">
     <slot />
