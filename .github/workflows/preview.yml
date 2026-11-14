@@ -1,0 +1,53 @@
+name: Preview docs on Cloudflare
+
+on:
+  pull_request
+
+# A newer push to the same PR cancels an in-flight preview of an older commit.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    name: Upload docs preview to Cloudflare Workers
+    runs-on: ubuntu-latest
+    # Fork PRs don't get repo secrets, so the upload would fail. Skip them.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'latest'
+          cache: 'pnpm'
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
+      - run: pnpm install --frozen-lockfile
+      - name: Build docs
+        run: pnpm run docs:build
+      # `versions upload` creates a new Worker version without promoting it, so production
+      # is untouched. The alias gives each PR a stable URL: pr-<n>-zui.<subdomain>.workers.dev
+      - name: Upload preview version
+        id: upload
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: docs
+          packageManager: pnpm
+          command: versions upload --preview-alias pr-${{ github.event.pull_request.number }} --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}"
+      - name: Comment preview URL on PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTPUT: ${{ steps.upload.outputs.command-output }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          url=$(echo "$OUTPUT" | grep -oE 'Version Preview Alias URL: https://\S+' | awk '{print $NF}')
+          [ -z "$url" ] && url=$(echo "$OUTPUT" | grep -oE 'Version Preview URL: https://\S+' | awk '{print $NF}')
+          gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.repository }} \
+            --edit-last --create-if-none \
+            --body "🔎 Docs preview: ${url:-upload done, but no URL found in wrangler output} (commit ${SHA:0:7})"
