@@ -10,6 +10,17 @@ Known differences from the skill: this is a library, so its own conventions come
 
 ZUI is a CSS-first UI library with optional React, Astro, Solid, Svelte, and Vue component wrappers. CSS is authored as modular source files in `packages/zui/src/css/` using `@import` and `@layer`, then bundled with [tsdown](https://tsdown.dev/) (Lightning CSS) into `packages/zui/dist/css/zui.css`.
 
+## Intent first
+
+`intent/` holds the design-system promises (D1-D6) and decision records.
+`packages/zui/src/intent/design-system.oracle.test.ts` checks them against the
+real CSS AST and cva configs: variants ↔ CSS, knob rules, layers, five-framework
+parity, documented knobs. Runs in CI and on a Claude Code Stop hook.
+
+If a check fails, fix the change or edit the rule in `intent/` first and say
+why. Never grow a `KNOWN_*` baseline to get green. Use the `record-intent` skill
+when a session settles something new; the `intent-reviewer` agent checks a diff.
+
 ## Architecture
 
 ```
