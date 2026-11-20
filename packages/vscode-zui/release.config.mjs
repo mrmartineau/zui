@@ -20,16 +20,12 @@ export default {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     ['@semantic-release/npm', { npmPublish: false }],
-    [
-      '@semantic-release/exec',
-      { publishCmd: 'pnpm run package && pnpm run publish' },
-    ],
+    ['@semantic-release/exec', { publishCmd: 'pnpm run package && pnpm run publish' }],
     [
       '@semantic-release/git',
       {
         assets: ['package.json', 'CHANGELOG.md'],
-        message:
-          'chore(release): ${nextRelease.gitTag} [skip ci]\n\n${nextRelease.notes}',
+        message: 'chore(release): ${nextRelease.gitTag} [skip ci]\n\n${nextRelease.notes}',
       },
     ],
     ['@semantic-release/github', { failComment: false, failTitle: false }],

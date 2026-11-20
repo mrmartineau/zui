@@ -20,7 +20,5 @@ const props = withDefaults(
   },
 )
 
-const classes = computed(() =>
-  [textSizeClass(props.size), props.class].filter(Boolean).join(' '),
-)
+const classes = computed(() => [textSizeClass(props.size), props.class].filter(Boolean).join(' '))
 </script>

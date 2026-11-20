@@ -1,9 +1,6 @@
 import { forwardRef, type InputHTMLAttributes } from 'react'
 
-export type SwitchProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'role'
-> & {
+export type SwitchProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'role'> & {
   className?: string
 }
 

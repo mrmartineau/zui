@@ -79,7 +79,5 @@ provideTabsContext({
   snapshot,
 })
 
-const classes = computed(() =>
-  tabsVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => tabsVariants({ className: props.class, shape: props.shape }))
 </script>

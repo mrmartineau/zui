@@ -81,17 +81,11 @@ describe('tabs controller', () => {
     registerTrigger(controller, 'account', 0)
     registerTrigger(controller, 'security', 1)
 
-    controller.handleTriggerKeydown(
-      new KeyboardEvent('keydown', { key: 'ArrowRight' }),
-      'account',
-    )
+    controller.handleTriggerKeydown(new KeyboardEvent('keydown', { key: 'ArrowRight' }), 'account')
     expect(controller.getSnapshot().focusedValue).toBe('security')
     expect(controller.getSnapshot().selectedValue).toBe('account')
 
-    controller.handleTriggerKeydown(
-      new KeyboardEvent('keydown', { key: 'Enter' }),
-      'security',
-    )
+    controller.handleTriggerKeydown(new KeyboardEvent('keydown', { key: 'Enter' }), 'security')
     expect(controller.getSnapshot().selectedValue).toBe('security')
   })
 

@@ -7,8 +7,7 @@ export type FieldSeparatorProps = JSX.HTMLAttributes<HTMLDivElement> & {
 
 export function FieldSeparator(props: FieldSeparatorProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-field-separator', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-field-separator', local.class].filter(Boolean).join(' ')
   return (
     // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- hr cannot carry label content; a div with role="separator" is the standard pattern for labelled dividers
     // aria-valuenow is only required for focusable (widget) separators; this one is static

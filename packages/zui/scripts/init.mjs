@@ -1,13 +1,7 @@
 #!/usr/bin/env node
 
 import { execSync } from 'node:child_process'
-import {
-  cpSync,
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync,
-} from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { stdin as input, stdout as output } from 'node:process'
 import { createInterface } from 'node:readline/promises'
@@ -70,8 +64,7 @@ async function confirm(rl, question) {
 function detectPackageManager() {
   if (existsSync(join(cwd, 'pnpm-lock.yaml'))) return 'pnpm'
   if (existsSync(join(cwd, 'yarn.lock'))) return 'yarn'
-  if (existsSync(join(cwd, 'bun.lockb')) || existsSync(join(cwd, 'bun.lock')))
-    return 'bun'
+  if (existsSync(join(cwd, 'bun.lockb')) || existsSync(join(cwd, 'bun.lock'))) return 'bun'
   return 'npm'
 }
 
@@ -95,9 +88,7 @@ function patchImport(filePath, from, to) {
 async function main() {
   const rl = createInterface({ input, output })
 
-  console.log(
-    `\n${c.bold}ZUI Init${c.reset} — copy source files into your project\n`,
-  )
+  console.log(`\n${c.bold}ZUI Init${c.reset} — copy source files into your project\n`)
 
   // 1. Check for existing @mrmartineau/zui in the user's project
   const userPkgPath = join(cwd, 'package.json')
@@ -109,9 +100,7 @@ async function main() {
     }
     if (allDeps['@mrmartineau/zui']) {
       warn(`@mrmartineau/zui is listed in your package.json.`)
-      warn(
-        `Continuing will copy source files that may conflict with the installed package.`,
-      )
+      warn(`Continuing will copy source files that may conflict with the installed package.`)
       const ok = await confirm(rl, 'Continue anyway?')
       if (!ok) {
         console.log('\nAborted.')
@@ -131,22 +120,14 @@ async function main() {
   ])
 
   // 3. CSS destination
-  const cssDestRel = await prompt(
-    rl,
-    '\nWhere should CSS files go?',
-    'src/styles/zui',
-  )
+  const cssDestRel = await prompt(rl, '\nWhere should CSS files go?', 'src/styles/zui')
   const cssDest = join(cwd, cssDestRel)
 
   // 4. Components destination (skipped for CSS only)
   let compDest = null
   let compDestRel = null
   if (framework !== 'CSS only') {
-    compDestRel = await prompt(
-      rl,
-      'Where should component files go?',
-      'src/components/zui',
-    )
+    compDestRel = await prompt(rl, 'Where should component files go?', 'src/components/zui')
     compDest = join(cwd, compDestRel)
   }
 
@@ -167,10 +148,7 @@ async function main() {
     copyDir(join(pkgRoot, 'src/shared'), join(compDest, 'shared'))
 
     // Copy colorScheme utility into shared/
-    cpSync(
-      join(pkgRoot, 'src/utils/colorScheme.ts'),
-      join(compDest, 'shared/colorScheme.ts'),
-    )
+    cpSync(join(pkgRoot, 'src/utils/colorScheme.ts'), join(compDest, 'shared/colorScheme.ts'))
 
     // Patch imports that pointed at ../utils/colorScheme → ../shared/colorScheme
     patchImport(
@@ -196,10 +174,7 @@ async function main() {
     copyDir(join(pkgRoot, 'src/shared'), join(compDest, 'shared'))
 
     // Copy colorScheme utility into shared/
-    cpSync(
-      join(pkgRoot, 'src/utils/colorScheme.ts'),
-      join(compDest, 'shared/colorScheme.ts'),
-    )
+    cpSync(join(pkgRoot, 'src/utils/colorScheme.ts'), join(compDest, 'shared/colorScheme.ts'))
 
     success('Astro components copied')
   }
@@ -213,10 +188,7 @@ async function main() {
     copyDir(join(pkgRoot, 'src/shared'), join(compDest, 'shared'))
 
     // Copy colorScheme utility into shared/
-    cpSync(
-      join(pkgRoot, 'src/utils/colorScheme.ts'),
-      join(compDest, 'shared/colorScheme.ts'),
-    )
+    cpSync(join(pkgRoot, 'src/utils/colorScheme.ts'), join(compDest, 'shared/colorScheme.ts'))
 
     // Patch the useColorScheme rune file to point at the local copy
     patchImport(
@@ -282,9 +254,7 @@ async function main() {
   }
 
   console.log('')
-  warn(
-    `@mrmartineau/zui is no longer needed. Remove it from your package.json when you're ready.`,
-  )
+  warn(`@mrmartineau/zui is no longer needed. Remove it from your package.json when you're ready.`)
   console.log('')
 }
 

@@ -1,7 +1,4 @@
-import {
-  buildFooterSections,
-  buildSidebarSections,
-} from '@mrmartineau/zui-theme/astro'
+import { buildFooterSections, buildSidebarSections } from '@mrmartineau/zui-theme/astro'
 
 // Shared docs navigation, built once and reused by every layout so the sidebar
 // and footer rules never diverge between DocsLayout and HomeLayout.

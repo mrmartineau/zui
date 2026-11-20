@@ -43,15 +43,9 @@ export type { TextSize } from '../shared/textSizeClass'
 export { tooltipVariants } from '../shared/tooltipVariants'
 export type { ColorScheme } from '../utils/colorScheme'
 export { Accordion, type AccordionProps } from './Accordion'
-export {
-  AccordionContent,
-  type AccordionContentProps,
-} from './AccordionContent'
+export { AccordionContent, type AccordionContentProps } from './AccordionContent'
 export { AccordionItem, type AccordionItemProps } from './AccordionItem'
-export {
-  AccordionTrigger,
-  type AccordionTriggerProps,
-} from './AccordionTrigger'
+export { AccordionTrigger, type AccordionTriggerProps } from './AccordionTrigger'
 export { AlertDialog, type AlertDialogProps } from './AlertDialog'
 export {
   AppShell,
@@ -77,29 +71,17 @@ export { CardTitle, type CardTitleProps } from './CardTitle'
 export { Checkbox, type CheckboxProps } from './Checkbox'
 export { Code, type CodeProps } from './Code'
 export { Collapsible, type CollapsibleProps } from './Collapsible'
-export {
-  CollapsibleContent,
-  type CollapsibleContentProps,
-} from './CollapsibleContent'
-export {
-  CollapsibleTrigger,
-  type CollapsibleTriggerProps,
-} from './CollapsibleTrigger'
+export { CollapsibleContent, type CollapsibleContentProps } from './CollapsibleContent'
+export { CollapsibleTrigger, type CollapsibleTriggerProps } from './CollapsibleTrigger'
 export { Dialog, type DialogProps } from './Dialog'
 export { DialogBody, type DialogBodyProps } from './DialogBody'
-export {
-  DialogDescription,
-  type DialogDescriptionProps,
-} from './DialogDescription'
+export { DialogDescription, type DialogDescriptionProps } from './DialogDescription'
 export { DialogFooter, type DialogFooterProps } from './DialogFooter'
 export { DialogHeader, type DialogHeaderProps } from './DialogHeader'
 export { DialogTitle, type DialogTitleProps } from './DialogTitle'
 export { Dropzone, type DropzoneProps } from './Dropzone'
 export { Field, type FieldProps } from './Field'
-export {
-  FieldDescription,
-  type FieldDescriptionProps,
-} from './FieldDescription'
+export { FieldDescription, type FieldDescriptionProps } from './FieldDescription'
 export { FieldError, type FieldErrorProps } from './FieldError'
 export { FieldGroup, type FieldGroupProps } from './FieldGroup'
 export { FieldLegend, type FieldLegendProps } from './FieldLegend'

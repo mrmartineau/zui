@@ -3,11 +3,7 @@ import type { ButtonHTMLAttributes } from 'react'
 import { useEffect, useRef } from 'react'
 import { createTabsContentId, createTabsTriggerId } from '../core/tabs'
 import { tabsTriggerVariants } from '../shared/tabsVariants'
-import {
-  getTabsTriggerOrder,
-  useTabsContext,
-  useTabsSnapshot,
-} from './tabsContext'
+import { getTabsTriggerOrder, useTabsContext, useTabsSnapshot } from './tabsContext'
 
 type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>
 

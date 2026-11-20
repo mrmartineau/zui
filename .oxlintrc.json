@@ -1,8 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
-  "extends": [
-    "./node_modules/@mrmartineau/kit/src/oxlint/.oxlintrc.json"
-  ],
+  "extends": ["./node_modules/@mrmartineau/kit/src/oxlint/.oxlintrc.json"],
   "ignorePatterns": [
     "packages/vscode-zui/src/manifest.json",
     "packages/raycast-zui/src/data",

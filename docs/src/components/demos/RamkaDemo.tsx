@@ -35,13 +35,7 @@ export default function RamkaDemo() {
         {photos.map((p, i) => (
           <Lightbox.Trigger key={p.id} index={i} aria-label={`Open ${p.alt}`}>
             {({ imageRef }) => (
-              <img
-                ref={imageRef}
-                src={p.thumb}
-                alt={p.alt}
-                width={300}
-                height={300}
-              />
+              <img ref={imageRef} src={p.thumb} alt={p.alt} width={300} height={300} />
             )}
           </Lightbox.Trigger>
         ))}
@@ -61,12 +55,7 @@ export default function RamkaDemo() {
                 >
                   <Lightbox.Zoom>
                     <Lightbox.Media width={p.width} height={p.height}>
-                      <img
-                        src={p.src}
-                        alt={p.alt}
-                        width={p.width}
-                        height={p.height}
-                      />
+                      <img src={p.src} alt={p.alt} width={p.width} height={p.height} />
                     </Lightbox.Media>
                   </Lightbox.Zoom>
                 </Lightbox.Item>
@@ -75,22 +64,13 @@ export default function RamkaDemo() {
           </Lightbox.Slides>
 
           <div className="zui-ramka-toolbar">
-            <Lightbox.ZoomOut
-              aria-label="Zoom out"
-              render={<Button variant="ghost" icon />}
-            >
+            <Lightbox.ZoomOut aria-label="Zoom out" render={<Button variant="ghost" icon />}>
               <MagnifyingGlassMinusIcon aria-hidden />
             </Lightbox.ZoomOut>
-            <Lightbox.ZoomIn
-              aria-label="Zoom in"
-              render={<Button variant="ghost" icon />}
-            >
+            <Lightbox.ZoomIn aria-label="Zoom in" render={<Button variant="ghost" icon />}>
               <MagnifyingGlassPlusIcon aria-hidden />
             </Lightbox.ZoomIn>
-            <Lightbox.Close
-              aria-label="Close"
-              render={<Button variant="ghost" icon />}
-            >
+            <Lightbox.Close aria-label="Close" render={<Button variant="ghost" icon />}>
               <XIcon aria-hidden />
             </Lightbox.Close>
           </div>
@@ -104,10 +84,7 @@ export default function RamkaDemo() {
             >
               <CaretLeftIcon aria-hidden />
             </Lightbox.Previous>
-            <Lightbox.Next
-              aria-label="Next photo"
-              render={<Button variant="subtle" icon />}
-            >
+            <Lightbox.Next aria-label="Next photo" render={<Button variant="subtle" icon />}>
               <CaretRightIcon aria-hidden />
             </Lightbox.Next>
           </div>

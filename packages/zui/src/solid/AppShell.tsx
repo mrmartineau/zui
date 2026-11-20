@@ -9,10 +9,7 @@ import {
   splitProps,
   useContext,
 } from 'solid-js'
-import {
-  AppShellController,
-  type AppShellMode,
-} from '../shared/AppShellController'
+import { AppShellController, type AppShellMode } from '../shared/AppShellController'
 import {
   appShellHeaderVariants,
   appShellMainVariants,
@@ -146,12 +143,7 @@ export type AppShellHeaderProps = JSX.HTMLAttributes<HTMLElement> & {
 
 export function AppShellHeader(props: AppShellHeaderProps) {
   const ctx = useShell('AppShellHeader')
-  const [local, rest] = splitProps(props, [
-    'toggle',
-    'toggleLabel',
-    'class',
-    'children',
-  ])
+  const [local, rest] = splitProps(props, ['toggle', 'toggleLabel', 'class', 'children'])
   const showToggle = () => local.toggle !== false
   return (
     <header class={appShellHeaderVariants({ class: local.class })} {...rest}>
@@ -212,10 +204,7 @@ export function AppShellSidebarHeader(
 ) {
   const [local, rest] = splitProps(props, ['class', 'children'])
   return (
-    <div
-      class={appShellSidebarHeaderVariants({ class: local.class })}
-      {...rest}
-    >
+    <div class={appShellSidebarHeaderVariants({ class: local.class })} {...rest}>
       {local.children}
     </div>
   )
@@ -237,10 +226,7 @@ export function AppShellSidebarFooter(
 ) {
   const [local, rest] = splitProps(props, ['class', 'children'])
   return (
-    <div
-      class={appShellSidebarFooterVariants({ class: local.class })}
-      {...rest}
-    >
+    <div class={appShellSidebarFooterVariants({ class: local.class })} {...rest}>
       {local.children}
     </div>
   )

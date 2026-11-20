@@ -216,15 +216,10 @@ export default function TanStackTableDemo() {
                   <TableHead
                     key={header.id}
                     aria-sort={
-                      sorted === 'asc'
-                        ? 'ascending'
-                        : sorted === 'desc'
-                          ? 'descending'
-                          : undefined
+                      sorted === 'asc' ? 'ascending' : sorted === 'desc' ? 'descending' : undefined
                     }
                     style={{
-                      width:
-                        header.column.id === 'select' ? '2.5rem' : undefined,
+                      width: header.column.id === 'select' ? '2.5rem' : undefined,
                     }}
                   >
                     {header.isPlaceholder ? null : canSort ? (
@@ -243,23 +238,15 @@ export default function TanStackTableDemo() {
                           padding: 0,
                         }}
                       >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
+                        {flexRender(header.column.columnDef.header, header.getContext())}
                         <i
-                          className={
-                            SORT_ICON[String(sorted) as keyof typeof SORT_ICON]
-                          }
+                          className={SORT_ICON[String(sorted) as keyof typeof SORT_ICON]}
                           style={{ opacity: sorted ? 1 : 0.4 }}
                           aria-hidden="true"
                         />
                       </button>
                     ) : (
-                      flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )
+                      flexRender(header.column.columnDef.header, header.getContext())
                     )}
                   </TableHead>
                 )
@@ -269,10 +256,7 @@ export default function TanStackTableDemo() {
         </TableHeader>
         <TableBody>
           {table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              data-state={row.getIsSelected() ? 'selected' : undefined}
-            >
+            <TableRow key={row.id} data-state={row.getIsSelected() ? 'selected' : undefined}>
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -282,10 +266,7 @@ export default function TanStackTableDemo() {
           ))}
           {table.getRowModel().rows.length === 0 && (
             <TableRow>
-              <TableCell
-                colSpan={columns.length}
-                style={{ opacity: 0.7, textAlign: 'center' }}
-              >
+              <TableCell colSpan={columns.length} style={{ opacity: 0.7, textAlign: 'center' }}>
                 No people match your filter.
               </TableCell>
             </TableRow>
@@ -303,8 +284,7 @@ export default function TanStackTableDemo() {
         }}
       >
         <span style={{ fontSize: 'var(--step--1)', opacity: 0.7 }}>
-          Page {table.getState().pagination.pageIndex + 1} of{' '}
-          {table.getPageCount()}
+          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </span>
         <div style={{ display: 'flex', gap: 'var(--space-3xs)' }}>
           <Button

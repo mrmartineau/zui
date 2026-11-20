@@ -52,12 +52,7 @@ const popoverId = 'mini-theme-popover'
         <div class="mini-theme-options">
           {themes.map(({ id, color }) => (
             <label class="mini-theme-option" style={`--swatch-color: ${color}`}>
-              <input
-                type="radio"
-                name="mini-theme"
-                value={id}
-                title={id}
-              />
+              <input type="radio" name="mini-theme" value={id} title={id} />
               <span class="mini-theme-option-name">{id}</span>
             </label>
           ))}
@@ -84,23 +79,38 @@ const popoverId = 'mini-theme-popover'
 
     function applyTheme(themeName: string) {
       const root = document.documentElement
-      root.style.setProperty('--color-theme',      `light-dark(var(--color-${themeName}-600), var(--color-${themeName}-400))`)
-      root.style.setProperty('--color-background',  `light-dark(var(--color-${themeName}-200), var(--color-${themeName}-800))`)
-      root.style.setProperty('--color-surface',     `light-dark(var(--color-${themeName}-100), var(--color-${themeName}-900))`)
-      root.style.setProperty('--color-border',      `light-dark(var(--color-${themeName}-300), var(--color-${themeName}-700))`)
-      root.style.setProperty('--color-text',        `light-dark(var(--color-${themeName}-700), var(--color-${themeName}-300))`)
+      root.style.setProperty(
+        '--color-theme',
+        `light-dark(var(--color-${themeName}-600), var(--color-${themeName}-400))`,
+      )
+      root.style.setProperty(
+        '--color-background',
+        `light-dark(var(--color-${themeName}-200), var(--color-${themeName}-800))`,
+      )
+      root.style.setProperty(
+        '--color-surface',
+        `light-dark(var(--color-${themeName}-100), var(--color-${themeName}-900))`,
+      )
+      root.style.setProperty(
+        '--color-border',
+        `light-dark(var(--color-${themeName}-300), var(--color-${themeName}-700))`,
+      )
+      root.style.setProperty(
+        '--color-text',
+        `light-dark(var(--color-${themeName}-700), var(--color-${themeName}-300))`,
+      )
     }
 
     function restoreTheme() {
       const saved = localStorage.getItem('mini-theme')
       if (!saved) return
-      inputs.forEach(input => {
+      inputs.forEach((input) => {
         if (input.value === saved) input.checked = true
       })
       applyTheme(saved)
     }
 
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       input.addEventListener('change', () => {
         localStorage.setItem('mini-theme', input.value)
         applyTheme(input.value)
@@ -109,14 +119,17 @@ const popoverId = 'mini-theme-popover'
 
     // Clears the mini theme; sites listening on [data-mini-theme-reset] can
     // clear their own slotted theme controls off the same click.
-    document.querySelectorAll('[data-mini-theme-reset]').forEach(btn => {
+    document.querySelectorAll('[data-mini-theme-reset]').forEach((btn) => {
       btn.addEventListener('click', () => {
         localStorage.removeItem('mini-theme')
-        inputs.forEach(input => (input.checked = false))
+        inputs.forEach((input) => (input.checked = false))
         const root = document.documentElement
         for (const prop of [
-          '--color-theme', '--color-background', '--color-surface',
-          '--color-border', '--color-text',
+          '--color-theme',
+          '--color-background',
+          '--color-surface',
+          '--color-border',
+          '--color-text',
         ])
           root.style.removeProperty(prop)
       })
@@ -183,7 +196,9 @@ const popoverId = 'mini-theme-popover'
     outline: 2px solid transparent;
     outline-offset: 2px;
     cursor: pointer;
-    transition: outline-color 0.15s ease, transform 0.15s ease;
+    transition:
+      outline-color 0.15s ease,
+      transform 0.15s ease;
   }
 
   .mini-theme-option:hover input[type='radio'] {

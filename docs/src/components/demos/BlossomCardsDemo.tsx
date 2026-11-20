@@ -1,8 +1,5 @@
 /** @jsxImportSource react */
-import {
-  BlossomCarousel,
-  type BlossomOverscrollEvent,
-} from '@blossom-carousel/react'
+import { BlossomCarousel, type BlossomOverscrollEvent } from '@blossom-carousel/react'
 import '@blossom-carousel/react/style.css'
 import '../../styles/blossom-zui.css'
 

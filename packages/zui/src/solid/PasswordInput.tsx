@@ -6,10 +6,7 @@ import { passwordInputToggleClass } from '../shared/passwordInput'
 
 type InputVariantProps = VariantProps<typeof inputVariants>
 
-export type PasswordInputProps = Omit<
-  JSX.InputHTMLAttributes<HTMLInputElement>,
-  'type'
-> &
+export type PasswordInputProps = Omit<JSX.InputHTMLAttributes<HTMLInputElement>, 'type'> &
   InputVariantProps & {
     class?: string
     toggleLabel?: string
@@ -33,10 +30,7 @@ export function PasswordInput(props: PasswordInputProps) {
         disabled={rest.disabled}
         onClick={() => setVisible((v) => !v)}
       >
-        <i
-          class={`ph ${visible() ? 'ph-eye-slash' : 'ph-eye'}`}
-          aria-hidden="true"
-        />
+        <i class={`ph ${visible() ? 'ph-eye-slash' : 'ph-eye'}`} aria-hidden="true" />
       </button>
     </div>
   )

@@ -6,8 +6,7 @@ import { useMenuContext, useMenuSnapshot } from './menuContext'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-export type MenuTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  ButtonVariantProps
+export type MenuTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariantProps
 
 export function MenuTrigger({
   className,
@@ -60,8 +59,7 @@ export function MenuTrigger({
       }}
       onKeyDown={(event) => {
         onKeyDown?.(event)
-        if (!event.defaultPrevented)
-          controller.handleTriggerKeydown(event.nativeEvent)
+        if (!event.defaultPrevented) controller.handleTriggerKeydown(event.nativeEvent)
       }}
       type="button"
     />

@@ -18,7 +18,5 @@ const props = defineProps<{
   shape?: SelectVariantProps['shape']
 }>()
 
-const classes = computed(() =>
-  selectVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => selectVariants({ className: props.class, shape: props.shape }))
 </script>

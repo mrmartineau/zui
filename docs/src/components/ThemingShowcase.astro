@@ -88,31 +88,28 @@ const embeds = themes.map((theme) => ({
 ---
 
 <div class="theming-showcase">
-  {
-    embeds.map((embed) => (
-      <section class="theming-showcase-item flow" id={embed.id ?? embed.slug}>
-        <h3>{embed.name}</h3>
-        <p class="theming-showcase-blurb">{embed.blurb}</p>
-        <p class="theming-showcase-actions">
-          <SiteThemeButton theme={embed.slug} />
-        </p>
-        {embed.id && (
-          <p
-            class="codepen"
-            data-height="630"
-            data-pen-title={embed.name}
-            data-default-tab="result"
-            data-slug-hash={embed.id}
-            data-user="mrmartineau"
-          ></p>
-        )}
-      </section>
-    ))
-  }
+  {embeds.map((embed) => (
+    <section class="theming-showcase-item flow" id={embed.id ?? embed.slug}>
+      <h3>{embed.name}</h3>
+      <p class="theming-showcase-blurb">{embed.blurb}</p>
+      <p class="theming-showcase-actions">
+        <SiteThemeButton theme={embed.slug} />
+      </p>
+      {embed.id && (
+        <p
+          class="codepen"
+          data-height="630"
+          data-pen-title={embed.name}
+          data-default-tab="result"
+          data-slug-hash={embed.id}
+          data-user="mrmartineau"
+        ></p>
+      )}
+    </section>
+  ))}
 </div>
 
-<script is:inline async src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-></script>
+<script is:inline async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 <style>
   .theming-showcase-item {

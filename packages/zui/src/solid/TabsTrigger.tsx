@@ -32,12 +32,8 @@ export function TabsTrigger(props: TabsTriggerProps) {
     tabsTriggerVariants({ className: local.class, variant: local.variant }),
   )
   const isActive = createMemo(() => snapshot().selectedValue === local.value)
-  const triggerId = createMemo(() =>
-    createTabsTriggerId(snapshot().rootId, local.value),
-  )
-  const panelId = createMemo(() =>
-    createTabsContentId(snapshot().rootId, local.value),
-  )
+  const triggerId = createMemo(() => createTabsTriggerId(snapshot().rootId, local.value))
+  const panelId = createMemo(() => createTabsContentId(snapshot().rootId, local.value))
 
   createEffect(() => {
     const unregister = controller.registerTrigger({

@@ -96,9 +96,7 @@ export default function TanStackFormDemo() {
                 {error ? (
                   <FieldError id={`${field.name}-error`}>{error}</FieldError>
                 ) : (
-                  <FieldDescription>
-                    We&rsquo;ll only use this to sign you in.
-                  </FieldDescription>
+                  <FieldDescription>We&rsquo;ll only use this to sign you in.</FieldDescription>
                 )}
               </Field>
             )
@@ -109,9 +107,7 @@ export default function TanStackFormDemo() {
           name="username"
           validators={{
             onChange: ({ value }) =>
-              value.length < 3
-                ? 'Username must be at least 3 characters'
-                : undefined,
+              value.length < 3 ? 'Username must be at least 3 characters' : undefined,
           }}
         >
           {(field) => {
@@ -128,9 +124,7 @@ export default function TanStackFormDemo() {
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
                 />
-                {error && (
-                  <FieldError id={`${field.name}-error`}>{error}</FieldError>
-                )}
+                {error && <FieldError id={`${field.name}-error`}>{error}</FieldError>}
               </Field>
             )
           }}
@@ -140,9 +134,7 @@ export default function TanStackFormDemo() {
           name="bio"
           validators={{
             onChange: ({ value }) =>
-              value.length > 160
-                ? 'Keep your bio under 160 characters'
-                : undefined,
+              value.length > 160 ? 'Keep your bio under 160 characters' : undefined,
           }}
         >
           {(field) => {
@@ -185,9 +177,7 @@ export default function TanStackFormDemo() {
                     value={plan.value}
                     checked={field.state.value === plan.value}
                     onChange={(event) =>
-                      field.handleChange(
-                        event.target.value as SignupValues['plan'],
-                      )
+                      field.handleChange(event.target.value as SignupValues['plan'])
                     }
                   >
                     {plan.label}
@@ -215,8 +205,7 @@ export default function TanStackFormDemo() {
         <form.Field
           name="terms"
           validators={{
-            onChange: ({ value }) =>
-              value ? undefined : 'You must accept the terms to continue',
+            onChange: ({ value }) => (value ? undefined : 'You must accept the terms to continue'),
           }}
         >
           {(field) => {

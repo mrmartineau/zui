@@ -31,8 +31,7 @@ import '../styles/site-themes.css'
       terminal: base + 'JetBrains+Mono:wght@100..800',
       bubblegum: base + 'Baloo+2:wght@400..800&family=Nunito:wght@300..900',
       nordic: base + 'Inter:opsz,wght@14..32,100..900',
-      brutalist:
-        base + 'Space+Grotesk:wght@300..700&family=Space+Mono:wght@400;700',
+      brutalist: base + 'Space+Grotesk:wght@300..700&family=Space+Mono:wght@400;700',
       contrast: base + 'Geist:wght@100..900&family=Geist+Mono:wght@100..900',
     }
     window.__siteThemeFontLink = function (slug) {
@@ -73,9 +72,15 @@ import '../styles/site-themes.css'
   const clearInlineOverrides = () => {
     const root = document.documentElement
     for (const prop of [
-      '--color-theme', '--color-accent', '--color-background',
-      '--color-surface', '--color-border', '--color-text',
-      '--font-body', '--font-display', '--radius-scale',
+      '--color-theme',
+      '--color-accent',
+      '--color-background',
+      '--color-surface',
+      '--color-border',
+      '--color-text',
+      '--font-body',
+      '--font-display',
+      '--radius-scale',
     ])
       root.style.removeProperty(prop)
     localStorage.removeItem('mini-theme')
@@ -86,14 +91,12 @@ import '../styles/site-themes.css'
 
   const syncButtons = () => {
     const active = current()
-    document
-      .querySelectorAll<HTMLButtonElement>('[data-site-theme-set]')
-      .forEach((btn) => {
-        const pressed = btn.dataset.siteThemeSet === active
-        btn.setAttribute('aria-pressed', String(pressed))
-        const label = btn.querySelector('[data-site-theme-label]')
-        if (label) label.textContent = pressed ? 'Reset theme' : 'Use this theme'
-      })
+    document.querySelectorAll<HTMLButtonElement>('[data-site-theme-set]').forEach((btn) => {
+      const pressed = btn.dataset.siteThemeSet === active
+      btn.setAttribute('aria-pressed', String(pressed))
+      const label = btn.querySelector('[data-site-theme-label]')
+      if (label) label.textContent = pressed ? 'Reset theme' : 'Use this theme'
+    })
   }
 
   const setTheme = (slug: string | null) => {

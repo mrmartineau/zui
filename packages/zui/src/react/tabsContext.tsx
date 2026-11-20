@@ -1,9 +1,4 @@
-import {
-  createContext,
-  type RefObject,
-  useContext,
-  useSyncExternalStore,
-} from 'react'
+import { createContext, type RefObject, useContext, useSyncExternalStore } from 'react'
 import type { TabsControllerApi, TabsSnapshot } from '../core/tabs'
 
 export interface TabsContextValue {
@@ -33,13 +28,8 @@ export function useTabsSnapshot() {
   ) as TabsSnapshot
 }
 
-export function getTabsTriggerOrder(
-  root: HTMLDivElement | null,
-  element: HTMLElement | null,
-) {
+export function getTabsTriggerOrder(root: HTMLDivElement | null, element: HTMLElement | null) {
   if (!root || !element) return 0
 
-  return [
-    ...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]'),
-  ].indexOf(element)
+  return [...root.querySelectorAll<HTMLElement>('[data-zui-tabs-trigger]')].indexOf(element)
 }

@@ -9,12 +9,7 @@ export type FieldProps = JSX.HTMLAttributes<HTMLDivElement> & {
 }
 
 export function Field(props: FieldProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'orientation',
-    'invalid',
-    'children',
-  ])
+  const [local, rest] = splitProps(props, ['class', 'orientation', 'invalid', 'children'])
   const classes = () =>
     fieldVariants({
       className: local.class,

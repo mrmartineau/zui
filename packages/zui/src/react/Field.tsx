@@ -9,13 +9,7 @@ export type FieldProps = HTMLAttributes<HTMLDivElement> &
     className?: string
   }
 
-export function Field({
-  className,
-  orientation,
-  invalid,
-  children,
-  ...props
-}: FieldProps) {
+export function Field({ className, orientation, invalid, children, ...props }: FieldProps) {
   const classes = fieldVariants({
     className,
     invalid,

@@ -10,8 +10,7 @@ import DialogTitle from './DialogTitle.astro'
 type DialogVariantProps = VariantProps<typeof dialogVariants>
 
 interface Props
-  extends Omit<HTMLAttributes<'dialog'>, 'role' | 'title'>,
-    Pick<DialogVariantProps, 'shape'> {
+  extends Omit<HTMLAttributes<'dialog'>, 'role' | 'title'>, Pick<DialogVariantProps, 'shape'> {
   /** Open it with `document.getElementById(id).showModal()` */
   id: string
   /** Names the dialog for assistive tech. Keep it short, such as "Delete this project?" */
@@ -49,9 +48,7 @@ const descriptionId = `${id}-description`
 >
   <DialogHeader>
     <DialogTitle id={titleId}>{title}</DialogTitle>
-    {description && (
-      <DialogDescription id={descriptionId}>{description}</DialogDescription>
-    )}
+    {description && <DialogDescription id={descriptionId}>{description}</DialogDescription>}
   </DialogHeader>
   <slot />
 </Dialog>

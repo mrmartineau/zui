@@ -5,15 +5,9 @@ import { useTabsSnapshot } from './tabsContext'
 
 type TabsListVariantProps = VariantProps<typeof tabsListVariants>
 
-export type TabsListProps = HTMLAttributes<HTMLDivElement> &
-  TabsListVariantProps
+export type TabsListProps = HTMLAttributes<HTMLDivElement> & TabsListVariantProps
 
-export function TabsList({
-  children,
-  className,
-  variant,
-  ...props
-}: TabsListProps) {
+export function TabsList({ children, className, variant, ...props }: TabsListProps) {
   const snapshot = useTabsSnapshot()
   const classes = tabsListVariants({ className, variant })
 
@@ -24,9 +18,7 @@ export function TabsList({
       data-orientation={snapshot.orientation}
       data-zui-tabs-list=""
       role="tablist"
-      aria-orientation={
-        snapshot.orientation === 'vertical' ? 'vertical' : undefined
-      }
+      aria-orientation={snapshot.orientation === 'vertical' ? 'vertical' : undefined}
     >
       {children}
     </div>

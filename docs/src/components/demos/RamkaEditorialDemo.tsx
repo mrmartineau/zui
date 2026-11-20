@@ -51,13 +51,7 @@ function FigureTrigger({ index }: { index: number }) {
     <figure>
       <Lightbox.Trigger index={index} aria-label={`Open photo: ${f.alt}`}>
         {({ imageRef }) => (
-          <img
-            ref={imageRef}
-            src={src(f, 0.5)}
-            alt={f.alt}
-            width={f.width}
-            height={f.height}
-          />
+          <img ref={imageRef} src={src(f, 0.5)} alt={f.alt} width={f.width} height={f.height} />
         )}
       </Lightbox.Trigger>
       <figcaption className="zui-text--1 zui-color-muted mt-2xs">
@@ -82,17 +76,15 @@ export default function RamkaEditorialDemo() {
         <h3 className="zui-text-3">A day on the western cliffs</h3>
         <p className="zui-text--1 zui-color-muted">By ZUI · 3 min read</p>
         <p>
-          The path leaves the car park at sea level and climbs for an hour. At
-          the top the wind comes straight off the water, and the view opens up
-          in both directions.
+          The path leaves the car park at sea level and climbs for an hour. At the top the wind
+          comes straight off the water, and the view opens up in both directions.
         </p>
 
         <FigureTrigger index={0} />
 
         <p>
-          From here the route follows the cliff edge south. Most walkers turn
-          back at the first headland. The ones who keep going get the coast to
-          themselves.
+          From here the route follows the cliff edge south. Most walkers turn back at the first
+          headland. The ones who keep going get the coast to themselves.
         </p>
 
         <div
@@ -109,10 +101,7 @@ export default function RamkaEditorialDemo() {
         <Lightbox.Portal className="zui-ramka-editorial">
           <Lightbox.Backdrop />
           <Lightbox.Content aria-label="Article photographs">
-            <Lightbox.Slides
-              aria-label="Article photographs"
-              aria-roledescription="carousel"
-            >
+            <Lightbox.Slides aria-label="Article photographs" aria-roledescription="carousel">
               {figures.map((f, i) => (
                 <Lightbox.Slide key={f.id}>
                   <Lightbox.Item
@@ -127,12 +116,7 @@ export default function RamkaEditorialDemo() {
                     }
                   >
                     <Lightbox.Media width={f.width} height={f.height}>
-                      <img
-                        src={src(f)}
-                        alt={f.alt}
-                        width={f.width}
-                        height={f.height}
-                      />
+                      <img src={src(f)} alt={f.alt} width={f.width} height={f.height} />
                     </Lightbox.Media>
                   </Lightbox.Item>
                 </Lightbox.Slide>
@@ -141,10 +125,7 @@ export default function RamkaEditorialDemo() {
 
             <div className="zui-ramka-toolbar">
               <Lightbox.Counter />
-              <Lightbox.Close
-                aria-label="Close"
-                render={<Button variant="ghost" icon />}
-              >
+              <Lightbox.Close aria-label="Close" render={<Button variant="ghost" icon />}>
                 <XIcon aria-hidden />
               </Lightbox.Close>
             </div>

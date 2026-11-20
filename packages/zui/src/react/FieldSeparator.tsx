@@ -4,11 +4,7 @@ export type FieldSeparatorProps = HTMLAttributes<HTMLDivElement> & {
   className?: string
 }
 
-export function FieldSeparator({
-  className,
-  children,
-  ...props
-}: FieldSeparatorProps) {
+export function FieldSeparator({ className, children, ...props }: FieldSeparatorProps) {
   const classes = ['zui-field-separator', className].filter(Boolean).join(' ')
   return (
     // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- hr cannot carry label content; a div with role="separator" is the standard pattern for labelled dividers

@@ -16,7 +16,5 @@ const props = defineProps<{
   shape?: TextareaVariantProps['shape']
 }>()
 
-const classes = computed(() =>
-  textareaVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => textareaVariants({ className: props.class, shape: props.shape }))
 </script>

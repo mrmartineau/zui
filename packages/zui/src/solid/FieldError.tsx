@@ -7,8 +7,7 @@ export type FieldErrorProps = JSX.HTMLAttributes<HTMLDivElement> & {
 
 export function FieldError(props: FieldErrorProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-field-error', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-field-error', local.class].filter(Boolean).join(' ')
   return (
     <div role="alert" class={classes()} {...rest}>
       {local.children}

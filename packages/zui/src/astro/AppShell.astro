@@ -35,8 +35,7 @@ const {
 // runtime controller can both target this exact root.
 const id = providedId ?? `zui-app-shell-${crypto.randomUUID().slice(0, 8)}`
 
-const resolvedKey =
-  storageKey === null ? '' : (storageKey ?? 'zui-app-shell-collapsed')
+const resolvedKey = storageKey === null ? '' : (storageKey ?? 'zui-app-shell-collapsed')
 const classes = appShellVariants({ class: className, position })
 ---
 
@@ -50,7 +49,9 @@ const classes = appShellVariants({ class: className, position })
   data-shortcut={shortcut ? 'true' : 'false'}
   {...props}
 >
-  <a class="zui-app-shell-skip-link" href="#zui-app-shell-main">Skip to main content</a>
+  <a class="zui-app-shell-skip-link" href="#zui-app-shell-main">
+    Skip to main content
+  </a>
   <slot />
 </div>
 
@@ -68,7 +69,9 @@ const classes = appShellVariants({ class: className, position })
     } else if (defaultCollapsed) {
       root.setAttribute('data-collapsed', 'true')
     }
-  } catch (e) { /* noop */ }
+  } catch (e) {
+    /* noop */
+  }
 </script>
 
 <script>
@@ -102,14 +105,12 @@ const classes = appShellVariants({ class: className, position })
   }
 
   function destroyAppShells() {
-    document
-      .querySelectorAll<HTMLElement>('[data-zui-app-shell]')
-      .forEach((root) => {
-        const controller = mounted.get(root)
-        if (!controller) return
-        controller.destroy()
-        mounted.delete(root)
-      })
+    document.querySelectorAll<HTMLElement>('[data-zui-app-shell]').forEach((root) => {
+      const controller = mounted.get(root)
+      if (!controller) return
+      controller.destroy()
+      mounted.delete(root)
+    })
   }
 
   // Re-init after view-transition navigations (scripts don't re-run) and tear

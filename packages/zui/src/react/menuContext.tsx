@@ -1,9 +1,4 @@
-import {
-  createContext,
-  type RefObject,
-  useContext,
-  useSyncExternalStore,
-} from 'react'
+import { createContext, type RefObject, useContext, useSyncExternalStore } from 'react'
 import type { MenuControllerApi, MenuSnapshot } from '../core/menu'
 
 export interface MenuContextValue {
@@ -25,20 +20,11 @@ export function useMenuContext() {
 
 export function useMenuSnapshot(): MenuSnapshot {
   const { controller } = useMenuContext()
-  return useSyncExternalStore(
-    controller.subscribe,
-    controller.getSnapshot,
-    controller.getSnapshot,
-  )
+  return useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot)
 }
 
-export function getMenuItemOrder(
-  root: HTMLDivElement | null,
-  element: HTMLElement | null,
-) {
+export function getMenuItemOrder(root: HTMLDivElement | null, element: HTMLElement | null) {
   if (!root || !element) return 0
 
-  return [
-    ...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]'),
-  ].indexOf(element)
+  return [...root.querySelectorAll<HTMLElement>('[data-zui-menu-item]')].indexOf(element)
 }

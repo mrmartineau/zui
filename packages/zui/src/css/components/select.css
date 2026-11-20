@@ -53,7 +53,7 @@
     filter: grayscale(100%) opacity(50%);
   }
 
-  .zui-select[aria-invalid="true"],
+  .zui-select[aria-invalid='true'],
   .zui-select:user-invalid {
     border-color: var(--color-error);
   }

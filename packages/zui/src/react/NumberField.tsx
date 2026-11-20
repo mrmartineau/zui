@@ -6,10 +6,7 @@ import { stepNumberField } from '../shared/stepNumberField'
 
 type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>
 
-export type NumberFieldProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type'
-> &
+export type NumberFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> &
   NumberFieldVariantProps & {
     /** Class for the wrapper. Other props go to the `<input>`. */
     className?: string

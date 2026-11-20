@@ -12,6 +12,6 @@ const classes = ['zui-switch', className].filter(Boolean).join(' ')
 <label class={classes}>
   <!-- Astro writes repeated attributes in order, and a browser keeps the first.
      So the fixed type and role go before the spread, not after. -->
-<input type="checkbox" role="switch" {...props} />
+  <input type="checkbox" role="switch" {...props} />
   <slot />
 </label>

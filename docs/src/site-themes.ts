@@ -90,8 +90,7 @@ export const siteThemes: SiteThemePreview[] = [
   {
     accent: 'light-dark(var(--color-neutral-900), var(--color-neutral-200))',
     bg: 'light-dark(var(--color-white), var(--color-neutral-950))',
-    border:
-      'light-dark(var(--color-neutral-200), oklch(from var(--color-white) l c h / 10%))',
+    border: 'light-dark(var(--color-neutral-200), oklch(from var(--color-white) l c h / 10%))',
     font: 'var(--font-stack-sans)',
     name: 'Contrast',
     note: 'Monochrome startup',

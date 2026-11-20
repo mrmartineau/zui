@@ -11,8 +11,7 @@ export interface SkeletonSizeProps {
   aspectRatio?: string | number
 }
 
-const toLength = (value: Dimension) =>
-  typeof value === 'number' ? `${value}px` : value
+const toLength = (value: Dimension) => (typeof value === 'number' ? `${value}px` : value)
 
 /** Turns the size props into `--zui-skeleton-*` custom properties. */
 export function skeletonVars({

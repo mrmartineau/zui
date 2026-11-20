@@ -13,4 +13,6 @@ const { class: className, shape, ...props } = Astro.props
 const classes = selectVariants({ class: className, shape })
 ---
 
-<select class={classes} {...props}><slot /></select>
+<select class={classes} {...props}>
+  <slot />
+</select>

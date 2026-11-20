@@ -5,10 +5,7 @@ import { DialogDescription } from './DialogDescription'
 import { DialogHeader } from './DialogHeader'
 import { DialogTitle } from './DialogTitle'
 
-export type AlertDialogProps = Omit<
-  DialogProps,
-  'role' | 'title' | 'position' | 'size'
-> & {
+export type AlertDialogProps = Omit<DialogProps, 'role' | 'title' | 'position' | 'size'> & {
   /** Names the dialog for assistive tech. Keep it short, such as "Delete this project?" */
   title: JSX.Element
   /** Says what happens next. Read out when the dialog opens */
@@ -32,9 +29,7 @@ export function AlertDialog(props: AlertDialogProps) {
       id={baseId()}
       role="alertdialog"
       aria-labelledby={`${baseId()}-title`}
-      aria-describedby={
-        local.description ? `${baseId()}-description` : undefined
-      }
+      aria-describedby={local.description ? `${baseId()}-description` : undefined}
       class={['zui-alert-dialog', local.class].filter(Boolean).join(' ')}
       closedby={local.closedby ?? 'closerequest'}
       {...rest}
@@ -42,9 +37,7 @@ export function AlertDialog(props: AlertDialogProps) {
       <DialogHeader>
         <DialogTitle id={`${baseId()}-title`}>{local.title}</DialogTitle>
         <Show when={local.description}>
-          <DialogDescription id={`${baseId()}-description`}>
-            {local.description}
-          </DialogDescription>
+          <DialogDescription id={`${baseId()}-description`}>{local.description}</DialogDescription>
         </Show>
       </DialogHeader>
       {local.children}

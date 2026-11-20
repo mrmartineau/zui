@@ -16,13 +16,7 @@ export function Tooltip(props: TooltipProps) {
   const id = `tooltip-${createUniqueId()}`
   const anchorName = `--${id}`
   let popoverEl: HTMLElement | undefined
-  const [local, rest] = splitProps(props, [
-    'text',
-    'placement',
-    'shape',
-    'class',
-    'children',
-  ])
+  const [local, rest] = splitProps(props, ['text', 'placement', 'shape', 'class', 'children'])
   const contentClass = () => {
     const placementClass = tooltipVariants({ placement: local.placement })
       .split(' ')

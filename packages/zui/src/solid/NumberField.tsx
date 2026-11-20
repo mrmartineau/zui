@@ -6,10 +6,7 @@ import { stepNumberField } from '../shared/stepNumberField'
 
 type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>
 
-export type NumberFieldProps = Omit<
-  JSX.InputHTMLAttributes<HTMLInputElement>,
-  'type'
-> &
+export type NumberFieldProps = Omit<JSX.InputHTMLAttributes<HTMLInputElement>, 'type'> &
   NumberFieldVariantProps & {
     /** Class for the wrapper. Other props go to the `<input>`. */
     class?: string
@@ -18,16 +15,9 @@ export type NumberFieldProps = Omit<
   }
 
 export function NumberField(props: NumberFieldProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'shape',
-    'decrementLabel',
-    'incrementLabel',
-  ])
-  const classes = () =>
-    numberFieldVariants({ class: local.class, shape: local.shape })
-  const buttonDisabled = () =>
-    Boolean(rest.disabled || rest.readOnly || rest.readonly)
+  const [local, rest] = splitProps(props, ['class', 'shape', 'decrementLabel', 'incrementLabel'])
+  const classes = () => numberFieldVariants({ class: local.class, shape: local.shape })
+  const buttonDisabled = () => Boolean(rest.disabled || rest.readOnly || rest.readonly)
   return (
     <div class={classes()}>
       <button

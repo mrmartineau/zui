@@ -35,12 +35,8 @@ const contentRef = ref<HTMLDivElement>()
 
 const classes = computed(() => tabsContentVariants({ className: props.class }))
 const isActive = computed(() => snapshot.value.selectedValue === props.value)
-const triggerId = computed(() =>
-  createTabsTriggerId(snapshot.value.rootId, props.value),
-)
-const panelId = computed(() =>
-  createTabsContentId(snapshot.value.rootId, props.value),
-)
+const triggerId = computed(() => createTabsTriggerId(snapshot.value.rootId, props.value))
+const panelId = computed(() => createTabsContentId(snapshot.value.rootId, props.value))
 const isHidden = computed(() => props.hidden ?? !isActive.value)
 
 let unregister: (() => void) | undefined

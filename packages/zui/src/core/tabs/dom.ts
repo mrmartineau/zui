@@ -1,9 +1,5 @@
 import { createTabsController } from './controller'
-import {
-  createTabsContentId,
-  createTabsRootId,
-  createTabsTriggerId,
-} from './ids'
+import { createTabsContentId, createTabsRootId, createTabsTriggerId } from './ids'
 import type { TabsControllerApi, TabsRootOptions } from './types'
 
 const ROOT_SELECTOR = '[data-zui-tabs-root]'
@@ -80,17 +76,13 @@ function applySnapshot(root: HTMLElement, controller: TabsControllerApi) {
   }
 }
 
-export function attachTabsDom(
-  root: HTMLElement,
-  options: TabsRootOptions = {},
-): TabsDomController {
+export function attachTabsDom(root: HTMLElement, options: TabsRootOptions = {}): TabsDomController {
   const rootId = createTabsRootId(options.id ?? (root.id || undefined))
   const controller = createTabsController({
     ...options,
     id: rootId,
     orientation:
-      (root.dataset.orientation as TabsRootOptions['orientation']) ??
-      options.orientation,
+      (root.dataset.orientation as TabsRootOptions['orientation']) ?? options.orientation,
   })
 
   root.id = rootId
@@ -168,8 +160,7 @@ export function attachTabsDom(
         const onClick = () => controller.clickTrigger(value)
         const onFocus = () => controller.focusTrigger(value)
         const onBlur = () => controller.blurTrigger(value)
-        const onKeydown = (event: KeyboardEvent) =>
-          controller.handleTriggerKeydown(event, value)
+        const onKeydown = (event: KeyboardEvent) => controller.handleTriggerKeydown(event, value)
 
         trigger.addEventListener('click', onClick)
         trigger.addEventListener('focus', onFocus)
@@ -177,10 +168,7 @@ export function attachTabsDom(
         trigger.addEventListener('keydown', onKeydown)
 
         cleanups.add(() => {
-          if (
-            trigger.hasAttribute('disabled') &&
-            !isTriggerOwnDisabled(trigger)
-          ) {
+          if (trigger.hasAttribute('disabled') && !isTriggerOwnDisabled(trigger)) {
             trigger.dataset.zuiTabsDisabledByRoot = 'true'
           } else {
             delete trigger.dataset.zuiTabsDisabledByRoot
@@ -224,10 +212,7 @@ export function attachTabsDom(
     const shouldSync = mutations.some((mutation) => {
       if (mutation.type === 'childList') return true
       if (mutation.type !== 'attributes') return false
-      return (
-        mutation.attributeName === 'data-value' ||
-        mutation.attributeName === 'disabled'
-      )
+      return mutation.attributeName === 'data-value' || mutation.attributeName === 'disabled'
     })
 
     if (shouldSync) sync()
@@ -257,9 +242,9 @@ export function attachTabsDom(
 }
 
 export function autoAttachTabsDom(options: TabsRootOptions = {}) {
-  const instances = [
-    ...document.querySelectorAll<HTMLElement>(ROOT_SELECTOR),
-  ].map((root) => attachTabsDom(root, options))
+  const instances = [...document.querySelectorAll<HTMLElement>(ROOT_SELECTOR)].map((root) =>
+    attachTabsDom(root, options),
+  )
 
   return () => {
     for (const instance of instances) instance.destroy()

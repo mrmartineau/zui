@@ -75,9 +75,7 @@ const { controller, rootRef, snapshot } = useMenuContext()
 const itemRef = ref<HTMLElement>()
 const fallbackId = createMenuItemId(snapshot.value.rootId)
 const itemId = computed(() => props.id ?? fallbackId)
-const highlighted = computed(
-  () => snapshot.value.highlightedItemId === itemId.value,
-)
+const highlighted = computed(() => snapshot.value.highlightedItemId === itemId.value)
 let unregister = () => {}
 
 watchEffect(() => {
@@ -108,8 +106,7 @@ const classes = computed(() =>
 function handleClick(event: MouseEvent) {
   if (event.defaultPrevented) return
   const accepted = controller.selectItem(itemId.value)
-  if (!accepted && (snapshot.value.disabled || props.disabled))
-    event.preventDefault()
+  if (!accepted && (snapshot.value.disabled || props.disabled)) event.preventDefault()
 }
 
 function handleFocus(event: FocusEvent) {

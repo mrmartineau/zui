@@ -28,9 +28,12 @@ const currentPath = Astro.url.pathname
 >
   <Fragment slot="head">
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <SiteTheme />
   </Fragment>
   <Search slot="search" client:only="react" />
@@ -38,7 +41,11 @@ const currentPath = Astro.url.pathname
   <slot />
   <Fragment slot="body-end">
     <Reactions />
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88182718a8c6437783661af812d8c2fc"}'></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "88182718a8c6437783661af812d8c2fc"}'
+    ></script>
   </Fragment>
 </DocsLayout>
 

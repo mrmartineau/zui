@@ -42,11 +42,11 @@
     }
 
     &::marker {
-      content: "";
+      content: '';
     }
 
     &::after {
-      content: "";
+      content: '';
       display: inline-block;
       width: 0.45em;
       height: 0.45em;
@@ -86,8 +86,7 @@
     background: transparent;
 
     .zui-accordion-item {
-      border-block-start: 1px var(--border-style, solid)
-        var(--_accordion-border);
+      border-block-start: 1px var(--border-style, solid) var(--_accordion-border);
     }
 
     .zui-accordion-item:first-child {

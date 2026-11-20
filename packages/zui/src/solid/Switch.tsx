@@ -1,10 +1,7 @@
 import type { JSX } from 'solid-js'
 import { splitProps } from 'solid-js'
 
-export type SwitchProps = Omit<
-  JSX.InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'role'
-> & {
+export type SwitchProps = Omit<JSX.InputHTMLAttributes<HTMLInputElement>, 'type' | 'role'> & {
   class?: string
 }
 

@@ -23,7 +23,9 @@ import { siteThemes } from '../site-themes'
         title={theme.note}
         style={`--sw-bg:${theme.surface};--sw-border:${theme.border};--sw-text:${theme.text};--sw-accent:${theme.accent};--sw-on-accent:${theme.onAccent};--sw-radius:${theme.radius};--sw-font:${theme.font}`}
       >
-        <span class="site-theme-chip-preview" aria-hidden="true">Aa</span>
+        <span class="site-theme-chip-preview" aria-hidden="true">
+          Aa
+        </span>
         <span class="site-theme-chip-name">{theme.name}</span>
       </button>
     ))}
@@ -73,7 +75,9 @@ import { siteThemes } from '../site-themes'
     color: var(--sw-text);
     font-family: var(--sw-font);
     cursor: pointer;
-    transition: transform 0.15s var(--ease-out, ease), outline-color 0.15s ease;
+    transition:
+      transform 0.15s var(--ease-out, ease),
+      outline-color 0.15s ease;
     outline: 2px solid transparent;
     outline-offset: 2px;
   }

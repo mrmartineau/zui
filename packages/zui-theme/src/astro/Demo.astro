@@ -56,19 +56,24 @@ const hasPreview = Astro.slots.has('default')
       ))}
     </div>
   )}
-  {hasCode && tabs.map((tab, i) => (
-    <div
-      class="demo-code"
-      role={hasTabs ? 'tabpanel' : undefined}
-      data-panel={hasTabs ? tab.id : undefined}
-      hidden={hasTabs && i !== 0}
-    >
-      <Code code={tab.code.trim()} lang={tab.lang} themes={{
-        light: 'rose-pine-dawn',
-        dark: 'rose-pine',
-      }} />
-    </div>
-  ))}
+  {hasCode &&
+    tabs.map((tab, i) => (
+      <div
+        class="demo-code"
+        role={hasTabs ? 'tabpanel' : undefined}
+        data-panel={hasTabs ? tab.id : undefined}
+        hidden={hasTabs && i !== 0}
+      >
+        <Code
+          code={tab.code.trim()}
+          lang={tab.lang}
+          themes={{
+            light: 'rose-pine-dawn',
+            dark: 'rose-pine',
+          }}
+        />
+      </div>
+    ))}
 </div>
 
 <script>
@@ -128,9 +133,7 @@ const hasPreview = Astro.slots.has('default')
   }
 
   function initCodeTabs() {
-    document
-      .querySelectorAll<HTMLElement>('[data-code-tabs]')
-      .forEach(bindCodeTabs)
+    document.querySelectorAll<HTMLElement>('[data-code-tabs]').forEach(bindCodeTabs)
 
     if (!codeTabsBroadcastBound) {
       document.addEventListener('zui-demo-tab-change', (event) => {
@@ -173,9 +176,10 @@ const hasPreview = Astro.slots.has('default')
     border: 1px solid var(--color-border);
     border-top: none;
     border-bottom: none;
-    background-color:
-      light-dark(oklch(from var(--color-background) calc(l + 0.02) c h),
-      oklch(from var(--color-background) calc(l - 0.04) c h)) !important;
+    background-color: light-dark(
+      oklch(from var(--color-background) calc(l + 0.02) c h),
+      oklch(from var(--color-background) calc(l - 0.04) c h)
+    ) !important;
     overflow: hidden;
   }
 
@@ -190,7 +194,9 @@ const hasPreview = Astro.slots.has('default')
     cursor: pointer;
     border-bottom: 2px solid transparent;
     opacity: 0.6;
-    transition: opacity 0.15s ease, border-color 0.15s ease;
+    transition:
+      opacity 0.15s ease,
+      border-color 0.15s ease;
     text-transform: uppercase;
     flex-grow: 1;
   }

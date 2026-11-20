@@ -6,8 +6,7 @@ import { useTabsContext } from './tabsContext'
 
 type TabsListVariantProps = VariantProps<typeof tabsListVariants>
 
-export type TabsListProps = JSX.HTMLAttributes<HTMLDivElement> &
-  TabsListVariantProps
+export type TabsListProps = JSX.HTMLAttributes<HTMLDivElement> & TabsListVariantProps
 
 export function TabsList(props: TabsListProps) {
   const [local, rest] = splitProps(props, ['children', 'class', 'variant'])
@@ -23,9 +22,7 @@ export function TabsList(props: TabsListProps) {
       data-orientation={snapshot().orientation}
       data-zui-tabs-list=""
       role="tablist"
-      aria-orientation={
-        snapshot().orientation === 'vertical' ? 'vertical' : undefined
-      }
+      aria-orientation={snapshot().orientation === 'vertical' ? 'vertical' : undefined}
     >
       {local.children}
     </div>

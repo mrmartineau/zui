@@ -19,7 +19,9 @@ const { ratios } = Astro.props
     <div class="ratio-card">
       <div class="ratio-preview" style={`aspect-ratio: var(${token});`}></div>
       <CopyCode>{token}</CopyCode>
-      <span>{label} ({value})</span>
+      <span>
+        {label} ({value})
+      </span>
     </div>
   ))}
 </div>

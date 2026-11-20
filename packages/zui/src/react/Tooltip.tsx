@@ -12,14 +12,7 @@ export type TooltipProps = HTMLAttributes<HTMLSpanElement> &
     children: ReactNode
   }
 
-export function Tooltip({
-  text,
-  placement,
-  shape,
-  className,
-  children,
-  ...props
-}: TooltipProps) {
+export function Tooltip({ text, placement, shape, className, children, ...props }: TooltipProps) {
   const reactId = useId()
   const id = `tooltip-${reactId.replace(/:/g, '')}`
   const anchorName = `--${id}`

@@ -1,10 +1,5 @@
 /** @jsxImportSource react */
-import {
-  BlossomCarousel,
-  BlossomDots,
-  BlossomNext,
-  BlossomPrev,
-} from '@blossom-carousel/react'
+import { BlossomCarousel, BlossomDots, BlossomNext, BlossomPrev } from '@blossom-carousel/react'
 import '@blossom-carousel/react/style.css'
 import { buttonVariants } from '@mrmartineau/zui/react'
 import '../../styles/blossom-zui.css'
@@ -19,9 +14,7 @@ export default function BlossomBasicDemo() {
         {SLIDES.map((n) => (
           <div key={n} className="zui-card" data-blossom-slide>
             <h3 className="zui-card-title">Slide {n}</h3>
-            <p className="zui-card-description">
-              Drag, scroll or use the controls.
-            </p>
+            <p className="zui-card-description">Drag, scroll or use the controls.</p>
           </div>
         ))}
       </BlossomCarousel>

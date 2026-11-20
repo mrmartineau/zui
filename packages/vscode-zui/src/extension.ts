@@ -3,18 +3,9 @@ import type { Manifest } from './manifest.js'
 import bundledJson from './manifest.json' with { type: 'json' }
 import { ClassCompletionProvider } from './providers/class-completion.js'
 import { TokenCompletionProvider } from './providers/token-completion.js'
-import {
-  findZuiDependents,
-  loadWorkspaceManifest,
-} from './workspace-manifest.js'
+import { findZuiDependents, loadWorkspaceManifest } from './workspace-manifest.js'
 
-const CLASS_LANGUAGES = [
-  'html',
-  'javascriptreact',
-  'typescriptreact',
-  'astro',
-  'vue',
-]
+const CLASS_LANGUAGES = ['html', 'javascriptreact', 'typescriptreact', 'astro', 'vue']
 
 const CSS_LANGUAGES = [
   'css',
@@ -54,12 +45,7 @@ function registerProviders(manifest: Manifest): vscode.Disposable {
 
   for (const lang of CSS_LANGUAGES) {
     disposables.push(
-      vscode.languages.registerCompletionItemProvider(
-        { language: lang },
-        tokenProvider,
-        '-',
-        '(',
-      ),
+      vscode.languages.registerCompletionItemProvider({ language: lang }, tokenProvider, '-', '('),
     )
   }
 
@@ -73,20 +59,15 @@ function registerProviders(manifest: Manifest): vscode.Disposable {
   return vscode.Disposable.from(...disposables)
 }
 
-export async function activate(
-  context: vscode.ExtensionContext,
-): Promise<void> {
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
   let providers: vscode.Disposable | undefined
   /** Serialized form of the manifest the current providers were built from */
   let providersKey: string | undefined
 
   const sync = async () => {
-    const mode = vscode.workspace
-      .getConfiguration('zui')
-      .get<EnableMode>('enable', 'auto')
+    const mode = vscode.workspace.getConfiguration('zui').get<EnableMode>('enable', 'auto')
     const dependents = mode === 'never' ? [] : await findZuiDependents()
-    const active =
-      mode === 'always' || (mode === 'auto' && dependents.length > 0)
+    const active = mode === 'always' || (mode === 'auto' && dependents.length > 0)
 
     if (!active) {
       providers?.dispose()
@@ -97,8 +78,7 @@ export async function activate(
 
     // Prefer the ZUI version installed in the workspace so completions match
     // the user's dependency exactly; fall back to the bundled snapshot.
-    const manifest =
-      (await loadWorkspaceManifest(dependents)) ?? bundledManifest
+    const manifest = (await loadWorkspaceManifest(dependents)) ?? bundledManifest
 
     // Re-registering (rather than mutating providers in place) is the only
     // way to make VS Code refresh already-rendered colour swatches.

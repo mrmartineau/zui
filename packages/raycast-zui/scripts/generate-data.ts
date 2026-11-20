@@ -7,14 +7,7 @@
  * `https://zui.zander.wtf/api/reference.json` — both are produced by the
  * shared builder in `docs/src/lib/reference-data.ts`.
  */
-import {
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  statSync,
-  writeFileSync,
-} from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -60,15 +53,9 @@ const mdxSources: MdxSource[] = walkMdxFiles(docsPagesDir).map((file) => ({
 const data = buildReferenceData(mdxSources, manifest, new Date().toISOString())
 
 mkdirSync(outDir, { recursive: true })
-writeFileSync(
-  join(outDir, 'reference.json'),
-  `${JSON.stringify(data, null, 2)}\n`,
-)
+writeFileSync(join(outDir, 'reference.json'), `${JSON.stringify(data, null, 2)}\n`)
 
-const snippetCount = data.snippets.reduce(
-  (n, s) => n + Object.keys(s.frameworks).length,
-  0,
-)
+const snippetCount = data.snippets.reduce((n, s) => n + Object.keys(s.frameworks).length, 0)
 console.log(
   `✓ data (zui v${data.zuiVersion}): ${data.docs.length} docs pages, ${data.classes.length} classes, ${data.tokens.length} tokens, ${data.snippets.length} demos (${snippetCount} snippets) → ${outDir}`,
 )

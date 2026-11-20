@@ -1,13 +1,6 @@
 #!/usr/bin/env node
 
-import {
-  cpSync,
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  writeFileSync,
-} from 'node:fs'
+import { cpSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -47,9 +40,7 @@ if (!existsSync(templateDir)) {
   abort('Could not locate the starter template inside @mrmartineau/zui-theme.')
 }
 
-console.log(
-  `\n${c.bold}Create ZUI docs${c.reset} — scaffolding a new docs site\n`,
-)
+console.log(`\n${c.bold}Create ZUI docs${c.reset} — scaffolding a new docs site\n`)
 
 mkdirSync(target, { recursive: true })
 cpSync(templateDir, target, {

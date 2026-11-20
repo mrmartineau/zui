@@ -26,13 +26,7 @@ export function Popover({
   }
 
   return (
-    <div
-      id={id}
-      popover={popover}
-      className={classes}
-      style={anchorStyle}
-      {...props}
-    >
+    <div id={id} popover={popover} className={classes} style={anchorStyle} {...props}>
       {children}
     </div>
   )

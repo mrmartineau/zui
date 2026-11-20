@@ -9,4 +9,6 @@ const { class: className, ...props } = Astro.props
 const classes = ['zui-table-header', className].filter(Boolean).join(' ')
 ---
 
-<thead class={classes} {...props}><slot /></thead>
+<thead class={classes} {...props}>
+  <slot />
+</thead>

@@ -24,9 +24,7 @@ const props = defineProps<{
 
 const classes = computed(() =>
   cardVariants({
-    className: [props.href && 'zui-card-interactive', props.class]
-      .filter(Boolean)
-      .join(' '),
+    className: [props.href && 'zui-card-interactive', props.class].filter(Boolean).join(' '),
     shape: props.shape,
   }),
 )

@@ -118,9 +118,7 @@ export function useReferenceData() {
       setData(fresh)
       if (toast) {
         toast.style = Toast.Style.Success
-        toast.title = updated
-          ? `Updated to ZUI v${fresh.zuiVersion}`
-          : 'Already up to date'
+        toast.title = updated ? `Updated to ZUI v${fresh.zuiVersion}` : 'Already up to date'
         toast.message = updated
           ? `Data generated ${new Date(fresh.generatedAt).toLocaleString()}`
           : `ZUI v${fresh.zuiVersion}`

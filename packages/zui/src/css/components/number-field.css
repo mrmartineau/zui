@@ -3,10 +3,7 @@
      The input has square corners. The outer edges of the buttons carry the
      radius, so the three parts look like one control. */
   .zui-number-field {
-    --_nf-radius: var(
-      --zui-number-field-radius,
-      var(--zui-input-radius, var(--radius-lg))
-    );
+    --_nf-radius: var(--zui-number-field-radius, var(--zui-input-radius, var(--radius-lg)));
 
     display: inline-flex;
     align-items: stretch;
@@ -38,8 +35,7 @@
     display: inline-grid;
     place-items: center;
     padding-inline: var(--space-2xs);
-    border: 1px var(--border-style, solid)
-      var(--zui-input-border, var(--color-border));
+    border: 1px var(--border-style, solid) var(--zui-input-border, var(--color-border));
     border-radius: 0;
     background-color: var(--zui-number-field-button-bg, var(--color-surface));
     color: var(--color-text);
@@ -79,8 +75,7 @@
   /* Follow the input's live state, so the buttons also look and act
      disabled when a script sets disabled or readonly on the input later.
      :read-only also matches a disabled input. */
-  .zui-number-field:has(.zui-number-field-input:read-only)
-    .zui-number-field-button {
+  .zui-number-field:has(.zui-number-field-input:read-only) .zui-number-field-button {
     opacity: 0.5;
     pointer-events: none;
   }

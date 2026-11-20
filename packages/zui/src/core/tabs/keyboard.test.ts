@@ -1,9 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  getNextEnabledValue,
-  getPreviousEnabledValue,
-  getTabsKeyboardIntent,
-} from './keyboard'
+import { getNextEnabledValue, getPreviousEnabledValue, getTabsKeyboardIntent } from './keyboard'
 
 describe('tabs keyboard helpers', () => {
   it('maps horizontal LTR arrow keys correctly', () => {
@@ -43,24 +39,20 @@ describe('tabs keyboard helpers', () => {
         orientation: 'vertical',
       }),
     ).toBe('next')
-    expect(
-      getTabsKeyboardIntent('ArrowUp', { dir: 'ltr', orientation: 'vertical' }),
-    ).toBe('previous')
+    expect(getTabsKeyboardIntent('ArrowUp', { dir: 'ltr', orientation: 'vertical' })).toBe(
+      'previous',
+    )
   })
 
   it('supports home, end, and select-focused keys', () => {
-    expect(
-      getTabsKeyboardIntent('Home', { dir: 'ltr', orientation: 'horizontal' }),
-    ).toBe('first')
-    expect(
-      getTabsKeyboardIntent('End', { dir: 'ltr', orientation: 'horizontal' }),
-    ).toBe('last')
-    expect(
-      getTabsKeyboardIntent('Enter', { dir: 'ltr', orientation: 'horizontal' }),
-    ).toBe('select-focused')
-    expect(
-      getTabsKeyboardIntent(' ', { dir: 'ltr', orientation: 'horizontal' }),
-    ).toBe('select-focused')
+    expect(getTabsKeyboardIntent('Home', { dir: 'ltr', orientation: 'horizontal' })).toBe('first')
+    expect(getTabsKeyboardIntent('End', { dir: 'ltr', orientation: 'horizontal' })).toBe('last')
+    expect(getTabsKeyboardIntent('Enter', { dir: 'ltr', orientation: 'horizontal' })).toBe(
+      'select-focused',
+    )
+    expect(getTabsKeyboardIntent(' ', { dir: 'ltr', orientation: 'horizontal' })).toBe(
+      'select-focused',
+    )
   })
 
   it('wraps enabled trigger navigation', () => {

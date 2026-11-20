@@ -16,7 +16,5 @@ const props = defineProps<{
   shape?: InputVariantProps['shape']
 }>()
 
-const classes = computed(() =>
-  inputVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => inputVariants({ className: props.class, shape: props.shape }))
 </script>

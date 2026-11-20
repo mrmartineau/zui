@@ -42,9 +42,7 @@ export function Tabs({
   const reactId = useId()
   const rootId = id ?? `zui-tabs-${reactId.replace(/:/g, '')}`
   const rootRef = useRef<HTMLDivElement>(null)
-  const controllerRef = useRef<ReturnType<typeof createTabsController> | null>(
-    null,
-  )
+  const controllerRef = useRef<ReturnType<typeof createTabsController> | null>(null)
 
   if (!controllerRef.current) {
     controllerRef.current = createTabsController({

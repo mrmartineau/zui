@@ -1,8 +1,5 @@
 import { type InjectionKey, inject, provide } from 'vue'
-import type {
-  AppShellController,
-  AppShellMode,
-} from '../shared/AppShellController'
+import type { AppShellController, AppShellMode } from '../shared/AppShellController'
 
 export type AppShellContext = {
   rootId: string

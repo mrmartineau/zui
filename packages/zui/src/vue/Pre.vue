@@ -11,7 +11,5 @@ const props = defineProps<{
   class?: string
 }>()
 
-const classes = computed(() =>
-  ['zui-pre', props.class].filter(Boolean).join(' '),
-)
+const classes = computed(() => ['zui-pre', props.class].filter(Boolean).join(' '))
 </script>

@@ -6,10 +6,7 @@ import { dropzoneVariants } from '../shared/dropzoneVariants'
 
 type DropzoneVariantProps = VariantProps<typeof dropzoneVariants>
 
-export type DropzoneProps = Omit<
-  JSX.InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'class'
-> &
+export type DropzoneProps = Omit<JSX.InputHTMLAttributes<HTMLInputElement>, 'type' | 'class'> &
   DropzoneVariantProps & {
     /** Class for the wrapper. Other props go to the `<input>`. */
     class?: string
@@ -22,13 +19,7 @@ export type DropzoneProps = Omit<
   }
 
 export function Dropzone(props: DropzoneProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'shape',
-    'label',
-    'hint',
-    'maxSize',
-  ])
+  const [local, rest] = splitProps(props, ['class', 'shape', 'label', 'hint', 'maxSize'])
   onMount(initDropzones)
 
   return (

@@ -65,10 +65,7 @@ function generateScale({
       const t = i / (steps - 1)
       const et = ease(t)
 
-      const l = roundTo(
-        lightnessStart - et * (lightnessStart - lightnessEnd),
-        2,
-      )
+      const l = roundTo(lightnessStart - et * (lightnessStart - lightnessEnd), 2)
       const c = roundTo(chromaStart + et * (chromaEnd - chromaStart), 3)
 
       return [shade, `oklch(${l}% ${c} ${hue})`]

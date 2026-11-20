@@ -1,14 +1,7 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
 import { RefreshDataAction, useReferenceData } from './reference'
 
-const SECTION_ORDER = [
-  'Components',
-  'Tokens',
-  'Utilities',
-  'Guides',
-  'Integrations',
-  'Other',
-]
+const SECTION_ORDER = ['Components', 'Tokens', 'Utilities', 'Guides', 'Integrations', 'Other']
 
 const SECTION_ICONS: Record<string, Icon> = {
   Components: Icon.AppWindowGrid2x2,
@@ -22,15 +15,10 @@ const SECTION_ICONS: Record<string, Icon> = {
 export default function SearchDocs() {
   const { data, isLoading, refresh } = useReferenceData()
   const docs = data.docs
-  const sections = SECTION_ORDER.filter((section) =>
-    docs.some((doc) => doc.section === section),
-  )
+  const sections = SECTION_ORDER.filter((section) => docs.some((doc) => doc.section === section))
 
   return (
-    <List
-      isLoading={isLoading}
-      searchBarPlaceholder="Search the ZUI documentation…"
-    >
+    <List isLoading={isLoading} searchBarPlaceholder="Search the ZUI documentation…">
       {sections.map((section) => (
         <List.Section key={section} title={section}>
           {docs
@@ -45,10 +33,7 @@ export default function SearchDocs() {
                 actions={
                   <ActionPanel>
                     <Action.OpenInBrowser url={doc.url} />
-                    <Action.CopyToClipboard
-                      title="Copy URL"
-                      content={doc.url}
-                    />
+                    <Action.CopyToClipboard title="Copy URL" content={doc.url} />
                     <RefreshDataAction refresh={refresh} />
                   </ActionPanel>
                 }

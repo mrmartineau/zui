@@ -7,8 +7,7 @@ export type FieldGroupProps = JSX.HTMLAttributes<HTMLDivElement> & {
 
 export function FieldGroup(props: FieldGroupProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-field-group', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-field-group', local.class].filter(Boolean).join(' ')
   return (
     <div class={classes()} {...rest}>
       {local.children}

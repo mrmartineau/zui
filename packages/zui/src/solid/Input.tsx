@@ -12,7 +12,6 @@ export type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> &
 
 export function Input(props: InputProps) {
   const [local, rest] = splitProps(props, ['class', 'shape'])
-  const classes = () =>
-    inputVariants({ class: local.class, shape: local.shape })
+  const classes = () => inputVariants({ class: local.class, shape: local.shape })
   return <input class={classes()} {...rest} />
 }

@@ -6,10 +6,7 @@ import { passwordInputToggleClass } from '../shared/passwordInput'
 
 type InputVariantProps = VariantProps<typeof inputVariants>
 
-export type PasswordInputProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type'
-> &
+export type PasswordInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> &
   InputVariantProps & {
     className?: string
     toggleLabel?: string
@@ -23,14 +20,8 @@ export function PasswordInput({
 }: PasswordInputProps) {
   const [visible, setVisible] = useState(false)
   return (
-    <div
-      className={['zui-password-input', className].filter(Boolean).join(' ')}
-    >
-      <input
-        className={inputVariants({ shape })}
-        type={visible ? 'text' : 'password'}
-        {...props}
-      />
+    <div className={['zui-password-input', className].filter(Boolean).join(' ')}>
+      <input className={inputVariants({ shape })} type={visible ? 'text' : 'password'} {...props} />
       <button
         type="button"
         className={passwordInputToggleClass}
@@ -39,11 +30,7 @@ export function PasswordInput({
         disabled={props.disabled}
         onClick={() => setVisible((v) => !v)}
       >
-        {visible ? (
-          <EyeSlashIcon aria-hidden="true" />
-        ) : (
-          <EyeIcon aria-hidden="true" />
-        )}
+        {visible ? <EyeSlashIcon aria-hidden="true" /> : <EyeIcon aria-hidden="true" />}
       </button>
     </div>
   )

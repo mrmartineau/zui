@@ -9,4 +9,6 @@ const { class: className, ...props } = Astro.props
 const classes = ['zui-kbd-group', className].filter(Boolean).join(' ')
 ---
 
-<kbd class={classes} {...props}><slot /></kbd>
+<kbd class={classes} {...props}>
+  <slot />
+</kbd>

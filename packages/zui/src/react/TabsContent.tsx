@@ -8,13 +8,7 @@ export type TabsContentProps = HTMLAttributes<HTMLDivElement> & {
   value: string
 }
 
-export function TabsContent({
-  children,
-  className,
-  hidden,
-  value,
-  ...props
-}: TabsContentProps) {
+export function TabsContent({ children, className, hidden, value, ...props }: TabsContentProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { controller } = useTabsContext()
   const snapshot = useTabsSnapshot()

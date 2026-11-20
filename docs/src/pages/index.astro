@@ -1,12 +1,6 @@
 ---
+import { Tabs, TabsContent, TabsList, TabsTrigger, Tooltip } from '@mrmartineau/zui/astro'
 import { Code } from 'astro:components'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Tooltip,
-} from '@mrmartineau/zui/astro'
 import { version } from '../../../packages/zui/package.json'
 import SiteThemeButton from '../components/SiteThemeButton.astro'
 import Layout from '../layouts/HomeLayout.astro'
@@ -43,15 +37,36 @@ const tokenColors = [
       <span class="zui-badge">CSS-first &middot; No build step</span>
     </div> -->
     <h1 class="hero-title">A CSS-first UI library that's fully themeable and agent&nbsp;ready</h1>
-    <p class="hero-subtitle">Browse {componentCount} accessible components, tune every token to match your brand, and ship with zero JS runtime &mdash; pick a starting point and go. Optional <a href="/guides/react">React</a>, <a href="/guides/astro">Astro</a>, <a href="/guides/solid">Solid</a>, <a href="/guides/svelte">Svelte</a> &amp; <a href="/guides/vue">Vue</a> wrappers included.</p>
+    <p class="hero-subtitle">
+      Browse {componentCount} accessible components, tune every token to match your brand, and ship
+      with zero JS runtime &mdash; pick a starting point and go. Optional{' '}
+      <a href="/guides/react">React</a>, <a href="/guides/astro">Astro</a>,{' '}
+      <a href="/guides/solid">Solid</a>, <a href="/guides/svelte">Svelte</a> &amp;{' '}
+      <a href="/guides/vue">Vue</a> wrappers included.
+    </p>
     <div class="hero-actions">
-      <a href="/guides" class="zui-button zui-button-shape-squircle">Get started</a>
-      <a href="/components" class="zui-button zui-button-variant-outline zui-button-shape-squircle">Browse components</a>
-      <a href="https://github.com/mrmartineau/zui" class="zui-button zui-button-variant-ghost zui-button-shape-squircle"><i class="ph ph-github-logo"></i> GitHub</a>
+      <a href="/guides" class="zui-button zui-button-shape-squircle">
+        Get started
+      </a>
+      <a href="/components" class="zui-button zui-button-variant-outline zui-button-shape-squircle">
+        Browse components
+      </a>
+      <a
+        href="https://github.com/mrmartineau/zui"
+        class="zui-button zui-button-variant-ghost zui-button-shape-squircle"
+      >
+        <i class="ph ph-github-logo"></i> GitHub
+      </a>
     </div>
     <div class="hero-install">
-      <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
-      <a href="https://codepen.io/mrmartineau/pen/gbwoRZj?editors=1100" class="hero-install-alt"><i class="ph ph-codepen-logo"></i> or try it on CodePen</a>
+      <Code
+        code="npm install @mrmartineau/zui"
+        lang="bash"
+        themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }}
+      />
+      <a href="https://codepen.io/mrmartineau/pen/gbwoRZj?editors=1100" class="hero-install-alt">
+        <i class="ph ph-codepen-logo"></i> or try it on CodePen
+      </a>
     </div>
   </section>
 
@@ -70,21 +85,34 @@ const tokenColors = [
     <header class="section-header">
       <p class="section-eyebrow">Explore</p>
       <h2 class="section-title">Pick a starting point</h2>
-      <p class="section-lede">Everything in ZUI is built from the same three ingredients: components, a theme, and the tokens beneath them. Start wherever suits your project.</p>
+      <p class="section-lede">
+        Everything in ZUI is built from the same three ingredients: components, a theme, and the
+        tokens beneath them. Start wherever suits your project.
+      </p>
     </header>
     <div class="start-grid">
       <a href="/components" class="start-card">
         <div class="start-card-preview" aria-hidden="true">
           <span class="zui-button">Button</span>
           <span class="zui-badge zui-badge-color-green">Badge</span>
-          <span class="zui-avatar"><span class="zui-avatar-fallback">ZM</span></span>
-          <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>
+          <span class="zui-avatar">
+            <span class="zui-avatar-fallback">ZM</span>
+          </span>
+          <kbd class="zui-kbd-group">
+            <kbd class="zui-kbd">⌘</kbd>
+            <kbd class="zui-kbd">K</kbd>
+          </kbd>
           <span class="zui-button zui-button-variant-outline">Outline</span>
           <span class="zui-badge zui-badge-variant-fill">Fill</span>
         </div>
         <div class="start-card-body">
-          <h3 class="start-card-title">Components <i class="ph ph-arrow-right"></i></h3>
-          <p class="start-card-description">{componentCount} accessible, themeable building blocks &mdash; from buttons and forms to dialogs, menus, and a full app shell.</p>
+          <h3 class="start-card-title">
+            Components <i class="ph ph-arrow-right"></i>
+          </h3>
+          <p class="start-card-description">
+            {componentCount} accessible, themeable building blocks &mdash; from buttons and forms to
+            dialogs, menus, and a full app shell.
+          </p>
         </div>
       </a>
 
@@ -94,12 +122,19 @@ const tokenColors = [
             <span
               class="start-theme-chip"
               style={`--tc-bg:${theme.surface};--tc-border:${theme.border};--tc-text:${theme.text};--tc-radius:${theme.radius};--tc-font:${theme.font}`}
-            >Aa</span>
+            >
+              Aa
+            </span>
           ))}
         </div>
         <div class="start-card-body">
-          <h3 class="start-card-title">Theming <i class="ph ph-arrow-right"></i></h3>
-          <p class="start-card-description">Override one <code>theme.css</code> file and every component follows &mdash; colours, fonts, radii, and light/dark schemes.</p>
+          <h3 class="start-card-title">
+            Theming <i class="ph ph-arrow-right"></i>
+          </h3>
+          <p class="start-card-description">
+            Override one <code>theme.css</code> file and every component follows &mdash; colours,
+            fonts, radii, and light/dark schemes.
+          </p>
         </div>
       </a>
 
@@ -117,8 +152,13 @@ const tokenColors = [
           </span>
         </div>
         <div class="start-card-body">
-          <h3 class="start-card-title">Tokens <i class="ph ph-arrow-right"></i></h3>
-          <p class="start-card-description">Colours, spacing, type scale, shadows, radii, easing, and z-index &mdash; all exposed as CSS custom properties.</p>
+          <h3 class="start-card-title">
+            Tokens <i class="ph ph-arrow-right"></i>
+          </h3>
+          <p class="start-card-description">
+            Colours, spacing, type scale, shadows, radii, easing, and z-index &mdash; all exposed as
+            CSS custom properties.
+          </p>
         </div>
       </a>
     </div>
@@ -128,7 +168,10 @@ const tokenColors = [
     <header class="section-header">
       <p class="section-eyebrow">Component library</p>
       <h2 class="section-title">Real components, rendered live</h2>
-      <p class="section-lede">Nothing on this page is a screenshot. Every control below is the shipped CSS, running in your colour scheme &mdash; try the tabs.</p>
+      <p class="section-lede">
+        Nothing on this page is a screenshot. Every control below is the shipped CSS, running in
+        your colour scheme &mdash; try the tabs.
+      </p>
     </header>
     <div class="showcase-grid">
       <div class="showcase-panel">
@@ -162,9 +205,15 @@ const tokenColors = [
             <TabsTrigger value="code">Code</TabsTrigger>
             <TabsTrigger value="tokens">Tokens</TabsTrigger>
           </TabsList>
-          <TabsContent value="preview">Fully keyboard-accessible tabs, styled with plain CSS.</TabsContent>
-          <TabsContent value="code">Use plain classes, or the React, Astro, Solid, Svelte &amp; Vue wrappers.</TabsContent>
-          <TabsContent value="tokens">Every colour and radius here comes from a design token.</TabsContent>
+          <TabsContent value="preview">
+            Fully keyboard-accessible tabs, styled with plain CSS.
+          </TabsContent>
+          <TabsContent value="code">
+            Use plain classes, or the React, Astro, Solid, Svelte &amp; Vue wrappers.
+          </TabsContent>
+          <TabsContent value="tokens">
+            Every colour and radius here comes from a design token.
+          </TabsContent>
         </Tabs>
       </div>
 
@@ -172,11 +221,16 @@ const tokenColors = [
         <span class="showcase-label">Form controls</span>
         <div class="showcase-stack">
           <div class="zui-field">
-            <label class="zui-label" for="demo-input">Email address</label>
+            <label class="zui-label" for="demo-input">
+              Email address
+            </label>
             <input class="zui-input" id="demo-input" type="email" placeholder="you@example.com" />
           </div>
           <div class="showcase-row">
-            <label class="zui-checkbox" style="display:flex;align-items:center;gap:var(--space-3xs)">
+            <label
+              class="zui-checkbox"
+              style="display:flex;align-items:center;gap:var(--space-3xs)"
+            >
               <input type="checkbox" checked />
               Remember me
             </label>
@@ -196,7 +250,10 @@ const tokenColors = [
             <div class="zui-card-description">Choose what you want to be notified about.</div>
           </div>
           <div class="zui-card-body">
-            <label class="zui-checkbox" style="display:flex;align-items:center;gap:var(--space-3xs)">
+            <label
+              class="zui-checkbox"
+              style="display:flex;align-items:center;gap:var(--space-3xs)"
+            >
               <input type="checkbox" checked />
               Email notifications
             </label>
@@ -207,8 +264,13 @@ const tokenColors = [
       <div class="showcase-panel showcase-panel-wide">
         <span class="showcase-label">Inline pieces</span>
         <div class="showcase-row">
-          <span class="zui-avatar"><span class="zui-avatar-fallback">ZM</span></span>
-          <kbd class="zui-kbd-group"><kbd class="zui-kbd">⌘</kbd><kbd class="zui-kbd">K</kbd></kbd>
+          <span class="zui-avatar">
+            <span class="zui-avatar-fallback">ZM</span>
+          </span>
+          <kbd class="zui-kbd-group">
+            <kbd class="zui-kbd">⌘</kbd>
+            <kbd class="zui-kbd">K</kbd>
+          </kbd>
           <kbd class="zui-kbd">Esc</kbd>
           <span class="zui-badge zui-badge-color-blue">v{version}</span>
           <Tooltip text="Popover API + CSS anchor positioning">
@@ -217,14 +279,21 @@ const tokenColors = [
         </div>
       </div>
     </div>
-    <a href="/components" class="section-more">Browse all {componentCount} components <i class="ph ph-arrow-right"></i></a>
+    <a href="/components" class="section-more">
+      Browse all {componentCount} components <i class="ph ph-arrow-right"></i>
+    </a>
   </section>
 
   <section class="theming">
     <header class="section-header">
       <p class="section-eyebrow">Theming</p>
       <h2 class="section-title">One theme file, infinite looks</h2>
-      <p class="section-lede">Every ZUI component reads from a small set of semantic custom properties. Override that <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and borders all follow. Same markup, six very different personalities &mdash; try one on this very site:</p>
+      <p class="section-lede">
+        Every ZUI component reads from a small set of semantic custom properties. Override that{' '}
+        <code>:root</code> block and the whole UI transforms&mdash;colours, typography, radius, and
+        borders all follow. Same markup, six very different personalities &mdash; try one on this
+        very site:
+      </p>
     </header>
     <ul class="theming-swatches">
       {themePreviews.map((theme) => (
@@ -242,32 +311,56 @@ const tokenColors = [
         </li>
       ))}
     </ul>
-    <a href="/guides/theming-showcase" class="section-more">Explore the theming showcase <i class="ph ph-arrow-right"></i></a>
+    <a href="/guides/theming-showcase" class="section-more">
+      Explore the theming showcase <i class="ph ph-arrow-right"></i>
+    </a>
   </section>
 
   <section class="agents">
     <header class="section-header">
       <p class="section-eyebrow">AI tooling</p>
       <h2 class="section-title">Built for people &mdash; and their agents</h2>
-      <p class="section-lede">Design systems are increasingly consumed by coding agents, not just humans. ZUI ships the tooling both need: a skill that teaches assistants the real class names and tokens, and a CLI that copies the source straight into your project.</p>
+      <p class="section-lede">
+        Design systems are increasingly consumed by coding agents, not just humans. ZUI ships the
+        tooling both need: a skill that teaches assistants the real class names and tokens, and a
+        CLI that copies the source straight into your project.
+      </p>
     </header>
     <div class="agents-grid">
       <a href="/guides/skills" class="agent-card">
         <i class="ph-duotone ph-robot agent-card-icon"></i>
         <h3 class="agent-card-title">Agent skills</h3>
-        <p class="agent-card-description">Install the ZUI skills for Claude Code, Cursor, and other assistants. The model learns ZUI's classes, tokens, and conventions &mdash; no hallucinated class names &mdash; plus a phased workflow for migrating off Tailwind, shadcn/ui, MUI, or Chakra.</p>
-        <Code code="npx skills add mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+        <p class="agent-card-description">
+          Install the ZUI skills for Claude Code, Cursor, and other assistants. The model learns
+          ZUI's classes, tokens, and conventions &mdash; no hallucinated class names &mdash; plus a
+          phased workflow for migrating off Tailwind, shadcn/ui, MUI, or Chakra.
+        </p>
+        <Code
+          code="npx skills add mrmartineau/zui"
+          lang="bash"
+          themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }}
+        />
       </a>
       <a href="/guides/copy-source" class="agent-card">
         <i class="ph-duotone ph-copy agent-card-icon"></i>
         <h3 class="agent-card-title">Copy the source</h3>
-        <p class="agent-card-description">Want full control? Copy every component, token, and stylesheet directly into your project &mdash; no package dependency required.</p>
-        <Code code="npx @mrmartineau/zui init" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+        <p class="agent-card-description">
+          Want full control? Copy every component, token, and stylesheet directly into your project
+          &mdash; no package dependency required.
+        </p>
+        <Code
+          code="npx @mrmartineau/zui init"
+          lang="bash"
+          themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }}
+        />
       </a>
       <a href="/guides/vscode-extension" class="agent-card">
         <i class="ph-duotone ph-code agent-card-icon"></i>
         <h3 class="agent-card-title">Editor tooling</h3>
-        <p class="agent-card-description">The VS Code extension autocompletes ZUI class names and design tokens as you type, with hover docs for every custom property.</p>
+        <p class="agent-card-description">
+          The VS Code extension autocompletes ZUI class names and design tokens as you type, with
+          hover docs for every custom property.
+        </p>
       </a>
     </div>
   </section>
@@ -280,40 +373,70 @@ const tokenColors = [
     <div class="features-grid">
       <div class="feature">
         <h3>CSS-first</h3>
-        <p>Standard CSS with <code>@layer</code> for clean cascade control. Custom properties for full configurability. Import and go&mdash;no build step, no&nbsp;JS&nbsp;runtime.</p>
+        <p>
+          Standard CSS with <code>@layer</code> for clean cascade control. Custom properties for
+          full configurability. Import and go&mdash;no build step, no&nbsp;JS&nbsp;runtime.
+        </p>
       </div>
 
       <div class="feature">
         <h3>Framework wrappers</h3>
-        <p>Use plain CSS classes anywhere, or reach for typed React, Astro, Solid, Svelte, and Vue component wrappers that map props to the underlying class API.</p>
+        <p>
+          Use plain CSS classes anywhere, or reach for typed React, Astro, Solid, Svelte, and Vue
+          component wrappers that map props to the underlying class API.
+        </p>
         <div class="feature-links">
-          <a href="/guides/react" class="feature-link">React</a>
-          <a href="/guides/astro" class="feature-link">Astro</a>
-          <a href="/guides/solid" class="feature-link">Solid</a>
-          <a href="/guides/svelte" class="feature-link">Svelte</a>
-          <a href="/guides/vue" class="feature-link">Vue</a>
+          <a href="/guides/react" class="feature-link">
+            React
+          </a>
+          <a href="/guides/astro" class="feature-link">
+            Astro
+          </a>
+          <a href="/guides/solid" class="feature-link">
+            Solid
+          </a>
+          <a href="/guides/svelte" class="feature-link">
+            Svelte
+          </a>
+          <a href="/guides/vue" class="feature-link">
+            Vue
+          </a>
         </div>
       </div>
 
       <div class="feature">
         <h3>Themeable in seconds</h3>
-        <p>Override semantic colours, fonts, and border radii through one <code>theme.css</code> file. Supports <code>light-dark()</code> colour schemes natively.</p>
-        <a href="/guides/theming-showcase" class="feature-link">See it in action</a>
+        <p>
+          Override semantic colours, fonts, and border radii through one <code>theme.css</code>{' '}
+          file. Supports <code>light-dark()</code> colour schemes natively.
+        </p>
+        <a href="/guides/theming-showcase" class="feature-link">
+          See it in action
+        </a>
       </div>
 
       <div class="feature">
         <h3>Design tokens</h3>
-        <p>A comprehensive token system&mdash;colours, spacing, type scale, shadows, radii, easing, z-index&mdash;all exposed as CSS custom properties.</p>
+        <p>
+          A comprehensive token system&mdash;colours, spacing, type scale, shadows, radii, easing,
+          z-index&mdash;all exposed as CSS custom properties.
+        </p>
       </div>
 
       <div class="feature">
         <h3>Layered architecture</h3>
-        <p>Base, component, and utility layers keep specificity predictable. Override anything without <code>!important</code> hacks.</p>
+        <p>
+          Base, component, and utility layers keep specificity predictable. Override anything
+          without <code>!important</code> hacks.
+        </p>
       </div>
 
       <div class="feature">
         <h3>Modern CSS</h3>
-        <p>Built on <code>oklch()</code>, relative colour syntax, <code>light-dark()</code>, and container queries. Designed for how CSS works today.</p>
+        <p>
+          Built on <code>oklch()</code>, relative colour syntax, <code>light-dark()</code>, and
+          container queries. Designed for how CSS works today.
+        </p>
       </div>
     </div>
   </section>
@@ -328,21 +451,33 @@ const tokenColors = [
         <span class="step-number">1</span>
         <div class="step-content">
           <h3>Install</h3>
-          <Code code="npm install @mrmartineau/zui" lang="bash" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+          <Code
+            code="npm install @mrmartineau/zui"
+            lang="bash"
+            themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }}
+          />
         </div>
       </div>
       <div class="step">
         <span class="step-number">2</span>
         <div class="step-content">
           <h3>Import</h3>
-          <Code code={`@import '@mrmartineau/zui/css';`} lang="css" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+          <Code
+            code={`@import '@mrmartineau/zui/css';`}
+            lang="css"
+            themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }}
+          />
         </div>
       </div>
       <div class="step">
         <span class="step-number">3</span>
         <div class="step-content">
           <h3>Use</h3>
-          <Code code={`<button class="zui-button">Click me</button>`} lang="html" themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }} />
+          <Code
+            code={`<button class="zui-button">Click me</button>`}
+            lang="html"
+            themes={{ light: 'rose-pine-dawn', dark: 'rose-pine' }}
+          />
         </div>
       </div>
     </div>
@@ -384,7 +519,7 @@ const tokenColors = [
 
   .hero-name {
     font-size: clamp(4rem, 13vw, 13rem);
-    font-family: "Bagel Fat One", var(--font-display);
+    font-family: 'Bagel Fat One', var(--font-display);
     line-height: 1;
     margin-block-end: var(--space-sm);
   }
@@ -582,7 +717,10 @@ const tokenColors = [
     text-decoration: none;
     color: var(--color-text);
     background-color: var(--color-surface);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, translate 0.15s var(--ease-out);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      translate 0.15s var(--ease-out);
   }
 
   .start-card:hover {
@@ -820,7 +958,9 @@ const tokenColors = [
     background-color: var(--color-surface);
     text-decoration: none;
     color: var(--color-text);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .agent-card:hover {

@@ -1,9 +1,5 @@
 import { createTabsRootId } from './ids'
-import {
-  getNextEnabledValue,
-  getPreviousEnabledValue,
-  getTabsKeyboardIntent,
-} from './keyboard'
+import { getNextEnabledValue, getPreviousEnabledValue, getTabsKeyboardIntent } from './keyboard'
 import { TabsRegistry } from './registry'
 import type {
   TabsContentRegistration,
@@ -36,9 +32,7 @@ const DEFAULTS = {
   orientation: 'horizontal',
 } as const
 
-export function createTabsController(
-  initialOptions: TabsRootOptions = {},
-): TabsControllerApi {
+export function createTabsController(initialOptions: TabsRootOptions = {}): TabsControllerApi {
   const registry = new TabsRegistry()
   const listeners = new Set<(snapshot: TabsSnapshot) => void>()
 
@@ -47,17 +41,13 @@ export function createTabsController(
   let options: Required<
     Pick<TabsRootOptions, 'activationMode' | 'dir' | 'disabled' | 'orientation'>
   > &
-    Omit<
-      TabsRootOptions,
-      'activationMode' | 'dir' | 'disabled' | 'orientation'
-    > = {
+    Omit<TabsRootOptions, 'activationMode' | 'dir' | 'disabled' | 'orientation'> = {
     ...DEFAULTS,
     ...initialOptions,
     id: rootId,
   }
 
-  let selectedValue =
-    initialOptions.value ?? initialOptions.defaultValue ?? null
+  let selectedValue = initialOptions.value ?? initialOptions.defaultValue ?? null
   let focusedValue = selectedValue
   let preferredUncontrolledValue = initialOptions.defaultValue ?? null
 
@@ -153,17 +143,13 @@ export function createTabsController(
   function registerTrigger(registration: TabsTriggerRegistration) {
     const existingTrigger = registry.getTrigger(registration.value)
     if (existingTrigger && existingTrigger !== registration) {
-      warn(
-        `Duplicate TabsTrigger value "${registration.value}" detected in root "${rootId}".`,
-      )
+      warn(`Duplicate TabsTrigger value "${registration.value}" detected in root "${rootId}".`)
     }
 
     const unregister = registry.registerTrigger(registration)
     const currentSelected = getCurrentSelectedValue()
     const nextSelected = resolveSelectedValue(
-      !isControlled()
-        ? (preferredUncontrolledValue ?? currentSelected)
-        : currentSelected,
+      !isControlled() ? (preferredUncontrolledValue ?? currentSelected) : currentSelected,
     )
 
     if (!isControlled()) {
@@ -192,9 +178,7 @@ export function createTabsController(
   function registerContent(registration: TabsContentRegistration) {
     const existingContent = registry.getContent(registration.value)
     if (existingContent && existingContent !== registration) {
-      warn(
-        `Duplicate TabsContent value "${registration.value}" detected in root "${rootId}".`,
-      )
+      warn(`Duplicate TabsContent value "${registration.value}" detected in root "${rootId}".`)
     }
 
     const unregister = registry.registerContent(registration)
@@ -292,9 +276,7 @@ export function createTabsController(
 
   function setOptions(nextOptions: TabsRootOptions) {
     if (nextOptions.id && nextOptions.id !== rootId) {
-      warn(
-        `Tabs root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`,
-      )
+      warn(`Tabs root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`)
     }
     options = {
       ...options,
@@ -302,20 +284,14 @@ export function createTabsController(
       id: options.id,
     }
 
-    if (
-      !isControlled() &&
-      nextOptions.defaultValue !== undefined &&
-      !selectedValue
-    ) {
+    if (!isControlled() && nextOptions.defaultValue !== undefined && !selectedValue) {
       preferredUncontrolledValue = nextOptions.defaultValue
       selectedValue = resolveSelectedValue(nextOptions.defaultValue)
     }
 
     const resolved = resolveSelectedValue(getCurrentSelectedValue())
     if (options.value != null && !registry.getTrigger(options.value)) {
-      warn(
-        `Controlled Tabs value "${options.value}" has no matching trigger in root "${rootId}".`,
-      )
+      warn(`Controlled Tabs value "${options.value}" has no matching trigger in root "${rootId}".`)
     }
     if (!isControlled()) {
       selectedValue = resolved

@@ -1,17 +1,7 @@
 import type { VariantProps } from 'cva'
 import type { JSX } from 'solid-js'
-import {
-  createEffect,
-  createMemo,
-  createSignal,
-  onCleanup,
-  splitProps,
-} from 'solid-js'
-import type {
-  TabsActivationMode,
-  TabsDirection,
-  TabsOrientation,
-} from '../core/tabs'
+import { createEffect, createMemo, createSignal, onCleanup, splitProps } from 'solid-js'
+import type { TabsActivationMode, TabsDirection, TabsOrientation } from '../core/tabs'
 import { createTabsController } from '../core/tabs'
 import { tabsVariants } from '../shared/tabsVariants'
 import { TabsContext } from './tabsContext'
@@ -75,9 +65,7 @@ export function Tabs(props: TabsProps) {
     })
   })
 
-  const classes = createMemo(() =>
-    tabsVariants({ className: local.class, shape: local.shape }),
-  )
+  const classes = createMemo(() => tabsVariants({ className: local.class, shape: local.shape }))
   const contextValue = {
     controller,
     rootRef,

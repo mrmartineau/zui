@@ -12,8 +12,7 @@ const LOOKBACK_LINES = 50
 //   class="        className='        :class="        v-bind:class="
 //   [class]="      class={            className={
 // The captured group is the opening delimiter: " / ' / {
-const OPENER_RE =
-  /\b(?:class(?:Name)?|(?:v-bind)?:class|\[class\])\s*=\s*(["'{])/g
+const OPENER_RE = /\b(?:class(?:Name)?|(?:v-bind)?:class|\[class\])\s*=\s*(["'{])/g
 
 type StringQuote = '"' | "'" | '`'
 
@@ -83,10 +82,7 @@ export class ClassCompletionProvider implements vscode.CompletionItemProvider {
 
   constructor(classes: ClassEntry[]) {
     this.items = classes.map(({ name, source }) => {
-      const item = new vscode.CompletionItem(
-        name,
-        vscode.CompletionItemKind.Value,
-      )
+      const item = new vscode.CompletionItem(name, vscode.CompletionItemKind.Value)
       item.detail = `ZUI — ${source}`
       item.documentation = new vscode.MarkdownString(`\`${name}\``)
       item.insertText = name
@@ -99,9 +95,7 @@ export class ClassCompletionProvider implements vscode.CompletionItemProvider {
     position: vscode.Position,
   ): vscode.CompletionItem[] | null {
     const startLine = Math.max(0, position.line - LOOKBACK_LINES)
-    const prefix = document.getText(
-      new vscode.Range(new vscode.Position(startLine, 0), position),
-    )
+    const prefix = document.getText(new vscode.Range(new vscode.Position(startLine, 0), position))
     if (!isInsideClassBinding(prefix)) return null
     return this.items
   }

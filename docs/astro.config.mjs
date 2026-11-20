@@ -5,9 +5,9 @@ import { join, resolve } from 'node:path'
 import cloudflare from '@astrojs/cloudflare'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
-import { defineConfig } from 'astro/config'
 import reactions from 'astro-d1-reactions'
 import d1Search from 'astro-d1-search'
+import { defineConfig } from 'astro/config'
 import searchConfig from './search.config.ts'
 
 // The stats page lists only these pages. Anyone can post a made-up path to
@@ -21,13 +21,9 @@ const reactionPages = [
     .filter((file) => file.endsWith('.mdx'))
     .map((file) => {
       const folder = file.match(/^(.+)\/index\.mdx$/)?.[1]
-      const title = readFileSync(join(pagesDir, file), 'utf8').match(
-        /^title: (.+)$/m,
-      )?.[1]
+      const title = readFileSync(join(pagesDir, file), 'utf8').match(/^title: (.+)$/m)?.[1]
       return {
-        title: folder
-          ? `${folder[0].toUpperCase()}${folder.slice(1)}: ${title}`
-          : title,
+        title: folder ? `${folder[0].toUpperCase()}${folder.slice(1)}: ${title}` : title,
         // `index` must be a whole path segment, or `tokens/z-index` loses its tail
         url: `/${file.replace(/\.mdx$/, '').replace(/(?:^|\/)index$/, '')}`,
       }
@@ -83,10 +79,7 @@ export default defineConfig({
           import.meta.dirname,
           '../packages/zui/src/css/integrations/ramka.css',
         ),
-        '@mrmartineau/zui/css': resolve(
-          import.meta.dirname,
-          '../packages/zui/dist/css/zui.css',
-        ),
+        '@mrmartineau/zui/css': resolve(import.meta.dirname, '../packages/zui/dist/css/zui.css'),
         '@mrmartineau/zui/utils': resolve(
           import.meta.dirname,
           '../packages/zui/src/utils/colorScheme.ts',

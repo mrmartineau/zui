@@ -48,10 +48,7 @@ export default function CmdkDemo() {
       </Command>
 
       {ran && (
-        <p
-          className="zui-field-description"
-          style={{ marginTop: 'var(--space-2xs)' }}
-        >
+        <p className="zui-field-description" style={{ marginTop: 'var(--space-2xs)' }}>
           Ran: <strong>{ran}</strong>
         </p>
       )}

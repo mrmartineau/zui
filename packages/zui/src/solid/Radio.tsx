@@ -1,10 +1,7 @@
 import type { JSX } from 'solid-js'
 import { splitProps } from 'solid-js'
 
-export type RadioProps = Omit<
-  JSX.InputHTMLAttributes<HTMLInputElement>,
-  'type'
-> & {
+export type RadioProps = Omit<JSX.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
   class?: string
 }
 

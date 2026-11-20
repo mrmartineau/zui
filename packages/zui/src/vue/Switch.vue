@@ -38,7 +38,5 @@ function inputAttrs() {
   }
 }
 
-const classes = computed(() =>
-  ['zui-switch', props.class].filter(Boolean).join(' '),
-)
+const classes = computed(() => ['zui-switch', props.class].filter(Boolean).join(' '))
 </script>

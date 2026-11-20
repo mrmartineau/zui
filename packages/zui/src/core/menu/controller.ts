@@ -1,8 +1,4 @@
-import {
-  createMenuContentId,
-  createMenuRootId,
-  createMenuTriggerId,
-} from './ids'
+import { createMenuContentId, createMenuRootId, createMenuTriggerId } from './ids'
 import { getContentKeyboardIntent, getTriggerKeyboardIntent } from './keyboard'
 import { MenuRegistry } from './registry'
 import { appendTypeaheadCharacter, findTypeaheadMatch } from './typeahead'
@@ -38,18 +34,14 @@ const DEFAULTS = {
   side: 'bottom',
 } as const
 
-export function createMenuController(
-  initialOptions: MenuRootOptions = {},
-): MenuControllerApi {
+export function createMenuController(initialOptions: MenuRootOptions = {}): MenuControllerApi {
   const registry = new MenuRegistry()
   const listeners = new Set<(snapshot: MenuSnapshot) => void>()
   const rootId = createMenuRootId(initialOptions.id)
   const triggerId = createMenuTriggerId(rootId)
   const contentId = createMenuContentId(rootId)
 
-  let options: Required<
-    Pick<MenuRootOptions, 'align' | 'dir' | 'disabled' | 'modal' | 'side'>
-  > &
+  let options: Required<Pick<MenuRootOptions, 'align' | 'dir' | 'disabled' | 'modal' | 'side'>> &
     Omit<MenuRootOptions, 'align' | 'dir' | 'disabled' | 'modal' | 'side'> = {
     ...DEFAULTS,
     ...initialOptions,
@@ -130,18 +122,14 @@ export function createMenuController(
     return registry.getEnabledItems()
   }
 
-  function resolveFocusableItem(
-    target: MenuFocusTarget,
-    currentId = highlightedItemId,
-  ) {
+  function resolveFocusableItem(target: MenuFocusTarget, currentId = highlightedItemId) {
     const items = getEnabledItems()
     if (items.length === 0) return null
 
     if (target === 'first' || target == null) return items[0] ?? null
     if (target === 'last') return items.at(-1) ?? null
 
-    const currentIndex =
-      currentId == null ? -1 : items.findIndex((item) => item.id === currentId)
+    const currentIndex = currentId == null ? -1 : items.findIndex((item) => item.id === currentId)
     if (target === 'next') {
       return items[(currentIndex + 1 + items.length) % items.length] ?? null
     }
@@ -162,10 +150,7 @@ export function createMenuController(
     item?.element?.focus()
   }
 
-  function focusResolvedItem(
-    target: MenuFocusTarget,
-    currentId = highlightedItemId,
-  ) {
+  function focusResolvedItem(target: MenuFocusTarget, currentId = highlightedItemId) {
     const item = resolveFocusableItem(target, currentId)
     if (!item) return false
     const changed = setHighlightedItemId(item.id)
@@ -219,8 +204,7 @@ export function createMenuController(
 
   function focusItem(id: string) {
     const item = registry.getItem(id)
-    if (options.disabled || !item || item.disabled || !getCurrentOpen())
-      return false
+    if (options.disabled || !item || item.disabled || !getCurrentOpen()) return false
     const changed = setHighlightedItemId(id)
     focusItemElement(item)
     return changed || true
@@ -266,10 +250,7 @@ export function createMenuController(
   function handleContentKeydown(event: KeyboardEvent) {
     if (!getCurrentOpen()) return
 
-    const intent = getContentKeyboardIntent(
-      event.key,
-      options.dir ?? DEFAULTS.dir,
-    )
+    const intent = getContentKeyboardIntent(event.key, options.dir ?? DEFAULTS.dir)
     if (intent !== 'none') {
       if (intent === 'close') {
         event.preventDefault()
@@ -310,12 +291,7 @@ export function createMenuController(
       }
     }
 
-    if (
-      event.key.length === 1 &&
-      !event.altKey &&
-      !event.ctrlKey &&
-      !event.metaKey
-    ) {
+    if (event.key.length === 1 && !event.altKey && !event.ctrlKey && !event.metaKey) {
       const matched = handleItemTextInput(event.key)
       if (matched) {
         event.preventDefault()
@@ -343,11 +319,7 @@ export function createMenuController(
   function handleItemTextInput(character: string) {
     if (options.disabled) return false
     typeaheadState = appendTypeaheadCharacter(typeaheadState, character)
-    const match = findTypeaheadMatch(
-      getEnabledItems(),
-      typeaheadState.buffer,
-      highlightedItemId,
-    )
+    const match = findTypeaheadMatch(getEnabledItems(), typeaheadState.buffer, highlightedItemId)
     if (!match) return false
     const changed = setHighlightedItemId(match.id)
     focusItemElement(match)
@@ -370,10 +342,7 @@ export function createMenuController(
     }
   }
 
-  function registerContent(registration: {
-    contentId: string
-    element: HTMLElement | null
-  }) {
+  function registerContent(registration: { contentId: string; element: HTMLElement | null }) {
     if (registry.getContent() && registry.getContent() !== registration) {
       warn(`Duplicate MenuContent detected in root "${rootId}".`)
     }
@@ -388,9 +357,7 @@ export function createMenuController(
   function registerItem(registration: MenuItemRegistration) {
     const existingItem = registry.getItem(registration.id)
     if (existingItem && existingItem !== registration) {
-      warn(
-        `Duplicate MenuItem id "${registration.id}" detected in root "${rootId}".`,
-      )
+      warn(`Duplicate MenuItem id "${registration.id}" detected in root "${rootId}".`)
     }
     const unregister = registry.registerItem(registration)
     if (highlightedItemId != null && !registry.getItem(highlightedItemId)) {
@@ -408,9 +375,7 @@ export function createMenuController(
 
   function setOptions(nextOptions: MenuRootOptions) {
     if (nextOptions.id && nextOptions.id !== rootId) {
-      warn(
-        `Menu root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`,
-      )
+      warn(`Menu root id cannot change after initialization. Ignoring new id "${nextOptions.id}".`)
     }
 
     options = {
@@ -422,10 +387,7 @@ export function createMenuController(
     if (!getCurrentOpen()) {
       typeaheadState = { buffer: '', timestamp: 0 }
       highlightedItemId = null
-    } else if (
-      highlightedItemId != null &&
-      !registry.getItem(highlightedItemId)
-    ) {
+    } else if (highlightedItemId != null && !registry.getItem(highlightedItemId)) {
       highlightedItemId = null
     }
 

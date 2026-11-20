@@ -49,12 +49,8 @@ const classes = computed(() =>
   tabsTriggerVariants({ className: props.class, variant: props.variant }),
 )
 const isActive = computed(() => snapshot.value.selectedValue === props.value)
-const triggerId = computed(() =>
-  createTabsTriggerId(snapshot.value.rootId, props.value),
-)
-const panelId = computed(() =>
-  createTabsContentId(snapshot.value.rootId, props.value),
-)
+const triggerId = computed(() => createTabsTriggerId(snapshot.value.rootId, props.value))
+const panelId = computed(() => createTabsContentId(snapshot.value.rootId, props.value))
 
 let unregister: (() => void) | undefined
 
@@ -85,7 +81,6 @@ function handleFocus(event: FocusEvent) {
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  if (!event.defaultPrevented)
-    controller.handleTriggerKeydown(event, props.value)
+  if (!event.defaultPrevented) controller.handleTriggerKeydown(event, props.value)
 }
 </script>

@@ -6,10 +6,7 @@
     --_textarea-fg: var(--zui-textarea-fg, var(--color-text));
     --_textarea-padding: var(--zui-textarea-padding, var(--space-xs));
     --_textarea-font-size: var(--zui-textarea-font-size, var(--step-0));
-    --_textarea-focus-border: var(
-      --zui-textarea-focus-border,
-      var(--color-theme)
-    );
+    --_textarea-focus-border: var(--zui-textarea-focus-border, var(--color-theme));
     --_textarea-min-height: var(--zui-textarea-min-height, 6rem);
 
     display: block;
@@ -43,7 +40,7 @@
     filter: grayscale(100%) opacity(50%);
   }
 
-  .zui-textarea[aria-invalid="true"],
+  .zui-textarea[aria-invalid='true'],
   .zui-textarea:user-invalid {
     border-color: var(--color-error);
   }

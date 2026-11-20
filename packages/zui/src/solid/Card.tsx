@@ -13,17 +13,10 @@ export type CardProps = JSX.HTMLAttributes<HTMLDivElement> &
   }
 
 export function Card(props: CardProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'href',
-    'shape',
-    'children',
-  ])
+  const [local, rest] = splitProps(props, ['class', 'href', 'shape', 'children'])
   const classes = () =>
     cardVariants({
-      class: [local.href && 'zui-card-interactive', local.class]
-        .filter(Boolean)
-        .join(' '),
+      class: [local.href && 'zui-card-interactive', local.class].filter(Boolean).join(' '),
       shape: local.shape,
     })
 
@@ -38,10 +31,7 @@ export function Card(props: CardProps) {
           {local.children}
         </a>
       ) : (
-        <div
-          class={classes()}
-          {...(rest as JSX.HTMLAttributes<HTMLDivElement>)}
-        >
+        <div class={classes()} {...(rest as JSX.HTMLAttributes<HTMLDivElement>)}>
           {local.children}
         </div>
       )}

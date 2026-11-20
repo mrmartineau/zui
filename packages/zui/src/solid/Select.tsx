@@ -12,8 +12,7 @@ export type SelectProps = JSX.SelectHTMLAttributes<HTMLSelectElement> &
 
 export function Select(props: SelectProps) {
   const [local, rest] = splitProps(props, ['class', 'shape', 'children'])
-  const classes = () =>
-    selectVariants({ class: local.class, shape: local.shape })
+  const classes = () => selectVariants({ class: local.class, shape: local.shape })
   return (
     <select class={classes()} {...rest}>
       {local.children}

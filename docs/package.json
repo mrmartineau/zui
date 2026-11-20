@@ -1,4 +1,18 @@
 {
+  "name": "docs",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "deploy": "wrangler deploy",
+    "dev": "portless zui astro dev",
+    "generate-types": "wrangler types",
+    "preview": "astro preview",
+    "search:index": "tsx scripts/build-search-index.ts",
+    "search:push": "tsx scripts/build-search-index.ts --target=remote"
+  },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.4",
     "@astrojs/mdx": "^7.0.0",
@@ -27,19 +41,5 @@
   },
   "engines": {
     "node": ">=22.12.0"
-  },
-  "name": "docs",
-  "private": true,
-  "scripts": {
-    "astro": "astro",
-    "build": "astro build",
-    "deploy": "wrangler deploy",
-    "dev": "portless zui astro dev",
-    "generate-types": "wrangler types",
-    "preview": "astro preview",
-    "search:index": "tsx scripts/build-search-index.ts",
-    "search:push": "tsx scripts/build-search-index.ts --target=remote"
-  },
-  "type": "module",
-  "version": "0.0.1"
+  }
 }

@@ -65,7 +65,13 @@ const metaDescription = description ?? site.description ?? ''
         />
       </>
     )}
-    <script is:inline>(function(){var s=localStorage.getItem('zui-color-scheme');if(s==='dark')document.documentElement.classList.add('zui-dark');else if(s==='light')document.documentElement.classList.add('zui-light');})()</script>
+    <script is:inline>
+      ;(function () {
+        var s = localStorage.getItem('zui-color-scheme')
+        if (s === 'dark') document.documentElement.classList.add('zui-dark')
+        else if (s === 'light') document.documentElement.classList.add('zui-light')
+      })()
+    </script>
     <ClientRouter />
     <slot name="head" />
   </head>
@@ -82,9 +88,13 @@ const metaDescription = description ?? site.description ?? ''
             <i class="ph ph-list"></i>
           </button>
         )}
-        <a href="/" class="site-logo">{logo}</a>
+        <a href="/" class="site-logo">
+          {logo}
+        </a>
         {site.version ? (
-          <a href={versionHref} class="zui-badge zui-badge-variant-outline site-version">v{site.version}</a>
+          <a href={versionHref} class="zui-badge zui-badge-variant-outline site-version">
+            v{site.version}
+          </a>
         ) : null}
       </div>
       <div class="site-header-end">
@@ -123,7 +133,9 @@ const metaDescription = description ?? site.description ?? ''
           >
             <i class="ph ph-x"></i>
           </button>
-          <a href="/" class="site-logo">{logo}</a>
+          <a href="/" class="site-logo">
+            {logo}
+          </a>
         </div>
         <div class="mobile-nav-body">
           {social.map((link) => (
@@ -167,7 +179,8 @@ const metaDescription = description ?? site.description ?? ''
             <b>{site.title}</b>
             {site.author ? (
               <>
-                {' '}is made by{' '}
+                {' '}
+                is made by{' '}
                 {site.authorHref ? (
                   <a href={site.authorHref}>{site.author}</a>
                 ) : (
@@ -175,7 +188,12 @@ const metaDescription = description ?? site.description ?? ''
                 )}
               </>
             ) : null}
-            {site.version ? <> &middot; <a href={versionHref}>v{site.version}</a></> : null}
+            {site.version ? (
+              <>
+                {' '}
+                &middot; <a href={versionHref}>v{site.version}</a>
+              </>
+            ) : null}
           </p>
         </slot>
         <nav class="site-footer-nav" aria-label="Footer">
@@ -240,7 +258,7 @@ const metaDescription = description ?? site.description ?? ''
 
   @media (max-width: 500px) {
     .site-header-social {
-      display:none;
+      display: none;
     }
   }
 
