@@ -22,7 +22,7 @@ export function Field({
     orientation,
   })
   return (
-    // biome-ignore lint/a11y/useSemanticElements: fieldset carries default styling and layout quirks; a div with role="group" is the deliberate choice here
+    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- fieldset carries default styling and layout quirks; a div with role="group" is the deliberate choice here
     <div className={classes} role="group" {...props}>
       {children}
     </div>

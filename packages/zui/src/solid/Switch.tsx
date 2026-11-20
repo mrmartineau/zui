@@ -13,7 +13,7 @@ export function Switch(props: SwitchProps) {
   const classes = () => ['zui-switch', local.class].filter(Boolean).join(' ')
   return (
     <label class={classes()}>
-      {/* biome-ignore lint/a11y/useAriaPropsForRole: a native checkbox exposes checked state, so aria-checked is implicit */}
+      {/* a native checkbox exposes checked state, so aria-checked is implicit */}
       <input {...rest} type="checkbox" role="switch" />
       {local.children}
     </label>

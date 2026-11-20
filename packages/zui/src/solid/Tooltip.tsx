@@ -48,7 +48,7 @@ export function Tooltip(props: TooltipProps) {
     >
       {/* focusin/focusout: native focus does not bubble, so focus events
           from the wrapped child never reach this non-focusable span */}
-      {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}
+      {/* hover/focus passthrough wrapper; the interactive element is the wrapped child */}
       <span
         style={{ 'anchor-name': anchorName }}
         onMouseEnter={show}

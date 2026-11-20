@@ -61,7 +61,7 @@ export default defineConfig({
       include: ['react', 'react-dom', 'react-dom/server', 'cmdk'],
     },
     resolve: {
-      // biome-ignore assist/source/useSortedKeys: Vite matches aliases as prefixes, so /css/ramka must come before /css
+      // Vite matches aliases as prefixes, so /css/ramka must come before /css
       alias: {
         '@mrmartineau/zui-theme/astro': resolve(
           import.meta.dirname,

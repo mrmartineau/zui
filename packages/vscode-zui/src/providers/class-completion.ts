@@ -34,7 +34,7 @@ function isInsideClassBinding(prefix: string): boolean {
   let lastMatch: RegExpExecArray | null = null
   let current: RegExpExecArray | null
   OPENER_RE.lastIndex = 0
-  // biome-ignore lint/suspicious/noAssignInExpressions: classic regex exec loop
+  // classic regex exec loop
   while ((current = OPENER_RE.exec(prefix)) !== null) {
     lastMatch = current
   }

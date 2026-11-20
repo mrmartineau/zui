@@ -50,7 +50,7 @@ export function Tooltip({
         .join(' ')}
       {...props}
     >
-      {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}
+      {/* hover/focus passthrough wrapper; the interactive element is the wrapped child */}
       <span
         style={{ anchorName } as React.CSSProperties}
         onMouseEnter={show}
