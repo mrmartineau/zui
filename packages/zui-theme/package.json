@@ -4,7 +4,6 @@
   },
   "description": "Astro docs theme built on ZUI — layouts, components, and helpers for generating documentation sites",
   "devDependencies": {
-    "@biomejs/biome": "^2.4.12",
     "@mrmartineau/zui": "workspace:*",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
@@ -58,7 +57,7 @@
     "access": "public"
   },
   "scripts": {
-    "check": "biome check --write"
+    "check": "oxlint --fix && oxfmt"
   },
   "type": "module",
   "version": "1.2.0"
