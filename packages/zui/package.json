@@ -1,34 +1,30 @@
 {
+  "name": "@mrmartineau/zui",
+  "version": "1.9.1",
+  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmartineau/zui.git",
+    "directory": "packages/zui"
+  },
   "bin": {
     "zui": "scripts/init.mjs"
   },
-  "dependencies": {
-    "cva": "1.0.0-beta.12"
-  },
-  "description": "ZUI — a CSS UI library with React, Astro, Solid, Svelte, and Vue components",
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.12",
-    "@mrmartineau/kit": "^1.0.0",
-    "@phosphor-icons/react": "^2.1.10",
-    "@phosphor-icons/vue": "^2.2.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/git": "^10.0.1",
-    "@tsdown/css": "^0.21.4",
-    "@types/react": "^19.0.0",
-    "astro": "^6.0.8",
-    "chokidar-cli": "^3.0.0",
-    "jsdom": "^26.1.0",
-    "lightningcss": "^1.32.0",
-    "semantic-release": "^25.0.3",
-    "semantic-release-monorepo": "^8.0.2",
-    "solid-js": "^1.9.0",
-    "svelte": "^5.0.0",
-    "tsdown": "^0.21.4",
-    "typescript": "^6.0.0",
-    "vitest": "^3.2.4",
-    "vue": "^3.5.0"
-  },
+  "files": [
+    "dist",
+    "scripts",
+    "src/css",
+    "src/core",
+    "src/astro",
+    "src/react",
+    "src/solid",
+    "src/svelte",
+    "src/vue",
+    "src/shared",
+    "src/utils"
+  ],
+  "type": "module",
   "exports": {
     "./astro": {
       "import": "./src/astro/index.ts"
@@ -82,25 +78,44 @@
       "import": "./src/vue/*"
     }
   },
-  "files": [
-    "dist",
-    "scripts",
-    "src/css",
-    "src/core",
-    "src/astro",
-    "src/react",
-    "src/solid",
-    "src/svelte",
-    "src/vue",
-    "src/shared",
-    "src/utils"
-  ],
-  "name": "@mrmartineau/zui",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrmartineau/zui.git",
-    "directory": "packages/zui"
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown && pnpm --filter vscode-zui run build:manifest",
+    "check": "oxlint --fix && oxfmt",
+    "dev": "tsdown --watch",
+    "docs:build": "pnpm run build && pnpm --filter docs run build",
+    "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
+    "docs:dev": "pnpm run build && pnpm --filter docs run dev",
+    "generate:colors": "node scripts/generate-colors.js",
+    "test": "vitest run",
+    "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
+  },
+  "dependencies": {
+    "cva": "1.0.0-beta.12"
+  },
+  "devDependencies": {
+    "@mrmartineau/kit": "^1.0.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@phosphor-icons/vue": "^2.2.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@tsdown/css": "^0.21.4",
+    "@types/react": "^19.0.0",
+    "astro": "^6.0.8",
+    "chokidar-cli": "^3.0.0",
+    "jsdom": "^26.1.0",
+    "lightningcss": "^1.32.0",
+    "semantic-release": "^25.0.3",
+    "semantic-release-monorepo": "^8.0.2",
+    "solid-js": "^1.9.0",
+    "svelte": "^5.0.0",
+    "tsdown": "^0.21.4",
+    "typescript": "^6.0.0",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.0"
   },
   "peerDependencies": {
     "@phosphor-icons/react": "^2.1.0",
@@ -133,21 +148,5 @@
     "vue": {
       "optional": true
     }
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "tsdown && pnpm --filter vscode-zui run build:manifest",
-    "check": "biome check --write",
-    "dev": "tsdown --watch",
-    "docs:build": "pnpm run build && pnpm --filter docs run build",
-    "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
-    "docs:dev": "pnpm run build && pnpm --filter docs run dev",
-    "generate:colors": "node scripts/generate-colors.js",
-    "test": "vitest run",
-    "watch": "chokidar 'src/**/*.css' -c 'pnpm run build' --debounce 300 --initial"
-  },
-  "type": "module",
-  "version": "1.9.1"
+  }
 }

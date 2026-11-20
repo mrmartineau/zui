@@ -5,10 +5,7 @@
   .zui-button {
     --_btn-accent: var(--zui-btn-accent, var(--color-theme));
     --_btn-radius: var(--zui-btn-radius, var(--radius-lg));
-    --_btn-border-style: var(
-      --zui-btn-border-style,
-      var(--border-style, solid)
-    );
+    --_btn-border-style: var(--zui-btn-border-style, var(--border-style, solid));
     --_btn-padding-block: var(--zui-btn-padding-block, var(--space-3xs));
     --_btn-padding-inline: var(--zui-btn-padding-inline, var(--space-xs));
     --_btn-height: var(--zui-btn-height, 2rem);
@@ -35,10 +32,7 @@
         from var(--zui-btn-bg, var(--_btn-bg))
           clamp(
             var(--auto-dark-text-l),
-            calc(
-              ((l * alpha + 1 - alpha) / var(--auto-threshold) - 1) *
-              -infinity
-            ),
+            calc(((l * alpha + 1 - alpha) / var(--auto-threshold) - 1) * -infinity),
             var(--auto-light-text-l)
           )
           0 0 / 1
@@ -59,8 +53,7 @@
     justify-content: center;
     gap: var(--space-3xs-2xs);
     min-height: var(--_btn-height);
-    border: 1px var(--_btn-border-style)
-      var(--zui-btn-border, var(--_btn-border, transparent));
+    border: 1px var(--_btn-border-style) var(--zui-btn-border, var(--_btn-border, transparent));
     border-radius: var(--_btn-radius);
     background-color: var(--zui-btn-bg, var(--_btn-bg));
     color: var(--zui-btn-fg, var(--_btn-fg, var(--auto-color))) !important;
@@ -83,13 +76,10 @@
   }
 
   .zui-button:not(:disabled):hover,
-  .zui-button:not(:disabled)[aria-pressed="true"] {
+  .zui-button:not(:disabled)[aria-pressed='true'] {
     background-color: var(--zui-btn-hover-bg, var(--_btn-hover-bg));
     color: var(--zui-btn-hover-fg, var(--_btn-hover-fg, var(--auto-color)));
-    border-color: var(
-      --zui-btn-hover-border,
-      var(--_btn-hover-border, transparent)
-    );
+    border-color: var(--zui-btn-hover-border, var(--_btn-hover-border, transparent));
   }
 
   .zui-button:not(:disabled):active {
@@ -185,10 +175,7 @@
     padding: 0;
 
     &:hover {
-      text-decoration-color: oklch(
-        from var(--zui-btn-fg, var(--_btn-fg)) l c h /
-        90%
-      );
+      text-decoration-color: oklch(from var(--zui-btn-fg, var(--_btn-fg)) l c h / 90%);
     }
   }
 

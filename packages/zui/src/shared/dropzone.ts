@@ -76,10 +76,7 @@ function describeAccepted(files: File[]): string {
   return `${files.length} files: ${names.join(', ')}${more > 0 ? ` and ${more} more` : ''}`
 }
 
-function describeRejection(
-  { file, reason }: Rejection,
-  maxSize?: number,
-): string {
+function describeRejection({ file, reason }: Rejection, maxSize?: number): string {
   return reason === 'size' && maxSize != null
     ? `${file.name} is bigger than ${formatBytes(maxSize)}`
     : `${file.name} is not an accepted file type`
@@ -90,14 +87,11 @@ const ZONE = '[data-zui-dropzone]'
 const zoneOf = (target: EventTarget | null) =>
   target instanceof Element ? target.closest<HTMLElement>(ZONE) : null
 
-const hasFiles = (event: DragEvent) =>
-  Array.from(event.dataTransfer?.types ?? []).includes('Files')
+const hasFiles = (event: DragEvent) => Array.from(event.dataTransfer?.types ?? []).includes('Files')
 
 function clearDragging() {
   // Only dropzones: another component may use data-dragging for itself
-  for (const zone of document.querySelectorAll<HTMLElement>(
-    '[data-zui-dropzone][data-dragging]',
-  )) {
+  for (const zone of document.querySelectorAll<HTMLElement>('[data-zui-dropzone][data-dragging]')) {
     delete zone.dataset.dragging
   }
 }
@@ -111,9 +105,7 @@ function onChange(event: Event) {
   // data-max-size="0" is a real limit: it refuses every non-empty file
   const rawMaxSize = zone.dataset.maxSize
   const parsedMaxSize =
-    rawMaxSize == null || rawMaxSize.trim() === ''
-      ? Number.NaN
-      : Number(rawMaxSize)
+    rawMaxSize == null || rawMaxSize.trim() === '' ? Number.NaN : Number(rawMaxSize)
   const maxSize = Number.isFinite(parsedMaxSize) ? parsedMaxSize : undefined
   const { accepted, rejected } = checkFiles(Array.from(input.files ?? []), {
     accept: input.accept,
@@ -171,8 +163,7 @@ export function initDropzones(): void {
   const over = (event: DragEvent) => {
     const zone = zoneOf(event.target)
     // A disabled input takes no drop, so do not invite one
-    const disabled =
-      zone?.querySelector<HTMLInputElement>('input[type="file"]')?.disabled
+    const disabled = zone?.querySelector<HTMLInputElement>('input[type="file"]')?.disabled
     if (zone && !disabled && hasFiles(event)) zone.dataset.dragging = ''
   }
   document.addEventListener('dragenter', over as EventListener)

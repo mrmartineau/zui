@@ -13,14 +13,7 @@ interface Props {
   footerSections?: FooterSection[]
 }
 
-const {
-  title,
-  description,
-  currentPath,
-  site,
-  sections,
-  footerSections = [],
-} = Astro.props
+const { title, description, currentPath, site, sections, footerSections = [] } = Astro.props
 ---
 
 <BaseLayout
@@ -36,10 +29,15 @@ const {
     <aside class="site-sidebar" transition:animate="none">
       <Sidebar currentPath={currentPath} sections={sections} />
     </aside>
-    <main class="site-main docs-prose" transition:animate="fade" data-pagefind-body data-highlightable>
+    <main
+      class="site-main docs-prose"
+      transition:animate="fade"
+      data-pagefind-body
+      data-highlightable
+    >
       {title || description ? (
         <div class="page-header">
-          {title ? (<h1>{title}</h1>) : null}
+          {title ? <h1>{title}</h1> : null}
           {description ? <p class="page-description">{description}</p> : null}
         </div>
       ) : null}

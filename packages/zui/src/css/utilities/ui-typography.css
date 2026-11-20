@@ -1,7 +1,7 @@
 @layer zui.utilities {
   /* :where() keeps this reset at zero specificity so margin/other
      utilities (mt-sm, etc.) can override it regardless of source order */
-  :where([class*="zui-text-"]) {
+  :where([class*='zui-text-']) {
     line-height: var(--line-height-xs);
     margin: 0;
     font-weight: var(--font-weight-regular);
@@ -124,10 +124,7 @@
       --zui-code-bg-color,
       oklch(from var(--color-background) calc(l + 0.1) c h)
     );
-    color: var(
-      --zui-code-color,
-      oklch(from var(--color-text) calc(l + 0.1) c h)
-    );
+    color: var(--zui-code-color, oklch(from var(--color-text) calc(l + 0.1) c h));
   }
 
   .zui-pre {

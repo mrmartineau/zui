@@ -12,7 +12,6 @@ export type CollapsibleProps = JSX.DetailsHtmlAttributes<HTMLDetailsElement> &
 
 export function Collapsible(props: CollapsibleProps) {
   const [local, rest] = splitProps(props, ['class', 'shape'])
-  const classes = () =>
-    collapsibleVariants({ class: local.class, shape: local.shape })
+  const classes = () => collapsibleVariants({ class: local.class, shape: local.shape })
   return <details class={classes()} {...rest} />
 }

@@ -7,10 +7,7 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import {
-  AppShellController,
-  type AppShellMode,
-} from '../shared/AppShellController'
+import { AppShellController, type AppShellMode } from '../shared/AppShellController'
 import { appShellVariants } from '../shared/appShellVariants'
 import { provideAppShellContext } from './appShellContext'
 
@@ -94,7 +91,5 @@ watch(
   },
 )
 
-const classes = computed(() =>
-  appShellVariants({ class: props.class, position: props.position }),
-)
+const classes = computed(() => appShellVariants({ class: props.class, position: props.position }))
 </script>

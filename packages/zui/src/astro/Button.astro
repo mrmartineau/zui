@@ -10,16 +10,7 @@ interface Props extends HTMLAttributes<'button'>, ButtonVariantProps {
   class?: string
 }
 
-const {
-  href,
-  class: className,
-  variant,
-  color,
-  size,
-  shape,
-  icon,
-  ...props
-} = Astro.props
+const { href, class: className, variant, color, size, shape, icon, ...props } = Astro.props
 const classes = buttonVariants({
   class: className,
   color,
@@ -30,14 +21,12 @@ const classes = buttonVariants({
 })
 ---
 
-{
-  href ? (
-    <a class={classes} href={href} {...props}>
-      <slot />
-    </a>
-  ) : (
-    <button class={classes} {...props}>
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a class={classes} href={href} {...props}>
+    <slot />
+  </a>
+) : (
+  <button class={classes} {...props}>
+    <slot />
+  </button>
+)}

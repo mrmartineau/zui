@@ -28,10 +28,7 @@ const shapeClass = tooltipVariants({ shape })
 ---
 
 <span class:list={['zui-tooltip', shapeClass, className]} {...props}>
-  <span
-    style={`anchor-name: ${anchorName}`}
-    data-tooltip-trigger={id}
-  >
+  <span style={`anchor-name: ${anchorName}`} data-tooltip-trigger={id}>
     <slot />
   </span>
   <span
@@ -40,7 +37,9 @@ const shapeClass = tooltipVariants({ shape })
     class={contentClasses}
     role="tooltip"
     style={`position-anchor: ${anchorName}`}
-  >{text}</span>
+  >
+    {text}
+  </span>
 </span>
 
 <script>

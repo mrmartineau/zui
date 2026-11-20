@@ -38,9 +38,7 @@ const props = withDefaults(
   },
 )
 
-const classes = computed(() =>
-  dropzoneVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => dropzoneVariants({ className: props.class, shape: props.shape }))
 
 onMounted(initDropzones)
 </script>

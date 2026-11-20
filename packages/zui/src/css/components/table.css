@@ -1,18 +1,9 @@
 @layer zui.components {
   .zui-table {
-    --_table-border: var(
-      --zui-table-border,
-      oklch(from currentColor l c h / 15%)
-    );
+    --_table-border: var(--zui-table-border, oklch(from currentColor l c h / 15%));
     --_table-cell-padding: var(--zui-table-cell-padding, var(--space-2xs));
-    --_table-hover-bg: var(
-      --zui-table-hover-bg,
-      oklch(from currentColor l c h / 10%)
-    );
-    --_table-selected-bg: var(
-      --zui-table-selected-bg,
-      oklch(from currentColor l c h / 25%)
-    );
+    --_table-hover-bg: var(--zui-table-hover-bg, oklch(from currentColor l c h / 10%));
+    --_table-selected-bg: var(--zui-table-selected-bg, oklch(from currentColor l c h / 25%));
 
     width: 100%;
     caption-side: bottom;
@@ -31,7 +22,7 @@
     background-color: var(--_table-hover-bg);
   }
 
-  .zui-table-row[data-state="selected"] {
+  .zui-table-row[data-state='selected'] {
     background-color: var(--_table-selected-bg);
   }
 

@@ -8,7 +8,7 @@
   }
 
   .zui-label-required::after {
-    content: " *";
+    content: ' *';
     color: var(--color-error);
   }
 

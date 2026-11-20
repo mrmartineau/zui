@@ -12,14 +12,7 @@ interface Props extends HTMLAttributes<'div'>, PopoverVariantProps {
   style?: string
 }
 
-const {
-  id,
-  type = 'auto',
-  class: className,
-  shape,
-  style,
-  ...props
-} = Astro.props
+const { id, type = 'auto', class: className, shape, style, ...props } = Astro.props
 const classes = popoverVariants({ class: className, shape })
 const anchorStyle = `position-anchor: --${id};${style ? ` ${style}` : ''}`
 ---

@@ -55,7 +55,5 @@ defineEmits<{
 // Vue < 3.5 has no useId(), and the instance uid is the same on server and client
 const uid = getCurrentInstance()?.uid ?? 0
 const baseId = computed(() => props.id ?? `zui-alert-dialog-${uid}`)
-const classes = computed(() =>
-  ['zui-alert-dialog', props.class].filter(Boolean).join(' '),
-)
+const classes = computed(() => ['zui-alert-dialog', props.class].filter(Boolean).join(' '))
 </script>

@@ -4,10 +4,7 @@
     --_collapsible-radius: var(--zui-collapsible-radius, var(--radius-md));
     --_collapsible-bg: var(--zui-collapsible-bg, var(--color-surface));
     --_collapsible-padding-x: var(--zui-collapsible-padding-x, var(--space-xs));
-    --_collapsible-padding-y: var(
-      --zui-collapsible-padding-y,
-      var(--space-2xs)
-    );
+    --_collapsible-padding-y: var(--zui-collapsible-padding-y, var(--space-2xs));
 
     border: 1px var(--border-style, solid) var(--_collapsible-border);
     border-radius: var(--_collapsible-radius);
@@ -33,7 +30,7 @@
     }
 
     &::marker {
-      content: "";
+      content: '';
     }
 
     @starting-style {
@@ -44,7 +41,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       display: inline-block;
       width: 0.45em;
       height: 0.45em;

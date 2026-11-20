@@ -5,7 +5,6 @@ export type AccordionContentProps = JSX.HTMLAttributes<HTMLDivElement>
 
 export function AccordionContent(props: AccordionContentProps) {
   const [local, rest] = splitProps(props, ['class'])
-  const classes = () =>
-    ['zui-accordion-content', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-accordion-content', local.class].filter(Boolean).join(' ')
   return <div class={classes()} {...rest} />
 }

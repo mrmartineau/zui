@@ -40,13 +40,13 @@
   }
 
   /* File input: the button the browser draws takes the input's padding */
-  .zui-input[type="file"] {
+  .zui-input[type='file'] {
     padding: 0;
     overflow: hidden;
     cursor: pointer;
   }
 
-  .zui-input[type="file"]::file-selector-button {
+  .zui-input[type='file']::file-selector-button {
     margin: 0;
     margin-inline-end: var(--_input-padding-inline);
     padding-block: var(--_input-padding-block);
@@ -59,12 +59,12 @@
     cursor: pointer;
   }
 
-  .zui-input[type="file"]:disabled,
-  .zui-input[type="file"]:disabled::file-selector-button {
+  .zui-input[type='file']:disabled,
+  .zui-input[type='file']:disabled::file-selector-button {
     cursor: not-allowed;
   }
 
-  .zui-input[aria-invalid="true"],
+  .zui-input[aria-invalid='true'],
   .zui-input:user-invalid {
     border-color: var(--color-error);
   }

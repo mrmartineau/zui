@@ -9,9 +9,7 @@ export default async function UpdateData() {
   try {
     const { data, updated } = await fetchReferenceData()
     toast.style = Toast.Style.Success
-    toast.title = updated
-      ? `Updated to ZUI v${data.zuiVersion}`
-      : 'Already up to date'
+    toast.title = updated ? `Updated to ZUI v${data.zuiVersion}` : 'Already up to date'
     toast.message = `${data.classes.length} classes · ${data.tokens.length} tokens · ${data.snippets.length} snippets`
   } catch (error) {
     toast.style = Toast.Style.Failure

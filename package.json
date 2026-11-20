@@ -2,19 +2,21 @@
   "name": "zui-workspace",
   "private": true,
   "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "^2.6.7",
-    "@mrmartineau/kit": "^1.0.0"
-  },
   "scripts": {
     "build": "pnpm --filter @mrmartineau/zui run build",
-    "check": "biome check --write",
+    "check": "oxlint --fix && oxfmt",
     "dev": "pnpm --filter @mrmartineau/zui run dev",
     "docs:build": "pnpm --filter @mrmartineau/zui run build && pnpm --filter docs run build",
     "docs:deploy": "pnpm run docs:build && pnpm --filter docs run deploy",
     "docs:dev": "pnpm --filter @mrmartineau/zui run build && pnpm --filter docs run dev",
     "generate:colors": "pnpm --filter @mrmartineau/zui run generate:colors",
     "watch": "pnpm --filter @mrmartineau/zui run watch"
+  },
+  "devDependencies": {
+    "@astrojs/compiler-rs": "^0.5.3",
+    "@mrmartineau/kit": "^1.1.0",
+    "oxfmt": "^0.79.0",
+    "oxlint": "^1.94.0"
   },
   "packageManager": "pnpm@12.18.0"
 }

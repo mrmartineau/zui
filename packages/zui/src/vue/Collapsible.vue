@@ -18,7 +18,5 @@ const props = defineProps<{
   shape?: CollapsibleVariantProps['shape']
 }>()
 
-const classes = computed(() =>
-  collapsibleVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => collapsibleVariants({ className: props.class, shape: props.shape }))
 </script>

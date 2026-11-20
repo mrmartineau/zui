@@ -9,11 +9,7 @@ const { src, title, height = '500px' } = Astro.props
 ---
 
 <div class="iframe-demo" style={`--iframe-demo-height: ${height}`}>
-  <iframe
-    src={src}
-    title={title}
-    loading="lazy"
-  />
+  <iframe src={src} title={title} loading="lazy" />
 </div>
 
 <style>

@@ -7,8 +7,7 @@ export type TableCaptionProps = JSX.HTMLAttributes<HTMLTableCaptionElement> & {
 
 export function TableCaption(props: TableCaptionProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-table-caption', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-table-caption', local.class].filter(Boolean).join(' ')
   return (
     <caption class={classes()} {...rest}>
       {local.children}

@@ -16,12 +16,14 @@ import '@mrmartineau/zui/css'
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AppShell demo</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@phosphor-icons/web@2/src/regular/style.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2/src/regular/style.css" />
     <style>
-      html, body { margin: 0; padding: 0; height: 100%; }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
       a.nav-link {
         display: flex;
         align-items: center;
@@ -34,7 +36,9 @@ import '@mrmartineau/zui/css'
       a.nav-link:hover {
         background-color: oklch(from var(--color-text) l c h / 8%);
       }
-      a.nav-link i { font-size: var(--step-1); }
+      a.nav-link i {
+        font-size: var(--step-1);
+      }
       .brand {
         font-weight: 700;
         font-size: var(--step-1);
@@ -85,10 +89,9 @@ import '@mrmartineau/zui/css'
       <AppShellMain>
         <h1>Welcome</h1>
         <p>
-          This is the main content area. Try the toggle button in the header
-          (or press <kbd>Cmd/Ctrl + B</kbd>) to collapse the sidebar into an
-          icon rail. Resize the frame to below 768px to see the mobile drawer
-          mode.
+          This is the main content area. Try the toggle button in the header (or press{' '}
+          <kbd>Cmd/Ctrl + B</kbd>) to collapse the sidebar into an icon rail. Resize the frame to
+          below 768px to see the mobile drawer mode.
         </p>
       </AppShellMain>
     </AppShell>

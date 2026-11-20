@@ -7,10 +7,7 @@ import { skeletonVariants } from '../shared/skeletonVariants'
 
 type SkeletonVariantProps = VariantProps<typeof skeletonVariants>
 
-interface Props
-  extends HTMLAttributes<'div'>,
-    SkeletonVariantProps,
-    SkeletonSizeProps {
+interface Props extends HTMLAttributes<'div'>, SkeletonVariantProps, SkeletonSizeProps {
   class?: string
 }
 

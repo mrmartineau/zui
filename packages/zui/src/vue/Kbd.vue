@@ -18,7 +18,5 @@ const props = defineProps<{
   shape?: KbdVariantProps['shape']
 }>()
 
-const classes = computed(() =>
-  kbdVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => kbdVariants({ className: props.class, shape: props.shape }))
 </script>

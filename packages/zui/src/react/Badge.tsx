@@ -9,15 +9,7 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> &
     className?: string
   }
 
-export function Badge({
-  className,
-  variant,
-  color,
-  shape,
-  size,
-  children,
-  ...props
-}: BadgeProps) {
+export function Badge({ className, variant, color, shape, size, children, ...props }: BadgeProps) {
   const classes = badgeVariants({ className, color, shape, size, variant })
   return (
     <span className={classes} {...props}>

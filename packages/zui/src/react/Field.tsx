@@ -9,20 +9,14 @@ export type FieldProps = HTMLAttributes<HTMLDivElement> &
     className?: string
   }
 
-export function Field({
-  className,
-  orientation,
-  invalid,
-  children,
-  ...props
-}: FieldProps) {
+export function Field({ className, orientation, invalid, children, ...props }: FieldProps) {
   const classes = fieldVariants({
     className,
     invalid,
     orientation,
   })
   return (
-    // biome-ignore lint/a11y/useSemanticElements: fieldset carries default styling and layout quirks; a div with role="group" is the deliberate choice here
+    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- fieldset carries default styling and layout quirks; a div with role="group" is the deliberate choice here
     <div className={classes} role="group" {...props}>
       {children}
     </div>

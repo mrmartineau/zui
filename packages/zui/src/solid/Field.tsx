@@ -9,12 +9,7 @@ export type FieldProps = JSX.HTMLAttributes<HTMLDivElement> & {
 }
 
 export function Field(props: FieldProps) {
-  const [local, rest] = splitProps(props, [
-    'class',
-    'orientation',
-    'invalid',
-    'children',
-  ])
+  const [local, rest] = splitProps(props, ['class', 'orientation', 'invalid', 'children'])
   const classes = () =>
     fieldVariants({
       className: local.class,
@@ -22,7 +17,7 @@ export function Field(props: FieldProps) {
       orientation: local.orientation,
     })
   return (
-    // biome-ignore lint/a11y/useSemanticElements: fieldset carries default styling and layout quirks; a div with role="group" is the deliberate choice here
+    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- fieldset carries default styling and layout quirks; a div with role="group" is the deliberate choice here
     <div role="group" class={classes()} {...rest}>
       {local.children}
     </div>

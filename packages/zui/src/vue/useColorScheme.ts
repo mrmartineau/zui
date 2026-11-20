@@ -1,9 +1,5 @@
 import { onMounted, onUnmounted, ref } from 'vue'
-import {
-  type ColorScheme,
-  getColorScheme,
-  setColorScheme,
-} from '../utils/colorScheme'
+import { type ColorScheme, getColorScheme, setColorScheme } from '../utils/colorScheme'
 
 export function useColorScheme() {
   const scheme = ref<ColorScheme>(getColorScheme())

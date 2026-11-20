@@ -17,7 +17,7 @@
     list.innerHTML = ''
 
     const headings = Array.from(main.querySelectorAll('h1, h2, h3')).filter(
-      (h) => !h.closest('.demo')
+      (h) => !h.closest('.demo'),
     )
     if (headings.length === 0) {
       const toc = document.querySelector('.toc') as HTMLElement
@@ -27,8 +27,8 @@
 
     headings.forEach((heading) => {
       if (!heading.id) {
-        heading.id = heading.textContent!
-          .trim()
+        heading.id = heading
+          .textContent!.trim()
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, '-')
           .replace(/(^-|-$)/g, '')
@@ -58,7 +58,7 @@
           }
         }
       },
-      { rootMargin: '0px 0px -80% 0px', threshold: 0 }
+      { rootMargin: '0px 0px -80% 0px', threshold: 0 },
     )
 
     headings.forEach((heading) => observer.observe(heading))

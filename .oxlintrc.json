@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "extends": ["./node_modules/@mrmartineau/kit/src/oxlint/.oxlintrc.json"],
+  "ignorePatterns": [
+    "packages/vscode-zui/src/manifest.json",
+    "packages/raycast-zui/src/data",
+    "packages/raycast-zui/raycast-env.d.ts"
+  ],
+  "rules": {
+    "no-unused-expressions": "warn",
+    "unicorn/no-useless-fallback-in-spread": "warn",
+    "react/set-state-in-effect": "warn",
+    "react/incompatible-library": "warn",
+    "jsx-a11y/prefer-tag-over-role": "warn",
+    "jsx-a11y/interactive-supports-focus": "warn",
+    "react/refs": "warn",
+    "no-unassigned-vars": "warn",
+    "react/immutability": "warn",
+    "jsx-a11y/anchor-has-content": "warn",
+    "jsx-a11y/role-has-required-aria-props": "warn",
+    "unicorn/prefer-string-starts-ends-with": "warn"
+  }
+}

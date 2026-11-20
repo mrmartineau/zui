@@ -20,25 +20,15 @@ export type CardProps = CardAsDiv | CardAsAnchor
 
 export function Card({ className, shape, ...props }: CardProps) {
   const classes = cardVariants({
-    className: [
-      'href' in props && props.href && 'zui-card-interactive',
-      className,
-    ]
+    className: ['href' in props && props.href && 'zui-card-interactive', className]
       .filter(Boolean)
       .join(' '),
     shape,
   })
 
   if ('href' in props && props.href) {
-    return (
-      <a
-        className={classes}
-        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
-      />
-    )
+    return <a className={classes} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)} />
   }
 
-  return (
-    <div className={classes} {...(props as HTMLAttributes<HTMLDivElement>)} />
-  )
+  return <div className={classes} {...(props as HTMLAttributes<HTMLDivElement>)} />
 }

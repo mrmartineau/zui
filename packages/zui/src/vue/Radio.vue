@@ -14,7 +14,5 @@ const props = defineProps<{
   class?: string
 }>()
 
-const classes = computed(() =>
-  ['zui-radio', props.class].filter(Boolean).join(' '),
-)
+const classes = computed(() => ['zui-radio', props.class].filter(Boolean).join(' '))
 </script>

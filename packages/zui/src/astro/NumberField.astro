@@ -5,9 +5,7 @@ import { numberFieldVariants } from '../shared/numberFieldVariants'
 
 type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>
 
-interface Props
-  extends Omit<HTMLAttributes<'input'>, 'type'>,
-    NumberFieldVariantProps {
+interface Props extends Omit<HTMLAttributes<'input'>, 'type'>, NumberFieldVariantProps {
   /** Class for the wrapper. Other props go to the `<input>`. */
   class?: string
   decrementLabel?: string
@@ -59,9 +57,6 @@ const buttonDisabled = Boolean(props.disabled || props.readonly)
       '[data-zui-number-field-step]',
     )
     if (!button) return
-    stepNumberField(
-      button,
-      button.dataset.zuiNumberFieldStep === 'down' ? 'down' : 'up',
-    )
+    stepNumberField(button, button.dataset.zuiNumberFieldStep === 'down' ? 'down' : 'up')
   })
 </script>

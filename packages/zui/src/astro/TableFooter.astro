@@ -9,4 +9,6 @@ const { class: className, ...props } = Astro.props
 const classes = ['zui-table-footer', className].filter(Boolean).join(' ')
 ---
 
-<tfoot class={classes} {...props}><slot /></tfoot>
+<tfoot class={classes} {...props}>
+  <slot />
+</tfoot>

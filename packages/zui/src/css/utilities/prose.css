@@ -14,10 +14,7 @@
       --prose-link-color-decoration-hover,
       oklch(from var(--color-text) l c h / 90%)
     );
-    --_prose-code-color: var(
-      --prose-code-color,
-      oklch(from var(--color-text) calc(l + 0.1) c h)
-    );
+    --_prose-code-color: var(--prose-code-color, oklch(from var(--color-text) calc(l + 0.1) c h));
     --_prose-code-bg-color: var(
       --prose-code-bg-color,
       oklch(from var(--color-background) calc(l + 0.1) c h)
@@ -144,7 +141,7 @@
       font-family: var(--font-code);
       background-color: var(--_prose-code-bg-color);
       color: var(--_prose-code-color);
-      font-feature-settings: "ss09" 1;
+      font-feature-settings: 'ss09' 1;
     }
 
     code {
@@ -153,7 +150,7 @@
       display: inline-block;
       border-radius: var(--prose-code-radius, var(--radius-md));
       line-height: var(--line-height-xs);
-      font-feature-settings: "ss09" 1;
+      font-feature-settings: 'ss09' 1;
     }
 
     pre {
@@ -194,14 +191,8 @@
     --prose-color: var(--color-background);
     --prose-accent-color: var(--color-accent);
     --prose-link-color: var(--color-background);
-    --prose-link-color-decoration: oklch(
-      from var(--color-background) l c h /
-      50%
-    );
-    --prose-link-color-decoration-hover: oklch(
-      from var(--color-background) l c h /
-      90%
-    );
+    --prose-link-color-decoration: oklch(from var(--color-background) l c h / 50%);
+    --prose-link-color-decoration-hover: oklch(from var(--color-background) l c h / 90%);
     --prose-code-color: oklch(from var(--color-background) calc(l - 0.1) c h);
     --prose-code-bg-color: oklch(from var(--color-text) calc(l + 0.1) c h);
   }

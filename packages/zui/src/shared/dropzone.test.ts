@@ -28,9 +28,7 @@ describe('checkFiles', () => {
     })
     expect(accepted).toEqual([png, pdf])
     expect(rejected).toEqual([{ file: exe, reason: 'type' }])
-    expect(checkFiles([png], { accept: 'image/jpeg' }).rejected[0].reason).toBe(
-      'type',
-    )
+    expect(checkFiles([png], { accept: 'image/jpeg' }).rejected[0].reason).toBe('type')
     expect(checkFiles([png], { accept: 'image/png' }).accepted).toEqual([png])
   })
 
@@ -43,9 +41,7 @@ describe('checkFiles', () => {
 
   it('reports a wrong type before a size problem', () => {
     const big = file('big.exe', 'application/x-msdownload', 100)
-    expect(
-      checkFiles([big], { accept: 'image/*', maxSize: 50 }).rejected[0].reason,
-    ).toBe('type')
+    expect(checkFiles([big], { accept: 'image/*', maxSize: 50 }).rejected[0].reason).toBe('type')
   })
 })
 
@@ -155,11 +151,7 @@ describe('initDropzones', () => {
     input.addEventListener('change', () => {
       seen = Array.from(input.files ?? [])
     })
-    choose(input, [
-      good,
-      file('b.exe', 'application/x-msdownload'),
-      file('c.png', 'image/png', 99),
-    ])
+    choose(input, [good, file('b.exe', 'application/x-msdownload'), file('c.png', 'image/png', 99)])
     expect(Array.from(input.files ?? [])).toEqual([good])
     expect(seen).toEqual([good])
     expect(status.textContent).toBe(
@@ -189,10 +181,7 @@ describe('initDropzones', () => {
     input.addEventListener('change', () => {
       seen = Array.from(input.files ?? [])
     })
-    choose(input, [
-      file('a.png', 'image/png', 20),
-      file('b.exe', 'application/x-msdownload'),
-    ])
+    choose(input, [file('a.png', 'image/png', 20), file('b.exe', 'application/x-msdownload')])
     expect(setValue).toHaveBeenCalledWith('')
     // The app's handler sees an empty list, never the refused file
     expect(Array.from(input.files ?? [])).toEqual([])

@@ -27,7 +27,5 @@ const props = defineProps<{
 }>()
 
 const { snapshot } = useTabsContext()
-const classes = computed(() =>
-  tabsListVariants({ className: props.class, variant: props.variant }),
-)
+const classes = computed(() => tabsListVariants({ className: props.class, variant: props.variant }))
 </script>

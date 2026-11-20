@@ -8,7 +8,5 @@ import { appShellSidebarHeaderVariants } from '../shared/appShellVariants'
 
 defineOptions({ inheritAttrs: false })
 const props = defineProps<{ class?: string }>()
-const classes = computed(() =>
-  appShellSidebarHeaderVariants({ class: props.class }),
-)
+const classes = computed(() => appShellSidebarHeaderVariants({ class: props.class }))
 </script>

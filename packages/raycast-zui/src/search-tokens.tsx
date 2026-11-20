@@ -1,10 +1,6 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
 import { useState } from 'react'
-import {
-  RefreshDataAction,
-  type TokenEntry,
-  useReferenceData,
-} from './reference'
+import { RefreshDataAction, type TokenEntry, useReferenceData } from './reference'
 
 const CATEGORY_LABELS: Record<string, string> = {
   animation: 'Animation',
@@ -24,25 +20,16 @@ const CATEGORY_LABELS: Record<string, string> = {
   zindex: 'Z-Index',
 }
 
-const categoryLabel = (category: string) =>
-  CATEGORY_LABELS[category] ?? category
+const categoryLabel = (category: string) => CATEGORY_LABELS[category] ?? category
 
 function tokenIcon(token: TokenEntry) {
   if (token.color) {
     return { source: Icon.CircleFilled, tintColor: token.color }
   }
-  return token.category === 'color' || token.category === 'theme'
-    ? Icon.EyeDropper
-    : Icon.Ruler
+  return token.category === 'color' || token.category === 'theme' ? Icon.EyeDropper : Icon.Ruler
 }
 
-function TokenItem({
-  token,
-  refresh,
-}: {
-  token: TokenEntry
-  refresh: () => void
-}) {
+function TokenItem({ token, refresh }: { token: TokenEntry; refresh: () => void }) {
   const cssVar = `var(${token.name})`
   return (
     <List.Item
@@ -90,18 +77,10 @@ export default function SearchTokens() {
       isLoading={isLoading}
       searchBarPlaceholder="Search ZUI design tokens…"
       searchBarAccessory={
-        <List.Dropdown
-          tooltip="Filter by Category"
-          storeValue
-          onChange={setCategory}
-        >
+        <List.Dropdown tooltip="Filter by Category" storeValue onChange={setCategory}>
           <List.Dropdown.Item title="All Categories" value="all" />
           {categories.map((value) => (
-            <List.Dropdown.Item
-              key={value}
-              title={categoryLabel(value)}
-              value={value}
-            />
+            <List.Dropdown.Item key={value} title={categoryLabel(value)} value={value} />
           ))}
         </List.Dropdown>
       }
@@ -109,9 +88,7 @@ export default function SearchTokens() {
       {categories
         .filter((value) => showAll || value === category)
         .map((value) => {
-          const categoryTokens = tokens.filter(
-            (token) => token.category === value,
-          )
+          const categoryTokens = tokens.filter((token) => token.category === value)
           return (
             <List.Section
               key={value}

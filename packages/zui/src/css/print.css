@@ -20,13 +20,13 @@
   }
 
   a[href]::after {
-    content: " (" attr(href) ")";
+    content: ' (' attr(href) ')';
     font-size: 0.8em;
   }
 
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
+  a[href^='#']::after,
+  a[href^='javascript:']::after {
+    content: '';
   }
 
   img {

@@ -41,7 +41,9 @@ const colors = colorNames.map((name) => ({
   <div class="color-palette__corner" aria-hidden="true"></div>
 
   <div class="color-palette__header" aria-hidden="true">
-    {shades.map((shade) => <span>{shade}</span>)}
+    {shades.map((shade) => (
+      <span>{shade}</span>
+    ))}
   </div>
 
   {colors.map(({ name, shades: colorShades }) => (
@@ -119,28 +121,28 @@ const colors = colorNames.map((name) => ({
 
 <script>
   document.querySelectorAll<HTMLElement>('.color-swatch').forEach((swatch) => {
-    const btn = swatch.querySelector<HTMLButtonElement>('.color-swatch__btn');
-    if (!btn) return;
+    const btn = swatch.querySelector<HTMLButtonElement>('.color-swatch__btn')
+    if (!btn) return
 
     btn.addEventListener('click', async () => {
-      const value = swatch.dataset.value;
-      if (!value) return;
+      const value = swatch.dataset.value
+      if (!value) return
 
       try {
-        await navigator.clipboard.writeText(value);
-        swatch.classList.add('color-swatch--copied');
-        const tooltip = swatch.querySelector<HTMLElement>('.color-swatch__tooltip');
+        await navigator.clipboard.writeText(value)
+        swatch.classList.add('color-swatch--copied')
+        const tooltip = swatch.querySelector<HTMLElement>('.color-swatch__tooltip')
         if (tooltip) {
-          const original = tooltip.textContent;
-          tooltip.textContent = 'Copied!';
+          const original = tooltip.textContent
+          tooltip.textContent = 'Copied!'
           setTimeout(() => {
-            tooltip.textContent = original;
-            swatch.classList.remove('color-swatch--copied');
-          }, 1200);
+            tooltip.textContent = original
+            swatch.classList.remove('color-swatch--copied')
+          }, 1200)
         }
       } catch {
         // clipboard not available
       }
-    });
-  });
+    })
+  })
 </script>

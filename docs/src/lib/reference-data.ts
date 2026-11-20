@@ -87,10 +87,7 @@ function parseFrontmatter(source: string): Record<string, string> {
 
 function urlPathFor(relPath: string): string {
   const rel = relPath.replace(/\.mdx$/, '')
-  const path =
-    rel.endsWith('/index') || rel === 'index'
-      ? rel.replace(/\/?index$/, '')
-      : rel
+  const path = rel.endsWith('/index') || rel === 'index' ? rel.replace(/\/?index$/, '') : rel
   return `/${path}`.replace(/\/$/, '') || '/'
 }
 
@@ -143,10 +140,7 @@ const TOKEN_DOCS_PAGES: Record<string, string> = {
   zindex: 'tokens/z-index',
 }
 
-function classDocsUrl(
-  source: string,
-  componentPages: Set<string>,
-): string | undefined {
+function classDocsUrl(source: string, componentPages: Set<string>): string | undefined {
   if (source.startsWith('utility/')) {
     const page = UTILITY_DOCS_PAGES[source.slice('utility/'.length)]
     return page ? `${DOCS_BASE_URL}/utilities/${page}` : undefined
@@ -157,10 +151,7 @@ function classDocsUrl(
   return undefined
 }
 
-function buildClasses(
-  manifest: Manifest,
-  componentPages: Set<string>,
-): ClassEntry[] {
+function buildClasses(manifest: Manifest, componentPages: Set<string>): ClassEntry[] {
   // A class can be picked up from several CSS files (e.g. field.css also
   // references .zui-input). Keep one entry per name, preferring the source
   // the class is named after.
@@ -187,14 +178,7 @@ function buildTokens(manifest: Manifest): TokenEntry[] {
 
 // ─── Snippets (from <Demo> blocks in the docs MDX) ───────────────────────────
 
-const FRAMEWORK_PROPS = new Set<Framework>([
-  'html',
-  'react',
-  'astro',
-  'solid',
-  'svelte',
-  'vue',
-])
+const FRAMEWORK_PROPS = new Set<Framework>(['html', 'react', 'astro', 'solid', 'svelte', 'vue'])
 
 interface ParsedDemo {
   index: number
@@ -244,9 +228,7 @@ function parseDemos(source: string): ParsedDemo[] {
   return demos
 }
 
-function headingsWithIndices(
-  source: string,
-): { index: number; text: string }[] {
+function headingsWithIndices(source: string): { index: number; text: string }[] {
   const headings: { index: number; text: string }[] = []
   const re = /^#{2,3}\s+(.+)$/gm
   for (const match of source.matchAll(re)) {
@@ -261,8 +243,7 @@ function buildSnippets(files: MdxSource[]): SnippetEntry[] {
     if (!file.source.includes('<Demo')) continue
     const frontmatter = parseFrontmatter(file.source)
     const path = urlPathFor(file.path)
-    const page =
-      frontmatter.title ?? path.split('/').filter(Boolean).pop() ?? 'Untitled'
+    const page = frontmatter.title ?? path.split('/').filter(Boolean).pop() ?? 'Untitled'
     const headings = headingsWithIndices(file.source)
     const slug = path.split('/').filter(Boolean).join('-')
     parseDemos(file.source).forEach((demo, demoIndex) => {

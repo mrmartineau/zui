@@ -17,14 +17,8 @@
   .zui-app-shell {
     --_app-shell-sidebar-width: var(--zui-app-shell-sidebar-width, 15rem);
     --_app-shell-header-height: var(--zui-app-shell-header-height, 3rem);
-    --_app-shell-main-padding: var(
-      --zui-app-shell-main-padding,
-      var(--space-md)
-    );
-    --_app-shell-transition-duration: var(
-      --zui-app-shell-transition-duration,
-      200ms
-    );
+    --_app-shell-main-padding: var(--zui-app-shell-main-padding, var(--space-md));
+    --_app-shell-transition-duration: var(--zui-app-shell-transition-duration, 200ms);
     --_app-shell-surface: var(--zui-app-shell-surface, var(--color-surface));
     --_app-shell-border: var(--zui-app-shell-border, var(--color-border));
     --_app-shell-bg: var(--zui-app-shell-bg, var(--color-background));
@@ -33,8 +27,8 @@
     grid-template-columns: var(--_app-shell-sidebar-width) 1fr;
     grid-template-rows: var(--_app-shell-header-height) 1fr;
     grid-template-areas:
-      "sidebar header"
-      "sidebar main";
+      'sidebar header'
+      'sidebar main';
 
     block-size: 100dvh;
     inline-size: 100%;
@@ -43,16 +37,15 @@
     background-color: var(--_app-shell-bg);
     color: var(--color-text);
 
-    transition: grid-template-columns var(--_app-shell-transition-duration)
-      var(--ease, ease);
+    transition: grid-template-columns var(--_app-shell-transition-duration) var(--ease, ease);
   }
 
   /* Right-positioned sidebar swaps grid areas */
   .zui-app-shell-position-right {
     grid-template-columns: 1fr var(--_app-shell-sidebar-width);
     grid-template-areas:
-      "header sidebar"
-      "main sidebar";
+      'header sidebar'
+      'main sidebar';
   }
 
   /*
@@ -62,13 +55,13 @@
    * sidebar's visibility is driven by popover open/close instead).
    */
   @media (min-width: 769px) {
-    .zui-app-shell[data-collapsed="true"] {
+    .zui-app-shell[data-collapsed='true'] {
       grid-template-columns: 0 1fr;
     }
-    .zui-app-shell-position-right[data-collapsed="true"] {
+    .zui-app-shell-position-right[data-collapsed='true'] {
       grid-template-columns: 1fr 0;
     }
-    .zui-app-shell[data-collapsed="true"] .zui-app-shell-sidebar {
+    .zui-app-shell[data-collapsed='true'] .zui-app-shell-sidebar {
       visibility: hidden;
       opacity: 0;
       pointer-events: none;
@@ -220,10 +213,10 @@
     display: none;
   }
   .zui-app-shell-toggle-mod::before {
-    content: "Ctrl";
+    content: 'Ctrl';
   }
   .zui-app-shell[data-zui-mac] .zui-app-shell-toggle-mod::before {
-    content: "⌘";
+    content: '⌘';
   }
 
   /* ---------- Main ---------- */
@@ -267,8 +260,8 @@
       grid-template-columns: 1fr;
       grid-template-rows: var(--_app-shell-header-height) 1fr;
       grid-template-areas:
-        "header"
-        "main";
+        'header'
+        'main';
     }
 
     /* Sidebar exits grid, becomes a popover drawer */
@@ -320,8 +313,7 @@
       inset-inline-start: auto;
       inset-inline-end: 0;
       border-inline-end: 0;
-      border-inline-start: 1px var(--border-style, solid)
-        var(--_app-shell-border);
+      border-inline-start: 1px var(--border-style, solid) var(--_app-shell-border);
       translate: 100% 0;
     }
     .zui-app-shell-position-right .zui-app-shell-sidebar:popover-open {

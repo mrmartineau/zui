@@ -42,11 +42,9 @@
       updateIcon(next)
     })
 
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', () => {
-        if (getColorScheme() === 'system') updateIcon('system')
-      })
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (getColorScheme() === 'system') updateIcon('system')
+    })
   }
 
   document.addEventListener('astro:page-load', init)

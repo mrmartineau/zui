@@ -9,4 +9,6 @@ const { class: className, ...props } = Astro.props
 const classes = ['zui-field-error', className].filter(Boolean).join(' ')
 ---
 
-<div role="alert" class={classes} {...props}><slot /></div>
+<div role="alert" class={classes} {...props}>
+  <slot />
+</div>

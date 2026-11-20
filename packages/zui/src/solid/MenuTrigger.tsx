@@ -6,8 +6,7 @@ import { useMenuContext } from './menuContext'
 
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-export type MenuTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> &
-  ButtonVariantProps
+export type MenuTriggerProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariantProps
 
 export function MenuTrigger(props: MenuTriggerProps) {
   const [local, rest] = splitProps(props, [

@@ -11,13 +11,7 @@ interface Props extends HTMLAttributes<'button'>, TabsTriggerVariantProps {
   class?: string
 }
 
-const {
-  class: className,
-  disabled = false,
-  value,
-  variant,
-  ...props
-} = Astro.props
+const { class: className, disabled = false, value, variant, ...props } = Astro.props
 const classes = tabsTriggerVariants({ class: className, variant })
 ---
 

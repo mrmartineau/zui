@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "assets": {
     "binding": "ASSETS",
-    "directory": "./dist"
+    "directory": "./dist",
   },
   "compatibility_date": "2026-01-20",
   "compatibility_flags": ["global_fetch_strictly_public"],
@@ -13,18 +13,16 @@
       "binding": "REACTIONS_DB",
       "database_id": "f6e91a67-6a78-48f5-8459-c3ae707ec12e",
       "database_name": "zui-docs",
-      "migrations_dir": "node_modules/astro-d1-reactions/migrations"
-    }
+      "migrations_dir": "node_modules/astro-d1-reactions/migrations",
+    },
   ],
   // The Astro adapter's session store. Pinned so a deploy never has to look the namespace up
   // from the live Worker's settings: when that read fails, Wrangler tries to create
   // "zui-session" and stops with "a namespace with this account ID and title already exists".
-  "kv_namespaces": [
-    { "binding": "SESSION", "id": "304f657795934ee1bc04b60dec3b6494" }
-  ],
+  "kv_namespaces": [{ "binding": "SESSION", "id": "304f657795934ee1bc04b60dec3b6494" }],
   "main": "@astrojs/cloudflare/entrypoints/server",
   "name": "zui",
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }

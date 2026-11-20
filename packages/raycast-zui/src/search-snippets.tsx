@@ -1,10 +1,6 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
 import { useState } from 'react'
-import {
-  type Framework,
-  RefreshDataAction,
-  useReferenceData,
-} from './reference'
+import { type Framework, RefreshDataAction, useReferenceData } from './reference'
 
 const FRAMEWORKS: { id: Framework; label: string; lang: string }[] = [
   { id: 'html', label: 'HTML', lang: 'html' },
@@ -18,11 +14,8 @@ const FRAMEWORKS: { id: Framework; label: string; lang: string }[] = [
 export default function SearchSnippets() {
   const { data, isLoading, refresh } = useReferenceData()
   const [frameworkId, setFrameworkId] = useState<Framework>('html')
-  const framework =
-    FRAMEWORKS.find((f) => f.id === frameworkId) ?? FRAMEWORKS[0]
-  const available = data.snippets.filter(
-    (snippet) => snippet.frameworks[framework.id],
-  )
+  const framework = FRAMEWORKS.find((f) => f.id === frameworkId) ?? FRAMEWORKS[0]
+  const available = data.snippets.filter((snippet) => snippet.frameworks[framework.id])
   const pages = [...new Set(available.map((snippet) => snippet.page))]
 
   return (
@@ -55,16 +48,11 @@ export default function SearchSnippets() {
                   title={snippet.title}
                   keywords={[snippet.page, framework.label]}
                   detail={
-                    <List.Item.Detail
-                      markdown={`\`\`\`${framework.lang}\n${code}\n\`\`\``}
-                    />
+                    <List.Item.Detail markdown={`\`\`\`${framework.lang}\n${code}\n\`\`\``} />
                   }
                   actions={
                     <ActionPanel>
-                      <Action.CopyToClipboard
-                        title="Copy Snippet"
-                        content={code}
-                      />
+                      <Action.CopyToClipboard title="Copy Snippet" content={code} />
                       <Action.Paste title="Paste Snippet" content={code} />
                       <Action.OpenInBrowser
                         title="Open Documentation"

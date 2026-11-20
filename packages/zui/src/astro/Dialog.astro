@@ -12,15 +12,7 @@ interface Props extends HTMLAttributes<'dialog'>, DialogVariantProps {
   closedby?: 'any' | 'closerequest' | 'none'
 }
 
-const {
-  id,
-  class: className,
-  size,
-  position,
-  shape,
-  closedby = 'any',
-  ...props
-} = Astro.props
+const { id, class: className, size, position, shape, closedby = 'any', ...props } = Astro.props
 const classes = dialogVariants({ class: className, position, shape, size })
 ---
 

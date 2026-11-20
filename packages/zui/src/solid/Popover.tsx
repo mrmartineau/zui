@@ -12,16 +12,8 @@ export type PopoverProps = JSX.HTMLAttributes<HTMLDivElement> &
   }
 
 export function Popover(props: PopoverProps) {
-  const [local, rest] = splitProps(props, [
-    'id',
-    'popover',
-    'class',
-    'shape',
-    'style',
-    'children',
-  ])
-  const classes = () =>
-    popoverVariants({ class: local.class, shape: local.shape })
+  const [local, rest] = splitProps(props, ['id', 'popover', 'class', 'shape', 'style', 'children'])
+  const classes = () => popoverVariants({ class: local.class, shape: local.shape })
   const anchorStyle = (): JSX.CSSProperties => ({
     'position-anchor': `--${local.id}`,
     ...(typeof local.style === 'object' ? local.style : {}),

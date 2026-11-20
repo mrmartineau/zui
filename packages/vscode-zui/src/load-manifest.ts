@@ -20,17 +20,15 @@ function readCssDir(dir: string): CssFile[] {
  */
 export function loadManifestFromPackageDir(pkgDir: string): Manifest | null {
   try {
-    const pkg = JSON.parse(
-      readFileSync(join(pkgDir, 'package.json'), 'utf-8'),
-    ) as { version?: string }
+    const pkg = JSON.parse(readFileSync(join(pkgDir, 'package.json'), 'utf-8')) as {
+      version?: string
+    }
     const cssRoot = join(pkgDir, 'src/css')
     const themeFile = join(cssRoot, 'theme.css')
 
     const manifest = buildManifest({
       components: readCssDir(join(cssRoot, 'components')),
-      theme: existsSync(themeFile)
-        ? readFileSync(themeFile, 'utf-8')
-        : undefined,
+      theme: existsSync(themeFile) ? readFileSync(themeFile, 'utf-8') : undefined,
       tokens: readCssDir(join(cssRoot, 'tokens')),
       utilities: readCssDir(join(cssRoot, 'utilities')),
       version: pkg.version ?? 'unknown',

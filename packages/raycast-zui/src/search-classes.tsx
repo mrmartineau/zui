@@ -1,22 +1,12 @@
 import { Action, ActionPanel, Icon, List } from '@raycast/api'
-import {
-  type ClassEntry,
-  RefreshDataAction,
-  useReferenceData,
-} from './reference'
+import { type ClassEntry, RefreshDataAction, useReferenceData } from './reference'
 
 const isUtility = (entry: ClassEntry) => entry.source.startsWith('utility/')
 
 const sourceLabel = (entry: ClassEntry) =>
   isUtility(entry) ? entry.source.slice('utility/'.length) : entry.source
 
-function ClassItem({
-  entry,
-  refresh,
-}: {
-  entry: ClassEntry
-  refresh: () => void
-}) {
+function ClassItem({ entry, refresh }: { entry: ClassEntry; refresh: () => void }) {
   return (
     <List.Item
       icon={Icon.Code}
@@ -25,10 +15,7 @@ function ClassItem({
       accessories={[{ tag: sourceLabel(entry) }]}
       actions={
         <ActionPanel>
-          <Action.CopyToClipboard
-            title="Copy Class Name"
-            content={entry.name}
-          />
+          <Action.CopyToClipboard title="Copy Class Name" content={entry.name} />
           <Action.Paste title="Paste Class Name" content={entry.name} />
           {entry.docsUrl && (
             <Action.OpenInBrowser
@@ -53,20 +40,12 @@ export default function SearchClasses() {
     <List isLoading={isLoading} searchBarPlaceholder="Search ZUI CSS classes…">
       <List.Section title="Components" subtitle={`${componentClasses.length}`}>
         {componentClasses.map((entry) => (
-          <ClassItem
-            key={`${entry.source}/${entry.name}`}
-            entry={entry}
-            refresh={refresh}
-          />
+          <ClassItem key={`${entry.source}/${entry.name}`} entry={entry} refresh={refresh} />
         ))}
       </List.Section>
       <List.Section title="Utilities" subtitle={`${utilityClasses.length}`}>
         {utilityClasses.map((entry) => (
-          <ClassItem
-            key={`${entry.source}/${entry.name}`}
-            entry={entry}
-            refresh={refresh}
-          />
+          <ClassItem key={`${entry.source}/${entry.name}`} entry={entry} refresh={refresh} />
         ))}
       </List.Section>
     </List>

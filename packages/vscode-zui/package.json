@@ -1,17 +1,50 @@
 {
-  "activationEvents": [
-    "onLanguage:html",
-    "onLanguage:css",
-    "onLanguage:scss",
-    "onLanguage:less",
-    "onLanguage:javascriptreact",
-    "onLanguage:typescriptreact",
-    "onLanguage:astro",
-    "onLanguage:vue"
-  ],
+  "name": "vscode-zui",
+  "displayName": "ZUI IntelliSense",
+  "version": "0.2.0",
+  "description": "Autocomplete and colour preview for ZUI CSS classes and design tokens",
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "autocomplete",
+    "css",
+    "design tokens",
+    "intellisense",
+    "zui"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrmartineau/zui",
+    "directory": "packages/vscode-zui"
+  },
+  "publisher": "mrmartineau",
+  "type": "module",
+  "main": "./dist/extension.cjs",
+  "scripts": {
+    "build": "pnpm run build:manifest && pnpm run build:ext",
+    "build:ext": "tsdown",
+    "build:manifest": "tsx src/generate-manifest.ts",
+    "dev": "pnpm run build:manifest && tsdown --watch",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@types/culori": "^4.0.1",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.0.0",
+    "culori": "^4.0.2",
+    "semantic-release": "^25.0.3",
+    "semantic-release-monorepo": "^8.0.2",
+    "tsdown": "^0.21.4",
+    "tsx": "^4.0.0",
+    "typescript": "^5.8.0"
+  },
   "contributes": {
     "configuration": {
       "properties": {
@@ -34,51 +67,18 @@
       "title": "ZUI"
     }
   },
-  "description": "Autocomplete and colour preview for ZUI CSS classes and design tokens",
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/git": "^10.0.1",
-    "@types/culori": "^4.0.1",
-    "@types/node": "^22.0.0",
-    "@types/vscode": "^1.85.0",
-    "@vscode/vsce": "^3.0.0",
-    "culori": "^4.0.2",
-    "semantic-release": "^25.0.3",
-    "semantic-release-monorepo": "^8.0.2",
-    "tsdown": "^0.21.4",
-    "tsx": "^4.0.0",
-    "typescript": "^5.8.0"
-  },
-  "displayName": "ZUI IntelliSense",
+  "activationEvents": [
+    "onLanguage:astro",
+    "onLanguage:css",
+    "onLanguage:html",
+    "onLanguage:javascriptreact",
+    "onLanguage:less",
+    "onLanguage:scss",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue"
+  ],
+  "icon": "zui-icon.png",
   "engines": {
     "vscode": "^1.85.0"
-  },
-  "icon": "zui-icon.png",
-  "keywords": [
-    "zui",
-    "css",
-    "autocomplete",
-    "design tokens",
-    "intellisense"
-  ],
-  "license": "MIT",
-  "main": "./dist/extension.cjs",
-  "name": "vscode-zui",
-  "publisher": "mrmartineau",
-  "repository": {
-    "directory": "packages/vscode-zui",
-    "type": "git",
-    "url": "https://github.com/mrmartineau/zui"
-  },
-  "scripts": {
-    "build": "pnpm run build:manifest && pnpm run build:ext",
-    "build:ext": "tsdown",
-    "build:manifest": "tsx src/generate-manifest.ts",
-    "dev": "pnpm run build:manifest && tsdown --watch",
-    "package": "vsce package --no-dependencies",
-    "publish": "vsce publish --no-dependencies"
-  },
-  "type": "module",
-  "version": "0.2.0"
+  }
 }

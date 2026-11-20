@@ -9,4 +9,6 @@ const { class: className, ...props } = Astro.props
 const classes = ['zui-table-row', className].filter(Boolean).join(' ')
 ---
 
-<tr class={classes} {...props}><slot /></tr>
+<tr class={classes} {...props}>
+  <slot />
+</tr>

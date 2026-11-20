@@ -59,9 +59,7 @@ function findInstalledZuiDir(pkgJsonUri: vscode.Uri): string | null {
  * Returns null when no installed copy is found — callers fall back to the
  * bundled manifest snapshot.
  */
-export async function loadWorkspaceManifest(
-  dependents: vscode.Uri[],
-): Promise<Manifest | null> {
+export async function loadWorkspaceManifest(dependents: vscode.Uri[]): Promise<Manifest | null> {
   const candidateDirs: string[] = []
 
   for (const pkgUri of dependents) {
@@ -70,9 +68,7 @@ export async function loadWorkspaceManifest(
   }
 
   for (const folder of vscode.workspace.workspaceFolders ?? []) {
-    candidateDirs.push(
-      join(folder.uri.fsPath, 'node_modules', ...ZUI_PKG_NAME.split('/')),
-    )
+    candidateDirs.push(join(folder.uri.fsPath, 'node_modules', ...ZUI_PKG_NAME.split('/')))
   }
 
   for (const dir of candidateDirs) {

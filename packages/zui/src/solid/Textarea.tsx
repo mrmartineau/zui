@@ -12,7 +12,6 @@ export type TextareaProps = JSX.TextareaHTMLAttributes<HTMLTextAreaElement> &
 
 export function Textarea(props: TextareaProps) {
   const [local, rest] = splitProps(props, ['class', 'shape'])
-  const classes = () =>
-    textareaVariants({ class: local.class, shape: local.shape })
+  const classes = () => textareaVariants({ class: local.class, shape: local.shape })
   return <textarea class={classes()} {...rest} />
 }

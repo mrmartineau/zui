@@ -7,8 +7,7 @@ export type TableFooterProps = JSX.HTMLAttributes<HTMLTableSectionElement> & {
 
 export function TableFooter(props: TableFooterProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-table-footer', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-table-footer', local.class].filter(Boolean).join(' ')
   return (
     <tfoot class={classes()} {...rest}>
       {local.children}

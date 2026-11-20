@@ -9,12 +9,7 @@ export type FieldLegendProps = HTMLAttributes<HTMLLegendElement> &
     className?: string
   }
 
-export function FieldLegend({
-  className,
-  variant,
-  children,
-  ...props
-}: FieldLegendProps) {
+export function FieldLegend({ className, variant, children, ...props }: FieldLegendProps) {
   const classes = fieldLegendVariants({
     className,
     variant,

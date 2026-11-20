@@ -1,16 +1,10 @@
 /** @jsxImportSource react */
 
-import { navigate } from 'astro:transitions/client'
 import { Tooltip } from '@mrmartineau/zui/react'
+import { navigate } from 'astro:transitions/client'
 import { Command } from 'cmdk'
 import { useEffect, useRef, useState } from 'react'
-import {
-  MAX_QUERY_LENGTH,
-  rankResults,
-  type SearchResult,
-  toPath,
-  typeLabels,
-} from '../lib/search'
+import { MAX_QUERY_LENGTH, rankResults, type SearchResult, toPath, typeLabels } from '../lib/search'
 import '../styles/cmdk-zui.css'
 import '../styles/search.css'
 
@@ -46,11 +40,7 @@ export default function Search() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (
-        e.key === '/' &&
-        !(e.metaKey || e.ctrlKey || e.altKey) &&
-        !isTyping(e.target)
-      ) {
+      if (e.key === '/' && !(e.metaKey || e.ctrlKey || e.altKey) && !isTyping(e.target)) {
         e.preventDefault()
         setOpen(true)
       }
@@ -80,10 +70,9 @@ export default function Search() {
     const controller = new AbortController()
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(
-          `/api/search?limit=${FETCH_LIMIT}&q=${encodeURIComponent(text)}`,
-          { signal: controller.signal },
-        )
+        const res = await fetch(`/api/search?limit=${FETCH_LIMIT}&q=${encodeURIComponent(text)}`, {
+          signal: controller.signal,
+        })
         if (!res.ok) throw new Error(`Search failed: ${res.status}`)
         const data = (await res.json()) as { results: SearchResult[] }
         const ranked = rankResults(data.results, text).slice(0, SHOW)

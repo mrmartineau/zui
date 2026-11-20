@@ -13,4 +13,6 @@ const { class: className, variant, color, shape, size, ...props } = Astro.props
 const classes = badgeVariants({ class: className, color, shape, size, variant })
 ---
 
-<span class={classes} {...props}><slot /></span>
+<span class={classes} {...props}>
+  <slot />
+</span>

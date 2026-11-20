@@ -17,14 +17,12 @@ const classes = cardVariants({
 })
 ---
 
-{
-  href ? (
-    <a class={classes} href={href} {...props}>
-      <slot />
-    </a>
-  ) : (
-    <div class={classes} {...props}>
-      <slot />
-    </div>
-  )
-}
+{href ? (
+  <a class={classes} href={href} {...props}>
+    <slot />
+  </a>
+) : (
+  <div class={classes} {...props}>
+    <slot />
+  </div>
+)}

@@ -81,11 +81,9 @@ watchEffect(() => {
 let removePointerDown = () => {}
 
 onMounted(() => {
-  const onPointerDown = (event: PointerEvent) =>
-    controller.handleDocumentPointerDown(event.target)
+  const onPointerDown = (event: PointerEvent) => controller.handleDocumentPointerDown(event.target)
   document.addEventListener('pointerdown', onPointerDown)
-  removePointerDown = () =>
-    document.removeEventListener('pointerdown', onPointerDown)
+  removePointerDown = () => document.removeEventListener('pointerdown', onPointerDown)
 })
 
 onUnmounted(() => {
@@ -95,7 +93,5 @@ onUnmounted(() => {
 
 provideMenuContext({ controller, rootRef, snapshot })
 
-const classes = computed(() =>
-  menuVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => menuVariants({ className: props.class, shape: props.shape }))
 </script>

@@ -18,8 +18,7 @@ export default {
       '@semantic-release/git',
       {
         assets: ['package.json', 'CHANGELOG.md'],
-        message:
-          'chore(release): ${nextRelease.gitTag} [skip ci]\n\n${nextRelease.notes}',
+        message: 'chore(release): ${nextRelease.gitTag} [skip ci]\n\n${nextRelease.notes}',
       },
     ],
     ['@semantic-release/github', { failComment: false, failTitle: false }],

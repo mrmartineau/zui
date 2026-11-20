@@ -38,13 +38,7 @@ export interface AppShellControllerOptions {
 
 const DEFAULT_BREAKPOINT = 768
 const DEFAULT_STORAGE_KEY = 'zui-app-shell-collapsed'
-const TOOLTIP_EVENTS = [
-  'pointerenter',
-  'pointerleave',
-  'focusin',
-  'focusout',
-  'click',
-] as const
+const TOOLTIP_EVENTS = ['pointerenter', 'pointerleave', 'focusin', 'focusout', 'click'] as const
 
 export class AppShellController {
   private root: HTMLElement
@@ -68,18 +62,12 @@ export class AppShellController {
     this.root = options.root
     this.sidebar = options.sidebar
     this.mobileBreakpoint = options.mobileBreakpoint ?? DEFAULT_BREAKPOINT
-    this.storageKey =
-      options.storageKey === undefined
-        ? DEFAULT_STORAGE_KEY
-        : options.storageKey
+    this.storageKey = options.storageKey === undefined ? DEFAULT_STORAGE_KEY : options.storageKey
     this.bindKeyboard = options.bindKeyboardShortcut ?? false
     this.controlled = options.collapsed !== undefined
     this.onCollapsedChange = options.onCollapsedChange
 
-    this.collapsed = this.resolveInitialCollapsed(
-      options.collapsed,
-      options.defaultCollapsed,
-    )
+    this.collapsed = this.resolveInitialCollapsed(options.collapsed, options.defaultCollapsed)
     this.applyCollapsedAttr()
   }
 
@@ -104,9 +92,7 @@ export class AppShellController {
   mount(): void {
     if (typeof window === 'undefined') return
 
-    this.mediaQuery = window.matchMedia(
-      `(max-width: ${this.mobileBreakpoint - 1}px)`,
-    )
+    this.mediaQuery = window.matchMedia(`(max-width: ${this.mobileBreakpoint - 1}px)`)
     this.mediaHandler = (e: MediaQueryListEvent) => {
       this.setMode(e.matches ? 'mobile' : 'desktop')
     }
@@ -137,19 +123,14 @@ export class AppShellController {
       // Clicks can land on the nested icon. Hover events must match the
       // button exactly: leaving the icon would otherwise hide the tooltip
       // while the pointer is still over the button.
-      const btn =
-        e.type === 'click' ? target.closest('.zui-app-shell-toggle') : target
+      const btn = e.type === 'click' ? target.closest('.zui-app-shell-toggle') : target
       if (!btn?.matches('.zui-app-shell-toggle')) return
       const tip = btn.nextElementSibling
-      if (
-        !(tip instanceof HTMLElement) ||
-        !tip.matches('.zui-app-shell-toggle-tooltip')
-      ) {
+      if (!(tip instanceof HTMLElement) || !tip.matches('.zui-app-shell-toggle-tooltip')) {
         return
       }
       const show =
-        (e.type === 'pointerenter' &&
-          (e as PointerEvent).pointerType === 'mouse') ||
+        (e.type === 'pointerenter' && (e as PointerEvent).pointerType === 'mouse') ||
         (e.type === 'focusin' && btn.matches(':focus-visible'))
       if (show !== tip.matches(':popover-open')) tip.togglePopover(show)
     }
@@ -173,9 +154,7 @@ export class AppShellController {
       // Don't steal Escape from text inputs or other Escape-consuming UI
       const target = e.target as Element | null
       if (
-        target?.closest(
-          'input, textarea, select, [contenteditable=""], [contenteditable="true"]',
-        )
+        target?.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"]')
       ) {
         return
       }
@@ -314,9 +293,7 @@ export class AppShellController {
  * paint when persistence is enabled. Drop into your document `<head>` before
  * the AppShell renders. Pass a custom key if you've changed `storageKey`.
  */
-export function appShellNoFlashScript(
-  storageKey: string = DEFAULT_STORAGE_KEY,
-): string {
+export function appShellNoFlashScript(storageKey: string = DEFAULT_STORAGE_KEY): string {
   return `(function(){try{var v=localStorage.getItem(${JSON.stringify(
     storageKey,
   )});if(v==='true'){document.documentElement.setAttribute('data-zui-app-shell-collapsed','true');}}catch(e){}})();`

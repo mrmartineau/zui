@@ -9,9 +9,7 @@ export const passwordInputToggleClass = buttonVariants({
 
 /** Plain-DOM toggle used by the Astro wrapper and plain-HTML users. */
 export function togglePasswordInput(button: HTMLButtonElement) {
-  const input = button
-    .closest('.zui-password-input')
-    ?.querySelector<HTMLInputElement>('input')
+  const input = button.closest('.zui-password-input')?.querySelector<HTMLInputElement>('input')
   if (!input) return
   const show = input.type === 'password'
   input.type = show ? 'text' : 'password'

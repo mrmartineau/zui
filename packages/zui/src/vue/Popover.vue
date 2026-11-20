@@ -26,9 +26,7 @@ const props = withDefaults(
   },
 )
 
-const classes = computed(() =>
-  popoverVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => popoverVariants({ className: props.class, shape: props.shape }))
 const anchorStyle = computed<CSSProperties>(() => ({
   positionAnchor: `--${props.id}`,
 }))

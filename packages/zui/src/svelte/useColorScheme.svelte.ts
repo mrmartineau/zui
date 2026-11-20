@@ -1,8 +1,4 @@
-import {
-  type ColorScheme,
-  getColorScheme,
-  setColorScheme,
-} from '../utils/colorScheme'
+import { type ColorScheme, getColorScheme, setColorScheme } from '../utils/colorScheme'
 
 export function useColorScheme() {
   let scheme = $state<ColorScheme>(getColorScheme())

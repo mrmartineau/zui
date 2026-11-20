@@ -80,7 +80,10 @@ const classes = menuVariants({ class: className, shape })
     if (instances.has(root)) return
 
     const instance = attachMenuDom(root, {
-      align: root.dataset.align === 'center' || root.dataset.align === 'end' ? root.dataset.align : 'start',
+      align:
+        root.dataset.align === 'center' || root.dataset.align === 'end'
+          ? root.dataset.align
+          : 'start',
       defaultOpen:
         root.dataset.defaultOpen === 'true'
           ? true
@@ -91,16 +94,9 @@ const classes = menuVariants({ class: className, shape })
       disabled: root.dataset.disabled === 'true',
       id: root.id,
       modal: root.dataset.modal === 'true',
-      open:
-        root.dataset.open === 'true'
-          ? true
-          : root.dataset.open === 'false'
-            ? false
-            : undefined,
+      open: root.dataset.open === 'true' ? true : root.dataset.open === 'false' ? false : undefined,
       side:
-        root.dataset.side === 'top' ||
-        root.dataset.side === 'right' ||
-        root.dataset.side === 'left'
+        root.dataset.side === 'top' || root.dataset.side === 'right' || root.dataset.side === 'left'
           ? root.dataset.side
           : 'bottom',
     })

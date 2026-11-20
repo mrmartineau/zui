@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react'
-import {
-  type ColorScheme,
-  getColorScheme,
-  setColorScheme,
-} from '../utils/colorScheme'
+import { type ColorScheme, getColorScheme, setColorScheme } from '../utils/colorScheme'
 
 export function useColorScheme() {
   const [scheme, setScheme] = useState<ColorScheme>(getColorScheme)

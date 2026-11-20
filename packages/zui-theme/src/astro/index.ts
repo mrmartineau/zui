@@ -12,12 +12,7 @@ export type {
   SocialLink,
 } from '../nav'
 // Navigation + config helpers and types
-export {
-  buildFooterSections,
-  buildSidebarSections,
-  pageHref,
-  sectionKey,
-} from '../nav'
+export { buildFooterSections, buildSidebarSections, pageHref, sectionKey } from '../nav'
 // Layouts
 export { default as BaseLayout } from './BaseLayout.astro'
 export { default as CopyCode } from './CopyCode.astro'

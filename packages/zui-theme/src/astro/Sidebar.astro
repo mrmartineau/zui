@@ -22,7 +22,11 @@ function isCurrent(href: string, exact = false) {
       <ul>
         {items.map(({ href, label, exact }) => (
           <li>
-            <a href={href} class:list={[{ active: isCurrent(href, exact) }]} aria-current={isCurrent(href, exact) ? 'page' : undefined}>
+            <a
+              href={href}
+              class:list={[{ active: isCurrent(href, exact) }]}
+              aria-current={isCurrent(href, exact) ? 'page' : undefined}
+            >
               {label}
             </a>
           </li>
@@ -69,7 +73,9 @@ function isCurrent(href: string, exact = false) {
     text-decoration: none;
     border-left: 2px solid transparent;
     border-radius: 0 0.25rem 0.25rem 0;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
   }
 
   a:hover {
@@ -84,41 +90,39 @@ function isCurrent(href: string, exact = false) {
 </style>
 
 <script>
-  let savedScrollTop = 0;
+  let savedScrollTop = 0
 
   function scrollActiveIntoView() {
-    const sidebar = document.querySelector(".site-sidebar");
+    const sidebar = document.querySelector('.site-sidebar')
     const activeLink = document.querySelector(
-      ".site-sidebar .sidebar a.active",
-    ) as HTMLElement | null;
+      '.site-sidebar .sidebar a.active',
+    ) as HTMLElement | null
     if (!sidebar || !activeLink) {
-      return;
+      return
     }
-    const sidebarTop = sidebar.scrollTop;
-    const sidebarHeight = sidebar.clientHeight;
-    const linkTop = activeLink.offsetTop;
-    const linkHeight = activeLink.offsetHeight;
-    const isVisible =
-      linkTop >= sidebarTop &&
-      linkTop + linkHeight <= sidebarTop + sidebarHeight;
+    const sidebarTop = sidebar.scrollTop
+    const sidebarHeight = sidebar.clientHeight
+    const linkTop = activeLink.offsetTop
+    const linkHeight = activeLink.offsetHeight
+    const isVisible = linkTop >= sidebarTop && linkTop + linkHeight <= sidebarTop + sidebarHeight
     if (!isVisible) {
-      sidebar.scrollTop = linkTop - sidebarHeight / 2 + linkHeight / 2;
+      sidebar.scrollTop = linkTop - sidebarHeight / 2 + linkHeight / 2
     }
   }
 
-  document.addEventListener("astro:page-load", scrollActiveIntoView);
+  document.addEventListener('astro:page-load', scrollActiveIntoView)
 
-  document.addEventListener("astro:before-swap", () => {
-    const sidebar = document.querySelector(".site-sidebar");
+  document.addEventListener('astro:before-swap', () => {
+    const sidebar = document.querySelector('.site-sidebar')
     if (sidebar) {
-      savedScrollTop = sidebar.scrollTop;
+      savedScrollTop = sidebar.scrollTop
     }
-  });
+  })
 
-  document.addEventListener("astro:after-swap", () => {
-    const sidebar = document.querySelector(".site-sidebar");
+  document.addEventListener('astro:after-swap', () => {
+    const sidebar = document.querySelector('.site-sidebar')
     if (sidebar) {
-      sidebar.scrollTop = savedScrollTop;
+      sidebar.scrollTop = savedScrollTop
     }
-  });
+  })
 </script>

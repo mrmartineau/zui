@@ -1,18 +1,31 @@
 {
+  "name": "@mrmartineau/zui-theme",
+  "version": "1.2.0",
+  "description": "Astro docs theme built on ZUI — layouts, components, and helpers for generating documentation sites",
+  "keywords": [
+    "astro",
+    "css",
+    "docs",
+    "documentation",
+    "theme",
+    "zui"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmartineau/zui.git",
+    "directory": "packages/zui-theme"
+  },
   "bin": {
     "create-zui-docs": "scripts/create.mjs"
   },
-  "description": "Astro docs theme built on ZUI — layouts, components, and helpers for generating documentation sites",
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.12",
-    "@mrmartineau/zui": "workspace:*",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/git": "^10.0.1",
-    "astro": "^6.0.8",
-    "semantic-release": "^25.0.3",
-    "semantic-release-monorepo": "^8.0.2"
-  },
+  "files": [
+    "src",
+    "scripts",
+    "template",
+    "README.md"
+  ],
+  "type": "module",
   "exports": {
     "./astro": {
       "import": "./src/astro/index.ts"
@@ -29,37 +42,23 @@
       "import": "./src/nav.ts"
     }
   },
-  "files": [
-    "src",
-    "scripts",
-    "template",
-    "README.md"
-  ],
-  "keywords": [
-    "astro",
-    "docs",
-    "documentation",
-    "theme",
-    "zui",
-    "css"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mrmartineau/zui.git",
-    "directory": "packages/zui-theme"
-  },
-  "name": "@mrmartineau/zui-theme",
-  "peerDependencies": {
-    "@mrmartineau/zui": "^1.0.0",
-    "astro": "^6.0.0"
-  },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "check": "biome check --write"
+    "check": "oxlint --fix && oxfmt"
   },
-  "type": "module",
-  "version": "1.2.0"
+  "devDependencies": {
+    "@mrmartineau/zui": "workspace:*",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "astro": "^6.0.8",
+    "semantic-release": "^25.0.3",
+    "semantic-release-monorepo": "^8.0.2"
+  },
+  "peerDependencies": {
+    "@mrmartineau/zui": "^1.0.0",
+    "astro": "^6.0.0"
+  }
 }

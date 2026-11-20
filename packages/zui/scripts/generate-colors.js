@@ -20,11 +20,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 // ---------------------------------------------------------------------------
 
 const easeInOut = (t) => t * t * (3 - 2 * t)
-// biome-ignore lint/correctness/noUnusedVariables: it might be used in the future
+// oxlint-disable-next-line no-unused-vars -- it might be used in the future
 const easeLinear = (t) => t
-// biome-ignore lint/correctness/noUnusedVariables: it might be used in the future
+// oxlint-disable-next-line no-unused-vars -- it might be used in the future
 const easeIn = (t) => t * t
-// biome-ignore lint/correctness/noUnusedVariables: it might be used in the future
+// oxlint-disable-next-line no-unused-vars -- it might be used in the future
 const easeOut = (t) => t * (2 - t)
 
 function roundTo(value, decimals = 2) {
@@ -65,10 +65,7 @@ function generateScale({
       const t = i / (steps - 1)
       const et = ease(t)
 
-      const l = roundTo(
-        lightnessStart - et * (lightnessStart - lightnessEnd),
-        2,
-      )
+      const l = roundTo(lightnessStart - et * (lightnessStart - lightnessEnd), 2)
       const c = roundTo(chromaStart + et * (chromaEnd - chromaStart), 3)
 
       return [shade, `oklch(${l}% ${c} ${hue})`]

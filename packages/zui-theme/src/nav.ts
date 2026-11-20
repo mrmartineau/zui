@@ -162,10 +162,7 @@ export function buildSidebarSections(
   }
 
   const sections = [...sectionMap.values()]
-    .sort(
-      (a, b) =>
-        a.sectionOrder - b.sectionOrder || a.heading.localeCompare(b.heading),
-    )
+    .sort((a, b) => a.sectionOrder - b.sectionOrder || a.heading.localeCompare(b.heading))
     .map((section) => ({
       ...section,
       items: [...section.items].sort(compareItems),
@@ -186,9 +183,7 @@ export function buildSidebarSections(
  * const indexPages = import.meta.glob('../pages/*\/index.mdx', { eager: true })
  * const footerSections = buildFooterSections(indexPages)
  */
-export function buildFooterSections(
-  indexPages: Record<string, unknown>,
-): FooterSection[] {
+export function buildFooterSections(indexPages: Record<string, unknown>): FooterSection[] {
   return Object.entries(indexPages)
     .map(([path, mod]) => {
       const fm = (mod as PageModule).frontmatter ?? ({} as PageFrontmatter)
@@ -199,8 +194,5 @@ export function buildFooterSections(
         sectionOrder: fm.sectionOrder ?? Number.POSITIVE_INFINITY,
       }
     })
-    .sort(
-      (a, b) =>
-        a.sectionOrder - b.sectionOrder || a.label.localeCompare(b.label),
-    )
+    .sort((a, b) => a.sectionOrder - b.sectionOrder || a.label.localeCompare(b.label))
 }

@@ -7,8 +7,7 @@ export type FieldDescriptionProps = JSX.HTMLAttributes<HTMLDivElement> & {
 
 export function FieldDescription(props: FieldDescriptionProps) {
   const [local, rest] = splitProps(props, ['class', 'children'])
-  const classes = () =>
-    ['zui-field-description', local.class].filter(Boolean).join(' ')
+  const classes = () => ['zui-field-description', local.class].filter(Boolean).join(' ')
   return (
     <div class={classes()} {...rest}>
       {local.children}

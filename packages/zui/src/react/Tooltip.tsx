@@ -12,14 +12,7 @@ export type TooltipProps = HTMLAttributes<HTMLSpanElement> &
     children: ReactNode
   }
 
-export function Tooltip({
-  text,
-  placement,
-  shape,
-  className,
-  children,
-  ...props
-}: TooltipProps) {
+export function Tooltip({ text, placement, shape, className, children, ...props }: TooltipProps) {
   const reactId = useId()
   const id = `tooltip-${reactId.replace(/:/g, '')}`
   const anchorName = `--${id}`
@@ -50,7 +43,7 @@ export function Tooltip({
         .join(' ')}
       {...props}
     >
-      {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}
+      {/* hover/focus passthrough wrapper; the interactive element is the wrapped child */}
       <span
         style={{ anchorName } as React.CSSProperties}
         onMouseEnter={show}

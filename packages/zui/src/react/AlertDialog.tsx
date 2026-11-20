@@ -5,10 +5,7 @@ import { DialogDescription } from './DialogDescription'
 import { DialogHeader } from './DialogHeader'
 import { DialogTitle } from './DialogTitle'
 
-export type AlertDialogProps = Omit<
-  DialogProps,
-  'role' | 'title' | 'position' | 'size'
-> & {
+export type AlertDialogProps = Omit<DialogProps, 'role' | 'title' | 'position' | 'size'> & {
   /** Names the dialog for assistive tech. Keep it short, such as "Delete this project?" */
   title: ReactNode
   /** Says what happens next. Read out when the dialog opens */
@@ -41,11 +38,7 @@ export function AlertDialog({
     >
       <DialogHeader>
         <DialogTitle id={titleId}>{title}</DialogTitle>
-        {!!description && (
-          <DialogDescription id={descriptionId}>
-            {description}
-          </DialogDescription>
-        )}
+        {!!description && <DialogDescription id={descriptionId}>{description}</DialogDescription>}
       </DialogHeader>
       {children}
     </Dialog>

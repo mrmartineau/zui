@@ -10,11 +10,7 @@
     >
       <PhMinus aria-hidden="true" />
     </button>
-    <input
-      type="number"
-      class="zui-input zui-number-field-input"
-      v-bind="$attrs"
-    />
+    <input type="number" class="zui-input zui-number-field-input" v-bind="$attrs" />
     <button
       type="button"
       class="zui-number-field-button"
@@ -52,9 +48,7 @@ const props = withDefaults(
   { decrementLabel: 'Decrease', incrementLabel: 'Increase' },
 )
 
-const classes = computed(() =>
-  numberFieldVariants({ className: props.class, shape: props.shape }),
-)
+const classes = computed(() => numberFieldVariants({ className: props.class, shape: props.shape }))
 // disabled and readonly stay in $attrs and go to the input. Vue does not
 // normalise attribute names, so check both spellings of readonly. attrs is
 // not reactive, so this is a function the template calls on each render.

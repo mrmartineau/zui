@@ -16,13 +16,7 @@ export function Tooltip(props: TooltipProps) {
   const id = `tooltip-${createUniqueId()}`
   const anchorName = `--${id}`
   let popoverEl: HTMLElement | undefined
-  const [local, rest] = splitProps(props, [
-    'text',
-    'placement',
-    'shape',
-    'class',
-    'children',
-  ])
+  const [local, rest] = splitProps(props, ['text', 'placement', 'shape', 'class', 'children'])
   const contentClass = () => {
     const placementClass = tooltipVariants({ placement: local.placement })
       .split(' ')
@@ -48,7 +42,7 @@ export function Tooltip(props: TooltipProps) {
     >
       {/* focusin/focusout: native focus does not bubble, so focus events
           from the wrapped child never reach this non-focusable span */}
-      {/* biome-ignore lint/a11y/noStaticElementInteractions: hover/focus passthrough wrapper; the interactive element is the wrapped child */}
+      {/* hover/focus passthrough wrapper; the interactive element is the wrapped child */}
       <span
         style={{ 'anchor-name': anchorName }}
         onMouseEnter={show}

@@ -7,10 +7,7 @@ import { dropzoneVariants } from '../shared/dropzoneVariants'
 
 type DropzoneVariantProps = VariantProps<typeof dropzoneVariants>
 
-export type DropzoneProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'className'
-> &
+export type DropzoneProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'className'> &
   DropzoneVariantProps & {
     /** Class for the wrapper. Other props go to the `<input>`. */
     className?: string

@@ -35,9 +35,7 @@ export class TokenCompletionProvider
 
     this.completionItems = tokens.map(({ name, value, category, color }) => {
       const isColor = category === 'color' || category === 'theme'
-      const kind = isColor
-        ? vscode.CompletionItemKind.Color
-        : vscode.CompletionItemKind.Variable
+      const kind = isColor ? vscode.CompletionItemKind.Color : vscode.CompletionItemKind.Variable
 
       const item = new vscode.CompletionItem(name, kind)
       item.detail = value.length > 60 ? `${value.slice(0, 57)}…` : value
@@ -64,9 +62,7 @@ export class TokenCompletionProvider
     return this.completionItems
   }
 
-  provideDocumentColors(
-    document: vscode.TextDocument,
-  ): vscode.ColorInformation[] {
+  provideDocumentColors(document: vscode.TextDocument): vscode.ColorInformation[] {
     const results: vscode.ColorInformation[] = []
     const re = /--([\w-]+)/g
 
@@ -78,9 +74,7 @@ export class TokenCompletionProvider
         if (!color) continue
         const start = new vscode.Position(i, m.index)
         const end = new vscode.Position(i, m.index + m[0].length)
-        results.push(
-          new vscode.ColorInformation(new vscode.Range(start, end), color),
-        )
+        results.push(new vscode.ColorInformation(new vscode.Range(start, end), color))
       }
     }
 
@@ -92,8 +86,6 @@ export class TokenCompletionProvider
     context: { document: vscode.TextDocument; range: vscode.Range },
   ): vscode.ColorPresentation[] {
     // Keep the original token reference intact — don't replace with hex
-    return [
-      new vscode.ColorPresentation(context.document.getText(context.range)),
-    ]
+    return [new vscode.ColorPresentation(context.document.getText(context.range))]
   }
 }

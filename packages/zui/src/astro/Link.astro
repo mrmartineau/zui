@@ -9,4 +9,6 @@ const { class: className, ...props } = Astro.props
 const classes = ['zui-link', className].filter(Boolean).join(' ')
 ---
 
-<a class={classes} {...props}><slot /></a>
+<a class={classes} {...props}>
+  <slot />
+</a>
